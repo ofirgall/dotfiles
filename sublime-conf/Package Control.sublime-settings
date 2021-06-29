@@ -1,0 +1,26 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Debugger",
+		"FileDiffs",
+		"LSP",
+		"LSP-json",
+		"LSP-pylsp",
+		"LSP-pyright",
+		"Multicommand",
+		"Package Control",
+		"PackageResourceViewer",
+		"PowerCursors",
+		"Rust Enhanced",
+		"SelectUntil",
+		"SideBarEnhancements",
+		"Terminal",
+		"Tmux Syntax Highlight",
+		"TodoReview",
+		"TOML",
+	],
+}

@@ -1,0 +1,9 @@
+[user]
+	email = ofirgal753@gmail.com
+	name = Ofir Gal
+[alias]
+	co = checkout
+	st = status
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+[core]
+	editor = nano

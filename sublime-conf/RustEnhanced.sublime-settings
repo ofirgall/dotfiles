@@ -1,0 +1,4 @@
+{
+	"rust_env": {"PATH": "$PATH:$HOME/.cargo/bin"},
+	"rust_include_shell_env": false,
+}

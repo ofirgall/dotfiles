@@ -1,0 +1,15 @@
+// Settings in here override those in "LSP-pylsp/LSP-pylsp.sublime-settings"
+{
+	"settings": {
+		"pylsp.plugins.pycodestyle.enabled": false,
+		"pylsp.plugins.autopep8.enabled": false,
+		"pylsp.plugins.mypy-ls.live_mode": false,
+		"pylsp.plugins.mypy_ls.enabled": false,
+	},
+
+	"pylsp.plugins.jedi.extra_paths": [
+        "$sublime_py_files_dir",
+        "$packages",
+        "/home/ofir/.local/lib/python3.8/site-packages"
+    ],
+}

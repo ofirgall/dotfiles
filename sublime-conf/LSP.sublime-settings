@@ -1,0 +1,20 @@
+{
+	"clients":
+	{
+		"rls": {
+            "enabled": true,
+            "command": ["rls"],
+            "selector": "source.rust",
+        },
+        "clangd": {
+            "enabled": true,
+            "command": ["clangd", "--fallback-style=none"],
+        },
+		"pyls":
+		{
+			"enabled": false,
+		},
+	},
+
+	"show_diagnostics_panel_on_save": 0,
+}
