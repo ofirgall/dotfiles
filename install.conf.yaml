@@ -10,6 +10,8 @@
         path: dotfiles/wslrc
     ~/.gitconfig:
         path: dotfiles/gitconfig
+    ~/.gitignore_global:
+        path: dotfiles/gitignore_global
     ~/.oh-my-zsh/custom/themes/ofir.zsh-theme:
         path: dotfiles/ofir.zsh-theme
     ~/.tmux.conf:

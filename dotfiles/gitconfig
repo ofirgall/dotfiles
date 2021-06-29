@@ -7,3 +7,7 @@
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [core]
 	editor = nano
+[core]
+	excludesfile = ~/.gitignore_global
+[pull]
+	ff = only
