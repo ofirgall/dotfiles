@@ -5,17 +5,17 @@
 
 - link:
     ~/.zshrc: 
-        path: zshrc
+        path: dotfiles/zshrc
     ~/.wslrc:
-        path: wslrc
+        path: dotfiles/wslrc
     ~/.gitconfig:
-        path: gitconfig
+        path: dotfiles/gitconfig
     ~/.oh-my-zsh/custom/themes/ofir.zsh-theme:
-        path: ofir.zsh-theme
+        path: dotfiles/ofir.zsh-theme
     ~/.tmux.conf:
-        path: tmux.conf
+        path: dotfiles/tmux.conf
     ~/.tmux.conf.local:
-        path: tmux.conf.local
+        path: dotfiles/tmux.conf.local
     ~/.config/sublime-text/Packages/User:
         path: sublime-conf
 
@@ -25,8 +25,7 @@
     - ~/projects
 
 - shell:
-    - [sh pre_install.sh, Running pre installation script]
-    - [sudo apt install -y terminator, Installing Terminator]
-    - [sh install_zsh.sh, Installing ZSH]
-    - [sh install_sublime.sh, Installing Sublime Text/Merge]
+    - [sh install_scripts/install_basic.sh, Running basic libs installation]
+    - [sh install_scripts/install_zsh.sh, Installing ZSH]
+    - [sh install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
     - [git submodule update --init --recursive, Installing submodules]
