@@ -8,7 +8,7 @@
         },
         "clangd": {
             "enabled": true,
-            "command": ["clangd", "--fallback-style=none"],
+            "command": ["clangd", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion"],
         },
 		"pyls":
 		{

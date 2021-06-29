@@ -10,6 +10,95 @@
     { "keys": ["f9"], "command": "noop" },
     { "keys": ["ctrl+f9"], "command": "noop" },
 
+    ///////////////////////////////////
+    ///////////  DEBUGGER  ////////////
+    ///////////////////////////////////
+    // Start debugging
+    {
+        "keys": ["f5"],
+        "command": "debugger", "args": {"action": "start"},
+    },
+    // Stop debugging
+    {
+        "keys": ["ctrl+f5"],
+        "command": "debugger", "args": {"action": "stop"},
+        "context": [
+          { "key": "panel", "operand": "output.Debugger" },
+          { "key": "panel_visible", "operator": "equal", "operand": true },
+        ]
+    },
+    // Quit debugging
+    {
+        "keys": ["ctrl+shift+f5"],
+        "command": "debugger", "args": {"action": "quit"},
+        "context": [
+          { "key": "panel", "operand": "output.Debugger" },
+          { "key": "panel_visible", "operator": "equal", "operand": true },
+        ]
+    },
+    // Continue
+    {
+        "keys": ["f6"],
+        "command": "debugger", "args": {"action": "resume"},
+        "context": [
+          { "key": "panel", "operand": "output.Debugger" },
+          { "key": "panel_visible", "operator": "equal", "operand": true },
+        ]
+    },
+    // Pause
+    {
+        "keys": ["f7"],
+        "command": "debugger", "args": {"action": "pause"},
+        "context": [
+          { "key": "panel", "operand": "output.Debugger" },
+          { "key": "panel_visible", "operator": "equal", "operand": true },
+        ]
+    },
+    // Toggle breakpoint
+    {
+        "keys": ["f9"],
+        "command": "debugger", "args": {"action": "toggle_breakpoint"},
+    },
+    // Step over
+    {
+        "keys": ["f10"],
+        "command": "debugger", "args": {"action": "step_over"},
+        "context": [
+          { "key": "panel", "operand": "output.Debugger" },
+          { "key": "panel_visible", "operator": "equal", "operand": true },
+        ]
+    },
+    // Step in
+    {
+        "keys": ["f11"],
+        "command": "debugger", "args": {"action": "step_in"},
+        "context": [
+          { "key": "panel", "operand": "output.Debugger" },
+          { "key": "panel_visible", "operator": "equal", "operand": true },
+        ]
+    },
+    // Step out
+    {
+        "keys": ["ctrl+f11"],
+        "command": "debugger", "args": {"action": "step_out"},
+        "context": [
+          { "key": "panel", "operand": "output.Debugger" },
+          { "key": "panel_visible", "operator": "equal", "operand": true },
+        ]
+    },
+    // Input command
+    {
+        "keys": ["shift+f5"],
+        "command": "debugger", "args": {"action": "input_command"},
+        "context": [
+          { "key": "panel", "operand": "output.Debugger" },
+          { "key": "panel_visible", "operator": "equal", "operand": true },
+        ]
+    },
+
+    //////////////////////////////////
+    ///////////    LSP    ////////////
+    //////////////////////////////////
     // Show/Hide Diagnostics Panel
     {
         "command": "lsp_show_diagnostics_panel",
@@ -172,7 +261,7 @@
     {
         "command": "lsp_code_actions",
         "keys": [
-            "f5"
+            "f4"
         ],
         "context": [
             {

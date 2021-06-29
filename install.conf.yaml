@@ -22,7 +22,6 @@
         path: sublime-conf
 
 
-
 - create:
     - ~/projects
 
