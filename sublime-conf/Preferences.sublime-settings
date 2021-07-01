@@ -4,7 +4,6 @@
 	"ignored_packages":
 	[
 		"LSP-json",
-		"LSP-pylsp",
 		"Rust",
 		"Vintage",
 	],

@@ -1,0 +1,13 @@
+[
+    {
+        "caption": "Git: Show Diff Hunk",
+        "command": "toggle_inline_diff",
+    },
+    {
+        "caption": "Git: Hide Diff Hunk",
+        "command": "toggle_inline_diff",
+        "args": {
+            "prefer_hide": true
+        }
+    },
+]
