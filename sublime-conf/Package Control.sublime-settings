@@ -8,7 +8,6 @@
 		"Debugger",
 		"FileDiffs",
 		"LSP",
-		"LSP-json",
 		"LSP-pyright",
 		"Move By Symbols",
 		"Multicommand",

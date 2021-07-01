@@ -3,7 +3,6 @@
 	"theme": "Adaptive.sublime-theme",
 	"ignored_packages":
 	[
-		"LSP-json",
 		"Rust",
 		"Vintage",
 	],
