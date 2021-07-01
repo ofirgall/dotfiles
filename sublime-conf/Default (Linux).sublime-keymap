@@ -1,12 +1,69 @@
 [
-    // Duplicate view to group 2
+    // Duplicate view to group 2 (like terminator)
     { "keys": ["ctrl+shift+e"], "command": "multicommand",
-        "args": 
-        {
-            "commands": [{"command": "clone_file"},
-                    {"command": "move_to_group", "args": { "group": 1 }}]
+        "args": {
+            "commands": [
+                {"command": "clone_file"},
+                {"command": "new_pane" },
+            ]
         }
     },
+    { "keys": ["ctrl+shift+w"], "command": "multicommand",
+        "args": {
+            "commands": [
+                // {"command": "close_all", "args": {"group": 1}},
+                { "command": "close_pane" },
+            ]
+        }
+    },
+
+    // AceJump (like vimium for firefox)
+    // Jump to Word
+    {
+        "keys": ["alt+e"],
+        "command": "ace_jump_word"
+    },
+    // Jump to Word Select
+    {
+        "keys": ["alt+shift+e"],
+        "command": "ace_jump_select"
+    },
+    // Jump to Word add Cursor
+    {
+        "keys": ["ctrl+alt+e"],
+        "command": "ace_jump_add_cursor"
+    },
+    // Jump to Line
+    {
+        "keys": ["alt+l"],
+        "command": "ace_jump_line"
+    },
+    // Jump to Line Select
+    {
+        "keys": ["alt+shift+l"],
+        "command": "ace_jump_line_select"
+    },
+    // Jump to Line add Cursor
+    {
+        "keys": ["ctrl+shift+l"],
+        "command": "ace_jump_add_cursor_line"
+    },
+    // Jump InLine
+    {
+        "keys": ["alt+q"],
+        "command": "ace_jump_within_line"
+    },
+    // Jump InLine Select
+    {
+        "keys": ["alt+shift+q"],
+        "command": "ace_jump_within_line_select"
+    },
+    // Jump InLine add Cursor
+    {
+        "keys": ["ctrl+shift+q"],
+        "command": "ace_jump_within_line_add_cursor"
+    },
+
     // Jump to find result
     { "keys": ["f12"], "command": "prev_result", "context": 
         [{"key": "selector", "operator": "equal", "operand": "text.find-in-files" }]},

@@ -5,6 +5,7 @@
 	],
 	"installed_packages":
 	[
+		"ace-jump-sublime",
 		"Debugger",
 		"FileDiffs",
 		"LSP",
@@ -21,5 +22,9 @@
 		"Tmux Syntax Highlight",
 		"TodoReview",
 		"TOML",
+	],
+	"repositories":
+	[
+		"https://github.com/ofir753/ace-jump-sublime.git",
 	],
 }
