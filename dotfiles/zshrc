@@ -135,18 +135,23 @@ TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
 ZSH_TMUX_ALWAYS_SELECT_SESSION=true
 
 function select_tmux_session() {
-  echo "Select tmux session to attach to"
-  select sel in "Create New Session" "No Session" $(tmux ls -F '#S'); do
-      break;
-  done
-  if [ $sel = "Create New Session" ]
+  if tmux has;
   then
-    tmux new-session
-  elif [ $sel = "No Session" ]
-  then
-    return
+    echo "Select tmux session to attach to"
+    select sel in "Create New Session" "No Session" $(tmux ls -F '#S'); do
+        break;
+    done
+    if [ $sel = "Create New Session" ]
+    then
+      tmux new-session
+    elif [ $sel = "No Session" ]
+    then
+      return
+    else
+      tmux attach -t "$sel"
+    fi
   else
-    tmux attach -t "$sel"
+    tmux
   fi
 
   if [[ "$ZSH_TMUX_ALWAYS_SELECT_SESSION" == "true" ]]; then
