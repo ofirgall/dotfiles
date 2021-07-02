@@ -123,6 +123,7 @@ export EDITOR='subl --wait'
 autoload -U compinit && compinit
 
 . "$HOME/.cargo/env"
+export PATH=~/.local/bin:$PATH
 
 # Load wslrc
 if [[ $(uname -a) == *"WSL"* ]]; then
@@ -131,7 +132,9 @@ fi
 
 TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
 
-function _select_tmux_session() {
+ZSH_TMUX_ALWAYS_SELECT_SESSION=true
+
+function select_tmux_session() {
   echo "Select tmux session to attach to"
   select sel in "Create New Session" "No Session" $(tmux ls -F '#S'); do
       break;
@@ -145,9 +148,13 @@ function _select_tmux_session() {
   else
     tmux attach -t "$sel"
   fi
+
+  if [[ "$ZSH_TMUX_ALWAYS_SELECT_SESSION" == "true" ]]; then
+    select_tmux_session
+  fi
 }
 
 if ! [ -n "$TMUX" ]
 then
-  _select_tmux_session
+  select_tmux_session
 fi

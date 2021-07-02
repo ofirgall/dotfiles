@@ -1,0 +1,9 @@
+Extract Package -> DooxyDoxygen
+
+add to ~/.config/sublime-text/Packages/DoxyDoxygen\Doxy.py after import_doxy_objects:
+```
+def ababalagan():
+        return True
+
+doxy_settings().has_license = ababalagan
+```

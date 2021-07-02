@@ -17,6 +17,24 @@
         }
     },
 
+    // DoxyDoxygen
+    {
+        "keys": ["alt+d"],
+        "command": "doxy_comment_nearest_entity",
+        "args": {},
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source, text.html.cshtml, text.jade", "match_all": true }
+        ]
+    },
+    {
+        "keys": ["alt+d"],
+        "command": "doxy_update_comments",
+        "args": { "reparse": true },
+        "context": [
+            { "key": "selector", "operator": "equal",  "operand": "comment, string.quoted.double.block.cython, string.quoted.single.block.cython, string.quoted.double.block.python, string.quoted.single.block.python, string.quoted.docstring.multi.python", "match_all": true }
+        ]
+    },
+
     // AceJump (like vimium for firefox)
     // Jump to Word
     {
