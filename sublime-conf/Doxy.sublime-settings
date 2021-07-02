@@ -1,0 +1,60 @@
+// Settings in here override those in "${packages}/DoxyDoxygen/Doxy.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+	"block_layout": {
+		// Using AsDoc for Rust Doc
+	    "AsDoc": [
+            "",
+            "@_brief",
+            "",
+            "# Panics",
+            "",
+            // "@return",
+            "# Examples",
+            //"@throws",
+            ""
+        ],
+	},
+
+	"profiles": [
+		{
+			"languages":  [ "rust" ],
+			"parsers":    [ "LanguageRust" ],
+			"doc_styles": [ "AsDoc" ],
+			"continuation_on_last_comment": true,
+
+
+			"preferred_comments_styles": [
+				[
+					"///",
+					"///"
+				],
+				[
+					"/**",
+					" *"
+				],
+				[
+					["/*", "-", "*//**"],  
+					" *"
+				],
+				[
+					["//", "-"],            
+					"///"
+				],
+				[
+					[ "//", "/", "" ],
+					[ "//", "/", " ", " ", "/", "//" ],
+					[ "", "/", "//" ]
+				],
+				[
+					"##",
+					"##"
+				],
+				[
+					["#", "-"],             
+					"##"
+				]
+			]
+				},
+	],
+}
