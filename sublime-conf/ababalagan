@@ -1,11 +1,31 @@
-Extract Package -> DooxyDoxygen
+#!/usr/bin/env python3
 
-Remove ~/.config/sublime-text/Installed Packages/DoxyDoxygen.sublime-package
-add to ~/.config/sublime-text/Packages/DoxyDoxygen\Doxy.py after import_doxy_objects of "doxy_settings":
-```
-def ababalagan():
-        return True
+def real_key_check_will_reduce_user_experience_so_please_not_publish_kgen(key):
+    return key[2:3] != '0'
 
-doxy_settings().has_license = ababalagan
-fix_import()
-```
+def chksum(my_string):
+    result = 0
+    for c in my_string:
+        result = result * 31 + ord(c)
+
+    return result
+
+def is_hexa_decimal(my_string):
+    for c in my_string:
+        if '0123456789ABCDEF'.find(c) == -1:
+            return False
+
+    return True
+
+# Not C1##
+def _is_valid_key(key):
+    if key[:2] != 'C1':
+        return False
+    else:
+        return is_hexa_decimal(key) and real_key_check_will_reduce_user_experience_so_please_not_publish_kgen(key) and chksum(key[:-2]) % 256 == int(key[-2:], 16)
+
+
+key = 'C1' # Pass first check
+key += '2' # Pass real_key_check..
+key = f'{key}{chksum(key) % 256:x}' # Fixing checksum
+print(key)
