@@ -1,9 +1,11 @@
 Extract Package -> DooxyDoxygen
 
-add to ~/.config/sublime-text/Packages/DoxyDoxygen\Doxy.py after import_doxy_objects:
+Remove ~/.config/sublime-text/Installed Packages/DoxyDoxygen.sublime-package
+add to ~/.config/sublime-text/Packages/DoxyDoxygen\Doxy.py after import_doxy_objects of "doxy_settings":
 ```
 def ababalagan():
         return True
 
 doxy_settings().has_license = ababalagan
+fix_import()
 ```
