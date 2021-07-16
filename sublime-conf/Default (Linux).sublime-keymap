@@ -193,6 +193,17 @@
             }
         ]
     },
+    {
+        "command": "lsp_show_diagnostics_panel",
+        "keys": [
+            "primary+shift+s"
+        ],
+        "context": [
+            {
+                "key": "setting.lsp_active"
+            }
+        ]
+    },
     // Go To Definition
     {
         "command": "lsp_symbol_definition",

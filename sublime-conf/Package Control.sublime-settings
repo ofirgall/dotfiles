@@ -6,11 +6,13 @@
 	"installed_packages":
 	[
 		"ace-jump-sublime",
+		"ARM Assembly",
 		"Debugger",
 		"DoxyDoxygen",
 		"FileDiffs",
 		"LSP",
 		"LSP-pyright",
+		"MarkdownLivePreview",
 		"Move By Symbols",
 		"Multicommand",
 		"Package Control",
