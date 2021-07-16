@@ -473,3 +473,9 @@ bind -T copy-mode C-Right send-keys -X next-word-end
 
 # Finish copy with Enter
 bind -T copy-mode Enter send-keys -X copy-pipe-and-cancel
+
+# Copy word with double click
+bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-word \; run-shell "sleep 0.2" \; send-keys -X copy-pipe-and-cancel
+
+# Copy line with C-double click
+bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-line \; run-shell "sleep 0.2" \; send-keys -X copy-pipe-and-cancel
