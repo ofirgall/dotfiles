@@ -10,4 +10,13 @@
             "prefer_hide": true
         }
     },
+    {
+        "caption": "Terminus: Open iPython",
+        "command": "terminus_open",
+        "args"   : {
+            "cmd": ["ipython"],
+            "cwd": "${file_path:${folder}}",
+            "title": "iPython"
+        }
+    },
 ]
