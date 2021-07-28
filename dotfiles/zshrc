@@ -139,17 +139,31 @@ function select_tmux_session() {
   then
     echo "Select tmux session to attach to"
     select sel in "Create New Session" "No Session" $(tmux ls -F '#S'); do
-        break;
+      case $sel in
+        "Create New Session")
+        echo "Enter Session Name: "
+        read session_name
+        tmux new-session -s $session_name
+        ;;
+        "No Session")
+        return
+        ;;
+        "q")
+        return
+        ;;
+        "quit")
+        return
+        ;;
+        *)
+          if [ "$sel" ]
+          then
+            tmux attach -t "$sel"
+          else
+            tmux attach -t "$REPLY"
+          fi
+        ;;
+      esac
     done
-    if [ $sel = "Create New Session" ]
-    then
-      tmux new-session
-    elif [ $sel = "No Session" ]
-    then
-      return
-    else
-      tmux attach -t "$sel"
-    fi
   else
     tmux
   fi
