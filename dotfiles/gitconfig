@@ -5,6 +5,7 @@
 	co = checkout
 	st = status
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	update = !sh (git diff --exit-code > devnull && git fetch && git reset --hard @{u} && echo Branch Updated ) || (echo Repo is Dirty, Update canceled!)
 [core]
 	editor = nano
 [core]
