@@ -5,7 +5,7 @@
 	co = checkout
 	st = status
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	update = !sh (git diff --exit-code > devnull && git fetch && git reset --hard @{u} && echo Branch Updated ) || (echo Repo is Dirty, Update canceled!)
+	update = !"f() { (git diff --exit-code > /dev/null && git fetch && git reset --hard @{u} && echo \"\\033[32mBranch Updated\\033[0m\") || (echo \"\\033[31mRepo is Dirty, Update canceled!\\033[0m\"); }; f"
 [core]
 	editor = nano
 [core]
