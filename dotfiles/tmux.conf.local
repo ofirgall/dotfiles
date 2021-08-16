@@ -430,6 +430,10 @@ bind -n M-Right select-pane -R
 bind -n M-Up select-pane -U
 bind -n M-Down select-pane -D
 
+# Override alt+up/down for copy-mode
+bind -T copy-mode M-Up select-pane -U
+bind -T copy-mode M-Down select-pane -D
+
 # new window ALT+t
 bind -n M-t new-window
 
