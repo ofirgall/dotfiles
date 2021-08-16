@@ -1,0 +1,10 @@
+<snippet>
+	<description>Pragma Pack</description>
+	<content><![CDATA[#pragma pack(push, 1)
+
+$0
+
+#pragma pack(pop)]]></content>
+	<tabTrigger>pack</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

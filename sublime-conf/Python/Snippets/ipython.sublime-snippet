@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[import IPython
+IPython.embed()
+]]></content>
+	<tabTrigger>ipython</tabTrigger>
+	<scope>source.python - meta.function.parameters - meta.function-call - meta.statement - meta.mapping - meta.sequence - meta.set - comment - string</scope>
+	<description>Embed IPython</description>
+</snippet>

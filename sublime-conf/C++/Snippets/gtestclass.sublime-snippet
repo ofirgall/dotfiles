@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[#include <gtest/gtest.h>
+
+class ${1:${TM_FILENAME/(.+)\..+|.*/$1/:name}} : public ::testing::Test 
+{
+protected:
+
+	virtual void SetUp() 
+	{
+	};
+
+	virtual void TearDown() 
+	{
+	};
+
+public:
+
+};]]></content>
+	<tabTrigger>gtestclass</tabTrigger>
+	<scope>(source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

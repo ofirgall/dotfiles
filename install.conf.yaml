@@ -1,3 +1,7 @@
+- shell:
+    - [sh install_scripts/install_zsh.sh, Installing ZSH]
+
+
 - defaults:
     link:
       relink: true
@@ -20,7 +24,11 @@
     ~/.tmux.conf.local:
         path: dotfiles/tmux.conf.local
     ~/.config/sublime-text/Packages/User:
-        path: sublime-conf
+        path: sublime-conf/User
+    ~/.config/sublime-text/Packages/C++:
+        path: sublime-conf/C++
+    ~/.config/sublime-text/Packages/Python:
+        path: sublime-conf/Python
 
 
 - create:
@@ -28,7 +36,6 @@
 
 - shell:
     - [sh install_scripts/install_basic.sh, Running basic libs installation]
-    - [sh install_scripts/install_zsh.sh, Installing ZSH]
     - [sh install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
     - [sh install_scripts/install_lsp.sh, Installing LSP Utils]
     - [git submodule update --init --recursive, Installing submodules]

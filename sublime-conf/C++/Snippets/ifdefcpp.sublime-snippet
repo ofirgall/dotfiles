@@ -1,0 +1,14 @@
+<snippet>
+	<description>Ifdef cpp</description>
+	<content><![CDATA[#ifdef __cplusplus
+extern "C" {
+#endif
+
+$0
+
+#ifdef __cplusplus
+}
+#endif]]></content>
+	<tabTrigger>ifdefcpp</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>
