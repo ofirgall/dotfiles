@@ -159,7 +159,7 @@ function select_tmux_session() {
           then
             tmux attach -t "$sel"
           else
-            tmux attach -t "$REPLY"
+            tmux attach -t "*$REPLY*"
           fi
         ;;
       esac
