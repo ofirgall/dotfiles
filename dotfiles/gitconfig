@@ -12,3 +12,5 @@
 	excludesfile = ~/.gitignore_global
 [pull]
 	ff = only
+[merge]
+	ff = false
