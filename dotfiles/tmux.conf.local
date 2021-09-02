@@ -327,7 +327,7 @@ tmux_conf_copy_to_os_clipboard=true
 # this is the place to override or undo settings
 
 # increase history size
-#set -g history-limit 10000
+set -g history-limit 10000
 
 # start with mouse mode enabled
 #set -g mouse on
@@ -376,8 +376,12 @@ set -g @plugin 'tmux-plugins/tmux-cpu'
 set -g @plugin 'tmux-plugins/tmux-open'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'schasse/tmux-jump'
+set -g @plugin 'nhdaly/tmux-better-mouse-mode'
+set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '1'
+set -g @emulate-scroll-for-no-mouse-alternate-buffer "on"
 
 
 # -- custom variables ----------------------------------------------------------
@@ -462,8 +466,8 @@ bind -n M-* swap-window -t :=8
 bind -n M-( swap-window -t :=9
 
 # Move between windows with ALT+PgUp/Down
-bind -n M-NPage select-window -p 
-bind -n M-PPage select-window -n
+bind -n M-PPage select-window -p 
+bind -n M-NPage select-window -n
 
 # Copy mode with ALT+C
 bind -n M-c copy-mode
@@ -475,6 +479,16 @@ bind -T copy-mode Space send-keys -X begin-selection
 bind -T copy-mode C-Left send-keys -X previous-word
 bind -T copy-mode C-Right send-keys -X next-word-end
 
+# Page up/down 
+bind -n C-PPage copy-mode \; send-keys -X page-up
+bind -n C-NPage copy-mode \; send-keys -X page-down
+
+# Go to top/bottom with C
+bind -n C-Home copy-mode \; send-keys -X history-top
+bind -n C-End copy-mode \; send-keys -X history-bottom
+bind -T copy-mode C-Home send-keys -X history-top
+bind -T copy-mode C-End send-keys -X history-bottom
+
 # Finish copy with Enter
 bind -T copy-mode Enter send-keys -X copy-pipe-and-cancel
 
@@ -483,3 +497,15 @@ bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-word \; run-shell "
 
 # Copy line with C-double click
 bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-line \; run-shell "sleep 0.2" \; send-keys -X copy-pipe-and-cancel
+
+# Tmux jump (like acejump or vimium) with ALT+j
+bind -n M-j run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
+
+# Tmux copy cat
+bind -n M-d run-shell "/home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]+'"
+bind -n M-f run-shell "/home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(^|^\\.|[[:space:]]|[[:space:]]\\.|[[:space:]]\\.\\.|^\\.\\.)[[:alnum:]~_-]*/[][[:alnum:]_.#$%&+=/@-]*'"
+bind -n M-g run-shell "/home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_git_special.sh #{pane_current_path}"
+bind -n M-u run-shell "/home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(https?://|git@|git://|ssh://|ftp://|file:///)[[:alnum:]?=%/_.:,;~@!#$&()*+-]*'"
+bind -n M-/ run-shell /home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_search.sh
+bind -n M-h run-shell "/home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '\\b([0-9a-f]{7,40}|[[:alnum:]]{52}|[0-9a-f]{64})\\b'"
+bind -n M-i run-shell "/home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}'"
