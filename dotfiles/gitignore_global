@@ -1,2 +1,3 @@
 *.sublime-workspace
 *.sublime-project
+*compile_commands.json

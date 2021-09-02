@@ -112,6 +112,20 @@
         "command": "ace_jump_within_line_add_cursor"
     },
 
+    // MultiEditUtils
+    // default use of selection_fields + cycle
+    { "keys": ["alt+e"], "command": "selection_fields" },
+    // Cycle back
+    { "keys": ["alt+shift+e"], "command": "selection_fields", "args": {"jump_forward": false} },
+    // add the current selections as a fields
+    { "keys": ["alt+a"], "command": "selection_fields", "args": {"mode": "add"} },
+    // remove current selection in selection_fields
+    { "keys": ["ctrl+alt+d"], "command": "selection_fields",
+      "args": {"mode": "smart", "only_other": true} },
+    // cancel selection_fields and remove current selection
+    { "keys": ["ctrl+alt+shift+d"], "command": "selection_fields",
+      "args": {"mode": "toggle", "only_other": true} },
+
     // Jump to find result
     { "keys": ["f12"], "command": "prev_result", "context": 
         [{"key": "selector", "operator": "equal", "operand": "text.find-in-files" }]},
