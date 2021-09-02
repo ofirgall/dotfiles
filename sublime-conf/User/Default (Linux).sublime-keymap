@@ -68,17 +68,17 @@
     // AceJump (like vimium for firefox)
     // Jump to Word
     {
-        "keys": ["alt+e"],
+        "keys": ["alt+j"],
         "command": "ace_jump_word"
     },
     // Jump to Word Select
     {
-        "keys": ["alt+shift+e"],
+        "keys": ["alt+shift+j"],
         "command": "ace_jump_select"
     },
     // Jump to Word add Cursor
     {
-        "keys": ["ctrl+alt+e"],
+        "keys": ["ctrl+alt+j"],
         "command": "ace_jump_add_cursor"
     },
     // Jump to Line
