@@ -3,9 +3,7 @@
 echo 'Installing Lsp Servers'
 
 # Clangd for C/CPP
-sudo apt install -y clangd-10
-cd /usr/bin
-sudo ln -s clangd-10 clangd
+sudo apt install -y clangd
 
 # PYLSP
 sudo apt install -y python3.8-virtualenv
