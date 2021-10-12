@@ -29,6 +29,8 @@
         path: sublime-conf/C++
     ~/.config/sublime-text/Packages/Python:
         path: sublime-conf/Python
+    ~/.config/sublime-text/Packages/Tmux Syntax Highlight:
+        path: sublime-conf/Tmux Syntax Highlight
 
 
 - create:
