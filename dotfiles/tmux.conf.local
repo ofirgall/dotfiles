@@ -439,6 +439,12 @@ bind -n M-Right select-pane -R
 bind -n M-Up select-pane -U
 bind -n M-Down select-pane -D
 
+# Resize pane with ctrl+arrow
+bind -n C-Left resize-pane -L 1
+bind -n C-Down resize-pane -D 1
+bind -n C-Up resize-pane -U 1
+bind -n C-Right resize-pane -R 1
+
 # Override alt+up/down for copy-mode
 bind -T copy-mode M-Up select-pane -U
 bind -T copy-mode M-Down select-pane -D
@@ -507,6 +513,7 @@ bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-line \; run-shell "
 bind -n M-j run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
 
 # Tmux copy cat
+unbind -T copy-mode M-f
 bind -n M-d run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]+'"
 bind -n M-f run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(^|^\\.|[[:space:]]|[[:space:]]\\.|[[:space:]]\\.\\.|^\\.\\.)[[:alnum:]~_-]*/[][[:alnum:]_.#$%&+=/@-]*'"
 bind -n M-g run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_git_special.sh #{pane_current_path}"
