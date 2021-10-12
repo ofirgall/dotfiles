@@ -31,6 +31,8 @@
         path: sublime-conf/Python
     ~/.config/sublime-text/Packages/Tmux Syntax Highlight:
         path: sublime-conf/Tmux Syntax Highlight
+    ~/.local/share/gnome-shell/extensions:
+        path: gnome-extensions
 
 
 - create:
