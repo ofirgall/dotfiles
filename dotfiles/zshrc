@@ -115,8 +115,8 @@ export LC_ALL=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll='ls -alF'
 alias toclip='xclip -sel clip'
-alias pwdc='pwd | toclip'
-alias pwdcd='echo "cd $(pwd)" | toclip'
+alias pwdc='echo \"$(pwd)\" | tr -d "\n" | toclip'
+alias pwdcd='echo "cd \"$(pwd)\"" | toclip'
 alias sublp='subl *.sublime-project'
 export EDITOR='subl --wait'
 
