@@ -507,10 +507,10 @@ bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-line \; run-shell "
 bind -n M-j run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
 
 # Tmux copy cat
-bind -n M-d run-shell "/home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]+'"
-bind -n M-f run-shell "/home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(^|^\\.|[[:space:]]|[[:space:]]\\.|[[:space:]]\\.\\.|^\\.\\.)[[:alnum:]~_-]*/[][[:alnum:]_.#$%&+=/@-]*'"
-bind -n M-g run-shell "/home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_git_special.sh #{pane_current_path}"
-bind -n M-u run-shell "/home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(https?://|git@|git://|ssh://|ftp://|file:///)[[:alnum:]?=%/_.:,;~@!#$&()*+-]*'"
-bind -n M-/ run-shell /home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_search.sh
-bind -n M-h run-shell "/home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '\\b([0-9a-f]{7,40}|[[:alnum:]]{52}|[0-9a-f]{64})\\b'"
-bind -n M-i run-shell "/home/ofir/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}'"
+bind -n M-d run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]+'"
+bind -n M-f run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(^|^\\.|[[:space:]]|[[:space:]]\\.|[[:space:]]\\.\\.|^\\.\\.)[[:alnum:]~_-]*/[][[:alnum:]_.#$%&+=/@-]*'"
+bind -n M-g run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_git_special.sh #{pane_current_path}"
+bind -n M-u run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(https?://|git@|git://|ssh://|ftp://|file:///)[[:alnum:]?=%/_.:,;~@!#$&()*+-]*'"
+bind -n M-/ run-shell $HOME/.tmux/plugins/tmux-copycat/scripts/copycat_search.sh
+bind -n M-h run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '\\b([0-9a-f]{7,40}|[[:alnum:]]{52}|[0-9a-f]{64})\\b'"
+bind -n M-i run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}'"
