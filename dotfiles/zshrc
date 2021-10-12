@@ -83,6 +83,7 @@ plugins=(
   zsh-completions
   tmux
   cargo
+  git-open
   )
 
 source $ZSH/oh-my-zsh.sh
