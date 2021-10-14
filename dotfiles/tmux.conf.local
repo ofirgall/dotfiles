@@ -43,7 +43,7 @@ tmux_conf_new_session_prompt=false
 # RGB 24-bit colour support (tmux >= 2.2), possible values are:
 #  - true
 #  - false (default)
-tmux_conf_24b_colour=false
+tmux_conf_24b_colour=true
 
 # default theme
 tmux_conf_theme_colour_1="#080808"    # dark gray
@@ -227,7 +227,7 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} | #{@mode_indicator_custom_prompt}"
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized} CPU: #{cpu_percentage} RAM: #{ram_percentage} #{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} | #{@mode_indicator_custom_prompt}"
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
@@ -302,8 +302,8 @@ tmux_conf_battery_vbar_palette="gradient"
 #tmux_conf_battery_vbar_palette="#d70000,#ff5f00,#5fff00"  # red, orange, green
 
 # symbols used to indicate whether battery is charging or discharging
-tmux_conf_battery_status_charging="↑"       # U+2191
-tmux_conf_battery_status_discharging="↓"    # U+2193
+tmux_conf_battery_status_charging="#[fg=#5fff00]↑"       # U+2191
+tmux_conf_battery_status_discharging="#[fg=#d70000]↓"    # U+2193
 #tmux_conf_battery_status_charging="🔌"     # U+1F50C
 #tmux_conf_battery_status_discharging="🔋"  # U+1F50B
 
@@ -439,11 +439,11 @@ bind -n M-Right select-pane -R
 bind -n M-Up select-pane -U
 bind -n M-Down select-pane -D
 
-# Resize pane with ctrl+arrow
-bind -n C-Left resize-pane -L 1
-bind -n C-Down resize-pane -D 1
-bind -n C-Up resize-pane -U 1
-bind -n C-Right resize-pane -R 1
+# Resize pane with alt+arrow in prefix (ctrl+a/ctrl+b)
+bind -r -T prefix C-Left resize-pane -L 1
+bind -r -T prefix C-Down resize-pane -D 1
+bind -r -T prefix C-Up resize-pane -U 1
+bind -r -T prefix C-Right resize-pane -R 1
 
 # Override alt+up/down for copy-mode
 bind -T copy-mode M-Up select-pane -U
@@ -513,11 +513,24 @@ bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-line \; run-shell "
 bind -n M-j run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
 
 # Tmux copy cat
-unbind -T copy-mode M-f
+# copy digit ALT+d
 bind -n M-d run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]+'"
+
+# copy file ALT+f
+unbind -T copy-mode M-f
 bind -n M-f run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(^|^\\.|[[:space:]]|[[:space:]]\\.|[[:space:]]\\.\\.|^\\.\\.)[[:alnum:]~_-]*/[][[:alnum:]_.#$%&+=/@-]*'"
+
+# copy git file (after git status) ALT+g
 bind -n M-g run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_git_special.sh #{pane_current_path}"
+
+# copy url ALT+u
 bind -n M-u run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(https?://|git@|git://|ssh://|ftp://|file:///)[[:alnum:]?=%/_.:,;~@!#$&()*+-]*'"
+
+# search ALT+/
 bind -n M-/ run-shell $HOME/.tmux/plugins/tmux-copycat/scripts/copycat_search.sh
+
+# copy hashes ALT+h
 bind -n M-h run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '\\b([0-9a-f]{7,40}|[[:alnum:]]{52}|[0-9a-f]{64})\\b'"
+
+# copy ip ALT+i
 bind -n M-i run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}'"
