@@ -9,4 +9,5 @@
 	"font_size": 12,
 
 	"ensure_newline_at_eof_on_save": true,
+	"show_line_endings": true,
 }
