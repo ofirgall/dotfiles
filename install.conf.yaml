@@ -32,13 +32,13 @@
     ~/.config/sublime-text/Packages/Tmux Syntax Highlight:
         path: sublime-conf/Tmux Syntax Highlight
     ~/.local/share/gnome-shell/extensions:
-        path: gnome-extensions
-
+        path: gnome/extensions
 
 - create:
     - ~/projects
 
 - shell:
+    - [dconf load /org/gnome/terminal/legacy/profiles:/ < gnome/terminal-profiles.dconf, Setting terminal profile]
     - [sh install_scripts/install_basic.sh, Running basic libs installation]
     - [sh install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
     - [sh install_scripts/install_lsp.sh, Installing LSP Utils]
