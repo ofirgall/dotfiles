@@ -11,6 +11,8 @@
 - link:
     ~/.zshrc: 
         path: dotfiles/zshrc
+    ~/.profile: 
+        path: dotfiles/profile
     ~/.wslrc:
         path: dotfiles/wslrc
     ~/.gitconfig:
@@ -35,6 +37,8 @@
         path: sublime-conf/Tmux Syntax Highlight
     ~/.local/share/gnome-shell/extensions:
         path: gnome/extensions
+    ~/.config/fusuma/config.yml:
+        path: dotfiles/fusuma.yml
 
 - create:
     - ~/projects
@@ -44,4 +48,5 @@
     - [sh install_scripts/install_basic.sh, Running basic libs installation]
     - [sh install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
     - [sh install_scripts/install_lsp.sh, Installing LSP Utils]
+    - [sh install_scripts/install_fusuma.sh, Installing Fusuma]
     - [git submodule update --init --recursive, Installing submodules]

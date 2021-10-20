@@ -1,0 +1,15 @@
+swipe:
+  3:
+    left:
+      sendkey: "LEFTCTRL+LEFTALT+RIGHT" # Switch to right workspace
+    right:
+      sendkey: "LEFTCTRL+LEFTALT+LEFT" # Switch to left workspace
+    up:
+      sendkey: "LEFTCTRL+LEFTALT+DOWN" # Switch to down workspace
+    down:
+      sendkey: "LEFTCTRL+LEFTALT+UP" # Switch to up workspace
+  4:
+    down:
+      sendkey: "LEFTMETA" # Dashboard
+    up:
+      sendkey: "LEFTMETA" # Dashboard

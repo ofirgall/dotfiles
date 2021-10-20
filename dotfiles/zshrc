@@ -178,3 +178,8 @@ if ! [ -n "$TMUX" ]
 then
   select_tmux_session
 fi
+
+if ! pgrep fusuma > /dev/null;
+then
+  fusuma --daemon
+fi
