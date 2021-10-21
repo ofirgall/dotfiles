@@ -1,0 +1,8 @@
+{
+	"extensions":
+	[
+		"tmux.conf",
+		"tmux.conf.local",
+		".tmux.conf.local",
+	]
+}
