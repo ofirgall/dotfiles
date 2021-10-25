@@ -227,7 +227,7 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized} CPU: #{cpu_percentage} RAM: #{ram_percentage} #{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} | #{@mode_indicator_custom_prompt}"
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized} CPU: #{cpu_percentage} RAM: #{ram_percentage} , #{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} [#{keyboard_layout}] | #{hostname} | #{@mode_indicator_custom_prompt}"
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
@@ -380,6 +380,7 @@ set -g @plugin 'schasse/tmux-jump'
 set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'MunifTanjim/tmux-suspend'
+set -g @plugin 'ofir753/tmux-keyboard-layout'
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '1'
 set -g @emulate-scroll-for-no-mouse-alternate-buffer "on"
