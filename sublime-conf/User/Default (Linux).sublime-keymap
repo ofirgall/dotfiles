@@ -1,21 +1,31 @@
 [
-    // Duplicate view to group 2 (like terminator)
-    { "keys": ["ctrl+shift+e"], "command": "multicommand",
-        "args": {
-            "commands": [
-                {"command": "clone_file"},
-                {"command": "new_pane" },
-            ]
-        }
-    },
-    { "keys": ["ctrl+shift+w"], "command": "multicommand",
-        "args": {
-            "commands": [
-                // {"command": "close_all", "args": {"group": 1}},
-                { "command": "close_pane" },
-            ]
-        }
-    },
+    // Bookmarks for f1 instead of f2 which do rename
+    { "keys": ["f1"], "command": "next_bookmark" },
+    { "keys": ["shift+f1"], "command": "prev_bookmark" },
+    { "keys": ["ctrl+f1"], "command": "toggle_bookmark" },
+    { "keys": ["ctrl+shift+f1"], "command": "clear_bookmarks" },
+    { "keys": ["alt+f1"], "command": "select_all_bookmarks" },
+
+    // Origami (pane control)
+    // Move thorugh panes with alt+arrow
+    { "keys": ["alt+up"], "command": "travel_to_pane", "args": {"direction": "up"} },
+    { "keys": ["alt+right"], "command": "travel_to_pane", "args": {"direction": "right"} },
+    { "keys": ["alt+down"], "command": "travel_to_pane", "args": {"direction": "down"} },
+    { "keys": ["alt+left"], "command": "travel_to_pane", "args": {"direction": "left"} },
+
+    // Move file thorugh panes with alt+shift+arrow
+    { "keys": ["alt+shift+up"], "command": "carry_file_to_pane", "args": {"direction": "up"} },
+    { "keys": ["alt+shift+right"], "command": "carry_file_to_pane", "args": {"direction": "right"} },
+    { "keys": ["alt+shift+down"], "command": "carry_file_to_pane", "args": {"direction": "down"} },
+    { "keys": ["alt+shift+left"], "command": "carry_file_to_pane", "args": {"direction": "left"} },
+
+    // Create vertical pane
+    { "keys": ["alt+e"], "command": "create_pane", "args": {"direction": "right", "give_focus": true} },
+    // Create horizontal pane
+    { "keys": ["alt+o"], "command": "create_pane", "args": {"direction": "down", "give_focus": true} },
+
+    // Close pane
+    { "keys": ["alt+w"], "command": "close_pane" },
     
     // Terminal override ctrl+shit+t
     { "keys": ["ctrl+shift+t"], "command": "reopen_last_file" },
@@ -111,20 +121,6 @@
         "keys": ["ctrl+shift+q"],
         "command": "ace_jump_within_line_add_cursor"
     },
-
-    // MultiEditUtils
-    // default use of selection_fields + cycle
-    { "keys": ["alt+e"], "command": "selection_fields" },
-    // Cycle back
-    { "keys": ["alt+shift+e"], "command": "selection_fields", "args": {"jump_forward": false} },
-    // add the current selections as a fields
-    { "keys": ["alt+a"], "command": "selection_fields", "args": {"mode": "add"} },
-    // remove current selection in selection_fields
-    { "keys": ["ctrl+alt+d"], "command": "selection_fields",
-      "args": {"mode": "smart", "only_other": true} },
-    // cancel selection_fields and remove current selection
-    { "keys": ["ctrl+alt+shift+d"], "command": "selection_fields",
-      "args": {"mode": "toggle", "only_other": true} },
 
     // Jump to find result
     { "keys": ["f12"], "command": "prev_result", "context": 

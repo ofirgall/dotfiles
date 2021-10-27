@@ -1,0 +1,4 @@
+// Settings in here override those in "Origami/Origami.sublime-settings"
+{
+	"create_new_pane_if_necessary": false,
+}
