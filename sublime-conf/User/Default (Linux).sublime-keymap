@@ -26,9 +26,16 @@
 
     // Close pane
     { "keys": ["alt+w"], "command": "close_pane" },
+
+    // Clone view
+    { "keys": ["alt+v"], "command": "clone_file" },
     
     // Terminal override ctrl+shit+t
     { "keys": ["ctrl+shift+t"], "command": "reopen_last_file" },
+
+    // Move by symbols 
+    { "keys": ["ctrl+super+up"], "command": "move_by_symbols", "args": {"forward": false }},
+    { "keys": ["ctrl+super+down"], "command": "move_by_symbols", "args": {"forward": true }},
 
     // Terminus
     // Open Terminal in new tab
