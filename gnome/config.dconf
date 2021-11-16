@@ -40,6 +40,7 @@ sources=[('xkb', 'us'), ('xkb', 'il')]
 xkb-options=['grp_led:scroll', 'grp:caps_toggle']
 
 [org/gnome/desktop/interface]
+enable-animations=true
 gtk-im-module='gtk-im-context-simple'
 gtk-theme='Yaru-dark'
 show-battery-percentage=true

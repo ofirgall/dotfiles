@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "Backing up gnome/config.dconf"
+dconf dump / > gnome/config.dconf
+git add gnome/config.dconf
