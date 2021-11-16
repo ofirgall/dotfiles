@@ -156,6 +156,7 @@ locations=['file:///home/ofirg/Music']
 hinting='slight'
 
 [org/gnome/shell]
+command-history=['', 'r']
 disabled-extensions=@as []
 enabled-extensions=['hidetopbar@mathieu.bidon.ca', 'wsmatrix@martin.zurowietz.de', 'disable-gestures-2021@verycrazydog.gmail.com', 'switchtwolayouts@qtmax.dev']
 favorite-apps=['firefox.desktop', 'org.gnome.Nautilus.desktop', 'spotify_spotify.desktop', 'sublime_text.desktop']
