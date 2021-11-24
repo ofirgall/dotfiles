@@ -1,8 +1,8 @@
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=4
-launch-time=int64 1635334826
+launch-count=5
+launch-time=int64 1637773746
 show-details=true
 window-height=615
 window-width=593
@@ -15,7 +15,7 @@ window-is-maximized=true
 window-width=540
 
 [com/ubuntu/update-notifier]
-release-check-time=uint32 1636451589
+release-check-time=uint32 1637773025
 
 [desktop/ibus/panel/emoji]
 hotkey=@as []
