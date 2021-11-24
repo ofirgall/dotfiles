@@ -20,6 +20,10 @@ release-check-time=uint32 1636451589
 [desktop/ibus/panel/emoji]
 hotkey=@as []
 
+[org/gnome/Totem]
+active-plugins=['open-directory', 'autoload-subtitles', 'variable-rate', 'apple-trailers', 'skipto', 'save-file', 'vimeo', 'screenshot', 'media-player-keys', 'rotation', 'recent', 'movie-properties', 'screensaver']
+subtitle-encoding='UTF-8'
+
 [org/gnome/control-center]
 last-panel='mouse'
 
@@ -51,6 +55,9 @@ application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-de
 [org/gnome/desktop/notifications/application/firefox]
 application-id='firefox.desktop'
 
+[org/gnome/desktop/notifications/application/gnome-control-center]
+application-id='gnome-control-center.desktop'
+
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
 
@@ -62,6 +69,9 @@ application-id='org.gnome.DejaDup.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-extensions-desktop]
 application-id='org.gnome.Extensions.desktop.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-nautilus]
+application-id='org.gnome.Nautilus.desktop'
 
 [org/gnome/desktop/notifications/application/spotify-spotify]
 application-id='spotify_spotify.desktop'
@@ -108,6 +118,22 @@ sidebar-width=200
 window-height=480
 window-width=600
 
+[org/gnome/gedit/plugins]
+active-plugins=['docinfo', 'spell', 'sort', 'modelines', 'filebrowser']
+
+[org/gnome/gedit/preferences/editor]
+wrap-last-split-mode='word'
+
+[org/gnome/gedit/preferences/ui]
+show-tabs-mode='auto'
+
+[org/gnome/gedit/state/window]
+bottom-panel-size=140
+side-panel-active-page='GeditWindowDocumentsPanel'
+side-panel-size=200
+size=(900, 700)
+state=87168
+
 [org/gnome/mutter]
 dynamic-workspaces=false
 experimental-features=['scale-monitor-framebuffer']
@@ -120,6 +146,11 @@ search-view='list-view'
 [org/gnome/nautilus/window-state]
 initial-size=(890, 550)
 maximized=false
+sidebar-width=189
+
+[org/gnome/nm-applet/eap/e989b2d6-eb53-45e0-8de3-aab71c646c59]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
 
 [org/gnome/rhythmbox]
 position=(26, 23)

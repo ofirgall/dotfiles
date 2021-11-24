@@ -82,6 +82,10 @@
         ]
     },
 
+    {
+        "keys": ["alt+shift+d"], "command": "dev_docs_search_selection"
+    },
+
     // AceJump (like vimium for firefox)
     // Jump to Word
     {
