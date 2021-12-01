@@ -6,7 +6,7 @@
 		"Rust",
 		"Vintage",
 	],
-	"font_size": 12,
+	"font_size": 11,
 
 	"ensure_newline_at_eof_on_save": true,
 	"show_line_endings": true,

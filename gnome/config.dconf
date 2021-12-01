@@ -50,13 +50,16 @@ gtk-theme='Yaru-dark'
 show-battery-percentage=true
 
 [org/gnome/desktop/notifications]
-application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell']
+application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel']
 
 [org/gnome/desktop/notifications/application/firefox]
 application-id='firefox.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-control-center]
 application-id='gnome-control-center.desktop'
+
+[org/gnome/desktop/notifications/application/gnome-network-panel]
+application-id='gnome-network-panel.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
@@ -190,7 +193,7 @@ hinting='slight'
 command-history=['', 'r']
 disabled-extensions=@as []
 enabled-extensions=['hidetopbar@mathieu.bidon.ca', 'wsmatrix@martin.zurowietz.de', 'disable-gestures-2021@verycrazydog.gmail.com', 'switchtwolayouts@qtmax.dev']
-favorite-apps=['firefox.desktop', 'org.gnome.Nautilus.desktop', 'spotify_spotify.desktop', 'sublime_text.desktop']
+favorite-apps=['firefox.desktop', 'sublime_text.desktop', 'org.gnome.Terminal.desktop', 'spotify_spotify.desktop', 'org.gnome.Nautilus.desktop']
 had-bluetooth-devices-setup=true
 
 [org/gnome/shell/extensions/dash-to-dock]
