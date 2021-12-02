@@ -537,5 +537,5 @@ bind -n M-h run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_sta
 # copy ip ALT+i
 bind -n M-i run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}'"
 
-# Open text in google search shift+S
-set -g @open-S 'https://www.google.com/search?q='
+# Open text in google search g
+set -g @open-g 'https://www.google.com/search?q='
