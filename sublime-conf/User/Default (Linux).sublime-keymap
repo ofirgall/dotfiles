@@ -14,10 +14,10 @@
     { "keys": ["alt+left"], "command": "travel_to_pane", "args": {"direction": "left"} },
 
     // Move file thorugh panes with alt+shift+arrow
-    { "keys": ["alt+shift+up"], "command": "carry_file_to_pane", "args": {"direction": "up"} },
-    { "keys": ["alt+shift+right"], "command": "carry_file_to_pane", "args": {"direction": "right"} },
-    { "keys": ["alt+shift+down"], "command": "carry_file_to_pane", "args": {"direction": "down"} },
-    { "keys": ["alt+shift+left"], "command": "carry_file_to_pane", "args": {"direction": "left"} },
+    { "keys": ["alt+super+up"], "command": "carry_file_to_pane", "args": {"direction": "up"} },
+    { "keys": ["alt+super+right"], "command": "carry_file_to_pane", "args": {"direction": "right"} },
+    { "keys": ["alt+super+down"], "command": "carry_file_to_pane", "args": {"direction": "down"} },
+    { "keys": ["alt+super+left"], "command": "carry_file_to_pane", "args": {"direction": "left"} },
 
     // Create vertical pane
     { "keys": ["alt+e"], "command": "create_pane", "args": {"direction": "right", "give_focus": true} },

@@ -1,8 +1,8 @@
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=5
-launch-time=int64 1637773746
+launch-count=6
+launch-time=int64 1638474680
 show-details=true
 window-height=615
 window-width=593
@@ -29,7 +29,7 @@ last-panel='mouse'
 
 [org/gnome/deja-dup]
 backend='google'
-prompt-check='2021-10-25T10:15:38.774246Z'
+prompt-check='disabled'
 
 [org/gnome/desktop/background]
 color-shading-type='solid'
