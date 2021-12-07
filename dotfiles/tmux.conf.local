@@ -423,6 +423,9 @@ set -g @suspend_suspended_options " \
 #														OFIR
 #######################################################################################################################################
 
+# Default shell
+set-option -g default-shell /bin/zsh
+
 # Scroll with Mouse
 set -g mouse on
 
