@@ -1,6 +1,6 @@
-[user]
-	email = ofirgal753@gmail.com
-	name = Ofir Gal
+[include]
+    path = ~/.git_user # Set the git user there
+
 [alias]
 	co = checkout
 	st = status
