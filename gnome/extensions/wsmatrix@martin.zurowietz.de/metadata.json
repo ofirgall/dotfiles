@@ -6,9 +6,9 @@
   "name": "Workspace Matrix",
   "settings-schema": "org.gnome.shell.extensions.wsmatrix-settings",
   "shell-version": [
-    "3.38"
+    "3.36"
   ],
   "url": "https://github.com/mzur/gnome-shell-wsmatrix",
   "uuid": "wsmatrix@martin.zurowietz.de",
-  "version": 27
+  "version": 23
 }

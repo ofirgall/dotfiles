@@ -22,14 +22,12 @@ class IndicatorWsmatrixPopupList extends WorkspaceSwitcherPopupList {
       let availHeight = workArea.height - themeNode.get_vertical_padding();
 
       let height = 0;
-      let childNaturalHeight = 0;
-      // Workaround for varying values returned for childNaturalHeight.
-      // See: https://github.com/mzur/gnome-shell-wsmatrix/pull/20#discussion_r280046613
-      for (let child of this.get_children()) {
-         if (child.style_class === 'ws-switcher-box') {
-            [, childNaturalHeight] = child.get_preferred_height(-1);
-            break;
-         }
+      let [, childNaturalHeight] = children[0].get_preferred_height(-1);
+      if (children.length > 1) {
+         // Workaround for varying values returned for childNaturalHeight.
+         // See: https://github.com/mzur/gnome-shell-wsmatrix/pull/20#discussion_r280046613
+         let [, childNaturalHeight2] = children[1].get_preferred_height(-1);
+         childNaturalHeight = Math.max(childNaturalHeight, childNaturalHeight2);
       }
       height = childNaturalHeight * workArea.width / workArea.height * this._rows;
 
@@ -59,8 +57,8 @@ class IndicatorWsmatrixPopupList extends WorkspaceSwitcherPopupList {
       return [width, width];
    }
 
-   vfunc_allocate(box) {
-      this.set_allocation(box);
+   vfunc_allocate(box, flags) {
+      this.set_allocation(box, flags);
 
       let themeNode = this.get_theme_node();
       box = themeNode.get_content_box(box);
@@ -81,7 +79,7 @@ class IndicatorWsmatrixPopupList extends WorkspaceSwitcherPopupList {
          childBox.x2 = childBox.x1 + this._childWidth;
          childBox.y1 = Math.round(box.y1 + itemHeight * row);
          childBox.y2 = childBox.y1 + this._childHeight;
-         children[i].allocate(childBox);
+         children[i].allocate(childBox, flags);
       }
    }
 });
