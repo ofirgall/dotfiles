@@ -67,8 +67,11 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel']
+application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk']
 show-banners=false
+
+[org/gnome/desktop/notifications/application/apport-gtk]
+application-id='apport-gtk.desktop'
 
 [org/gnome/desktop/notifications/application/com-cisco-anyconnect-gui]
 application-id='com.cisco.anyconnect.gui.desktop'
@@ -246,7 +249,7 @@ hinting='slight'
 command-history=['', 'r']
 disabled-extensions=@as []
 enabled-extensions=['hidetopbar@mathieu.bidon.ca', 'wsmatrix@martin.zurowietz.de', 'disable-gestures-2021@verycrazydog.gmail.com', 'switchtwolayouts@qtmax.dev']
-favorite-apps=['firefox.desktop', 'sublime_text.desktop', 'org.gnome.Terminal.desktop', 'spotify_spotify.desktop', 'org.gnome.Nautilus.desktop']
+favorite-apps=['firefox.desktop', 'sublime_text.desktop', 'org.gnome.Terminal.desktop', 'spotify_spotify.desktop', 'slack_slack.desktop', 'org.gnome.Nautilus.desktop', 'com.cisco.anyconnect.gui.desktop']
 had-bluetooth-devices-setup=true
 
 [org/gnome/shell/extensions/dash-to-dock]
