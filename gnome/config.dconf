@@ -25,16 +25,32 @@ active-plugins=['open-directory', 'autoload-subtitles', 'variable-rate', 'apple-
 subtitle-encoding='UTF-8'
 
 [org/gnome/control-center]
-last-panel='mouse'
+last-panel='display'
 
 [org/gnome/deja-dup]
 backend='google'
 prompt-check='disabled'
 
+[org/gnome/deja-dup/file]
+migrated=true
+
+[org/gnome/desktop/app-folders]
+folder-children=['Utilities', 'YaST']
+
+[org/gnome/desktop/app-folders/folders/Utilities]
+apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'gnome-system-monitor.desktop', 'gucharmap.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.Screenshot.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'simple-scan.desktop', 'vinagre.desktop', 'yelp.desktop']
+categories=['X-GNOME-Utilities']
+name='X-GNOME-Utilities.directory'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/YaST]
+categories=['X-SuSE-YaST']
+name='suse-yast.directory'
+translate=true
+
 [org/gnome/desktop/background]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///home/ofirg/Pictures/Wallpapers/dd-9.jpg'
 primary-color='#000000'
 secondary-color='#000000'
 
@@ -48,9 +64,14 @@ enable-animations=true
 gtk-im-module='gtk-im-context-simple'
 gtk-theme='Yaru-dark'
 show-battery-percentage=true
+toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
 application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel']
+show-banners=false
+
+[org/gnome/desktop/notifications/application/com-cisco-anyconnect-gui]
+application-id='com.cisco.anyconnect.gui.desktop'
 
 [org/gnome/desktop/notifications/application/firefox]
 application-id='firefox.desktop'
@@ -64,6 +85,9 @@ application-id='gnome-network-panel.desktop'
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
 
+[org/gnome/desktop/notifications/application/gnome-printers-panel]
+application-id='gnome-printers-panel.desktop'
+
 [org/gnome/desktop/notifications/application/org-gnome-chromegnomeshell]
 application-id='org.gnome.ChromeGnomeShell.desktop'
 
@@ -76,14 +100,33 @@ application-id='org.gnome.Extensions.desktop.desktop'
 [org/gnome/desktop/notifications/application/org-gnome-nautilus]
 application-id='org.gnome.Nautilus.desktop'
 
+[org/gnome/desktop/notifications/application/org-gnome-shell-extensions]
+application-id='org.gnome.Shell.Extensions.desktop'
+
+[org/gnome/desktop/notifications/application/slack-slack]
+application-id='slack_slack.desktop'
+
 [org/gnome/desktop/notifications/application/spotify-spotify]
 application-id='spotify_spotify.desktop'
 
 [org/gnome/desktop/notifications/application/sublime-text]
 application-id='sublime_text.desktop'
 
+[org/gnome/desktop/notifications/application/update-manager]
+application-id='update-manager.desktop'
+
+[org/gnome/desktop/notifications/application/vlc-vlc]
+application-id='vlc_vlc.desktop'
+
 [org/gnome/desktop/notifications/application/zoom]
 application-id='Zoom.desktop'
+
+[org/gnome/desktop/peripherals/keyboard]
+numlock-state=true
+
+[org/gnome/desktop/peripherals/mouse]
+accel-profile='flat'
+speed=0.014705882352941124
 
 [org/gnome/desktop/peripherals/touchpad]
 disable-while-typing=false
@@ -95,7 +138,11 @@ two-finger-scrolling-enabled=true
 disable-microphone=false
 report-technical-problems=true
 
+[org/gnome/desktop/search-providers]
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
+
 [org/gnome/desktop/sound]
+allow-volume-above-100-percent=false
 event-sounds=true
 
 [org/gnome/desktop/wm/preferences]
@@ -124,6 +171,11 @@ window-width=600
 [org/gnome/gedit/plugins]
 active-plugins=['docinfo', 'spell', 'sort', 'modelines', 'filebrowser']
 
+[org/gnome/gedit/plugins/filebrowser]
+root='file:///'
+tree-view=true
+virtual-root='file:///home/ogal/Downloads'
+
 [org/gnome/gedit/preferences/editor]
 wrap-last-split-mode='word'
 
@@ -139,7 +191,8 @@ state=87168
 
 [org/gnome/mutter]
 dynamic-workspaces=false
-experimental-features=['scale-monitor-framebuffer']
+experimental-features=['scale-monitor-framebuffer', 'x11-randr-fractional-scaling']
+workspaces-only-on-primary=false
 
 [org/gnome/nautilus/preferences]
 default-folder-viewer='icon-view'
@@ -212,6 +265,17 @@ enable-active-window=false
 enable-intellihide=true
 mouse-sensitive=true
 shortcut-keybind=@as []
+
+[org/gnome/shell/extensions/wsmatrix]
+cache-popup=true
+multi-monitor=true
+scale=0.14999999999999999
+show-overview-grid=true
+show-thumbnails=true
+
+[org/gnome/software]
+check-timestamp=int64 1637674926
+online-updates-timestamp=int64 1637674929
 
 [org/gnome/system/location]
 enabled=false
