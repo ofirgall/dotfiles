@@ -37,8 +37,6 @@
         path: gnome/extensions
     ~/.config/fusuma/config.yml:
         path: dotfiles/fusuma.yml
-    ~/.ssh/config:
-        path: dotfiles/ssh_config
 
 - create:
     - ~/projects

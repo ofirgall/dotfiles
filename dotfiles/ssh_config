@@ -1,2 +1,0 @@
-Host *
-    RemoteForward 52698 localhost:52698
