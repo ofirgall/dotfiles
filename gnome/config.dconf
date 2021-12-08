@@ -25,7 +25,7 @@ active-plugins=['open-directory', 'autoload-subtitles', 'variable-rate', 'apple-
 subtitle-encoding='UTF-8'
 
 [org/gnome/control-center]
-last-panel='display'
+last-panel='wifi'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -67,7 +67,7 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk']
+application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center']
 show-banners=true
 
 [org/gnome/desktop/notifications/application/apport-gtk]
@@ -149,7 +149,7 @@ allow-volume-above-100-percent=false
 event-sounds=true
 
 [org/gnome/desktop/wm/preferences]
-num-workspaces=6
+num-workspaces=8
 
 [org/gnome/eog/view]
 background-color='rgb(0,0,0)'
@@ -272,6 +272,7 @@ shortcut-keybind=@as []
 [org/gnome/shell/extensions/wsmatrix]
 cache-popup=true
 multi-monitor=true
+num-columns=4
 scale=0.14999999999999999
 show-overview-grid=true
 show-thumbnails=true
@@ -302,5 +303,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(26, 23)
+window-position=(359, 121)
 window-size=(1203, 817)

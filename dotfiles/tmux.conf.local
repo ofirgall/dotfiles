@@ -30,7 +30,7 @@ tmux_conf_new_pane_retain_current_path=true
 # new pane tries to reconnect ssh sessions (experimental), possible values are:
 #   - true
 #   - false (default)
-tmux_conf_new_pane_reconnect_ssh=true
+tmux_conf_new_pane_reconnect_ssh=false
 
 # prompt for session name when creating a new session, possible values are:
 #   - true
