@@ -423,6 +423,12 @@ set -g @suspend_suspended_options " \
 #														OFIR
 #######################################################################################################################################
 
+# Using xterm colors instead
+set -g default-terminal "xterm-256color"
+# Fix end/home for xterm-256color
+bind -n End send-key C-e
+bind -n Home send-key C-a
+
 # Default shell
 set-option -g default-shell /bin/zsh
 

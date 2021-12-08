@@ -25,7 +25,7 @@ active-plugins=['open-directory', 'autoload-subtitles', 'variable-rate', 'apple-
 subtitle-encoding='UTF-8'
 
 [org/gnome/control-center]
-last-panel='wifi'
+last-panel='bluetooth'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -68,7 +68,7 @@ toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
 application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center']
-show-banners=true
+show-banners=false
 
 [org/gnome/desktop/notifications/application/apport-gtk]
 application-id='apport-gtk.desktop'

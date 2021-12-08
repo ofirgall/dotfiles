@@ -69,6 +69,7 @@ DISABLE_AUTO_TITLE="true"
 ZSH_TMUX_AUTOSTART=false
 ZSH_TMUX_AUTOSTART_ONCE=false
 ZSH_TMUX_AUTOQUIT=false
+ZSH_TMUX_FIXTERM=false
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -84,6 +85,8 @@ plugins=(
   tmux
   cargo
   git-open
+  sudo
+  dircycle
   )
 
 source $ZSH/oh-my-zsh.sh
@@ -121,7 +124,6 @@ alias pwdcd='echo "cd \"$(pwd)\"" | toclip'
 alias sublp='subl *.sublime-project'
 alias open='xdg-open'
 alias venv='. ~/venv3/bin/activate'
-alias plox='sudo !!'
 export EDITOR='subl --wait'
 
 autoload -U compinit && compinit
