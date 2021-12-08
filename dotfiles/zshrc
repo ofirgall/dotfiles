@@ -120,6 +120,8 @@ alias pwdc='echo \"$(pwd)\" | tr -d "\n" | toclip'
 alias pwdcd='echo "cd \"$(pwd)\"" | toclip'
 alias sublp='subl *.sublime-project'
 alias open='xdg-open'
+alias venv='. ~/venv3/bin/activate'
+alias plox='sudo !!'
 export EDITOR='subl --wait'
 
 autoload -U compinit && compinit

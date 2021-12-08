@@ -68,7 +68,7 @@ toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
 application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk']
-show-banners=false
+show-banners=true
 
 [org/gnome/desktop/notifications/application/apport-gtk]
 application-id='apport-gtk.desktop'
