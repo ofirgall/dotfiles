@@ -15,7 +15,7 @@ window-is-maximized=true
 window-width=540
 
 [com/ubuntu/update-notifier]
-release-check-time=uint32 1637773025
+release-check-time=uint32 1639034048
 
 [desktop/ibus/panel/emoji]
 hotkey=@as []
@@ -273,6 +273,7 @@ shortcut-keybind=@as []
 cache-popup=true
 multi-monitor=true
 num-columns=4
+popup-timeout=300
 scale=0.14999999999999999
 show-overview-grid=true
 show-thumbnails=true
@@ -303,5 +304,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(359, 121)
-window-size=(1203, 817)
+window-position=(0, 27)
+window-size=(1203, 790)

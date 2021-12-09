@@ -2,7 +2,7 @@
 	"clients":
 	{
 		"rls": {
-            "enabled": true,
+            "enabled": false,
             "command": ["rls"],
             "selector": "source.rust",
         },
@@ -13,6 +13,10 @@
 		"pyls":
 		{
 			"enabled": false,
+		},
+		"rust-analyzer":
+		{
+			"enabled": true
 		},
 	},
 
