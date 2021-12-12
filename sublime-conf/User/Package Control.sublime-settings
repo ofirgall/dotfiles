@@ -13,6 +13,7 @@
 		"FileDiffs",
 		"HTML-CSS-JS Prettify",
 		"LSP",
+		"LSP-lua",
 		"LSP-pyright",
 		"LSP-rust-analyzer",
 		"MarkdownLivePreview",

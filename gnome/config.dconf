@@ -1,8 +1,8 @@
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=6
-launch-time=int64 1638474680
+launch-count=7
+launch-time=int64 1639294479
 show-details=true
 window-height=615
 window-width=593
@@ -67,7 +67,7 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center']
+application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager']
 show-banners=false
 
 [org/gnome/desktop/notifications/application/apport-gtk]
@@ -149,7 +149,7 @@ allow-volume-above-100-percent=false
 event-sounds=true
 
 [org/gnome/desktop/wm/preferences]
-num-workspaces=8
+num-workspaces=12
 
 [org/gnome/eog/view]
 background-color='rgb(0,0,0)'
@@ -273,10 +273,12 @@ shortcut-keybind=@as []
 cache-popup=true
 multi-monitor=true
 num-columns=4
+num-rows=3
 popup-timeout=300
 scale=0.14999999999999999
 show-overview-grid=true
 show-thumbnails=true
+wraparound-mode='rows-columns'
 
 [org/gnome/software]
 check-timestamp=int64 1637674926
