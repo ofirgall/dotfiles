@@ -41,6 +41,8 @@
         path: gnome/extensions
     ~/.config/fusuma/config.yml:
         path: dotfiles/fusuma.yml
+    ~/.alacritty.yml:
+        path: dotfiles/alacritty.yml
 
 - create:
     - ~/projects
