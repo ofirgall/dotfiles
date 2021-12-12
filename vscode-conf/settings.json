@@ -1,0 +1,142 @@
+{
+    "workbench.colorTheme": "Monokai",
+    "python.defaultInterpreterPath": "/bin/python",
+    "editor.minimap.enabled": false,
+    "editor.renderLineHighlight": "none",
+    "files.insertFinalNewline": true,
+    "editor.formatOnPaste": false,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.snippetSuggestions": "top",
+
+    /////////////////////////////////////////
+    /////////////  EXTENSIONS  ///////////////
+    /////////////////////////////////////////
+
+    // Move by symbol
+    "gotoNextPreviousMember.symbolKinds": ["class", "enum", "event", "function", "interface", "method", "module", "namespace"],
+
+    // AceJump
+    "aceJump.placeholder.backgroundColor": "#feda31",
+    "aceJump.placeholder.color": "#4a400e",
+    "aceJump.placeholder.upperCase": false,
+
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "C_Cpp.autocomplete": "Disabled",  // So you don't get autocomplete from both extensions.
+    "C_Cpp.errorSquiggles": "Disabled", // So you don't get error squiggles from both extensions (clangd's seem to be more reliable anyway).
+        
+    /////////////////////////////////////////
+    ////////////////  COLORS  ///////////////
+    /////////////////////////////////////////
+
+    // Semantic color Changes (LSP)
+    "editor.semanticTokenColorCustomizations": {
+        "[Monokai]": {
+            "rules": {
+                "module": {
+                    "foreground": "#F8F8F2",
+                    "fontStyle": ""
+                },
+                "class.declaration": {
+                    "foreground": "#A6E22E",
+                    "fontStyle": ""
+                },
+                "class": {
+                    "foreground": "#F8F8F2",
+                    "fontStyle": ""
+                },
+                "method.declaration": "#A6E22E",
+                "method": "#67d8ef",
+                "function.declaration": "#A6E22E",
+                "function": "#67d8ef"
+            },
+        }
+    },
+
+    // C/CPP semantic highlighting have shit modifers so we use disable it and use texmate instead
+    "[c]": {
+        "editor.semanticHighlighting.enabled": false
+    },
+    "[cpp]": {
+        "editor.semanticHighlighting.enabled": false
+    },
+
+    // TextMate Changes
+    "editor.tokenColorCustomizations": {
+        "[Monokai]": {
+            "textMateRules": [
+                {
+                    "name": "Function Calls",
+                    "scope": [
+                        "meta.block entity.name.function.call",
+                        "meta.block entity.name.function.member",
+                        "meta.function.definition entity.name.function.call",
+                        "meta.function.definition entity.name.function.member"
+                    ],
+                    "settings": {
+                        "foreground": "#67d8ef"
+                    }
+                },
+                {
+                    "name": "Using Namespace",
+                    "scope": [
+                        "meta.block meta.using-namespace.cpp keyword.other.namespace.directive.cpp storage.type.namespace.directive.cpp",
+                    ],
+                    "settings": {
+                        "foreground": "#F92672"
+                    }
+                },
+                {
+                    "name": "Shit to White",
+                    "scope": [
+                        "entity.name.scope-resolution",
+                        "entity.name.type",
+                        // "meta.function entity.name.type.struct",
+                        // "meta.block entity.name.type.struct",
+                        "meta.function meta.using-namespace.cpp entity.name.namespace.cpp",
+                        "meta.block meta.using-namespace.cpp entity.name.namespace.cpp",
+                        "meta.function.definition.parameters meta.parameter variable.parameter", // Func vairables
+                        "constant.other.caps" // Python Constanst
+                    ],
+                    "settings": {
+                        "foreground": "#F8F8F2",
+                        "fontStyle": ""
+                        // White: #F8F8F2
+                    }
+                },
+                {
+                    "name": "hex/bin prefix",
+                    "scope": [
+                        "constant.numeric.hex.python storage.type.number.python",
+                        "constant.numeric.bin.python storage.type.number.python",
+                        "keyword.other.unit.hexadecimal",
+                        "keyword.other.unit.binary"
+                    ],
+                    "settings": {
+                        "foreground": "#AE81FF",
+                        "fontStyle": ""
+                    }
+                },
+                {
+                    "name": "Json keys no fontstyle",
+                    "scope": [
+                        "source.json meta.structure.dictionary.json string.json support.type.property-name.json",
+                    ],
+                    "settings": {
+                        "foreground": "#F92672",
+                        "fontStyle": ""
+                    }
+                },
+                {
+                    "name": "Json strings to orange",
+                    "scope": [
+                        "source.json meta.structure.dictionary.json meta.structure.dictionary.value.json string.quoted.double.json"
+                    ],
+                    "settings": {
+                        "foreground": "#E6DB74",
+                    }
+                }
+            ]
+        },
+    },
+    "security.workspace.trust.untrustedFiles": "newWindow",
+}

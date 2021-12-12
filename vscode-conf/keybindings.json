@@ -1,0 +1,67 @@
+// Place your key bindings in this file to override the defaults
+[
+    ////////////////////////////////
+    //  Default sublime settings  //
+    ////////////////////////////////
+    { "key": "ctrl+shift+m", "command": "expand-selection-to-scope.expand" },
+    { "key": "escape", "command": "workbench.action.closePanel", "when": "focusedView == 'workbench.panel.markers.view' || focusedView == 'workbench.panel.repl.view' || focusedView == 'workbench.panel.output'" },
+    { "key": "shift+escape", "command": "workbench.action.closePanel"},
+
+    ////////////////
+    //   Custom   //
+    ////////////////
+
+    // Open in results in editor + back to file explorer
+    { "key": "alt+enter", "command": "commands.run", "args": ["search.action.openInEditor", "workbench.view.explorer"], "when": "hasSearchResult && searchViewletFocus" },
+    // Open Result with Enter
+    { "key": "enter", "command": "editor.action.revealDefinition", "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor && inSearchEditor" },
+    
+    // Open terminal
+    { "key": "win+t", "command": "workbench.action.terminal.toggleTerminal", "when": "terminal.active" },
+
+    // Move by symbols
+    { "key": "ctrl+win+up", "command": "gotoNextPreviousMember.previousMember" },
+    { "key": "ctrl+win+down", "command": "gotoNextPreviousMember.nextMember" },
+
+    // Devdocs
+    { "key": "alt+d", "command": "extension.devDocs", "when": "editorTextFocus" },
+
+    // AceJump (like vimium)
+    { "key": "alt+j", "command": "extension.aceJump" },
+    { "key": "alt+f", "command": "extension.aceJump.multiChar" },
+    { "key": "alt+l", "command": "extension.aceJump.line" },
+    { "key": "alt+shift+j", "command": "extension.aceJump.selection" },
+
+    // Origami (panes)
+    // Create vertical pane
+    { "key": "alt+e", "command": "workbench.action.splitEditorRight" },
+    // Create horizontal pane
+    { "key": "alt+o", "command": "workbench.action.splitEditorDown" },
+    // Close pane
+    { "key": "alt+w", "command": "workbench.action.closeEditorsAndGroup" },
+    
+    // Move through panes with alt+arrows
+    { "key": "alt+right", "command": "workbench.action.focusRightGroup" },
+    { "key": "alt+left", "command": "workbench.action.focusLeftGroup" },
+    { "key": "alt+up", "command": "workbench.action.focusAboveGroup" },
+    { "key": "alt+down", "command": "workbench.action.focusBelowGroup" },
+    
+    // Carry file through panes with alt+shift+right/left
+    { "key": "alt+shift+right", "command": "workbench.action.moveEditorToRightGroup" },
+    { "key": "alt+shift+left", "command": "workbench.action.moveEditorToLeftGroup" },
+        // Using winkey because alt+up/down is multiple cursors
+    { "key": "alt+win+up", "command": "workbench.action.moveEditorToBelowGroup" },
+    { "key": "alt+win+down", "command": "workbench.action.moveEditorToBelowGroup" },
+    { "key": "alt+win+right", "command": "workbench.action.moveEditorToRightGroup" },
+    { "key": "alt+win+left", "command": "workbench.action.moveEditorToLeftGroup" },
+
+    ////// LSP //////
+    // Show/Hide Diagnostics Panel
+    { "key": "ctrl+shift+s", "command": "workbench.actions.view.problems", "when": "workbench.panel.markers.view.active" },
+    // Find refernces
+    { "key": "f3", "command": "references-view.findReferences", "when": "editorHasReferenceProvider" },
+    // Show hover
+    { "key": "shift+space", "command": "editor.action.showHover", "when": "editorTextFocus"},
+    // Quick fix
+    { "key": "f4", "command": "editor.action.quickFix", "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly" },
+]

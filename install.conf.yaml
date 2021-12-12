@@ -33,6 +33,10 @@
         path: sublime-conf/Python
     ~/.config/sublime-text/Packages/CustomStatusBar:
         path: sublime-conf/CustomStatusBar
+    ~/.config/Code/User/settings.json:
+        path: vscode-conf/settings.json
+    ~/.config/Code/User/keybindings.json:
+        path: vscode-conf/keybindings.json
     ~/.local/share/gnome-shell/extensions:
         path: gnome/extensions
     ~/.config/fusuma/config.yml:
@@ -47,5 +51,7 @@
     - [sh install_scripts/install_basic.sh, Running basic libs installation]
     - [sh install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
     - [sh install_scripts/install_lsp.sh, Installing LSP Utils]
+    - [sh install_scripts/install_vscode.sh, Installing vscode]
+    - [sh vscode-conf/install_extensions.sh, Installing vscode extensions]
     - [sh install_scripts/install_fusuma.sh, Installing Fusuma]
     - [git submodule update --init --recursive, Installing submodules]
