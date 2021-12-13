@@ -30,5 +30,7 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 
 ---
 
-## Things to Test:
-tmuxinator
+## TODO:
+* remote config
+* tmux suspend shows in left status too
+* tmux suspend copy from remote and not to remote

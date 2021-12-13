@@ -24,6 +24,21 @@ hotkey=@as []
 active-plugins=['open-directory', 'autoload-subtitles', 'variable-rate', 'apple-trailers', 'skipto', 'save-file', 'vimeo', 'screenshot', 'media-player-keys', 'rotation', 'recent', 'movie-properties', 'screensaver']
 subtitle-encoding='UTF-8'
 
+[org/gnome/calculator]
+accuracy=9
+angle-units='degrees'
+base=10
+button-mode='basic'
+number-format='automatic'
+show-thousands=false
+show-zeroes=false
+source-currency=''
+source-units='degree'
+target-currency=''
+target-units='radian'
+window-position=(45, 72)
+word-size=64
+
 [org/gnome/control-center]
 last-panel='bluetooth'
 
