@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Check for --help parameter
+if [[ $@ == *'-h'* ]]
+then
+    echo "usage: git squash <num-of-commits> [commit-message]"
+    echo ""
+    echo "    num-of-commits = Amount of previous commits to squash together"
+    echo "    commit-message = The message to commit with"
+    echo "                     (if no message is given, will use the 'first' commit message with no-edit)"
+    echo ""
+    echo "Examples:"
+    echo "    git squash 2 Changed Things"
+    echo "    git squash 4 \"Changed Things"\"
+    echo "    git squash 3 -m \"Changed Things\""
+    echo "    git squash 6"
+    echo ""
+    exit 0
+fi
+
+#get number of commits to squash
+squashCount=$1
+
+#get the commit message
+shift
+commitMsg=$@
+
+# Remove `"` if they exist or "-m"
+commitMsg="${commitMsg%\"}"
+commitMsg="${commitMsg#-m}"
+commitMsg="${commitMsg#\"}"
+
+#regular expression to verify that squash number is an integer
+regex='^[1-9][0-9]*$'
+
+if ! [[ $squashCount =~ $regex ]]
+then
+    echo "[ERROR] Squash count must be a valid integer."
+    exit 1
+elif [ -z "$commitMsg" ]
+then
+    echo "[WARNING] amending with the first commit message."
+    git reset --soft HEAD~$(($squashCount-1))
+    git commit --amend --no-edit
+else
+    git reset --soft HEAD~$(($squashCount-1))
+    git commit --amend -m "$commitMsg"
+fi

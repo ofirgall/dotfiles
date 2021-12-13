@@ -151,7 +151,7 @@ autoload -U compinit && compinit
 if ! $IS_REMOTE; then
   . "$HOME/.cargo/env"
 fi
-export PATH=~/.local/bin:$PATH
+export PATH=~/.local/bin:~/dotfiles_scripts:$PATH
 
 # Load wslrc
 if [[ $(uname -a) == *"WSL"* ]]; then
