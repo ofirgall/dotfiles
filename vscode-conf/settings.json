@@ -32,12 +32,17 @@
     "editor.semanticTokenColorCustomizations": {
         "[Monokai]": {
             "rules": {
+                // Python rules for now
                 "module": {
                     "foreground": "#F8F8F2",
                     "fontStyle": ""
                 },
                 "class.declaration": {
                     "foreground": "#A6E22E",
+                    "fontStyle": ""
+                },
+                "class.decorator": {
+                    "foreground": "#67d8ef",
                     "fontStyle": ""
                 },
                 "class": {
@@ -47,7 +52,15 @@
                 "method.declaration": "#A6E22E",
                 "method": "#67d8ef",
                 "function.declaration": "#A6E22E",
-                "function": "#67d8ef"
+                "function": "#67d8ef",
+                "parameter.declaration": {
+                    "foreground": "#FD971F",
+                    "fontStyle": "italic"
+                }, 
+                "parameter": {
+                    "foreground": "#F8F8F2",
+                    "fontStyle": ""
+                }
             },
         }
     },
@@ -133,6 +146,13 @@
                     ],
                     "settings": {
                         "foreground": "#E6DB74",
+                    }
+                },
+                {
+                    "name": "@ in python decorators",
+                    "scope": "punctuation.definition.decorator.python",
+                    "settings": {
+                        "foreground": "#F92672",
                     }
                 }
             ]

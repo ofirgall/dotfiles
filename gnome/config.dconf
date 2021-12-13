@@ -82,11 +82,14 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager']
+application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty']
 show-banners=false
 
 [org/gnome/desktop/notifications/application/apport-gtk]
 application-id='apport-gtk.desktop'
+
+[org/gnome/desktop/notifications/application/com-alacritty-alacritty]
+application-id='com.alacritty.Alacritty.desktop'
 
 [org/gnome/desktop/notifications/application/com-cisco-anyconnect-gui]
 application-id='com.cisco.anyconnect.gui.desktop'
@@ -164,7 +167,7 @@ allow-volume-above-100-percent=false
 event-sounds=true
 
 [org/gnome/desktop/wm/preferences]
-num-workspaces=12
+num-workspaces=8
 
 [org/gnome/eog/view]
 background-color='rgb(0,0,0)'
@@ -264,7 +267,7 @@ hinting='slight'
 command-history=['', 'r']
 disabled-extensions=['hidetopbar@mathieu.bidon.ca']
 enabled-extensions=['wsmatrix@martin.zurowietz.de', 'disable-gestures-2021@verycrazydog.gmail.com', 'switchtwolayouts@qtmax.dev']
-favorite-apps=['firefox.desktop', 'sublime_text.desktop', 'org.gnome.Terminal.desktop', 'spotify_spotify.desktop', 'slack_slack.desktop', 'org.gnome.Nautilus.desktop', 'com.cisco.anyconnect.gui.desktop']
+favorite-apps=['firefox.desktop', 'code.desktop', 'com.alacritty.Alacritty.desktop', 'spotify_spotify.desktop', 'slack_slack.desktop', 'org.gnome.Nautilus.desktop', 'com.cisco.anyconnect.gui.desktop']
 had-bluetooth-devices-setup=true
 
 [org/gnome/shell/extensions/dash-to-dock]
@@ -288,7 +291,7 @@ shortcut-keybind=@as []
 cache-popup=true
 multi-monitor=true
 num-columns=4
-num-rows=3
+num-rows=2
 popup-timeout=300
 scale=0.14999999999999999
 show-overview-grid=true
@@ -321,5 +324,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(0, 27)
+window-position=(359, 140)
 window-size=(1203, 790)

@@ -1,3 +1,18 @@
+# Check if remote
+IS_REMOTE=false
+if test -f "$HOME/.remote_indicator"; then
+  IS_REMOTE=true
+fi
+
+# Export Local pkgs if on remote (non-root usage)
+if $IS_REMOTE; then
+  export PATH="$HOME/pkgs/usr/sbin:$HOME/pkgs/usr/bin:$HOME/pkgs/bin:$PATH"
+  export MANPATH="$HOME/pkgs/usr/share/man:$MANPATH"
+
+  L='/lib:/lib64:/usr/lib:/usr/lib64'
+  export LD_LIBRARY_PATH="$HOME/pkgs/usr/lib:$HOME/pkgs/usr/lib64:$L"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -124,11 +139,18 @@ alias pwdcd='echo "cd \"$(pwd)\"" | toclip'
 alias sublp='subl *.sublime-project'
 alias open='xdg-open'
 alias venv='. ~/venv3/bin/activate'
-export EDITOR='subl --wait'
+
+if $IS_REMOTE; then
+  export EDITOR='nano'
+else
+  export EDITOR='subl --wait'
+fi
 
 autoload -U compinit && compinit
 
-. "$HOME/.cargo/env"
+if ! $IS_REMOTE; then
+  . "$HOME/.cargo/env"
+fi
 export PATH=~/.local/bin:$PATH
 
 # Load wslrc
@@ -184,7 +206,9 @@ then
   select_tmux_session
 fi
 
-if ! pgrep fusuma > /dev/null;
-then
-  fusuma --daemon
+if ! $IS_REMOTE; then
+  if ! pgrep fusuma > /dev/null;
+  then
+    fusuma --daemon
+  fi
 fi
