@@ -423,6 +423,12 @@ set -g @suspend_suspended_options " \
 #														OFIR
 #######################################################################################################################################
 
+# C-a prefix1, C-b prefix2 (for suspend mode)
+set -g prefix C-a
+bind C-a send-prefix
+set -g prefix2 C-b
+bind C-b send-prefix -2
+
 # Using xterm colors instead
 set -g default-terminal "xterm-256color"
 # Fix end/home for xterm-256color
@@ -493,6 +499,14 @@ bind -n M-NPage select-window -n
 
 # Copy mode with ALT+C
 bind -n M-c copy-mode
+# Resume before entering copy mode and suspend after (to copy to host os instead of guest os)
+bind -T suspended M-c run-shell "$HOME/.tmux/plugins/tmux-suspend/scripts/resume.sh \"\"" \; set-option -q "@resume_after_copy" "true" \; copy-mode
+
+# Finish copy with Enter and resume if suspended
+bind -T copy-mode Enter send-keys -X copy-pipe-and-cancel \; if-shell -b '[ #{@resume_after_copy} = true ]' 'run-shell "$HOME/.tmux/plugins/tmux-suspend/scripts/suspend.sh \"\" \"   @mode_indicator_custom_prompt:: SUSPENDED , \""' \; set-option -q "@resume_after_copy" "false"
+
+# Exit copy mode and resume if suspended
+bind -T copy-mode Escape run-shell "tmux     send-keys -X cancel; /home/ogal/.tmux/plugins/tmux-copycat/scripts/copycat_mode_quit.sh; true" \; if-shell -b '[ #{@resume_after_copy} = true ]' 'run-shell "$HOME/.tmux/plugins/tmux-suspend/scripts/suspend.sh \"\" \"   @mode_indicator_custom_prompt:: SUSPENDED , \""' \; set-option -q "@resume_after_copy" "false"
 
 # Start copy with Space
 bind -T copy-mode Space send-keys -X begin-selection
@@ -510,9 +524,6 @@ bind -n C-Home copy-mode \; send-keys -X history-top
 bind -n C-End copy-mode \; send-keys -X history-bottom
 bind -T copy-mode C-Home send-keys -X history-top
 bind -T copy-mode C-End send-keys -X history-bottom
-
-# Finish copy with Enter
-bind -T copy-mode Enter send-keys -X copy-pipe-and-cancel
 
 # Copy word with double click
 bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-word \; run-shell "sleep 0.2" \; send-keys -X copy-pipe-and-cancel
