@@ -1,6 +1,13 @@
 - shell:
+    - echo "========================= REMOTE DOTFILES ========================="
+    -
+        command: ./install --config-file remote.conf.yaml
+        stdin: true
+        stdout: true
+    - echo "==================================================================="
+
+- shell:
     - [sh install_scripts/install_zsh.sh, Installing ZSH]
-    - [sh install_scripts/install_oh_my_zsh.sh, Installing oh_my_zsh]
 
 
 - defaults:
@@ -10,22 +17,6 @@
       create: true
 
 - link:
-    ~/.zshrc: 
-        path: dotfiles/zshrc
-    ~/.profile: 
-        path: dotfiles/profile
-    ~/.wslrc:
-        path: dotfiles/wslrc
-    ~/.gitconfig:
-        path: dotfiles/gitconfig
-    ~/.gitignore_global:
-        path: dotfiles/gitignore_global
-    ~/.oh-my-zsh/custom/themes/ofir.zsh-theme:
-        path: dotfiles/ofir.zsh-theme
-    ~/.tmux.conf:
-        path: dotfiles/tmux.conf
-    ~/.tmux.conf.local:
-        path: dotfiles/tmux.conf.local
     ~/.config/sublime-text/Packages/User:
         path: sublime-conf/User
     ~/.config/sublime-text/Packages/C++:
