@@ -27,5 +27,4 @@
         path: dotfiles_scripts
 
 - shell:
-    - [touch ~/.remote_indicator, Creating ~/.remote_indicator]
     - [git submodule update --init --recursive, Installing submodules]

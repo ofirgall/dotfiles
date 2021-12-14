@@ -159,4 +159,5 @@
         },
     },
     "security.workspace.trust.untrustedFiles": "newWindow",
+    "workbench.startupEditor": "none",
 }

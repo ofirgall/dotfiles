@@ -23,7 +23,7 @@ git config user.user "Ofir Gal"
 
 ### Clone and Run for Remote
 ```bash
-git clone https://github.com/ofir753/dotfiles.git && cd dotfiles && sudo echo a && ./install --config-file remote.conf.yaml
+git clone https://github.com/ofir753/dotfiles.git && cd dotfiles && sudo echo a && ./install --config-file remote.conf.yaml && touch ~/.remote_indicator
 ```
 
 ### Clone and Run for PC

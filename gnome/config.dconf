@@ -72,7 +72,7 @@ secondary-color='#000000'
 [org/gnome/desktop/input-sources]
 mru-sources=[('xkb', 'us'), ('xkb', 'il')]
 sources=[('xkb', 'us'), ('xkb', 'il')]
-xkb-options=['grp_led:scroll', 'grp:caps_toggle']
+xkb-options=['grp_led:scroll', 'grp:shifts_toggle']
 
 [org/gnome/desktop/interface]
 enable-animations=true
@@ -210,6 +210,13 @@ side-panel-size=200
 size=(900, 700)
 state=87168
 
+[org/gnome/gnome-screenshot]
+border-effect='none'
+delay=0
+include-border=true
+include-pointer=false
+last-save-directory='file:///home/ogal/Pictures'
+
 [org/gnome/mutter]
 dynamic-workspaces=false
 experimental-features=['scale-monitor-framebuffer', 'x11-randr-fractional-scaling']
@@ -319,10 +326,10 @@ location-mode='path-bar'
 show-hidden=false
 show-size-column=true
 show-type-column=true
-sidebar-width=161
+sidebar-width=170
 sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(359, 140)
+window-position=(0, 27)
 window-size=(1203, 790)
