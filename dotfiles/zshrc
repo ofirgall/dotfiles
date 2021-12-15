@@ -143,7 +143,7 @@ alias venv='. ~/venv3/bin/activate'
 if $IS_REMOTE; then
   export EDITOR='nano'
 else
-  export EDITOR='code --wait'
+  export EDITOR='subl --wait'
 fi
 
 autoload -U compinit && compinit
@@ -166,12 +166,18 @@ function select_tmux_session() {
   if tmux has;
   then
     echo "Select tmux session to attach to"
-    select sel in "Create New Session" "No Session" $(tmux ls -F '#S'); do
+    select sel in "Create New Session" "tmp Session" "No Session" $(tmux ls -F '#S'); do
       case $sel in
         "Create New Session")
         echo "Enter Session Name: "
         read session_name
         tmux new-session -s $session_name
+        ;;
+        "tmp Session")
+        session_name="_tmp-$(uuidgen | cut -c1-8)"
+        tmux new-session -s $session_name
+        tmux kill-session -t $session_name
+        echo "$session_name Killed"
         ;;
         "No Session")
         return
@@ -201,11 +207,6 @@ function select_tmux_session() {
   fi
 }
 
-if ! [ -n "$TMUX" ]
-then
-  select_tmux_session
-fi
-
 # Daemons
 if ! $IS_REMOTE; then
   if ! pgrep fusuma > /dev/null;
@@ -217,4 +218,10 @@ if ! $IS_REMOTE; then
   then
     daemon --name="autokey" autokey-gtk
   fi 
+fi
+
+# Must be at the end
+if ! [ -n "$TMUX" ]
+then
+  select_tmux_session
 fi

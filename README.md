@@ -36,3 +36,4 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO:
+* tmux - make a valid fix for suspend/resume copy like copycat mode
