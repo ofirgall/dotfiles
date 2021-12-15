@@ -423,17 +423,18 @@ set -g @suspend_suspended_options " \
 #														OFIR
 #######################################################################################################################################
 
-# C-a prefix1, C-b prefix2 (for suspend mode)
-set -g prefix C-a
-bind C-a send-prefix
-set -g prefix2 C-b
-bind C-b send-prefix -2
+# Unbinding C-a to fix home key
+unbind C-a
+set -gu prefix2
 
 # Using xterm colors instead
 set -g default-terminal "xterm-256color"
 # Fix end/home for xterm-256color
 bind -n End send-key C-e
 bind -n Home send-key C-a
+bind -T suspended Home send-key C-a
+bind -T suspended End send-key C-e
+
 
 # Default shell
 set-option -g default-shell /bin/zsh
