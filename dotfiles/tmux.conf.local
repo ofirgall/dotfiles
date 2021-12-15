@@ -428,10 +428,9 @@ set -g prefix C-space
 bind C-space send-prefix
 set -g prefix2 C-b
 bind C-b send-prefix -2
-
-# Unbinding C-a to fix home key
+# Unbinding C-a to fix home key (was prefix2 before)
 unbind C-a
-set -gu prefix2
+
 
 # Using xterm colors instead
 set -g default-terminal "xterm-256color"
