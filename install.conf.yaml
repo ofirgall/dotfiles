@@ -35,6 +35,8 @@
         path: dotfiles/fusuma.yml
     ~/.alacritty.yml:
         path: dotfiles/alacritty.yml
+    ~/.config/autokey/data:
+        path: autokey
 
 - create:
     - ~/projects

@@ -206,9 +206,15 @@ then
   select_tmux_session
 fi
 
+# Daemons
 if ! $IS_REMOTE; then
   if ! pgrep fusuma > /dev/null;
   then
     fusuma --daemon
   fi
+
+  if ! pgrep autokey-gtk > /dev/null;
+  then
+    daemon --name="autokey" autokey-gtk
+  fi 
 fi
