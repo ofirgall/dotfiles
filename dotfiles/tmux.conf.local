@@ -423,6 +423,12 @@ set -g @suspend_suspended_options " \
 #														OFIR
 #######################################################################################################################################
 
+# Main prefix is C-space
+set -g prefix C-space
+bind C-a send-prefix
+set -g prefix2 C-b
+bind C-b send-prefix -2
+
 # Unbinding C-a to fix home key
 unbind C-a
 set -gu prefix2
