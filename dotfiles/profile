@@ -26,3 +26,15 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 . "$HOME/.cargo/env"
+
+# Re-enable repeat when holding for hjkl keys
+# xev to check for kevalues
+# https://yanfali.github.io/keycodes/ for ReridectKey kv
+xset r 43 # h
+xset r 44 # j
+xset r 45 # k
+xset r 46 # k
+xset r 30 # u
+xset r 40 # d
+xset r 19 # 0
+xset r 13 # 4

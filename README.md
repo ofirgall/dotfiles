@@ -71,22 +71,42 @@ default xkb_compatibility "complete" {
 ```
 `/usr/share/X11/xkb/symbols/us`
 ```
+key <AE04> {
+        type= "CUST_CAPSLOCK",
+        symbols[Group1]= [               4,               dollar,        End ],
+        actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<END>, clearmods=Lock) ]
+    };
+key <AE10> {
+        type= "CUST_CAPSLOCK",
+        symbols[Group1]= [               0,               parenright,        Home ],
+        actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<HOME>, clearmods=Lock) ]
+    };
+key <AD07> {
+        type= "CUST_CAPSLOCK",
+        symbols[Group1]= [               u,               U,        Prior ],
+        actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<PGUP>, clearmods=Lock) ]
+    };
+key <AC03> {
+        type= "CUST_CAPSLOCK",
+        symbols[Group1]= [               d,               D,        Next ],
+        actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<PGDN>, clearmods=Lock) ]
+    };
 key <AC06> {
         type= "CUST_CAPSLOCK",
         symbols[Group1]= [               h,               H,        Left ],
         actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<LEFT>, clearmods=Lock) ]
     };
-    key <AC07> {
+key <AC07> {
         type= "CUST_CAPSLOCK",
         symbols[Group1]= [               j,               J,       Down ],
         actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<DOWN>, clearmods=Lock) ]
     };
-    key <AC08> {
+key <AC08> {
         type= "CUST_CAPSLOCK",
         symbols[Group1]= [               k,               K,       Up ],
         actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<UP>, clearmods=Lock) ]
     };
-    key <AC09> {
+key <AC09> {
         type= "CUST_CAPSLOCK",
         symbols[Group1]= [               l,               L,       Right ],
         actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<RGHT>, clearmods=Lock) ]
