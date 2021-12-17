@@ -8,3 +8,10 @@ git add gnome/config.dconf
 # Backup vscode extension
 code --list-extensions > vscode-conf/extensions
 git add vscode-conf/extensions
+
+### Filter vscode-conf/settings.json
+# backup first
+cp vscode-conf/settings.json /tmp/vscode-settings.json
+sed -i "/email/d" vscode-conf/settings.json
+git add vscode-conf/settings.json
+cp /tmp/vscode-settings.json vscode-conf/settings.json
