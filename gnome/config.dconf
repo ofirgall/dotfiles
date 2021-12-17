@@ -72,7 +72,7 @@ secondary-color='#000000'
 [org/gnome/desktop/input-sources]
 mru-sources=[('xkb', 'us'), ('xkb', 'il')]
 sources=[('xkb', 'us'), ('xkb', 'il')]
-xkb-options=['grp_led:scroll', 'grp:shifts_toggle', 'caps:hyper']
+xkb-options=['grp_led:scroll', 'grp:shifts_toggle']
 
 [org/gnome/desktop/interface]
 enable-animations=true
@@ -82,11 +82,14 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty']
+application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk']
 show-banners=false
 
 [org/gnome/desktop/notifications/application/apport-gtk]
 application-id='apport-gtk.desktop'
+
+[org/gnome/desktop/notifications/application/autokey-gtk]
+application-id='autokey-gtk.desktop'
 
 [org/gnome/desktop/notifications/application/com-alacritty-alacritty]
 application-id='com.alacritty.Alacritty.desktop'
@@ -143,7 +146,7 @@ application-id='vlc_vlc.desktop'
 application-id='Zoom.desktop'
 
 [org/gnome/desktop/peripherals/keyboard]
-numlock-state=true
+numlock-state=false
 
 [org/gnome/desktop/peripherals/mouse]
 accel-profile='flat'
@@ -274,7 +277,7 @@ hinting='slight'
 command-history=['', 'r']
 disabled-extensions=['hidetopbar@mathieu.bidon.ca']
 enabled-extensions=['wsmatrix@martin.zurowietz.de', 'disable-gestures-2021@verycrazydog.gmail.com', 'switchtwolayouts@qtmax.dev']
-favorite-apps=['firefox.desktop', 'code.desktop', 'com.alacritty.Alacritty.desktop', 'spotify_spotify.desktop', 'slack_slack.desktop', 'org.gnome.Nautilus.desktop', 'com.cisco.anyconnect.gui.desktop']
+favorite-apps=['firefox.desktop', 'code.desktop', 'com.alacritty.Alacritty.desktop', 'slack_slack.desktop', 'spotify_spotify.desktop', 'org.gnome.Nautilus.desktop', 'com.cisco.anyconnect.gui.desktop']
 had-bluetooth-devices-setup=true
 
 [org/gnome/shell/extensions/dash-to-dock]
@@ -331,5 +334,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(0, 27)
+window-position=(166, 27)
 window-size=(1203, 790)

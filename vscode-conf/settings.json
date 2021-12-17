@@ -45,6 +45,7 @@
                     "foreground": "#67d8ef",
                     "fontStyle": ""
                 },
+                "class.builtin": "#67d8ef",
                 "class": {
                     "foreground": "#F8F8F2",
                     "fontStyle": ""
@@ -60,6 +61,10 @@
                 "parameter": {
                     "foreground": "#F8F8F2",
                     "fontStyle": ""
+                },
+                "selfParameter": {
+                    "foreground": "#FD971F",
+                    "fontStyle": "italic"
                 }
             },
         }
@@ -83,7 +88,8 @@
                         "meta.block entity.name.function.call",
                         "meta.block entity.name.function.member",
                         "meta.function.definition entity.name.function.call",
-                        "meta.function.definition entity.name.function.member"
+                        "meta.function.definition entity.name.function.member",
+                        "meta.function-call.python meta.function-call.generic.python"
                     ],
                     "settings": {
                         "foreground": "#67d8ef"
