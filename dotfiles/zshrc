@@ -139,6 +139,8 @@ alias pwdcd='echo "cd \"$(pwd)\"" | toclip'
 alias sublp='subl *.sublime-project'
 alias open='xdg-open'
 alias venv='. ~/venv3/bin/activate'
+alias vim='nvim'
+alias vi='nvim'
 
 if $IS_REMOTE; then
   export EDITOR='nano'
@@ -206,6 +208,12 @@ function select_tmux_session() {
     select_tmux_session
   fi
 }
+
+# Exporting fzf defualt command to be rg
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m'
+fi
 
 # Daemons
 if ! $IS_REMOTE; then

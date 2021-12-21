@@ -20,9 +20,9 @@
     "aceJump.placeholder.color": "#4a400e",
     "aceJump.placeholder.upperCase": false,
 
-    "C_Cpp.intelliSenseEngine": "Disabled",
-    "C_Cpp.autocomplete": "Disabled",  // So you don't get autocomplete from both extensions.
-    "C_Cpp.errorSquiggles": "Disabled", // So you don't get error squiggles from both extensions (clangd's seem to be more reliable anyway).
+    // "C_Cpp.intelliSenseEngine": "Disabled",
+    // "C_Cpp.autocomplete": "Disabled",  // So you don't get autocomplete from both extensions.
+    // "C_Cpp.errorSquiggles": "Disabled", // So you don't get error squiggles from both extensions (clangd's seem to be more reliable anyway).
         
     /////////////////////////////////////////
     ////////////////  COLORS  ///////////////
@@ -89,7 +89,9 @@
                         "meta.block entity.name.function.member",
                         "meta.function.definition entity.name.function.call",
                         "meta.function.definition entity.name.function.member",
-                        "meta.function-call.python meta.function-call.generic.python"
+                        "meta.function-call.python meta.function-call.generic.python",
+                        "meta.block meta.function-call entity.name.function",
+                        "meta.block entity.name.function.c",
                     ],
                     "settings": {
                         "foreground": "#67d8ef"

@@ -38,3 +38,5 @@ xset r 30 # u
 xset r 40 # d
 xset r 19 # 0
 xset r 13 # 4
+
+xset r rate 200 35 # Faster repeat rate

@@ -25,6 +25,8 @@
         path: dotfiles/tmux.conf.local
     ~/dotfiles_scripts: 
         path: dotfiles_scripts
+    ~/.config/nvim:
+        path: nvim-conf
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

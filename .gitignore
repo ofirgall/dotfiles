@@ -1,2 +1,4 @@
 sublime-conf/Doxy.sublime-license
 old_dconf
+nvim-conf/plugged
+nvim-conf/.*

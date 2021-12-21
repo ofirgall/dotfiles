@@ -1,8 +1,8 @@
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=7
-launch-time=int64 1639294479
+launch-count=8
+launch-time=int64 1639928001
 show-details=true
 window-height=615
 window-width=593
@@ -193,12 +193,12 @@ window-height=480
 window-width=600
 
 [org/gnome/gedit/plugins]
-active-plugins=['docinfo', 'spell', 'sort', 'modelines', 'filebrowser']
+active-plugins=['spell', 'modelines', 'filebrowser', 'sort', 'docinfo']
 
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///home/ogal/Downloads'
+virtual-root='file:///tmp/mozilla_ogal0'
 
 [org/gnome/gedit/preferences/editor]
 wrap-last-split-mode='word'
@@ -325,7 +325,7 @@ use-theme-colors=false
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
-location-mode='path-bar'
+location-mode='filename-entry'
 show-hidden=false
 show-size-column=true
 show-type-column=true
