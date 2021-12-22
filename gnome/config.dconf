@@ -337,5 +337,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(2279, 135)
+window-position=(0, 27)
 window-size=(1203, 790)

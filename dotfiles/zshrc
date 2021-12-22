@@ -226,6 +226,11 @@ if ! $IS_REMOTE; then
   then
     fusuma --daemon
   fi
+
+  if ! pgrep autokey-gtk > /dev/null;
+  then
+    daemon --name="autokey" autokey-gtk
+  fi 
 fi
 
 # Must be at the end

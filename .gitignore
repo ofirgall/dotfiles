@@ -2,3 +2,5 @@ sublime-conf/Doxy.sublime-license
 old_dconf
 nvim-conf/plugged
 nvim-conf/.*
+autokey/My\ Phrases
+autokey/Sample\ Scripts
