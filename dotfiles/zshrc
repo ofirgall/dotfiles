@@ -142,6 +142,8 @@ alias venv='. ~/venv3/bin/activate'
 alias vim='nvim'
 alias vi='nvim'
 alias rvim='/usr/bin/vim'
+alias notify='notify-send -u critical -t 3000 done'
+alias notify-send='notify-send.sh -f'
 
 if $IS_REMOTE; then
   export EDITOR='nano'
@@ -215,6 +217,8 @@ if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files'
   export FZF_DEFAULT_OPTS='-m'
 fi
+
+source $HOME/.extra_utils
 
 # Daemons
 if ! $IS_REMOTE; then
