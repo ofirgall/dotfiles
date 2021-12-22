@@ -136,7 +136,7 @@
     // Jump to find result
     { "keys": ["f12"], "command": "prev_result", "context": 
         [{"key": "selector", "operator": "equal", "operand": "text.find-in-files" }]},
-    { "keys": ["enter"], "command": "prev_result", "context": 
+    { "keys": ["enter"], "command": "next_result", "context": 
         [{"key": "selector", "operator": "equal", "operand": "text.find-in-files" }]},        
 
     // Disable sort lines binds

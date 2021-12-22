@@ -462,11 +462,17 @@ bind -n M-Right select-pane -R
 bind -n M-Up select-pane -U
 bind -n M-Down select-pane -D
 
-# Resize pane with alt+arrow in prefix (ctrl+a/ctrl+b)
+# Resize pane with ctrl+arrow in prefix (ctrl+a/ctrl+b)
 bind -r -T prefix C-Left resize-pane -L 1
 bind -r -T prefix C-Down resize-pane -D 1
 bind -r -T prefix C-Up resize-pane -U 1
 bind -r -T prefix C-Right resize-pane -R 1
+
+# Swap panes with alt+arrow in prefix (ctrl+a/ctrl+b)
+bind -r -T prefix M-Left swap-pane -s \{left-of\}
+bind -r -T prefix M-Down swap-pane -s \{down-of\}
+bind -r -T prefix M-Up swap-pane -s \{up-of\}
+bind -r -T prefix M-Right swap-pane -s \{right-of\}
 
 # Override alt+up/down for copy-mode
 bind -T copy-mode M-Up select-pane -U
@@ -488,16 +494,16 @@ bind -n M-8 select-window -t :=8
 bind -n M-9 select-window -t :=9
 
 # Swap windows by ALT+SHIFT+N
-bind -n M-) swap-window -t :=10
-bind -n M-! swap-window -t :=1
-bind -n M-@ swap-window -t :=2
-bind -n M-'#' swap-window -t :=3
-bind -n M-'$' swap-window -t :=4
-bind -n M-% swap-window -t :=5
-bind -n M-^ swap-window -t :=6
-bind -n M-& swap-window -t :=7
-bind -n M-* swap-window -t :=8
-bind -n M-( swap-window -t :=9
+bind -n M-) swap-window -d -t :=10
+bind -n M-! swap-window -d -t :=1
+bind -n M-@ swap-window -d -t :=2
+bind -n M-'#' swap-window -d -t :=3
+bind -n M-'$' swap-window -d -t :=4
+bind -n M-% swap-window -d -t :=5
+bind -n M-^ swap-window -d -t :=6
+bind -n M-& swap-window -d -t :=7
+bind -n M-* swap-window -d -t :=8
+bind -n M-( swap-window -d -t :=9
 
 # Move between windows with ALT+PgUp/Down
 bind -n M-PPage select-window -p 

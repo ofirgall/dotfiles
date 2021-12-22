@@ -64,4 +64,7 @@
     { "key": "shift+space", "command": "editor.action.showHover", "when": "editorTextFocus"},
     // Quick fix
     { "key": "f4", "command": "editor.action.quickFix", "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly" },
+    
+    ////// Code Stream //////
+    { "key": "win+enter", "command": "codestream.newComment", "when": "codestream:status == 'signedIn'" }
 ]

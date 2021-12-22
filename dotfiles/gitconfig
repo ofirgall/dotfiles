@@ -7,7 +7,7 @@
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	update = !"f() { (git diff --exit-code > /dev/null && git fetch && git reset --hard @{u} && echo \"\\033[32mBranch Updated\\033[0m\") || (echo \"\\033[31mRepo is Dirty, Update canceled!\\033[0m\"); }; f"
 [core]
-	editor = nano
+	editor = vim
 [core]
 	excludesfile = ~/.gitignore_global
 [pull]

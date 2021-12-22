@@ -141,6 +141,7 @@ alias open='xdg-open'
 alias venv='. ~/venv3/bin/activate'
 alias vim='nvim'
 alias vi='nvim'
+alias rvim='/usr/bin/vim'
 
 if $IS_REMOTE; then
   export EDITOR='nano'

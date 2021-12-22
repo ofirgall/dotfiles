@@ -40,7 +40,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='bluetooth'
+last-panel='keyboard'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -82,7 +82,7 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk']
+application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams']
 show-banners=false
 
 [org/gnome/desktop/notifications/application/apport-gtk]
@@ -135,6 +135,9 @@ application-id='spotify_spotify.desktop'
 
 [org/gnome/desktop/notifications/application/sublime-text]
 application-id='sublime_text.desktop'
+
+[org/gnome/desktop/notifications/application/teams-teams]
+application-id='teams_teams.desktop'
 
 [org/gnome/desktop/notifications/application/update-manager]
 application-id='update-manager.desktop'
@@ -325,7 +328,7 @@ use-theme-colors=false
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
-location-mode='filename-entry'
+location-mode='path-bar'
 show-hidden=false
 show-size-column=true
 show-type-column=true
@@ -334,5 +337,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(166, 27)
+window-position=(2279, 135)
 window-size=(1203, 790)
