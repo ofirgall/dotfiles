@@ -218,7 +218,9 @@ if type rg &> /dev/null; then
   export FZF_DEFAULT_OPTS='-m'
 fi
 
-source $HOME/.extra_utils
+if test -f $HOME/.extra_utils; then
+	source $HOME/.extra_utils
+fi
 
 # Daemons
 if ! $IS_REMOTE; then
