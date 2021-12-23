@@ -27,6 +27,8 @@
         path: dotfiles_scripts
     ~/.config/nvim:
         path: nvim-conf
+    ~/.vimrc:
+        path: dotfiles/vimrc
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
