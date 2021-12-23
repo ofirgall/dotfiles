@@ -33,6 +33,9 @@ git clone https://github.com/ofir753/dotfiles.git && cd dotfiles && sudo echo a 
 
 Incase you are using windows terminal add `windows_terminal_binds.json` to your windows terminal
 
+### Install Fonts for Terminal Icons
+* [Normal](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete%20Mono.ttf)
+
 ---
 
 ## TODO:

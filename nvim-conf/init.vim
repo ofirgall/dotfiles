@@ -20,10 +20,11 @@ Plug 'romgrk/nvim-treesitter-context'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+" Status Line
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+
+" Misc
 Plug 'lambdalisue/suda.vim/'
 Plug 'jdhao/better-escape.vim'
 Plug 'tpope/vim-commentary'
@@ -36,7 +37,12 @@ call plug#end()
 syntax off
 
 lua << END
-require'lualine'.setup{options = {theme = 'gruvbox_dark'}}
+require'lualine'.setup {
+	options = {
+		theme = 'gruvbox_dark',
+		icons_enabled = true,
+	}
+}
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
@@ -96,3 +102,6 @@ monokai.setup {
 
 END
 
+" Bindings
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <C-f> <cmd>Telescope live_grep<cr>
