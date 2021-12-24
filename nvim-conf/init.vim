@@ -45,6 +45,10 @@ Plug 'kyazdani42/nvim-web-devicons' " Web icons (more plugins using this)
 Plug 'lewis6991/gitsigns.nvim' " Show git diff in the sidebar
 " TODO: Get more git feature (merge diff and stuff like this)
 
+" Wilder (command line)
+Plug 'gelguy/wilder.nvim', {'do': ':UpdateRemotePlugins'}
+Plug 'romgrk/fzy-lua-native'
+
 " Misc
 Plug 'lambdalisue/suda.vim' " Sudo write/read (SudaWrite/Read)
 Plug 'jdhao/better-escape.vim' " Escape insert mode fast (jk)
@@ -55,7 +59,7 @@ Plug 'ethanholz/nvim-lastplace' " Jump to last place file edited
 Plug 'ntpeters/vim-better-whitespace' " Whitespace trailing
 Plug 'Pocco81/AutoSave.nvim' " Auto save
 Plug 'rktjmp/highlight-current-n.nvim' " Highlight matches
-" TODO: reverse search in command mode (maybe wilder.nvim)
+
 " TODO: yank text from vim to os/tmux clipboard (tmux.nvim maybe)
 " TODO: motion
 " TODO: https://github.com/mizlan/iswap.nvim
@@ -233,3 +237,40 @@ nnoremap <C-n> <cmd>NvimTreeToggle<cr>
 " Set title of the file
 autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . fnamemodify(expand("%"), ":~:."))
 autocmd QuitPre * call system("tmux rename-window zsh")
+
+
+""""""" WILDER """"""""
+call wilder#setup({
+      \ 'modes': [':', '/', '?'],
+      \ 'next_key': '<Tab>',
+      \ 'previous_key': '<S-Tab>',
+      \ 'accept_key': '<Space>',
+      \ 'reject_key': '<BS>',
+      \ })
+
+call wilder#set_option('pipeline', [
+      \   wilder#branch(
+      \     wilder#cmdline_pipeline({
+      \       'fuzzy': 1,
+      \       'set_pcre2_pattern': has('nvim'),
+      \     }),
+      \     wilder#python_search_pipeline({
+      \       'pattern': 'fuzzy',
+      \     }),
+      \   ),
+      \ ])
+
+let s:highlighters = [
+        \ wilder#pcre2_highlighter(),
+        \ wilder#basic_highlighter(),
+        \ ]
+
+call wilder#set_option('renderer', wilder#renderer_mux({
+      \ ':': wilder#popupmenu_renderer({
+      \   'highlighter': s:highlighters,
+      \ }),
+      \ '/': wilder#wildmenu_renderer({
+      \   'highlighter': s:highlighters,
+      \ }),
+      \ }))
+
