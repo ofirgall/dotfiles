@@ -180,6 +180,10 @@ monokai.setup {
 			fg = '#e878d2',
 			style = 'none',
 		},
+		TSComment = {
+			fg = palette.base6,
+			style = 'none',
+		},
 		-- For yaml fields, changes field of python and cpp too :(
 		-- TSField = {
 		-- 	fg = palette.pink,
