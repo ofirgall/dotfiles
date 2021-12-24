@@ -43,6 +43,7 @@ Plug 'kyazdani42/nvim-web-devicons' " Web icons (more plugins using this)
 
 " Git
 Plug 'lewis6991/gitsigns.nvim' " Show git diff in the sidebar
+" TODO: Get more git feature (merge diff and stuff like this)
 
 " Misc
 Plug 'lambdalisue/suda.vim' " Sudo write/read (SudaWrite/Read)
@@ -54,11 +55,15 @@ Plug 'ethanholz/nvim-lastplace' " Jump to last place file edited
 Plug 'ntpeters/vim-better-whitespace' " Whitespace trailing
 Plug 'Pocco81/AutoSave.nvim' " Auto save
 Plug 'rktjmp/highlight-current-n.nvim' " Highlight matches
+" TODO: reverse search in command mode (maybe wilder.nvim)
 " TODO: yank text from vim to os/tmux clipboard (tmux.nvim maybe)
 " TODO: motion
 " TODO: https://github.com/mizlan/iswap.nvim
 " TODO: https://github.com/danielpieper/telescope-tmuxinator.nvim
 " TODO: https://github.com/AckslD/nvim-revJ.lua
+
+" Improvment Games
+Plug 'ThePrimeagen/vim-be-good'
 
 set encoding=UTF-8
 
@@ -135,15 +140,16 @@ local monokai = require('monokai')
 local palette = monokai.classic
 monokai.setup {
     palette = {
-		base2 = '#282923'
+		base2 = '#282923',
+		brown = '#d1ca86',
     },
     custom_hlgroups = {
 		TSFunction = {
-			fg = palette.green,
+			fg = palette.aqua,
 			style = 'none',
 		},
 		TSKeywordFunction = {
-			fg = palette.aqua,
+			fg = palette.green,
 			style = 'italic',
 		},
 		TSParameter = {
@@ -160,14 +166,31 @@ monokai.setup {
 		},
 		TSType = {
 			fg = palette.green,
-			style = 'none',
+			style = 'italic',
 		},
-		TSField = {
+		TSConstMacro = {
 			fg = palette.pink,
 			style = 'none',
 		},
-		Whitespace = {
-			fg = palette.grey,
+		TSAttribute = {
+			fg = palette.pink,
+			style = 'none',
+		},
+		TSConstant = {
+			fg = '#e878d2',
+			style = 'none',
+		},
+		-- For yaml fields, changes field of python and cpp too :(
+		-- TSField = {
+		-- 	fg = palette.pink,
+		-- 	style = 'none',
+		-- },
+		Whitespace = { -- Indent lines
+			fg = palette.base4,
+			style = 'none',
+		},
+		TSCall = {
+			fg = palette.pink,
 			style = 'none',
 		},
     }
@@ -175,6 +198,7 @@ monokai.setup {
 
 require("indent_blankline").setup {
 	indent_blankline_use_treesitter = true,
+	show_trailing_blankline_indent = false,
 }
 
 END
