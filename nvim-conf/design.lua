@@ -1,5 +1,3 @@
--- TODO: highlight line & better color for line number
--- TODO: design vim-illuminate (LspReferenceText, LspReferenceRead, LspReferenceWrite)
 require'lualine'.setup {
 	options = {
 		theme = 'gruvbox_dark',
@@ -68,7 +66,23 @@ monokai.setup {
 			fg = palette.pink,
 			style = 'none',
 		},
-    }
+		LineNr = {
+			bg = '#282923',
+			fg = palette.orange,
+		},
+		CursorLine = {
+			bg = palette.base3,
+		},
+		LspReferenceText = {
+			bg = palette.base4,
+		},
+		LspReferenceRead = {
+			bg = palette.base4,
+		},
+		LspReferenceWrite = {
+			bg = palette.base4,
+		},
+	}
 }
 
 require("indent_blankline").setup {

@@ -5,6 +5,9 @@
 :set softtabstop=4
 :set number
 :set relativenumber
-
+:set cursorline
+nnoremap n njzz
+noremap N Nkzz
+nmap Q <nop>
 autocmd InsertEnter * let @/=''
-
+nnoremap <CR> i<Escape>l

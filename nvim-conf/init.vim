@@ -7,10 +7,16 @@
 :set shiftwidth=4
 :set smarttab
 :set softtabstop=4
+:set cursorline
+nnoremap n jzzn
+noremap N kzzN
+nmap Q <nop>
+autocmd InsertEnter * let @/=''
+nnoremap <CR> i<Escape>l
 
 " from now on only local settings
 :set noswapfile
-:set winaltkeys=no
+:set clipboard=unnamedplus
 
 call plug#begin()
 " https://github.com/rockerBOO/awesome-neovim
@@ -26,7 +32,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'dcampos/nvim-snippy'
 Plug 'dcampos/cmp-snippy'
- 
+
 Plug 'tami5/lspsaga.nvim' " Sweet ui for rename + code action and hover doc
 Plug 'RRethy/vim-illuminate' " Mark word on cursor
 
@@ -64,10 +70,8 @@ Plug 'kyazdani42/nvim-tree.lua' " File explorer
 Plug 'ethanholz/nvim-lastplace' " Jump to last place file edited
 Plug 'ntpeters/vim-better-whitespace' " Whitespace trailing
 Plug 'Pocco81/AutoSave.nvim' " Auto save
-Plug 'rktjmp/highlight-current-n.nvim' " Highlight matches
 
 " TODO: tabline?
-" TODO: yank text from vim to os/tmux clipboard (tmux.nvim maybe)
 " TODO: motion
 " TODO: https://github.com/mizlan/iswap.nvim
 " TODO: https://github.com/danielpieper/telescope-tmuxinator.nvim
@@ -118,20 +122,8 @@ require('telescope').setup{
     }
   },
   pickers = {
-    -- Default configuration for builtin pickers goes here:
-    -- picker_name = {
-    --   picker_config_key = value,
-    --   ...
-    -- }
-    -- Now the picker_config_key will be applied every time you call this
-    -- builtin picker
   },
   extensions = {
-    -- Your extension configuration goes here:
-    -- extension_name = {
-    --   extension_config_key = value,
-    -- }
-    -- please take a look at the readme of the extension you want to configure
   }
 }
 
@@ -151,37 +143,18 @@ require('nvim-autopairs').setup{
 require'nvim-lastplace'.setup{
 }
 
-require'highlight_current_n'.setup{
-  highlight_group = "IncSearch" -- highlight group name to use for highlight
-}
-
 require('autosave').setup{
 	clean_command_line_interval = 1000
 }
 
 END
 
-"""" Hightlight search """"
-nmap n <Plug>(highlight-current-n-n)
-nmap N <Plug>(highlight-current-n-N)
-
-augroup ClearSearchHL
-  autocmd!
-  " You may only want to see hlsearch /while/ searching, you can automatically
-  " toggle hlsearch with the following autocommands
-  autocmd CmdlineEnter /,\? set hlsearch
-  autocmd CmdlineLeave /,\? set nohlsearch
-  " this will apply similar n|N highlighting to the first search result
-  " careful with escaping ? in lua, you may need \\?
-  autocmd CmdlineLeave /,\? lua require('highlight_current_n')['/,?']()
-augroup END
-
 " Bindings
 " Default bindings https://hea-www.harvard.edu/~fine/Tech/vi.html
 nnoremap <C-l> <cmd>Telescope find_files<cr>
 nnoremap <C-k> <cmd>Telescope live_grep<cr>
 nnoremap <C-a> <cmd>Telescope buffers<cr>
-nnoremap <C-m> <cmd>NvimTreeToggle<cr>
+nnoremap <C-w> <cmd>NvimTreeToggle<cr>
 
 """"""" Tmux integration """"""""
 " Set title of the file
