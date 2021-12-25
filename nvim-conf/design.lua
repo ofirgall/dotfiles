@@ -1,3 +1,5 @@
+-- TODO: highlight line & better color for line number
+-- TODO: design vim-illuminate (LspReferenceText, LspReferenceRead, LspReferenceWrite)
 require'lualine'.setup {
 	options = {
 		theme = 'gruvbox_dark',

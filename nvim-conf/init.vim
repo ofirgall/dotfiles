@@ -8,22 +8,27 @@
 :set smarttab
 :set softtabstop=4
 
+" from now on only local settings
 :set noswapfile
+:set winaltkeys=no
 
 call plug#begin()
 " https://github.com/rockerBOO/awesome-neovim
 
-" LSP
-" TODO: refrence (telescope)
-" TODO: rename
-" TODO: Find all References
-" TODO: Warnings and etc.
-" TODO: formatter
-" TODO: https://github.com/RRethy/vim-illuminate
+"""" LSP """"
+Plug 'neovim/nvim-lspconfig'
 
-" Snippets
-Plug 'dcampos/nvim-snippy' " Snippet framework supports LSP
-Plug 'honza/vim-snippets' " Snippets for the framework (if LSP not installed)
+" Complete engine
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+"Plug 'hrsh7th/cmp-cmdline' " TODO: need if its better tha wilder
+Plug 'hrsh7th/nvim-cmp'
+Plug 'dcampos/nvim-snippy'
+Plug 'dcampos/cmp-snippy'
+ 
+Plug 'tami5/lspsaga.nvim' " Sweet ui for rename + code action and hover doc
+Plug 'RRethy/vim-illuminate' " Mark word on cursor
 
 " TreeSitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -50,6 +55,7 @@ Plug 'gelguy/wilder.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'romgrk/fzy-lua-native'
 
 " Misc
+Plug 'machakann/vim-sandwich' " Sandwich text (sa action)
 Plug 'lambdalisue/suda.vim' " Sudo write/read (SudaWrite/Read)
 Plug 'jdhao/better-escape.vim' " Escape insert mode fast (jk)
 Plug 'windwp/nvim-autopairs' " Closes ("' etc.
@@ -77,24 +83,11 @@ call plug#end()
 syntax off " For TreeSitter Syntax
 
 luafile $HOME/.config/nvim/design.lua
+luafile $HOME/.config/nvim/lsp.lua
 source $HOME/.config/nvim/wilder.vim
 
-
 lua << END
----------------- TREE SITTER + LSP ----------------
-local snippy = require("snippy")
-snippy.setup({
-    mappings = {
-        is = {
-            ["<Tab>"] = "expand_or_advance",
-            ["<S-Tab>"] = "previous",
-        },
-        nx = {
-            ["<leader>x"] = "cut_text",
-        },
-    },
-})
-
+---------------- TREE SITTER ---------------
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
   sync_install = false,
@@ -111,6 +104,35 @@ require'treesitter-context'.setup{
     enable = true,
     throttle = true,
     max_lines = 0,
+}
+
+---------------- Telescope ----------------
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-h>"] = "which_key",
+        ["<C-j>"] = "move_selection_next",
+        ["<C-k>"] = "move_selection_previous",
+      }
+    }
+  },
+  pickers = {
+    -- Default configuration for builtin pickers goes here:
+    -- picker_name = {
+    --   picker_config_key = value,
+    --   ...
+    -- }
+    -- Now the picker_config_key will be applied every time you call this
+    -- builtin picker
+  },
+  extensions = {
+    -- Your extension configuration goes here:
+    -- extension_name = {
+    --   extension_config_key = value,
+    -- }
+    -- please take a look at the readme of the extension you want to configure
+  }
 }
 
 ---------------- MISC ----------------
@@ -159,7 +181,7 @@ augroup END
 nnoremap <C-l> <cmd>Telescope find_files<cr>
 nnoremap <C-k> <cmd>Telescope live_grep<cr>
 nnoremap <C-a> <cmd>Telescope buffers<cr>
-nnoremap <C-n> <cmd>NvimTreeToggle<cr>
+nnoremap <C-m> <cmd>NvimTreeToggle<cr>
 
 """"""" Tmux integration """"""""
 " Set title of the file

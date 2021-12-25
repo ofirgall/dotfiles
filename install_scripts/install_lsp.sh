@@ -19,6 +19,7 @@ sudo npm install -g pyright
 
 # vim-language
 sudo npm install -g vim-language-server
+sudo npm install -g bash-language-server
 
 # Rustup + RLS + rust-analyzer
 if ! command -v rustup &> /dev/null
