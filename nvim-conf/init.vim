@@ -70,8 +70,8 @@ Plug 'kyazdani42/nvim-tree.lua' " File explorer
 Plug 'ethanholz/nvim-lastplace' " Jump to last place file edited
 Plug 'ntpeters/vim-better-whitespace' " Whitespace trailing
 Plug 'Pocco81/AutoSave.nvim' " Auto save
+Plug 'romgrk/barbar.nvim'
 
-" TODO: tabline?
 " TODO: motion
 " TODO: https://github.com/mizlan/iswap.nvim
 " TODO: https://github.com/danielpieper/telescope-tmuxinator.nvim
@@ -155,6 +155,8 @@ nnoremap <C-l> <cmd>Telescope find_files<cr>
 nnoremap <C-k> <cmd>Telescope live_grep<cr>
 nnoremap <C-a> <cmd>Telescope buffers<cr>
 nnoremap <C-w> <cmd>NvimTreeToggle<cr>
+nnoremap <silent> <C-s>    :BufferPick<CR>
+nnoremap <silent> Q :BufferClose<CR>
 
 """"""" Tmux integration """"""""
 " Set title of the file
