@@ -28,7 +28,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
-"Plug 'hrsh7th/cmp-cmdline' " TODO: need if its better tha wilder
+Plug 'hrsh7th/cmp-cmdline' " TODO: need if its better tha wilder
 Plug 'hrsh7th/nvim-cmp'
 Plug 'dcampos/nvim-snippy'
 Plug 'dcampos/cmp-snippy'
@@ -88,7 +88,7 @@ syntax off " For TreeSitter Syntax
 
 luafile $HOME/.config/nvim/design.lua
 luafile $HOME/.config/nvim/lsp.lua
-source $HOME/.config/nvim/wilder.vim
+" source $HOME/.config/nvim/wilder.vim
 
 lua << END
 ---------------- TREE SITTER ---------------
