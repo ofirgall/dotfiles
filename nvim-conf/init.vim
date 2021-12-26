@@ -151,7 +151,7 @@ END
 nnoremap <C-l> <cmd>Telescope find_files<cr>
 nnoremap <C-k><C-k> <cmd>Telescope live_grep<cr>
 nnoremap <C-k><C-d> <cmd>Telescope grep_string<CR>
-nnoremap <C-w> <cmd>Telescope file_browser<CR>
+nnoremap <C-m> <cmd>Telescope file_browser<CR>
 nnoremap <C-s> <cmd>Telescope buffers<CR>
 nnoremap <C-a> <cmd>Telescope oldfiles<CR>
 nnoremap <C-x> <cmd>Telescope command_history<CR>

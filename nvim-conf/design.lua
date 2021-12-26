@@ -1,6 +1,6 @@
 require'lualine'.setup {
 	options = {
-		theme = 'gruvbox_dark',
+		theme = 'modus-vivendi',
 		icons_enabled = true,
 	}
 }

@@ -142,20 +142,16 @@ alias venv='. ~/venv3/bin/activate'
 alias notify='notify-send -u critical -t 3000 done'
 alias notify-send='notify-send.sh -f'
 
+export EDITOR='vim'
 if type nvim &> /dev/null; then
 	alias vim='nvim'
 	alias vi='nvim'
 	alias rvim='/usr/bin/vim'
+	export EDITOR='nvim'
 fi
 
 # Binds
 bindkey "\C-r" history-incremental-pattern-search-backward
-
-if $IS_REMOTE; then
-  export EDITOR='vim'
-else
-  export EDITOR='subl --wait'
-fi
 
 autoload -U compinit && compinit
 
