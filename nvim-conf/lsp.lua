@@ -3,20 +3,33 @@ local map = vim.api.nvim_set_keymap
 -- Update capabilities to autocomplete
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+local lsp_signature_cfg = {
+	bind = true,
+	use_lspsaga = true,
+}
+
+local lsp_on_attach = function(client)
+	require 'illuminate'.on_attach(client)
+	require "lsp_signature".on_attach(lsp_signature_cfg)
+end,
+
+require "lsp_signature".setup({lsp_signature_cfg})
+
 -- vim.lsp.set_log_level("debug")
 require'lspconfig'.pyright.setup{
+	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
 require'lspconfig'.rust_analyzer.setup{
+	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
 require'lspconfig'.bashls.setup{
+	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
 require'lspconfig'.clangd.setup{
-	on_attach = function(client)
-      require 'illuminate'.on_attach(client)
-    end,
+	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 	cmd = { "clangd", "--background-index", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"},
 }
@@ -35,7 +48,7 @@ snippy.setup({
 })
 
 local cmp = require'cmp'
-
+local lspkind = require('lspkind')
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -54,6 +67,15 @@ cmp.setup({
 			c = cmp.mapping.close(),
 		}),
 		['<CR>'] = cmp.mapping.confirm({ select = true }),
+	},
+	formatting = {
+		format = lspkind.cmp_format({
+			with_text = false,
+			maxwidth = 50,
+			before = function (entry, vim_item)
+				return vim_item
+			end
+		})
 	},
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
@@ -104,7 +126,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 local lspsaga = require 'lspsaga'
 lspsaga.setup {}
 
-map("n", "<F2>", "<cmd>Lspsaga rename<cr>", {silent = true, noremap = true}) 
+map("n", "<F2>", "<cmd>Lspsaga rename<cr>", {silent = true, noremap = true})
 map("n", "<F4>", "<cmd>Lspsaga code_action<cr>", {silent = true, noremap = true})
 map("n", "gx", "<cmd>Lspsaga code_action<cr>", {silent = true, noremap = true})
 map("x", "gx", ":<c-u>Lspsaga range_code_action<cr>", {silent = true, noremap = true})
