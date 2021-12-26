@@ -6,6 +6,7 @@
 :set number
 :set relativenumber
 :set cursorline
+:set ignorecase
 nnoremap n njzz
 noremap N Nkzz
 nmap Q <nop>

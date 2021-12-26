@@ -493,6 +493,17 @@ bind -n M-7 select-window -t :=7
 bind -n M-8 select-window -t :=8
 bind -n M-9 select-window -t :=9
 
+bind -T copy-mode M-0 select-window -t :=10
+bind -T copy-mode M-1 select-window -t :=1
+bind -T copy-mode M-2 select-window -t :=2
+bind -T copy-mode M-3 select-window -t :=3
+bind -T copy-mode M-4 select-window -t :=4
+bind -T copy-mode M-5 select-window -t :=5
+bind -T copy-mode M-6 select-window -t :=6
+bind -T copy-mode M-7 select-window -t :=7
+bind -T copy-mode M-8 select-window -t :=8
+bind -T copy-mode M-9 select-window -t :=9
+
 # Swap windows by ALT+SHIFT+N
 bind -n M-) swap-window -d -t :=10
 bind -n M-! swap-window -d -t :=1
@@ -506,8 +517,11 @@ bind -n M-* swap-window -d -t :=8
 bind -n M-( swap-window -d -t :=9
 
 # Move between windows with ALT+PgUp/Down
-bind -n M-PPage select-window -p 
+bind -n M-PPage select-window -p
 bind -n M-NPage select-window -n
+
+bind -T copy-mode M-PPage select-window -p
+bind -T copy-mode M-NPage select-window -n
 
 # Copy mode with ALT+C
 bind -n M-c copy-mode

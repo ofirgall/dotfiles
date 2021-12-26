@@ -8,6 +8,7 @@
 :set smarttab
 :set softtabstop=4
 :set cursorline
+:set ignorecase
 nnoremap n jzzn
 noremap N kzzN
 nmap Q <nop>

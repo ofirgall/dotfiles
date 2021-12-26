@@ -70,6 +70,10 @@ monokai.setup {
 			bg = '#282923',
 			fg = palette.orange,
 		},
+		CursorLineNr = {
+			bg = palette.base3,
+			fg = palette.yellow,
+		},
 		CursorLine = {
 			bg = palette.base3,
 		},
