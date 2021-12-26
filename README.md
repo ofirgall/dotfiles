@@ -39,7 +39,9 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO:
+* tmux - switch windows while in copy mode
 * tmux - make a valid fix for suspend/resume copy like copycat mode
+* java language server 
 
 ---
 

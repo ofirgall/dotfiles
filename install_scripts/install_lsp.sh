@@ -31,3 +31,6 @@ rustup update
 rustup component add rls rust-analysis rust-src
 rustup +nightly component add rust-analyzer-preview
 ln -s $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer $HOME/.local/bin/rust-analyzer
+
+# Java :(
+sudo apt install -y maven default-jdk

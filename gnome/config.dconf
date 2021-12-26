@@ -72,7 +72,7 @@ secondary-color='#000000'
 [org/gnome/desktop/input-sources]
 mru-sources=[('xkb', 'us'), ('xkb', 'il')]
 sources=[('xkb', 'us'), ('xkb', 'il')]
-xkb-options=['grp_led:scroll', 'grp:alt_space_toggle']
+xkb-options=['grp_led:scroll', 'grp:shifts_toggle']
 
 [org/gnome/desktop/interface]
 enable-animations=true
@@ -290,7 +290,7 @@ hinting='slight'
 command-history=['', 'r']
 disabled-extensions=['hidetopbar@mathieu.bidon.ca']
 enabled-extensions=['wsmatrix@martin.zurowietz.de', 'disable-gestures-2021@verycrazydog.gmail.com', 'switchtwolayouts@qtmax.dev']
-favorite-apps=['firefox.desktop', 'code.desktop', 'com.alacritty.Alacritty.desktop', 'slack_slack.desktop', 'spotify_spotify.desktop', 'org.gnome.Nautilus.desktop', 'com.cisco.anyconnect.gui.desktop']
+favorite-apps=['firefox.desktop', 'com.alacritty.Alacritty.desktop', 'spotify_spotify.desktop', 'slack_slack.desktop', 'org.gnome.Nautilus.desktop', 'com.cisco.anyconnect.gui.desktop']
 had-bluetooth-devices-setup=true
 
 [org/gnome/shell/extensions/dash-to-dock]
@@ -347,5 +347,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(166, 27)
+window-position=(359, 135)
 window-size=(1203, 790)

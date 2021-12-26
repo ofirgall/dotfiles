@@ -66,11 +66,10 @@ Plug 'lambdalisue/suda.vim' " Sudo write/read (SudaWrite/Read)
 Plug 'jdhao/better-escape.vim' " Escape insert mode fast (jk)
 Plug 'windwp/nvim-autopairs' " Closes ("' etc.
 Plug 'ellisonleao/glow.nvim' " Markdown preview
-Plug 'kyazdani42/nvim-tree.lua' " File explorer
 Plug 'ethanholz/nvim-lastplace' " Jump to last place file edited
 Plug 'ntpeters/vim-better-whitespace' " Whitespace trailing
 Plug 'Pocco81/AutoSave.nvim' " Auto save
-Plug 'romgrk/barbar.nvim'
+Plug 'romgrk/barbar.nvim' " Tabline
 
 " TODO: motion
 " TODO: https://github.com/mizlan/iswap.nvim
@@ -128,9 +127,6 @@ require('telescope').setup{
 }
 
 ---------------- MISC ----------------
-require'nvim-tree'.setup {
-}
-
 require('gitsigns').setup{
 }
 
@@ -152,14 +148,27 @@ END
 " Bindings
 " Default bindings https://hea-www.harvard.edu/~fine/Tech/vi.html
 nnoremap <C-l> <cmd>Telescope find_files<cr>
-nnoremap <C-k> <cmd>Telescope live_grep<cr>
-nnoremap <C-a> <cmd>Telescope buffers<cr>
-nnoremap <C-w> <cmd>NvimTreeToggle<cr>
-nnoremap <silent> <C-s>    :BufferPick<CR>
-nnoremap <silent> Q :BufferClose<CR>
+nnoremap <C-k><C-k> <cmd>Telescope live_grep<cr>
+nnoremap <C-k><C-d> <cmd>Telescope grep_string<CR>
+nnoremap <C-w> <cmd>Telescope file_browser<CR>
+nnoremap <C-s> <cmd>Telescope buffers<CR>
+nnoremap <C-a> <cmd>Telescope oldfiles<CR>
+nnoremap <C-x> <cmd>Telescope command_history<CR>
+nnoremap <leader>gs <cmd>Telescope git_status<CR>
+nnoremap <leader>gc <cmd>Telescope git_branches<CR>
+nnoremap <leader>gh <cmd>Telescope git_bcommits<CR>
+" Tabline binds
+nnoremap <silent> <A-s> <cmd>BufferPick<CR>
+nnoremap <silent> Q <cmd>BufferClose<CR>
+nnoremap <silent> <A-q> <cmd>BufferClose<CR>
+nnoremap <silent> <A-,> <cmd>BufferPrevious<CR>
+nnoremap <silent> <A-.> <cmd>BufferNext<CR>
+nnoremap <silent> <A-<> <cmd>BufferMovePrevious<CR>
+nnoremap <silent> <A->> <cmd>BufferMoveNext<CR>
 
 """"""" Tmux integration """"""""
 " Set title of the file
-autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . fnamemodify(expand("%"), ":~:."))
+" autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . fnamemodify(expand("%"), ":~:."))
+autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window nvim")
 autocmd QuitPre * call system("tmux rename-window zsh")
 
