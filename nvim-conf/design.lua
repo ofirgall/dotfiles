@@ -2,7 +2,8 @@ require'lualine'.setup {
 	options = {
 		theme = 'modus-vivendi',
 		icons_enabled = true,
-	}
+	},
+	sections = {lualine_c = {require('auto-session-library').current_session_name}}
 }
 
 local monokai = require('monokai')

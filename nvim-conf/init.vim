@@ -17,7 +17,6 @@ nnoremap <CR> i<Escape>l
 
 " from now on only local settings
 :set noswapfile
-:set clipboard=unnamedplus
 
 call plug#begin()
 " https://github.com/rockerBOO/awesome-neovim
@@ -71,6 +70,7 @@ Plug 'ethanholz/nvim-lastplace' " Jump to last place file edited
 Plug 'ntpeters/vim-better-whitespace' " Whitespace trailing
 Plug 'Pocco81/AutoSave.nvim' " Auto save
 Plug 'romgrk/barbar.nvim' " Tabline
+Plug 'rmagatti/auto-session' " Session Manager
 
 " TODO: motion
 " TODO: https://github.com/mizlan/iswap.nvim
@@ -144,6 +144,10 @@ require('autosave').setup{
 	clean_command_line_interval = 1000
 }
 
+require('auto-session').setup {
+    auto_session_enable_last_session=false,
+}
+
 END
 
 " Bindings
@@ -169,7 +173,6 @@ nnoremap <silent> <A->> <cmd>BufferMoveNext<CR>
 
 """"""" Tmux integration """"""""
 " Set title of the file
-" autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . fnamemodify(expand("%"), ":~:."))
-autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window nvim")
+autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window nv:" . fnamemodify(getcwd(), ":~:."))
 autocmd QuitPre * call system("tmux rename-window zsh")
 
