@@ -10,9 +10,9 @@
 :set cursorline
 :set ignorecase
 nnoremap n jzzn
-noremap N kzzN
+nnoremap N kzzN
 nmap Q <nop>
-autocmd InsertEnter * let @/=''
+autocmd InsertEnter * let @/ = "not_gonna_find_this_______"
 nnoremap <CR> i<Escape>l
 
 " from now on only local settings
