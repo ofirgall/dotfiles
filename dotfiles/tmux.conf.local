@@ -431,9 +431,8 @@ bind C-Enter send-prefix -2
 # Unbinding C-a to fix home key (was prefix2 before)
 unbind C-a
 
-
-# Using xterm colors instead
-set -g default-terminal "xterm-256color"
+# Using xterm on local and screen on remote
+if-shell -b 'test -f "$HOME/.remote_indicator"' 'set -g default-terminal "screen-256color"' 'set -g default-terminal "xterm-256color"'
 # Fix end/home for xterm-256color
 bind -n End send-key C-e
 bind -n Home send-key C-a
