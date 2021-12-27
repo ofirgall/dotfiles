@@ -39,7 +39,9 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO:
+* tmux - learn copy-mode-vi
 * nvim - Fixed issue with backspace
+* nvim - Visual selection color need to be more clear
 * nvim - Multicursors
 * tmux - make a valid fix for suspend/resume copy like copycat mode
 * java language server 
