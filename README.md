@@ -39,6 +39,8 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO:
+* nvim - Fixed issue with backspace
+* nvim - Multicursors
 * tmux - make a valid fix for suspend/resume copy like copycat mode
 * java language server 
 

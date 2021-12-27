@@ -9,10 +9,10 @@
 :set softtabstop=4
 :set cursorline
 :set ignorecase
-nnoremap n jzzn
-nnoremap N kzzN
+nnoremap <silent> n jzzn
+nnoremap <silent> N kzzN
 nmap Q <nop>
-autocmd InsertEnter * let @/ = "not_gonna_find_this_______"
+nnoremap <F3> <cmd>let @/ = "not_gonna_find_this_______"<cr>
 nnoremap <CR> i<Escape>l
 
 " from now on only local settings

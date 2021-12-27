@@ -1,8 +1,8 @@
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=8
-launch-time=int64 1639928001
+launch-count=9
+launch-time=int64 1640599800
 show-details=true
 window-height=615
 window-width=593
@@ -149,7 +149,7 @@ application-id='vlc_vlc.desktop'
 application-id='Zoom.desktop'
 
 [org/gnome/desktop/peripherals/keyboard]
-numlock-state=false
+numlock-state=true
 
 [org/gnome/desktop/peripherals/mouse]
 accel-profile='flat'
@@ -183,12 +183,16 @@ use-background-color=true
 migrated=true
 network-monitor-gio-name=''
 
+[org/gnome/file-roller/dialogs/extract]
+recreate-folders=true
+skip-newer=false
+
 [org/gnome/file-roller/listing]
 list-mode='as-folder'
 name-column-width=250
 show-path=false
 sort-method='name'
-sort-type='ascending'
+sort-type='descending'
 
 [org/gnome/file-roller/ui]
 sidebar-width=200
@@ -347,5 +351,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(359, 135)
+window-position=(0, 27)
 window-size=(1203, 790)

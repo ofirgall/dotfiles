@@ -1,4 +1,5 @@
 *.sublime-workspace
 *.sublime-project
 *compile_commands.json
+*compile_flags.txt
 *.swp
