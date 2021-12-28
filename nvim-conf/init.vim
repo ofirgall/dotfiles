@@ -33,6 +33,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'dcampos/nvim-snippy'
 Plug 'dcampos/cmp-snippy'
 
+Plug 'honza/vim-snippets' " Default snippets
 Plug 'tami5/lspsaga.nvim' " Sweet ui for rename + code action and hover doc
 Plug 'RRethy/vim-illuminate' " Mark word on cursor
 Plug 'ray-x/lsp_signature.nvim' " Signature hint while typing
@@ -157,7 +158,7 @@ END
 nnoremap <C-l> <cmd>Telescope find_files<cr>
 nnoremap <C-k><C-k> <cmd>Telescope live_grep<cr>
 nnoremap <C-k><C-d> <cmd>Telescope grep_string<CR>
-nnoremap <C-m> <cmd>Telescope file_browser<CR>
+nnoremap <C-m> <cmd>lua require('telescope.builtin').file_browser({cwd = vim.fn.expand("%:p:h")})<cr>
 nnoremap <C-s> <cmd>Telescope buffers<CR>
 nnoremap <C-a> <cmd>Telescope oldfiles<CR>
 nnoremap <C-x> <cmd>Telescope command_history<CR>

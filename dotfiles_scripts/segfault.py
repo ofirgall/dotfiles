@@ -59,7 +59,7 @@ def main():
     parser = argparse.ArgumentParser()
     segfault_line = ' '.join(parser.parse_known_args()[1])
 
-    res = re.match('.+segfault at (.+?) ip (.+?) sp (.+?) error (.+?) in (.+?)\[(.+?)\+', segfault_line, flags=re.DOTALL)
+    res = re.match('.?segfault at (.+?) ip (.+?) sp (.+?) error (.+?) in (.+?)\[(.+?)\+', segfault_line, flags=re.DOTALL)
     # print(res.groups())
     access_addr, ip, sp, error, lib, lib_load_addr = res.groups()
     access_addr = int(access_addr, 16)
