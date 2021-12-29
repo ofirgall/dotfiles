@@ -2,8 +2,12 @@ require'lualine'.setup {
 	options = {
 		theme = 'modus-vivendi',
 		icons_enabled = true,
+		path = 1,
 	},
-	sections = {lualine_c = {require('auto-session-library').current_session_name}}
+	sections = {
+		lualine_c = {require('auto-session-library').current_session_name, 'filename'},
+		lualine_y = {'hostname', 'progress'},
+	}
 }
 
 local monokai = require('monokai')
@@ -79,13 +83,13 @@ monokai.setup {
 			bg = palette.base3,
 		},
 		LspReferenceText = {
-			bg = palette.base4,
+			bg = palette.base5,
 		},
 		LspReferenceRead = {
-			bg = palette.base4,
+			bg = palette.base5,
 		},
 		LspReferenceWrite = {
-			bg = palette.base4,
+			bg = palette.base5,
 		},
 	}
 }

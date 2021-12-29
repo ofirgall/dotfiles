@@ -40,7 +40,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='bluetooth'
+last-panel='wifi'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -252,6 +252,10 @@ initial-size=(890, 550)
 maximized=false
 sidebar-width=189
 
+[org/gnome/nm-applet/eap/15778557-7790-4357-a1da-72b382d405ce]
+ignore-ca-cert=true
+ignore-phase2-ca-cert=false
+
 [org/gnome/nm-applet/eap/e989b2d6-eb53-45e0-8de3-aab71c646c59]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
@@ -351,5 +355,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(0, 27)
+window-position=(359, 135)
 window-size=(1203, 790)

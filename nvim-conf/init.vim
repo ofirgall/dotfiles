@@ -14,6 +14,8 @@ nnoremap <silent> N kzzN
 nmap Q <nop>
 nnoremap <F3> <cmd>let @/ = "not_gonna_find_this_______"<cr>
 nnoremap <CR> i<Escape>l
+nnoremap <C-o> <C-o>zz
+nnoremap <C-i> <C-i>zz
 
 " from now on only local settings
 :set noswapfile
@@ -74,6 +76,7 @@ Plug 'ntpeters/vim-better-whitespace' " Whitespace trailing
 Plug 'Pocco81/AutoSave.nvim' " Auto save
 Plug 'romgrk/barbar.nvim' " Tabline
 Plug 'rmagatti/auto-session' " Session Manager
+Plug 'mg979/vim-visual-multi' " Multi cursors
 
 " TODO: motion
 " TODO: https://github.com/mizlan/iswap.nvim
