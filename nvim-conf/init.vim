@@ -76,7 +76,6 @@ Plug 'lambdalisue/suda.vim' " Sudo write/read (SudaWrite/Read)
 Plug 'jdhao/better-escape.vim' " Escape insert mode fast (jk)
 Plug 'windwp/nvim-autopairs' " Closes ("' etc.
 Plug 'ellisonleao/glow.nvim' " Markdown preview
-Plug 'ethanholz/nvim-lastplace' " Jump to last place file edited
 Plug 'ntpeters/vim-better-whitespace' " Whitespace trailing
 Plug 'Pocco81/AutoSave.nvim' " Auto save
 Plug 'romgrk/barbar.nvim' " Tabline
@@ -99,6 +98,7 @@ call plug#end()
 
 luafile $HOME/.config/nvim/design.lua
 luafile $HOME/.config/nvim/lsp.lua
+luafile $HOME/.config/nvim/telescope.lua
 " source $HOME/.config/nvim/wilder.vim
 
 lua << END
@@ -121,31 +121,6 @@ require'treesitter-context'.setup{
     max_lines = 0,
 }
 
----------------- Telescope ----------------
-require('telescope').setup{
-  defaults = {
-    mappings = {
-      i = {
-        ["<C-h>"] = "which_key",
-        ["<C-j>"] = "move_selection_next",
-        ["<C-k>"] = "move_selection_previous",
-      }
-    },
-	layout_config = {
-		horizontal = {
-			-- prompt_position = 'top'
-			width = 0.99,
-			preview_width = 0.5,
-			height = 0.99
-		}
-	}
-  },
-  pickers = {
-  },
-  extensions = {
-  }
-}
-
 ---------------- MISC ----------------
 require('gitsigns').setup{
 }
@@ -154,9 +129,6 @@ require('Comment').setup{
 }
 
 require('nvim-autopairs').setup{
-}
-
-require'nvim-lastplace'.setup{
 }
 
 require('autosave').setup{
@@ -190,6 +162,16 @@ nnoremap <silent> <A-,> <cmd>BufferPrevious<CR>
 nnoremap <silent> <A-.> <cmd>BufferNext<CR>
 nnoremap <silent> <A-<> <cmd>BufferMovePrevious<CR>
 nnoremap <silent> <A->> <cmd>BufferMoveNext<CR>
+nnoremap <silent> g1 <cmd>BufferGoto 1<CR>
+nnoremap <silent> g2 <cmd>BufferGoto 2<CR>
+nnoremap <silent> g3 <cmd>BufferGoto 3<CR>
+nnoremap <silent> g4 <cmd>BufferGoto 4<CR>
+nnoremap <silent> g5 <cmd>BufferGoto 5<CR>
+nnoremap <silent> g6 <cmd>BufferGoto 6<CR>
+nnoremap <silent> g7 <cmd>BufferGoto 7<CR>
+nnoremap <silent> g8 <cmd>BufferGoto 8<CR>
+nnoremap <silent> g9 <cmd>BufferGoto 9<CR>
+nnoremap <silent> g0 <cmd>BufferLast<CR>
 
 """"""" Tmux integration """"""""
 " Set title of the file
