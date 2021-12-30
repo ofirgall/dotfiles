@@ -130,7 +130,15 @@ require('telescope').setup{
         ["<C-j>"] = "move_selection_next",
         ["<C-k>"] = "move_selection_previous",
       }
-    }
+    },
+	layout_config = {
+		horizontal = {
+			-- prompt_position = 'top'
+			width = 0.99,
+			preview_width = 0.5,
+			height = 0.99
+		}
+	}
   },
   pickers = {
   },
@@ -173,6 +181,7 @@ nnoremap <C-x> <cmd>Telescope command_history<CR>
 nnoremap <leader>gs <cmd>Telescope git_status<CR>
 nnoremap <leader>gc <cmd>Telescope git_branches<CR>
 nnoremap <leader>gh <cmd>Telescope git_bcommits<CR>
+nnoremap <leader>gH <cmd>Telescope git_commits<CR>
 " Tabline binds
 nnoremap <silent> <A-s> <cmd>BufferPick<CR>
 nnoremap <silent> Q <cmd>BufferClose<CR>

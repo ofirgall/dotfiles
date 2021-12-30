@@ -5,8 +5,10 @@ require'lualine'.setup {
 		path = 1,
 	},
 	sections = {
-		lualine_c = {require('auto-session-library').current_session_name, 'filename'},
-		lualine_y = {'hostname', 'progress'},
+		lualine_b = {'diff', 'diagnostics'},
+		-- lualine_c = {require('auto-session-library').current_session_name, 'filename'},
+		-- lualine_y = {'hostname', 'progress'},
+		lualine_x = {'filetype'},
 	}
 }
 
