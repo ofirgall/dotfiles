@@ -337,6 +337,8 @@ tmux_conf_copy_to_os_clipboard=true
 #   really you should export VISUAL or EDITOR environment variable, see manual
 #set -g status-keys vi
 #set -g mode-keys vi
+set -g status-keys emacs
+set -g mode-keys emacs
 
 # replace C-b by C-a instead of using both prefixes
 # set -gu prefix2
@@ -538,9 +540,10 @@ bind -T copy-mode Space send-keys -X begin-selection
 
 # Skip words with C+Left/Right
 bind -T copy-mode C-Left send-keys -X previous-word
+bind -T copy-mode-vi C-Left send-keys -X previous-word
 bind -T copy-mode C-Right send-keys -X next-word-end
 
-# Page up/down 
+# Page up/down
 bind -n C-PPage copy-mode \; send-keys -X page-up
 bind -n C-NPage copy-mode \; send-keys -X page-down
 

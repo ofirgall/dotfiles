@@ -40,7 +40,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='wifi'
+last-panel='bluetooth'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -261,7 +261,7 @@ ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
 [org/gnome/rhythmbox]
-position=(26, 23)
+position=(26, 27)
 
 [org/gnome/rhythmbox/library/source]
 show-browser=true
