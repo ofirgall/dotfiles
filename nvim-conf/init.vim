@@ -20,6 +20,11 @@ nnoremap <C-i> <C-i>zz
 " from now on only local settings
 :set noswapfile
 
+" vim-visual-multi bindings
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<M-d>'
+let g:VM_maps['Find Subword Under'] = '<M-d>'
+
 call plug#begin()
 " https://github.com/rockerBOO/awesome-neovim
 

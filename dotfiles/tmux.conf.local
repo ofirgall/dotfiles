@@ -561,7 +561,7 @@ bind -n M-j run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
 
 # Tmux copy cat
 # copy digit ALT+d
-bind -n M-d run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]+'"
+# bind -n M-d run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]+'"
 
 # copy file ALT+f
 unbind -T copy-mode M-f

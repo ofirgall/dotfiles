@@ -83,13 +83,16 @@ monokai.setup {
 			bg = palette.base3,
 		},
 		LspReferenceText = {
-			bg = palette.base5,
+			bg = palette.base3,
+			style = 'underline',
 		},
 		LspReferenceRead = {
-			bg = palette.base5,
+			bg = palette.base3,
+			style = 'underline',
 		},
 		LspReferenceWrite = {
-			bg = palette.base5,
+			bg = palette.base3,
+			style = 'underline',
 		},
 	}
 }
