@@ -40,6 +40,7 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 
 ## TODO:
 * nvim - some alternative to alt+numbers
+* nvim - fix session manager bugs
 * nvim - learn how to filter files with telescope
 * nvim - switch args
 * nvim - git add -i alternative

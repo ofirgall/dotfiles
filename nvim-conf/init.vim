@@ -90,7 +90,7 @@ set encoding=UTF-8
 
 call plug#end()
 
-syntax off " For TreeSitter Syntax
+" syntax off " For TreeSitter Syntax
 
 luafile $HOME/.config/nvim/design.lua
 luafile $HOME/.config/nvim/lsp.lua
