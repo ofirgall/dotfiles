@@ -153,8 +153,8 @@ nnoremap <C-a> <cmd>Telescope oldfiles<CR>
 nnoremap <C-x> <cmd>Telescope command_history<CR>
 nnoremap <leader>gs <cmd>Telescope git_status<CR>
 nnoremap <leader>gc <cmd>Telescope git_branches<CR>
-nnoremap <leader>gh <cmd>Telescope git_bcommits<CR>
-nnoremap <leader>gH <cmd>Telescope git_commits<CR>
+nnoremap <leader>gh <cmd>lua require('telescope.builtin').git_bcommits({git_command = {'git', 'log', '--pretty=format:%h %ad \| %sd [%an]', '--abbrev-commit', '--date=short'}})<CR>
+nnoremap <leader>gH <cmd>lua require('telescope.builtin').git_commits({git_command = {'git', 'log', '--pretty=format:%h %ad \| %sd [%an]', '--abbrev-commit', '--date=short'}})<CR>
 " Tabline binds
 nnoremap <silent> <A-s> <cmd>BufferPick<CR>
 nnoremap <silent> Q <cmd>BufferClose<CR>
