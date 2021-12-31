@@ -144,7 +144,8 @@ END
 " Bindings
 " Default bindings https://hea-www.harvard.edu/~fine/Tech/vi.html
 nnoremap <C-l> <cmd>Telescope find_files<cr>
-nnoremap <C-k><C-k> <cmd>Telescope live_grep<cr>
+" nnoremap <C-k><C-k> <cmd>Telescope live_grep<cr>
+nnoremap <C-k><C-k> <cmd>so $HOME/.config/nvim/chained_live_grep.lua<CR>
 nnoremap <C-k><C-d> <cmd>Telescope grep_string<CR>
 nnoremap <C-m> <cmd>lua require('telescope.builtin').file_browser({cwd = vim.fn.expand("%:p:h")})<cr>
 nnoremap <C-s> <cmd>Telescope buffers<CR>

@@ -40,12 +40,10 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 
 ## TODO:
 * nvim - git history date & author
-* nvim - learn how to filter files with telescope
 * nvim - go to changed line/file on git history (telescope)
 * nvim - switch args
 * nvim - git add -i alternative
 * tmux - learn copy-mode-vi
-* nvim - Fixed issue with backspace
 * tmux - make a valid fix for suspend/resume copy like copycat mode
 * java language server 
 
