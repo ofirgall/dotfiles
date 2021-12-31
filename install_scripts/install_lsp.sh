@@ -34,3 +34,11 @@ ln -s $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyze
 
 # Java :(
 sudo apt install -y maven default-jdk
+
+# Lua
+rm -rf $HOME/.local/lua-server
+mkdir $HOME/.local/lua-server
+curl -s https://api.github.com/repos/sumneko/lua-language-server/releases/latest | grep "browser_download_url.*linux-x64" | cut -d : -f 2,3 | tr -d \" | wget -P $HOME/.local/lua-server/ -qi -
+tar -xf $HOME/.local/lua-server/lua-language-server-*.tar.gz -C $HOME/.local/lua-server/
+ln -s $HOME/.local/lua-server/bin/lua-language-server $HOME/.local/bin/lua-language-server
+
