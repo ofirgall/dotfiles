@@ -8,7 +8,7 @@
 :set smarttab
 :set softtabstop=4
 :set cursorline
-:set smartcase
+:set ignorecase
 nnoremap <silent> n jzzn
 nnoremap <silent> N kzzN
 nmap Q <nop>
@@ -81,9 +81,9 @@ Plug 'Pocco81/AutoSave.nvim' " Auto save
 Plug 'romgrk/barbar.nvim' " Tabline
 Plug 'rmagatti/auto-session' " Session Manager
 Plug 'mg979/vim-visual-multi' " Multi cursors
+Plug 'mizlan/iswap.nvim' " Swap arguments, elements
 
 " TODO: motion
-" TODO: https://github.com/mizlan/iswap.nvim
 " TODO: https://github.com/danielpieper/telescope-tmuxinator.nvim
 " TODO: https://github.com/AckslD/nvim-revJ.lua
 
