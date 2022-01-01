@@ -35,10 +35,22 @@ require'lspconfig'.bashls.setup{
 	capabilities = capabilities,
 	filetypes = { "sh" },
 }
+
+local clang_cmd = { "clangd", "--background-index", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}
+
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
+if file_exists(os.getenv("HOME") .. "/.remote_indicator") then
+	clang_cmd = { "clangd", "-completion-style=bundled" }
+end
+
 require'lspconfig'.clangd.setup{
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
-	cmd = { "clangd", "--background-index", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"},
+	cmd = clang_cmd,
 }
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
