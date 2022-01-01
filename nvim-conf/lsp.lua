@@ -17,10 +17,15 @@ require "lsp_signature".setup({lsp_signature_cfg})
 
 -- logs at "$HOME/.cache/nvim/lsp.log"
 -- vim.lsp.set_log_level("debug")
-require'lspconfig'.pyright.setup{
+require'lspconfig'.pylsp.setup{
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
+	cmd = { "pyls" } -- for python 2
 }
+-- require'lspconfig'.pyright.setup{
+-- 	on_attach = lsp_on_attach,
+-- 	capabilities = capabilities,
+-- }
 require'lspconfig'.rust_analyzer.setup{
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
