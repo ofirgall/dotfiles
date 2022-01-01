@@ -15,6 +15,7 @@ end,
 
 require "lsp_signature".setup({lsp_signature_cfg})
 
+-- logs at "$HOME/.cache/nvim/lsp.log"
 -- vim.lsp.set_log_level("debug")
 require'lspconfig'.pyright.setup{
 	on_attach = lsp_on_attach,
@@ -126,7 +127,7 @@ cmp.setup.cmdline(':', {
 })
 
 -- Builtin LSP Binds --
-map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', {silent = true, noremap = true})
+-- map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', {silent = true, noremap = true})
 map('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', {silent = true, noremap = true})
 
 -- Telescope LSP Binds --

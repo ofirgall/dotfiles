@@ -155,6 +155,7 @@ nnoremap <leader>gs <cmd>Telescope git_status<CR>
 nnoremap <leader>gc <cmd>Telescope git_branches<CR>
 nnoremap <leader>gh <cmd>lua require('telescope.builtin').git_bcommits({git_command = {'git', 'log', '--pretty=format:%h %ad \| %sd [%an]', '--abbrev-commit', '--date=short'}})<CR>
 nnoremap <leader>gH <cmd>lua require('telescope.builtin').git_commits({git_command = {'git', 'log', '--pretty=format:%h %ad \| %sd [%an]', '--abbrev-commit', '--date=short'}})<CR>
+nnoremap <expr> gD ':lua require"telescope.builtin".lsp_dynamic_workspace_symbols({default_text="'.expand('<cword>').'"})<cr>'
 " Tabline binds
 nnoremap <silent> <A-s> <cmd>BufferPick<CR>
 nnoremap <silent> Q <cmd>BufferClose<CR>
