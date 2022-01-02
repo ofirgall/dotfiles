@@ -17,15 +17,27 @@ require "lsp_signature".setup({lsp_signature_cfg})
 
 -- logs at "$HOME/.cache/nvim/lsp.log"
 -- vim.lsp.set_log_level("debug")
+
+-- works slower than pyright but working with python2
 require'lspconfig'.pylsp.setup{
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
-	cmd = { "pyls" } -- for python 2
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {
+					enabled = false
+				}
+			}
+		}
+	},
 }
+
 -- require'lspconfig'.pyright.setup{
 -- 	on_attach = lsp_on_attach,
 -- 	capabilities = capabilities,
 -- }
+
 require'lspconfig'.rust_analyzer.setup{
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
