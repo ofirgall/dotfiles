@@ -166,6 +166,8 @@ map('n', 'gi', "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", 
 map('n', 'gs', "<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>", {silent = true, noremap = true})
 map('n', 'gS', "<cmd>lua require'telescope.builtin'.lsp_dynamic_workspace_symbols{}<CR>", {silent = true, noremap = true})
 map('n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", {silent = true, noremap = true})
+map('n', 'gp', "<cmd>lua require'telescope.builtin'.diagnostics{bufnr=0}<CR>", {silent = true, noremap = true})
+map('n', 'gP', "<cmd>lua require'telescope.builtin'.diagnostics{}<CR>", {silent = true, noremap = true})
 
 -- illumante --
 map('n', '<C-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true})
