@@ -25,6 +25,9 @@ let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<M-d>'
 let g:VM_maps['Find Subword Under'] = '<M-d>'
 
+" for auto-session
+set sessionoptions+=winpos,terminal
+
 call plug#begin()
 " https://github.com/rockerBOO/awesome-neovim
 
@@ -148,6 +151,7 @@ nnoremap <C-l> <cmd>Telescope find_files<cr>
 nnoremap <C-k><C-k> <cmd>so $HOME/.config/nvim/chained_live_grep.lua<CR>
 nnoremap <C-k><C-d> <cmd>Telescope grep_string<CR>
 nnoremap <C-m> <cmd>lua require('telescope.builtin').file_browser({cwd = vim.fn.expand("%:p:h")})<cr>
+nnoremap <C-h> <cmd>Telescope quickfix<CR>
 nnoremap <C-s> <cmd>Telescope buffers<CR>
 nnoremap <C-a> <cmd>Telescope oldfiles<CR>
 nnoremap <C-x> <cmd>Telescope command_history<CR>
