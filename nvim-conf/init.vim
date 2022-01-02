@@ -176,10 +176,11 @@ END
 
 " Bindings
 " Default bindings https://hea-www.harvard.edu/~fine/Tech/vi.html
+nnoremap <CR> o
 nnoremap <C-l> <cmd>Telescope find_files<cr>
 nnoremap <C-k><C-k> <cmd>lua chained_live_grep({})<CR>
 nnoremap <C-k><C-d> <cmd>lua chained_live_grep({default_text = vim.fn.expand("<cword>")})<cr>
-nnoremap <C-m> <cmd>lua require('telescope.builtin').file_browser({cwd = vim.fn.expand("%:p:h")})<cr>
+nnoremap <M-m> <cmd>lua require('telescope.builtin').file_browser({cwd = vim.fn.expand("%:p:h")})<cr>
 nnoremap <C-h> <cmd>Telescope quickfix<CR>
 nnoremap <C-s> <cmd>Telescope buffers<CR>
 nnoremap <C-a> <cmd>Telescope oldfiles<CR>

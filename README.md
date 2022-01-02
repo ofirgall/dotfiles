@@ -39,9 +39,8 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO:
-* nvim - learn multicursor copy
+* nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
 * nvim - git date with search
-* nvim - autocomplete without lsp
 * nvim - go to changed line/file on git history (telescope)
 * nvim - git add -i alternative
 * tmux - learn copy-mode-vi
