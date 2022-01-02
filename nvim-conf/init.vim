@@ -9,6 +9,8 @@
 :set softtabstop=4
 :set cursorline
 :set ignorecase
+:set splitright
+:set splitbelow
 nnoremap <silent> n jzzn
 nnoremap <silent> N kzzN
 nmap Q <nop>
@@ -56,6 +58,7 @@ Plug 'tanvirtin/monokai.nvim' " Color theme (customized)
 Plug 'romgrk/nvim-treesitter-context' " Shows the context atm (class/function)
 Plug 'lukas-reineke/indent-blankline.nvim' " Indent line helper
 Plug 'numToStr/Comment.nvim' " Comments
+Plug 'nvim-treesitter/nvim-treesitter-textobjects' " Movements base on treesitter
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim' " Required by telescope and more
@@ -87,7 +90,6 @@ Plug 'mg979/vim-visual-multi' " Multi cursors
 Plug 'mizlan/iswap.nvim' " Swap arguments, elements
 
 " TODO: motion
-" TODO: https://github.com/danielpieper/telescope-tmuxinator.nvim
 " TODO: https://github.com/AckslD/nvim-revJ.lua
 
 " Improvment Games
@@ -102,6 +104,7 @@ call plug#end()
 luafile $HOME/.config/nvim/design.lua
 luafile $HOME/.config/nvim/lsp.lua
 luafile $HOME/.config/nvim/telescope.lua
+luafile $HOME/.config/nvim/chained_live_grep.lua
 " source $HOME/.config/nvim/wilder.vim
 
 lua << END
@@ -115,6 +118,33 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
 	custom_captures = {
 	}
+  },
+  -- TODO: different file, smart loop for bindings
+  textobjects = {
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        ["]m"] = "@function.outer",
+        ["]]"] = "@class.outer",
+        ["]b"] = "@block.outer",
+      },
+      goto_next_end = {
+        ["]M"] = "@function.outer",
+        ["]["] = "@class.outer",
+        ["]B"] = "@block.outer",
+      },
+      goto_previous_start = {
+        ["[m"] = "@function.outer",
+        ["[["] = "@class.outer",
+        ["[b"] = "@block.outer",
+      },
+      goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[]"] = "@class.outer",
+        ["[B"] = "@block.outer",
+      },
+    },
   },
 }
 
@@ -147,9 +177,8 @@ END
 " Bindings
 " Default bindings https://hea-www.harvard.edu/~fine/Tech/vi.html
 nnoremap <C-l> <cmd>Telescope find_files<cr>
-" nnoremap <C-k><C-k> <cmd>Telescope live_grep<cr>
-nnoremap <C-k><C-k> <cmd>so $HOME/.config/nvim/chained_live_grep.lua<CR>
-nnoremap <C-k><C-d> <cmd>Telescope grep_string<CR>
+nnoremap <C-k><C-k> <cmd>lua chained_live_grep({})<CR>
+nnoremap <C-k><C-d> <cmd>lua chained_live_grep({default_text = vim.fn.expand("<cword>")})<cr>
 nnoremap <C-m> <cmd>lua require('telescope.builtin').file_browser({cwd = vim.fn.expand("%:p:h")})<cr>
 nnoremap <C-h> <cmd>Telescope quickfix<CR>
 nnoremap <C-s> <cmd>Telescope buffers<CR>
@@ -157,9 +186,11 @@ nnoremap <C-a> <cmd>Telescope oldfiles<CR>
 nnoremap <C-x> <cmd>Telescope command_history<CR>
 nnoremap <leader>gs <cmd>Telescope git_status<CR>
 nnoremap <leader>gc <cmd>Telescope git_branches<CR>
-nnoremap <leader>gh <cmd>lua require('telescope.builtin').git_bcommits({git_command = {'git', 'log', '--pretty=format:%h %ad \| %sd [%an]', '--abbrev-commit', '--date=short'}})<CR>
-nnoremap <leader>gH <cmd>lua require('telescope.builtin').git_commits({git_command = {'git', 'log', '--pretty=format:%h %ad \| %sd [%an]', '--abbrev-commit', '--date=short'}})<CR>
-nnoremap <expr> gD ':lua require"telescope.builtin".lsp_dynamic_workspace_symbols({default_text="'.expand('<cword>').'"})<cr>'
+" nnoremap <leader>gh <cmd>lua require('telescope.builtin').git_bcommits({git_command = {'git', 'log', '--pretty=format:%h %ad \| %sd [%an]', '--abbrev-commit', '--date=short'}})<CR>
+nnoremap <leader>gh <cmd>lua require('telescope.builtin').git_bcommits()<CR>
+" nnoremap <leader>gH <cmd>lua require('telescope.builtin').git_commits({git_command = {'git', 'log', '--pretty=format:%h %s', '--abbrev-commit', '--date=short'}})<CR>
+nnoremap <leader>gH <cmd>lua require('telescope.builtin').git_commits()<CR>
+nnoremap gD <cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")})<cr>
 " Tabline binds
 nnoremap <silent> <A-s> <cmd>BufferPick<CR>
 nnoremap <silent> Q <cmd>BufferClose<CR>

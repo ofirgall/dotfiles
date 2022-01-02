@@ -13,7 +13,7 @@ local function get_common()
 	return filetype, prompt_text
 end
 
-local function chained_live_grep(opts)
+function chained_live_grep(opts)
 	opts = opts or themes.get_ivy {}
 	builtin.live_grep(vim.tbl_deep_extend("force", {
 		prompt_title = "Live Grep (Filtered)",
@@ -61,4 +61,3 @@ local function chained_live_grep(opts)
 	}, opts))
 end
 
-chained_live_grep({})

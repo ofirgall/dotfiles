@@ -237,6 +237,11 @@ window-state=(700, 500, 50, 50)
 col-6-visible=true
 col-6-width=0
 
+[org/gnome/meld/window-state]
+height=400
+is-maximized=true
+width=710
+
 [org/gnome/mutter]
 dynamic-workspaces=false
 experimental-features=['scale-monitor-framebuffer', 'x11-randr-fractional-scaling']
