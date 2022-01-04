@@ -29,6 +29,8 @@ let g:VM_maps['Find Subword Under'] = '<M-d>'
 
 " for auto-session
 set sessionoptions+=winpos,terminal
+set sessionoptions-=buffers,tabpages
+
 
 call plug#begin()
 " https://github.com/rockerBOO/awesome-neovim
