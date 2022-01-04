@@ -34,6 +34,12 @@ let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
 let g:session_default_name = getcwd()
 
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <M-Left> :TmuxNavigateLeft<cr>
+nnoremap <silent> <M-Down> :TmuxNavigateDown<cr>
+nnoremap <silent> <M-Up> :TmuxNavigateUp<cr>
+nnoremap <silent> <M-Right> :TmuxNavigateRight<cr>
 
 call plug#begin()
 " https://github.com/rockerBOO/awesome-neovim
@@ -95,6 +101,7 @@ Plug 'xolox/vim-misc' " For vim-session
 Plug 'ethanholz/nvim-lastplace' " Save last place
 Plug 'mg979/vim-visual-multi' " Multi cursors
 Plug 'mizlan/iswap.nvim' " Swap arguments, elements
+Plug 'christoomey/vim-tmux-navigator' " Navigate in panes integrated to vim
 
 " TODO: motion
 " TODO: https://github.com/AckslD/nvim-revJ.lua
