@@ -27,9 +27,12 @@ let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<M-d>'
 let g:VM_maps['Find Subword Under'] = '<M-d>'
 
-" for auto-session
+" for vim-session
 set sessionoptions+=winpos,terminal
-set sessionoptions-=buffers,tabpages
+set sessionoptions-=buffers,tabpages,options
+let g:session_autosave = 'yes'
+let g:session_autoload = 'yes'
+let g:session_default_name = getcwd()
 
 
 call plug#begin()
@@ -87,7 +90,9 @@ Plug 'ellisonleao/glow.nvim' " Markdown preview
 Plug 'ntpeters/vim-better-whitespace' " Whitespace trailing
 Plug 'Pocco81/AutoSave.nvim' " Auto save
 Plug 'romgrk/barbar.nvim' " Tabline
-Plug 'rmagatti/auto-session' " Session Manager
+Plug 'xolox/vim-session' " Session Manager
+Plug 'xolox/vim-misc' " For vim-session
+Plug 'ethanholz/nvim-lastplace' " Save last place
 Plug 'mg979/vim-visual-multi' " Multi cursors
 Plug 'mizlan/iswap.nvim' " Swap arguments, elements
 
@@ -174,8 +179,7 @@ require('autosave').setup{
 	clean_command_line_interval = 1000
 }
 
-require('auto-session').setup {
-    auto_session_enable_last_session=false,
+require'nvim-lastplace'.setup{
 }
 
 END
@@ -184,8 +188,11 @@ END
 " Default bindings https://hea-www.harvard.edu/~fine/Tech/vi.html
 nnoremap <CR> o
 nnoremap <C-l> <cmd>Telescope find_files<cr>
+nnoremap KL <cmd>Telescope find_files<cr>
 nnoremap <C-k><C-k> <cmd>lua chained_live_grep({})<CR>
+nnoremap KK <cmd>lua chained_live_grep({})<CR>
 nnoremap <C-k><C-d> <cmd>lua chained_live_grep({default_text = vim.fn.expand("<cword>")})<cr>
+nnoremap KD <cmd>lua chained_live_grep({default_text = vim.fn.expand("<cword>")})<cr>
 nnoremap <M-m> <cmd>lua require('telescope.builtin').file_browser({cwd = vim.fn.expand("%:p:h")})<cr>
 nnoremap <C-h> <cmd>Telescope quickfix<CR>
 nnoremap <C-s> <cmd>Telescope buffers<CR>

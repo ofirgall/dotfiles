@@ -72,7 +72,7 @@ secondary-color='#000000'
 [org/gnome/desktop/input-sources]
 mru-sources=[('xkb', 'us'), ('xkb', 'il')]
 sources=[('xkb', 'us'), ('xkb', 'il')]
-xkb-options=['grp_led:scroll', 'grp:shifts_toggle']
+xkb-options=['grp_led:scroll', 'grp:shifts_toggle', 'caps:escape']
 
 [org/gnome/desktop/interface]
 enable-animations=true

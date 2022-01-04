@@ -6,6 +6,9 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 local lsp_signature_cfg = {
 	bind = true,
 	use_lspsaga = true,
+	doc_lines = 0,
+	toggle_key = '<M-x>',
+	max_height = 1,
 }
 
 local lsp_on_attach = function(client)
@@ -189,7 +192,7 @@ map("n", "<F4>", "<cmd>Lspsaga code_action<cr>", {silent = true, noremap = true}
 map("n", "gx", "<cmd>Lspsaga code_action<cr>", {silent = true, noremap = true})
 map("x", "gx", ":<c-u>Lspsaga range_code_action<cr>", {silent = true, noremap = true})
 map("n", "<S-Space>",  "<cmd>Lspsaga hover_doc<cr>", {silent = true, noremap = true})
-map("n", "K",  "<cmd>Lspsaga hover_doc<cr>", {silent = true, noremap = true})
+map("n", "KJ",  "<cmd>Lspsaga hover_doc<cr>", {silent = true, noremap = true})
 map("n", "go", "<cmd>Lspsaga show_line_diagnostics<cr>", {silent = true, noremap = true})
 map("n", "]p", "<cmd>Lspsaga diagnostic_jump_next<cr>", {silent = true, noremap = true})
 map("n", "[p", "<cmd>Lspsaga diagnostic_jump_prev<cr>", {silent = true, noremap = true})
