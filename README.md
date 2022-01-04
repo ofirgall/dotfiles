@@ -39,6 +39,11 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO:
+* nvim - session manager sucks
+* nvim - learn to use multiple copy buffers(registers)
+* MAJOR - firefox session for tmux
+* nvim - reset half a hunk
+* nvim - On Jump zz
 * nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
 * nvim - git date with search
 * nvim - go to changed line/file on git history (telescope)
