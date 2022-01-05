@@ -102,6 +102,7 @@ Plug 'ethanholz/nvim-lastplace' " Save last place
 Plug 'mg979/vim-visual-multi' " Multi cursors
 Plug 'mizlan/iswap.nvim' " Swap arguments, elements
 Plug 'christoomey/vim-tmux-navigator' " Navigate in panes integrated to vim
+Plug 'rhysd/devdocs.vim' " Open DevDocs from nvim
 
 " TODO: motion
 " TODO: https://github.com/AckslD/nvim-revJ.lua
@@ -211,8 +212,9 @@ nnoremap <leader>gh <cmd>lua require('telescope.builtin').git_bcommits()<CR>
 " nnoremap <leader>gH <cmd>lua require('telescope.builtin').git_commits({git_command = {'git', 'log', '--pretty=format:%h %s', '--abbrev-commit', '--date=short'}})<CR>
 nnoremap <leader>gH <cmd>lua require('telescope.builtin').git_commits()<CR>
 nnoremap gD <cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")})<cr>
+nnoremap <A-s> <cmd>DevDocsUnderCursor<cr>
 " Tabline binds
-nnoremap <silent> <A-s> <cmd>BufferPick<CR>
+" nnoremap <silent> <A-s> <cmd>BufferPick<CR>
 nnoremap <silent> Q <cmd>BufferClose<CR>
 nnoremap <silent> <A-q> <cmd>BufferClose<CR>
 nnoremap <silent> <A-,> <cmd>BufferPrevious<CR>
