@@ -3,13 +3,17 @@
 # Check for --help parameter
 if [[ $@ == *'-h'* ]]
 then
-    echo "usage: git squash <num-of-commits> [commit-message]"
+    echo "usage: git squash [num-of-commits|commit-message]"
     echo ""
     echo "    num-of-commits = Amount of previous commits to squash together"
+    echo "                     (if no amount is given, will try to find the branch you based on)"
     echo "    commit-message = The message to commit with"
     echo "                     (if no message is given, will use the 'first' commit message with no-edit)"
     echo ""
     echo "Examples:"
+    echo "    git squash"
+    echo "    git squash Changed Things"
+    echo "    git squash -m Changed Things"
     echo "    git squash 2 Changed Things"
     echo "    git squash 4 \"Changed Things"\"
     echo "    git squash 3 -m \"Changed Things\""
@@ -18,31 +22,71 @@ then
     exit 0
 fi
 
-#get number of commits to squash
-squashCount=$1
+get_latest_ref()
+{
+	current_branch=$(git rev-parse --abbrev-ref HEAD)
+	commit_based_on=''
 
-#get the commit message
-shift
-commitMsg=$@
+	while read line; do
+		commit_hash=$(echo $line | cut -d "|" -f 1)
+		commit_refs=$(echo $line | cut -d "|" -f 2-)
+		if [[ $commit_refs ]] && [[ ! $(echo $commit_refs | grep $current_branch) ]]; then
+			commit_based_on=$commit_hash
+			echo $commit_hash
+			return
+		fi
+	done < <(git log --pretty=format:"%h | %D")
+
+	echo 'N/A'
+}
+
+if [[ $1 =~ ^-?[0-9]+$ ]]; then # If the first arg is a number use it as amount of squash
+	#get number of commits to squash
+	squashTarget="HEAD~$1"
+
+	#get the commit message
+	shift
+	commitMsg=$@
+else
+	commitMsg=$@
+	squashTarget=$(get_latest_ref)
+fi
 
 # Remove `"` if they exist or "-m"
 commitMsg="${commitMsg%\"}"
 commitMsg="${commitMsg#-m}"
 commitMsg="${commitMsg#\"}"
 
-#regular expression to verify that squash number is an integer
-regex='^[1-9][0-9]*$'
+# echo "SquashTarget=$squashTarget"
+# echo "CommitMessage=$commitMsg"
 
-if ! [[ $squashCount =~ $regex ]]
-then
-    echo "[ERROR] Squash count must be a valid integer."
-    exit 1
-elif [ -z "$commitMsg" ]
-then
-    echo "[WARNING] amending with the first commit message."
-    git reset --soft HEAD~$(($squashCount-1))
-    git commit --amend --no-edit
-else
-    git reset --soft HEAD~$(($squashCount-1))
-    git commit --amend -m "$commitMsg"
+gitlog='git --no-pager log --pretty=format:"%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(red)%s %C(bold red)[%an]%C(reset)%C(blue)%d%C(reset)" --date=short'
+
+squashCount=$(git --no-pager log --pretty=oneline $squashTarget..HEAD | wc -l)
+echo "=== Squashing $squashCount commits ==="
+eval "$gitlog $squashTarget..HEAD"
+echo
+
+echo
+echo "=== Based On (Not Included) ==="
+eval "$gitlog $squashTarget^..$squashTarget"
+echo
+echo
+
+if [ -z "$commitMsg" ]; then
+	commitMsg=$(git show --no-patch --pretty=format:"%s" HEAD~$(($squashCount-1)))
 fi
+echo "=== Commit Message ==="
+echo $commitMsg
+
+echo
+read -p "Squash? (y/N) " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+	exit
+fi
+
+git reset --soft HEAD~$(($squashCount-1))
+git commit --amend -m "$commitMsg"
+
