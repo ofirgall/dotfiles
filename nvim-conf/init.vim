@@ -29,7 +29,8 @@ let g:VM_maps['Find Subword Under'] = '<M-d>'
 " for vim-session
 set sessionoptions+=winpos,terminal
 set sessionoptions-=buffers,tabpages,options
-let g:session_autosave = 'yes'
+let g:session_autosave = 'no' " Doesnt save unsaved session for some reason using autocmd instead
+autocmd VimLeavePre * SaveSession
 let g:session_autoload = 'yes'
 let g:session_default_name = getcwd()
 
@@ -104,6 +105,7 @@ Plug 'mizlan/iswap.nvim' " Swap arguments, elements
 Plug 'christoomey/vim-tmux-navigator' " Navigate in panes integrated to vim
 Plug 'rhysd/devdocs.vim' " Open DevDocs from nvim
 
+" TODO: https://github.com/michaelb/sniprun
 " TODO: motion
 " TODO: https://github.com/AckslD/nvim-revJ.lua
 
