@@ -41,6 +41,7 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ## TODO:
 * nvim - change to english when getting back to nvim https://github.com/lyokha/vim-xkbswitch
 * nvim - learn to use multiple copy buffers(registers)
+* nvim - devdocs
 * MAJOR - firefox session for tmux
 * nvim - reset half a hunk
 * nvim - On Jump zz

@@ -15,7 +15,6 @@ nnoremap <silent> n jzzn
 nnoremap <silent> N kzzN
 nmap Q <nop>
 nnoremap <F3> <cmd>let @/ = "not_gonna_find_this_______"<cr>
-nnoremap <CR> i<Escape>l
 nnoremap <C-o> <C-o>zz
 nnoremap <C-i> <C-i>zz
 
@@ -51,7 +50,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline' " TODO: need if its better tha wilder
+Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'dcampos/nvim-snippy'
 Plug 'dcampos/cmp-snippy'
@@ -74,6 +73,7 @@ Plug 'nvim-treesitter/nvim-treesitter-textobjects' " Movements base on treesitte
 " Telescope
 Plug 'nvim-lua/plenary.nvim' " Required by telescope and more
 Plug 'nvim-telescope/telescope.nvim' " Fuzzy finder with alot of integration
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 " Status Line
 Plug 'nvim-lualine/lualine.nvim' " Status line
@@ -193,14 +193,13 @@ END
 
 " Bindings
 " Default bindings https://hea-www.harvard.edu/~fine/Tech/vi.html
-nnoremap <CR> o
 nnoremap <C-l> <cmd>Telescope find_files<cr>
 nnoremap KL <cmd>Telescope find_files<cr>
 nnoremap <C-k><C-k> <cmd>lua chained_live_grep({})<CR>
 nnoremap KK <cmd>lua chained_live_grep({})<CR>
 nnoremap <C-k><C-d> <cmd>lua chained_live_grep({default_text = vim.fn.expand("<cword>")})<cr>
 nnoremap KD <cmd>lua chained_live_grep({default_text = vim.fn.expand("<cword>")})<cr>
-nnoremap <M-m> <cmd>lua require('telescope.builtin').file_browser({cwd = vim.fn.expand("%:p:h")})<cr>
+nnoremap <M-m> <cmd>lua require"telescope".extensions.file_browser.file_browser({cwd = vim.fn.expand("%:p:h")})<cr>
 nnoremap <C-h> <cmd>Telescope quickfix<CR>
 nnoremap <C-s> <cmd>Telescope buffers<CR>
 nnoremap <C-a> <cmd>Telescope oldfiles<CR>
@@ -233,6 +232,23 @@ nnoremap <silent> g0 <cmd>BufferLast<CR>
 
 """"""" Tmux integration """"""""
 " Set title of the file
-autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window nv:" . fnamemodify(getcwd(), ":~:."))
+" autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window nv:" . fnamemodify(getcwd(), ":~:."))
+autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window nvim")
 autocmd QuitPre * call system("tmux rename-window zsh")
 
+function!   QuickFixOpenAll()
+    if empty(getqflist())
+        return
+    endif
+	exec "cclose"
+    let s:prev_val = ""
+    for d in getqflist()
+        let s:curr_val = bufname(d.bufnr)
+        if (s:curr_val != s:prev_val)
+            exec "edit " . s:curr_val
+        endif
+        let s:prev_val = s:curr_val
+    endfor
+endfunction
+
+command! QuickFixOpenAll call QuickFixOpenAll()
