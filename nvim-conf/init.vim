@@ -21,6 +21,19 @@ nnoremap <C-i> <C-i>zz
 " from now on only local settings
 :set noswapfile
 
+" Auto zz on jump
+let g:jump_zz_thershold = 20
+autocmd CursorMoved * call CheckMove()
+function! CheckMove()
+	if exists('s:lastLine')
+		if (abs(s:lastLine - line(".")) >= g:jump_zz_thershold)
+			echo "Auto Recenter"
+			normal zz
+		endif
+	endif
+	let s:lastLine = line(".")
+endfunction
+
 " vim-visual-multi bindings
 let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<M-d>'
@@ -45,6 +58,9 @@ nnoremap <silent> <M-Left> :TmuxNavigateLeft<cr>
 nnoremap <silent> <M-Down> :TmuxNavigateDown<cr>
 nnoremap <silent> <M-Up> :TmuxNavigateUp<cr>
 nnoremap <silent> <M-Right> :TmuxNavigateRight<cr>
+
+let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
+let g:XkbSwitchEnabled = 1
 
 call plug#begin()
 " https://github.com/rockerBOO/awesome-neovim
@@ -109,6 +125,7 @@ Plug 'mg979/vim-visual-multi' " Multi cursors
 Plug 'mizlan/iswap.nvim' " Swap arguments, elements
 Plug 'christoomey/vim-tmux-navigator' " Navigate in panes integrated to vim
 Plug 'rhysd/devdocs.vim' " Open DevDocs from nvim
+Plug 'lyokha/vim-xkbswitch' " Switch to english for normal mode
 
 " TODO: https://github.com/michaelb/sniprun
 " TODO: motion

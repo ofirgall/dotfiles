@@ -39,12 +39,10 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO:
-* nvim - change to english when getting back to nvim https://github.com/lyokha/vim-xkbswitch
 * nvim - learn to use multiple copy buffers(registers)
 * nvim - build & run + quickfix errors
 * MAJOR - firefox session for tmux
 * nvim - reset half a hunk
-* nvim - On Jump zz https://stackoverflow.com/questions/20684817/vimscript-trigger-when-cursor-moved-between-lines
 * nvim - barbar integration with autosession https://github.com/romgrk/barbar.nvim/commit/58f39d0d0c06d7cd5da08251ca784fbe20f85b73
 * nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
 * nvim - git date with search

@@ -1,8 +1,8 @@
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=9
-launch-time=int64 1640599800
+launch-count=10
+launch-time=int64 1641500773
 show-details=true
 window-height=615
 window-width=593
@@ -40,7 +40,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='bluetooth'
+last-panel='info-overview'
 
 [org/gnome/deja-dup]
 backend='google'
