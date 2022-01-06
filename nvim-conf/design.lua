@@ -98,6 +98,16 @@ monokai.setup {
 			bg = highlighted_word_bg,
 			style = 'underline',
 		},
+		-- Multi Cursor Design
+		TabLineSel = {
+			fg = '#78b6e8',
+			bg = highlighted_word_bg,
+		},
+		Tabline = {
+			fg = '#f20aee',
+			bg = highlighted_word_bg,
+			-- style = 'reverse',
+		},
 	}
 }
 

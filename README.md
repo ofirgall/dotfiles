@@ -39,7 +39,6 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO:
-* nvim - design multi selection + LspReferenceWrite (purple not visibile + regular Reference)
 * nvim - change to english when getting back to nvim https://github.com/lyokha/vim-xkbswitch
 * nvim - learn to use multiple copy buffers(registers)
 * nvim - build & run + quickfix errors
