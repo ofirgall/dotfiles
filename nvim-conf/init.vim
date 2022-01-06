@@ -25,6 +25,11 @@ nnoremap <C-i> <C-i>zz
 let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<M-d>'
 let g:VM_maps['Find Subword Under'] = '<M-d>'
+let g:VM_highlight_matches = 'hi! link Search LspReferenceWrite' " Non selected matches
+let g:VM_Mono_hl   = 'DiffText' " Cursor while in normal
+let g:VM_Extend_hl = 'LineNr' " In Selection (NotUsed)
+let g:VM_Cursor_hl = 'Visual' " Cursor while in alt+d
+let g:VM_Insert_hl = 'LineNr' " Cursor in insert
 
 " for vim-session
 set sessionoptions+=winpos,terminal

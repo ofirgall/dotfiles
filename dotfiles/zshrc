@@ -141,6 +141,10 @@ alias open='xdg-open'
 alias venv='. ~/venv3/bin/activate'
 alias notify='notify-send -u critical -t 3000 done'
 alias notify-send='notify-send.sh -f'
+alias get_ticket='git rev-parse --abbrev-ref HEAD | grep -oP ".+/\K([A-Z]+-[0-9]+)" | tr -d "\n"'
+alias cticket='get_ticket | toclip'
+alias ticket='xdg-open https://jira.infinidat.com/browse/$(get_ticket)'
+alias cbranch='git rev-parse --abbrev-ref HEAD | tr -d "\n" | toclip'
 
 export EDITOR='vim'
 if type nvim &> /dev/null; then

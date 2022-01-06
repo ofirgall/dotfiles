@@ -14,6 +14,8 @@ require'lualine'.setup {
 
 local monokai = require('monokai')
 local palette = monokai.classic
+palette = palette
+highlighted_word_bg = '#343942'
 monokai.setup {
     palette = {
 		base2 = '#282923',
@@ -85,15 +87,15 @@ monokai.setup {
 			bg = palette.base3,
 		},
 		LspReferenceText = {
-			bg = palette.base3,
+			bg = highlighted_word_bg,
 			style = 'underline',
 		},
 		LspReferenceRead = {
-			bg = palette.base3,
+			bg = highlighted_word_bg,
 			style = 'underline',
 		},
 		LspReferenceWrite = {
-			bg = palette.base3,
+			bg = highlighted_word_bg,
 			style = 'underline',
 		},
 	}
