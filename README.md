@@ -38,17 +38,16 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 
 ---
 
-## TODO:
-* nvim - learn to use multiple copy buffers(registers)
-* nvim - build & run + quickfix errors
+## TODO
+* nvim - session manager still makeing trouble
 * MAJOR - firefox session for tmux
-* nvim - reset half a hunk
-* nvim - barbar integration with autosession https://github.com/romgrk/barbar.nvim/commit/58f39d0d0c06d7cd5da08251ca784fbe20f85b73
 * nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
+* nvim - https://github.com/pechorin/any-jump.vim
+* nvim - build & run + quickfix errors
+* nvim - reset half a hunk
 * nvim - git date with search
 * nvim - go to changed line/file on git history (telescope)
 * nvim - git add -i alternative
-* nvim - https://github.com/pechorin/any-jump.vim
 * tmux - learn copy-mode-vi
 * tmux - make a valid fix for suspend/resume copy like copycat mode
 * java language server 
