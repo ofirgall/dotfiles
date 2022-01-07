@@ -27,7 +27,7 @@ autocmd CursorMoved * call CheckMove()
 function! CheckMove()
 	if exists('s:lastLine')
 		if (abs(s:lastLine - line(".")) >= g:jump_zz_thershold)
-			echo "Auto Recenter"
+			" echo "Auto Recenter"
 			normal zz
 		endif
 	endif
@@ -87,7 +87,8 @@ Plug 'onsails/lspkind-nvim' " Adding sweet ui for kind (function/var/method)
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground' " TreeSitter helper to customize
 Plug 'tanvirtin/monokai.nvim' " Color theme (customized)
-Plug 'romgrk/nvim-treesitter-context' " Shows the context atm (class/function)
+" Plug 'romgrk/nvim-treesitter-context' " Shows the context atm (class/function)
+Plug 'SmiteshP/nvim-gps' " Shows context in status line
 Plug 'lukas-reineke/indent-blankline.nvim' " Indent line helper
 Plug 'numToStr/Comment.nvim' " Comments
 Plug 'nvim-treesitter/nvim-treesitter-textobjects' " Movements base on treesitter
@@ -191,11 +192,12 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-require'treesitter-context'.setup{
-    enable = true,
-    throttle = true,
-    max_lines = 0,
-}
+require("nvim-gps").setup()
+-- require'treesitter-context'.setup{
+--     enable = true,
+--     throttle = true,
+--     max_lines = 0,
+-- }
 
 ---------------- MISC ----------------
 require('gitsigns').setup{
