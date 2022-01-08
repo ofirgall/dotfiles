@@ -384,6 +384,7 @@ set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'MunifTanjim/tmux-suspend'
 set -g @plugin 'ofir753/tmux-keyboard-layout'
+set -g @plugin 'ofir753/tmux-browser'
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '1'
 set -g @emulate-scroll-for-no-mouse-alternate-buffer "on"

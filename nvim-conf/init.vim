@@ -45,7 +45,7 @@ let g:VM_Cursor_hl = 'TabLineSel' " Cursor while in alt+d
 let g:VM_Insert_hl = 'TabLineSel' " Cursor in insert
 
 " for vim-session
-set sessionoptions+=winpos,terminal
+" set sessionoptions+=winpos,terminal
 set sessionoptions-=buffers,tabpages,options
 let g:session_autosave = 'no' " Doesnt save unsaved session for some reason using autocmd instead
 autocmd VimLeavePre * SaveSession

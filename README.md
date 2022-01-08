@@ -40,7 +40,6 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 
 ## TODO
 * nvim - session manager still makeing trouble
-* MAJOR - firefox session for tmux
 * nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
 * nvim - https://github.com/pechorin/any-jump.vim
 * nvim - build & run + quickfix errors
