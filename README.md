@@ -39,17 +39,18 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO
+* general - Remote Notify
+* nvim - nN doesnt work good
 * nvim - session manager still makeing trouble
 * nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
 * nvim - https://github.com/pechorin/any-jump.vim
 * nvim - build & run + quickfix errors
-* nvim - reset half a hunk
-* nvim - git date with search
-* nvim - go to changed line/file on git history (telescope)
-* nvim - git add -i alternative
+* nvim-git - reset lines (not very useful in gitsigns)
+* nvim-git - history date&authro with search
+* nvim-git - go to changed line/file on git history (telescope)
+* nvim-git - git add -i alternative
 * tmux - learn copy-mode-vi
 * tmux - make a valid fix for suspend/resume copy like copycat mode
-* java language server 
 
 ---
 

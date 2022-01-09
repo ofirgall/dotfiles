@@ -110,6 +110,10 @@ monokai.setup {
 			bg = highlighted_word_bg,
 			-- style = 'reverse',
 		},
+		Search = {
+			bg = '#78b6e8',
+			fg = palette.white,
+		},
 	}
 }
 
