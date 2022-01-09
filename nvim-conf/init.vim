@@ -11,8 +11,8 @@
 :set ignorecase
 :set splitright
 :set splitbelow
-nnoremap <silent> n jzzn
-nnoremap <silent> N kzzN
+" nnoremap <silent> n jzzn
+" nnoremap <silent> N kzzN
 nmap Q <nop>
 nnoremap <F3> <cmd>let @/ = "not_gonna_find_this_______"<cr>
 nnoremap <C-o> <C-o>zz
