@@ -111,8 +111,10 @@ monokai.setup {
 			-- style = 'reverse',
 		},
 		Search = {
-			bg = '#78b6e8',
-			fg = palette.white,
+			bg = '#790f91',
+		},
+		Visual = {
+			bg = '#1322ad',
 		},
 	}
 }

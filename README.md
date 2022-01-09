@@ -39,7 +39,9 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO
-* general - Remote Notify
+* spt - reslove https://github.com/Rigellute/spotify-tui/issues/518
+* general - manage tasks with select_tmux_session
+* tmux - ssh connection when asked
 * nvim - nN doesnt work good
 * nvim - session manager still makeing trouble
 * nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits

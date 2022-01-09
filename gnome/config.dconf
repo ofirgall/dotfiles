@@ -179,6 +179,9 @@ num-workspaces=8
 background-color='rgb(0,0,0)'
 use-background-color=true
 
+[org/gnome/evince/default]
+window-ratio=(0.98039215686274506, 0.75757575757575757)
+
 [org/gnome/evolution-data-server]
 migrated=true
 network-monitor-gio-name=''
@@ -189,15 +192,15 @@ skip-newer=false
 
 [org/gnome/file-roller/listing]
 list-mode='as-folder'
-name-column-width=250
+name-column-width=463
 show-path=false
 sort-method='name'
 sort-type='descending'
 
 [org/gnome/file-roller/ui]
 sidebar-width=200
-window-height=480
-window-width=600
+window-height=790
+window-width=1536
 
 [org/gnome/gedit/plugins]
 active-plugins=['spell', 'modelines', 'filebrowser', 'sort', 'docinfo']
