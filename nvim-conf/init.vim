@@ -96,7 +96,8 @@ Plug 'nvim-treesitter/nvim-treesitter-textobjects' " Movements base on treesitte
 " Telescope
 Plug 'nvim-lua/plenary.nvim' " Required by telescope and more
 Plug 'nvim-telescope/telescope.nvim' " Fuzzy finder with alot of integration
-Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim' " The file browser
+Plug 'nvim-telescope/telescope-live-grep-raw.nvim' " Better live grep
 
 " Status Line
 Plug 'nvim-lualine/lualine.nvim' " Status line
@@ -144,7 +145,6 @@ call plug#end()
 luafile $HOME/.config/nvim/design.lua
 luafile $HOME/.config/nvim/lsp.lua
 luafile $HOME/.config/nvim/telescope.lua
-luafile $HOME/.config/nvim/chained_live_grep.lua
 " source $HOME/.config/nvim/wilder.vim
 
 lua << END
@@ -222,10 +222,11 @@ END
 " Default bindings https://hea-www.harvard.edu/~fine/Tech/vi.html
 nnoremap <C-l> <cmd>Telescope find_files<cr>
 nnoremap KL <cmd>Telescope find_files<cr>
-nnoremap <C-k><C-k> <cmd>lua chained_live_grep({})<CR>
-nnoremap KK <cmd>lua chained_live_grep({})<CR>
-nnoremap <C-k><C-d> <cmd>lua chained_live_grep({default_text = vim.fn.expand("<cword>")})<cr>
-nnoremap KD <cmd>lua chained_live_grep({default_text = vim.fn.expand("<cword>")})<cr>
+" TODO: when moving to lua init one prompt title
+nnoremap <C-k><C-k> <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob]")'})<CR>
+nnoremap KK <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'})<CR>
+nnoremap <C-k><C-d> <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({default_text = vim.fn.expand("<cword>"), prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob]")'})<CR>
+nnoremap KD <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({default_text = vim.fn.expand("<cword>"), prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'})<CR>
 nnoremap <M-m> <cmd>lua require"telescope".extensions.file_browser.file_browser({cwd = vim.fn.expand("%:p:h")})<cr>
 nnoremap <C-h> <cmd>Telescope quickfix<CR>
 nnoremap <C-s> <cmd>Telescope buffers<CR>
