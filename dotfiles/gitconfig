@@ -14,3 +14,6 @@
 	ff = only
 [merge]
 	ff = false
+[oh-my-zsh]
+	hide-status = 1
+	hide-dirty = 1
