@@ -18,4 +18,5 @@ install_plugin() {
 install_plugin https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 install_plugin https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
 install_plugin https://github.com/paulirish/git-open.git ~/.oh-my-zsh/custom/plugins/git-open
+install_plugin https://github.com/peterhurford/up.zsh ~/.oh-my-zsh/custom/plugins/up
 

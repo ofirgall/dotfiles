@@ -102,6 +102,7 @@ plugins=(
   git-open
   sudo
   dircycle
+  up
   )
 
 source $ZSH/oh-my-zsh.sh
