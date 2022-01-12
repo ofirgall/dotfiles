@@ -56,7 +56,6 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * nvim - jump to matching ()
 * nvim - nN doesnt work good
 * nvim - TSLabel is like keyword, need different color
-* nvim&tmux - C-hjkl to move in panes/splits, resize splits with tmux binds too?
 * terminal - avoid using arrows in terminal
 * tmux - copy cursor not same as vim?
 * nvim - session manager still makeing trouble

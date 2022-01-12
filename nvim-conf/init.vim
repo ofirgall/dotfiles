@@ -54,6 +54,10 @@ let g:session_default_name = getcwd()
 
 let g:tmux_navigator_no_mappings = 1
 
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <M-Left> :TmuxNavigateLeft<cr>
 nnoremap <silent> <M-Down> :TmuxNavigateDown<cr>
 nnoremap <silent> <M-Up> :TmuxNavigateUp<cr>
@@ -220,15 +224,12 @@ END
 
 " Bindings
 " Default bindings https://hea-www.harvard.edu/~fine/Tech/vi.html
-nnoremap <C-l> <cmd>Telescope find_files<cr>
 nnoremap KL <cmd>Telescope find_files<cr>
 " TODO: when moving to lua init one prompt title
-nnoremap <C-k><C-k> <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob]")'})<CR>
 nnoremap KK <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'})<CR>
-nnoremap <C-k><C-d> <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({default_text = vim.fn.expand("<cword>"), prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob]")'})<CR>
 nnoremap KD <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({default_text = vim.fn.expand("<cword>"), prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'})<CR>
 nnoremap <M-m> <cmd>lua require"telescope".extensions.file_browser.file_browser({cwd = vim.fn.expand("%:p:h")})<cr>
-nnoremap <C-h> <cmd>Telescope quickfix<CR>
+" nnoremap <C-h> <cmd>Telescope quickfix<CR> " TODO: find a better bind if actually want to use it
 nnoremap <C-s> <cmd>Telescope buffers<CR>
 nnoremap <C-a> <cmd>Telescope oldfiles<CR>
 nnoremap <C-x> <cmd>Telescope command_history<CR>
