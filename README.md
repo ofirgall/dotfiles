@@ -41,16 +41,34 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ## TODO
 * spt - reslove https://github.com/Rigellute/spotify-tui/issues/518
 * general - manage tasks with select_tmux_session
+* dock-redock fix
+* git squash - if master/base branch moved forward can't find the ref
 * tmux - ssh connection when asked
+* tmux - not suspended (not active) change status colors 
+* tmux - cpu & ram usage
+* nvim - stop lsp server on background
+* nvim - lsp status
+* nvim - color for nvim-gps
+* nvim - smaller quickfix list
+* nvim - fix pair if already insert on pair 
+* nvim - c-d remap to something else
+* nvim - surround replaced colors
+* nvim - jump to matching ()
 * nvim - nN doesnt work good
+* nvim - TSLabel is like keyword, need different color
+* nvim&tmux - C-hjkl to move in panes/splits, resize splits with tmux binds too?
+* terminal - avoid using arrows in terminal
+* tmux - copy cursor not same as vim?
 * nvim - session manager still makeing trouble
 * nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
+* nvim - copy path/relative path & find with already inputed glob
 * nvim - https://github.com/pechorin/any-jump.vim
 * nvim - build & run + quickfix errors
 * nvim-git - reset lines (not very useful in gitsigns)
 * nvim-git - history date&authro with search
 * nvim-git - go to changed line/file on git history (telescope)
 * nvim-git - git add -i alternative
+* nvim - try distant one day
 * tmux - learn copy-mode-vi
 * tmux - make a valid fix for suspend/resume copy like copycat mode
 

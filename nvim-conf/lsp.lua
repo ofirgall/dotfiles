@@ -44,6 +44,14 @@ require'lspconfig'.pyright.setup{
 require'lspconfig'.rust_analyzer.setup{
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
+	settings = {
+		["rust-analyzer"] = {
+			-- enable clippy on save
+			checkOnSave = {
+				command = "clippy"
+			},
+		}
+	},
 }
 require'lspconfig'.bashls.setup{
 	on_attach = lsp_on_attach,
@@ -51,7 +59,8 @@ require'lspconfig'.bashls.setup{
 	filetypes = { "sh" },
 }
 
-local clang_cmd = { "clangd", "--background-index", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}
+-- local clang_cmd = { "clangd", "--background-index", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}
+local clang_cmd = { "clangd", "--background-index=false", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}
 
 function file_exists(name)
    local f=io.open(name,"r")

@@ -262,7 +262,8 @@ nnoremap <silent> g0 <cmd>BufferLast<CR>
 """"""" Tmux integration """"""""
 " Set title of the file
 " autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window nv:" . fnamemodify(getcwd(), ":~:."))
-autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window nvim")
+autocmd BufEnter * call system("tmux rename-window 'nv:" . fnamemodify(getcwd(), ":t") . "'")
+" autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window nvim")
 autocmd QuitPre * call system("tmux rename-window zsh")
 
 function!   QuickFixOpenAll()

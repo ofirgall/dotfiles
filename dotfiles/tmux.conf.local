@@ -389,6 +389,7 @@ set -g @plugin 'ofirgall/tmux-remote-notify'
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '1'
 set -g @emulate-scroll-for-no-mouse-alternate-buffer "on"
+set -g @suspend_key 'M--'
 
 # colors for tmux-suspend
 set -g @suspend_suspended_options " \

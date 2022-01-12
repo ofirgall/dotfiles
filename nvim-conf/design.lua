@@ -52,6 +52,10 @@ monokai.setup {
 			fg = palette.pink,
 			style = 'none',
 		},
+		TSFuncMacro = {
+			fg = '#e878d2',
+			style = 'italic',
+		},
 		TSAttribute = {
 			fg = palette.pink,
 			style = 'none',
