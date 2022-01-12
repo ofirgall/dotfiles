@@ -56,7 +56,10 @@ require'lspconfig'.rust_analyzer.setup{
 require'lspconfig'.bashls.setup{
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
-	filetypes = { "sh" },
+}
+require'lspconfig'.vimls.setup{
+	on_attach = lsp_on_attach,
+	capabilities = capabilities,
 }
 
 -- local clang_cmd = { "clangd", "--background-index", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}

@@ -23,7 +23,7 @@ nnoremap <C-i> <C-i>zz
 
 " Auto zz on jump
 let g:jump_zz_thershold = 20
-autocmd CursorMoved * call CheckMove()
+" autocmd CursorMoved * call CheckMove()
 function! CheckMove()
 	if exists('s:lastLine')
 		if (abs(s:lastLine - line(".")) >= g:jump_zz_thershold)
@@ -283,3 +283,8 @@ function!   QuickFixOpenAll()
 endfunction
 
 command! QuickFixOpenAll call QuickFixOpenAll()
+
+au FileType qf call AdjustWindowHeight(3, 3)
+function! AdjustWindowHeight(minheight, maxheight)
+  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+endfunction

@@ -39,21 +39,22 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO
-* spt - reslove https://github.com/Rigellute/spotify-tui/issues/518
 * general - manage tasks with select_tmux_session
 * dock-redock fix
 * git squash - if master/base branch moved forward can't find the ref
 * tmux - ssh connection when asked
 * tmux - not suspended (not active) change status colors 
+* nvim - telescope colors
 * nvim - stop lsp server on background
 * nvim - lsp status
 * nvim - color for nvim-gps
 * nvim - fix pair if already insert on pair 
-* nvim - c-d remap to something else
 * nvim - surround replaced colors
 * nvim - jump to matching ()
 * nvim - nN doesnt work good
+* nvim - when escaping from autocomplete it escape from select mode (using autocomplet while using snippets)
 * nvim - TSLabel is like keyword, need different color
+* tmux - is_vim not detected when using vim on remote inside other tmux not suspended
 * terminal - avoid using arrows in terminal
 * tmux - copy cursor not same as vim?
 * nvim - session manager still makeing trouble

@@ -335,10 +335,10 @@ tmux_conf_copy_to_os_clipboard=true
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
-#set -g status-keys vi
-#set -g mode-keys vi
-set -g status-keys emacs
-set -g mode-keys emacs
+set -g status-keys vi
+set -g mode-keys vi
+# set -g status-keys emacs
+# set -g mode-keys emacs
 
 # replace C-b by C-a instead of using both prefixes
 # set -gu prefix2
@@ -496,6 +496,20 @@ bind -r -T prefix M-Right swap-pane -s \{right-of\}
 # Override alt+up/down for copy-mode
 bind -T copy-mode M-Up select-pane -U
 bind -T copy-mode M-Down select-pane -D
+bind -T copy-mode M-Right select-pane -R
+bind -T copy-mode M-Left select-pane -L
+bind -T copy-mode C-h select-pane -L
+bind -T copy-mode C-l select-pane -R
+bind -T copy-mode C-k select-pane -U
+bind -T copy-mode C-j select-pane -D
+bind -T copy-mode-vi M-Up select-pane -U
+bind -T copy-mode-vi M-Down select-pane -D
+bind -T copy-mode-vi M-Right select-pane -R
+bind -T copy-mode-vi M-Left select-pane -L
+bind -T copy-mode-vi C-h select-pane -L
+bind -T copy-mode-vi C-l select-pane -R
+bind -T copy-mode-vi C-k select-pane -U
+bind -T copy-mode-vi C-j select-pane -D
 
 # new window ALT+t
 bind -n M-t new-window
@@ -522,6 +536,16 @@ bind -T copy-mode M-6 select-window -t :=6
 bind -T copy-mode M-7 select-window -t :=7
 bind -T copy-mode M-8 select-window -t :=8
 bind -T copy-mode M-9 select-window -t :=9
+bind -T copy-mode-vi M-0 select-window -t :=10
+bind -T copy-mode-vi M-1 select-window -t :=1
+bind -T copy-mode-vi M-2 select-window -t :=2
+bind -T copy-mode-vi M-3 select-window -t :=3
+bind -T copy-mode-vi M-4 select-window -t :=4
+bind -T copy-mode-vi M-5 select-window -t :=5
+bind -T copy-mode-vi M-6 select-window -t :=6
+bind -T copy-mode-vi M-7 select-window -t :=7
+bind -T copy-mode-vi M-8 select-window -t :=8
+bind -T copy-mode-vi M-9 select-window -t :=9
 
 # Swap windows by ALT+SHIFT+N
 bind -n M-) swap-window -d -t :=10
