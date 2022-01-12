@@ -194,7 +194,7 @@ skip-newer=false
 list-mode='as-folder'
 name-column-width=463
 show-path=false
-sort-method='name'
+sort-method='size'
 sort-type='descending'
 
 [org/gnome/file-roller/ui]

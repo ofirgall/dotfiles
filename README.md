@@ -45,11 +45,9 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * git squash - if master/base branch moved forward can't find the ref
 * tmux - ssh connection when asked
 * tmux - not suspended (not active) change status colors 
-* tmux - cpu & ram usage
 * nvim - stop lsp server on background
 * nvim - lsp status
 * nvim - color for nvim-gps
-* nvim - smaller quickfix list
 * nvim - fix pair if already insert on pair 
 * nvim - c-d remap to something else
 * nvim - surround replaced colors

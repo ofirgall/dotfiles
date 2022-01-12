@@ -227,7 +227,7 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_status_left=" #{@mode_indicator_custom_prompt} | #S "
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized} , #{?battery_status,#{battery_status},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} [#{keyboard_layout}] | #{hostname} | #{@mode_indicator_custom_prompt}"
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized} CPU #{cpu_percentage} RAM #{ram_percentage} , #{?battery_status,#{battery_status},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} [#{keyboard_layout}] | #{hostname} | #{@mode_indicator_custom_prompt}"
 # CPU: #{cpu_percentage} RAM: #{ram_percentage}
 
 # status left style
@@ -375,7 +375,7 @@ tmux_conf_update_plugins_on_reload=true
 # to enable a plugin, use the 'set -g @plugin' syntax:
 # visit https://github.com/tmux-plugins for available plugins
 #set -g @plugin 'tmux-plugins/tmux-copycat'
-# set -g @plugin 'tmux-plugins/tmux-cpu'
+set -g @plugin 'tmux-plugins/tmux-cpu'
 set -g @plugin 'tmux-plugins/tmux-open'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
