@@ -18,7 +18,9 @@ palette = palette
 highlighted_word_bg = '#343942'
 monokai.setup {
     palette = {
-		base2 = '#282923',
+		base2 = '#23241e',
+		-- base3 = '#272a33',
+		base3 = '#1d2026',
 		brown = '#d1ca86',
     },
     custom_hlgroups = {
@@ -89,6 +91,10 @@ monokai.setup {
 		},
 		CursorLine = {
 			bg = palette.base3,
+		},
+		TSLabel = {
+			fg = palette.white,
+			style = 'italic',
 		},
 		LspReferenceText = {
 			bg = highlighted_word_bg,

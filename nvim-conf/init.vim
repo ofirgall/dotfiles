@@ -1,25 +1,25 @@
 
 " Remote .vimrc
-:set number
-:set relativenumber
-:set autoindent
-:set tabstop=4
-:set shiftwidth=4
-:set smarttab
-:set softtabstop=4
-:set cursorline
-:set ignorecase
-:set splitright
-:set splitbelow
-" nnoremap <silent> n jzzn
-" nnoremap <silent> N kzzN
+set number
+set relativenumber
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set softtabstop=4
+set cursorline
+set ignorecase
+set splitright
+set splitbelow
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
 nmap Q <nop>
 nnoremap <F3> <cmd>let @/ = "not_gonna_find_this_______"<cr>
 nnoremap <C-o> <C-o>zz
 nnoremap <C-i> <C-i>zz
 
 " from now on only local settings
-:set noswapfile
+set noswapfile
 
 " Auto zz on jump
 let g:jump_zz_thershold = 20

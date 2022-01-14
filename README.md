@@ -45,22 +45,19 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * tmux-remote-notify
 * nvim - search filter history?
 * tmux - is_vim not detected when using vim on remote inside other tmux not suspended
+* nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
 
 ## TODO Major
 * tmux - not suspended (not active) change status colors 
-* nvim - nN doesnt work good
 * nvim - when escaping from autocomplete it escape from select mode (using autocomplet while using snippets)
 
 ## TODO
 * dock-redock fix
 * git squash - if master/base branch moved forward can't find the ref
 * tmux - ssh connection when asked
-* nvim - telescope colors
 * nvim - stop lsp server on background
 * nvim - color for nvim-gps
-* nvim - TSLabel is like keyword, need different color
 * nvim - session manager still makeing trouble
-* nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
 * nvim - build & run + quickfix errors
 * nvim-git - reset lines (not very useful in gitsigns)
 * nvim-git - history date&authro with search
