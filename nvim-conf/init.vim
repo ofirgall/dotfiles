@@ -86,6 +86,7 @@ Plug 'tami5/lspsaga.nvim' " Sweet ui for rename + code action and hover doc
 Plug 'RRethy/vim-illuminate' " Mark word on cursor
 Plug 'ray-x/lsp_signature.nvim' " Signature hint while typing
 Plug 'onsails/lspkind-nvim' " Adding sweet ui for kind (function/var/method)
+Plug 'nvim-lua/lsp-status.nvim' " Lsp Status in statusline
 
 " TreeSitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

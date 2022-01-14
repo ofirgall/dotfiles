@@ -8,9 +8,7 @@ require'lualine'.setup {
 	sections = {
 		lualine_b = {'diff', 'diagnostics'},
 		lualine_c = {'filename', { gps.get_location, cond = gps.is_available }},
-		-- lualine_c = {require('auto-session-library').current_session_name, 'filename'},
-		-- lualine_y = {'hostname', 'progress'},
-		lualine_x = {'filetype'},
+		lualine_x = {'filetype', 'require"lsp-status".status()'},
 	}
 }
 

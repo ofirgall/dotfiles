@@ -1,7 +1,17 @@
 local map = vim.api.nvim_set_keymap
 
+local lsp_status = require('lsp-status')
+lsp_status.config({
+  current_function = false,
+  show_filename = false,
+  diagnostics = false,
+  status_symbol = 'V',
+})
+lsp_status.register_progress()
+
 -- Update capabilities to autocomplete
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
 
 local lsp_signature_cfg = {
 	bind = true,
@@ -14,6 +24,7 @@ local lsp_signature_cfg = {
 local lsp_on_attach = function(client)
 	require 'illuminate'.on_attach(client)
 	require "lsp_signature".on_attach(lsp_signature_cfg)
+	lsp_status.on_attach(client)
 end,
 
 require "lsp_signature".setup({lsp_signature_cfg})
@@ -75,6 +86,10 @@ if file_exists(os.getenv("HOME") .. "/.remote_indicator") then
 end
 
 require'lspconfig'.clangd.setup{
+	handlers = lsp_status.extensions.clangd.setup(),
+	init_options = {
+	    clangdFileStatus = true
+	},
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 	cmd = clang_cmd,
