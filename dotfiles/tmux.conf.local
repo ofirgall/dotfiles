@@ -431,10 +431,9 @@ set -g @suspend_suspended_options " \
 # Main prefix is C-b
 set -g prefix C-b
 bind C-b send-prefix
-set -g prefix2 C-Enter
-bind C-Enter send-prefix -2
 # Unbinding C-a to fix home key (was prefix2 before)
 unbind C-a
+set -g prefix2 C-Enter
 
 # Using xterm on local and screen on remote
 if-shell -b 'test -f "$HOME/.remote_indicator"' 'set -g default-terminal "screen-256color"' 'set -g default-terminal "xterm-256color"'
@@ -584,6 +583,7 @@ bind -T copy-mode Space send-keys -X begin-selection
 bind -T copy-mode C-Left send-keys -X previous-word
 bind -T copy-mode-vi C-Left send-keys -X previous-word
 bind -T copy-mode C-Right send-keys -X next-word-end
+bind -T copy-mode-vi C-Right send-keys -X next-word-end
 
 # Page up/down
 bind -n C-PPage copy-mode \; send-keys -X page-up
