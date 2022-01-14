@@ -150,6 +150,7 @@ call plug#end()
 luafile $HOME/.config/nvim/design.lua
 luafile $HOME/.config/nvim/lsp.lua
 luafile $HOME/.config/nvim/telescope.lua
+source $HOME/.config/nvim/file_util.vim
 " source $HOME/.config/nvim/wilder.vim
 
 lua << END
@@ -212,6 +213,8 @@ require('Comment').setup{
 }
 
 require('nvim-autopairs').setup{
+    check_ts = true,
+	enable_moveright = false,
 }
 
 require('autosave').setup{
@@ -228,7 +231,9 @@ END
 nnoremap KL <cmd>Telescope find_files<cr>
 " TODO: when moving to lua init one prompt title
 nnoremap KK <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'})<CR>
+nnoremap Kk <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({default_text = ' -g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*"',prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'})<CR>
 nnoremap KD <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({default_text = vim.fn.expand("<cword>"), prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'})<CR>
+nnoremap Kd <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({default_text = vim.fn.expand("<cword>") .. ' -g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*"', prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'})<CR>
 nnoremap <M-m> <cmd>lua require"telescope".extensions.file_browser.file_browser({cwd = vim.fn.expand("%:p:h")})<cr>
 " nnoremap <C-h> <cmd>Telescope quickfix<CR> " TODO: find a better bind if actually want to use it
 nnoremap <C-s> <cmd>Telescope buffers<CR>

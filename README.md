@@ -38,29 +38,29 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 
 ---
 
-## TODO
+## TODO Takes time
 * general - manage tasks with select_tmux_session
+* nvim - https://github.com/pechorin/any-jump.vim
+* tmux-browser
+* tmux-remote-notify
+* nvim - search filter history?
+* tmux - is_vim not detected when using vim on remote inside other tmux not suspended
+
+## TODO Major
+* tmux - not suspended (not active) change status colors 
+* nvim - nN doesnt work good
+* nvim - when escaping from autocomplete it escape from select mode (using autocomplet while using snippets)
+
+## TODO
 * dock-redock fix
 * git squash - if master/base branch moved forward can't find the ref
 * tmux - ssh connection when asked
-* tmux - not suspended (not active) change status colors 
 * nvim - telescope colors
 * nvim - stop lsp server on background
-* nvim - lsp status
 * nvim - color for nvim-gps
-* nvim - fix pair if already insert on pair 
-* nvim - surround replaced colors
-* nvim - jump to matching ()
-* nvim - nN doesnt work good
-* nvim - when escaping from autocomplete it escape from select mode (using autocomplet while using snippets)
 * nvim - TSLabel is like keyword, need different color
-* tmux - is_vim not detected when using vim on remote inside other tmux not suspended
-* terminal - avoid using arrows in terminal
-* tmux - copy cursor not same as vim?
 * nvim - session manager still makeing trouble
 * nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
-* nvim - copy path/relative path & find with already inputed glob
-* nvim - https://github.com/pechorin/any-jump.vim
 * nvim - build & run + quickfix errors
 * nvim-git - reset lines (not very useful in gitsigns)
 * nvim-git - history date&authro with search
