@@ -105,6 +105,10 @@ ZSH_TMUX_AUTOSTART_ONCE=false
 ZSH_TMUX_AUTOQUIT=false
 ZSH_TMUX_FIXTERM=false
 
+bindkey -M main "\C-r" history-incremental-pattern-search-backward
+bindkey -M main "^ " autosuggest-accept # Ctrl+Space
+bindkey -M vicmd "^ " autosuggest-accept # Ctrl+Space
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -174,10 +178,6 @@ if type nvim &> /dev/null; then
 	alias rvim='/usr/bin/vim'
 	export EDITOR='nvim'
 fi
-
-# Binds
-bindkey "\C-r" history-incremental-pattern-search-backward
-bindkey "^ " autosuggest-accept # Ctrl+Space
 
 autoload -U compinit && compinit
 

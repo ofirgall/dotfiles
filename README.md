@@ -51,7 +51,6 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ## TODO Major
 * tmux - not suspended (not active) change status colors 
 * nvim - when escaping from autocomplete it escape from select mode (using autocomplet while using snippets)
-* zsh - C-Space is overridden
 * nvim - gD/gd/gi binds with splits
 * nvim - redo/do stack manipulate
 * nvim - learn to use marks
