@@ -8,6 +8,9 @@ map('n', 'N', 'Nzz', default_opts)
 map('n', '<F3>', '<cmd>let @/ = "not_gonna_find_this_______"<cr>', default_opts)
 map('n', '<C-o>', '<C-o>zz', default_opts)
 map('n', '<C-i>', '<C-i>zz', default_opts)
+-- Move through wrap lines
+map('', 'j', 'v:count ? "j" : "gj"', {noremap = true, expr=true})
+map('', 'k', 'v:count ? "k" : "gk"', {noremap = true, expr=true})
 
 map('n', '<C-h>', '<cmd>TmuxNavigateLeft<cr>', default_opts)
 map('n', '<C-j>', '<cmd>TmuxNavigateDown<cr>', default_opts)

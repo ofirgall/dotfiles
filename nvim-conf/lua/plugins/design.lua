@@ -8,7 +8,9 @@ require'lualine'.setup {
 	sections = {
 		lualine_b = {'diff', 'diagnostics'},
 		lualine_c = {'filename', { gps.get_location, cond = gps.is_available }},
-		lualine_x = {'filetype', 'require"lsp-status".status()'},
+		lualine_x = {},
+		lualine_y = {'require"lsp-status".status()'},
+		lualine_z = {'filetype'},
 	}
 }
 

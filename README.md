@@ -41,6 +41,7 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ## TODO Takes time
 * general - manage tasks with select_tmux_session
 * nvim - https://github.com/pechorin/any-jump.vim
+* jump to workspace by tmux session name
 * tmux-browser
 * tmux-remote-notify
 * nvim - search filter history?
@@ -51,10 +52,14 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * tmux - not suspended (not active) change status colors 
 * nvim - when escaping from autocomplete it escape from select mode (using autocomplet while using snippets)
 * zsh - C-Space is overridden
+* nvim - gD/gd/gi binds with splits
+* nvim - redo/do stack manipulate
+* nvim - learn to use marks
 
 ## TODO
 * dock-redock fix
 * git squash - if master/base branch moved forward can't find the ref
+* tmux - go to start of last command
 * tmux - ssh connection when asked
 * nvim - stop lsp server on background
 * nvim - color for nvim-gps
