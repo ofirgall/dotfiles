@@ -85,9 +85,11 @@ return require('packer').startup(function()
 	use 'rhysd/devdocs.vim' -- Open DevDocs from nvim
 	use 'lyokha/vim-xkbswitch' -- Switch to english for normal mode
 	use { 'michaelb/sniprun', run = 'bash ./install.sh'} -- Run snippets in your code
-
+	use {
+		'AckslD/nvim-revJ.lua', -- Reverse join (split)
+		requires = {'kana/vim-textobj-user', 'sgur/vim-textobj-parameter'},
+	}
 	-- TODO: motion
-	-- TODO: https://github.com/AckslD/nvim-revJ.lua
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'
