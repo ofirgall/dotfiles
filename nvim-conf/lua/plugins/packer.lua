@@ -68,6 +68,8 @@ return require('packer').startup(function()
 	-- TODO: Get more git feature (merge diff and stuff like this)
 
 	-- Misc
+	use 'tpope/vim-repeat' -- Extending repeat (.) action
+	use 'ggandor/lightspeed.nvim' -- Lightspeed motions (s, S) -- TODO: need to learn more about that https://github.com/ggandor/lightspeed.nvim
 	use 'machakann/vim-sandwich' -- Sandwich text (sa action)
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
 	use 'jdhao/better-escape.vim' -- Escape insert mode fast (jk)
@@ -89,7 +91,6 @@ return require('packer').startup(function()
 		'AckslD/nvim-revJ.lua', -- Reverse join (split)
 		requires = {'kana/vim-textobj-user', 'sgur/vim-textobj-parameter'},
 	}
-	-- TODO: motion
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'
