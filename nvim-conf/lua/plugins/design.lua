@@ -21,6 +21,7 @@ highlighted_word_bg = '#343942'
 monokai.setup {
     palette = {
 		base2 = '#23241e',
+		base0 = '#23241e',
 		-- base3 = '#272a33',
 		base3 = '#1d2026',
 		brown = '#d1ca86',
@@ -125,6 +126,11 @@ monokai.setup {
 		},
 		Visual = {
 			bg = '#1322ad',
+		},
+		TelescopeSelection = {
+			fg = palette.white,
+			bg = palette.base3,
+			style = 'none'
 		},
 	}
 }

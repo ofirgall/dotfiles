@@ -15,6 +15,7 @@ window-is-maximized=true
 window-width=540
 
 [com/ubuntu/update-notifier]
+no-show-notifications=true
 release-check-time=uint32 1641466190
 
 [desktop/ibus/panel/emoji]
@@ -363,5 +364,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(166, 14)
+window-position=(359, 122)
 window-size=(1203, 790)
