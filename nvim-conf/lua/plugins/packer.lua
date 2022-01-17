@@ -84,8 +84,8 @@ return require('packer').startup(function()
 	use 'christoomey/vim-tmux-navigator' -- Navigate in panes integrated to vim
 	use 'rhysd/devdocs.vim' -- Open DevDocs from nvim
 	use 'lyokha/vim-xkbswitch' -- Switch to english for normal mode
+	use { 'michaelb/sniprun', run = 'bash ./install.sh'} -- Run snippets in your code
 
-	-- TODO: https://github.com/michaelb/sniprun
 	-- TODO: motion
 	-- TODO: https://github.com/AckslD/nvim-revJ.lua
 

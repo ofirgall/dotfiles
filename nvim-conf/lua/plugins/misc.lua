@@ -17,6 +17,12 @@ require('autosave').setup{
 require'nvim-lastplace'.setup{
 }
 
+require'sniprun'.setup{
+	display = {
+		"Classic"
+	}
+}
+
 vim.cmd([[
 let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 let g:XkbSwitchEnabled = 1
