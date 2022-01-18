@@ -3,6 +3,12 @@ local map = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 local cmd = vim.cmd
 
+-- Remove arrows in normal mode
+map('n', '<Left>', '<nop>', default_opts)
+map('n', '<Right>', '<nop>', default_opts)
+map('n', '<Up>', '<nop>', default_opts)
+map('n', '<Down>', '<nop>', default_opts)
+
 map('n', 'n', 'nzz', default_opts)
 map('n', 'N', 'Nzz', default_opts)
 map('n', '<F3>', '<cmd>let @/ = "not_gonna_find_this_______"<cr>', default_opts)
@@ -96,3 +102,21 @@ map('n', ']p', '<cmd>Lspsaga diagnostic_jump_next<cr>', {silent = true, noremap 
 map('n', '[p', '<cmd>Lspsaga diagnostic_jump_prev<cr>', {silent = true, noremap = true})
 map('n', '<C-u>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<cr>', {})
 map('n', '<C-d>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<cr>', {})
+
+----- Adding c prefix for sandwich to avoid conflicting with lightspeed -----
+cmd("let g:sandwich_no_default_key_mappings = 1")
+-- TODO: lua api
+cmd([[
+" add
+silent! map <unique> csa <Plug>(sandwich-add)
+
+" delete
+silent! nmap <unique> csd <Plug>(sandwich-delete)
+silent! xmap <unique> csd <Plug>(sandwich-delete)
+silent! nmap <unique> csdb <Plug>(sandwich-delete-auto)
+
+" replace
+silent! nmap <unique> csr <Plug>(sandwich-replace)
+silent! xmap <unique> csr <Plug>(sandwich-replace)
+silent! nmap <unique> csrb <Plug>(sandwich-replace-auto)
+]])
