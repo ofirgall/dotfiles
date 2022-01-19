@@ -11,6 +11,11 @@ snippy.setup({
     },
 })
 
+local neogen = require('neogen')
+neogen.setup {
+	enabled = true
+}
+
 local cmp = require'cmp'
 local lspkind = require('lspkind')
 cmp.setup({

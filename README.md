@@ -49,6 +49,7 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
 
 ## TODO Major
+* nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
 * zsh - since histdb partial match with up doesnt work
 * tmux - not suspended (not active) change status colors 
 * nvim - when escaping from autocomplete it escape from select mode (using autocomplet while using snippets)

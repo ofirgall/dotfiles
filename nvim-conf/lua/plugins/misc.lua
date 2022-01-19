@@ -7,7 +7,7 @@ require('Comment').setup{
 
 require('nvim-autopairs').setup{
     check_ts = true,
-	enable_moveright = false,
+	-- enable_moveright = false,
 }
 
 require('autosave').setup{
@@ -27,6 +27,9 @@ require("revj").setup{
 	new_line_before_last_bracket = false,
 	add_seperator_for_last_parameter = false,
 	enable_default_keymaps = true,
+}
+
+require('numb').setup{
 }
 
 vim.cmd([[

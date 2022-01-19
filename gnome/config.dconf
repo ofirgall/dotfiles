@@ -1,11 +1,11 @@
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=10
-launch-time=int64 1641500773
+launch-count=11
+launch-time=int64 1642522347
 show-details=true
-window-height=615
-window-width=593
+window-height=503
+window-width=645
 
 [ca/desrt/dconf-editor]
 saved-pathbar-path='finger'
@@ -174,7 +174,7 @@ allow-volume-above-100-percent=false
 event-sounds=true
 
 [org/gnome/desktop/wm/preferences]
-num-workspaces=8
+num-workspaces=10
 
 [org/gnome/eog/view]
 background-color='rgb(0,0,0)'
@@ -247,7 +247,7 @@ is-maximized=true
 width=710
 
 [org/gnome/mutter]
-dynamic-workspaces=false
+dynamic-workspaces=true
 experimental-features=['scale-monitor-framebuffer', 'x11-randr-fractional-scaling']
 workspaces-only-on-primary=false
 
@@ -305,8 +305,8 @@ hinting='slight'
 
 [org/gnome/shell]
 command-history=['', 'r']
-disabled-extensions=@as []
-enabled-extensions=['wsmatrix@martin.zurowietz.de', 'disable-gestures-2021@verycrazydog.gmail.com', 'switchtwolayouts@qtmax.dev', 'hidetopbar@mathieu.bidon.ca']
+disabled-extensions=['wsmatrix@martin.zurowietz.de']
+enabled-extensions=['disable-gestures-2021@verycrazydog.gmail.com', 'switchtwolayouts@qtmax.dev', 'hidetopbar@mathieu.bidon.ca']
 favorite-apps=['firefox.desktop', 'com.alacritty.Alacritty.desktop', 'spotify_spotify.desktop', 'slack_slack.desktop', 'org.gnome.Nautilus.desktop', 'com.cisco.anyconnect.gui.desktop']
 had-bluetooth-devices-setup=true
 

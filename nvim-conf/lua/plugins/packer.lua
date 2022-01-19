@@ -91,6 +91,11 @@ return require('packer').startup(function()
 		'AckslD/nvim-revJ.lua', -- Reverse join (split)
 		requires = {'kana/vim-textobj-user', 'sgur/vim-textobj-parameter'},
 	}
+	use 'nacro90/numb.nvim' -- Peek at line number before jump
+	use {
+		"danymat/neogen", -- Doc generator
+		requires = "nvim-treesitter/nvim-treesitter"
+	}
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'
