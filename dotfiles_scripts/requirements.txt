@@ -1,0 +1,4 @@
+pyzshcomplete
+argcomplete
+argparse
+libtmux

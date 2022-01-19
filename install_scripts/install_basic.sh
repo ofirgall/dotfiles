@@ -10,3 +10,5 @@ ln -s /usr/bin/batcat ~/.local/bin/bat
 
 sudo usermod -a -G dialout $USER
 newgrp dialout
+
+python3 -m pip install -r dotfiles_scripts/requirements.txt --user

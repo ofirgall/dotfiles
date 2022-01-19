@@ -42,11 +42,13 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * general - manage tasks with select_tmux_session
 * nvim - https://github.com/pechorin/any-jump.vim
 * jump to workspace by tmux session name
+* tmux-go - open from some gui and not terminal
 * tmux-browser
 * tmux-remote-notify
 * nvim - search filter history?
 * tmux - is_vim not detected when using vim on remote inside other tmux not suspended
 * nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
+* faster boot time for zsh
 
 ## TODO Major
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))

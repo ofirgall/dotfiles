@@ -170,6 +170,7 @@ alias get_ticket='git rev-parse --abbrev-ref HEAD | grep -oP ".+/\K([A-Z]+-[0-9]
 alias cticket='get_ticket | toclip'
 alias ticket='xdg-open https://jira.infinidat.com/browse/$(get_ticket)'
 alias cbranch='git rev-parse --abbrev-ref HEAD | tr -d "\n" | toclip'
+alias g='~/dotfiles_scripts/tmux-go.py'
 
 export EDITOR='vim'
 if type nvim &> /dev/null; then
@@ -265,7 +266,13 @@ if ! $IS_REMOTE; then
 fi
 
 # Must be at the end
-if ! [ -n "$TMUX" ]
-then
-  select_tmux_session
+if ! [ -z "$OPEN_TMUX_SESSION" ]; then
+	echo "Opening $OPEN_TMUX_SESSION at desk $OPEN_AT_DESK"
+	TMUX_SESSION_TITLE="tmux-go-session:$OPEN_TMUX_SESSION"
+	wmctrl -r "$TMUX_SESSION_TITLE" -t $OPEN_AT_DESK; sleep 0.01; wmctrl -a "$TMUX_SESSION_TITLE"
+    tmux attach -t "$OPEN_TMUX_SESSION"
+else
+	if ! [ -n "$TMUX" ]; then
+		select_tmux_session
+	fi
 fi
