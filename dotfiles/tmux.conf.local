@@ -443,10 +443,6 @@ bind -n Home send-key C-a
 bind -T suspended Home send-key C-a
 bind -T suspended End send-key C-e
 
-
-# Default shell
-set-option -g default-shell /bin/zsh
-
 # Scroll with Mouse
 set -g mouse on
 
