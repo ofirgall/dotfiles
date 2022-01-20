@@ -51,6 +51,9 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * faster boot time for zsh
 
 ## TODO Major
+* zsh - histdb doesnt work good disabled for now
+* nvim - auto indent on paste
+* nvim - autocomplete order (SyslogFile is a good exapme)
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
 * zsh - since histdb partial match with up doesnt work
 * tmux - not suspended (not active) change status colors 

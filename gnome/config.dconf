@@ -41,7 +41,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='wifi'
+last-panel='keyboard'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -83,7 +83,7 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams']
+application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams', 'kupfer']
 show-banners=false
 
 [org/gnome/desktop/notifications/application/apport-gtk]
@@ -112,6 +112,9 @@ application-id='gnome-power-panel.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-printers-panel]
 application-id='gnome-printers-panel.desktop'
+
+[org/gnome/desktop/notifications/application/kupfer]
+application-id='kupfer.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-chromegnomeshell]
 application-id='org.gnome.ChromeGnomeShell.desktop'
@@ -200,7 +203,7 @@ sort-type='descending'
 
 [org/gnome/file-roller/ui]
 sidebar-width=200
-window-height=790
+window-height=817
 window-width=1536
 
 [org/gnome/gedit/plugins]
@@ -209,7 +212,7 @@ active-plugins=['spell', 'modelines', 'filebrowser', 'sort', 'docinfo']
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///tmp/mozilla_ogal0'
+virtual-root='file:///home/ogal/.local/share/kupfer/plugins'
 
 [org/gnome/gedit/preferences/editor]
 wrap-last-split-mode='word'
@@ -364,5 +367,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(359, 122)
+window-position=(166, 14)
 window-size=(1203, 790)

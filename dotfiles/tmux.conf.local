@@ -568,9 +568,11 @@ bind -T suspended M-c run-shell "$HOME/.tmux/plugins/tmux-suspend/scripts/resume
 
 # Finish copy with Enter and resume if suspended
 bind -T copy-mode Enter send-keys -X copy-pipe-and-cancel \; if-shell -b '[ #{@resume_after_copy} = true ]' 'run-shell "$HOME/.tmux/plugins/tmux-suspend/scripts/suspend.sh \"\" \"   @mode_indicator_custom_prompt:: SUSPENDED , \""' \; set-option -q "@resume_after_copy" "false"
+bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel \; if-shell -b '[ #{@resume_after_copy} = true ]' 'run-shell "$HOME/.tmux/plugins/tmux-suspend/scripts/suspend.sh \"\" \"   @mode_indicator_custom_prompt:: SUSPENDED , \""' \; set-option -q "@resume_after_copy" "false"
 
 # Exit copy mode and resume if suspended
 bind -T copy-mode Escape run-shell "tmux     send-keys -X cancel; /home/ogal/.tmux/plugins/tmux-copycat/scripts/copycat_mode_quit.sh; true" \; if-shell -b '[ #{@resume_after_copy} = true ]' 'run-shell "$HOME/.tmux/plugins/tmux-suspend/scripts/suspend.sh \"\" \"   @mode_indicator_custom_prompt:: SUSPENDED , \""' \; set-option -q "@resume_after_copy" "false"
+bind -T copy-mode-vi Escape run-shell "tmux     send-keys -X cancel; /home/ogal/.tmux/plugins/tmux-copycat/scripts/copycat_mode_quit.sh; true" \; if-shell -b '[ #{@resume_after_copy} = true ]' 'run-shell "$HOME/.tmux/plugins/tmux-suspend/scripts/suspend.sh \"\" \"   @mode_indicator_custom_prompt:: SUSPENDED , \""' \; set-option -q "@resume_after_copy" "false"
 
 # Start copy with Space
 bind -T copy-mode Space send-keys -X begin-selection
