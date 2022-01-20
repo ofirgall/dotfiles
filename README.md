@@ -39,10 +39,10 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO Takes time
+* tmux-go - open from some gui and not terminal
+* icomp - pyright doesnt work, update nvim plugins
 * general - manage tasks with select_tmux_session
 * nvim - https://github.com/pechorin/any-jump.vim
-* jump to workspace by tmux session name
-* tmux-go - open from some gui and not terminal
 * tmux-browser
 * tmux-remote-notify
 * nvim - search filter history?
@@ -51,11 +51,11 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * faster boot time for zsh
 
 ## TODO Major
-* zsh - histdb doesnt work good disabled for now
+* nvim - horz split status line border not clear
+* zsh - zsh-mode-vi makes issues with up/down partial history match
 * nvim - auto indent on paste
 * nvim - autocomplete order (SyslogFile is a good exapme)
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
-* zsh - since histdb partial match with up doesnt work
 * tmux - not suspended (not active) change status colors 
 * nvim - when escaping from autocomplete it escape from select mode (using autocomplet while using snippets)
 * nvim - gD/gd/gi binds with splits

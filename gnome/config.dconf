@@ -16,7 +16,7 @@ window-width=540
 
 [com/ubuntu/update-notifier]
 no-show-notifications=true
-release-check-time=uint32 1641466190
+release-check-time=uint32 1642676022
 
 [desktop/ibus/panel/emoji]
 hotkey=@as []
