@@ -3,3 +3,5 @@
 *compile_commands.json
 *compile_flags.txt
 *.swp
+.clangd/
+_ofir*

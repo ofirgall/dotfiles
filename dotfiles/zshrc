@@ -170,7 +170,7 @@ alias get_ticket='git rev-parse --abbrev-ref HEAD | grep -oP ".+/\K([A-Z]+-[0-9]
 alias cticket='get_ticket | toclip'
 alias ticket='xdg-open https://jira.infinidat.com/browse/$(get_ticket)'
 alias cbranch='git rev-parse --abbrev-ref HEAD | tr -d "\n" | toclip'
-alias g='~/dotfiles_scripts/tmux-go.py'
+alias g='~/dotfiles_scripts/tmux_go.py'
 
 export EDITOR='vim'
 if type nvim &> /dev/null; then

@@ -5,3 +5,4 @@ nvim-conf/plugin
 nvim-conf/.*
 autokey/My\ Phrases
 autokey/Sample\ Scripts
+*/__pycache__

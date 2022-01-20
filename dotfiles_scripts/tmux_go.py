@@ -22,14 +22,6 @@ def new_terminal_with_session(session: str, desktop_id: int):
     shell = subprocess.check_output(['echo $SHELL'], shell=True).decode().strip()
     subprocess.Popen(['/usr/bin/x-terminal-emulator', '-t', f'tmux-go-session:{session}', '-e', shell, '-c', f'export OPEN_TMUX_SESSION={session}; export OPEN_AT_DESK={desktop_id}; zsh -i'])
 
-def new_workspace_prompt(session: str):
-    print(f'{session} window not found\n')
-
-    if not yes_no_prompt('Open new Workspace'):
-        return
-
-    new_terminal_with_session(session, get_last_desktop())
-
 
 def go_to_workspace(session: str) -> bool:
     window_title = f'tmux-go-session:{session}'
@@ -40,6 +32,10 @@ def go_to_workspace(session: str) -> bool:
 
     subprocess.check_call(['wmctrl', '-a', window_title])
     return True
+
+def go_to_session(session: str):
+    if not go_to_workspace(session):
+        new_terminal_with_session(session, get_last_desktop())
 
 def main():
     server = libtmux.Server()
@@ -56,8 +52,7 @@ def main():
 
     args = parser.parse_args()
 
-    if not go_to_workspace(args.session):
-        new_workspace_prompt(args.session)
+    go_to_session(args.session)
 
 if __name__ == '__main__':
     main()

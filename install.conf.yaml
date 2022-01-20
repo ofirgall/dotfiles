@@ -37,6 +37,10 @@
         path: dotfiles/alacritty.yml
     ~/.config/autokey/data:
         path: autokey
+    ~/.local/share/kupfer/plugins:
+        path: kupfer_plugins
+    ~/.config/kupfer/kupfer.cfg:
+        path: dotfiles/kupfer.cfg
 
 - create:
     - ~/projects
