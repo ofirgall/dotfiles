@@ -39,7 +39,7 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO Takes time
-* tmux-go - open from some gui and not terminal
+* tmux-go - open from some gui and not terminal, close workspace
 * icomp - pyright doesnt work, update nvim plugins
 * general - manage tasks with select_tmux_session
 * nvim - https://github.com/pechorin/any-jump.vim

@@ -32,6 +32,21 @@ require("revj").setup{
 require('numb').setup{
 }
 
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+require'nvim-tree'.setup {
+	view = {
+		mappings = {
+			list = {
+				{ key = "<Escape>", cb = tree_cb("close_node") },
+			}
+		}
+	}
+}
+
+vim.cmd([[
+command! Locate execute 'NvimTreeFindFile'
+]])
+
 vim.cmd([[
 let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 let g:XkbSwitchEnabled = 1

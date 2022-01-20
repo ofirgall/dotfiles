@@ -96,6 +96,12 @@ return require('packer').startup(function()
 		"danymat/neogen", -- Doc generator
 		requires = "nvim-treesitter/nvim-treesitter"
 	}
+	use {
+		'kyazdani42/nvim-tree.lua', -- File Tree
+		requires = {
+			'kyazdani42/nvim-web-devicons',
+		},
+	}
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'
