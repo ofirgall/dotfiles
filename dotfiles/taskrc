@@ -29,4 +29,12 @@ data.location=~/.task
 #include /usr/share/taskwarrior/solarized-light-256.theme
 #include /usr/share/taskwarrior/no-color.theme
 
+uda.taskwarrior-tui.task-report.next.filter=status:pending
+uda.taskwarrior-tui.keyconfig.shortcut1=o
 uda.taskwarrior-tui.shortcuts.1=taskopen
+uda.taskwarrior-tui.shortcuts.2=~/.taskwarrior_shortcuts/clear-all.sh
+uda.taskwarrior-tui.shortcuts.3=~/.taskwarrior_shortcuts/add-waiting.sh
+uda.taskwarrior-tui.shortcuts.4=~/.taskwarrior_shortcuts/add-needtolook.sh
+uda.taskwarrior-tui.shortcuts.5=~/.taskwarrior_shortcuts/add-review.sh
+uda.taskwarrior-tui.shortcuts.6=~/.taskwarrior_shortcuts/add-integration.sh
+

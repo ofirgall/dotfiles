@@ -342,8 +342,8 @@ show-thumbnails=true
 wraparound-mode='rows-columns'
 
 [org/gnome/software]
-check-timestamp=int64 1642772037
-online-updates-timestamp=int64 1642772039
+check-timestamp=int64 1642772101
+online-updates-timestamp=int64 1642772103
 
 [org/gnome/system/location]
 enabled=false

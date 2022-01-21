@@ -43,6 +43,8 @@
         path: dotfiles/kupfer.cfg
     ~/.taskrc:
         path: dotfiles/taskrc
+    ~/.taskwarrior_shortcuts:
+        path: taskwarrior_shortcuts
 
 - create:
     - ~/projects

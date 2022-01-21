@@ -49,6 +49,7 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * tmux - is_vim not detected when using vim on remote inside other tmux not suspended
 * nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
 * faster boot time for zsh
+* backup non-dotfiles - tmux sessions, tasks of taskwarrior, nvim sessions
 
 ## TODO Major
 * nvim - horz split status line border not clear
