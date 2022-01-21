@@ -41,6 +41,8 @@
         path: kupfer_plugins
     ~/.config/kupfer/kupfer.cfg:
         path: dotfiles/kupfer.cfg
+    ~/.taskrc:
+        path: dotfiles/taskrc
 
 - create:
     - ~/projects
@@ -54,4 +56,5 @@
     - [sh install_scripts/install_vscode.sh, Installing vscode]
     - [sh vscode-conf/install_extensions.sh, Installing vscode extensions]
     - [sh install_scripts/install_fusuma.sh, Installing Fusuma]
+    - [sh install_scripts/install_taskwarrior.sh, Installing Task Warrior]
     - [git submodule update --init --recursive, Installing submodules]

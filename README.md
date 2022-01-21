@@ -52,6 +52,7 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 
 ## TODO Major
 * nvim - horz split status line border not clear
+* nvim - open file from nvim-tree for tab color isn't clear
 * zsh - zsh-mode-vi makes issues with up/down partial history match
 * nvim - auto indent on paste
 * nvim - autocomplete order (SyslogFile is a good exapme)
