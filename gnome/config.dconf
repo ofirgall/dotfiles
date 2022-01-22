@@ -326,9 +326,10 @@ up-three-action='previous-workspace'
 
 [org/gnome/shell/extensions/hidetopbar]
 enable-active-window=false
-enable-intellihide=true
+enable-intellihide=false
 mouse-sensitive=true
 shortcut-keybind=@as []
+show-in-overview=true
 
 [org/gnome/shell/extensions/wsmatrix]
 cache-popup=true

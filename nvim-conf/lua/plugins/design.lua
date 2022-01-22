@@ -1,7 +1,13 @@
 local gps = require("nvim-gps")
+
+local custom_modus = require'lualine.themes.modus-vivendi'
+
+custom_modus.inactive.c.bg = '#141414'
+custom_modus.inactive.c.fg = '#6b6a6a'
+
 require'lualine'.setup {
 	options = {
-		theme = 'modus-vivendi',
+		theme = custom_modus,
 		icons_enabled = true,
 		path = 1,
 	},
@@ -132,6 +138,11 @@ monokai.setup {
 			bg = palette.base3,
 			style = 'none'
 		},
+		NvimTreeWindowPicker = {
+			fg = palette.pink,
+			bg = palette.base3,
+			style = 'bold'
+		}
 	}
 }
 

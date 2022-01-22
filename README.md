@@ -39,25 +39,23 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO Takes time
-* tmux-go - open from some gui and not terminal, close workspace
+* tmux-go - close workspace
 * icomp - pyright doesnt work, update nvim plugins
-* general - manage tasks with select_tmux_session
+* taskwariror - Annotate tmux session and go with tmux-go 
+* faster boot time for zsh
 * nvim - https://github.com/pechorin/any-jump.vim
+* tmux - is_vim not detected when using vim on remote inside other tmux not suspended
 * tmux-browser
 * tmux-remote-notify
 * nvim - search filter history?
-* tmux - is_vim not detected when using vim on remote inside other tmux not suspended
-* nvim - split all config (lua config maybe), keybindings in one place will be nice, large plugin inits
-* faster boot time for zsh
 * backup non-dotfiles - tmux sessions, tasks of taskwarrior, nvim sessions
 
 ## TODO Major
-* nvim - horz split status line border not clear
-* nvim - open file from nvim-tree for tab color isn't clear
-* zsh - zsh-mode-vi makes issues with up/down partial history match
 * nvim - auto indent on paste
-* nvim - autocomplete order (SyslogFile is a good exapme)
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
+* nvim - if tree is open when closing session the session tries to recover it and doesnt work
+* zsh - zsh-mode-vi makes issues with up/down partial history match
+* nvim - autocomplete order (SyslogFile is a good exapme)
 * tmux - not suspended (not active) change status colors 
 * nvim - when escaping from autocomplete it escape from select mode (using autocomplet while using snippets)
 * nvim - gD/gd/gi binds with splits
@@ -71,14 +69,11 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * tmux - ssh connection when asked
 * nvim - stop lsp server on background
 * nvim - color for nvim-gps
-* nvim - session manager still makeing trouble
 * nvim - build & run + quickfix errors
-* nvim-git - reset lines (not very useful in gitsigns)
 * nvim-git - history date&authro with search
 * nvim-git - go to changed line/file on git history (telescope)
 * nvim-git - git add -i alternative
 * nvim - try distant one day
-* tmux - learn copy-mode-vi
 * tmux - make a valid fix for suspend/resume copy like copycat mode
 
 ---
