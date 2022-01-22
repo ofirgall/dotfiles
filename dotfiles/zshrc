@@ -105,10 +105,6 @@ ZSH_TMUX_AUTOSTART_ONCE=false
 ZSH_TMUX_AUTOQUIT=false
 ZSH_TMUX_FIXTERM=false
 
-bindkey -M main "\C-r" history-incremental-pattern-search-backward
-bindkey -M main "^ " autosuggest-accept # Ctrl+Space
-bindkey -M vicmd "^ " autosuggest-accept # Ctrl+Space
-
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -130,6 +126,12 @@ plugins=(
   )
 
 source $ZSH/oh-my-zsh.sh
+
+# Binds
+bindkey -M main "\C-r" history-incremental-pattern-search-backward
+bindkey -M main "^ " autosuggest-accept # Ctrl+Space
+bindkey -M vicmd "^ " autosuggest-accept # Ctrl+Space
+bindkey "^ " autosuggest-accept # Ctrl+Space
 
 # User configuration
 
