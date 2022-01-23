@@ -36,6 +36,8 @@ class TmuxSessionLeaf(Leaf):
 
 class TmuxSessionSource(Source):
     def __init__(self):
+        Source.source_user_reloadable = True
+        Source.source_use_cache = False
         Source.__init__(self, _("Tmux Sessions"))
 
     def get_items(self):
@@ -48,3 +50,7 @@ class TmuxSessionSource(Source):
 
     def get_icon_name(self):
         return "gtk-directory"
+
+    # Do not cache the sessions
+    # def is_dynamic(self):
+    #     return True

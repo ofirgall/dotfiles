@@ -278,13 +278,19 @@ if ! $IS_REMOTE; then
   then
     daemon --name="autokey" autokey-gtk
   fi
+
+  if ! pgrep --full kupfer > /dev/null;
+  then
+    daemon --name="kupfer" -- kupfer --no-splash
+  fi
+
 fi
 
 # Must be at the end
 if ! [ -z "$OPEN_TMUX_SESSION" ]; then
 	echo "Opening $OPEN_TMUX_SESSION at desk $OPEN_AT_DESK"
 	TMUX_SESSION_TITLE="tmux-go-session:$OPEN_TMUX_SESSION"
-	wmctrl -r "$TMUX_SESSION_TITLE" -t $OPEN_AT_DESK; sleep 0.01; wmctrl -a "$TMUX_SESSION_TITLE"
+	wmctrl -r "$TMUX_SESSION_TITLE" -t $OPEN_AT_DESK; sleep 0.1; wmctrl -a "$TMUX_SESSION_TITLE"
     tmux attach -t "$OPEN_TMUX_SESSION"
 else
 	if ! [ -n "$TMUX" ]; then
