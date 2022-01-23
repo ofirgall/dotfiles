@@ -27,7 +27,7 @@ class OpenTmuxSession(Action):
 
 class TmuxSessionLeaf(Leaf):
     def __init__(self, session):
-        super(self.__class__, self).__init__(session, _('t' + session + ' tmux session'))
+        super(self.__class__, self).__init__(session, _(session + ' tmux session'))
         self.session = session
 
     def get_description(self):
