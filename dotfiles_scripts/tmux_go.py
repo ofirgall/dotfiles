@@ -30,7 +30,13 @@ def go_to_workspace(session: str) -> bool:
     if window_title not in windows:
         return False
 
-    subprocess.check_call(['wmctrl', '-a', window_title])
+    windows_with_title = [win for win in windows.splitlines() if window_title in win]
+    if len(windows_with_title) != 1:
+        print('Found multiple windows with the same session title')
+        return False
+
+    desktop_id = windows_with_title[0].split()[1]
+    subprocess.check_call(['wmctrl', '-s', desktop_id])
     return True
 
 def go_to_session(session: str):
