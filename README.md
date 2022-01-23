@@ -51,7 +51,10 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * backup non-dotfiles - tmux sessions, tasks of taskwarrior, nvim sessions
 
 ## TODO Major
+* tmux-go - add last workspace
+* when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
 * nvim - auto indent on paste
+* nvim - gd/gD etc. wrap text with "", added the file type automaticlly
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
 * nvim - if tree is open when closing session the session tries to recover it and doesnt work
 * zsh - zsh-mode-vi makes issues with up/down partial history match

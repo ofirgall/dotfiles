@@ -41,7 +41,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='keyboard'
+last-panel='sound'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -173,7 +173,7 @@ report-technical-problems=true
 sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
 
 [org/gnome/desktop/sound]
-allow-volume-above-100-percent=false
+allow-volume-above-100-percent=true
 event-sounds=true
 
 [org/gnome/desktop/wm/preferences]

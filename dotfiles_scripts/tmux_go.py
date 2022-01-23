@@ -18,9 +18,15 @@ def yes_no_prompt(question: str) -> bool:
 def get_last_desktop() -> int:
     return int(subprocess.check_output(['wmctrl', '-d']).splitlines()[-1].split(b' ')[0])
 
-def new_terminal_with_session(session: str, desktop_id: int):
+def goto_desktop(desktop_id: int):
+    subprocess.check_call(['wmctrl', '-s', str(desktop_id)])
+
+def new_terminal_with_session(session: str, desktop_id: int, go_after_create: bool):
     shell = subprocess.check_output(['echo $SHELL'], shell=True).decode().strip()
     subprocess.Popen(['/usr/bin/x-terminal-emulator', '-t', f'tmux-go-session:{session}', '-e', shell, '-c', f'export OPEN_TMUX_SESSION={session}; export OPEN_AT_DESK={desktop_id}; zsh -i'])
+
+    if go_after_create:
+        goto_desktop(desktop_id)
 
 
 def go_to_workspace(session: str) -> bool:
@@ -41,7 +47,7 @@ def go_to_workspace(session: str) -> bool:
 
 def go_to_session(session: str):
     if not go_to_workspace(session):
-        new_terminal_with_session(session, get_last_desktop())
+        new_terminal_with_session(session, get_last_desktop(), True)
 
 def main():
     server = libtmux.Server()
