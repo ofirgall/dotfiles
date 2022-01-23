@@ -11,7 +11,7 @@ import libtmux
 import sys
 import os
 sys.path.append(os.path.expandvars('$HOME/dotfiles_scripts/'))
-from tmux_go import go_to_session
+from tmux_go import go_to_session, get_last_session_name, LAST_SESSION_KEYWORD
 
 class OpenTmuxSession(Action):
     def activate(self, obj):
@@ -27,11 +27,14 @@ class OpenTmuxSession(Action):
 
 class TmuxSessionLeaf(Leaf):
     def __init__(self, session):
-        super(self.__class__, self).__init__(session, _(session + ' tmux session'))
+        session_display = session + ' tmux session'
+        self.desc = f'{get_last_session_name()} (last)' if LAST_SESSION_KEYWORD == session else session
+
+        super(self.__class__, self).__init__(session, _(session_display))
         self.session = session
 
     def get_description(self):
-        return "TMUX SESSION: " + self.object
+        return "TMUX SESSION: " + self.desc
 
 
 class TmuxSessionSource(Source):
@@ -41,6 +44,11 @@ class TmuxSessionSource(Source):
         Source.__init__(self, _("Tmux Sessions"))
 
     def get_items(self):
+        try:
+            yield TmuxSessionLeaf('last')
+        except FileNotFoundError:
+            pass
+
         server = libtmux.Server()
         for session in server.list_sessions():
             yield TmuxSessionLeaf(session['session_name'])
@@ -50,7 +58,3 @@ class TmuxSessionSource(Source):
 
     def get_icon_name(self):
         return "gtk-directory"
-
-    # Do not cache the sessions
-    # def is_dynamic(self):
-    #     return True

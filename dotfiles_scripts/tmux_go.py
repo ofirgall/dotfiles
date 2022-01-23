@@ -10,6 +10,27 @@ import argcomplete
 import argparse
 import libtmux
 import subprocess
+import re
+from os import path
+
+LAST_JUMPED_SESSION_FILE = path.expandvars(path.join('$HOME', '.tmux_go_last'))
+LAST_SESSION_KEYWORD = 'last'
+
+class TmuxGoMultipleDesktops(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
+class TmuxGoSessioNotFound(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
+class TmuxGoActiveSessionNotFound(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
+def get_last_session_name() -> str:
+    with open(LAST_JUMPED_SESSION_FILE, 'r') as f:
+        return f.read()
 
 def yes_no_prompt(question: str) -> bool:
     answer = input(f'{question}? [Y/n] ')
@@ -28,25 +49,62 @@ def new_terminal_with_session(session: str, desktop_id: int, go_after_create: bo
     if go_after_create:
         goto_desktop(desktop_id)
 
+def get_current_desktop() -> int:
+    desktops = subprocess.check_output(['wmctrl', '-d']).splitlines()
+    for desktop in desktops:
+        desktop_parts = desktop.split()
+        if desktop_parts[1] == b'*':
+            return int(desktop_parts[0])
+    raise Exception('Not active desktop found!')
 
-def go_to_workspace(session: str) -> bool:
+def get_desktop_with_session(session: str) -> int:
     window_title = f'tmux-go-session:{session}'
     windows = subprocess.check_output(['wmctrl', '-l']).decode()
 
     if window_title not in windows:
-        return False
+        raise TmuxGoSessioNotFound('Active Session Window not Found')
 
     windows_with_title = [win for win in windows.splitlines() if window_title in win]
     if len(windows_with_title) != 1:
-        print('Found multiple windows with the same session title')
-        return False
+        raise TmuxGoMultipleDesktops('Found multiple windows with the same session title')
 
     desktop_id = windows_with_title[0].split()[1]
-    subprocess.check_call(['wmctrl', '-s', desktop_id])
+    return int(desktop_id)
+
+def get_active_session_in_desktop(desktop_id: int) -> str:
+    windows = subprocess.check_output(['wmctrl', '-l']).splitlines()
+
+    for window in windows:
+        parts = window.decode().split()
+        desk = parts[1]
+        window_title = ' '.join(parts[3:])
+        if int(desk) == desktop_id:
+            match = re.match(r'.*tmux-go-session:(.+?)($|\s)', window_title, re.DOTALL)
+            if match is None:
+                continue
+
+            return match.group(1)
+
+    raise TmuxGoActiveSessionNotFound('Active Session Not Found')
+
+def go_to_workspace(session: str) -> bool:
+    if session == LAST_SESSION_KEYWORD:
+        session = get_last_session_name()
+
+    try:
+        current_session = get_active_session_in_desktop(get_current_desktop())
+        with open(LAST_JUMPED_SESSION_FILE, 'w') as f:
+            f.write(current_session)
+    except TmuxGoActiveSessionNotFound:
+        pass
+
+    subprocess.check_call(['wmctrl', '-s', str(get_desktop_with_session(session))])
     return True
 
 def go_to_session(session: str):
-    if not go_to_workspace(session):
+    try:
+        go_to_workspace(session)
+    except TmuxGoSessioNotFound:
         new_terminal_with_session(session, get_last_desktop(), True)
 
 def main():
@@ -57,7 +115,7 @@ def main():
 
     parser = argparse.ArgumentParser('Go to Tmux Session')
 
-    parser.add_argument('session', choices=[s['session_name'] for s in sessions])
+    parser.add_argument('session', choices=[LAST_SESSION_KEYWORD] + [s['session_name'] for s in sessions])
 
     argcomplete.autocomplete(parser)
     pyzshcomplete.autocomplete(parser)

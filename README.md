@@ -39,20 +39,21 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO Takes time
+* tmux-go - different repo
 * tmux-go - close workspace
+* tmux-go - add workspace
 * icomp - pyright doesnt work, update nvim plugins
 * taskwariror - Annotate tmux session and go with tmux-go 
 * faster boot time for zsh
 * nvim - https://github.com/pechorin/any-jump.vim
 * tmux - is_vim not detected when using vim on remote inside other tmux not suspended
 * tmux-browser
+* when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
 * tmux-remote-notify
 * nvim - search filter history?
 * backup non-dotfiles - tmux sessions, tasks of taskwarrior, nvim sessions
 
 ## TODO Major
-* tmux-go - add last workspace
-* when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
 * nvim - auto indent on paste
 * nvim - gd/gD etc. wrap text with "", added the file type automaticlly
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
