@@ -20,13 +20,36 @@ end,
 
 require "lsp_signature".setup({lsp_signature_cfg})
 
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
+local is_remote = file_exists(os.getenv("HOME") .. "/.remote_indicator")
+
 -- logs at "$HOME/.cache/nvim/lsp.log"
 -- vim.lsp.set_log_level("debug")
 
-require'lspconfig'.pyright.setup{
-	on_attach = lsp_on_attach,
-	capabilities = capabilities,
-}
+if not is_remote then
+	require'lspconfig'.pyright.setup{
+		on_attach = lsp_on_attach,
+		capabilities = capabilities,
+	}
+else
+	require'lspconfig'.pylsp.setup{
+		on_attach = lsp_on_attach,
+		capabilities = capabilities,
+		settings = {
+			pylsp = {
+				plugins = {
+					pycodestyle = {
+						enabled = false
+					}
+				}
+			}
+		},
+	}
+end
 
 require'lspconfig'.rust_analyzer.setup{
 	on_attach = lsp_on_attach,
@@ -52,12 +75,7 @@ require'lspconfig'.vimls.setup{
 local clang_cmd = { "clangd", "--background-index", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}
 -- local clang_cmd = { "clangd", "--background-index=false", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}
 
-function file_exists(name)
-   local f=io.open(name,"r")
-   if f~=nil then io.close(f) return true else return false end
-end
-
-if file_exists(os.getenv("HOME") .. "/.remote_indicator") then
+if is_remote then
 	clang_cmd = { "clangd", "-completion-style=bundled" }
 end
 
