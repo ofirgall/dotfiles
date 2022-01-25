@@ -39,10 +39,12 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO Takes time
+* nvim-git - neogit or vgit + diffview?
+* create/attach - to the same session when connecting to remote
 * tmux-go - different repo
 * tmux-go - close workspace
 * tmux-go - add workspace
-* icomp - pyright doesnt work, update nvim plugins
+* icomp - compile new clangd, update nvim plugins
 * taskwariror - Annotate tmux session and go with tmux-go 
 * faster boot time for zsh
 * nvim - https://github.com/pechorin/any-jump.vim
@@ -52,9 +54,13 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * tmux-remote-notify
 * nvim - search filter history?
 * backup non-dotfiles - tmux sessions, tasks of taskwarrior, nvim sessions
+* backup firefox extnesions & settings
 
 ## TODO Major
+* nvim - taskwarrior scripts shared function
 * nvim - auto indent on paste
+* nvim - Typechecker & fixer
+* nvim - lsp on attach/deattach (high cpu)
 * nvim - gd/gD etc. wrap text with "", added the file type automaticlly
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
 * nvim - if tree is open when closing session the session tries to recover it and doesnt work
