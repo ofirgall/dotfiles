@@ -1,3 +1,6 @@
+[apps/notify-osd]
+gravity=5
+
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
@@ -41,7 +44,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='bluetooth'
+last-panel='notifications'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -84,7 +87,7 @@ toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
 application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams', 'kupfer']
-show-banners=false
+show-banners=true
 
 [org/gnome/desktop/notifications/application/apport-gtk]
 application-id='apport-gtk.desktop'
@@ -177,7 +180,7 @@ allow-volume-above-100-percent=true
 event-sounds=true
 
 [org/gnome/desktop/wm/preferences]
-num-workspaces=10
+num-workspaces=8
 
 [org/gnome/eog/view]
 background-color='rgb(0,0,0)'
@@ -308,8 +311,8 @@ hinting='slight'
 
 [org/gnome/shell]
 command-history=['', 'r']
-disabled-extensions=['wsmatrix@martin.zurowietz.de']
-enabled-extensions=['disable-gestures-2021@verycrazydog.gmail.com', 'switchtwolayouts@qtmax.dev', 'hidetopbar@mathieu.bidon.ca']
+disabled-extensions=['panel-osd@berend.de.schouwer.gmail.com', 'wsmatrix@martin.zurowietz.de']
+enabled-extensions=['disable-gestures-2021@verycrazydog.gmail.com', 'switchtwolayouts@qtmax.dev', 'hidetopbar@mathieu.bidon.ca', 'transparentnotification@ipaq3870']
 favorite-apps=['firefox.desktop', 'com.alacritty.Alacritty.desktop', 'spotify_spotify.desktop', 'slack_slack.desktop', 'org.gnome.Nautilus.desktop', 'com.cisco.anyconnect.gui.desktop']
 had-bluetooth-devices-setup=true
 
@@ -330,6 +333,11 @@ enable-intellihide=false
 mouse-sensitive=true
 shortcut-keybind=@as []
 show-in-overview=true
+
+[org/gnome/shell/extensions/panel-osd]
+force-expand=false
+test-notification=false
+x-pos=100.0
 
 [org/gnome/shell/extensions/wsmatrix]
 cache-popup=true
