@@ -58,6 +58,7 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 
 ## TODO Major
 * nvim - taskwarrior scripts shared function
+* notify - fix color issues
 * nvim - auto indent on paste
 * nvim - Typechecker & fixer
 * nvim - lsp on attach/deattach (high cpu)

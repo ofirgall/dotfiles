@@ -102,6 +102,7 @@ return require('packer').startup(function()
 			'kyazdani42/nvim-web-devicons',
 		},
 	}
+	use "jbyuki/venn.nvim" -- Draw ascii boxes and arrows, start the mode with :Draw, exit with escape, HJKL for arrows, f for box (inside <C-v>)
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'
