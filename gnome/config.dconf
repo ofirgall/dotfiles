@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=11
-launch-time=int64 1642522347
+launch-count=12
+launch-time=int64 1643138730
 show-details=true
 window-height=503
 window-width=645
@@ -44,7 +44,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='notifications'
+last-panel='background'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -311,6 +311,7 @@ hinting='slight'
 
 [org/gnome/shell]
 command-history=['', 'r']
+disable-user-extensions=false
 disabled-extensions=['panel-osd@berend.de.schouwer.gmail.com', 'wsmatrix@martin.zurowietz.de']
 enabled-extensions=['disable-gestures-2021@verycrazydog.gmail.com', 'switchtwolayouts@qtmax.dev', 'hidetopbar@mathieu.bidon.ca', 'transparentnotification@ipaq3870']
 favorite-apps=['firefox.desktop', 'com.alacritty.Alacritty.desktop', 'spotify_spotify.desktop', 'slack_slack.desktop', 'org.gnome.Nautilus.desktop', 'com.cisco.anyconnect.gui.desktop']
