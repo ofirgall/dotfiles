@@ -18,6 +18,10 @@ map('n', '<C-i>', '<C-i>zz', default_opts)
 map('', 'j', 'v:count ? "j" : "gj"', {noremap = true, expr=true})
 map('', 'k', 'v:count ? "k" : "gk"', {noremap = true, expr=true})
 
+-- Toggle spell check
+map('n', '<F11>', ':set spell!<cr>', default_opts)
+map('i', '<F11>', '<C-O>:set spell!<cr>', default_opts)
+
 map('n', '<C-h>', '<cmd>TmuxNavigateLeft<cr>', default_opts)
 map('n', '<C-j>', '<cmd>TmuxNavigateDown<cr>', default_opts)
 map('n', '<C-k>', '<cmd>TmuxNavigateUp<cr>', default_opts)

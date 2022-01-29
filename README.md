@@ -57,11 +57,10 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * backup firefox extnesions & settings
 
 ## TODO Major
-* nvim - taskwarrior scripts shared function
-* notify - fix color issues
+* nvim - my sublime snippets
+* tmux - restart ssh connection
 * nvim - auto indent on paste
-* nvim - Typechecker & fixer
-* nvim - lsp on attach/deattach (high cpu)
+* nvim - lsp on attach/dettach (high cpu)
 * nvim - gd/gD etc. wrap text with "", added the file type automaticlly
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
 * nvim - if tree is open when closing session the session tries to recover it and doesnt work

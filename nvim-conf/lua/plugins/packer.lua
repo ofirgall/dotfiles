@@ -28,6 +28,7 @@ return require('packer').startup(function()
 	use 'hrsh7th/nvim-cmp'
 	use 'dcampos/nvim-snippy'
 	use 'dcampos/cmp-snippy'
+	use 'f3fora/cmp-spell'
 
 	use 'honza/vim-snippets' -- Default snippets
 	use 'tami5/lspsaga.nvim' -- Sweet ui for rename + code action and hover doc
@@ -43,7 +44,6 @@ return require('packer').startup(function()
     }
 	use 'nvim-treesitter/playground' -- TreeSitter helper to customize
 	use 'tanvirtin/monokai.nvim' -- Color theme (customized)
-	-- use 'romgrk/nvim-treesitter-context' -- Shows the context atm (class/function)
 	use {
 		'SmiteshP/nvim-gps', -- Shows context in status line
 		requires = 'nvim-treesitter/nvim-treesitter'
