@@ -29,6 +29,9 @@ require('gitsigns').setup {
   end
 }
 
+require'diffview'.setup{
+}
+
 require('Comment').setup{
 }
 
