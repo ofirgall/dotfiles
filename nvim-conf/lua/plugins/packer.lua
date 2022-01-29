@@ -64,7 +64,8 @@ return require('packer').startup(function()
 	use 'kyazdani42/nvim-web-devicons' -- Web icons (more plugins using this)
 
 	-- Git
-	use 'lewis6991/gitsigns.nvim' -- Show git diff in the sidebar
+	use 'lewis6991/gitsigns.nvim' -- Show git diff in the sidebar, hunk actions and more
+	use 'tpope/vim-fugitive' -- Git cli inside nvim with extra tools :Git
 	-- TODO: Get more git feature (merge diff and stuff like this)
 
 	-- Misc
