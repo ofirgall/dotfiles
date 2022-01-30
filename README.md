@@ -39,7 +39,6 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ---
 
 ## TODO Takes time
-* nvim-git - neogit or vgit + diffview?
 * create/attach - to the same session when connecting to remote
 * tmux-go - different repo
 * tmux-go - close workspace
@@ -58,6 +57,8 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 
 ## TODO Major
 * nvim - my sublime snippets
+* nvim - reddit stars
+* nvim - diffview, lines filter
 * tmux - restart ssh connection
 * nvim - auto indent on paste
 * nvim - lsp on attach/dettach (high cpu)
@@ -85,6 +86,8 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * nvim-git - git add -i alternative
 * nvim - try distant one day
 * tmux - make a valid fix for suspend/resume copy like copycat mode
+* tuis to try - slack, mail, calander, jira
+* autoupdate dotfiles on remote machines
 
 ---
 

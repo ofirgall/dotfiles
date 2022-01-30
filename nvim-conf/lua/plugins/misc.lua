@@ -29,7 +29,27 @@ require('gitsigns').setup {
   end
 }
 
+local cb = require'diffview.config'.diffview_callback
 require'diffview'.setup{
+	file_history_panel = {
+		log_options = {
+			follow = false,       -- Follow renames (only for single file)
+		},
+	},
+	key_bindings = {
+		view = {
+			["q"] = '<cmd>:DiffviewClose<cr>',
+			["<Escape>"] = '<cmd>:DiffviewClose<cr>',
+		},
+		file_panel = {
+			["q"] = cb('close'),
+			["<Escape>"] = cb('close'),
+		},
+		file_history_panel = {
+			["q"] = cb('close'),
+			["<Escape>"] = cb('close'),
+		},
+	}
 }
 
 require('Comment').setup{

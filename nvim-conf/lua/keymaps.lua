@@ -3,6 +3,8 @@ local map = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 local cmd = vim.cmd
 
+map('n', '<M-r>', '<cmd>luafile %<cr>', default_opts)
+
 -- Remove arrows in normal mode
 map('n', '<Left>', '<nop>', default_opts)
 map('n', '<Right>', '<nop>', default_opts)
@@ -31,6 +33,11 @@ map('n', '<M-Down>', '<cmd>TmuxNavigateDown<cr>', default_opts)
 map('n', '<M-Up>', '<cmd>TmuxNavigateUp<cr>', default_opts)
 map('n', '<M-Right>', '<cmd>TmuxNavigateRight<cr>', default_opts)
 
+-- Git History
+map('n', '<leader>gs', '<cmd>DiffviewOpen<CR>', default_opts)
+map('n', '<leader>gc', '<cmd>Telescope git_branches<CR>', default_opts)
+map('n', '<leader>gh', '<cmd>DiffviewFileHistory<CR>', default_opts) -- File History
+map('n', '<leader>gH', '<cmd>DiffviewFileHistory .<CR>', default_opts) -- Git History
 
 map('n', 'KL', '<cmd>Telescope find_files<cr>', default_opts)
 -- " TODO: when moving to lua init one prompt title
@@ -44,12 +51,6 @@ map('n', '<M-m>', '<cmd>NvimTreeToggle<cr>', default_opts)
 map('n', '<C-s>', '<cmd>Telescope buffers<CR>', default_opts)
 map('n', '<C-a>', '<cmd>Telescope oldfiles<CR>', default_opts)
 map('n', '<C-x>', '<cmd>Telescope command_history<CR>', default_opts)
-map('n', '<leader>gs', '<cmd>Telescope git_status<CR>', default_opts)
-map('n', '<leader>gc', '<cmd>Telescope git_branches<CR>', default_opts)
--- map('n', '<leader>gh', '<cmd>lua require(\'telescope.builtin\').git_bcommits({git_command = {\'git\', \'log\', \'--pretty=format:%h %ad \| %sd [%an]\', \'--abbrev-commit\', \'--date=short\'}})<CR>', default_opts)
-map('n', '<leader>gh', '<cmd>lua require(\'telescope.builtin\').git_bcommits()<CR>', default_opts)
--- map('n', '<leader>gH', '<cmd>lua require(\'telescope.builtin\').git_commits({git_command = {\'git\', \'log\', \'--pretty=format:%h %s\', \'--abbrev-commit\', \'--date=short\'}})<CR>', default_opts)
-map('n', '<leader>gH', '<cmd>lua require(\'telescope.builtin\').git_commits()<CR>', default_opts)
 map('n', 'gD', '<cmd>lua require(\'telescope.builtin\').lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")})<cr>', default_opts)
 map('n', '<A-s>', '<cmd>DevDocsUnderCursor<cr>', default_opts)
 -- Tabline binds
