@@ -66,8 +66,8 @@ return require('packer').startup(function()
 	-- Git
 	use 'lewis6991/gitsigns.nvim' -- Show git diff in the sidebar, hunk actions and more
 	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' } -- Show large diffs :DiffviewOpen
-	use 'tpope/vim-fugitive' -- Git cli inside nvim with extra tools :Git
-	-- TODO: Get more git feature (merge diff and stuff like this)
+	use 'tpope/vim-fugitive' -- Git cli inside nvim with extra tools :Git, mergetool :Gdiff http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/
+	-- TODO: Keybinds for merge tool
 
 	-- Misc
 	use 'tpope/vim-repeat' -- Extending repeat (.) action

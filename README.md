@@ -56,15 +56,20 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * backup firefox extnesions & settings
 
 ## TODO Major
+* dotfiles - link xmodmap
+* Shift/Ctrl R_Alt -> Delete
 * nvim - my sublime snippets
 * nvim - reddit stars
 * nvim - diffview, lines filter
+* nvim - fugitive, binds for merge tool and try it
+* nvim - insert mode navigation C-HJKL
 * tmux - restart ssh connection
 * nvim - auto indent on paste
 * nvim - lsp on attach/dettach (high cpu)
 * nvim - gd/gD etc. wrap text with "", added the file type automaticlly
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
 * nvim - if tree is open when closing session the session tries to recover it and doesnt work
+* nvim - when opening nvim with args e.g: nvim ~/.zshrc don't attach to session (tmp edit)
 * zsh - zsh-mode-vi makes issues with up/down partial history match
 * nvim - autocomplete order (SyslogFile is a good exapme)
 * tmux - not suspended (not active) change status colors 
@@ -88,78 +93,12 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * tmux - make a valid fix for suspend/resume copy like copycat mode
 * tuis to try - slack, mail, calander, jira
 * autoupdate dotfiles on remote machines
+* tmux - better menu selection of sessions, fzf maybe?
 
 ---
 
-## How to set VIM binds with Capslock modifer
-### Sources
-* https://wiki.archlinux.org/title/X_keyboard_extension#Caps_hjkl_as_vimlike_arrow_keys
-* https://ts-cubed.github.io/roam/20210525184028-keyboard_mapping.html#orgc60c5b3
-
-`/usr/share/X11/xkb/types/complete`
-```
-default xkb_types "complete" {
-	...
-	type "CUST_CAPSLOCK" {
-       modifiers= Shift+Lock; 
-       map[Shift] = Level2;            //maps shift and no Lock. Shift+Alt goes here, too, because Alt isn't in modifiers.
-       map[Lock] = Level3;
-       map[Shift+Lock] = Level3;       //maps shift and Lock. Shift+Lock+Alt goes here, too.
-       level_name[Level1]= "Base";
-       level_name[Level2]= "Shift";
-       level_name[Level3]= "Lock";
-   };
-};
-```
-`/usr/share/X11/xkb/types/complete`
-```
-default xkb_compatibility "complete" {
-	...
-    interpret Caps_Lock+AnyOfOrNone(all) {
-       action= SetMods(modifiers=Lock);
-   };
-};
-```
-`/usr/share/X11/xkb/symbols/us`
-```
-key <AE04> {
-        type= "CUST_CAPSLOCK",
-        symbols[Group1]= [               4,               dollar,        End ],
-        actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<END>, clearmods=Lock) ]
-    };
-key <AE10> {
-        type= "CUST_CAPSLOCK",
-        symbols[Group1]= [               0,               parenright,        Home ],
-        actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<HOME>, clearmods=Lock) ]
-    };
-key <AD07> {
-        type= "CUST_CAPSLOCK",
-        symbols[Group1]= [               u,               U,        Prior ],
-        actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<PGUP>, clearmods=Lock) ]
-    };
-key <AC03> {
-        type= "CUST_CAPSLOCK",
-        symbols[Group1]= [               d,               D,        Next ],
-        actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<PGDN>, clearmods=Lock) ]
-    };
-key <AC06> {
-        type= "CUST_CAPSLOCK",
-        symbols[Group1]= [               h,               H,        Left ],
-        actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<LEFT>, clearmods=Lock) ]
-    };
-key <AC07> {
-        type= "CUST_CAPSLOCK",
-        symbols[Group1]= [               j,               J,       Down ],
-        actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<DOWN>, clearmods=Lock) ]
-    };
-key <AC08> {
-        type= "CUST_CAPSLOCK",
-        symbols[Group1]= [               k,               K,       Up ],
-        actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<UP>, clearmods=Lock) ]
-    };
-key <AC09> {
-        type= "CUST_CAPSLOCK",
-        symbols[Group1]= [               l,               L,       Right ],
-        actions[Group1]= [      NoAction(),     NoAction(),    RedirectKey(Keycode=<RGHT>, clearmods=Lock) ]
-    };
-```
+## Custom Mapping
+Done by dconf (gnome tweaks):
+* Capslock is mapped to Escape - Don't move your hands when escaping insert mode.
+* Both shift changes language - Don't move your hands while typing.
+* Right Alt is mapped to backspace - Same idea.. (done with ~/.xmodmap too)

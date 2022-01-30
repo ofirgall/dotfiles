@@ -45,6 +45,8 @@
         path: dotfiles/taskrc
     ~/.taskwarrior_shortcuts:
         path: taskwarrior_shortcuts
+    ~/.xmodmaprc:
+        path: dotfiles/xmodmaprc
 
 - create:
     - ~/projects
