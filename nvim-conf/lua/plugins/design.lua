@@ -14,8 +14,18 @@ require'lualine'.setup {
 	sections = {
 		lualine_b = {'diff', 'diagnostics'},
 		lualine_c = {'filename', { gps.get_location, cond = gps.is_available }},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = {'filetype'},
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = {'filename', { gps.get_location, cond = gps.is_available }},
 		lualine_x = {'filetype'},
-	}
+		lualine_y = {},
+		lualine_z = {}
+	},
 }
 
 local monokai = require('monokai')

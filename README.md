@@ -56,10 +56,8 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * backup firefox extnesions & settings
 
 ## TODO Major
-* dotfiles - link xmodmap
 * Shift/Ctrl R_Alt -> Delete
 * nvim - my sublime snippets
-* nvim - reddit stars
 * nvim - diffview, lines filter
 * nvim - fugitive, binds for merge tool and try it
 * nvim - insert mode navigation C-HJKL
@@ -71,7 +69,6 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * nvim - if tree is open when closing session the session tries to recover it and doesnt work
 * nvim - when opening nvim with args e.g: nvim ~/.zshrc don't attach to session (tmp edit)
 * zsh - zsh-mode-vi makes issues with up/down partial history match
-* nvim - autocomplete order (SyslogFile is a good exapme)
 * tmux - not suspended (not active) change status colors 
 * nvim - when escaping from autocomplete it escape from select mode (using autocomplet while using snippets)
 * nvim - gD/gd/gi binds with splits
