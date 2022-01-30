@@ -35,7 +35,7 @@ return require('packer').startup(function()
 	use 'RRethy/vim-illuminate' -- Mark word on cursor
 	use 'ray-x/lsp_signature.nvim' -- Signature hint while typing
 	use 'onsails/lspkind-nvim' -- Adding sweet ui for kind (function/var/method)
-	use 'nvim-lua/lsp-status.nvim' -- Lsp Status in statusline
+	use 'j-hui/fidget.nvim' -- Lsp Status in the bottom right corner
 
 	-- TreeSitter
 	use {
