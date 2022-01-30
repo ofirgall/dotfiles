@@ -44,7 +44,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='bluetooth'
+last-panel='wifi'
 
 [org/gnome/deja-dup]
 backend='google'

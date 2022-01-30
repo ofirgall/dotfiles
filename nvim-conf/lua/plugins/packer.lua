@@ -105,6 +105,10 @@ return require('packer').startup(function()
 		},
 	}
 	use "jbyuki/venn.nvim" -- Draw ascii boxes and arrows, start the mode with :Draw, exit with escape, HJKL for arrows, f for box (inside <C-v>)
+	use {
+		'glacambre/firenvim', -- NVIM in firefox
+		run = function() vim.fn['firenvim#install'](0) end
+	}
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'
