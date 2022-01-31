@@ -57,7 +57,6 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 
 ## TODO Major
 * Shift/Ctrl R_Alt -> Delete
-* nvim - my sublime snippets
 * nvim - diffview, lines filter
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel 
 git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
