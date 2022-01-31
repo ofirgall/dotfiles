@@ -1,32 +1,38 @@
-local gps = require("nvim-gps")
+if not vim.g.started_by_firenvim then
+	local gps = require("nvim-gps")
 
-local custom_modus = require'lualine.themes.modus-vivendi'
+	local custom_modus = require'lualine.themes.modus-vivendi'
 
-custom_modus.inactive.c.bg = '#141414'
-custom_modus.inactive.c.fg = '#6b6a6a'
+	custom_modus.inactive.c.bg = '#141414'
+	custom_modus.inactive.c.fg = '#6b6a6a'
 
-require'lualine'.setup {
-	options = {
-		theme = custom_modus,
-		icons_enabled = true,
-		path = 1,
-	},
-	sections = {
-		lualine_b = {'diff', 'diagnostics'},
-		lualine_c = {'filename', { gps.get_location, cond = gps.is_available }},
-		lualine_x = {},
-		lualine_y = {},
-		lualine_z = {'filetype'},
-	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = {'filename', { gps.get_location, cond = gps.is_available }},
-		lualine_x = {'filetype'},
-		lualine_y = {},
-		lualine_z = {}
-	},
-}
+	require'lualine'.setup {
+		options = {
+			theme = custom_modus,
+			icons_enabled = true,
+			path = 1,
+		},
+		sections = {
+			lualine_b = {'diff', 'diagnostics'},
+			lualine_c = {'filename', { gps.get_location, cond = gps.is_available }},
+			lualine_x = {},
+			lualine_y = {},
+			lualine_z = {'filetype'},
+		},
+		inactive_sections = {
+			lualine_a = {},
+			lualine_b = {},
+			lualine_c = {'filename', { gps.get_location, cond = gps.is_available }},
+			lualine_x = {'filetype'},
+			lualine_y = {},
+			lualine_z = {}
+		},
+	}
+
+	vim.g.bufferline = {
+		icons = 'both',
+	}
+end
 
 local monokai = require('monokai')
 local palette = monokai.classic
@@ -157,8 +163,4 @@ monokai.setup {
 require("indent_blankline").setup {
 	indent_blankline_use_treesitter = true,
 	show_trailing_blankline_indent = false,
-}
-
-vim.g.bufferline = {
-  icons = 'both',
 }
