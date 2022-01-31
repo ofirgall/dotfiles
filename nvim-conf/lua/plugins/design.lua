@@ -32,6 +32,10 @@ if not vim.g.started_by_firenvim then
 	vim.g.bufferline = {
 		icons = 'both',
 	}
+else
+	vim.g.bufferline = {
+		auto_hide = true,
+	}
 end
 
 local monokai = require('monokai')

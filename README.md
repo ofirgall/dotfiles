@@ -61,8 +61,6 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel 
 git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
 * nvim - fugitive, binds for merge tool and try it
-* firenvim - no tabs
-* nvim - insert mode navigation C-HJKL
 * nvim - when opening nvim with args e.g: nvim ~/.zshrc don't attach to session (tmp edit)
 * nvim - auto indent on paste
 * nvim - gd/gD etc. wrap text with "", added the file type automaticlly
@@ -91,7 +89,7 @@ git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff4
 * tmux - make a valid fix for suspend/resume copy like copycat mode
 * tuis to try - slack, mail, calander, jira
 * autoupdate dotfiles on remote machines
-* tmux - better menu selection of sessions, fzf maybe?
+* better readme, readme on keymaps in nvim, split repos
 
 ---
 
