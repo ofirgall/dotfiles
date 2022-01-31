@@ -62,18 +62,18 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel 
 git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
 * nvim - fugitive, binds for merge tool and try it
+* firenvim - no tabs
 * nvim - insert mode navigation C-HJKL
-* tmux - restart ssh connection
-* nvim - auto indent on paste
-* nvim - lsp on attach/dettach (high cpu)
-* nvim - gd/gD etc. wrap text with "", added the file type automaticlly
-* nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
-* nvim - if tree is open when closing session the session tries to recover it and doesnt work
 * nvim - when opening nvim with args e.g: nvim ~/.zshrc don't attach to session (tmp edit)
-* zsh - zsh-mode-vi makes issues with up/down partial history match
-* tmux - not suspended (not active) change status colors 
-* nvim - when escaping from autocomplete it escape from select mode (using autocomplet while using snippets)
+* nvim - auto indent on paste
+* nvim - gd/gD etc. wrap text with "", added the file type automaticlly
 * nvim - gD/gd/gi binds with splits
+* nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
+* nvim - lsp on attach/dettach (high cpu)
+* nvim - if tree is open when closing session the session tries to recover it and doesnt work
+* tmux - restart ssh connection
+* tmux - not suspended (not active) change status colors 
+* zsh - zsh-mode-vi makes issues with up/down partial history match
 * nvim - redo/do stack manipulate
 * nvim - learn to use marks
 

@@ -258,6 +258,9 @@ dynamic-workspaces=true
 experimental-features=['scale-monitor-framebuffer', 'x11-randr-fractional-scaling']
 workspaces-only-on-primary=false
 
+[org/gnome/nautilus/compression]
+default-compression-format='zip'
+
 [org/gnome/nautilus/preferences]
 default-folder-viewer='icon-view'
 search-filter-time-type='last_modified'
@@ -378,5 +381,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(166, 14)
+window-position=(2279, 122)
 window-size=(1203, 790)
