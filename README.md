@@ -44,10 +44,12 @@ Done by dconf (gnome tweaks):
 * Capslock is mapped to Escape - Don't move your hands when escaping insert mode.
 * Both shift changes language - Don't move your hands while typing.
 * Right Alt is mapped to backspace - Same idea.. (done with ~/.xmodmap too)
+
 ---
 
 ## TODO Takes time
 * create/attach - to the same session when connecting to remote
+* taskwarrior - filter presets
 * tmux-go - different repo
 * tmux-go - close workspace
 * tmux-go - add workspace
@@ -62,9 +64,15 @@ Done by dconf (gnome tweaks):
 * nvim - search filter history?
 * backup non-dotfiles - tmux sessions, tasks of taskwarrior, nvim sessions
 * backup firefox extnesions & settings
+* tmux - go over binds, maybe want to change them.
+* use bugwarrior (api for OKTA?)
+* tmux-go - when openning a window attach it to a default workspace, e.g: slack -> main
+* tmux-go? - open windows when attaching to session (main opens slack for example)
+* tmux - better sesion chooser, fzf maybe? check out reddit top tmux
 
 ## TODO Major
 * Shift/Ctrl R_Alt -> Delete
+* firenvim - paste
 * nvim - diffview, lines filter
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel 
 git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
@@ -98,3 +106,6 @@ git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff4
 * tuis to try - slack, mail, calander, jira
 * autoupdate dotfiles on remote machines
 * better readme, readme on keymaps in nvim, split repos
+
+## Improvements Ideas
+* nvim? - signature renaming using tree sitter and LSP

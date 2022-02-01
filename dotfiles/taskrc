@@ -39,3 +39,4 @@ uda.taskwarrior-tui.shortcuts.5=~/.taskwarrior_shortcuts/add-review.sh
 uda.taskwarrior-tui.shortcuts.6=~/.taskwarrior_shortcuts/add-integration.sh
 uda.taskwarrior-tui.shortcuts.7=~/.taskwarrior_shortcuts/add-reproduce.sh
 
+search.case.sensitive=no

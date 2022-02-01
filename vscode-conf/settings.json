@@ -169,4 +169,5 @@
     "security.workspace.trust.untrustedFiles": "newWindow",
     "workbench.startupEditor": "none",
     "diffEditor.renderSideBySide": false,
+    "editor.detectIndentation": false,
 }
