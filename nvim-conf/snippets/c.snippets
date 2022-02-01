@@ -33,3 +33,12 @@ snippet refrencedarray
 # reinterpert cast
 snippet reinterpretcast
 	reinterpret_cast<${2:uint8_t*}>($1)$0
+# class snippet
+snippet clas
+	class ${1:`vim_snippets#Filename('$1', 'Foo')`}
+	{
+	public:
+		$1(${2:${VISUAL}}) ${3:= default;}
+		~$1() ${4:= default;}
+		$0
+	};

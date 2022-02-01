@@ -69,10 +69,13 @@ Done by dconf (gnome tweaks):
 * tmux-go - when openning a window attach it to a default workspace, e.g: slack -> main
 * tmux-go? - open windows when attaching to session (main opens slack for example)
 * tmux - better sesion chooser, fzf maybe? check out reddit top tmux
+* nvim - monakai colors are too bright (expect background), need to adjust it.
 
 ## TODO Major
+* nvim-tree - focus tree (alt-m)
 * Shift/Ctrl R_Alt -> Delete
 * firenvim - paste
+* tmux - copy-mode-vi disable arrows
 * nvim - diffview, lines filter
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel 
 git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
