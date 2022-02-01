@@ -8,3 +8,19 @@ local map = vim.api.nvim_set_keymap
 
 opt.laststatus = 0
 cmd('set guifont=Mono:h20')
+cmd([[
+let g:firenvim_config = {
+    \ 'globalSettings': {
+        \ 'alt': 'all',
+    \  },
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'cmdline': 'neovim',
+            \ 'content': 'text',
+            \ 'priority': 0,
+            \ 'selector': 'textarea',
+            \ 'takeover': 'never',
+        \ },
+    \ }
+\ }
+]])

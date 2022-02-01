@@ -72,9 +72,10 @@ Done by dconf (gnome tweaks):
 * nvim - monakai colors are too bright (expect background), need to adjust it.
 
 ## TODO Major
-* nvim-tree - focus tree (alt-m)
-* Shift/Ctrl R_Alt -> Delete
 * firenvim - paste
+* nvim-tree - focus tree (alt-m)
+* nvim - in visual yank with enter
+* Shift/Ctrl R_Alt -> Delete
 * tmux - copy-mode-vi disable arrows
 * nvim - diffview, lines filter
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel 
