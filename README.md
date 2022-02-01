@@ -36,6 +36,14 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ### Install Fonts for Terminal Icons
 * [Normal](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete%20Mono.ttf)
 
+
+---
+
+## Custom Mapping
+Done by dconf (gnome tweaks):
+* Capslock is mapped to Escape - Don't move your hands when escaping insert mode.
+* Both shift changes language - Don't move your hands while typing.
+* Right Alt is mapped to backspace - Same idea.. (done with ~/.xmodmap too)
 ---
 
 ## TODO Takes time
@@ -90,11 +98,3 @@ git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff4
 * tuis to try - slack, mail, calander, jira
 * autoupdate dotfiles on remote machines
 * better readme, readme on keymaps in nvim, split repos
-
----
-
-## Custom Mapping
-Done by dconf (gnome tweaks):
-* Capslock is mapped to Escape - Don't move your hands when escaping insert mode.
-* Both shift changes language - Don't move your hands while typing.
-* Right Alt is mapped to backspace - Same idea.. (done with ~/.xmodmap too)
