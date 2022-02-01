@@ -1,5 +1,11 @@
+
+vim.g.gitblame_display_virtual_text = 0
+vim.g.gitblame_message_template = '<author> • <date>'
+vim.g.gitblame_date_format = '%d/%m/%Y'
+
 if not vim.g.started_by_firenvim then
 	local gps = require("nvim-gps")
+	local git_blame = require("gitblame")
 
 	local custom_modus = require'lualine.themes.modus-vivendi'
 
@@ -11,12 +17,13 @@ if not vim.g.started_by_firenvim then
 			theme = custom_modus,
 			icons_enabled = true,
 			path = 1,
+			always_divide_middle = false,
 		},
 		sections = {
 			lualine_b = {'diff', 'diagnostics'},
 			lualine_c = {'filename', { gps.get_location, cond = gps.is_available }},
 			lualine_x = {},
-			lualine_y = {},
+			lualine_y = {{git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available}},
 			lualine_z = {'filetype'},
 		},
 		inactive_sections = {
