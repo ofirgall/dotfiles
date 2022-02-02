@@ -39,6 +39,10 @@ map('n', '<leader>gc', '<cmd>Telescope git_branches<CR>', default_opts)
 map('n', '<leader>gh', '<cmd>DiffviewFileHistory<CR>', default_opts) -- File History
 map('n', '<leader>gH', '<cmd>DiffviewFileHistory .<CR>', default_opts) -- Git History
 
+-- diffget for 3 way split diff aka :Gvdiffsplit!
+map('n', '<C-[>', '<cmd>diffget //2<CR>', default_opts) -- Apply left change
+map('n', '<C-]>', '<cmd>diffget //3<CR>', default_opts) -- Apply right change
+
 map('n', 'KL', '<cmd>Telescope find_files<cr>', default_opts)
 -- " TODO: when moving to lua init one prompt title
 map('n', 'KK', '<cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({prompt_title = \'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"\'})<CR>', default_opts)

@@ -75,8 +75,10 @@ Done by dconf (gnome tweaks):
 * firenvim - paste
 * nvim-tree - focus tree (alt-m)
 * nvim - in visual yank with enter
+* nvim - add expand (ctrl+m in subl) to nvim
 * Shift/Ctrl R_Alt -> Delete
 * tmux - copy-mode-vi disable arrows
+* nvim - sandwich binds arent good
 * nvim - diffview, lines filter
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel 
 git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
@@ -93,6 +95,7 @@ git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff4
 * zsh - zsh-mode-vi makes issues with up/down partial history match
 * nvim - redo/do stack manipulate
 * nvim - learn to use marks
+* tmux-reserruct - fix last bug
 
 ## TODO
 * dock-redock fix

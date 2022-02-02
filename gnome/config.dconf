@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=12
-launch-time=int64 1643138730
+launch-count=13
+launch-time=int64 1643743990
 show-details=true
 window-height=503
 window-width=645
@@ -20,6 +20,9 @@ window-width=540
 [com/ubuntu/update-notifier]
 no-show-notifications=true
 release-check-time=uint32 1642676022
+
+[com/uploadedlobster/peek]
+persist-window-geometry=(349, 183, 794, 593)
 
 [desktop/ibus/panel/emoji]
 hotkey=@as []
@@ -86,7 +89,7 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams', 'kupfer', 'org-gnome-screenshot']
+application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams', 'kupfer', 'org-gnome-screenshot', 'com-uploadedlobster-peek']
 show-banners=true
 
 [org/gnome/desktop/notifications/application/apport-gtk]
@@ -101,6 +104,9 @@ enable=false
 
 [org/gnome/desktop/notifications/application/com-cisco-anyconnect-gui]
 application-id='com.cisco.anyconnect.gui.desktop'
+
+[org/gnome/desktop/notifications/application/com-uploadedlobster-peek]
+application-id='com.uploadedlobster.peek.desktop'
 
 [org/gnome/desktop/notifications/application/firefox]
 application-id='firefox.desktop'
@@ -182,6 +188,9 @@ sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gn
 [org/gnome/desktop/sound]
 allow-volume-above-100-percent=true
 event-sounds=true
+
+[org/gnome/desktop/wm/keybindings]
+toggle-fullscreen=['<Super>F12']
 
 [org/gnome/desktop/wm/preferences]
 num-workspaces=8
@@ -384,5 +393,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(166, 14)
+window-position=(145, 11)
 window-size=(1203, 790)
