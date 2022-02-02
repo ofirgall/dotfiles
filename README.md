@@ -73,7 +73,6 @@ Done by dconf (gnome tweaks):
 
 ## TODO Major
 * firenvim - paste
-* nvim-tree - focus tree (alt-m)
 * nvim - in visual yank with enter
 * nvim - add expand (ctrl+m in subl) to nvim
 * Shift/Ctrl R_Alt -> Delete
@@ -82,7 +81,6 @@ Done by dconf (gnome tweaks):
 * nvim - diffview, lines filter
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel 
 git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
-* nvim - fugitive, binds for merge tool and try it
 * nvim - when opening nvim with args e.g: nvim ~/.zshrc don't attach to session (tmp edit)
 * nvim - auto indent on paste
 * nvim - gd/gD etc. wrap text with "", added the file type automaticlly
