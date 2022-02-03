@@ -11,11 +11,13 @@ map('n', '<Right>', '<nop>', default_opts)
 map('n', '<Up>', '<nop>', default_opts)
 map('n', '<Down>', '<nop>', default_opts)
 
-map('n', 'n', 'nzz', default_opts)
-map('n', 'N', 'Nzz', default_opts)
-map('n', '<F3>', '<cmd>let @/ = "not_gonna_find_this_______"<cr>', default_opts)
-map('n', '<C-o>', '<C-o>zz', default_opts)
-map('n', '<C-i>', '<C-i>zz', default_opts)
+map('n', 'n', 'nzz', default_opts) -- Auto recenter after n
+map('n', 'N', 'Nzz', default_opts) -- Auto recenter after N
+map('n', '<F3>', '<cmd>let @/ = "not_gonna_find_this_______"<cr>', default_opts) -- Disable find highlight
+map('n', '<C-o>', '<C-o>zz', default_opts) -- Recenter after C-o
+map('n', '<C-i>', '<C-i>zz', default_opts) -- Recenter after C-i
+map('v', '<Enter>', 'y', default_opts) -- yank with Enter in visual mode
+
 -- Move through wrap lines
 map('', 'j', 'v:count ? "j" : "gj"', {noremap = true, expr=true})
 map('', 'k', 'v:count ? "k" : "gk"', {noremap = true, expr=true})
@@ -24,6 +26,7 @@ map('', 'k', 'v:count ? "k" : "gk"', {noremap = true, expr=true})
 map('n', '<F11>', ':set spell!<cr>', default_opts)
 map('i', '<F11>', '<C-O>:set spell!<cr>', default_opts)
 
+-- Naviagte in panes + splits
 map('n', '<C-h>', '<cmd>TmuxNavigateLeft<cr>', default_opts)
 map('n', '<C-j>', '<cmd>TmuxNavigateDown<cr>', default_opts)
 map('n', '<C-k>', '<cmd>TmuxNavigateUp<cr>', default_opts)
