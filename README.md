@@ -68,7 +68,7 @@ Done by dconf (gnome tweaks):
 * use bugwarrior (api for OKTA?)
 * tmux-go - when openning a window attach it to a default workspace, e.g: slack -> main
 * tmux-go? - open windows when attaching to session (main opens slack for example)
-* tmux - better sesion chooser, fzf maybe? check out reddit top tmux
+* tmux - better session workflow, session per feature:repo, fzf for features -> fzf for repo
 * nvim - monakai colors are too bright (expect background), need to adjust it.
 
 ## TODO Major

@@ -200,57 +200,12 @@ fi
 
 TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
 
-ZSH_TMUX_ALWAYS_SELECT_SESSION=true
 
-function select_tmux_session() {
-  if tmux has;
-  then
-    echo "Select tmux session to attach to"
-    select sel in "Create New Session" "tmp Session" "No Session" $(tmux ls -F '#S'); do
-      case $sel in
-        "Create New Session")
-        echo "Enter Session Name: "
-        read session_name
-        tmux new-session -s $session_name
-        ;;
-        "tmp Session")
-        session_name="_tmp-$(uuidgen | cut -c1-8)"
-        tmux new-session -s $session_name
-        tmux kill-session -t $session_name
-        echo "$session_name Killed"
-        ;;
-        "No Session")
-        return
-        ;;
-        "q")
-        return
-        ;;
-        "quit")
-        return
-        ;;
-        *)
-          if [ "$sel" ]
-          then
-            tmux attach -t "$sel"
-          else
-            tmux attach -t "*$REPLY*"
-          fi
-        ;;
-      esac
-    done
-  else
-    tmux
-  fi
-
-  if [[ "$ZSH_TMUX_ALWAYS_SELECT_SESSION" == "true" ]]; then
-    select_tmux_session
-  fi
-}
 
 # Exporting fzf defualt command to be rg
 if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files'
-  export FZF_DEFAULT_OPTS='-m'
+  export FZF_DEFAULT_OPTS='-m --reverse'
 fi
 
 if test -f $HOME/.extra_utils; then
@@ -276,6 +231,9 @@ if ! $IS_REMOTE; then
 
 fi
 
+export ZSH_TMUX_ALWAYS_SELECT_SESSION=true
+export ZSH_TMUX_ALWAYS_OPEN_SESSION=true
+
 # Must be at the end
 if ! [ -z "$OPEN_TMUX_SESSION" ]; then
 	echo "Opening $OPEN_TMUX_SESSION at desk $OPEN_AT_DESK"
@@ -283,7 +241,5 @@ if ! [ -z "$OPEN_TMUX_SESSION" ]; then
 	wmctrl -r "$TMUX_SESSION_TITLE" -t $OPEN_AT_DESK; sleep 0.1; wmctrl -a "$TMUX_SESSION_TITLE"
     tmux attach -t "$OPEN_TMUX_SESSION"
 else
-	if ! [ -n "$TMUX" ]; then
-		select_tmux_session
-	fi
+	select_tmux_session.sh
 fi
