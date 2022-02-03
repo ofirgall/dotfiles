@@ -11,6 +11,7 @@ if $IS_REMOTE; then
 
   L='/lib:/lib64:/usr/lib:/usr/lib64'
   export LD_LIBRARY_PATH="$HOME/pkgs/usr/lib:$HOME/pkgs/usr/lib64:$L"
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fi
 
 # If you come from bash you might have to change your $PATH.
