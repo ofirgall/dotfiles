@@ -42,3 +42,5 @@ curl -s https://api.github.com/repos/sumneko/lua-language-server/releases/latest
 tar -xf $HOME/.local/lua-server/lua-language-server-*.tar.gz -C $HOME/.local/lua-server/
 ln -s $HOME/.local/lua-server/bin/lua-language-server $HOME/.local/bin/lua-language-server
 
+# CMake
+python3 -m pip install cmake-language-server
