@@ -437,6 +437,7 @@ set -g prefix2 C-Enter
 
 # Using xterm on local and screen on remote
 if-shell -b 'test -f "$HOME/.remote_indicator"' 'set -g default-terminal "screen-256color"' 'set -g default-terminal "xterm-256color"'
+
 # Fix end/home for xterm-256color
 bind -n End send-key C-e
 bind -n Home send-key C-a
@@ -497,14 +498,6 @@ bind -T copy-mode C-h select-pane -L
 bind -T copy-mode C-l select-pane -R
 bind -T copy-mode C-k select-pane -U
 bind -T copy-mode C-j select-pane -D
-bind -T copy-mode-vi M-Up select-pane -U
-bind -T copy-mode-vi M-Down select-pane -D
-bind -T copy-mode-vi M-Right select-pane -R
-bind -T copy-mode-vi M-Left select-pane -L
-bind -T copy-mode-vi C-h select-pane -L
-bind -T copy-mode-vi C-l select-pane -R
-bind -T copy-mode-vi C-k select-pane -U
-bind -T copy-mode-vi C-j select-pane -D
 
 # new window ALT+t
 bind -n M-t new-window
@@ -531,16 +524,6 @@ bind -T copy-mode M-6 select-window -t :=6
 bind -T copy-mode M-7 select-window -t :=7
 bind -T copy-mode M-8 select-window -t :=8
 bind -T copy-mode M-9 select-window -t :=9
-bind -T copy-mode-vi M-0 select-window -t :=10
-bind -T copy-mode-vi M-1 select-window -t :=1
-bind -T copy-mode-vi M-2 select-window -t :=2
-bind -T copy-mode-vi M-3 select-window -t :=3
-bind -T copy-mode-vi M-4 select-window -t :=4
-bind -T copy-mode-vi M-5 select-window -t :=5
-bind -T copy-mode-vi M-6 select-window -t :=6
-bind -T copy-mode-vi M-7 select-window -t :=7
-bind -T copy-mode-vi M-8 select-window -t :=8
-bind -T copy-mode-vi M-9 select-window -t :=9
 
 # Swap windows by ALT+SHIFT+N
 bind -n M-) swap-window -d -t :=10
@@ -568,20 +551,12 @@ bind -T suspended M-c run-shell "$HOME/.tmux/plugins/tmux-suspend/scripts/resume
 
 # Finish copy with Enter and resume if suspended
 bind -T copy-mode Enter send-keys -X copy-pipe-and-cancel \; if-shell -b '[ #{@resume_after_copy} = true ]' 'run-shell "$HOME/.tmux/plugins/tmux-suspend/scripts/suspend.sh \"\" \"   @mode_indicator_custom_prompt:: SUSPENDED , \""' \; set-option -q "@resume_after_copy" "false"
-bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel \; if-shell -b '[ #{@resume_after_copy} = true ]' 'run-shell "$HOME/.tmux/plugins/tmux-suspend/scripts/suspend.sh \"\" \"   @mode_indicator_custom_prompt:: SUSPENDED , \""' \; set-option -q "@resume_after_copy" "false"
 
 # Exit copy mode and resume if suspended
 bind -T copy-mode Escape run-shell "tmux     send-keys -X cancel; /home/ogal/.tmux/plugins/tmux-copycat/scripts/copycat_mode_quit.sh; true" \; if-shell -b '[ #{@resume_after_copy} = true ]' 'run-shell "$HOME/.tmux/plugins/tmux-suspend/scripts/suspend.sh \"\" \"   @mode_indicator_custom_prompt:: SUSPENDED , \""' \; set-option -q "@resume_after_copy" "false"
-bind -T copy-mode-vi Escape run-shell "tmux     send-keys -X cancel; /home/ogal/.tmux/plugins/tmux-copycat/scripts/copycat_mode_quit.sh; true" \; if-shell -b '[ #{@resume_after_copy} = true ]' 'run-shell "$HOME/.tmux/plugins/tmux-suspend/scripts/suspend.sh \"\" \"   @mode_indicator_custom_prompt:: SUSPENDED , \""' \; set-option -q "@resume_after_copy" "false"
 
 # Start copy with Space
 bind -T copy-mode Space send-keys -X begin-selection
-
-# Skip words with C+Left/Right
-bind -T copy-mode C-Left send-keys -X previous-word
-bind -T copy-mode-vi C-Left send-keys -X previous-word
-bind -T copy-mode C-Right send-keys -X next-word-end
-bind -T copy-mode-vi C-Right send-keys -X next-word-end
 
 # Page up/down
 bind -n C-PPage copy-mode \; send-keys -X page-up

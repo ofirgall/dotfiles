@@ -73,10 +73,8 @@ Done by dconf (gnome tweaks):
 
 ## TODO Major
 * firenvim - paste
-* nvim - in visual yank with enter
 * nvim - add expand (ctrl+m in subl) to nvim
 * Shift/Ctrl R_Alt -> Delete
-* tmux - copy-mode-vi disable arrows
 * nvim - sandwich binds arent good
 * nvim - diffview, lines filter
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel 
