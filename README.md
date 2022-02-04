@@ -76,12 +76,10 @@ Done by dconf (gnome tweaks):
 ## TODO Major
 * firenvim - paste
 * Shift/Ctrl R_Alt -> Delete
-* nvim - auto indent on paste
 * nvim - gd/gD etc. wrap text with "", added the file type automaticlly
 * nvim - gD/gd/gi binds with splits
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
 * nvim - lsp on attach/dettach (high cpu)
-* nvim - if tree is open when closing session the session tries to recover it and doesnt work
 * tmux - restart ssh connection
 * tmux - not suspended (not active) change status colors 
 * zsh - zsh-mode-vi makes issues with up/down partial history match
