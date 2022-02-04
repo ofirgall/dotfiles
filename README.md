@@ -50,13 +50,11 @@ Done by dconf (gnome tweaks):
 ## TODO Takes time
 * create/attach - to the same session when connecting to remote
 * taskwarrior - filter presets
+* tmux - make a valid fix for suspend/resume copy like copycat mode
 * tmux-go - different repo
 * tmux-go - close workspace
 * tmux-go - add workspace
-* icomp - compile new clangd, update nvim plugins
-* taskwariror - Annotate tmux session and go with tmux-go 
-* faster boot time for zsh
-* nvim - https://github.com/pechorin/any-jump.vim
+* tmux-go + taskwariror - Annotate tmux session and go with tmux-go 
 * tmux - is_vim not detected when using vim on remote inside other tmux not suspended
 * tmux-browser
 * when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
@@ -74,32 +72,28 @@ Done by dconf (gnome tweaks):
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
 
 ## TODO Major
+* faster boot time for zsh
+* nvim - redo/do stack manipulate
+* nvim - learn to use marks
+* taskwarrior - colors
 * firenvim - paste
 * Shift/Ctrl R_Alt -> Delete
 * nvim - gd/gD etc. wrap text with "", added the file type automaticlly
 * nvim - gD/gd/gi binds with splits
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
-* nvim - lsp on attach/dettach (high cpu)
 * tmux - restart ssh connection
 * tmux - not suspended (not active) change status colors 
 * zsh - zsh-mode-vi makes issues with up/down partial history match
-* nvim - redo/do stack manipulate
-* nvim - learn to use marks
 * tmux-reserruct - fix last bug
 
 ## TODO
 * dock-redock fix
 * git squash - if master/base branch moved forward can't find the ref
-* tmux - go to start of last command
-* tmux - ssh connection when asked
+* tmux - go to start of last command, copy command output
+* tmux - ssh connection when asked (prefix + o/e)
 * nvim - stop lsp server on background
-* nvim - color for nvim-gps
 * nvim - build & run + quickfix errors
-* nvim-git - history date&authro with search
-* nvim-git - go to changed line/file on git history (telescope)
-* nvim-git - git add -i alternative
 * nvim - try distant one day
-* tmux - make a valid fix for suspend/resume copy like copycat mode
 * tuis to try - slack, mail, calander, jira
 * autoupdate dotfiles on remote machines
 * better readme, readme on keymaps in nvim, split repos
