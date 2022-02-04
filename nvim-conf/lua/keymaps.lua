@@ -3,7 +3,7 @@ local map = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 local cmd = vim.cmd
 
-map('n', '<M-r>', '<cmd>luafile %<cr><cmd>echo "Current File Reloaded!"<cr>', default_opts)
+map('n', '<M-r>', '<cmd>echo "Current File Reloaded!"<cr><cmd>luafile %<cr>', default_opts)
 
 -- Remove arrows in normal mode
 map('n', '<Left>', '<nop>', default_opts)

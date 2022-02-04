@@ -70,14 +70,12 @@ Done by dconf (gnome tweaks):
 * tmux-go? - open windows when attaching to session (main opens slack for example)
 * tmux - better session workflow, session per feature:repo, fzf for features -> fzf for repo
 * nvim - monakai colors are too bright (expect background), need to adjust it.
+* nvim - diffview, lines filter
+* nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
 
 ## TODO Major
 * firenvim - paste
 * Shift/Ctrl R_Alt -> Delete
-* nvim - diffview, lines filter
-* nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel 
-git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
-* nvim - when opening nvim with args e.g: nvim ~/.zshrc don't attach to session (tmp edit)
 * nvim - auto indent on paste
 * nvim - gd/gD etc. wrap text with "", added the file type automaticlly
 * nvim - gD/gd/gi binds with splits
