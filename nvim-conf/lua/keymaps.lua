@@ -63,8 +63,8 @@ map('n', 'gD', '<cmd>lua require(\'telescope.builtin\').lsp_dynamic_workspace_sy
 map('n', '<A-s>', '<cmd>DevDocsUnderCursor<cr>', default_opts)
 -- Tabline binds
 -- map('n', '<A-s>', '<cmd>BufferPick<CR>', default_opts)
-map('n', 'Q', '<cmd>BufferClose<CR>', default_opts)
-map('n', '<A-q>', '<cmd>BufferClose<CR>', default_opts)
+map('n', 'Q', '<cmd>BufferClose!<CR>', default_opts)
+map('n', '<A-q>', '<cmd>BufferClose!<CR>', default_opts)
 map('n', '<A-,>', '<cmd>BufferPrevious<CR>', default_opts)
 map('n', '<A-.>', '<cmd>BufferNext<CR>', default_opts)
 map('n', '<A-<>', '<cmd>BufferMovePrevious<CR>', default_opts)
@@ -118,20 +118,20 @@ map('n', '[p', '<cmd>Lspsaga diagnostic_jump_prev<cr>', {silent = true, noremap 
 map('n', '<C-u>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<cr>', {})
 map('n', '<C-d>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<cr>', {})
 
------ Adding c prefix for sandwich to avoid conflicting with lightspeed -----
+----- Changind s prefix to c for sandwich to avoid conflicting with lightspeed -----
 cmd("let g:sandwich_no_default_key_mappings = 1")
 -- TODO: lua api
 cmd([[
 " add
-silent! map <unique> csa <Plug>(sandwich-add)
+silent! map <unique> ca <Plug>(sandwich-add)
 
 " delete
-silent! nmap <unique> csd <Plug>(sandwich-delete)
-silent! xmap <unique> csd <Plug>(sandwich-delete)
-silent! nmap <unique> csdb <Plug>(sandwich-delete-auto)
+silent! nmap <unique> cd <Plug>(sandwich-delete)
+silent! xmap <unique> cd <Plug>(sandwich-delete)
+silent! nmap <unique> cdb <Plug>(sandwich-delete-auto)
 
 " replace
-silent! nmap <unique> csr <Plug>(sandwich-replace)
-silent! xmap <unique> csr <Plug>(sandwich-replace)
-silent! nmap <unique> csrb <Plug>(sandwich-replace-auto)
+silent! nmap <unique> cr <Plug>(sandwich-replace)
+silent! xmap <unique> cr <Plug>(sandwich-replace)
+silent! nmap <unique> crb <Plug>(sandwich-replace-auto)
 ]])
