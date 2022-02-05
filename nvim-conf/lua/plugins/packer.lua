@@ -110,6 +110,7 @@ return require('packer').startup(function()
 		'glacambre/firenvim', -- NVIM in firefox
 		run = function() vim.fn['firenvim#install'](0) end
 	}
+	use 'ojroques/vim-oscyank' -- Yank from remote
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'

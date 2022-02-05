@@ -438,6 +438,9 @@ set -g prefix2 C-Enter
 # Using xterm on local and screen on remote
 if-shell -b 'test -f "$HOME/.remote_indicator"' 'set -g default-terminal "screen-256color"' 'set -g default-terminal "xterm-256color"'
 
+# Enabling osc(remote) clipboard
+set -g set-clipboard on
+
 # Fix end/home for xterm-256color
 bind -n End send-key C-e
 bind -n Home send-key C-a

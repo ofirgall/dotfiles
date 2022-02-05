@@ -77,3 +77,12 @@ end
 vim.cmd([[
 command! Draw execute 'lua Toggle_Draw()'
 ]])
+
+local is_remote = file_exists(os.getenv("HOME") .. "/.remote_indicator")
+
+if is_remote then
+	-- Enable osc(remote) yank
+	vim.cmd([[
+	autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
+	]])
+end
