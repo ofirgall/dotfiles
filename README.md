@@ -48,7 +48,7 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO Takes time
-* create/attach - to the same session when connecting to remote
+* create/attach - to the same session when connecting to remote (not sure if possible)
 * taskwarrior - filter presets
 * tmux-go - different repo
 * tmux-go - close workspace
@@ -81,11 +81,11 @@ Done by dconf (gnome tweaks):
 * nvim - gD/gd/gi binds with splits
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
 * tmux - not suspended (not active) change status colors 
+* tmux - go to start of last command, copy command output
 
 ## TODO
 * dock-redock fix
 * git squash - if master/base branch moved forward can't find the ref
-* tmux - go to start of last command, copy command output
 * nvim - stop lsp server on background
 * nvim - build & run + quickfix errors
 * nvim - try distant one day

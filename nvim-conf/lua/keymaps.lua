@@ -37,9 +37,9 @@ map('n', '<M-Up>', '<cmd>TmuxNavigateUp<cr>', default_opts)
 map('n', '<M-Right>', '<cmd>TmuxNavigateRight<cr>', default_opts)
 
 -- Git History
-map('n', '<leader>gs', '<cmd>DiffviewOpen<CR>', default_opts)
-map('n', '<leader>gc', '<cmd>Telescope git_branches<CR>', default_opts)
-map('n', '<leader>gh', '<cmd>DiffviewFileHistory<CR>', default_opts) -- File History
+map('n', '<leader>gs', '<cmd>DiffviewOpen<CR>', default_opts) -- Git Status
+map('n', '<leader>gc', '<cmd>Telescope git_branches<CR>', default_opts) -- Git checkout
+map('n', '<leader>gh', '<cmd>DiffviewFileHistory<CR>', default_opts) -- Git File History
 map('n', '<leader>gH', '<cmd>DiffviewFileHistory .<CR>', default_opts) -- Git History
 
 -- diffget for 3 way split diff aka :Gvdiffsplit!
@@ -51,6 +51,8 @@ map('n', '<F5>', '<cmd>UndotreeToggle<CR>', default_opts) -- Toggle undotree
 
 -- TODO: clean up this mess...
 --
+map('n', 'KR', '<cmd>Telescope resume<cr>', default_opts) -- Resume last telescope
+map('n', 'Kr', '<cmd>Telescope registers<cr>', default_opts) -- Show copy registers
 map('n', 'KL', '<cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true})<cr>', default_opts)
 -- " TODO: when moving to lua init one prompt title
 map('n', 'KK', '<cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({prompt_title = \'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"\'})<CR>', default_opts)
