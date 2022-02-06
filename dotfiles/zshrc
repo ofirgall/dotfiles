@@ -1,3 +1,6 @@
+# Set time format for `time`
+TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
+
 # Check if remote
 IS_REMOTE=false
 if test -f "$HOME/.remote_indicator"; then
@@ -81,25 +84,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# HistDB
-# source $HOME/.oh-my-zsh/custom/plugins/zsh-histdb/sqlite-history.zsh
-# autoload -Uz add-zsh-hook
-#
-# _zsh_autosuggest_strategy_histdb_top() {
-#     local query="
-#         select commands.argv from history
-#         left join commands on history.command_id = commands.rowid
-#         left join places on history.place_id = places.rowid
-#         where commands.argv LIKE '$(sql_escape $1)%'
-#         group by commands.argv, places.dir
-#         order by places.dir != '$(sql_escape $PWD)', count(*) desc
-#         limit 1
-#     "
-#     suggestion=$(_histdb_query "$query")
-# }
-#
-# ZSH_AUTOSUGGEST_STRATEGY=histdb_top
-
 # TMUX
 ZSH_TMUX_AUTOSTART=false
 ZSH_TMUX_AUTOSTART_ONCE=false
@@ -132,37 +116,16 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# User configuration
+
 # Binds
 bindkey -M main "^ " autosuggest-accept # Ctrl+Space
 bindkey -M vicmd "^ " autosuggest-accept # Ctrl+Space
 bindkey "^ " autosuggest-accept # Ctrl+Space
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'z
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll='ls -alF'
 alias toclip='xclip -sel clip'
 alias pwdc='echo \"$(pwd)\" | tr -d "\n" | toclip'
@@ -202,17 +165,6 @@ export PATH=~/.local/bin:~/dotfiles_scripts:$PATH
 # Load wslrc
 if [[ $(uname -a) == *"WSL"* ]]; then
   source ~/.wslrc
-fi
-
-
-TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
-
-
-
-# Exporting fzf defualt command to be rg
-if type rg &> /dev/null; then
-  export FZF_DEFAULT_COMMAND='rg --files'
-  export FZF_DEFAULT_OPTS='-m --reverse'
 fi
 
 if test -f $HOME/.extra_utils; then
