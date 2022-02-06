@@ -579,9 +579,9 @@ bind -n M-j run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
 # copy digit ALT+d
 # bind -n M-d run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]+'"
 
-# copy file ALT+f
-unbind -T copy-mode M-f
-bind -n M-f run-shell '$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh "("'"'"'"'"'"'"|'"'"'|^|^\\.|[[:space:]]|[[:space:]]\\.|[[:space:]]\\.\\.|^\\.\\.)[[:alnum:]~_-]*/[][[:alnum:]_.#$%&+=/@-]*"'
+# copy file ALT+f (need to find new bind, used to move forward a word in bash)
+# unbind -T copy-mode M-f
+# bind -n M-f run-shell '$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh "("'"'"'"'"'"'"|'"'"'|^|^\\.|[[:space:]]|[[:space:]]\\.|[[:space:]]\\.\\.|^\\.\\.)[[:alnum:]~_-]*/[][[:alnum:]_.#$%&+=/@-]*"'
 
 # copy git file (after git status) ALT+g
 bind -n M-g run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_git_special.sh #{pane_current_path}"
