@@ -98,8 +98,7 @@ fi
 function {
     setopt LOCAL_OPTIONS extendedglob
     if [[ ! -e "${ZSH_COMPDUMP}" || -n "${ZSH_COMPDUMP}"(#qNY1.mh+24) ]]; then
-        zi compinit > /dev/null
-        zi cdreplay -q
+		autoload -U compinit && compinit
     fi
 }
 
