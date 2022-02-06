@@ -86,3 +86,5 @@ if is_remote then
 	autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
 	]])
 end
+
+vim.g.undotree_WindowLayout = 3 -- undotree at right

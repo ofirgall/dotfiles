@@ -46,6 +46,11 @@ map('n', '<leader>gH', '<cmd>DiffviewFileHistory .<CR>', default_opts) -- Git Hi
 map('n', '<C-[>', '<cmd>diffget //2<CR>', default_opts) -- Apply left change
 map('n', '<C-]>', '<cmd>diffget //3<CR>', default_opts) -- Apply right change
 
+-- Misc Plugins
+map('n', '<F5>', '<cmd>UndotreeToggle<CR>', default_opts) -- Toggle undotree
+
+-- TODO: clean up this mess...
+--
 map('n', 'KL', '<cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true})<cr>', default_opts)
 -- " TODO: when moving to lua init one prompt title
 map('n', 'KK', '<cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({prompt_title = \'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"\'})<CR>', default_opts)

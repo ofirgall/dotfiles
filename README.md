@@ -73,7 +73,6 @@ Done by dconf (gnome tweaks):
 ## TODO Major
 * taskopen - fzf
 * faster boot time for zsh
-* nvim - redo/do stack manipulate
 * nvim - learn to use marks
 * taskwarrior - colors
 * firenvim - paste

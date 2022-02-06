@@ -111,6 +111,7 @@ return require('packer').startup(function()
 		run = function() vim.fn['firenvim#install'](0) end
 	}
 	use 'ojroques/vim-oscyank' -- Yank from remote
+	use 'mbbill/undotree' -- visualize undo/redo tree (F5)
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'
