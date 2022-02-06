@@ -453,8 +453,15 @@ set -g mouse on
 bind r source-file ~/.tmux.conf; display "Reloaded!"
 
 # Splits windows with ALT+e/o
+get_ssh_in_tty="ps -f -t '#{pane_tty}' | tail -n 1 | grep -o 'ssh.*'"
 bind -n M-e split-window -h
 bind -n M-o split-window -v
+# Split windows and ssh to the remote that was connected
+bind -r -T prefix e run-shell "$get_ssh_in_tty | xargs tmux split-window -h"
+bind -r -T prefix o run-shell "$get_ssh_in_tty | xargs tmux split-window -v"
+
+# Split window without activate it (I usually use it to swap hanging ssh)
+bind -r -T prefix x run-shell "$get_ssh_in_tty | xargs tmux split-window -v -d"
 
 # Kill pane with ALT+w
 bind -n M-w kill-pane

@@ -69,9 +69,10 @@ Done by dconf (gnome tweaks):
 * nvim - monakai colors are too bright (expect background), need to adjust it.
 * nvim - diffview, lines filter
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
+* zsh - zsh-mode-vi makes issues with up/down partial history match
+* tmux-reserruct - fix last bug
 
 ## TODO Major
-* faster boot time for zsh
 * nvim - learn to use marks
 * taskwarrior - colors
 * firenvim - paste
@@ -79,16 +80,12 @@ Done by dconf (gnome tweaks):
 * nvim - gd/gD etc. wrap text with "", added the file type automaticlly
 * nvim - gD/gd/gi binds with splits
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
-* tmux - restart ssh connection
 * tmux - not suspended (not active) change status colors 
-* zsh - zsh-mode-vi makes issues with up/down partial history match
-* tmux-reserruct - fix last bug
 
 ## TODO
 * dock-redock fix
 * git squash - if master/base branch moved forward can't find the ref
 * tmux - go to start of last command, copy command output
-* tmux - ssh connection when asked (prefix + o/e)
 * nvim - stop lsp server on background
 * nvim - build & run + quickfix errors
 * nvim - try distant one day
