@@ -8,7 +8,7 @@ if [ ! -d "$OMZDIR" ]; then
 fi
 
 # Install zsh plugins dependcies
-sudo apt install -y sqlite3
+sudo apt install -y sqlite3 # zsh-histdb
 
 # Install zsh plugins
 mkdir -p ~/.oh-my-zsh/custom/plugins
@@ -24,4 +24,4 @@ install_plugin https://github.com/paulirish/git-open.git ~/.oh-my-zsh/custom/plu
 install_plugin https://github.com/peterhurford/up.zsh ~/.oh-my-zsh/custom/plugins/up
 install_plugin https://github.com/jeffreytse/zsh-vi-mode ~/.oh-my-zsh/custom/plugins/zsh-vi-mode
 install_plugin https://github.com/larkery/zsh-histdb ~/.oh-my-zsh/custom/plugins/zsh-histdb
-
+install_plugin https://github.com/ofirgall/zsh-fzf-history-search ~/.oh-my-zsh/custom/plugins/zsh-fzf-history-search

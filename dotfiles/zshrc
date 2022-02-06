@@ -124,12 +124,12 @@ plugins=(
   dircycle
   up
   # zsh-vi-mode
+  zsh-fzf-history-search
   )
 
 source $ZSH/oh-my-zsh.sh
 
 # Binds
-bindkey -M main "\C-r" history-incremental-pattern-search-backward
 bindkey -M main "^ " autosuggest-accept # Ctrl+Space
 bindkey -M vicmd "^ " autosuggest-accept # Ctrl+Space
 bindkey "^ " autosuggest-accept # Ctrl+Space
