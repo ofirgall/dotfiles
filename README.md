@@ -71,6 +71,7 @@ Done by dconf (gnome tweaks):
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
 
 ## TODO Major
+* taskopen - fzf
 * faster boot time for zsh
 * nvim - redo/do stack manipulate
 * nvim - learn to use marks

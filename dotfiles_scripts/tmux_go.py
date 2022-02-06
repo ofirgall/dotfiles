@@ -93,6 +93,9 @@ def go_to_workspace(session: str) -> bool:
 
     try:
         current_session = get_active_session_in_desktop(get_current_desktop())
+        if session == current_session: # Don't jump if target session is the active
+            return True
+
         with open(LAST_JUMPED_SESSION_FILE, 'w') as f:
             f.write(current_session)
     except TmuxGoActiveSessionNotFound:
