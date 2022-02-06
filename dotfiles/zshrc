@@ -35,7 +35,7 @@ ZSH_TMUX_AUTOQUIT=false
 ZSH_TMUX_FIXTERM=false
 
 # FZF History
-ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height=10'
+ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height=10 --reverse'
 
 plugins=(
   gitfast
