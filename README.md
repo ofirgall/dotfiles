@@ -50,7 +50,6 @@ Done by dconf (gnome tweaks):
 ## TODO Takes time
 * create/attach - to the same session when connecting to remote
 * taskwarrior - filter presets
-* tmux - make a valid fix for suspend/resume copy like copycat mode
 * tmux-go - different repo
 * tmux-go - close workspace
 * tmux-go - add workspace

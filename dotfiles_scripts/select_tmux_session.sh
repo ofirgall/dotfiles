@@ -7,7 +7,7 @@ fi
 
 select_tmux_session()
 {
-	session=$(tmux ls -F '#S' | fzf --reverse)
+	session=$(tmux ls -F '#S' | fzf --reverse --header="Select Tmux Session. Ctrl-C to create new session.")
 
 	# ctrl-c
 	if [ -z $session ]; then
