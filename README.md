@@ -73,8 +73,9 @@ Done by dconf (gnome tweaks):
 * tmux-reserruct - fix last bug
 
 ## TODO Major
-* nvim - learn to use marks
+* icomp - share sessions between each other
 * taskwarrior - colors
+* nvim - learn to use marks
 * firenvim - paste
 * Shift/Ctrl R_Alt -> Delete
 * nvim - gd/gD etc. wrap text with "", added the file type automaticlly
