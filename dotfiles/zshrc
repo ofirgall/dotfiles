@@ -69,7 +69,11 @@ bindkey -M vicmd "^ " autosuggest-accept # Ctrl+Space
 bindkey "^ " autosuggest-accept # Ctrl+Space
 
 alias ll='ls -alF'
-alias toclip='xclip -sel clip'
+if $IS_REMOTE; then
+	alias toclip='~/dotfiles_scripts/osc52_yank.sh'
+else
+	alias toclip='xclip -sel clip'
+fi
 alias pwdc='echo \"$(pwd)\" | tr -d "\n" | toclip'
 alias pwdcd='echo "cd \"$(pwd)\"" | toclip'
 alias sublp='subl *.sublime-project'
