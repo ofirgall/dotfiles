@@ -73,7 +73,10 @@ Done by dconf (gnome tweaks):
 * tmux-reserruct - fix last bug
 
 ## TODO Major
+* zshrc - <TAB><TAB> open fzf?
 * icomp - share sessions between each other
+* tmux-go - binds for last
+* tmux-go - like ctrl+tab and ctrl+shift+tab
 * taskwarrior - colors
 * nvim - learn to use marks
 * firenvim - paste

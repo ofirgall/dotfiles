@@ -105,6 +105,10 @@ function {
 		autoload -U compinit && compinit
     fi
 }
+# completion for zfunc (python typer)
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
 
 # Local Settings
 if ! $IS_REMOTE; then

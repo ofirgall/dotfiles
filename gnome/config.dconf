@@ -322,6 +322,15 @@ show-browser=true
 [org/gnome/rhythmbox/rhythmdb]
 locations=['file:///home/ofirg/Music']
 
+[org/gnome/settings-daemon/plugins/media-keys]
+area-screenshot=@as []
+area-screenshot-clip=['<Primary>Print']
+screencast=@as []
+screenshot=@as []
+screenshot-clip=@as []
+window-screenshot=@as []
+window-screenshot-clip=@as []
+
 [org/gnome/settings-daemon/plugins/xsettings]
 hinting='slight'
 
