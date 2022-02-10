@@ -88,3 +88,6 @@ if is_remote then
 end
 
 vim.g.undotree_WindowLayout = 3 -- undotree at right
+
+-- registers.nvim
+vim.g.registers_show = '\"*+-/_=#%.0123456789abcdefghijklmnopqrstuvwxyz:' -- move " register to first
