@@ -72,7 +72,6 @@ Done by dconf (gnome tweaks):
 * tmux-reserruct - fix last bug
 
 ## TODO Major
-* tmux - go to first line in screen (with H like vim)
 * zshrc - <TAB><TAB> open fzf?
 * icomp - share sessions between each other
 * nvim - monakai colors are too bright (expect background), need to adjust it. (https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6)

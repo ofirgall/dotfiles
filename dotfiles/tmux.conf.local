@@ -572,6 +572,10 @@ bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-word \; run-shell "
 # Copy line with C-double click
 bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-line \; run-shell "sleep 0.2" \; send-keys -X copy-pipe-and-cancel
 
+# copy-mode-vi keys that oh-my-tmux overriding
+run -b 'tmux bind -T copy-mode-vi H send -X top-line 2> /dev/null || true'
+run -b 'tmux bind -T copy-mode-vi L send -X bottom-line 2> /dev/null || true'
+
 # Tmux jump (like acejump or vimium) with ALT+j
 bind -n M-j run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
 
