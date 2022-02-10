@@ -39,4 +39,12 @@ uda.taskwarrior-tui.shortcuts.5=~/.taskwarrior_shortcuts/add-review.sh
 uda.taskwarrior-tui.shortcuts.6=~/.taskwarrior_shortcuts/add-integration.sh
 uda.taskwarrior-tui.shortcuts.7=~/.taskwarrior_shortcuts/add-reproduce.sh
 
+uda.taskwarrior-tui.selection.reverse=yes
+uda.taskwarrior-tui.style.report.completion-pane=white on black
+uda.taskwarrior-tui.style.report.completion-pane-highlight=red on black
+uda.taskwarrior-tui.style.calendar.today=red on black
+
 search.case.sensitive=no
+
+color.active=white on magenta
+color.blocking=white on red

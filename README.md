@@ -66,18 +66,18 @@ Done by dconf (gnome tweaks):
 * tmux-go - when openning a window attach it to a default workspace, e.g: slack -> main
 * tmux-go? - open windows when attaching to session (main opens slack for example)
 * tmux - better session workflow, session per feature:repo, fzf for features -> fzf for repo
-* nvim - monakai colors are too bright (expect background), need to adjust it.
 * nvim - diffview, lines filter
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
 * zsh - zsh-mode-vi makes issues with up/down partial history match
 * tmux-reserruct - fix last bug
 
 ## TODO Major
+* tmux - go to first line in screen (with H like vim)
 * zshrc - <TAB><TAB> open fzf?
 * icomp - share sessions between each other
+* nvim - monakai colors are too bright (expect background), need to adjust it. (https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6)
 * tmux-go - binds for last
 * tmux-go - like ctrl+tab and ctrl+shift+tab
-* taskwarrior - colors
 * nvim - learn to use marks
 * firenvim - paste
 * Shift/Ctrl R_Alt -> Delete
