@@ -18,6 +18,7 @@ map('n', '<C-o>', '<C-o>zz', default_opts) -- Recenter after C-o
 map('n', '<C-i>', '<C-i>zz', default_opts) -- Recenter after C-i
 map('v', '<Enter>', 'y', default_opts) -- yank with Enter in visual mode
 map('i', '<C-k>', '<C-O>o', default_opts) -- Insert new line in insert mode
+map('n', '<M-v>', '"+y', default_opts) -- Start copy to os clipboard
 
 -- Move through wrap lines
 map('', 'j', 'v:count ? "j" : "gj"', {noremap = true, expr=true})
