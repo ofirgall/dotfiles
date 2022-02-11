@@ -72,6 +72,7 @@ Done by dconf (gnome tweaks):
 * tmux-reserruct - fix last bug
 
 ## TODO Major
+* nvim - better pairs (someone posted on reddit)
 * zshrc - <TAB><TAB> open fzf?
 * icomp - share sessions between each other
 * tmux-go - binds for last

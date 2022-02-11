@@ -34,21 +34,31 @@ local cb = require'diffview.config'.diffview_callback
 require'diffview'.setup{
 	file_history_panel = {
 		log_options = {
-			follow = false,       -- Follow renames (only for single file)
+			follow = true,       -- Follow renames (only for single file)
 		},
 	},
 	key_bindings = {
 		view = {
 			["q"] = '<cmd>:DiffviewClose<cr>',
 			["<Escape>"] = '<cmd>:DiffviewClose<cr>',
+			["gf"] = cb("goto_file_edit"),
+			["<M-n>"] = cb("focus_files"),
+			["<M-m>"] = cb("toggle_files"),
 		},
 		file_panel = {
+			["s"] = cb("toggle_stage_entry"),
 			["q"] = cb('close'),
 			["<Escape>"] = cb('close'),
+			["gf"] = cb("goto_file_edit"),
+			["<M-n>"] = cb("focus_files"),
+			["<M-m>"] = cb("toggle_files"),
 		},
 		file_history_panel = {
 			["q"] = cb('close'),
 			["<Escape>"] = cb('close'),
+			["gf"] = cb("goto_file_edit"),
+			["<M-n>"] = cb("focus_files"),
+			["<M-m>"] = cb("toggle_files"),
 		},
 	}
 }
