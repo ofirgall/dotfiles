@@ -75,6 +75,7 @@ Done by dconf (gnome tweaks):
 * nvim - better pairs (someone posted on reddit)
 * zshrc - <TAB><TAB> open fzf?
 * icomp - share sessions between each other
+* nvim - monakai colors are too bright (expect background), need to adjust it. (https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6)
 * tmux-go - binds for last
 * tmux-go - like ctrl+tab and ctrl+shift+tab
 * nvim - learn to use marks
@@ -95,7 +96,6 @@ Done by dconf (gnome tweaks):
 * tuis to try - slack, mail, calander, jira
 * autoupdate dotfiles on remote machines
 * better readme, readme on keymaps in nvim, split repos
-* nvim - monakai colors are too bright (expect background), need to adjust it. (https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6)
 
 ## Improvements Ideas
 * nvim? - signature renaming using tree sitter and LSP

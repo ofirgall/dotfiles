@@ -1,64 +1,64 @@
 - shell:
-  - echo "========================= REMOTE DOTFILES ========================="
-  -
-    command: ./install --config-file remote.conf.yaml
-    stdin: true
-    stdout: true
-  - echo "==================================================================="
+    - echo "========================= REMOTE DOTFILES ========================="
+    -
+        command: ./install --config-file remote.conf.yaml
+        stdin: true
+        stdout: true
+    - echo "==================================================================="
 
 - shell:
-  - [sh install_scripts/install_zsh.sh, Installing ZSH]
+    - [sh install_scripts/install_zsh.sh, Installing ZSH]
 
 
 - defaults:
-  link:
-    relink: true
-    force: true
-    create: true
+    link:
+      relink: true
+      force: true
+      create: true
 
 - link:
-  ~/.config/sublime-text/Packages/User:
-    path: sublime-conf/User
+    ~/.config/sublime-text/Packages/User:
+        path: sublime-conf/User
     ~/.config/sublime-text/Packages/C++:
-      path: sublime-conf/C++
+        path: sublime-conf/C++
     ~/.config/sublime-text/Packages/Python:
-      path: sublime-conf/Python
+        path: sublime-conf/Python
     ~/.config/sublime-text/Packages/CustomStatusBar:
-      path: sublime-conf/CustomStatusBar
+        path: sublime-conf/CustomStatusBar
     ~/.config/Code/User/settings.json:
-      path: vscode-conf/settings.json
+        path: vscode-conf/settings.json
     ~/.config/Code/User/keybindings.json:
-      path: vscode-conf/keybindings.json
+        path: vscode-conf/keybindings.json
     ~/.local/share/gnome-shell/extensions:
-      path: gnome/extensions
+        path: gnome/extensions
     ~/.config/fusuma/config.yml:
-      path: dotfiles/fusuma.yml
+        path: dotfiles/fusuma.yml
     ~/.alacritty.yml:
-      path: dotfiles/alacritty.yml
+        path: dotfiles/alacritty.yml
     ~/.config/autokey/data:
-      path: autokey
+        path: autokey
     ~/.local/share/kupfer/plugins:
-      path: kupfer_plugins
+        path: kupfer_plugins
     ~/.config/kupfer/kupfer.cfg:
-      path: dotfiles/kupfer.cfg
+        path: dotfiles/kupfer.cfg
     ~/.taskrc:
-      path: dotfiles/taskrc
+        path: dotfiles/taskrc
     ~/.taskwarrior_shortcuts:
-      path: taskwarrior_shortcuts
+        path: taskwarrior_shortcuts
     ~/.xmodmaprc:
-      path: dotfiles/xmodmaprc
+        path: dotfiles/xmodmaprc
 
 - create:
-  - ~/projects
+    - ~/projects
 
 - shell:
-  - [dconf dump / > old_dconf, Backup for gnome settings]
-  - [dconf load / < gnome/config.dconf, Setting gnome settings]
-  - [sh install_scripts/install_basic.sh, Running basic libs installation]
-  - [sh install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
-  - [sh install_scripts/install_lsp.sh, Installing LSP Utils]
-  - [sh install_scripts/install_vscode.sh, Installing vscode]
-  - [sh vscode-conf/install_extensions.sh, Installing vscode extensions]
-  - [sh install_scripts/install_fusuma.sh, Installing Fusuma]
-  - [sh install_scripts/install_taskwarrior.sh, Installing Task Warrior]
-  - [git submodule update --init --recursive, Installing submodules]
+    - [dconf dump / > old_dconf, Backup for gnome settings]
+    - [dconf load / < gnome/config.dconf, Setting gnome settings]
+    - [sh install_scripts/install_basic.sh, Running basic libs installation]
+    - [sh install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
+    - [sh install_scripts/install_lsp.sh, Installing LSP Utils]
+    - [sh install_scripts/install_vscode.sh, Installing vscode]
+    - [sh vscode-conf/install_extensions.sh, Installing vscode extensions]
+    - [sh install_scripts/install_fusuma.sh, Installing Fusuma]
+    - [sh install_scripts/install_taskwarrior.sh, Installing Task Warrior]
+    - [git submodule update --init --recursive, Installing submodules]
