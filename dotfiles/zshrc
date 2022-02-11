@@ -162,13 +162,8 @@ fi
 
 export ZSH_TMUX_ALWAYS_SELECT_SESSION=true
 
+# zprof # Finish profiling
+
 # Must be at the end
-if ! [ -z "$OPEN_TMUX_SESSION" ]; then # tmux-go
-	echo "Opening $OPEN_TMUX_SESSION at desk $OPEN_AT_DESK"
-	TMUX_SESSION_TITLE="tmux-go-session:$OPEN_TMUX_SESSION"
-	wmctrl -r "$TMUX_SESSION_TITLE" -t $OPEN_AT_DESK; sleep 0.1; wmctrl -a "$TMUX_SESSION_TITLE"
-    tmux attach -t "$OPEN_TMUX_SESSION"
-else
-	# zprof # Finish profiling
-	select_tmux_session.sh
-fi
+$HOME/.tmux/tmux-go/src/tmux_go_attach.sh
+select_tmux_session.sh

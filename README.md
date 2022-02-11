@@ -50,9 +50,6 @@ Done by dconf (gnome tweaks):
 ## TODO Takes time
 * create/attach - to the same session when connecting to remote (not sure if possible)
 * taskwarrior - filter presets
-* tmux-go - different repo
-* tmux-go - close workspace
-* tmux-go - add workspace
 * tmux-go + taskwariror - Annotate tmux session and go with tmux-go 
 * tmux - is_vim not detected when using vim on remote inside other tmux not suspended
 * tmux-browser
@@ -63,8 +60,8 @@ Done by dconf (gnome tweaks):
 * backup firefox extnesions & settings
 * tmux - go over binds, maybe want to change them.
 * use bugwarrior (api for OKTA?)
-* tmux-go - when openning a window attach it to a default workspace, e.g: slack -> main
-* tmux-go? - open windows when attaching to session (main opens slack for example)
+* tmux + gnome - when openning a window attach it to a default workspace, e.g: slack -> main
+* tmux-plugin - open windows when attaching to session (main opens slack for example)
 * tmux - better session workflow, session per feature:repo, fzf for features -> fzf for repo
 * nvim - diffview, lines filter
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
@@ -76,8 +73,6 @@ Done by dconf (gnome tweaks):
 * zshrc - <TAB><TAB> open fzf?
 * icomp - share sessions between each other
 * nvim - monakai colors are too bright (expect background), need to adjust it. (https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6)
-* tmux-go - binds for last
-* tmux-go - like ctrl+tab and ctrl+shift+tab
 * nvim - learn to use marks
 * firenvim - paste
 * Shift/Ctrl R_Alt -> Delete

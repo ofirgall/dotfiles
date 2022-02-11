@@ -1,6 +1,6 @@
 - shell:
+    - [git submodule update --init --recursive, Installing submodules]
     - [sh install_scripts/install_oh_my_zsh.sh, Installing oh_my_zsh]
-
 
 - defaults:
     link:
@@ -29,6 +29,3 @@
         path: nvim-conf
     ~/.vimrc:
         path: dotfiles/vimrc
-
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
