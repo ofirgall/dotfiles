@@ -68,12 +68,8 @@ bindkey -M main "^ " autosuggest-accept # Ctrl+Space
 bindkey -M vicmd "^ " autosuggest-accept # Ctrl+Space
 bindkey "^ " autosuggest-accept # Ctrl+Space
 
+# Aliases
 alias ll='ls -alF'
-if $IS_REMOTE; then
-	alias toclip='~/dotfiles_scripts/osc52_yank.sh'
-else
-	alias toclip='xclip -sel clip'
-fi
 alias pwdc='echo \"$(pwd)\" | tr -d "\n" | toclip'
 alias pwdcd='echo "cd \"$(pwd)\"" | toclip'
 alias sublp='subl *.sublime-project'
@@ -85,10 +81,27 @@ alias get_ticket='git rev-parse --abbrev-ref HEAD | grep -oP ".+/\K([A-Z]+-[0-9]
 alias cticket='get_ticket | toclip'
 alias ticket='xdg-open https://jira.infinidat.com/browse/$(get_ticket)'
 alias cbranch='git rev-parse --abbrev-ref HEAD | tr -d "\n" | toclip'
-alias g='~/dotfiles_scripts/tmux_go.py'
 alias tkill='tmux kill-session'
 alias trename='tmux rename-session'
 alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed "s/.*-- \([0-9]*\)/\1/" | sponge | { IFS= read -r x; { printf "%s\n" "$x"; cat; } | xargs taskopen }'
+
+# Git aliases (instead)
+alias g='git'
+alias ga='git add'
+alias gc='git commit'
+alias gco='git checkout'
+alias gd='git diff'
+alias gf='git fetch'
+alias gl='git pull'
+alias gp='git push'
+alias gst='git status'
+
+# Remote/Local Aliases
+if $IS_REMOTE; then
+	alias toclip='~/dotfiles_scripts/osc52_yank.sh'
+else
+	alias toclip='xclip -sel clip'
+fi
 
 export EDITOR='vim'
 if type nvim &> /dev/null; then
