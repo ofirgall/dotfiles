@@ -9,9 +9,9 @@
       create: true
 
 - link:
-    ~/.zshrc: 
+    ~/.zshrc:
         path: dotfiles/zshrc
-    ~/.profile: 
+    ~/.profile:
         path: dotfiles/profile
     ~/.gitconfig:
         path: dotfiles/gitconfig
@@ -23,8 +23,8 @@
         path: dotfiles/tmux.conf
     ~/.tmux.conf.local:
         path: dotfiles/tmux.conf.local
-    ~/dotfiles_scripts: 
-        path: dotfiles_scripts
+    ~/dotfiles_scripts:
+        path: scripts
     ~/.config/nvim:
         path: nvim-conf
     ~/.vimrc:
