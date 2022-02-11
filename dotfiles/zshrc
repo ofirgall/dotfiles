@@ -148,7 +148,6 @@ if ! $IS_REMOTE; then
 fi
 
 export ZSH_TMUX_ALWAYS_SELECT_SESSION=true
-export ZSH_TMUX_ALWAYS_OPEN_SESSION=true
 
 # Must be at the end
 if ! [ -z "$OPEN_TMUX_SESSION" ]; then # tmux-go
