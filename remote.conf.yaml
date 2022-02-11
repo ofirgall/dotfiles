@@ -1,34 +1,34 @@
 - shell:
-    - [sh install_scripts/install_oh_my_zsh.sh, Installing oh_my_zsh]
+  - [sh install_scripts/install_oh_my_zsh.sh, Installing oh_my_zsh]
 
 
 - defaults:
-    link:
-      relink: true
-      force: true
-      create: true
+  link:
+    relink: true
+    force: true
+    create: true
 
 - link:
-    ~/.zshrc: 
-        path: dotfiles/zshrc
-    ~/.profile: 
-        path: dotfiles/profile
+  ~/.zshrc:
+    path: dotfiles/zshrc
+    ~/.profile:
+      path: dotfiles/profile
     ~/.gitconfig:
-        path: dotfiles/gitconfig
+      path: dotfiles/gitconfig
     ~/.gitignore_global:
-        path: dotfiles/gitignore_global
+      path: dotfiles/gitignore_global
     ~/.oh-my-zsh/custom/themes/ofir.zsh-theme:
-        path: dotfiles/ofir.zsh-theme
+      path: dotfiles/ofir.zsh-theme
     ~/.tmux.conf:
-        path: dotfiles/tmux.conf
+      path: dotfiles/tmux.conf
     ~/.tmux.conf.local:
-        path: dotfiles/tmux.conf.local
-    ~/dotfiles_scripts: 
-        path: dotfiles_scripts
+      path: dotfiles/tmux.conf.local
+    ~/dotfiles_scripts:
+      path: dotfiles_scripts
     ~/.config/nvim:
-        path: nvim-conf
+      path: nvim-conf
     ~/.vimrc:
-        path: dotfiles/vimrc
+      path: dotfiles/vimrc
 
 - shell:
-    - [git submodule update --init --recursive, Installing submodules]
+  - [git submodule update --init --recursive, Installing submodules]
