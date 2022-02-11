@@ -1,8 +1,8 @@
-sublime-conf/Doxy.sublime-license
+editors/sublime/Doxy.sublime-license
 old_dconf
-nvim-conf/plugged
-nvim-conf/plugin
-nvim-conf/.*
+editors/nvim/plugged
+editors/nvim/plugin
+editors/nvim/.*
 autokey/My\ Phrases
 autokey/Sample\ Scripts
 */__pycache__

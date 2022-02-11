@@ -18,17 +18,17 @@
 
 - link:
     ~/.config/sublime-text/Packages/User:
-        path: sublime-conf/User
+        path: editors/sublime/User
     ~/.config/sublime-text/Packages/C++:
-        path: sublime-conf/C++
+        path: editors/sublime/C++
     ~/.config/sublime-text/Packages/Python:
-        path: sublime-conf/Python
+        path: editors/sublime/Python
     ~/.config/sublime-text/Packages/CustomStatusBar:
-        path: sublime-conf/CustomStatusBar
+        path: editors/sublime/CustomStatusBar
     ~/.config/Code/User/settings.json:
-        path: vscode-conf/settings.json
+        path: editors/vscode/settings.json
     ~/.config/Code/User/keybindings.json:
-        path: vscode-conf/keybindings.json
+        path: editors/vscode/keybindings.json
     ~/.local/share/gnome-shell/extensions:
         path: gnome/extensions
     ~/.config/fusuma/config.yml:
@@ -60,6 +60,6 @@
     - [sh install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
     - [sh install_scripts/install_lsp.sh, Installing LSP Utils]
     - [sh install_scripts/install_vscode.sh, Installing vscode]
-    - [sh vscode-conf/install_extensions.sh, Installing vscode extensions]
+    - [sh editors/vscode/install_extensions.sh, Installing vscode extensions]
     - [sh install_scripts/install_fusuma.sh, Installing Fusuma]
     - [sh install_scripts/install_taskwarrior.sh, Installing Task Warrior]

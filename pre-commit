@@ -6,12 +6,12 @@ dconf dump / | sed "/picture-uri=/d;/org\/gtk\/settings\/color-chooser/d;/select
 git add gnome/config.dconf
 
 # Backup vscode extension
-code --list-extensions > vscode-conf/extensions
-git add vscode-conf/extensions
+code --list-extensions > editors/vscode/extensions
+git add editors/vscode/extensions
 
-### Filter vscode-conf/settings.json
+### Filter editors/vscode/settings.json
 # backup first
-cp vscode-conf/settings.json /tmp/vscode-settings.json
-sed -i "/email/d" vscode-conf/settings.json
-git add vscode-conf/settings.json
-cp /tmp/vscode-settings.json vscode-conf/settings.json
+cp editors/vscode/settings.json /tmp/vscode-settings.json
+sed -i "/email/d" editors/vscode/settings.json
+git add editors/vscode/settings.json
+cp /tmp/vscode-settings.json editors/vscode/settings.json

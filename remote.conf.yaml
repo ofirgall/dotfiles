@@ -26,6 +26,6 @@
     ~/dotfiles_scripts:
         path: scripts
     ~/.config/nvim:
-        path: nvim-conf
+        path: editors/nvim
     ~/.vimrc:
         path: dotfiles/vimrc
