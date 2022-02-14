@@ -15,6 +15,8 @@
 	excludesfile = ~/.gitignore_global
 [pull]
 	ff = only
+[push]
+	default = current
 [merge]
 	ff = false
 [oh-my-zsh]
