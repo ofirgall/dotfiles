@@ -91,6 +91,7 @@ Done by dconf (gnome tweaks):
 * tuis to try - slack, mail, calander, jira
 * autoupdate dotfiles on remote machines
 * better readme, readme on keymaps in nvim, split repos
+* oh-my-tmux to upstream instead of local copy
 
 ## Improvements Ideas
 * nvim? - signature renaming using tree sitter and LSP

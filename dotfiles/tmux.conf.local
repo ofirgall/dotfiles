@@ -385,11 +385,13 @@ set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'MunifTanjim/tmux-suspend'
 set -g @plugin 'ofirgall/tmux-keyboard-layout'
 set -g @plugin 'ofirgall/tmux-browser'
-set -g @plugin 'ofirgall/tmux-remote-notify'
+set -g @plugin 'ChanderG/tmux-notify'
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '1'
 set -g @emulate-scroll-for-no-mouse-alternate-buffer "on"
 set -g @suspend_key 'M--'
+set -g @tnotify-verbose 'on'
+set -g @tnotify-verbose-msg '#S: #I #W is done!'
 
 # colors for tmux-suspend
 set -g @suspend_suspended_options " \
