@@ -90,15 +90,18 @@ map('n', '<leader>srb', '<Plug>(sandwich-replace-auto)', default_opts)
 -----------------------------------
 --        CODE NAVIGATION        --
 -----------------------------------
--- TODO: clean up this mess...
+live_grep_raw = function(opts)
+	opts = opts or {}
+	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'
+
+	require('telescope').extensions.live_grep_raw.live_grep_raw(opts)
+end
 map('n', 'KR', '<cmd>Telescope resume<cr>', default_opts) -- Resume last telescope
 map('n', 'KL', '<cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true})<cr>', default_opts)
--- " TODO: when moving to lua init one prompt title
-map('n', 'KK', '<cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({prompt_title = \'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"\'})<CR>', default_opts)
-map('n', 'Kk', '<cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({default_text = \' -g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*"\',prompt_title = \'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"\'})<CR>', default_opts)
-map('n', 'KD', '<cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({default_text = vim.fn.expand("<cword>"), prompt_title = \'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"\'})<CR>', default_opts)
-map('n', 'Kd', '<cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw({default_text = vim.fn.expand("<cword>") .. \' -g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*"\', prompt_title = \'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"\'})<CR>', default_opts)
-map('n', '<leader>f', '<cmd>Telescope quickfix<CR>', default_opts)
+map('n', 'KK', '<cmd>lua live_grep_raw()<CR>', default_opts)
+map('n', 'Kk', '<cmd>lua live_grep_raw({default_text = \'-g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*" \'})<CR>', default_opts)
+map('n', 'KD', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>")})<CR>', default_opts)
+map('n', 'Kd', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>") .. \' -g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*"\'})<CR>', default_opts)
 map('n', '<C-s>', '<cmd>Telescope buffers<CR>', default_opts)
 map('n', '<C-a>', '<cmd>Telescope oldfiles<CR>', default_opts)
 map('n', '<C-x>', '<cmd>Telescope command_history<CR>', default_opts)
