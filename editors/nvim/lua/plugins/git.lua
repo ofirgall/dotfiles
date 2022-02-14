@@ -1,4 +1,9 @@
 
+vim.cmd([[
+command! SolveConflict execute ':Gvdiffsplit!'
+command! Conflict execute ':Gvdiffsplit!'
+]])
+
 -- TODO: when updating to nvim7 update the usage, move to keymaps somehow
 require('gitsigns').setup {
 	sign_priority = 10000,

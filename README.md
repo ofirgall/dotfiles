@@ -53,6 +53,7 @@ Done by dconf (gnome tweaks):
 * tmux-go + taskwariror - Annotate tmux session and go with tmux-go 
 * tmux - is_vim not detected when using vim on remote inside other tmux not suspended
 * tmux-browser
+* tmux-go
 * when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
 * tmux-remote-notify
 * nvim - search filter history?
@@ -67,12 +68,10 @@ Done by dconf (gnome tweaks):
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
 * zsh - zsh-mode-vi makes issues with up/down partial history match
 * tmux-reserruct - fix last bug
+* convert todos to tasks/issues
 
 ## TODO Major
-* nvim - better pairs (someone posted on reddit)
-* zshrc - <TAB><TAB> open fzf?
 * icomp - share sessions between each other
-* nvim - monakai colors are too bright (expect background), need to adjust it. (https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6)
 * nvim - learn to use marks
 * firenvim - paste
 * Shift/Ctrl R_Alt -> Delete
