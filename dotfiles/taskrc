@@ -41,7 +41,7 @@ uda.taskwarrior-tui.shortcuts.7=~/.taskwarrior_shortcuts/add-reproduce.sh
 
 uda.taskwarrior-tui.selection.reverse=yes
 uda.taskwarrior-tui.style.report.completion-pane=white on black
-uda.taskwarrior-tui.style.report.completion-pane-highlight=red on black
+uda.taskwarrior-tui.style.report.completion-pane-highlight=cyan on black
 uda.taskwarrior-tui.style.calendar.today=red on black
 
 search.case.sensitive=no
