@@ -17,3 +17,11 @@ opt.ignorecase = true
 opt.splitright = true
 opt.splitbelow = true
 opt.swapfile = false
+
+-- Highlight on yank
+cmd [[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank({timeout=350})
+  augroup end
+]]

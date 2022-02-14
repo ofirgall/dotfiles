@@ -3,6 +3,11 @@ local map = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 local cmd = vim.cmd
 
+-- Remap space as leader key
+map('', '<Space>', '<Nop>', default_opts) -- Unmap space
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 map('n', '<M-r>', '<cmd>echo "Current File Reloaded!"<cr><cmd>luafile %<cr>', default_opts)
 
 -- Remove arrows in normal mode
