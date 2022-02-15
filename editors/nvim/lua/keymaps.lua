@@ -6,7 +6,7 @@ local cmd = vim.cmd
 ----------------------------------------------------------------------------------
 --
 -- This file contains the custom keymaps.
--- Keymaps are set by plugins, to all of the keymaps use :ListKeys
+-- Keymaps are set by plugins, to allNavigatekeymaps use :ListKeys
 --
 -- I tried to stick as close as I can to the vim key mantra.
 -- Keybinds are acronyms of the action and will be marked in capital in the comment
@@ -15,6 +15,12 @@ local cmd = vim.cmd
 -- Shift reversing the action (like vim)
 --
 -- Binds that start with shift, reverse the shift action (to keep shift pressed)
+-- Binds that are prefixed with <leader> are more rare
+--
+--
+-- If you are new for nvim/vim I `<M-X>` is 'Alt+x', `<C-x>` is 'Ctrl+x'
+--   `x` is 'x', `X` is Shift+X
+-- map('MODE', 'BIND', 'ACTION', OPTS(most of them are no re-map and silent))
 --
 ----------------------------------------------------------------------------------
 
@@ -29,7 +35,7 @@ map('n', '<C-i>', '<C-i>zz', default_opts) -- Recenter after C-i
 map('v', '<Enter>', 'y', default_opts) -- yank with Enter in visual mode
 map('i', '<C-k>', '<C-O>o', default_opts) -- Insert new line in insert mode
 map('n', '<M-v>', '"+y', default_opts) -- Start copy to os clipboard
-map('n', '<M-y>', '"+y', default_opts) -- Start copy to os clipboard
+map('n', '<M-y>', '"+y', default_opts) -- Start copy to os clipboard E.g: M-yy will copy current line to os
 
 -- Remap space as leader key
 map('', '<Space>', '<Nop>', default_opts) -- Unmap space
@@ -44,7 +50,7 @@ map('n', '<Right>', '<nop>', default_opts)
 map('n', '<Up>', '<nop>', default_opts)
 map('n', '<Down>', '<nop>', default_opts)
 
--- Move through wrap lines
+-- Move through wrapped lines
 map('', 'j', 'v:count ? "j" : "gj"', {noremap = true, expr=true})
 map('', 'k', 'v:count ? "k" : "gk"', {noremap = true, expr=true})
 
@@ -52,7 +58,7 @@ map('', 'k', 'v:count ? "k" : "gk"', {noremap = true, expr=true})
 map('n', '<F11>', ':set spell!<cr>', default_opts)
 map('i', '<F11>', '<C-O>:set spell!<cr>', default_opts)
 
--- Naviagte in panes + splits (requires vim-tmux-navigator)
+-- Navigate in panes + splits (requires vim-tmux-navigator)
 map('n', '<C-h>', '<cmd>TmuxNavigateLeft<cr>', default_opts)
 map('n', '<C-j>', '<cmd>TmuxNavigateDown<cr>', default_opts)
 map('n', '<C-k>', '<cmd>TmuxNavigateUp<cr>', default_opts)
@@ -66,6 +72,11 @@ map('n', '<M-Right>', '<cmd>TmuxNavigateRight<cr>', default_opts)
 --          MISC PLUGINS         --
 -----------------------------------
 map('n', '<F5>', '<cmd>UndotreeToggle<CR>', default_opts) -- Toggle undotree
+map('n', '<leader>b', '<cmd>Telescope buffers<CR>', default_opts) -- browse your open Buffers (tabs)
+map('n', '<leader>o', '<cmd>Telescope oldfiles<CR>', default_opts) -- open Old files
+map('n', '<leader>c', '<cmd>Telescope command_history<CR>', default_opts) -- history of Commands
+map('n', '<leader>ss', '<cmd>Telescope spell_suggest<CR>', default_opts) -- history of Commands
+map('n', '<A-s>', '<cmd>DevDocsUnderCursor<cr>', default_opts) -- Search current word in DevDocs
 
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 cmd([[
@@ -97,15 +108,11 @@ live_grep_raw = function(opts)
 	require('telescope').extensions.live_grep_raw.live_grep_raw(opts)
 end
 map('n', 'KR', '<cmd>Telescope resume<cr>', default_opts) -- Resume last telescope
-map('n', 'KL', '<cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true})<cr>', default_opts)
-map('n', 'KK', '<cmd>lua live_grep_raw()<CR>', default_opts)
-map('n', 'Kk', '<cmd>lua live_grep_raw({default_text = \'-g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*" \'})<CR>', default_opts)
-map('n', 'KD', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>")})<CR>', default_opts)
-map('n', 'Kd', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>") .. \' -g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*"\'})<CR>', default_opts)
-map('n', '<C-s>', '<cmd>Telescope buffers<CR>', default_opts)
-map('n', '<C-a>', '<cmd>Telescope oldfiles<CR>', default_opts)
-map('n', '<C-x>', '<cmd>Telescope command_history<CR>', default_opts)
-map('n', '<A-s>', '<cmd>DevDocsUnderCursor<cr>', default_opts)
+map('n', 'KL', '<cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true})<cr>', default_opts) -- find files (ctrl+p)
+map('n', 'KK', '<cmd>lua live_grep_raw()<CR>', default_opts) -- search in all files (fuzzy finder)
+map('n', 'KD', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>")})<CR>', default_opts) -- Search in all files with current word inserted
+map('n', 'Kk', '<cmd>lua live_grep_raw({default_text = \'-g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*" \'})<CR>', default_opts) -- Search in all files in your current directory
+map('n', 'Kd', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>") .. \' -g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*"\'})<CR>', default_opts) -- Search in all files in your current directory + with your current word
 
 -----------------------------------
 --             LSP               --
@@ -125,8 +132,8 @@ map('n', 'gp', "<cmd>lua require'telescope.builtin'.diagnostics{bufnr=0}<CR>", {
 map('n', 'gP', "<cmd>lua require'telescope.builtin'.diagnostics{}<CR>", {silent = true, noremap = true}) -- Go to workspace (P)roblems
 
 -- illumante
-map('n', '<C-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true}) -- jump to Next occurence of var on cursor
-map('n', '<C-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true}) -- jump to Previous occurence of var on cursor
+map('n', '<C-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true}) -- jump to Next occurrence of var on cursor
+map('n', '<C-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true}) -- jump to Previous occurrence of var on cursor
 
 -- Lsp UI
 map('n', '<F2>', '<cmd>Lspsaga rename<cr>', {silent = true, noremap = true}) -- Rename symbols with F2

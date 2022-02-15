@@ -52,6 +52,8 @@ return require('packer').startup(function()
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent line helper
 	use 'numToStr/Comment.nvim' -- Comments
 	use 'nvim-treesitter/nvim-treesitter-textobjects' -- Movements base on treesitter
+	use 'lewis6991/spellsitter.nvim' -- Enable spellchecking with treesitter
+
 
 	-- Telescope
 	use 'nvim-lua/plenary.nvim' -- Required by telescope and more
