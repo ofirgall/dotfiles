@@ -49,8 +49,15 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
-plugins=(
-  fzf-tab # Need to be first
+if $IS_REMOTE; then
+	plugins=()
+else
+	# TODO: try to update remote zsh
+	# Local plugins only (newer zsh)
+	plugins=(fzf-tab)
+fi
+
+plugins+=(
   gitfast
   zsh-autosuggestions
   colored-man-pages
@@ -178,5 +185,7 @@ export ZSH_TMUX_ALWAYS_SELECT_SESSION=true
 # zprof # Finish profiling
 
 # Must be at the end
-$HOME/.tmux/tmux-go/src/tmux_go_attach.sh
+if ! $IS_REMOTE; then
+	$HOME/.tmux/tmux-go/src/tmux_go_attach.sh
+fi
 select_tmux_session.sh
