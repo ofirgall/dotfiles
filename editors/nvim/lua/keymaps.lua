@@ -22,6 +22,13 @@ local cmd = vim.cmd
 --   `x` is 'x', `X` is Shift+X
 -- map('MODE', 'BIND', 'ACTION', OPTS(most of them are no re-map and silent))
 --
+-- nvim is reading the binds through ANSI, so it has some limitation
+--   it can't read Ctrl+Shift+KEY, it can't read Alt+Shift+Key.
+--   You can see what vim reads with `sed -n l`
+--
+-- Notice that nvim is the last program that read the binds
+--   System(GUI) -> Terminal -> tmux -> nvim
+--
 ----------------------------------------------------------------------------------
 
 -----------------------------------
