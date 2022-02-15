@@ -71,11 +71,11 @@ Done by dconf (gnome tweaks):
 * convert todos to tasks/issues
 
 ## TODO Major
+* increase osc52 yank amount
 * icomp - share sessions between each other
 * nvim - learn to use marks
 * firenvim - paste
 * Shift/Ctrl R_Alt -> Delete
-* nvim - gd/gD etc. wrap text with "", added the file type automaticlly
 * nvim - gD/gd/gi binds with splits
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
 * tmux - not suspended (not active) change status colors 

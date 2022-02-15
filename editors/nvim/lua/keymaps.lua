@@ -111,6 +111,11 @@ map('n', '<leader>srb', '<Plug>(sandwich-replace-auto)', default_opts)
 live_grep_raw = function(opts)
 	opts = opts or {}
 	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'
+	if opts.default_text then
+		opts.default_text = opts.default_text .. ' -t' .. vim.fn.fnamemodify(vim.fn.expand('%'), ':e')
+	else
+		opts.default_text = '"'
+	end
 
 	require('telescope').extensions.live_grep_raw.live_grep_raw(opts)
 end
