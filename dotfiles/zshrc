@@ -37,9 +37,9 @@ ZSH_TMUX_FIXTERM=false
 # FZF History
 ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height=10 --reverse'
 
-if $IS_REMOTE; then
-	plugins=()
-else
+plugins=()
+
+if [[ ${ZSH_VERSION:0:3} -ge 5.8 ]]; then
 	# FZF Tab settings
 	# disable sort when completing `git checkout`
 	zstyle ':completion:*:git-checkout:*' sort false
@@ -54,7 +54,7 @@ else
 
 	# TODO: try to update remote zsh
 	# Local plugins only (newer zsh)
-	plugins=(fzf-tab)
+	plugins+=(fzf-tab)
 fi
 
 plugins+=(
