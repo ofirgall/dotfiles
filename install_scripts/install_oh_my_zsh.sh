@@ -20,4 +20,4 @@ install_plugin https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/
 install_plugin https://github.com/paulirish/git-open.git ~/.oh-my-zsh/custom/plugins/git-open
 install_plugin https://github.com/peterhurford/up.zsh ~/.oh-my-zsh/custom/plugins/up
 install_plugin https://github.com/ofirgall/zsh-fzf-history-search ~/.oh-my-zsh/custom/plugins/zsh-fzf-history-search
-install_plugin git@github.com:Aloxaf/fzf-tab.git ~/.oh-my-zsh/custom/plugins/fzf-tab
+install_plugin https://github.com/Aloxaf/fzf-tab.git ~/.oh-my-zsh/custom/plugins/fzf-tab
