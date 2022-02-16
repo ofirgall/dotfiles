@@ -35,6 +35,14 @@ fix_reserruct()
 	file_after_uptime=$(find $TMUX_RESERRUCT_DIR -type f -newermt "$(uptime -s)" | tail -n 1)
 	file_before_uptime=$(find $TMUX_RESERRUCT_DIR -type f \! -newermt "$(uptime -s)" | tail -n 1)
 
+	if [ ! -f $file_before_uptime ]; then
+		return
+	fi
+
+	if [ ! -f $file_after_uptime ]; then
+		return
+	fi
+
 	echo_title "SESSIONS BEFORE BOOT"
 	echo "$(tmux_ressurect_sessions $file_before_uptime)"
 
