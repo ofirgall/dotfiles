@@ -80,7 +80,7 @@ echo "=== Commit Message ==="
 echo $commitMsg
 
 echo
-read -p "Squash? (y/N) " -n 1 -r
+read -p "Squash? (y/N) " -n 2 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
