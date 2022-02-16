@@ -56,8 +56,10 @@ select_tmux_session()
 {
 	# Check if tmux server is running, run it otherwise
 	if ! tmux ls &> /dev/null; then
-		echo "No tmux server, lets choose the resseruct file first."
-		fix_reserruct
+		if [ -d "$TMUX_RESERRUCT_DIR" ]; then
+			echo "No tmux server, lets choose the resseruct file first."
+			fix_reserruct
+		fi
 		tmux
 	fi
 
