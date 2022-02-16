@@ -71,15 +71,14 @@ Done by dconf (gnome tweaks):
 * convert todos to tasks/issues
 
 ## TODO Major
-* increase osc52 yank amount
+* tmux - not suspended (not active) change status colors 
 * icomp - share sessions between each other
 * nvim - learn to use marks
 * firenvim - paste
 * Shift/Ctrl R_Alt -> Delete
 * nvim - gD/gd/gi binds with splits
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
-* tmux - not suspended (not active) change status colors 
-* tmux - go to start of last command, copy command output
+* increase osc52 yank amount (when alacritty will support that)
 
 ## TODO
 * dock-redock fix

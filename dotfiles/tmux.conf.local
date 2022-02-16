@@ -226,8 +226,8 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{uptime_s}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_status_left=" #{@mode_indicator_custom_prompt} | #S "
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized} CPU #{cpu_percentage} RAM #{ram_percentage} , #{?battery_status,#{battery_status},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} [#{keyboard_layout}] | #{hostname} | #{@mode_indicator_custom_prompt}"
+tmux_conf_theme_status_left=" #{@suspended_mode} | #S "
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized} CPU #{cpu_percentage} RAM #{ram_percentage} , #{?battery_status,#{battery_status},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} [#{keyboard_layout}] | #{hostname} | #{@suspended_mode}"
 # CPU: #{cpu_percentage} RAM: #{ram_percentage}
 
 # status left style
@@ -395,7 +395,7 @@ set -g @tnotify-verbose-msg '#S: #I #W is done!'
 
 # colors for tmux-suspend
 set -g @suspend_suspended_options " \
-  @mode_indicator_custom_prompt:: SUSPENDED , \
+  @suspended_mode:: SUSPENDED , \
 "
 
 # -- custom variables ----------------------------------------------------------
