@@ -82,6 +82,7 @@ Done by dconf (gnome tweaks):
 * increase osc52 yank amount (when alacritty will support that)
 
 ## TODO
+* change config system, remote != debian based
 * dock-redock fix
 * git squash - if master/base branch moved forward can't find the ref
 * nvim - stop lsp server on background

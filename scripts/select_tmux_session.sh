@@ -35,11 +35,14 @@ fix_reserruct()
 	file_after_uptime=$(find $TMUX_RESERRUCT_DIR -type f -newermt "$(uptime -s)" | tail -n 1)
 	file_before_uptime=$(find $TMUX_RESERRUCT_DIR -type f \! -newermt "$(uptime -s)" | tail -n 1)
 
-	if [ ! -f $file_before_uptime ]; then
+	if [ -z $file_before_uptime ]; then
 		return
 	fi
 
-	if [ ! -f $file_after_uptime ]; then
+	if [ -z $file_after_uptime ]; then
+		rm $TMUX_RESERRUCT_DIR/last
+		echo "Linking $TMUX_RESERRUCT_DIR/last -> $file_before_uptime"
+		ln -s $file_before_uptime $TMUX_RESERRUCT_DIR/last
 		return
 	fi
 
