@@ -44,7 +44,7 @@ map('v', '<Enter>', 'y', default_opts) -- yank with Enter in visual mode
 map('i', '<C-k>', '<C-O>o', default_opts) -- Insert new line in insert mode
 map('n', '<M-v>', '"+y', default_opts) -- Start copy to os clipboard
 map('n', '<M-y>', '"+y', default_opts) -- Start copy to os clipboard E.g: M-yy will copy current line to os
-map('n', '<M-q>', '<cmd>wq<cr>', default_opts) -- alt+Quit to close split
+map('n', '<M-q>', '<cmd>q<cr>', default_opts) -- alt+Quit to close split
 
 -- Remap space as leader key
 map('', '<Space>', '<Nop>', default_opts) -- Unmap space
@@ -94,16 +94,17 @@ let g:VM_maps['Find Subword Under'] = '<M-d>']]
 
 -- Adding <leader> prefix for sandwich to avoid conflicting with lightspeed
 vim.g.sandwich_no_default_key_mappings = 1
+local sandwich_opts = { unique = true }
 -- add
-map('', '<leader>sa', '<Plug>(sandwich-add)', default_opts)
+map('n', '<leader>sa', '<Plug>(sandwich-add)', sandwich_opts)
 -- delete
-map('n', '<leader>sd', '<Plug>(sandwich-delete)', default_opts)
-map('x', '<leader>sd', '<Plug>(sandwich-delete)', default_opts)
-map('n', '<leader>sdb', '<Plug>(sandwich-delete-auto)', default_opts)
+map('n', '<leader>sd', '<Plug>(sandwich-delete)', sandwich_opts)
+map('x', '<leader>sd', '<Plug>(sandwich-delete)', sandwich_opts)
+map('n', '<leader>sdb', '<Plug>(sandwich-delete-auto)', sandwich_opts)
 -- replace
-map('n', '<leader>sr', '<Plug>(sandwich-replace)', default_opts)
-map('x', '<leader>sr', '<Plug>(sandwich-replace)', default_opts)
-map('n', '<leader>srb', '<Plug>(sandwich-replace-auto)', default_opts)
+map('n', '<leader>sr', '<Plug>(sandwich-replace)', sandwich_opts)
+map('x', '<leader>sr', '<Plug>(sandwich-replace)', sandwich_opts)
+map('n', '<leader>srb', '<Plug>(sandwich-replace-auto)', sandwich_opts)
 
 -----------------------------------
 --        CODE NAVIGATION        --
