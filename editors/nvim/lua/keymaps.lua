@@ -34,6 +34,7 @@ local cmd = vim.cmd
 -----------------------------------
 --           BUILTIN             --
 -----------------------------------
+map('n', '<M-r>', '<cmd>echo "Current File Reloaded!"<cr><cmd>luafile %<cr>', default_opts) -- Reload current luafile
 map('n', 'n', 'nzz', default_opts) -- Auto recenter after n
 map('n', 'N', 'Nzz', default_opts) -- Auto recenter after N
 map('n', '<F3>', '<cmd>let @/ = "not_gonna_find_this_______"<cr>', default_opts) -- Disable find highlight
@@ -43,13 +44,12 @@ map('v', '<Enter>', 'y', default_opts) -- yank with Enter in visual mode
 map('i', '<C-k>', '<C-O>o', default_opts) -- Insert new line in insert mode
 map('n', '<M-v>', '"+y', default_opts) -- Start copy to os clipboard
 map('n', '<M-y>', '"+y', default_opts) -- Start copy to os clipboard E.g: M-yy will copy current line to os
+map('n', '<M-q>', '<cmd>wq<cr>', default_opts) -- alt+Quit to close split
 
 -- Remap space as leader key
 map('', '<Space>', '<Nop>', default_opts) -- Unmap space
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
-map('n', '<M-r>', '<cmd>echo "Current File Reloaded!"<cr><cmd>luafile %<cr>', default_opts) -- Reload current luafile
 
 -- Remove arrows in normal mode
 map('n', '<Left>', '<nop>', default_opts)
@@ -83,7 +83,7 @@ map('n', '<leader>b', '<cmd>Telescope buffers<CR>', default_opts) -- browse your
 map('n', '<leader>o', '<cmd>Telescope oldfiles<CR>', default_opts) -- open Old files
 map('n', '<leader>c', '<cmd>Telescope command_history<CR>', default_opts) -- history of Commands
 map('n', '<leader>ss', '<cmd>Telescope spell_suggest<CR>', default_opts) -- history of Commands
-map('n', '<A-s>', '<cmd>DevDocsUnderCursor<cr>', default_opts) -- Search current word in DevDocs
+map('n', '<M-s>', '<cmd>DevDocsUnderCursor<cr>', default_opts) -- Search current word in DevDocs
 
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 cmd([[
@@ -179,11 +179,10 @@ map('n', '<M-n>', '<cmd>NvimTreeFocus<cr>', default_opts)
 
 -- Tabline binds
 map('n', 'Q', '<cmd>BufferClose!<CR>', default_opts) -- shift+Quit to close current tab
-map('n', '<A-q>', '<cmd>BufferClose!<CR>', default_opts) -- alt+Quit to close current tab
-map('n', '<A-,>', '<cmd>BufferPrevious<CR>', default_opts) -- Alt+, (<) to move to left
-map('n', '<A-.>', '<cmd>BufferNext<CR>', default_opts) -- Alt+. (>) to move to right
-map('n', '<A-<>', '<cmd>BufferMovePrevious<CR>', default_opts) -- Alt+Shift+< grab to with you to left
-map('n', '<A->>', '<cmd>BufferMoveNext<CR>', default_opts) -- Alt+Shift+> grab to with you to right
+map('n', '<M-,>', '<cmd>BufferPrevious<CR>', default_opts) -- Alt+, (<) to move to left
+map('n', '<M-.>', '<cmd>BufferNext<CR>', default_opts) -- Alt+. (>) to move to right
+map('n', '<M-<>', '<cmd>BufferMovePrevious<CR>', default_opts) -- Alt+Shift+< grab to with you to left
+map('n', '<M->>', '<cmd>BufferMoveNext<CR>', default_opts) -- Alt+Shift+> grab to with you to right
 map('n', 'g1', '<cmd>BufferGoto 1<CR>', default_opts)
 map('n', 'g2', '<cmd>BufferGoto 2<CR>', default_opts)
 map('n', 'g3', '<cmd>BufferGoto 3<CR>', default_opts)
