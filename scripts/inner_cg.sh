@@ -4,22 +4,28 @@ START_DIR=$HOME/workspace
 
 original_pwd=$(pwd)
 
+ls_with_branch()
+{
+	 for i in $(ls -d */); do echo "$i ($(cat $i/.git/HEAD 2> /dev/null | sed 's,ref: refs/heads/,,'))"; done
+}
+
 choose_dir()
 {
-	path=$(ls -d */ | fzf --reverse --header="$(pwd)/ (Ctrl-C to abort, Ctrl-X to exit)" --height=30 --bind "ctrl-x:abort+execute(echo ___exit)")
+	result=$(ls_with_branch | fzf --reverse --header="$(pwd)/ (Ctrl-C to abort, Ctrl-X to exit)" --height=30 --bind "ctrl-x:abort+execute(echo ___exit)")
 
 	# ctrl-c
-	if [ -z $path ]; then
+	if [ -z "$result" ]; then
 		cd $original_pwd
 		return
 	fi
 
 	# ctrl-z
-	if [ $path == "___exit" ]; then
+	if [ "$result" == "___exit" ]; then
 		return
 	fi
 
-	cd $path
+	path=$(echo "$result" | sed "s/ (.*//")
+	cd "$path"
 	if [ -d ".git" ]; then
 		return
 	fi
