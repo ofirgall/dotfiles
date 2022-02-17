@@ -71,7 +71,6 @@ Done by dconf (gnome tweaks):
 * convert todos to tasks/issues
 
 ## TODO Major
-* script - cdg (cdgit) cd to workspace with fzf untill quit/found .git
 * tmux - not suspended (not active) change status colors 
 * icomp - share sessions between each other
 * nvim - learn to use marks
