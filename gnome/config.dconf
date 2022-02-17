@@ -19,7 +19,7 @@ window-width=540
 
 [com/ubuntu/update-notifier]
 no-show-notifications=true
-release-check-time=uint32 1643887422
+release-check-time=uint32 1645097294
 
 [com/uploadedlobster/peek]
 persist-window-geometry=(349, 183, 794, 593)
@@ -47,7 +47,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='keyboard'
+last-panel='wifi'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -292,6 +292,10 @@ sidebar-width=189
 
 [org/gnome/nm-applet/eap/15778557-7790-4357-a1da-72b382d405ce]
 ignore-ca-cert=true
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/d51fd730-2d86-43da-8bcf-e2a60dbc7847]
+ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
 [org/gnome/nm-applet/eap/e989b2d6-eb53-45e0-8de3-aab71c646c59]

@@ -430,6 +430,10 @@ set -g @suspend_suspended_options " \
 #														OFIR
 #######################################################################################################################################
 
+# Better windows titles
+set-option -g status-interval 1
+set-option -g automatic-rename-format "#(ps -f --no-headers --ppid $(tmux display-message -p #{pane_pid}) | awk '{ print substr($0, index($0,$8)) }')"
+
 # Main prefix is C-b
 set -g prefix C-b
 bind C-b send-prefix
