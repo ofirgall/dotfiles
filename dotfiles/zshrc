@@ -37,6 +37,9 @@ ZSH_TMUX_FIXTERM=false
 # FZF History
 ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height=10 --reverse'
 
+# autoupdate
+export UPDATE_ZSH_DAYS=2
+
 plugins=()
 
 if [[ ${ZSH_VERSION:0:3} -ge 5.8 ]]; then
@@ -58,6 +61,7 @@ if [[ ${ZSH_VERSION:0:3} -ge 5.8 ]]; then
 fi
 
 plugins+=(
+  autoupdate
   gitfast
   zsh-autosuggestions
   colored-man-pages

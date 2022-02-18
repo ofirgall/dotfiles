@@ -68,7 +68,6 @@ Done by dconf (gnome tweaks):
 * nvim - diffview, lines filter
 * nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
 * zsh - zsh-mode-vi makes issues with up/down partial history match
-* tmux-reserruct - fix last bug
 * convert todos to tasks/issues
 
 ## TODO Major

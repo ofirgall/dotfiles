@@ -7,5 +7,4 @@ rustup update
 python3 -m pip install pip --upgrade
 python3 -m pip install -r scripts/requirements.txt --user
 
-# TODO: Update oh-my-zsh custom plugins (maybe move to zsh plugin manager e.g zinit, antigen, zplug)
 # TODO: update custom downloaded (taskwarrior-tui)
