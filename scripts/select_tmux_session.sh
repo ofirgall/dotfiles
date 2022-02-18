@@ -32,8 +32,8 @@ before_after_prompt()
 
 fix_reserruct()
 {
-	file_after_uptime=$(find $TMUX_RESERRUCT_DIR -type f -newermt "$(uptime -s)" | tail -n 1)
-	file_before_uptime=$(find $TMUX_RESERRUCT_DIR -type f \! -newermt "$(uptime -s)" | tail -n 1)
+	file_after_uptime=$(find $TMUX_RESERRUCT_DIR -type f -newermt "$(uptime -s)" | xargs ls -rt | tail -n 1)
+	file_before_uptime=$(find $TMUX_RESERRUCT_DIR -type f \! -newermt "$(uptime -s)" | xargs ls -rt | tail -n 1)
 
 	if [ -z $file_before_uptime ]; then
 		return
