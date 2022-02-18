@@ -1,2 +1,7 @@
+! xev to see keys
+! xmodemap -pke to see current map
+! xmodemap -pm to see current map
+
+! Mapping alt to backspace
 remove mod1 = Alt_R
 keycode 108 = BackSpace

@@ -44,6 +44,7 @@ Done by dconf (gnome tweaks):
 * Capslock is mapped to Escape - Don't move your hands when escaping insert mode.
 * Both shift changes language - Don't move your hands while typing.
 * Right Alt is mapped to backspace - Same idea.. (done with ~/.xmodmap too)
+* Changing workspaces - Ctrl+J/H, Ctrl+Shift+J/H
 
 ---
 

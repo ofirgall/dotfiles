@@ -110,6 +110,7 @@ alias cg='cd $(inner_cg.sh)'
 alias g='git'
 alias ga='git add'
 alias gc='git commit'
+alias gcam='git commit -a -m'
 alias gco='git checkout'
 alias gd='git diff'
 alias gf='git fetch'
@@ -148,7 +149,7 @@ fpath+=~/.zfunc
 if ! $IS_REMOTE; then
 	. "$HOME/.cargo/env" # Rust
 
-	xmodmap ~/.xmodmaprc 2> /dev/null # key mapping
+	xmodmap ~/.xmodmaprc 2> /dev/null # key mapping, xev to see keys
 	xset r rate 200 35 # Faster repeat rate
 fi
 
