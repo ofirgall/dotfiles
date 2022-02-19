@@ -12,6 +12,6 @@ if [ -n "$(command -v apt-get)" ]; then
 fi
 
 NO_SUDO=false
-if test -f "$HOME/.no_sudo_inidcator"; then
+if test -f "$HOME/.no_sudo_indicator"; then
   NO_SUDO=true
 fi

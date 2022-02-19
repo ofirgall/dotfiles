@@ -24,7 +24,7 @@ git config user.user "Ofir Gal"
 ### Clone and Run
 #### Config
 * `touch ~/.remote_indicator` - if remote
-* `touch ~/.no_sudo_inidcator` - if no sudo on machine
+* `touch ~/.no_sudo_indicator` - if no sudo on machine
 ```bash
 git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ```
