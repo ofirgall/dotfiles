@@ -386,12 +386,15 @@ set -g @plugin 'MunifTanjim/tmux-suspend'
 set -g @plugin 'ofirgall/tmux-keyboard-layout'
 set -g @plugin 'ofirgall/tmux-browser'
 set -g @plugin 'ChanderG/tmux-notify'
+set -g @plugin 'wfxr/tmux-fzf-url'
+set -g @plugin 'roosta/tmux-fuzzback'
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '1'
 set -g @emulate-scroll-for-no-mouse-alternate-buffer "on"
-set -g @suspend_key 'M--'
 set -g @tnotify-verbose 'on'
 set -g @tnotify-verbose-msg '#S: #I #W is done!'
+set -g @fzf-url-fzf-options '--reverse'
+set -g @fuzzback-fzf-layout 'default'
 
 # colors for tmux-suspend
 set -g @suspend_suspended_options " \
@@ -580,12 +583,18 @@ run -b 'tmux bind -T copy-mode-vi L send -X bottom-line 2> /dev/null || true'
 #		 PLUGINS		#
 #########################
 
+# tmux-suspend, focus on nested ssh session (Alt+-)
+set -g @suspend_key 'M--'
+
 # Tmux jump (like acejump or vimium) with ALT+j
 bind -n M-j run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
 
 # Tmux copy cat
 # copy git file (after git Status)
 bind -n M-s if-shell "$is_vim" 'send-keys M-s' "run-shell $HOME/.tmux/plugins/tmux-copycat/scripts/copycat_git_special.sh #{pane_current_path}"
+
+# copy url ALT+u
+bind -n M-u run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(https?://|git@|git://|ssh://|ftp://|file:///)[[:alnum:]?=%/_.:,;~@!#$&()*+-]*'"
 
 # copy Hashes ALT+h
 bind -n M-h run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '\\b([0-9a-f]{7,40}|[[:alnum:]]{52}|[0-9a-f]{64})\\b'"
@@ -595,3 +604,9 @@ bind -n M-i run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_sta
 
 # Open text in google search
 set -g @open-s 'https://www.google.com/search?q='
+
+# tmux-fzf-url (open url)
+set -g @fzf-url-bind 'u'
+
+# tmux-fuzzback
+set -g @fuzzback-bind f
