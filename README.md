@@ -46,6 +46,22 @@ Done by dconf (gnome tweaks):
 
 ---
 
+## TODO
+* nvim - learn to use marks
+* firenvim - paste
+* Shift/Ctrl R_Alt -> Delete
+* tmux - not suspended (not active) change status colors 
+* nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
+* dock-redock fix
+* increase osc52 yank amount (when alacritty will support that)
+* git squash - if master/base branch moved forward can't find the ref
+* nvim - stop lsp server on background
+* nvim - build & run + quickfix errors
+* nvim - try distant one day
+* tuis to try - slack, mail, calander, jira
+* autoupdate dotfiles on remote machines
+* oh-my-tmux to upstream instead of local copy
+
 ## TODO Takes time
 * create/attach - to the same session when connecting to remote (not sure if possible)
 * taskwarrior - filter presets
@@ -59,24 +75,6 @@ Done by dconf (gnome tweaks):
 * tmux - better session workflow, session per feature:repo, fzf for features -> fzf for repo
 * convert todos to tasks/issues
 
-## TODO Major
-* nvim - learn to use marks
-* firenvim - paste
-* Shift/Ctrl R_Alt -> Delete
-
-## TODO
-* tmux - not suspended (not active) change status colors 
-* nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
-* dock-redock fix
-* increase osc52 yank amount (when alacritty will support that)
-* git squash - if master/base branch moved forward can't find the ref
-* nvim - stop lsp server on background
-* nvim - build & run + quickfix errors
-* nvim - try distant one day
-* tuis to try - slack, mail, calander, jira
-* autoupdate dotfiles on remote machines
-* better readme, readme on keymaps in nvim, split repos
-* oh-my-tmux to upstream instead of local copy
 
 ## Improvements Ideas
 * nvim? - signature renaming using tree sitter and LSP
