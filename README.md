@@ -56,7 +56,6 @@ Done by dconf (gnome tweaks):
 * when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
 * backup non-dotfiles - tmux sessions, tasks of taskwarrior, nvim sessions
 * backup firefox extnesions & settings
-* tmux - go over binds, maybe want to change them.
 * tmux - better session workflow, session per feature:repo, fzf for features -> fzf for repo
 * convert todos to tasks/issues
 
