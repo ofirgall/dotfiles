@@ -21,14 +21,12 @@ git config user.email "your mail"
 git config user.user "Ofir Gal"
 ```
 
-### Clone and Run for Remote
+### Clone and Run
+#### Config
+* `touch ~/.remote_indicator` - if remote
+* `touch ~/.no_sudo_inidcator` - if no sudo on machine
 ```bash
-git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && sudo echo a && ./install --config-file remote.conf.yaml && touch ~/.remote_indicator
-```
-
-### Clone and Run for PC
-```bash
-git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && sudo echo a && ./install
+git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ```
 
 Incase you are using windows terminal add `windows_terminal_binds.json` to your windows terminal
@@ -81,7 +79,6 @@ Done by dconf (gnome tweaks):
 * increase osc52 yank amount (when alacritty will support that)
 
 ## TODO
-* change config system, remote != debian based
 * dock-redock fix
 * git squash - if master/base branch moved forward can't find the ref
 * nvim - stop lsp server on background

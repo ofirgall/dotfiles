@@ -1,6 +1,5 @@
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [sh install_scripts/install_zsh.sh, Installing ZSH]
 
 - shell:
     - echo "========================= REMOTE DOTFILES ========================="
@@ -56,9 +55,7 @@
 - shell:
     - [dconf dump / > old_dconf, Backup for gnome settings]
     - [dconf load / < gnome/config.dconf, Setting gnome settings]
-    - [sh install_scripts/install_basic.sh, Running basic libs installation]
     - [sh install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
-    - [sh install_scripts/install_lsp.sh, Installing LSP Utils]
     - [sh install_scripts/install_vscode.sh, Installing vscode]
     - [sh editors/vscode/install_extensions.sh, Installing vscode extensions]
     - [sh install_scripts/install_fusuma.sh, Installing Fusuma]

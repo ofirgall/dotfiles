@@ -10,8 +10,13 @@ if test -f "$HOME/.remote_indicator"; then
   IS_REMOTE=true
 fi
 
+NO_SUDO=false
+if test -f "$HOME/.no_sudo_inidcator"; then
+  NO_SUDO=true
+fi
+
 # Export Local pkgs if on remote (non-root usage)
-if $IS_REMOTE; then
+if $NO_SUDO; then
   export PATH="$HOME/pkgs/usr/sbin:$HOME/pkgs/usr/bin:$HOME/pkgs/bin:$PATH"
   export MANPATH="$HOME/pkgs/usr/share/man:$MANPATH"
 

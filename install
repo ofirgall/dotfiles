@@ -2,7 +2,13 @@
 
 set -e
 
-CONFIG="install.conf.yaml"
+if test -f "$HOME/.remote_indicator"; then
+	CONFIG="remote.conf.yaml"
+else
+	CONFIG="install.conf.yaml"
+fi
+
+echo "CONFIG: $CONFIG"
 DOTBOT_DIR="dotbot"
 
 DOTBOT_BIN="bin/dotbot"

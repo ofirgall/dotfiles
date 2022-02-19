@@ -22,12 +22,12 @@ function file_exists(name)
    if f~=nil then io.close(f) return true else return false end
 end
 
-local is_remote = file_exists(os.getenv("HOME") .. "/.remote_indicator")
+local no_sudo = file_exists(os.getenv("HOME") .. "/.no_sudo_indicator")
 
 -- logs at "$HOME/.cache/nvim/lsp.log"
 -- vim.lsp.set_log_level("debug")
 
-if not is_remote then
+if not no_sudo then
 	require'lspconfig'.pyright.setup{
 		on_attach = lsp_on_attach,
 		capabilities = capabilities,

@@ -1,16 +1,29 @@
 #!/bin/bash
 
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$CURRENT_DIR/helpers.sh"
+
+python3 -m pip install -r scripts/requirements.txt --user
+
+if $NO_SUDO; then
+	# Install fzf
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+
+	~/.fzf/install --no-update-rc
+	exit 0
+fi
+
 echo 'Installing Basic Libs'
-sudo apt install -y xclip wget moreutils tmux ipython3 gnome-tweak-tool pcregrep sshfs python3-pip build-essential alacritty fzf daemon
+sudo apt install -y wget moreutils tmux ipython3 pcregrep python3-pip build-essential fzf daemon
 
 # Install bat & rg
 sudo apt install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
 mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
 
+if ! $IS_REMOTE; then
+	sudo apt install -y xclip gnome-tweak-tool kupfer alacritty
+fi
+
 sudo usermod -a -G dialout $USER
 newgrp dialout
-
-python3 -m pip install -r scripts/requirements.txt --user
-
-sudo apt install -y kupfer

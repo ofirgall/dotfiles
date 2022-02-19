@@ -1,5 +1,6 @@
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - [sh install_scripts/install_zsh.sh, Installing ZSH]
     - [sh install_scripts/install_oh_my_zsh.sh, Installing oh_my_zsh]
 
 - defaults:
@@ -29,3 +30,7 @@
         path: editors/nvim
     ~/.vimrc:
         path: dotfiles/vimrc
+
+- shell:
+    - [sh install_scripts/install_basic.sh, Running basic libs installation]
+    - [sh install_scripts/install_lsp.sh, Installing LSP Utils]

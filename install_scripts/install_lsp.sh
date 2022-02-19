@@ -1,6 +1,18 @@
 #!/bin/bash
 
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$CURRENT_DIR/helpers.sh"
+
 echo 'Installing Lsp Servers & Helpers'
+
+# CMake
+python3 -m pip install cmake-language-server --user
+
+if $NO_SUDO; then
+	# pylsp instead of pyright
+	python3 -m pip install 'python-lsp-server[all]' --user
+	exit 0
+fi
 
 # ripgrep is nessecary too but we install it in install_basic because of a bug
 sudo apt install -y curl universal-ctags
@@ -41,6 +53,3 @@ mkdir $HOME/.local/lua-server
 curl -s https://api.github.com/repos/sumneko/lua-language-server/releases/latest | grep "browser_download_url.*linux-x64" | cut -d : -f 2,3 | tr -d \" | wget -P $HOME/.local/lua-server/ -qi -
 tar -xf $HOME/.local/lua-server/lua-language-server-*.tar.gz -C $HOME/.local/lua-server/
 ln -s $HOME/.local/lua-server/bin/lua-language-server $HOME/.local/bin/lua-language-server
-
-# CMake
-python3 -m pip install cmake-language-server

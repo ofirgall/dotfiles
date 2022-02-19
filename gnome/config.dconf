@@ -77,7 +77,7 @@ primary-color='#000000'
 secondary-color='#000000'
 
 [org/gnome/desktop/input-sources]
-mru-sources=[('xkb', 'us'), ('xkb', 'il')]
+mru-sources=[('xkb', 'il'), ('xkb', 'us')]
 sources=[('xkb', 'us'), ('xkb', 'il')]
 xkb-options=['grp_led:scroll', 'grp:shifts_toggle', 'caps:escape']
 
