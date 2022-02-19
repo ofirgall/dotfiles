@@ -38,8 +38,9 @@ require('gitsigns').setup {
 local cb = require'diffview.config'.diffview_callback
 require'diffview'.setup{
 	file_history_panel = {
+		height = 5,
 		log_options = {
-			follow = true,       -- Follow renames (only for single file)
+			follow = true,
 		},
 	},
 	key_bindings = {
