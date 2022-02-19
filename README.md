@@ -50,26 +50,17 @@ Done by dconf (gnome tweaks):
 * create/attach - to the same session when connecting to remote (not sure if possible)
 * taskwarrior - filter presets
 * tmux-go + taskwariror - Annotate tmux session and go with tmux-go 
-* tmux - is_vim not detected when using vim on remote inside other tmux not suspended
 * tmux-browser
 * tmux-go
-* when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
 * tmux-remote-notify
-* nvim - search filter history?
+* when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
 * backup non-dotfiles - tmux sessions, tasks of taskwarrior, nvim sessions
 * backup firefox extnesions & settings
 * tmux - go over binds, maybe want to change them.
-* use bugwarrior (api for OKTA?)
-* tmux + gnome - when openning a window attach it to a default workspace, e.g: slack -> main
-* tmux-plugin - open windows when attaching to session (main opens slack for example)
 * tmux - better session workflow, session per feature:repo, fzf for features -> fzf for repo
-* nvim - diffview, lines filter
-* nvim - diffview, filehistory for multiple commits merge_commit^..merge_commit (linux-kernel git hist 938edb8a31b976c9a92eb0cd4ff481e93f76c1f1^..938edb8a31b976c9a92eb0cd4ff481e93f76c1f1)
-* zsh - zsh-mode-vi makes issues with up/down partial history match
 * convert todos to tasks/issues
 
 ## TODO Major
-* icomp - share sessions between each other
 * nvim - learn to use marks
 * firenvim - paste
 * Shift/Ctrl R_Alt -> Delete
