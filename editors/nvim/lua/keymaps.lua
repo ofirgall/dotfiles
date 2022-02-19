@@ -94,7 +94,7 @@ let g:VM_maps['Find Subword Under'] = '<M-d>']]
 
 -- Adding <leader> prefix for sandwich to avoid conflicting with lightspeed
 vim.g.sandwich_no_default_key_mappings = 1
-local sandwich_opts = { unique = true }
+local sandwich_opts = {}
 -- add
 map('n', '<leader>sa', '<Plug>(sandwich-add)', sandwich_opts)
 -- delete
@@ -131,31 +131,33 @@ map('n', 'Kd', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>") 
 --             LSP               --
 -----------------------------------
 -- Builtin LSP Binds
-map('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', {silent = true, noremap = true}) -- Format code
+map('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', default_opts) -- Format code
 
 -- Telescope LSP Binds
-map('n', 'gd', "<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", {silent = true, noremap = true}) -- Go to Definition
+map('n', 'gd', "<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", default_opts) -- Go to Definition
+map('n', 'gvd', "<cmd>vsplit<CR><cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", default_opts) -- Go to Definition in Vsplit
 map('n', 'gD', '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")})<cr>', default_opts) -- (Go) search Definition under current word
-map('n', 'gi', "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", {silent = true, noremap = true}) -- Go to Implementation
+map('n', 'gi', "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", default_opts) -- Go to Implementation
+map('n', 'gvi', "<cmd>vsplit<CR><cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", default_opts) -- Go to Implementation in Vsplit
 
-map('n', 'gs', "<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>", {silent = true, noremap = true}) -- Go Symbols
-map('n', 'gS', "<cmd>lua require'telescope.builtin'.lsp_dynamic_workspace_symbols{}<CR>", {silent = true, noremap = true}) -- Go workspace (S)ymbols
-map('n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", {silent = true, noremap = true}) -- Go to References
-map('n', 'gp', "<cmd>lua require'telescope.builtin'.diagnostics{bufnr=0}<CR>", {silent = true, noremap = true}) -- Go to Problems
-map('n', 'gP', "<cmd>lua require'telescope.builtin'.diagnostics{}<CR>", {silent = true, noremap = true}) -- Go to workspace (P)roblems
+map('n', 'gs', "<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>", default_opts) -- Go Symbols
+map('n', 'gS', "<cmd>lua require'telescope.builtin'.lsp_dynamic_workspace_symbols{}<CR>", default_opts) -- Go workspace (S)ymbols
+map('n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", default_opts) -- Go to References
+map('n', 'gp', "<cmd>lua require'telescope.builtin'.diagnostics{bufnr=0}<CR>", default_opts) -- Go to Problems
+map('n', 'gP', "<cmd>lua require'telescope.builtin'.diagnostics{}<CR>", default_opts) -- Go to workspace (P)roblems
 
 -- illumante
-map('n', '<C-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true}) -- jump to Next occurrence of var on cursor
-map('n', '<C-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true}) -- jump to Previous occurrence of var on cursor
+map('n', '<C-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', default_opts) -- jump to Next occurrence of var on cursor
+map('n', '<C-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', default_opts) -- jump to Previous occurrence of var on cursor
 
 -- Lsp UI
-map('n', '<F2>', '<cmd>Lspsaga rename<cr>', {silent = true, noremap = true}) -- Rename symbols with F2
-map('n', '<F4>', '<cmd>Lspsaga code_action<cr>', {silent = true, noremap = true}) -- Code action with F4
-map('n', 'KJ',  '<cmd>Lspsaga hover_doc<cr>', {silent = true, noremap = true}) -- Trigger hover (KJ is fast to use)
-map('n', '<leader>d',  '<cmd>Neogen<cr>', {silent = true, noremap = true}) -- Document function
-map('n', '<leader>p', '<cmd>Lspsaga show_line_diagnostics<cr>', {silent = true, noremap = true}) -- show Problem
-map('n', ']p', '<cmd>Lspsaga diagnostic_jump_next<cr>', {silent = true, noremap = true}) -- next Problem
-map('n', '[p', '<cmd>Lspsaga diagnostic_jump_prev<cr>', {silent = true, noremap = true}) -- prev Problem
+map('n', '<F2>', '<cmd>Lspsaga rename<cr>', default_opts) -- Rename symbols with F2
+map('n', '<F4>', '<cmd>Lspsaga code_action<cr>', default_opts) -- Code action with F4
+map('n', 'KJ',  '<cmd>Lspsaga hover_doc<cr>', default_opts) -- Trigger hover (KJ is fast to use)
+map('n', '<leader>d',  '<cmd>Neogen<cr>', default_opts) -- Document function
+map('n', '<leader>p', '<cmd>Lspsaga show_line_diagnostics<cr>', default_opts) -- show Problem
+map('n', ']p', '<cmd>Lspsaga diagnostic_jump_next<cr>', default_opts) -- next Problem
+map('n', '[p', '<cmd>Lspsaga diagnostic_jump_prev<cr>', default_opts) -- prev Problem
 map('n', '<C-u>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<cr>', {}) -- scroll Up in document
 map('n', '<C-d>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<cr>', {}) -- scroll Down in Document
 
