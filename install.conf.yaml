@@ -1,13 +1,6 @@
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
 
-- shell:
-    - echo "========================= REMOTE DOTFILES ========================="
-    -
-        command: ./install --config-file remote.conf.yaml
-        stdin: true
-        stdout: true
-    - echo "==================================================================="
 
 - defaults:
     link:

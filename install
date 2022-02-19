@@ -2,13 +2,6 @@
 
 set -e
 
-if test -f "$HOME/.remote_indicator"; then
-	CONFIG="remote.conf.yaml"
-else
-	CONFIG="install.conf.yaml"
-fi
-
-echo "CONFIG: $CONFIG"
 DOTBOT_DIR="dotbot"
 
 DOTBOT_BIN="bin/dotbot"
@@ -18,4 +11,11 @@ cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+
+echo "========================= REMOTE DOTFILES ========================="
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "remote.conf.yaml" "${@}"
+if test -f "$HOME/.remote_indicator"; then
+	exit 0
+fi
+echo "========================= LOCAL DOTFILES ========================="
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "install.conf.yaml" "${@}"
