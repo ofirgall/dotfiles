@@ -434,7 +434,7 @@ set -g @suspend_suspended_options " \
 #######################################################################################################################################
 
 # Better windows titles
-set-option -g status-interval 1
+set-option -g status-interval 10
 set-option -g automatic-rename-format "#(_rename_tmux_window.sh)"
 
 # Hook _on_tmux_attach.sh
