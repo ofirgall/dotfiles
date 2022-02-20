@@ -1,6 +1,7 @@
 #!/bin/bash
 
-program=$(ps -f --no-headers --ppid $(tmux display-message -p \#{pane_pid}) | awk '{ print substr($0, index($0,$8)) }')
+pane_id=$1
+program=$(ps -f --no-headers --ppid $pane_id | awk '{ print substr($0, index($0,$8)) }')
 
 # No program running, print cd
 if [ -z "$program" ]; then
