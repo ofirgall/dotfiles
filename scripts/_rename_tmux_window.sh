@@ -10,5 +10,5 @@ if [ -z "$program" ]; then
 	DIRNAME2=$(basename "$D2")/$(basename "$path")
 	echo $DIRNAME2
 else
-	echo $program
+	echo ${program:0:20}
 fi
