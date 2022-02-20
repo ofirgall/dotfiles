@@ -435,7 +435,7 @@ set -g @suspend_suspended_options " \
 
 # Better windows titles
 set-option -g status-interval 1
-set-option -g automatic-rename-format "#(ps -f --no-headers --ppid $(tmux display-message -p #{pane_pid}) | awk '{ print substr($0, index($0,$8)) }')"
+set-option -g automatic-rename-format "#(_rename_tmux_window.sh)"
 
 # Hook _on_tmux_attach.sh
 set-hook -g 'client-attached[10]' "run-shell $HOME/dotfiles_scripts/_on_tmux_attach.sh"
