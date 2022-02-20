@@ -498,6 +498,8 @@ bind -r -T prefix C-Down resize-pane -D 1
 bind -r -T prefix C-Up resize-pane -U 1
 bind -r -T prefix C-Right resize-pane -R 1
 bind -n M-z resize-pane -Z # Zoom/Unzoom pane
+bind -T prefix = select-layout even-horizontal # Equally sized panes (like vim)
+bind -T prefix + select-layout even-vertical # Equally sized panes (like vim)
 
 # Swap panes with alt+arrow in prefix (ctrl+a/ctrl+b)
 bind -r -T prefix M-Left swap-pane -s \{left-of\}
