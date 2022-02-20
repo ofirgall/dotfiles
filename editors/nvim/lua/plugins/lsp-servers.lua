@@ -76,7 +76,7 @@ require'lspconfig'.cmake.setup{
 local clang_cmd = { "clangd", "--background-index", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}
 -- local clang_cmd = { "clangd", "--background-index=false", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}
 
-if is_remote then
+if no_sudo then
 	clang_cmd = { "clangd", "-completion-style=bundled" }
 end
 
