@@ -36,3 +36,6 @@ endfunction
 
 command! ListKeys exec ":redir! @a> | :silent verbose map | :redir END | :new | :put a"
 " command! ListKeys exec "Telescope keymaps"
+
+command! OsClipboard exec ":set clipboard=unnamedplus"
+command! NoOsClipboard exec ":set clipboard="
