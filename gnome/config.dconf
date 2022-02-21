@@ -47,7 +47,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='keyboard'
+last-panel='wifi'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -295,6 +295,10 @@ sidebar-width=189
 
 [org/gnome/nm-applet/eap/15778557-7790-4357-a1da-72b382d405ce]
 ignore-ca-cert=true
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/5e0debfc-bd3c-490d-9937-4575d2cc11f9]
+ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
 [org/gnome/nm-applet/eap/d51fd730-2d86-43da-8bcf-e2a60dbc7847]

@@ -47,6 +47,7 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
+* nvim - every telescope with visual should set the default text
 * nvim - resize panes like tmux
 * nvim - stage hunk by hunk faster with diffview + git signs
 * nvim - learn to use marks

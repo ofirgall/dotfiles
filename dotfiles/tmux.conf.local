@@ -563,8 +563,9 @@ bind -n M-NPage select-window -n
 bind -T copy-mode-vi M-PPage select-window -p
 bind -T copy-mode-vi M-NPage select-window -n
 
-# Copy mode with ALT+C
-bind -n M-c copy-mode
+# Copy mode with ALT+C, in less we start at the top
+is_less="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '^:$'"
+bind -n M-c if-shell "$is_less" 'copy-mode; send-keys -X top-line' 'copy-mode'
 
 bind -T copy-mode-v Space send-keys -X begin-selection # Start copy with Space
 bind -T copy-mode-vi c send-keys -X clear-selection # Cancel copy with c
