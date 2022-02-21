@@ -32,8 +32,8 @@ before_after_prompt()
 
 fix_reserruct()
 {
-	file_after_uptime=$(find $TMUX_RESERRUCT_DIR -type f -newermt "$(uptime -s)" | xargs ls -rt | tail -n 1)
-	file_before_uptime=$(find $TMUX_RESERRUCT_DIR -type f \! -newermt "$(uptime -s)" | xargs ls -rt | tail -n 1)
+	file_before_uptime=$(find $TMUX_RESERRUCT_DIR -type f \! -newermt "$(uptime -s)" | grep -v last | xargs -r ls -rt | tail -n 1)
+	file_after_uptime=$(find $TMUX_RESERRUCT_DIR -type f -newermt "$(uptime -s)" | grep -v last | xargs -r ls -rt | tail -n 1)
 
 	if [ -z $file_before_uptime ]; then
 		return
@@ -46,10 +46,10 @@ fix_reserruct()
 		return
 	fi
 
-	echo_title "SESSIONS BEFORE BOOT"
+	echo_title "SESSIONS BEFORE BOOT ($file_before_uptime)"
 	echo "$(tmux_ressurect_sessions $file_before_uptime)"
 
-	echo_title "SESSIONS AFTER BOOT"
+	echo_title "SESSIONS AFTER BOOT ($file_after_uptime)"
 	echo "$(tmux_ressurect_sessions $file_after_uptime)"
 
 	before_after=$(before_after_prompt)
