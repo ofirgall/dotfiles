@@ -15,6 +15,7 @@ require'nvim-treesitter.configs'.setup {
 		custom_captures = {
 		}
 	},
+	yati = { enable = true },
 	-- TODO: different file, smart loop for bindings
 	textobjects = {
 		move = {

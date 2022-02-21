@@ -48,6 +48,7 @@ return require('packer').startup(function()
 		'SmiteshP/nvim-gps', -- Shows context in status line
 		requires = 'nvim-treesitter/nvim-treesitter'
 	}
+	use({ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" }) -- Better auto-indent atm
 
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent line helper
 	use 'numToStr/Comment.nvim' -- Comments
