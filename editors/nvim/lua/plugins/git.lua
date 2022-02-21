@@ -2,6 +2,8 @@
 vim.cmd([[
 command! SolveConflict execute ':Gvdiffsplit!'
 command! Conflict execute ':Gvdiffsplit!'
+command! Wrap execute ':windo set wrap'
+command! NoWrap execute ':windo set nowrap'
 ]])
 
 -- TODO: when updating to nvim7 update the usage, move to keymaps somehow
@@ -13,8 +15,8 @@ require('gitsigns').setup {
 			vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
 		end
 		-- Navigation
-		map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
-		map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+		map('n', ']c', "&diff ? ']czz' : '<cmd>Gitsigns next_hunk<CR>zz'", {expr=true})
+		map('n', '[c', "&diff ? '[czz' : '<cmd>Gitsigns prev_hunk<CR>zz'", {expr=true})
 		-- Actions
 		map('n', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
 		map('v', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
