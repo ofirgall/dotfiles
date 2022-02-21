@@ -48,7 +48,6 @@ Done by dconf (gnome tweaks):
 
 ## TODO
 * nvim - resize panes like tmux
-* nvim - stage hunk by hunk faster with diffview + git signs
 * nvim - learn to use marks
 * firenvim - paste
 * Shift/Ctrl R_Alt -> Delete
