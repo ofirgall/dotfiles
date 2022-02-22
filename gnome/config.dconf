@@ -201,6 +201,7 @@ toggle-fullscreen=['<Super>F12']
 
 [org/gnome/desktop/wm/preferences]
 num-workspaces=8
+workspace-names=@as []
 
 [org/gnome/eog/view]
 background-color='rgb(0,0,0)'
