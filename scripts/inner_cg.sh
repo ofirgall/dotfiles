@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# cd to git repos with fzf menus
+# usage: cg - starts from $START_DIR
+#		 cg ~/dir - starts from ~/dir
+
 START_DIR=$HOME/workspace
 
 original_pwd=$(pwd)
