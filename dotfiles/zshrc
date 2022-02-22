@@ -115,7 +115,7 @@ alias trename='tmux rename-session'
 alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed "s/.*-- \([0-9]*\)/\1/" | sponge | { IFS= read -r x; { printf "%s\n" "$x"; cat; } | xargs taskopen }'
 function cg() { cd $(inner_cg.sh $@) } # cd to git repos
 
-# Git aliases (instead)
+# Git aliases (becaue we use gitfast instead of git plugin)
 alias g='git'
 alias ga='git add'
 alias gc='git commit'
