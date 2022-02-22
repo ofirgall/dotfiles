@@ -135,12 +135,13 @@ end
 
 map('n', 'KR', '<cmd>Telescope resume<cr>', default_opts) -- Resume last telescope
 map('n', 'KL', '<cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true})<cr>', default_opts) -- find files (ctrl+p)
+map('n', 'Kd', '<cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true, default_text = vim.fn.expand("<cword>")})<cr>', default_opts) -- find files (ctrl+p) starting with current word
 map('v', 'KL', '<Esc><cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true, default_text=get_visual_text()})<cr>', default_opts) -- find files text from visual
 map('n', 'KK', '<cmd>lua live_grep_raw()<CR>', default_opts) -- search in all files (fuzzy finder)
 map('v', 'KK', '<Esc><cmd>lua live_grep_raw({}, "v")<cr>', default_opts) -- search in all files (default text is from visual)
 map('n', 'KD', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>")})<CR>', default_opts) -- Search in all files with current word inserted
 map('n', 'Kk', '<cmd>lua live_grep_raw({default_text = \'-g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*" \'})<CR>', default_opts) -- Search in all files in your current directory
-map('n', 'Kd', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>") .. \' -g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*"\'})<CR>', default_opts) -- Search in all files in your current directory + with your current word
+map('n', 'Kkd', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>") .. \' -g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*"\'})<CR>', default_opts) -- Search in all files in your current directory + with your current word
 
 -----------------------------------
 --             LSP               --
