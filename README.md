@@ -47,7 +47,11 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
-* tmux - better window names
+* nvim - solve conflict doesn't show what added and what was exist
+* nvim - fast boot time for single files (don't load few plugins)
+* nvim + zshrc - set $VIEWER to faster nvim config and $EDITOR to heavier one
+* tmux - better window names (maybe write a plugin for that)
+* tmux - make last_command faster
 * nvim - resize panes like tmux
 * nvim - learn to use marks
 * firenvim - paste

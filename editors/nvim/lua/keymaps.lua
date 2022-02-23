@@ -181,6 +181,7 @@ map('n', '<C-d>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<
 --             GIT               --
 -----------------------------------
 map('n', '<leader>gs', '<cmd>DiffviewOpen<CR>', default_opts) -- Git Status
+map('n', '<leader>gS', '<cmd>DiffviewOpen HEAD^..HEAD<CR>', default_opts) -- Git Show
 map('n', '<leader>gc', '<cmd>Telescope git_branches<CR>', default_opts) -- Git checkout
 map('n', '<leader>gh', '<cmd>DiffviewFileHistory<CR>', default_opts) -- Git History
 map('n', '<leader>gH', '<cmd>DiffviewFileHistory .<CR>', default_opts) -- Git workspace History

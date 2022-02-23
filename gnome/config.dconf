@@ -270,6 +270,7 @@ col-6-width=0
 
 [org/gnome/meld]
 folder-status-filters=['normal', 'normal', 'new', 'modified']
+vc-status-filters=['flatten', 'modified']
 
 [org/gnome/meld/window-state]
 height=400
