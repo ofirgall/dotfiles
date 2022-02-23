@@ -534,6 +534,7 @@ bind -n M-6 select-window -t :=6
 bind -n M-7 select-window -t :=7
 bind -n M-8 select-window -t :=8
 bind -n M-9 select-window -t :=9
+bind -n M-- last-window
 
 bind -T copy-mode-vi M-0 select-window -t :=10
 bind -T copy-mode-vi M-1 select-window -t :=1
@@ -545,6 +546,7 @@ bind -T copy-mode-vi M-6 select-window -t :=6
 bind -T copy-mode-vi M-7 select-window -t :=7
 bind -T copy-mode-vi M-8 select-window -t :=8
 bind -T copy-mode-vi M-9 select-window -t :=9
+bind -T copy-mode-vi M-- last-window
 
 # Swap windows by ALT+SHIFT+N
 bind -n M-) swap-window -d -t :=10
@@ -589,8 +591,8 @@ run -b 'tmux bind -T copy-mode-vi L send -X bottom-line 2> /dev/null || true'
 #		 PLUGINS		#
 #########################
 
-# tmux-suspend, focus on nested ssh session (Alt+-)
-set -g @suspend_key 'M--'
+# tmux-suspend, focus on nested ssh session (Alt+k)
+set -g @suspend_key 'M-k'
 
 # Tmux jump (like acejump or vimium) with ALT+j
 bind -n M-j run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
