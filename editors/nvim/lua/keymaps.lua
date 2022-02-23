@@ -24,7 +24,7 @@ local cmd = vim.cmd
 -- map('MODE', 'BIND', 'ACTION', OPTS(most of them are no re-map and silent))
 --
 -- nvim is reading the binds through ANSI, so it has some limitation
---   it can't read Ctrl+Shift+KEY, it can't read Alt+Shift+Key.
+--   it can't read Ctrl+Shift+KEY, but it can read Alt+Shift+Key.
 --   You can see what vim reads with `sed -n l`
 --
 -- Notice that nvim is the last program that read the binds
@@ -198,10 +198,6 @@ map('n', '<M-n>', '<cmd>NvimTreeFocus<cr>', default_opts)
 
 -- Tabline binds
 map('n', 'Q', '<cmd>BufferClose!<CR>', default_opts) -- shift+Quit to close current tab
-map('n', '<M-,>', '<cmd>BufferPrevious<CR>', default_opts) -- Alt+, (<) to move to left
-map('n', '<M-.>', '<cmd>BufferNext<CR>', default_opts) -- Alt+. (>) to move to right
-map('n', '<M-<>', '<cmd>BufferMovePrevious<CR>', default_opts) -- Alt+Shift+< grab to with you to left
-map('n', '<M->>', '<cmd>BufferMoveNext<CR>', default_opts) -- Alt+Shift+> grab to with you to right
 map('n', 'g1', '<cmd>BufferGoto 1<CR>', default_opts)
 map('n', 'g2', '<cmd>BufferGoto 2<CR>', default_opts)
 map('n', 'g3', '<cmd>BufferGoto 3<CR>', default_opts)
@@ -212,3 +208,8 @@ map('n', 'g7', '<cmd>BufferGoto 7<CR>', default_opts)
 map('n', 'g8', '<cmd>BufferGoto 8<CR>', default_opts)
 map('n', 'g9', '<cmd>BufferGoto 9<CR>', default_opts)
 map('n', 'g0', '<cmd>BufferLast<CR>', default_opts)
+-- Tab control, tmux binds are "outer" Alt+h/l and vim is "inner" Alt+j/k
+map('n', '<M-j>', '<cmd>BufferPrevious<CR>', default_opts) -- Alt+j to move to left
+map('n', '<M-k>', '<cmd>BufferNext<CR>', default_opts) -- Alt+k to move to right
+map('n', '<M-J>', '<cmd>BufferMovePrevious<CR>', default_opts) -- Alt+Shift+j grab to with you to left
+map('n', '<M-K>', '<cmd>BufferMoveNext<CR>', default_opts) -- Alt+Shift+k grab to with you to right

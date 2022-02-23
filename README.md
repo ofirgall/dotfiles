@@ -47,6 +47,7 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
+* tmux - better window names
 * nvim - resize panes like tmux
 * nvim - learn to use marks
 * firenvim - paste
