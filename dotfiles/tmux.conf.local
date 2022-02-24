@@ -600,8 +600,8 @@ run -b 'tmux bind -T copy-mode-vi L send -X bottom-line 2> /dev/null || true'
 #		 PLUGINS		#
 #########################
 
-# tmux-suspend, Focus on nested ssh session (Alt+f)
-set -g @suspend_key 'M-f'
+# tmux-suspend, focus on nested ssh session (Alt+;)
+set -g @suspend_key 'M-\;'
 
 # Tmux jump (like acejump or vimium) with ALT+j
 bind -n M-s run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
