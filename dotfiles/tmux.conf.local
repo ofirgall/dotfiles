@@ -389,6 +389,7 @@ set -g @plugin 'ChanderG/tmux-notify'
 set -g @plugin 'wfxr/tmux-fzf-url'
 set -g @plugin 'roosta/tmux-fuzzback'
 set -g @plugin 'ofirgall/tmux_capture_last_command_output'
+set -g @plugin 'ofirgall/tmux-window-name'
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '1'
 set -g @emulate-scroll-for-no-mouse-alternate-buffer "on"
@@ -437,8 +438,6 @@ set -g @suspend_suspended_options " \
 
 # Better windows titles
 set-option -g status-interval 10
-set-option -g automatic-rename on
-set-option -g automatic-rename-format "#(_rename_tmux_window.sh $(tmux display-message -p #{pane_pid}))"
 
 # Hook _on_tmux_attach.sh
 set-hook -g 'client-attached[10]' "run-shell $HOME/dotfiles_scripts/_on_tmux_attach.sh"

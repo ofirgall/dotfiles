@@ -8,7 +8,6 @@ else
 	require('plugins/vim-sessions')
 	require('plugins/telescope')
 	require('plugins/lsp-servers')
-	require('plugins/tmux')
 	require('plugins/treesitter')
 	require('plugins/git')
 end
