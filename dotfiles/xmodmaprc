@@ -4,4 +4,4 @@
 
 ! Mapping alt to backspace
 remove mod1 = Alt_R
-keycode 108 = BackSpace
+keycode 108 = BackSpace BackSpace BackSpace BackSpace BackSpace BackSpace
