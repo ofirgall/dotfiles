@@ -7,7 +7,7 @@ local lsp_signature_cfg = {
 	use_lspsaga = true,
 	doc_lines = 0,
 	toggle_key = '<M-x>',
-	max_height = 1,
+	-- max_height 1,
 }
 
 local lsp_on_attach = function(client)

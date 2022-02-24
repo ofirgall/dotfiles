@@ -40,7 +40,7 @@ require('gitsigns').setup {
 local cb = require'diffview.config'.diffview_callback
 require'diffview'.setup{
 	file_history_panel = {
-		height = 5,
+		-- height = 5,
 		log_options = {
 			follow = true,
 		},
