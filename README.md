@@ -14,13 +14,6 @@ Set your `global` git user at ~/.git_user
 	email = "yourname@gmail.com"
 ```
 
-### Set Local Repo (for me)
-Set `this repo` git user
-```
-git config user.email "your mail"
-git config user.user "Ofir Gal"
-```
-
 ### Clone and Run
 #### Config
 * `touch ~/.remote_indicator` - if remote
@@ -47,12 +40,14 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
+* nvim - conflicts doesn't show what actually changed, simulate and open issue in vim-fugitive?
 * rsync git dirty files/rsync on write in nvim
 * nvim - alt+q delete buffer too?
 * nvim - add gxd and more
 * nvim - visual telescope escape () "" and ''?
 * tmux - if getting into copy mode in nested session suspend automaticly
 * nvim - gvd (max 2 splits, if split exist override it)
+* nvim - nvim-tree chmod
 * nvim - solve conflict doesn't show what added and what was exist
 * nvim - fast boot time for single files (don't load few plugins)
 * nvim + zshrc - set $VIEWER to faster nvim config and $EDITOR to heavier one

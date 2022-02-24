@@ -72,7 +72,7 @@ return require('packer').startup(function()
 	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' } -- Show large diffs :DiffviewOpen
 	use 'tpope/vim-fugitive' -- Git cli inside nvim with extra tools :Git, mergetool :Gdiff http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/
 	use 'f-person/git-blame.nvim' -- Git blame (status line)
-	-- TODO: Keybinds for merge tool
+	use 'tpope/vim-unimpaired' -- More ][ motions ]n [n for conflicts
 
 	-- Misc
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
