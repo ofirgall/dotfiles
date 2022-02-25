@@ -613,7 +613,7 @@ bind -n M-d if-shell "$is_vim" 'send-keys M-d' "run-shell $HOME/.tmux/plugins/tm
 bind -n M-u run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(https?://|git@|git://|ssh://|ftp://|file:///)[[:alnum:]?=%/_.:,;~@!#$&()*+-]*'"
 
 # copy Hashes
-bind -T prefix h run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '\\b([0-9a-f]{7,40}|[[:alnum:]]{52}|[0-9a-f]{64})\\b'"
+bind -n M-a run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '\\b([0-9a-f]{7,40}|[[:alnum:]]{52}|[0-9a-f]{64})\\b'"
 
 # copy ip ALT+i
 bind -n M-i run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}'"

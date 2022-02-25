@@ -43,8 +43,8 @@ map('n', '<C-o>', '<C-o>zz', default_opts) -- Recenter after C-o
 map('n', '<C-i>', '<C-i>zz', default_opts) -- Recenter after C-i
 map('v', '<Enter>', 'y', default_opts) -- yank with Enter in visual mode
 map('i', '<C-k>', '<C-O>o', default_opts) -- Insert new line in insert mode
-map('n', '<M-v>', '"+y', default_opts) -- Start copy to os clipboard
-map('n', '<M-y>', '"+y', default_opts) -- Start copy to os clipboard E.g: M-yy will copy current line to os
+map('', '<M-v>', '"+y', default_opts) -- Start copy to os clipboard
+map('', '<M-y>', '"+y', default_opts) -- Start copy to os clipboard E.g: M-yy will copy current line to os
 map('n', '<M-q>', '<cmd>q<cr>', default_opts) -- alt+Quit to close split
 
 -- Remap space as leader key
