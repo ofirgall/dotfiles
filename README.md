@@ -41,7 +41,6 @@ Done by dconf (gnome tweaks):
 
 ## TODO
 * nvim - conflicts doesn't show what actually changed, simulate and open issue in vim-fugitive?
-* rsync git dirty files/rsync on write in nvim
 * tmux - if getting into copy mode in nested session suspend automaticly
 * nvim - nvim-tree chmod
 * zsh - zinit

@@ -1,0 +1,55 @@
+#!/bin/bash
+
+print_usage()
+{
+	echo "usage: git rsync <dest> [commit-hash-1] [commit-hash-2]"
+	echo ""
+	echo "Examples:"
+	echo "	sync dirty files: 'git rsync root@server'"
+	echo "	sync files from last commit: 'git rsync [ DEST ] HEAD'"
+	echo "	sync files from last commit: 'git rsync [ DEST ] HEAD'"
+	echo "	sync files from selected commit: 'git rsync [ DEST ] <40-bytes-hash>'"
+	echo "	sync files changed between selected commits: 'git rsync [ DEST ] <40-char-hash-from> <40-char-hash-to>'"
+	echo "	sync files changed starting from selected commit and up until now: 'git rsync [ DEST ] <40-char-hash-from> HEAD'"
+	echo ""
+	exit 0
+}
+
+if [[ $@ == *'-h'* ]]; then
+	print_usage
+fi
+
+if [ "$#" -lt 1 ]; then
+	print_usage
+fi
+
+LF_ARGS=""
+DEST=`cat .stage`
+
+for arg in $@
+do
+	if [[ $arg =~ ^[0-9a-z]{40}$ || $arg = "HEAD" ]]
+	then
+		LF_ARGS="$LF_ARGS $arg"
+	else
+		DEST=$arg
+	fi
+done
+echo Destination: $DEST
+echo
+
+if [[ ${#LF_ARGS} -gt 0 ]]
+then
+	echo "syncing commited changes ($LF_ARGS)"
+	FLIST=`listfiles $LF_ARGS`
+else
+	echo "syncing uncomited changes (staged and unstaged)"
+	FLIST=`git status -s | awk '{print $2}' | grep -v "^db\/"`
+fi
+
+echo
+echo "List of files to sync:"
+echo "$FLIST"
+echo
+
+echo "$FLIST" | rsync -arz --files-from=- --no-dirs --whole-file --verbose . $DEST
