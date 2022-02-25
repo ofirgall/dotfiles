@@ -44,7 +44,6 @@ Done by dconf (gnome tweaks):
 * rsync git dirty files/rsync on write in nvim
 * tmux - if getting into copy mode in nested session suspend automaticly
 * nvim - nvim-tree chmod
-* nvim - solve conflict doesn't show what added and what was exist
 * zsh - zinit
 * nvim - fast boot time for single files (don't load few plugins)
 * nvim + zshrc - set $VIEWER to faster nvim config and $EDITOR to heavier one

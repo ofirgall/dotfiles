@@ -452,6 +452,9 @@ set -g prefix2 C-Enter
 # Using xterm on local and screen on remote
 if-shell -b 'test -f "$HOME/.remote_indicator"' 'set -g default-terminal "screen-256color"' 'set -g default-terminal "xterm-256color"'
 
+# Default shell in no_sudo
+if-shell -b 'test -f "$HOME/.no_sudo_indicator"' 'set -g default-shell /bin/zsh'
+
 # Enabling osc(remote) clipboard
 set -g set-clipboard on
 
