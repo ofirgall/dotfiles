@@ -1,5 +1,6 @@
 
 require('settings')
+require('utils')
 require('keymaps')
 require('plugins/packer')
 if vim.g.started_by_firenvim then
