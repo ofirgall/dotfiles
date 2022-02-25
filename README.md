@@ -40,13 +40,11 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
-* nvim - conflicts doesn't show what actually changed, simulate and open issue in vim-fugitive?
+* tmux - notify (fix problem)
 * tmux - if getting into copy mode in nested session suspend automaticly
-* nvim - nvim-tree chmod
 * zsh - zinit
 * nvim - fast boot time for single files (don't load few plugins)
 * nvim + zshrc - set $VIEWER to faster nvim config and $EDITOR to heavier one
-* tmux - better window names (maybe write a plugin for that)
 * tmux - make last_command faster
 * nvim - resize panes like tmux
 * nvim - learn to use marks
