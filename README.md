@@ -43,7 +43,6 @@ Done by dconf (gnome tweaks):
 * nvim - conflicts doesn't show what actually changed, simulate and open issue in vim-fugitive?
 * rsync git dirty files/rsync on write in nvim
 * nvim - add gxd and more
-* nvim - visual telescope escape () "" and ''?
 * tmux - if getting into copy mode in nested session suspend automaticly
 * nvim - gvd (max 2 splits, if split exist override it)
 * nvim - nvim-tree chmod
