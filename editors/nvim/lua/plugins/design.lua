@@ -36,10 +36,14 @@ if not vim.g.started_by_firenvim then
 		},
 	}
 
+	-- barbar
 	vim.g.bufferline = {
 		icons = 'both',
+		closable = false,
+		clickable = false,
 	}
 else
+	-- barbar
 	vim.g.bufferline = {
 		auto_hide = true,
 	}
