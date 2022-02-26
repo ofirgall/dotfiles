@@ -136,7 +136,7 @@ live_grep_raw = function(opts, mode)
 end
 get_visual_text = function()
 	current_line = vim.api.nvim_get_current_line()
-    start_pos = vim.api.nvim_buf_get_mark(0, "<")
+	start_pos = vim.api.nvim_buf_get_mark(0, "<")
 	end_pos = vim.api.nvim_buf_get_mark(0, ">")
 
 	return string.sub(current_line, start_pos[2], end_pos[2]+1)
