@@ -40,7 +40,6 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
-* tmux - notify (fix problem)
 * tmux - if getting into copy mode in nested session suspend automaticly
 * zsh - zinit
 * nvim - fast boot time for single files (don't load few plugins)
