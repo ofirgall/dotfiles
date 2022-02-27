@@ -580,7 +580,16 @@ bind -T copy-mode-vi M-L swap-window -d -t +1
 
 # Copy mode with ALT+C, in less we start at the top
 is_less="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '^:$'"
-bind -n M-c if-shell "$is_less" 'copy-mode; send-keys -X top-line' 'copy-mode'
+is_nested_tmux="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep -E ' 1 .+ CPU .+ RAM .+ \\|.+\\|.+\\['" # Matching my status line
+
+# if nested:
+# 	send M-c # copy-mode in nested session
+# else:
+# 	if is_less:
+# 		copy-mode + go-to-top
+# 	else
+# 		copy-mode
+bind -n M-c if-shell "$is_nested_tmux" 'send-keys M-c' "if-shell \"$is_less\" 'copy-mode; send-keys -X top-line' 'copy-mode'"
 
 bind -T copy-mode-v Space send-keys -X begin-selection # Start copy with Space
 bind -T copy-mode-vi c send-keys -X clear-selection # Cancel copy with c

@@ -40,7 +40,8 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
-* tmux - if getting into copy mode in nested session suspend automaticly
+* nvim - autoindent after paste (indent is good now)
+* jira - write a plugin that solves the bigggest ui issues
 * zsh - zinit
 * nvim - fast boot time for single files (don't load few plugins)
 * nvim + zshrc - set $VIEWER to faster nvim config and $EDITOR to heavier one
