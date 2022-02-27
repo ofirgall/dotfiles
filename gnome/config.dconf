@@ -259,14 +259,20 @@ include-pointer=false
 last-save-directory='file:///home/ogal/Pictures'
 
 [org/gnome/gnome-system-monitor]
-maximized=false
+current-tab='processes'
+maximized=true
 show-dependencies=false
 show-whose-processes='user'
-window-state=(700, 500, 50, 50)
+window-state=(1536, 817, 0, 0)
 
 [org/gnome/gnome-system-monitor/disktreenew]
 col-6-visible=true
 col-6-width=0
+
+[org/gnome/gnome-system-monitor/proctree]
+columns-order=[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+sort-col=8
+sort-order=0
 
 [org/gnome/meld]
 folder-status-filters=['normal', 'normal', 'new', 'modified']

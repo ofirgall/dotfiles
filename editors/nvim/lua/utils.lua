@@ -1,6 +1,7 @@
 
 local api = vim.api
 
+-- TODO: common code
 vsplit_if_not_exist = function()
 	local tabpage = api.nvim_get_current_tabpage()
 	local win_ids = api.nvim_tabpage_list_wins(tabpage)
@@ -15,6 +16,7 @@ vsplit_if_not_exist = function()
 				local row = api.nvim_win_get_position(win_id)[1]
 				if current_win_row == row then
 					api.nvim_win_set_buf(win_id, api.nvim_win_get_buf(0))
+					api.nvim_win_set_cursor(win_id, api.nvim_win_get_cursor(current_win_id))
 					api.nvim_set_current_win(win_id)
 					return
 				end
@@ -40,6 +42,7 @@ xsplit_if_not_exist = function()
 				local col = api.nvim_win_get_position(win_id)[2]
 				if current_win_col == col then
 					api.nvim_win_set_buf(win_id, api.nvim_win_get_buf(0))
+					api.nvim_win_set_cursor(win_id, api.nvim_win_get_cursor(current_win_id))
 					api.nvim_set_current_win(win_id)
 					return
 				end
