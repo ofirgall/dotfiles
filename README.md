@@ -42,7 +42,8 @@ Done by dconf (gnome tweaks):
 ## TODO
 * nvim - autoindent after paste (indent is good now)
 * jira - write a plugin that solves the bigggest ui issues
-* zsh - zinit
+* nvim - difftool try to write a plugin to highlight what you want
+* zsh - zinit (no theme for now maybe transfer to starship)
 * nvim - fast boot time for single files (don't load few plugins)
 * nvim + zshrc - set $VIEWER to faster nvim config and $EDITOR to heavier one
 * tmux - make last_command faster
