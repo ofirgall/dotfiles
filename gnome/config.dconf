@@ -297,7 +297,7 @@ search-filter-time-type='last_modified'
 search-view='list-view'
 
 [org/gnome/nautilus/window-state]
-initial-size=(838, 441)
+initial-size=(864, 441)
 maximized=false
 sidebar-width=189
 

@@ -29,12 +29,22 @@ require('numb').setup{
 }
 
 
+find_in_path = function(node)
+	local relative_path = vim.fn.fnamemodify(node.absolute_path, ":~:.")
+
+	opts = {}
+	opts.default_text = '-g"'.. relative_path .. '/**" "'
+	require('telescope').extensions.live_grep_raw.live_grep_raw(opts)
+end
+
+
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 require'nvim-tree'.setup {
 	view = {
 		mappings = {
 			list = {
-				{ key = "<Escape>", cb = tree_cb("close_node") },
+				{ key = "<Escape>", action = "close_node" },
+				{ key = "f", action = "find in path", action_cb = find_in_path },
 			}
 		}
 	}
