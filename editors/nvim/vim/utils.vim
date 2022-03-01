@@ -55,5 +55,28 @@ function TabsOrSpaces()
 	endif
 endfunction
 
+" TODO: lua this?
 " Tab or spaces by most in the buffer
 autocmd BufReadPost * call TabsOrSpaces()
+function Mergetool()
+	:ASOff
+	:DiffConflicts
+
+	 " Switch left side to LOCAL
+	:buffer LOCAL
+
+	 " Turn on history, creates a split and BASE in the middle
+	:DiffConflictsShowHistory
+
+	" Switch middle to MERGED (real file)
+	execute 'buffer' substitute(expand('%'), '\./\(.*\)_BASE.*\.', '\1\.', '')
+
+	" Set keymaps like my keys in keymaps.lua
+	nnoremap <C-[> <cmd>diffget LOCAL<CR>
+	nnoremap <C-]> <cmd>diffget REMOTE<CR>
+
+	" Turn on diffmode
+	setlocal diff
+endfunction
+
+command! Mergetool call Mergetool()

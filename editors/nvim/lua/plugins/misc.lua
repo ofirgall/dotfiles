@@ -7,7 +7,8 @@ require('nvim-autopairs').setup{
 }
 
 require('autosave').setup{
-	clean_command_line_interval = 1000
+	clean_command_line_interval = 1000,
+	on_off_commands = true,
 }
 
 require'nvim-lastplace'.setup{

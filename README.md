@@ -42,7 +42,6 @@ Done by dconf (gnome tweaks):
 ## TODO
 * nvim - git rsync to relative path (need to make icomp exactly like my pc) + build and fetch results to quicklist
 * jira - write a plugin that solves the bigggest ui issues
-* nvim - difftool try to write a plugin to highlight what you want
 * zsh - zinit (no theme for now maybe transfer to starship)
 * nvim - fast boot time for single files (don't load few plugins)
 * nvim + zshrc - set $VIEWER to faster nvim config and $EDITOR to heavier one

@@ -73,6 +73,7 @@ return require('packer').startup(function()
 	use 'tpope/vim-fugitive' -- Git cli inside nvim with extra tools :Git, mergetool :Gdiff http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/
 	use 'f-person/git-blame.nvim' -- Git blame (status line)
 	use 'tpope/vim-unimpaired' -- More ][ motions ]n [n for conflicts
+	use 'whiteinge/diffconflicts' -- Better diffconflict viewer (use git mergetool with gitconfig)
 
 	-- Misc
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
