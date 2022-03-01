@@ -122,9 +122,7 @@ end
 live_grep_raw = function(opts, mode)
 	opts = opts or {}
 	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'
-	if opts.default_text then
-		opts.default_text = opts.default_text .. ' -t' .. vim.fn.fnamemodify(vim.fn.expand('%'), ':e')
-	else
+	if not opts.default_text then
 		if mode == 'v' then
 			opts.default_text = '"' .. escape_rg_text(get_visual_text()) .. '"'
 		else
