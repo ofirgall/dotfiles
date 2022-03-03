@@ -69,3 +69,6 @@ require'diffview'.setup{
 		},
 	}
 }
+
+-- Flog
+vim.g.flog_default_arguments = { max_count = 512 }

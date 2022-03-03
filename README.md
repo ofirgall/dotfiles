@@ -40,7 +40,7 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
-* nvim - git rsync to relative path (need to make icomp exactly like my pc) + build and fetch results to quicklist
+* nvim - on save session ignore more file like flog diffview fugitive and such
 * jira - write a plugin that solves the bigggest ui issues
 * zsh - zinit (no theme for now maybe transfer to starship)
 * nvim - fast boot time for single files (don't load few plugins)
