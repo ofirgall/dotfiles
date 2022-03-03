@@ -41,6 +41,7 @@ Done by dconf (gnome tweaks):
 
 ## TODO
 * nvim - on save session ignore more file like flog diffview fugitive and such
+* nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)
 * jira - write a plugin that solves the bigggest ui issues
 * zsh - zinit (no theme for now maybe transfer to starship)
 * nvim - fast boot time for single files (don't load few plugins)
