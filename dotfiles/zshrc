@@ -86,8 +86,10 @@ zinit snippet OMZP::gitfast
 zinit ice wait lucid atload'_zsh_autosuggest_start; bindkey "^ " autosuggest-accept'
 zinit light zsh-users/zsh-autosuggestions
 
-zinit ice wait lucid
-zinit light Aloxaf/fzf-tab
+if [[ ${ZSH_VERSION:0:3} -ge 5.8 ]]; then
+	zinit ice wait lucid
+	zinit light Aloxaf/fzf-tab
+fi
 
 zinit ice wait lucid
 zinit light paulirish/git-open
