@@ -17,3 +17,6 @@ else
   echo 'Already using zsh'
 fi
 
+# zinit
+sh -c "$(curl -fsSL https://git.io/zinit-install)"
+sudo apt install -y subversion

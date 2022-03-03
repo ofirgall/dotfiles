@@ -1,7 +1,5 @@
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [sh install_scripts/install_zsh.sh, Installing ZSH]
-    - [sh install_scripts/install_oh_my_zsh.sh, Installing oh_my_zsh]
 
 - defaults:
     link:
@@ -12,14 +10,14 @@
 - link:
     ~/.zshrc:
         path: dotfiles/zshrc
+    ~/.zsh_conf:
+        path: dotfiles/zsh_conf
     ~/.profile:
         path: dotfiles/profile
     ~/.gitconfig:
         path: dotfiles/gitconfig
     ~/.gitignore_global:
         path: dotfiles/gitignore_global
-    ~/.oh-my-zsh/custom/themes/ofir.zsh-theme:
-        path: dotfiles/ofir.zsh-theme
     ~/.tmux.conf:
         path: dotfiles/tmux.conf
     ~/.tmux.conf.local:
@@ -36,5 +34,6 @@
     - ~/workspace
 
 - shell:
+    - [sh install_scripts/install_zsh.sh, Installing ZSH]
     - [sh install_scripts/install_basic.sh, Running basic libs installation]
     - [sh install_scripts/install_lsp.sh, Installing LSP Utils]

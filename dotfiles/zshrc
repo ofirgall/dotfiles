@@ -1,208 +1,81 @@
-# Profile zsh
-# zmodload zsh/zprof
+# ---------------------------
+#		Load .zsh_pre
+# ---------------------------
+source $HOME/.zsh_conf/pre.zsh
+source $HOME/.zsh_conf/settings.zsh
 
-# Set time format for `time`
-TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
-
-# Check if remote
-IS_REMOTE=false
-if test -f "$HOME/.remote_indicator"; then
-  IS_REMOTE=true
+# ---------------------------
+# Install and load zinit
+# ---------------------------
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
 fi
 
-NO_SUDO=false
-if test -f "$HOME/.no_sudo_indicator"; then
-  NO_SUDO=true
-fi
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+# ---------------------------
 
-# Export Local pkgs if on remote (non-root usage)
-if $NO_SUDO; then
-  export PATH="$HOME/pkgs/usr/sbin:$HOME/pkgs/usr/bin:$HOME/pkgs/bin:$PATH"
-  export MANPATH="$HOME/pkgs/usr/share/man:$MANPATH"
+# ---------------------------
+# Basic ZSH Settings from oh-my-zsh
+# ---------------------------
+zinit snippet OMZL::functions.zsh
+zinit snippet OMZL::completion.zsh
+zinit snippet OMZL::correction.zsh
+zinit snippet OMZL::directories.zsh
+zinit snippet OMZL::grep.zsh
+zinit snippet OMZL::history.zsh
+zinit snippet OMZL::key-bindings.zsh
+zinit snippet OMZL::misc.zsh
+zinit snippet OMZL::theme-and-appearance.zsh
 
-  L='/lib:/lib64:/usr/lib:/usr/lib64'
-  export LD_LIBRARY_PATH="$HOME/pkgs/usr/lib:$HOME/pkgs/usr/lib64:$L"
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-fi
+# ---------------------------
+#		Prompt & Theme
+# ---------------------------
+# Starship
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship
 
-export ZSH="$HOME/.oh-my-zsh"
+# ---------------------------
+#		  Plugins
+# ---------------------------
+source $HOME/.zsh_conf/plugin_settings.zsh
+## oh-my-zsh plugins ##
+zinit snippet OMZP::colored-man-pages
+zinit snippet OMZP::pip
+zinit snippet OMZP::sudo
+zinit snippet OMZP::tmux
+zinit snippet OMZP::rust
+# gitfast (instead of git)
+zinit ice svn
+zinit snippet OMZP::gitfast
 
-ZSH_THEME="ofir"
+## Custom Plugins ##
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+zinit light paulirish/git-open
+zinit light peterhurford/up.zsh
+# fzf-history
+zinit ice lucid wait'0'
+zinit light joshskidmore/zsh-fzf-history-search
+# zsh-completions
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
+    zsh-users/zsh-completions
 
-DISABLE_AUTO_TITLE="true"
+# ---------------------------
+#		  Binaries
+# ---------------------------
+zinit pack"binary" for fzf
+# TODO: rg & fd and such
 
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# TMUX
-ZSH_TMUX_AUTOSTART=false
-ZSH_TMUX_AUTOSTART_ONCE=false
-ZSH_TMUX_AUTOQUIT=false
-ZSH_TMUX_FIXTERM=false
-
-# FZF History
-ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height=10 --reverse'
-
-# autoupdate
-export UPDATE_ZSH_DAYS=2
-
-plugins=()
-
-if [[ ${ZSH_VERSION:0:3} -ge 5.8 ]]; then
-	# FZF Tab settings
-	# disable sort when completing `git checkout`
-	zstyle ':completion:*:git-checkout:*' sort false
-	# set descriptions format to enable group support
-	zstyle ':completion:*:descriptions' format '[%d]'
-	# set list-colors to enable filename colorizing
-	zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-	# preview directory's content with exa when completing cd
-	zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
-	# switch group using `,` and `.`
-	zstyle ':fzf-tab:*' switch-group ',' '.'
-
-	# TODO: try to update remote zsh
-	# Local plugins only (newer zsh)
-	plugins+=(fzf-tab)
-fi
-
-plugins+=(
-  autoupdate
-  gitfast
-  zsh-autosuggestions
-  colored-man-pages
-  pip
-  zsh-completions
-  tmux
-  rust
-  git-open
-  sudo
-  dircycle
-  up
-  # zsh-vi-mode
-  zsh-fzf-history-search
-  )
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# Expand dotfiles_scripts to path
-export PATH=~/.local/bin:~/dotfiles_scripts:$PATH
-
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
-# Binds
-bindkey -M main "^ " autosuggest-accept # Ctrl+Space
-bindkey -M vicmd "^ " autosuggest-accept # Ctrl+Space
-bindkey "^ " autosuggest-accept # Ctrl+Space
-
-# Aliases
-alias ll='ls -alF'
-alias pwdc='echo \"$(pwd)\" | tr -d "\n" | toclip'
-alias pwdcd='echo "cd \"$(pwd)\"" | toclip'
-alias sublp='subl *.sublime-project'
-alias open='xdg-open'
-alias venv='. ~/venv3/bin/activate'
-alias notify='notify-send -u critical -t 3000 done'
-alias notify-send='notify-send.sh -f'
-alias get_ticket='git rev-parse --abbrev-ref HEAD | grep -oP ".+/\K([A-Z]+-[0-9]+)" | tr -d "\n"'
-alias cticket='get_ticket | toclip'
-alias ticket='xdg-open https://jira.infinidat.com/browse/$(get_ticket)'
-alias cbranch='git rev-parse --abbrev-ref HEAD | tr -d "\n" | toclip'
-alias tkill='tmux kill-session'
-alias trename='tmux rename-session'
-alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed "s/.*-- \([0-9]*\)/\1/" | sponge | { IFS= read -r x; { printf "%s\n" "$x"; cat; } | xargs taskopen }'
-function cg() { cd $(inner_cg.sh $@) } # cd to git repos
-
-# Git aliases (becaue we use gitfast instead of git plugin)
-alias g='git'
-alias ga='git add'
-alias gc='git commit'
-alias gcam='git commit -a -m'
-alias gco='git checkout'
-alias gd='git diff'
-alias gf='git fetch'
-alias gl='git pull'
-alias gp='git push'
-alias gst='git status'
-alias gcp='git cherry-pick'
-alias gcpa='git cherry-pick --abort'
-alias gcpc='git cherry-pick --continue'
-alias gh='git hist'
-alias gdiff='git diff'
-alias gshow='git show'
-
-# Remote/Local Aliases
-if $IS_REMOTE; then
-	alias toclip='~/dotfiles_scripts/osc52_yank.sh'
-else
-	alias toclip='xclip -sel clip'
-fi
-
-export EDITOR='vim'
-if type nvim &> /dev/null; then
-	alias vim='nvim'
-	alias vi='nvim'
-	alias rvim='/usr/bin/vim'
-	export EDITOR='nvim'
-fi
-
-# compinit once a day (slows down zshrc)
-function {
-    setopt LOCAL_OPTIONS extendedglob
-    if [[ ! -e "${ZSH_COMPDUMP}" || -n "${ZSH_COMPDUMP}"(#qNY1.mh+24) ]]; then
-		autoload -U compinit && compinit
-    fi
-}
-# completion for zfunc (python typer)
-autoload -Uz compinit
-zstyle ':completion:*' menu select
-fpath+=~/.zfunc
-
-# Local Settings
-if ! $IS_REMOTE; then
-	. "$HOME/.cargo/env" # Rust
-
-	xmodmap ~/.xmodmaprc 2> /dev/null # key mapping, xev to see keys
-	xset r rate 200 35 # Faster repeat rate
-fi
-
-# Load wslrc
-if [[ $(uname -a) == *"WSL"* ]]; then
-  source ~/.wslrc
-fi
-
-# Extra utils not in dotfiles
-if test -f $HOME/.extra_utils; then
-	source $HOME/.extra_utils
-fi
-
-# Daemons
-if ! $IS_REMOTE; then
-  if ! pgrep fusuma > /dev/null;
-  then
-    fusuma --daemon
-  fi
-
-  if ! pgrep autokey-gtk > /dev/null;
-  then
-    daemon --name="autokey" autokey-gtk
-  fi
-
-  if ! pgrep --full kupfer > /dev/null;
-  then
-    daemon --name="kupfer" -- kupfer --no-splash
-  fi
-
-fi
-
-export ZSH_TMUX_ALWAYS_SELECT_SESSION=true
-
-# zprof # Finish profiling
-
-# Must be at the end
-if ! $IS_REMOTE; then
-	$HOME/.tmux/tmux-go/src/tmux_go_attach.sh
-fi
-select_tmux_session.sh
+# ---------------------------
+#		Load .zsh_post
+# ---------------------------
+source $HOME/.zsh_conf/post.zsh
