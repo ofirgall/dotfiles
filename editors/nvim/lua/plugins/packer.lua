@@ -74,6 +74,7 @@ return require('packer').startup(function()
 	use 'f-person/git-blame.nvim' -- Git blame (status line)
 	use 'tpope/vim-unimpaired' -- More ][ motions ]n [n for conflicts
 	use 'whiteinge/diffconflicts' -- Better diffconflict viewer (use git mergetool with gitconfig)
+	use 'rbong/vim-flog' -- Show git history tree with :Flog (read doc for more)
 
 	-- Misc
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
@@ -118,7 +119,7 @@ return require('packer').startup(function()
 	use 'ojroques/vim-oscyank' -- Yank from remote
 	use 'mbbill/undotree' -- visualize undo/redo tree (F5)
 	use 'tversteeg/registers.nvim' -- visualize copy registers
-	use 'akinsho/toggleterm.nvim' -- Terminal toggle for nvim <leader>t
+	use 'akinsho/toggleterm.nvim' -- Terminal toggle for nvim <C-t>
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'
