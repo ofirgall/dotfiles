@@ -29,23 +29,29 @@ require("revj").setup{
 require('numb').setup{
 }
 
+local node_relative_path = function(node)
+	return vim.fn.fnamemodify(node.absolute_path, ":~:.")
+end
 
-find_in_path = function(node)
-	local relative_path = vim.fn.fnamemodify(node.absolute_path, ":~:.")
-
+local find_in_path = function(node)
 	opts = {}
-	opts.default_text = '-g"'.. relative_path .. '/**" "'
+	opts.default_text = '-g"'.. node_relative_path(node) .. '/**" "'
 	require('telescope').extensions.live_grep_raw.live_grep_raw(opts)
 end
 
+local git_hist_path = function(node)
+	vim.fn.execute('DiffviewFileHistory ' .. node_relative_path(node))
+end
 
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+-- TODO: copy relative path
+
 require'nvim-tree'.setup {
 	view = {
 		mappings = {
 			list = {
 				{ key = "<Escape>", action = "close_node" },
 				{ key = "f", action = "find in path", action_cb = find_in_path },
+				{ key = "gh", action = "git history in path", action_cb = git_hist_path },
 			}
 		}
 	}
