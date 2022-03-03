@@ -24,14 +24,32 @@ autoload -Uz _zinit
 # ---------------------------
 # Basic ZSH Settings from oh-my-zsh
 # ---------------------------
+
+# Functions cant be turbo and must be first
 zinit snippet OMZL::functions.zsh
-zinit snippet OMZL::completion.zsh
-zinit snippet OMZL::correction.zsh
-zinit snippet OMZL::directories.zsh
-zinit snippet OMZL::grep.zsh
-zinit snippet OMZL::history.zsh
+
+zinit ice wait lucid
 zinit snippet OMZL::key-bindings.zsh
+
+zinit ice wait lucid
+zinit snippet OMZL::completion.zsh
+
+zinit ice wait lucid
+zinit snippet OMZL::correction.zsh
+
+zinit ice wait lucid
+zinit snippet OMZL::directories.zsh
+
+zinit ice wait lucid
+zinit snippet OMZL::grep.zsh
+
+zinit ice wait lucid
+zinit snippet OMZL::history.zsh
+
+zinit ice wait lucid
 zinit snippet OMZL::misc.zsh
+
+zinit ice wait lucid
 zinit snippet OMZL::theme-and-appearance.zsh
 
 # ---------------------------
@@ -48,23 +66,42 @@ zinit light starship/starship
 # ---------------------------
 source $HOME/.zsh_conf/plugin_settings.zsh
 ## oh-my-zsh plugins ##
+zinit ice wait lucid
 zinit snippet OMZP::colored-man-pages
+
+zinit ice wait lucid
 zinit snippet OMZP::pip
+
+zinit ice wait lucid
 zinit snippet OMZP::sudo
+
+zinit ice wait lucid
 zinit snippet OMZP::tmux
+
+zinit ice wait lucid
 zinit snippet OMZP::rust
-# gitfast (instead of git)
+
 zinit ice svn
 zinit snippet OMZP::gitfast
 
 ## Custom Plugins ##
+zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
+
+zinit ice wait lucid
 zinit light paulirish/git-open
+
+zinit ice wait lucid
 zinit light peterhurford/up.zsh
+
 # fzf-history
-zinit ice lucid wait'0'
+
+zinit ice wait lucid
 zinit light joshskidmore/zsh-fzf-history-search
+
 # zsh-completions
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions
@@ -72,6 +109,7 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 # ---------------------------
 #		  Binaries
 # ---------------------------
+zinit ice wait lucid
 zinit pack"binary" for fzf
 # TODO: rg & fd and such
 
