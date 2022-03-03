@@ -29,6 +29,10 @@ zinit snippet OMZL::functions.zsh
 # Can't be turbo for history plugins (autosuggestions)
 zinit snippet OMZL::history.zsh
 
+# Can't turbo git and theme for prompt
+zinit snippet OMZL::git.zsh
+zinit snippet OMZL::theme-and-appearance.zsh
+
 zinit ice wait lucid
 zinit snippet OMZL::key-bindings.zsh
 
@@ -47,17 +51,13 @@ zinit snippet OMZL::grep.zsh
 zinit ice wait lucid
 zinit snippet OMZL::misc.zsh
 
-zinit ice wait lucid
-zinit snippet OMZL::theme-and-appearance.zsh
 
 # ---------------------------
 #		Prompt & Theme
 # ---------------------------
-# Starship
-zinit ice as"command" from"gh-r" \
-          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-          atpull"%atclone" src"init.zsh"
-zinit light starship/starship
+ZSH_THEME="ofir"
+setopt promptsubst
+zinit snippet https://raw.githubusercontent.com/ofirgall/dotfiles/master/dotfiles/zsh_conf/ofir.zsh-theme
 
 # ---------------------------
 #		  Plugins
