@@ -97,14 +97,23 @@ zinit light paulirish/git-open
 zinit ice wait lucid
 zinit light peterhurford/up.zsh
 
-# fzf-history
-
 zinit ice wait lucid
 zinit light joshskidmore/zsh-fzf-history-search
 
 # zsh-completions
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions
+
+zinit ice wait lucid
+zinit light popstas/zsh-command-time
+
+zinit ice wait lucid
+zinit light hlissner/zsh-autopair
+
+if ! $IS_REMOTE; then
+	zinit ice wait lucid
+	zinit light MichaelAquilina/zsh-auto-notify
+fi
 
 # ---------------------------
 #		  Binaries
