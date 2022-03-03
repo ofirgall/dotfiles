@@ -46,5 +46,5 @@ uda.taskwarrior-tui.style.calendar.today=red on black
 
 search.case.sensitive=no
 
-color.active=white on magenta
+color.active=white on blue
 color.blocking=white on red
