@@ -118,6 +118,7 @@ return require('packer').startup(function()
 	use 'ojroques/vim-oscyank' -- Yank from remote
 	use 'mbbill/undotree' -- visualize undo/redo tree (F5)
 	use 'tversteeg/registers.nvim' -- visualize copy registers
+	use 'akinsho/toggleterm.nvim' -- Terminal toggle for nvim <leader>t
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'

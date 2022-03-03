@@ -103,3 +103,17 @@ vim.g.undotree_WindowLayout = 3 -- undotree at right
 -- registers.nvim
 vim.g.registers_show = '\"*+-/_=#%.0123456789abcdefghijklmnopqrstuvwxyz:' -- move " register to first
 vim.g.registers_paste_in_normal_mode = 2
+
+-- toggleterm.nvim
+require("toggleterm").setup {
+	open_mapping = [[<leader>t]],
+	-- hide_numbers = true,
+	-- shade_terminals = false,
+	-- start_in_insert = true,
+	insert_mappings = false,
+	-- terminal_mappings = true,
+	-- persist_size = true,
+	direction = 'horizontal',
+	-- close_on_exit = true, -- close the terminal window when the process exits
+	-- shell = vim.o.shell, -- change the default shell
+}
