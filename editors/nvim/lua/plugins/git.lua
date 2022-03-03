@@ -71,4 +71,7 @@ require'diffview'.setup{
 }
 
 -- Flog
-vim.g.flog_default_arguments = { max_count = 512 }
+vim.g.flog_default_arguments = {
+	max_count = 512,
+	date = 'short',
+}
