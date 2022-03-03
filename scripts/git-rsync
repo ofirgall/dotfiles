@@ -23,6 +23,12 @@ if [ "$#" -lt 1 ]; then
 	print_usage
 fi
 
+git_root=$(git rev-parse --show-toplevel)
+if [[ $? != 0 ]]; then
+	exit 1
+fi
+cd $git_root
+
 LF_ARGS=""
 DEST=`cat .stage`
 
