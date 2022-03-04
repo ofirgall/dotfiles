@@ -27,3 +27,8 @@ fi
 #		  FZF History
 # ---------------------------
 ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height=10 --reverse'
+
+# ---------------------------
+#		zsh-auto-notify
+# ---------------------------
+export AUTO_NOTIFY_THRESHOLD=300 # 5 minutes
