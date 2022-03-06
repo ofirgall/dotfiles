@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=16
-launch-time=int64 1645863103
+launch-count=17
+launch-time=int64 1646556130
 show-details=true
 window-height=503
 window-width=645

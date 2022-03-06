@@ -41,7 +41,6 @@ fi
 # ---------------------------
 #		   Aliases
 # ---------------------------
-alias ll='ls -alF'
 alias pwdc='echo \"$(pwd)\" | tr -d "\n" | toclip'
 alias pwdcd='echo "cd \"$(pwd)\"" | toclip'
 alias sublp='subl *.sublime-project'

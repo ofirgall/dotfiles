@@ -42,8 +42,10 @@ zinit snippet OMZL::completion.zsh
 zinit ice wait lucid
 zinit snippet OMZL::correction.zsh
 
-zinit ice wait lucid
+# Not lucid to override alias later
 zinit snippet OMZL::directories.zsh
+# Override ll of oh-my-zsh
+alias ll='ls -alF'
 
 zinit ice wait lucid
 zinit snippet OMZL::grep.zsh
