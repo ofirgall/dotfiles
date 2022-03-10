@@ -49,7 +49,6 @@ Done by dconf (gnome tweaks):
 * jira - write a plugin that solves the bigggest ui issues
 * nvim - fast boot time for single files (don't load few plugins)
 * nvim + zshrc - set $VIEWER to faster nvim config and $EDITOR to heavier one
-* tmux - make last_command faster
 * nvim - resize panes like tmux
 * nvim - learn to use marks
 * firenvim - paste

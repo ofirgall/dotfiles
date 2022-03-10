@@ -47,7 +47,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='display'
+last-panel='wifi'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -306,6 +306,10 @@ ignore-ca-cert=true
 ignore-phase2-ca-cert=false
 
 [org/gnome/nm-applet/eap/5e0debfc-bd3c-490d-9937-4575d2cc11f9]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/a0369ec8-ddc5-4fe3-8426-eefc1ff91083]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
