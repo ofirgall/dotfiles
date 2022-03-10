@@ -120,7 +120,9 @@ return require('packer').startup(function()
 	use 'mbbill/undotree' -- visualize undo/redo tree (F5)
 	use 'tversteeg/registers.nvim' -- visualize copy registers
 	use 'akinsho/toggleterm.nvim' -- Terminal toggle for nvim <C-t>
+	use 'tpope/vim-sleuth' -- Adjust tabs/spaces settings
 
+	-- Startup Time --
 	use 'dstein64/vim-startuptime' -- Profile startuptime
 	use 'lewis6991/impatient.nvim' -- Faster startuptime
 

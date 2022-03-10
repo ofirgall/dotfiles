@@ -51,6 +51,7 @@ Done by dconf (gnome tweaks):
 * nvim + zshrc - set $VIEWER to faster nvim config and $EDITOR to heavier one
 * nvim - resize panes like tmux
 * nvim - learn to use marks
+* zellij
 * firenvim - paste
 * Shift/Ctrl R_Alt -> Delete
 * tmux - not suspended (not active) change status colors 

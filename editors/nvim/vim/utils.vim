@@ -40,24 +40,7 @@ command! ListKeys exec ":redir! @a> | :silent verbose map | :redir END | :new | 
 command! OsClipboard exec ":set clipboard=unnamedplus"
 command! NoOsClipboard exec ":set clipboard="
 
-function TabsOrSpaces()
-	" Determines whether to use spaces or tabs on the current buffer.
-	if getfsize(bufname("%")) > 256000
-		" File is very large, just use the default.
-		return
-	endif
-
-	let numTabs=len(filter(getbufline(bufname("%"), 1, 250), 'v:val =~ "^\\t"'))
-	let numSpaces=len(filter(getbufline(bufname("%"), 1, 250), 'v:val =~ "^ "'))
-
-	if numTabs > numSpaces
-		setlocal noexpandtab
-	endif
-endfunction
-
 " TODO: lua this?
-" Tab or spaces by most in the buffer
-autocmd BufReadPost * call TabsOrSpaces()
 function Mergetool()
 	:ASOff
 	:DiffConflicts
