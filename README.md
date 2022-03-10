@@ -41,6 +41,9 @@ Done by dconf (gnome tweaks):
 
 ## TODO
 * tmux-go + taskwariror - Annotate tmux session and go with tmux-go 
+* nvim - treesitter text objects
+* nvim - optimize (lazyload, filetype.nvim)
+* nvim - autosuspend Lsp/nvim if not active
 * nvim - on save session ignore more file like flog diffview fugitive and such
 * nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)
 * jira - write a plugin that solves the bigggest ui issues

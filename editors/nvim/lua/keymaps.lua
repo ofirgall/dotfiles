@@ -43,7 +43,6 @@ map('n', '<C-o>', '<C-o>zz', default_opts) -- Recenter after C-o
 map('n', '<C-i>', '<C-i>zz', default_opts) -- Recenter after C-i
 map('v', '<Enter>', 'y', default_opts) -- yank with Enter in visual mode
 map('i', '<C-k>', '<C-O>o', default_opts) -- Insert new line in insert mode
-map('', '<M-v>', '"+y', default_opts) -- Start copy to os clipboard
 map('', '<M-y>', '"+y', default_opts) -- Start copy to os clipboard E.g: M-yy will copy current line to os
 map('n', '<M-q>', '<cmd>q<cr>', default_opts) -- alt+Quit to close split
 
@@ -84,7 +83,7 @@ map('n', '<leader>b', '<cmd>Telescope buffers<CR>', default_opts) -- browse your
 map('n', '<leader>o', '<cmd>Telescope oldfiles<CR>', default_opts) -- open Old files
 map('n', '<leader>c', '<cmd>Telescope command_history<CR>', default_opts) -- history of Commands
 map('n', '<leader>ss', '<cmd>Telescope spell_suggest<CR>', default_opts) -- history of Commands
-map('n', '<M-s>', '<cmd>DevDocsUnderCursor<cr>', default_opts) -- Search current word in DevDocs
+map('n', '<leader>l', '<cmd>DevDocsUnderCursor<cr>', default_opts) -- Search current word in DevDocs
 
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 cmd([[

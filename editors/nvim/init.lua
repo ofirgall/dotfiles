@@ -3,6 +3,7 @@ require('settings')
 require('utils')
 require('keymaps')
 require('plugins/packer')
+require('impatient') -- Load impatient.nvim to accelerate boot
 if vim.g.started_by_firenvim then
 	require('firenvim_settings')
 else

@@ -121,6 +121,9 @@ return require('packer').startup(function()
 	use 'tversteeg/registers.nvim' -- visualize copy registers
 	use 'akinsho/toggleterm.nvim' -- Terminal toggle for nvim <C-t>
 
+	use 'dstein64/vim-startuptime' -- Profile startuptime
+	use 'lewis6991/impatient.nvim' -- Faster startuptime
+
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'
 
