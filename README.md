@@ -40,6 +40,7 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
+* tmux - high ram usage, make it slower, maybe upgrade it
 * tmux-go + taskwariror - Annotate tmux session and go with tmux-go 
 * nvim - treesitter text objects
 * nvim - optimize (lazyload, filetype.nvim)

@@ -56,6 +56,10 @@ alias tkill='tmux kill-session'
 alias trename='tmux rename-session'
 alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed "s/.*-- \([0-9]*\)/\1/" | sponge | { IFS= read -r x; { printf "%s\n" "$x"; cat; } | xargs taskopen }'
 function cg() { cd $(inner_cg.sh $@) } # cd to git repos
+function smux() # SSH TMUX (sending current session over LC_MESSAGES (allowed in /etc/ssh/ssh_config))
+{
+	LC_MESSAGES=$(tmux display-message -p '#S') ssh -o SendEnv=LC_MESSAGES $1
+}
 
 # Git aliases, no git plugin
 alias g='git'
