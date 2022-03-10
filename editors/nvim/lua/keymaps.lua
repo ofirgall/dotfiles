@@ -115,6 +115,7 @@ escape_rg_text = function(text)
 	text = text:gsub('%[', '\\%[')
 	text = text:gsub('%]', '\\%]')
 	text = text:gsub('"', '\\"')
+	text = text:gsub('-', '\\-')
 
 	return text
 end
