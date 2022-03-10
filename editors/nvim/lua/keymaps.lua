@@ -144,11 +144,11 @@ map('n', 'KR', '<cmd>Telescope resume<cr>', default_opts) -- Resume last telesco
 map('n', 'KL', '<cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true})<cr>', default_opts) -- find files (ctrl+p)
 map('n', 'Kd', '<cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true, default_text = vim.fn.expand("<cword>")})<cr>', default_opts) -- find files (ctrl+p) starting with current word
 map('v', 'KL', '<Esc><cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true, default_text=get_visual_text()})<cr>', default_opts) -- find files text from visual
-map('n', 'KK', '<cmd>lua live_grep_raw()<CR>', default_opts) -- search in all files (fuzzy finder)
-map('v', 'KK', '<Esc><cmd>lua live_grep_raw({}, "v")<cr>', default_opts) -- search in all files (default text is from visual)
+map('n', 'KJ', '<cmd>lua live_grep_raw()<CR>', default_opts) -- search in all files (fuzzy finder)
+map('v', 'KJ', '<Esc><cmd>lua live_grep_raw({}, "v")<cr>', default_opts) -- search in all files (default text is from visual)
 map('n', 'KD', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>")})<CR>', default_opts) -- Search in all files with current word inserted
-map('n', 'Kk', '<cmd>lua live_grep_raw({default_text = \'-g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*" \'})<CR>', default_opts) -- Search in all files in your current directory
-map('n', 'Kkd', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>") .. \' -g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*"\'})<CR>', default_opts) -- Search in all files in your current directory + with your current word
+map('n', 'Kj', '<cmd>lua live_grep_raw({default_text = \'-g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*" \'})<CR>', default_opts) -- Search in all files in your current directory
+map('n', 'Kjd', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>") .. \' -g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*"\'})<CR>', default_opts) -- Search in all files in your current directory + with your current word
 
 -----------------------------------
 --             LSP               --
@@ -179,7 +179,7 @@ map('n', '<C-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap
 -- Lsp UI
 map('n', '<F2>', '<cmd>Lspsaga rename<cr>', default_opts) -- Rename symbols with F2
 map('n', '<F4>', '<cmd>Lspsaga code_action<cr>', default_opts) -- Code action with F4
-map('n', 'KJ',  '<cmd>Lspsaga hover_doc<cr>', default_opts) -- Trigger hover (KJ is fast to use)
+map('n', 'KK',  '<cmd>Lspsaga hover_doc<cr>', default_opts) -- Trigger hover (KJ is fast to use)
 map('n', '<leader>d',  '<cmd>Neogen<cr>', default_opts) -- Document function
 map('n', '<leader>p', '<cmd>Lspsaga show_line_diagnostics<cr>', default_opts) -- show Problem
 map('n', ']p', '<cmd>Lspsaga diagnostic_jump_next<cr>', default_opts) -- next Problem
