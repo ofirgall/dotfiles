@@ -5,7 +5,7 @@ get_ssh_in_tty="ps -f -t '#{pane_tty}' | tail -n 1 | grep -o 'ssh.*'"
 is_fzf="ps -o state= -o comm= -t '#{pane_tty}' | grep -q 'S fzf'"
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
 is_less="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '^:$'"
-is_nested_tmux="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep -E ' 1 .+ CPU .+ RAM .+ \\|.+\\|.+\\['" # Matching my status line
+is_nested_tmux="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep -E '.+'" # Matching my status line
 
 ##### MISC #####
 # force Vi mode
