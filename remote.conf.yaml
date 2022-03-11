@@ -20,8 +20,8 @@
         path: dotfiles/gitignore_global
     ~/.tmux.conf:
         path: dotfiles/tmux.conf
-    ~/.tmux.conf.local:
-        path: dotfiles/tmux.conf.local
+    ~/.tmux_conf:
+        path: dotfiles/tmux_conf
     ~/dotfiles_scripts:
         path: scripts
     ~/.config/nvim:

@@ -27,3 +27,6 @@ fi
 
 sudo usermod -a -G dialout $USER
 newgrp dialout
+
+# Instlal tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
