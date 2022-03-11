@@ -40,9 +40,6 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
-* tmux - high ram usage, make it slower, maybe upgrade it
-* tmux-go + taskwariror - Annotate tmux session and go with tmux-go 
-* nvim - treesitter text objects
 * nvim - optimize (lazyload, filetype.nvim)
 * nvim - autosuspend Lsp/nvim if not active
 * nvim - on save session ignore more file like flog diffview fugitive and such
@@ -55,7 +52,6 @@ Done by dconf (gnome tweaks):
 * zellij
 * firenvim - paste
 * Shift/Ctrl R_Alt -> Delete
-* tmux - not suspended (not active) change status colors 
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
 * dock-redock fix
 * increase osc52 yank amount (when alacritty will support that)
@@ -65,7 +61,6 @@ Done by dconf (gnome tweaks):
 * nvim - try distant one day
 * tuis to try - slack, mail, calander, jira
 * autoupdate dotfiles on remote machines
-* oh-my-tmux to upstream instead of local copy
 
 ## TODO Takes time
 * create/attach - to the same session when connecting to remote (not sure if possible)
