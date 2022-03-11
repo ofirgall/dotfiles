@@ -49,7 +49,7 @@ set -g "@nova-pane-active-border-style" "#44475a"
 set -g "@nova-pane-border-style" "#827d51"
 
 ### STATUS BAR ###
-set -g @nova-segment-prefix "#{?client_prefix,Ω,ω}"
+set -g @nova-segment-prefix "#{?client_prefix,PREFIX,}"
 set -g @nova-segment-prefix-colors "$seg_b"
 
 set -g @nova-segment-session "#{session_name}"

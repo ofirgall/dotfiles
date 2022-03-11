@@ -43,8 +43,6 @@ local git_hist_path = function(node)
 	vim.fn.execute('DiffviewFileHistory ' .. node_relative_path(node))
 end
 
--- TODO: copy relative path
-
 require'nvim-tree'.setup {
 	view = {
 		mappings = {
