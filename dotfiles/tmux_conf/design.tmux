@@ -10,7 +10,7 @@ setw -g pane-base-index 1
 set -g renumber-windows on
 set -g display-panes-time 800
 set -g display-time 1000
-set -g monitor-activity on
+set -g monitor-activity off
 set -g visual-activity off
 
 set -q -g status-utf8 on
