@@ -72,7 +72,10 @@ return require('packer').startup(function()
 	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' } -- Show large diffs :DiffviewOpen
 	use 'tpope/vim-fugitive' -- Git cli inside nvim with extra tools :Git, mergetool :Gdiff http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/
 	use 'f-person/git-blame.nvim' -- Git blame (status line)
-	use 'tpope/vim-unimpaired' -- More ][ motions ]n [n for conflicts
+	use {
+		'tpope/vim-unimpaired', -- More ][ motions ]n [n for conflicts
+		event = "BufRead", -- Lazyload
+	}
 	use 'whiteinge/diffconflicts' -- Better diffconflict viewer (use git mergetool with gitconfig)
 	use 'rbong/vim-flog' -- Show git history tree with :Flog (read doc for more)
 
@@ -125,6 +128,7 @@ return require('packer').startup(function()
 	-- Startup Time --
 	use 'dstein64/vim-startuptime' -- Profile startuptime
 	use 'lewis6991/impatient.nvim' -- Faster startuptime
+	use 'nathom/filetype.nvim' -- faster filetype detection
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'
