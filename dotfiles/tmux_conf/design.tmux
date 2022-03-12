@@ -12,6 +12,8 @@ set -g display-panes-time 800
 set -g display-time 1000
 set -g monitor-activity off
 set -g visual-activity off
+set -g status-left-length 1000
+set -g status-right-length 1000
 
 set -q -g status-utf8 on
 setw -q -g utf8 on
