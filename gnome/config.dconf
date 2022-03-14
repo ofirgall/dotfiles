@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=17
-launch-time=int64 1646556130
+launch-count=18
+launch-time=int64 1647172494
 show-details=true
 window-height=503
 window-width=645
@@ -47,7 +47,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='wifi'
+last-panel='power'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -360,6 +360,10 @@ screenshot=@as []
 screenshot-clip=@as []
 window-screenshot=@as []
 window-screenshot-clip=@as []
+
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-timeout=3600
+sleep-inactive-ac-type='nothing'
 
 [org/gnome/settings-daemon/plugins/xsettings]
 hinting='slight'

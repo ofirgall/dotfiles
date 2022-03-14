@@ -35,13 +35,14 @@ seg_b="$b_bg #ddc7a1"
 inactive_bg="#32302f"
 inactive_fg="#ddc7a1"
 active_bg=$b_bg
-active_fg="#f2e8d5"
+active_fg="#ddc7a1"
 
 suspended_inactive_bg="#1f1c1b"
 suspended_inactive_fg="#000000"
 suspended_active_bg="#2b2726"
 suspended_active_fg="#000000"
 
+set -gw window-status-current-style bold
 set -g "@nova-status-style-bg" "$inactive_bg"
 set -g "@nova-status-style-fg" "$inactive_fg"
 set -g "@nova-status-style-active-bg" "$active_bg"
