@@ -80,15 +80,13 @@ set -g @nova-segments-0-right "prefix cpu battery layout whoami"
 
 ### SUSPENDED MODE ###
 set -g @suspend_on_resume_command "tmux \
-	set -g '@nova-status-style-bg' '$inactive_bg' \\; \
-	set -g '@nova-status-style-fg' '$inactive_fg' \\; \
-	set -g '@nova-status-style-active-bg' '$active_bg' \\; \
-	set -g '@nova-status-style-active-fg' '$active_fg' \\; \
+	set -u status-style \\; \
+	set -u window-status-format \\; \
+	set -u window-status-current-format \\; \
 	run -b 'bash $HOME/.tmux/plugins/tmux-nova/scripts/nova.sh'"
 
 set -g @suspend_on_suspend_command "tmux \
-	set -g '@nova-status-style-bg' '$suspended_inactive_bg' \\; \
-	set -g '@nova-status-style-fg' '$suspended_inactive_fg' \\; \
-	set -g '@nova-status-style-active-bg' '$suspended_active_bg' \\; \
-	set -g '@nova-status-style-active-fg' '$suspended_active_fg' \\; \
-	run -b 'bash $HOME/.tmux/plugins/tmux-nova/scripts/nova.sh'"
+	set window-status-current-format '#[fg=$suspended_active_fg]#[bg=$suspended_inactive_bg]\#I  \#W' \\; \
+	set status-style 'fg=$suspended_inactive_fg,bg=$suspended_inactive_bg'"
+# TODO: fix this
+# 	for x in $(tmux list-windows -F '\#I');do tmux set -t \$x window-status-format '#[fg=$suspended_inactive_fg]#[bg=$suspended_inactive_bg]\#I  \#W';done"
