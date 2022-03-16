@@ -291,6 +291,9 @@ dynamic-workspaces=true
 experimental-features=['scale-monitor-framebuffer', 'x11-randr-fractional-scaling']
 workspaces-only-on-primary=false
 
+[org/gnome/mutter/wayland/keybindings]
+restore-shortcuts=@as []
+
 [org/gnome/nautilus/compression]
 default-compression-format='zip'
 
@@ -358,8 +361,9 @@ locations=['file:///home/ofirg/Music']
 [org/gnome/settings-daemon/plugins/media-keys]
 area-screenshot=@as []
 area-screenshot-clip=['<Primary>Print']
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']
 screencast=@as []
+screensaver=@as []
 screenshot=@as []
 screenshot-clip=@as []
 window-screenshot=@as []
@@ -369,6 +373,16 @@ window-screenshot-clip=@as []
 binding='<Alt>g'
 command='/home/ogal/.tmux/tmux-go/src/menu/launch.sh'
 name='tmux-go'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Super>m'
+command='/home/ogal/.tmux/tmux-go/src/tmux_go.py -s main'
+name='tmux-go: main'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
+binding='<Super>l'
+command='/home/ogal/.tmux/tmux-go/src/tmux_go.py -s last'
+name='tmux-go: last'
 
 [org/gnome/settings-daemon/plugins/power]
 sleep-inactive-ac-timeout=3600
@@ -418,6 +432,13 @@ scale=0.14999999999999999
 show-overview-grid=true
 show-thumbnails=true
 wraparound-mode='rows-columns'
+
+[org/gnome/shell/keybindings]
+focus-active-notification=@as []
+open-application-menu=@as []
+toggle-application-view=@as []
+toggle-message-tray=@as []
+toggle-overview=@as []
 
 [org/gnome/software]
 check-timestamp=int64 1642772101
