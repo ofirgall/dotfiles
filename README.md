@@ -41,6 +41,8 @@ Done by dconf (gnome tweaks):
 
 ## TODO
 * tmux - suspened is global theme (need to make it session)
+* tmux-go
+* zsh - compress alias (tar -czf archive.tar.gz stuff)
 * nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)
 * nvim - autosuspend Lsp/nvim if not active
 * nvim - on save session ignore more file like flog diffview fugitive and such
@@ -66,7 +68,6 @@ Done by dconf (gnome tweaks):
 * create/attach - to the same session when connecting to remote (not sure if possible)
 * taskwarrior - filter presets
 * tmux-browser
-* tmux-go
 * tmux-remote-notify
 * when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
 * backup non-dotfiles - tmux sessions, tasks of taskwarrior, nvim sessions

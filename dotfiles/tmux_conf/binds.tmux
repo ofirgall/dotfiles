@@ -12,7 +12,6 @@ is_nested_tmux="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep -E '.
 set -g status-keys vi
 set -g mode-keys vi
 
-
 bind r source-file ~/.tmux.conf; display "Reloaded!"
 
 # Fix end/home for xterm-256color
@@ -181,9 +180,9 @@ bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-line \; run-shell "
 # tmux-suspend, focus on nested ssh session (Alt+Enter)
 set -g @suspend_key 'M-Enter'
 
-##### TMUX-JUMP #####
-# Tmux jump (like acejump or vimium) with ALT+j
-bind -n M-s run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
+##### TMUX-THUMBS #####
+# Tmux (like acejump or vimium) with ALT+s
+bind -n M-s thumbs-pick
 
 ##### TMUX-COPYCAT #####
 # copy git file (after git status)
