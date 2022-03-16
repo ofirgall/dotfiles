@@ -22,7 +22,7 @@ mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
 
 if ! $IS_REMOTE; then
-	sudo apt install -y xclip gnome-tweak-tool kupfer alacritty
+	sudo apt install -y xclip gnome-tweak-tool alacritty
 fi
 
 sudo usermod -a -G dialout $USER

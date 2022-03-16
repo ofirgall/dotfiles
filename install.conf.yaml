@@ -31,10 +31,6 @@
         path: autokey
     ~/.tmux/tmux-go:
         path: submodules/tmux-go
-    ~/.local/share/kupfer/plugins/tmux_go.py:
-        path: submodules/tmux-go/src/launchers/kupfer.py
-    ~/.config/kupfer/kupfer.cfg:
-        path: dotfiles/kupfer.cfg
     ~/.taskrc:
         path: dotfiles/taskrc
     ~/.taskwarrior_shortcuts:

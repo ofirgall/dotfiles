@@ -47,7 +47,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='display'
+last-panel='keyboard'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -358,11 +358,17 @@ locations=['file:///home/ofirg/Music']
 [org/gnome/settings-daemon/plugins/media-keys]
 area-screenshot=@as []
 area-screenshot-clip=['<Primary>Print']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
 screencast=@as []
 screenshot=@as []
 screenshot-clip=@as []
 window-screenshot=@as []
 window-screenshot-clip=@as []
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Alt>g'
+command='/home/ogal/.tmux/tmux-go/src/menu/launch.sh'
+name='tmux-go'
 
 [org/gnome/settings-daemon/plugins/power]
 sleep-inactive-ac-timeout=3600
@@ -439,5 +445,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(2061, 57)
+window-position=(359, 122)
 window-size=(1203, 790)

@@ -35,12 +35,6 @@ if ! $IS_REMOTE; then
 	then
 		daemon --name="autokey" autokey-gtk
 	fi
-
-	if ! pgrep --full kupfer > /dev/null;
-	then
-		daemon --name="kupfer" -- kupfer --no-splash
-	fi
-
 fi
 
 # ---------------------------
