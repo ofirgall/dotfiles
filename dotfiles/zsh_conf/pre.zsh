@@ -78,10 +78,3 @@ alias gcpc='git cherry-pick --continue'
 alias gh='git hist'
 alias gdiff='git diff'
 alias gshow='git show'
-
-# Remote/Local Aliases
-if $IS_REMOTE; then
-	alias toclip='~/dotfiles_scripts/osc52_yank.sh'
-else
-	alias toclip='xclip -sel clip'
-fi

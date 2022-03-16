@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+if test -f "$HOME/.remote_indicator"; then
+	"$HOME/dotfiles_scripts/osc52_yank.sh" <&0
+else
+	xclip -sel clip <&0
+fi
