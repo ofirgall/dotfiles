@@ -27,6 +27,9 @@ Incase you are using windows terminal add `windows_terminal_binds.json` to your 
 ### Install Fonts for Terminal Icons
 * [Normal](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete%20Mono.ttf)
 
+### Install TamperMonkey scripts
+* Install [TamperMonkey](https://www.tampermonkey.net/)
+* View the the [tampermonkey scripts](tampermonkey) as raw
 
 ---
 
@@ -45,7 +48,6 @@ Done by dconf (gnome tweaks):
 * nvim - autosuspend Lsp/nvim if not active
 * nvim - on save session ignore more file like flog diffview fugitive and such
 * jira - write a plugin that solves the bigggest ui issues
-* nvim - fast boot time for single files (don't load few plugins)
 * nvim - learn to use marks
 * zellij
 * firenvim - paste
