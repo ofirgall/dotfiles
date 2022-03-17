@@ -119,3 +119,6 @@ vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>ToggleTerm<CR>', {noremap = true
 
 -- guess-indent.nvim
 require('guess-indent').setup{}
+
+-- refactoring.nvim
+require('refactoring').setup{}

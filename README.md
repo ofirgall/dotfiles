@@ -43,6 +43,7 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
+* nvim - refactoring.nvim - open issues for cleanup all lines, multiple debug prints with unique ids (indexed if we can)
 * python - ctxmanager snippet
 * nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)
 * nvim - autosuspend Lsp/nvim if not active

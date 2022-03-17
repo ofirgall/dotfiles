@@ -124,6 +124,13 @@ return require('packer').startup(function()
 	use 'tversteeg/registers.nvim' -- visualize copy registers
 	use 'akinsho/toggleterm.nvim' -- Terminal toggle for nvim <C-t>
 	use 'NMAC427/guess-indent.nvim' -- Adjust tabs/spaces settings
+	use {
+		'ThePrimeagen/refactoring.nvim', -- Refactor tool
+		requires = {
+			{'nvim-lua/plenary.nvim'},
+			{'nvim-treesitter/nvim-treesitter'}
+		}
+	}
 
 	-- Startup Time --
 	use 'dstein64/vim-startuptime' -- Profile startuptime

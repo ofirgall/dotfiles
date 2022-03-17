@@ -224,3 +224,11 @@ map('n', '<M-j>', '<cmd>BufferPrevious<CR>', default_opts) -- Alt+j to move to l
 map('n', '<M-k>', '<cmd>BufferNext<CR>', default_opts) -- Alt+k to move to right
 map('n', '<M-J>', '<cmd>BufferMovePrevious<CR>', default_opts) -- Alt+Shift+j grab to with you to left
 map('n', '<M-K>', '<cmd>BufferMoveNext<CR>', default_opts) -- Alt+Shift+k grab to with you to right
+
+-----------------------------------
+--         REFACTORING           --
+-----------------------------------
+map('v', '<leader>rf', '<Esc><cmd>lua require("telescope").extensions.refactoring.refactors()<CR>', default_opts) -- open Refactor menu
+map('n', '<leader>dp', '<cmd>lua require("refactoring").debug.printf({})<CR>', default_opts) -- add Debug Print
+map('v', '<leader>dp', '<cmd>lua require("refactoring").debug.print_var({})<CR>', default_opts) -- add Debug Print
+map('n', '<leader>dc', '<cmd>lua require("refactoring").debug.cleanup({})<CR>', default_opts) -- Clean Debug prints
