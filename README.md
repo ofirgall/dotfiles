@@ -40,7 +40,7 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
-* tmux-go
+* python - ctxmanager snippet
 * zsh - compress alias (tar -czf archive.tar.gz stuff)
 * nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)
 * nvim - autosuspend Lsp/nvim if not active
@@ -66,6 +66,7 @@ Done by dconf (gnome tweaks):
 ## TODO Takes time
 * create/attach - to the same session when connecting to remote (not sure if possible)
 * taskwarrior - filter presets
+* tmux-go
 * tmux-browser
 * tmux-remote-notify
 * when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
