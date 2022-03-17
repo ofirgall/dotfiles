@@ -60,8 +60,8 @@ monokai.setup {
 		-- base3 = '#272a33',
 		base3 = '#1d2026',
 		brown = '#d1ca86',
-    },
-    custom_hlgroups = {
+	},
+	custom_hlgroups = {
 		TSFunction = {
 			fg = palette.aqua,
 			style = 'none',

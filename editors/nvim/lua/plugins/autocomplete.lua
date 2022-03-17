@@ -1,14 +1,14 @@
 local snippy = require("snippy")
 snippy.setup({
-    mappings = {
-        is = {
-            ["<Tab>"] = "expand_or_advance",
-            ["<S-Tab>"] = "previous",
-        },
-        nx = {
-            ["<leader>x"] = "cut_text",
-        },
-    },
+	mappings = {
+		is = {
+			["<Tab>"] = "expand_or_advance",
+			["<S-Tab>"] = "previous",
+		},
+		nx = {
+			["<leader>x"] = "cut_text",
+		},
+	},
 })
 
 local neogen = require('neogen')
@@ -72,9 +72,9 @@ cmp.setup.cmdline(':', {
 -- LSP SAGA --
 -- Disable builtin diagnostic
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false
-    }
+	vim.lsp.diagnostic.on_publish_diagnostics, {
+		virtual_text = false
+	}
 )
 
 require('lspsaga').setup {}

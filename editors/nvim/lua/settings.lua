@@ -17,8 +17,8 @@ opt.swapfile = false
 
 -- Highlight on yank
 cmd [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank({timeout=350, higroup='Visual'})
-  augroup end
+	augroup YankHighlight
+		autocmd!
+		autocmd TextYankPost * silent! lua vim.highlight.on_yank({timeout=350, higroup='Visual'})
+	augroup end
 ]]
