@@ -41,31 +41,23 @@ Done by dconf (gnome tweaks):
 
 ## TODO
 * python - ctxmanager snippet
-* zsh - compress alias (tar -czf archive.tar.gz stuff)
 * nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)
 * nvim - autosuspend Lsp/nvim if not active
 * nvim - on save session ignore more file like flog diffview fugitive and such
 * jira - write a plugin that solves the bigggest ui issues
 * nvim - fast boot time for single files (don't load few plugins)
-* nvim + zshrc - set $VIEWER to faster nvim config and $EDITOR to heavier one
-* nvim - resize panes like tmux
 * nvim - learn to use marks
 * zellij
 * firenvim - paste
-* Shift/Ctrl R_Alt -> Delete
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
-* dock-redock fix
 * increase osc52 yank amount (when alacritty will support that)
 * git squash - if master/base branch moved forward can't find the ref
-* nvim - stop lsp server on background
 * nvim - build & run + quickfix errors
 * nvim - try distant one day
 * tuis to try - slack, mail, calander, jira
 * autoupdate dotfiles on remote machines
 
 ## TODO Takes time
-* create/attach - to the same session when connecting to remote (not sure if possible)
-* taskwarrior - filter presets
 * tmux-go
 * tmux-browser
 * tmux-remote-notify

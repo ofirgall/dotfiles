@@ -721,8 +721,9 @@ colors:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-#key_bindings:
-  #- { key: Paste,                                       action: Paste          }
+key_bindings:
+  - { key: R,         mods: Super,                    action: ResetFontSize }
+  # - { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
   #- { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
