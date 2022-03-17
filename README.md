@@ -40,7 +40,6 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
-* tmux - suspened is global theme (need to make it session)
 * tmux-go
 * zsh - compress alias (tar -czf archive.tar.gz stuff)
 * nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)

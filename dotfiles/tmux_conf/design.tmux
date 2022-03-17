@@ -90,5 +90,3 @@ set -g @suspend_on_resume_command "tmux \
 set -g @suspend_on_suspend_command "tmux \
 	set window-status-current-format '#[fg=$suspended_active_fg]#[bg=$suspended_inactive_bg]\#I  \#W' \\; \
 	set status-style 'fg=$suspended_inactive_fg,bg=$suspended_inactive_bg'"
-# TODO: fix this
-# 	for x in $(tmux list-windows -F '\#I');do tmux set -t \$x window-status-format '#[fg=$suspended_inactive_fg]#[bg=$suspended_inactive_bg]\#I  \#W';done"

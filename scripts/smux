@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+LC_MESSAGES=$(tmux display-message -p '#S') ssh -o SendEnv=LC_MESSAGES $1
