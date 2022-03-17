@@ -33,6 +33,8 @@ bind -r -T prefix x run-shell "$get_ssh_in_tty | xargs tmux split-window -v -d"
 
 # Kill pane with ALT+w
 bind -n M-w kill-pane
+# Kill remote pane with ALT+SHIFT+w
+bind -n M-W send-keys M-w
 
 ##### PANE NAVIGATION #####
 # Move around with alt+arrow/ctrl+hjkl
@@ -75,6 +77,8 @@ bind -r -T prefix M-Right swap-pane -s \{right-of\}
 ##### WINDOWS #####
 # new window ALT+t
 bind -n M-t new-window -c "#{pane_current_path}"
+# new window in nested session ALT+SHIFT+t
+bind -n M-T send-keys M-t
 
 # Select windows by ALT+N
 bind -n M-0 select-window -t :=10
