@@ -361,7 +361,7 @@ locations=['file:///home/ofirg/Music']
 [org/gnome/settings-daemon/plugins/media-keys]
 area-screenshot=@as []
 area-screenshot-clip=['<Primary>Print']
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']
 screencast=@as []
 screensaver=@as []
 screenshot=@as []
@@ -381,8 +381,18 @@ name='tmux-go: main'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
 binding='<Super>l'
-command='/home/ogal/.tmux/tmux-go/src/tmux_go.py -s last'
+command='/home/ogal/.tmux/tmux-go/src/tmux_go.py --last'
 name='tmux-go: last'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3]
+binding='<Super>j'
+command='/home/ogal/.tmux/tmux-go/src/tmux_go.py --prev'
+name='tmux-go: prev'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4]
+binding='<Super>k'
+command='/home/ogal/.tmux/tmux-go/src/tmux_go.py --next'
+name='tmux-go: next'
 
 [org/gnome/settings-daemon/plugins/power]
 sleep-inactive-ac-timeout=3600

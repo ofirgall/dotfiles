@@ -27,8 +27,6 @@
         path: dotfiles/fusuma.yml
     ~/.alacritty.yml:
         path: dotfiles/alacritty.yml
-    ~/.config/autokey/data:
-        path: autokey
     ~/.tmux/tmux-go:
         path: submodules/tmux-go
     ~/.taskrc:
