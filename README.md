@@ -39,16 +39,14 @@ Done by dconf (gnome tweaks):
 * Both shift changes language - Don't move your hands while typing.
 * Right Alt is mapped to backspace - Same idea.. (done with ~/.xmodmap too)
 * Changing workspaces - Ctrl+J/H, Ctrl+Shift+J/H
+* [tmux-go](https://github.com/ofirgall/tmux-go) shortcuts, Alt+G, Super+J/K/L/M
 
 ---
 
 ## TODO
-* nvim - refactoring.nvim - open issues for cleanup all lines, multiple debug prints with unique ids (indexed if we can)
-* python - ctxmanager snippet
 * nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)
 * nvim - autosuspend Lsp/nvim if not active
 * nvim - on save session ignore more file like flog diffview fugitive and such
-* jira - write a plugin that solves the bigggest ui issues
 * nvim - learn to use marks
 * zellij
 * firenvim - paste

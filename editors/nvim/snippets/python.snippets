@@ -15,3 +15,12 @@ snippet maintyper
 
 	if __name__ == '__main__':
 		typer.run(main)
+snippet ctxmanager
+	@contextmanager
+	def ${1:func}(${2:${VISUAL}}) -> Iterator[${3:Any}]:
+		${4:${VISUAL}}
+
+		try:
+			yield ${5:${VISUAL}}
+		finally:
+			${6:${VISUAL}}
