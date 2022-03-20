@@ -25,7 +25,7 @@ set -g @nova-nerdfonts true
 set -g @nova-nerdfonts-left 
 set -g @nova-nerdfonts-right 
 
-set -g @nova-pane "#I  #W"
+set -g @nova-pane "#I #W"
 set -g @nova-rows 0
 
 ### COLORS ###
@@ -88,5 +88,5 @@ set -g @suspend_on_resume_command "tmux \
 	run -b 'bash $HOME/.tmux/plugins/tmux-nova/scripts/nova.sh'"
 
 set -g @suspend_on_suspend_command "tmux \
-	set window-status-current-format '#[fg=$suspended_active_fg]#[bg=$suspended_inactive_bg]\#I  \#W' \\; \
+	set window-status-current-format '#[fg=$suspended_active_fg]#[bg=$suspended_inactive_bg]\#I \#W' \\; \
 	set status-style 'fg=$suspended_inactive_fg,bg=$suspended_inactive_bg'"
