@@ -122,3 +122,6 @@ require('guess-indent').setup{}
 
 -- refactoring.nvim
 require('refactoring').setup{}
+
+-- vim-maximizer
+vim.g.maximizer_default_mapping_key = '<M-Z>'

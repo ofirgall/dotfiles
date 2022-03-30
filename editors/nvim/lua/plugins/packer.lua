@@ -131,6 +131,7 @@ return require('packer').startup(function()
 			{'nvim-treesitter/nvim-treesitter'}
 		}
 	}
+	use 'szw/vim-maximizer' -- Maximize windows (splits) in vim
 
 	-- Startup Time --
 	use 'dstein64/vim-startuptime' -- Profile startuptime
