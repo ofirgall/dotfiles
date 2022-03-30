@@ -38,3 +38,4 @@
 	difftool = true
 [alias]
 	dft = difftool
+	stash-staged = "!bash -c \"git stash --keep-index; git stash push -m \"staged\" --keep-index; git stash pop stash@{1}\""
