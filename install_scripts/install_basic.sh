@@ -30,3 +30,13 @@ newgrp dialout
 
 # Instlal tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Rustup
+if ! command -v rustup &> /dev/null
+then
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	source $HOME/.cargo/env
+fi
+rustup update
+
+cargo install difftastic

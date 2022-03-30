@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=18
-launch-time=int64 1647172494
+launch-count=20
+launch-time=int64 1648585439
 show-details=true
 window-height=503
 window-width=645
@@ -476,5 +476,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(166, 14)
+window-position=(359, 122)
 window-size=(1203, 790)

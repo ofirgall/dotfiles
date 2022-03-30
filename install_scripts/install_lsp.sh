@@ -33,13 +33,7 @@ sudo npm install -g pyright
 sudo npm install -g vim-language-server
 sudo npm install -g bash-language-server
 
-# Rustup + RLS + rust-analyzer
-if ! command -v rustup &> /dev/null
-then
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-	source $HOME/.cargo/env
-fi
-rustup update
+# RLS + rust-analyzer
 rustup component add rls rust-analysis rust-src
 rustup +nightly component add rust-analyzer-preview
 ln -s $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer $HOME/.local/bin/rust-analyzer
