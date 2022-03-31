@@ -2,3 +2,4 @@ pyzshcomplete
 argcomplete
 argparse
 libtmux
+typer
