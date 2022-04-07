@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=20
-launch-time=int64 1648585439
+launch-count=21
+launch-time=int64 1649259838
 show-details=true
 window-height=503
 window-width=645
@@ -19,7 +19,7 @@ window-width=540
 
 [com/ubuntu/update-notifier]
 no-show-notifications=true
-release-check-time=uint32 1647516762
+release-check-time=uint32 1648726676
 
 [com/uploadedlobster/peek]
 persist-window-geometry=(349, 183, 794, 593)
@@ -230,8 +230,8 @@ sort-type='descending'
 
 [org/gnome/file-roller/ui]
 sidebar-width=200
-window-height=817
-window-width=1536
+window-height=493
+window-width=960
 
 [org/gnome/gedit/plugins]
 active-plugins=['spell', 'modelines', 'filebrowser', 'sort', 'docinfo']
@@ -303,7 +303,7 @@ search-filter-time-type='last_modified'
 search-view='list-view'
 
 [org/gnome/nautilus/window-state]
-initial-size=(864, 441)
+initial-size=(890, 467)
 maximized=false
 sidebar-width=189
 
@@ -476,5 +476,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(359, 122)
+window-position=(166, 14)
 window-size=(1203, 790)

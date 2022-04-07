@@ -24,6 +24,9 @@ bind -T suspended End send-key C-e
 # Splits windows with ALT+e/o
 bind -n M-e split-window -h -c "#{pane_current_path}"
 bind -n M-o split-window -v -c "#{pane_current_path}"
+# Splits windows in nested session ALT+SHIFT+e/o
+bind -n M-E send-keys M-e
+bind -n M-O send-keys M-O
 # Split windows and ssh to the remote that was connected
 bind -r -T prefix e run-shell "$get_ssh_in_tty | xargs tmux split-window -h"
 bind -r -T prefix o run-shell "$get_ssh_in_tty | xargs tmux split-window -v"
@@ -43,10 +46,10 @@ bind -n M-Down if-shell "$is_vim" 'send-keys M-Down'  'select-pane -D'
 bind -n M-Up if-shell "$is_vim" 'send-keys M-Up'  'select-pane -U'
 bind -n M-Right if-shell "$is_vim" 'send-keys M-Right'  'select-pane -R'
 
-bind -n C-h if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
-bind -n C-j if-shell "$is_vim || $is_fzf" 'send-keys C-j'  'select-pane -D'
-bind -n C-k if-shell "$is_vim || $is_fzf" 'send-keys C-k'  'select-pane -U'
-bind -n C-l if-shell "$is_vim" 'send-keys C-l'  'select-pane -R'
+bind -n C-h if-shell "$is_vim || $is_nested_tmux" 'send-keys C-h'  'select-pane -L'
+bind -n C-j if-shell "$is_vim || $is_nested_tmux || $is_fzf" 'send-keys C-j'  'select-pane -D'
+bind -n C-k if-shell "$is_vim || $is_nested_tmux || $is_fzf" 'send-keys C-k'  'select-pane -U'
+bind -n C-l if-shell "$is_vim || $is_nested_tmux" 'send-keys C-l'  'select-pane -R'
 
 # Override alt+up/down for copy-mode
 bind -T copy-mode-vi M-Up select-pane -U
@@ -190,7 +193,7 @@ bind -n M-s thumbs-pick
 
 ##### TMUX-COPYCAT #####
 # copy git file (after git status)
-bind -n M-d if-shell "$is_vim" 'send-keys M-d' "run-shell $HOME/.tmux/plugins/tmux-copycat/scripts/copycat_git_special.sh #{pane_current_path}"
+bind -n M-d if-shell "$is_vim || $is_nested_tmux" 'send-keys M-d' "run-shell $HOME/.tmux/plugins/tmux-copycat/scripts/copycat_git_special.sh #{pane_current_path}"
 
 # copy url ALT+[
 bind -n M-[ run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(https?://|git@|git://|ssh://|ftp://|file:///)[[:alnum:]?=%/_.:,;~@!#$&()*+-]*'"
