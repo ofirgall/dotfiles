@@ -132,6 +132,11 @@ return require('packer').startup(function()
 		}
 	}
 	use 'szw/vim-maximizer' -- Maximize windows (splits) in vim
+	use {
+		'iamcco/markdown-preview.nvim', -- Markdown preview
+		run = function() vim.fn['mkdp#util#install']() end,
+		ft = {'markdown'}
+	}
 
 	-- Startup Time --
 	use 'dstein64/vim-startuptime' -- Profile startuptime
