@@ -4,7 +4,7 @@ curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep -E "br
 chmod +x $HOME/.local/bin/nvim
 
 # Install external dependecies (rg is in install_basic)
-sudo apt install -w fd-find
+sudo apt install -y fd-find
 
 # install packer
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
@@ -21,3 +21,6 @@ mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 make
 sudo make install
+
+# For upgrade_nvim.sh
+sudo apt install -y gettext libtermkey-dev
