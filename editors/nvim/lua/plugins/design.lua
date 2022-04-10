@@ -42,6 +42,14 @@ if not vim.g.started_by_firenvim then
 		closable = false,
 		clickable = false,
 	}
+
+	-- Load lualine late (buggy if not)
+	vim.cmd [[
+	augroup LoadLuaLineLate
+		autocmd!
+		autocmd BufRead * silent! lua require('lualine').setup()
+	augroup end
+	]]
 else
 	-- barbar
 	vim.g.bufferline = {

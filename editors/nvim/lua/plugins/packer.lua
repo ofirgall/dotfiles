@@ -64,8 +64,12 @@ return require('packer').startup(function()
 	use 'nvim-telescope/telescope-live-grep-raw.nvim' -- Better live grep
 
 	-- Status Line
-	use 'nvim-lualine/lualine.nvim' -- Status line
-	use 'kyazdani42/nvim-web-devicons' -- Web icons (more plugins using this)
+	use {
+		'nvim-lualine/lualine.nvim', -- Status line
+		requires = {
+			use 'kyazdani42/nvim-web-devicons' -- Web icons (more plugins using this)
+		}
+	}
 
 	-- Git
 	use 'lewis6991/gitsigns.nvim' -- Show git diff in the sidebar, hunk actions and more
