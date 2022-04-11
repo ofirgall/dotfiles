@@ -161,7 +161,7 @@ map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', default_opts) -- Format
 map('n', 'gd', "<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", default_opts) -- Go to Definition
 map('n', 'gvd', "<cmd>lua vsplit_if_not_exist()<CR><cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", default_opts) -- Go to Definition in Vsplit
 map('n', 'gxd', "<cmd>lua xsplit_if_not_exist()<CR><cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", default_opts) -- Go to Definition in Xsplit
-map('n', 'gkd', '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")})<cr>', default_opts) -- (Go) search Definition under current word
+map('n', 'gKD', '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")})<cr>', default_opts) -- (Go) search Definition under current word
 map('n', 'gi', "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", default_opts) -- Go to Implementation
 map('n', 'gvi', "<cmd>lua vsplit_if_not_exist()<CR><cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", default_opts) -- Go to Implementation in Vsplit
 map('n', 'gxi', "<cmd>lua xsplit_if_not_exist()<CR><cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", default_opts) -- Go to Implementation in Xsplit

@@ -170,4 +170,5 @@
     "workbench.startupEditor": "none",
     "editor.detectIndentation": false,
     "diffEditor.renderSideBySide": false,
+    "codestream.serverUrl": "https://api.codestream.com",
 }
