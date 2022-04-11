@@ -68,6 +68,7 @@ set -g @nova-segment-cpu-colors "$seg_b"
 
 set -g @batt_icon_status_charging '↑'
 set -g @batt_icon_status_discharging '↓'
+set -g @batt_icon_status_charged '↑'
 set -g @nova-segment-battery "#{battery_icon_status} #{battery_percentage}"
 set -g @nova-segment-battery-colors "$seg_b"
 
