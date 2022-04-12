@@ -77,4 +77,13 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	}
 )
 
-require('lspsaga').setup {}
+require('lspsaga').setup({
+	code_action_keys = {
+		quit = "<Escape>",
+		exec = "<CR>",
+	},
+	rename_action_keys = {
+		quit = "<C-c>",
+		exec = "<CR>",
+	},
+})

@@ -47,7 +47,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='sound'
+last-panel='wifi'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -476,5 +476,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(166, 14)
+window-position=(0, 0)
 window-size=(1203, 790)
