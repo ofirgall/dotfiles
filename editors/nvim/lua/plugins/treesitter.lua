@@ -60,6 +60,8 @@ require'nvim-treesitter.configs'.setup {
 				["il"] = "@loop.inner",
 				["a/"] = "@comment.outer",
 				["i/"] = "@comment.outer", -- no inner for comment
+				["aa"] = "@parameter.outer", -- parameter -> argument
+				["ia"] = "@parameter.inner",
 			},
 		},
 	},
