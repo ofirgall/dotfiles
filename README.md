@@ -44,6 +44,7 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
+* zsh - vim mode
 * nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)
 * nvim - autosuspend Lsp/nvim if not active
 * nvim - on save session ignore more file like flog diffview fugitive and such
