@@ -75,6 +75,10 @@ map('n', '<M-Down>', '<cmd>TmuxNavigateDown<cr>', default_opts)
 map('n', '<M-Up>', '<cmd>TmuxNavigateUp<cr>', default_opts)
 map('n', '<M-Right>', '<cmd>TmuxNavigateRight<cr>', default_opts)
 
+-- Duplicate your view into split (MAX 2)
+map('n', 'gV', "<cmd>lua vsplit_if_not_exist()<CR>", default_opts)
+map('n', 'gX', "<cmd>lua xsplit_if_not_exist()<CR>", default_opts)
+
 -----------------------------------
 --          MISC PLUGINS         --
 -----------------------------------
