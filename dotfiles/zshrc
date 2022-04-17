@@ -33,7 +33,7 @@ zinit snippet OMZL::history.zsh
 zinit snippet OMZL::git.zsh
 zinit snippet OMZL::theme-and-appearance.zsh
 
-zinit ice wait lucid
+# Can't turbo key-bindings, conflicting with vim-mode
 zinit snippet OMZL::key-bindings.zsh
 
 zinit ice wait lucid
@@ -85,6 +85,11 @@ zinit ice svn
 zinit snippet OMZP::gitfast
 
 ## Custom Plugins ##
+if [[ ${ZSH_VERSION:0:3} -ge 5.1 ]]; then
+	zinit ice depth=1
+	zinit light jeffreytse/zsh-vi-mode
+fi
+
 zinit ice wait lucid atload'_zsh_autosuggest_start; bindkey "^ " autosuggest-accept'
 zinit light zsh-users/zsh-autosuggestions
 
