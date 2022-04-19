@@ -44,16 +44,13 @@ if not vim.g.started_by_firenvim then
 	}
 
 	-- Load lualine late (buggy if not)
-	vim.cmd [[
-	function SetLuaLine()
-			lua require('lualine').setup()
-			set laststatus=3 " Global status line
-	endfunction
-	augroup LoadLuaLineLate
-		autocmd!
-		autocmd BufRead * silent! call SetLuaLine()
-	augroup end
-	]]
+	vim.api.nvim_create_autocmd('BufRead', {
+		pattern = '*',
+		callback = function()
+			require('lualine').setup()
+			vim.opt.laststatus = 3
+		end
+	})
 else
 	-- barbar
 	vim.g.bufferline = {
