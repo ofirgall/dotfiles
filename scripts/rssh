@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ "$#" -lt 1 ]; then
+	echo 'Usage: rssh <args_to_ssh>'
+	exit 1
+fi
+
+while ( true ); do
+	ssh $1 -o ConnectTimeout=3 "exit" 2>&1;
+
+	res="$?";
+	if [[ $res == "0" || $res == "1" ]]; then
+		notify-send -u critical -t 3000 "ssh to $1 done!"
+		toilet "DONE" --gay
+		ssh $1 -o ConnectTimeout=3 $params 2>&1;
+		exit;
+	else
+		echo 'Ctrl-C to exit';
+		sleep 1;
+	fi;
+
+done;

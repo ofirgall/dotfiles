@@ -89,7 +89,7 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams', 'kupfer', 'org-gnome-screenshot', 'com-uploadedlobster-peek', 'signal-desktop', 'slack', 'virtualbox']
+application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams', 'kupfer', 'org-gnome-screenshot', 'com-uploadedlobster-peek', 'signal-desktop', 'slack', 'virtualbox', 'snap-store-ubuntu-software-local-file']
 show-banners=true
 
 [org/gnome/desktop/notifications/application/apport-gtk]
@@ -152,6 +152,9 @@ application-id='slack_slack.desktop'
 
 [org/gnome/desktop/notifications/application/slack]
 application-id='slack.desktop'
+
+[org/gnome/desktop/notifications/application/snap-store-ubuntu-software-local-file]
+application-id='snap-store_ubuntu-software-local-file.desktop'
 
 [org/gnome/desktop/notifications/application/spotify-spotify]
 application-id='spotify_spotify.desktop'
@@ -454,7 +457,7 @@ toggle-message-tray=@as []
 toggle-overview=@as []
 
 [org/gnome/software]
-check-timestamp=int64 1642772101
+check-timestamp=int64 1650375678
 online-updates-timestamp=int64 1642772103
 
 [org/gnome/system/location]
