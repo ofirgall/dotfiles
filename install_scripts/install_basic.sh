@@ -40,3 +40,4 @@ fi
 rustup update
 
 cargo install difftastic
+cargo install du-dust
