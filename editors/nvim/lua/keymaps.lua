@@ -1,7 +1,7 @@
 ---@diagnostic disable: lowercase-global
 -- Default bindings https://hea-www.harvard.edu/~fine/Tech/vi.html
-local map = vim.api.nvim_set_keymap
-local default_opts = { noremap = true, silent = true }
+local map = vim.keymap.set
+local default_opts = { silent = true }
 local cmd = vim.cmd
 
 ----------------------------------------------------------------------------------
@@ -58,8 +58,8 @@ map('n', '<Up>', '<nop>', default_opts)
 map('n', '<Down>', '<nop>', default_opts)
 
 -- Move through wrapped lines
-map('', 'j', 'v:count ? "j" : "gj"', {noremap = true, expr=true})
-map('', 'k', 'v:count ? "k" : "gk"', {noremap = true, expr=true})
+map('', 'j', 'v:count ? "j" : "gj"', {expr=true})
+map('', 'k', 'v:count ? "k" : "gk"', {expr=true})
 
 -- Toggle spell check
 map('n', '<F11>', ':set spell!<cr>', default_opts)
@@ -76,8 +76,8 @@ map('n', '<M-Up>', '<cmd>TmuxNavigateUp<cr>', default_opts)
 map('n', '<M-Right>', '<cmd>TmuxNavigateRight<cr>', default_opts)
 
 -- Duplicate your view into split (MAX 2)
-map('n', 'gV', "<cmd>lua vsplit_if_not_exist()<CR>", default_opts)
-map('n', 'gX', "<cmd>lua xsplit_if_not_exist()<CR>", default_opts)
+map('n', 'gV', vsplit_if_not_exist, default_opts)
+map('n', 'gX', xsplit_if_not_exist, default_opts)
 
 -----------------------------------
 --          MISC PLUGINS         --
@@ -145,40 +145,40 @@ get_visual_text = function()
 end
 
 map('n', 'KR', '<cmd>Telescope resume<cr>', default_opts) -- Resume last telescope
-map('n', 'KL', '<cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true})<cr>', default_opts) -- find files (ctrl+p)
-map('n', 'Kd', '<cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true, default_text = vim.fn.expand("<cword>")})<cr>', default_opts) -- find files (ctrl+p) starting with current word
+map('n', 'KL', function() require("telescope.builtin").find_files({hidden=true, follow=true}) end, default_opts) -- find files (ctrl+p)
+map('n', 'Kd', function() require("telescope.builtin").find_files({hidden=true, follow=true, default_text = vim.fn.expand("<cword>")}) end, default_opts) -- find files (ctrl+p) starting with current word
 map('v', 'KL', '<Esc><cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true, default_text=get_visual_text()})<cr>', default_opts) -- find files text from visual
-map('n', 'KJ', '<cmd>lua live_grep_raw()<CR>', default_opts) -- search in all files (fuzzy finder)
+map('n', 'KJ', live_grep_raw, default_opts) -- search in all files (fuzzy finder)
 map('v', 'KJ', '<Esc><cmd>lua live_grep_raw({}, "v")<cr>', default_opts) -- search in all files (default text is from visual)
-map('n', 'KD', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>")})<CR>', default_opts) -- Search in all files with current word inserted
-map('n', 'Kj', '<cmd>lua live_grep_raw({default_text = \'-g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*" \'})<CR>', default_opts) -- Search in all files in your current directory
-map('n', 'Kjd', '<cmd>lua live_grep_raw({default_text = vim.fn.expand("<cword>") .. \' -g"\' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. \'/*"\'})<CR>', default_opts) -- Search in all files in your current directory + with your current word
+map('n', 'KD', function() live_grep_raw({default_text = vim.fn.expand("<cword>")}) end, default_opts) -- Search in all files with current word inserted
+map('n', 'Kj', function() live_grep_raw({default_text = '-g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*" '}) end, default_opts) -- Search in all files in your current directory
+map('n', 'Kjd', function() live_grep_raw({default_text = vim.fn.expand("<cword>") .. ' -g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*"'}) end, default_opts) -- Search in all files in your current directory + with your current word
 
 -----------------------------------
 --             LSP               --
 -----------------------------------
 -- Builtin LSP Binds
-map('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', default_opts) -- Format code
-map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', default_opts) -- Format code
+map('n', '<leader>f', vim.lsp.buf.formatting, default_opts) -- Format code
+map('n', 'gD', vim.lsp.buf.declaration, default_opts) -- Go to Declaration
 
 -- Telescope LSP Binds
-map('n', 'gd', "<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", default_opts) -- Go to Definition
-map('n', 'gvd', "<cmd>lua vsplit_if_not_exist()<CR><cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", default_opts) -- Go to Definition in Vsplit
-map('n', 'gxd', "<cmd>lua xsplit_if_not_exist()<CR><cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", default_opts) -- Go to Definition in Xsplit
-map('n', 'gKD', '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")})<cr>', default_opts) -- (Go) search Definition under current word
-map('n', 'gi', "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", default_opts) -- Go to Implementation
-map('n', 'gvi', "<cmd>lua vsplit_if_not_exist()<CR><cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", default_opts) -- Go to Implementation in Vsplit
-map('n', 'gxi', "<cmd>lua xsplit_if_not_exist()<CR><cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", default_opts) -- Go to Implementation in Xsplit
+map('n', 'gd', require'telescope.builtin'.lsp_definitions, default_opts) -- Go to Definition
+map('n', 'gvd', function() vsplit_if_not_exist() require'telescope.builtin'.lsp_definitions{} end, default_opts) -- Go to Definition in Vsplit
+map('n', 'gxd', function() xsplit_if_not_exist() require'telescope.builtin'.lsp_definitions{} end, default_opts) -- Go to Definition in Xsplit
+map('n', 'gKD', function() require("telescope.builtin").lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")}) end, default_opts) -- (Go) search Definition under current word
+map('n', 'gi', require'telescope.builtin'.lsp_implementations, default_opts) -- Go to Implementation
+map('n', 'gvi', function() vsplit_if_not_exist() require'telescope.builtin'.lsp_implementations{} end, default_opts) -- Go to Implementation in Vsplit
+map('n', 'gxi', function() xsplit_if_not_exist() require'telescope.builtin'.lsp_implementations{} end, default_opts) -- Go to Implementation in Xsplit
 
-map('n', 'gs', "<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>", default_opts) -- Go Symbols
-map('n', 'gS', "<cmd>lua require'telescope.builtin'.lsp_dynamic_workspace_symbols{}<CR>", default_opts) -- Go workspace (S)ymbols
-map('n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", default_opts) -- Go to References
-map('n', 'gp', "<cmd>lua require'telescope.builtin'.diagnostics{bufnr=0}<CR>", default_opts) -- Go to Problems
-map('n', 'gP', "<cmd>lua require'telescope.builtin'.diagnostics{}<CR>", default_opts) -- Go to workspace (P)roblems
+map('n', 'gs', require'telescope.builtin'.lsp_document_symbols, default_opts) -- Go Symbols
+map('n', 'gS', require'telescope.builtin'.lsp_dynamic_workspace_symbols, default_opts) -- Go workspace (S)ymbols
+map('n', 'gr', require'telescope.builtin'.lsp_references, default_opts) -- Go to References
+map('n', 'gp', function() require'telescope.builtin'.diagnostics{bufnr=0} end, default_opts) -- Go to Problems
+map('n', 'gP', require'telescope.builtin'.diagnostics, default_opts) -- Go to workspace (P)roblems
 
 -- illumante
-map('n', '<C-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', default_opts) -- jump to Next occurrence of var on cursor
-map('n', '<C-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', default_opts) -- jump to Previous occurrence of var on cursor
+map('n', '<C-n>', function() require"illuminate".next_reference{wrap=true} end, default_opts) -- jump to Next occurrence of var on cursor
+map('n', '<C-p>', function() require"illuminate".next_reference{reverse=true,wrap=true} end, default_opts) -- jump to Previous occurrence of var on cursor
 
 -- Lsp UI
 map('n', '<F2>', '<cmd>Lspsaga rename<cr>', default_opts) -- Rename symbols with F2
@@ -188,8 +188,8 @@ map('n', '<leader>d',  '<cmd>Neogen<cr>', default_opts) -- Document function
 map('n', '<leader>p', '<cmd>Lspsaga show_line_diagnostics<cr>', default_opts) -- show Problem
 map('n', ']p', '<cmd>Lspsaga diagnostic_jump_next<cr>', default_opts) -- next Problem
 map('n', '[p', '<cmd>Lspsaga diagnostic_jump_prev<cr>', default_opts) -- prev Problem
-map('n', '<C-u>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<cr>', {}) -- scroll Up in document
-map('n', '<C-d>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<cr>', {}) -- scroll Down in Document
+map('n', '<C-u>', function() require("lspsaga.action").smart_scroll_with_saga(-1) end, {}) -- scroll Up in document
+map('n', '<C-d>', function() require("lspsaga.action").smart_scroll_with_saga(1) end, {}) -- scroll Down in Document
 
 -----------------------------------
 --             GIT               --
@@ -233,6 +233,6 @@ map('n', '<M-K>', '<cmd>BufferMoveNext<CR>', default_opts) -- Alt+Shift+k grab t
 --         REFACTORING           --
 -----------------------------------
 map('v', '<leader>rf', '<Esc><cmd>lua require("telescope").extensions.refactoring.refactors()<CR>', default_opts) -- open Refactor menu
-map('n', '<leader>dp', '<cmd>lua require("refactoring").debug.printf({})<CR>', default_opts) -- add Debug Print
-map('v', '<leader>dp', '<cmd>lua require("refactoring").debug.print_var({})<CR>', default_opts) -- add Debug Print
-map('n', '<leader>dc', '<cmd>lua require("refactoring").debug.cleanup({})<CR>', default_opts) -- Clean Debug prints
+map('n', '<leader>dp', function() require("refactoring").debug.printf({}) end, default_opts) -- add Debug Print
+map('v', '<leader>dp', function() require("refactoring").debug.print_var({}) end, default_opts) -- add Debug Print
+map('n', '<leader>dc', function() require("refactoring").debug.cleanup({}) end, default_opts) -- Clean Debug prints
