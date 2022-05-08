@@ -44,6 +44,8 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
+* nvim - KD -> K + object movment (check out gitsigns binds)
+* tmux-resseruct - restore smux/rssh
 * tmux-window-name
 * nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)
 * nvim - autosuspend Lsp/nvim if not active

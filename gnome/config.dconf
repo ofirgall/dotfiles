@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=22
-launch-time=int64 1649921224
+launch-count=23
+launch-time=int64 1651385669
 show-details=true
 window-height=503
 window-width=645
@@ -19,7 +19,7 @@ window-width=540
 
 [com/ubuntu/update-notifier]
 no-show-notifications=true
-release-check-time=uint32 1649936817
+release-check-time=uint32 1651385648
 
 [com/uploadedlobster/peek]
 persist-window-geometry=(349, 183, 794, 593)
@@ -457,8 +457,8 @@ toggle-message-tray=@as []
 toggle-overview=@as []
 
 [org/gnome/software]
-check-timestamp=int64 1650375678
-online-updates-timestamp=int64 1642772103
+check-timestamp=int64 1650389717
+online-updates-timestamp=int64 1650385942
 
 [org/gnome/system/location]
 enabled=false
@@ -482,5 +482,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(359, 122)
+window-position=(2279, 122)
 window-size=(1203, 790)
