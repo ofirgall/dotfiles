@@ -44,8 +44,6 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
-* tmux-resseruct - restore smux/rssh
-* tmux-window-name
 * nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)
 * nvim - autosuspend Lsp/nvim if not active
 * nvim - on save session ignore more file like flog diffview fugitive and such
@@ -62,8 +60,6 @@ Done by dconf (gnome tweaks):
 
 ## TODO Takes time
 * tmux-go
-* tmux-browser
-* tmux-remote-notify
 * when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
 * backup non-dotfiles - tmux sessions, tasks of taskwarrior, nvim sessions
 * backup firefox extnesions & settings
