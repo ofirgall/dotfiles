@@ -64,11 +64,12 @@ if not vim.g.started_by_firenvim then
 	}
 
 	-- Load lualine late (buggy if not)
-	vim.api.nvim_create_autocmd('BufRead', {
+	late_lualine_setup_id = vim.api.nvim_create_autocmd({'BufEnter', 'InsertEnter'}, {
 		pattern = '*',
 		callback = function()
 			require('lualine').setup()
 			vim.opt.laststatus = 3
+			vim.api.nvim_del_autocmd(late_lualine_setup_id)
 		end
 	})
 else
