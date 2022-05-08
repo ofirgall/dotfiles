@@ -55,6 +55,7 @@ alias cbranch='git rev-parse --abbrev-ref HEAD | tr -d "\n" | toclip'
 alias tkill='tmux kill-session'
 alias trename='tmux rename-session'
 alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed "s/.*-- \([0-9]*\)/\1/" | sponge | { IFS= read -r x; { printf "%s\n" "$x"; cat; } | xargs taskopen }'
+alias cdn='cd $HOME/.local/share/nvim/site/pack/packer/start' # cd to neovim plugins
 function cg() { cd $(inner_cg.sh $@) } # cd to git repos
 
 # Git aliases, no git plugin
