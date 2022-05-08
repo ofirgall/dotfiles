@@ -12,6 +12,26 @@ if not vim.g.started_by_firenvim then
 	custom_modus.inactive.c.bg = '#141414'
 	custom_modus.inactive.c.fg = '#6b6a6a'
 
+	lsp_server_component = {
+		function()
+			local msg = '———'
+			local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+			local clients = vim.lsp.get_active_clients()
+			if next(clients) == nil then
+				return msg
+			end
+			for _, client in ipairs(clients) do
+				local filetypes = client.config.filetypes
+				if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+					return client.name
+				end
+			end
+			return msg
+		end,
+		icon = ' LSP:',
+		color = { fg = custom_modus.normal.b.fg },
+	}
+
 	require'lualine'.setup {
 		options = {
 			theme = custom_modus,
@@ -22,7 +42,7 @@ if not vim.g.started_by_firenvim then
 		sections = {
 			lualine_b = {'diff', 'diagnostics'},
 			lualine_c = {'filename', { gps.get_location, cond = gps.is_available }},
-			lualine_x = {},
+			lualine_x = {lsp_server_component},
 			lualine_y = {{git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available}},
 			lualine_z = {'filetype'},
 		},
