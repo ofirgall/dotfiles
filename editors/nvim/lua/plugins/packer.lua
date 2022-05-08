@@ -9,10 +9,9 @@
 local cmd = vim.cmd
 cmd [[packadd packer.nvim]]
 
+-- Configure 'lyokha/vim-xkbswitch' before loading
 cmd("let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'")
 cmd("let g:XkbSwitchEnabled = 1")
-
--- TODO: Fix dependencies
 
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim' -- packer can manage itself
@@ -21,44 +20,54 @@ return require('packer').startup(function()
 	use 'neovim/nvim-lspconfig'
 
 	-- Complete engine
-	use 'hrsh7th/cmp-nvim-lsp'
-	use 'hrsh7th/cmp-buffer'
-	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-cmdline'
-	use 'hrsh7th/nvim-cmp'
-	use 'dcampos/nvim-snippy'
-	use 'dcampos/cmp-snippy'
-	use 'f3fora/cmp-spell'
+	use {
+		'hrsh7th/nvim-cmp',
+		requires = {
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-cmdline',
+			'dcampos/nvim-snippy',
+			'dcampos/cmp-snippy',
+			'f3fora/cmp-spell',
+		}
+	}
 
 	use 'honza/vim-snippets' -- Default snippets
 	use 'tami5/lspsaga.nvim' -- Sweet ui for rename + code action and hover doc
-	use 'RRethy/vim-illuminate' -- Mark word on cursor
+	use 'RRethy/vim-illuminate' -- Mark word on cursor (ctrl+n/p to move across refs)
 	use 'ray-x/lsp_signature.nvim' -- Signature hint while typing
 	use 'onsails/lspkind-nvim' -- Adding sweet ui for kind (function/var/method)
 	use 'j-hui/fidget.nvim' -- Lsp Status in the bottom right corner
 
 	-- TreeSitter
 	use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate'
+	}
 	use 'nvim-treesitter/playground' -- TreeSitter helper to customize
 	use 'tanvirtin/monokai.nvim' -- Color theme (customized)
 	use {
 		'SmiteshP/nvim-gps', -- Shows context in status line
 		requires = 'nvim-treesitter/nvim-treesitter'
 	}
-	use({ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" }) -- Better auto-indent atm
+	use {
+		'yioneko/nvim-yati', -- Better auto-indent atm
+		requires = 'nvim-treesitter/nvim-treesitter'
+	}
 
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent line helper
 	use 'numToStr/Comment.nvim' -- Comments
 	use 'nvim-treesitter/nvim-treesitter-textobjects' -- Movements base on treesitter
 	use 'lewis6991/spellsitter.nvim' -- Enable spellchecking with treesitter
 
-
 	-- Telescope
-	use 'nvim-lua/plenary.nvim' -- Required by telescope and more
-	use 'nvim-telescope/telescope.nvim' -- Fuzzy finder with alot of integration
+	use {
+		'nvim-telescope/telescope.nvim', -- Fuzzy finder with alot of integration
+		requires = {
+			'nvim-lua/plenary.nvim'
+		}
+	}
 	use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- fzf integration for telescope
 	use 'nvim-telescope/telescope-live-grep-raw.nvim' -- Better live grep
 
@@ -66,7 +75,7 @@ return require('packer').startup(function()
 	use {
 		'nvim-lualine/lualine.nvim', -- Status line
 		requires = {
-			use 'kyazdani42/nvim-web-devicons' -- Web icons (more plugins using this)
+			'kyazdani42/nvim-web-devicons' -- Web icons (more plugins using this)
 		}
 	}
 
@@ -77,7 +86,7 @@ return require('packer').startup(function()
 	use 'f-person/git-blame.nvim' -- Git blame (status line)
 	use {
 		'tpope/vim-unimpaired', -- More ][ motions ]n [n for conflicts
-		event = "BufRead", -- Lazyload
+		event = 'BufRead', -- Lazyload
 	}
 	use 'whiteinge/diffconflicts' -- Better diffconflict viewer (use git mergetool with gitconfig)
 	use 'rbong/vim-flog' -- Show git history tree with :Flog (read doc for more)
@@ -87,18 +96,19 @@ return require('packer').startup(function()
 	use 'ggandor/lightspeed.nvim' -- Lightspeed motions (s, S)
 	use 'machakann/vim-sandwich' -- Sandwich text (sa action)
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
-	use 'jdhao/better-escape.vim' -- Escape insert mode fast (jk)
 	use 'windwp/nvim-autopairs' -- Closes (--' etc.
 	use 'ellisonleao/glow.nvim' -- Markdown preview
 	use 'ntpeters/vim-better-whitespace' -- Whitespace trailing
 	use 'Pocco81/AutoSave.nvim' -- Auto save
 	use 'romgrk/barbar.nvim' -- Tabline
-	use 'xolox/vim-session' -- Session Manager
-	use 'xolox/vim-misc' -- For vim-session
+	use {
+		'xolox/vim-session', -- Session Manager
+		requires = { 'xolox/vim-misc' }
+	}
 	use 'ethanholz/nvim-lastplace' -- Save last place
 	use 'mg979/vim-visual-multi' -- Multi cursors
-	use 'mizlan/iswap.nvim' -- Swap arguments, elements
-	use 'christoomey/vim-tmux-navigator' -- Navigate in panes integrated to vim
+	use 'mizlan/iswap.nvim' -- Swap arguments, elements (:ISwap)
+	use 'christoomey/vim-tmux-navigator' -- Navigate in panes integrated in vim and tmux
 	use 'rhysd/devdocs.vim' -- Open DevDocs from nvim
 	use 'lyokha/vim-xkbswitch' -- Switch to english for normal mode
 	use { 'michaelb/sniprun', run = 'bash ./install.sh'} -- Run snippets in your code
@@ -108,8 +118,8 @@ return require('packer').startup(function()
 	}
 	use 'nacro90/numb.nvim' -- Peek at line number before jump
 	use {
-		"danymat/neogen", -- Doc generator
-		requires = "nvim-treesitter/nvim-treesitter"
+		'danymat/neogen', -- Doc generator
+		requires = 'nvim-treesitter/nvim-treesitter'
 	}
 	use {
 		'kyazdani42/nvim-tree.lua', -- File Tree
@@ -117,7 +127,7 @@ return require('packer').startup(function()
 			'kyazdani42/nvim-web-devicons',
 		},
 	}
-	use "jbyuki/venn.nvim" -- Draw ascii boxes and arrows, start the mode with :Draw, exit with escape, HJKL for arrows, f for box (inside <C-v>)
+	use 'jbyuki/venn.nvim' -- Draw ascii boxes and arrows, start the mode with :Draw, exit with escape, HJKL for arrows, f for box (inside <C-v>)
 	use {
 		'glacambre/firenvim', -- NVIM in firefox
 		run = function() vim.fn['firenvim#install'](0) end
