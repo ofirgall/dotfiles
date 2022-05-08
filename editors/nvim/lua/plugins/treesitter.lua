@@ -2,8 +2,6 @@
 -- Tree Sitter
 -----------------------------------------------------------
 
--- https://github.com/
-
 require'nvim-treesitter.configs'.setup {
 	ensure_installed = "all",
 	sync_install = false,
@@ -16,7 +14,6 @@ require'nvim-treesitter.configs'.setup {
 		}
 	},
 	yati = { enable = true },
-	-- TODO: different file, smart loop for bindings
 	textobjects = {
 		move = {
 			enable = true,

@@ -6,7 +6,6 @@ set -s focus-events on
 set -g history-limit 5000
 
 # Terminal colors
-# TODO: maybe need to change to allatricty or something
 set-option -ga terminal-overrides ",*256col*:Tc"
 # Using xterm on local and screen on remote
 if-shell -b 'test -f "$HOME/.remote_indicator"' 'set -g default-terminal "screen-256color"' 'set -g default-terminal "xterm-256color"'

@@ -84,7 +84,7 @@ return require('packer').startup(function()
 
 	-- Misc
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
-	use 'ggandor/lightspeed.nvim' -- Lightspeed motions (s, S) -- TODO: need to learn more about that https://github.com/ggandor/lightspeed.nvim
+	use 'ggandor/lightspeed.nvim' -- Lightspeed motions (s, S)
 	use 'machakann/vim-sandwich' -- Sandwich text (sa action)
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
 	use 'jdhao/better-escape.vim' -- Escape insert mode fast (jk)

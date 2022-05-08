@@ -33,6 +33,13 @@ local cmd = vim.cmd
 ----------------------------------------------------------------------------------
 
 -----------------------------------
+--     KEYMAPS FROM PLUGINS      --
+-----------------------------------
+-- lightspeed.nvim: Default
+-- gitsigns.nvim: git.lua
+-- treesitter-textobjects: treesitter.lua
+
+-----------------------------------
 --           BUILTIN             --
 -----------------------------------
 map('n', '<M-r>', '<cmd>echo "Current File Reloaded!"<cr><cmd>luafile %<cr>', default_opts) -- Reload current luafile

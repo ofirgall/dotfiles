@@ -84,7 +84,7 @@ local palette = monokai.classic
 palette = palette
 highlighted_word_bg = '#343942'
 monokai.setup {
-    palette = {
+	palette = {
 		base2 = '#23241e',
 		base0 = '#23241e',
 		-- base3 = '#272a33',

@@ -6,7 +6,6 @@ command! Wrap execute ':windo set wrap'
 command! NoWrap execute ':windo set nowrap'
 ]])
 
--- TODO: when updating to nvim7 update the usage, move to keymaps somehow
 require('gitsigns').setup {
 	sign_priority = 10000,
 	on_attach = function(bufnr)
