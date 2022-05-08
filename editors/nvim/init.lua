@@ -24,5 +24,6 @@ vim.cmd([[
 source $HOME/.config/nvim/vim/file_util.vim
 source $HOME/.config/nvim/vim/utils.vim
 source $HOME/.config/nvim/vim/barbar.vim
+source $HOME/.config/nvim/vim/open_in_browser.vim
 ]])
 
