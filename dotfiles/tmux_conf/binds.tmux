@@ -3,7 +3,7 @@
 #################
 get_ssh_in_tty="ps -f -t '#{pane_tty}' | tail -n 1 | grep -o 'ssh.*'"
 is_fzf="ps -o state= -o comm= -t '#{pane_tty}' | grep -q 'S fzf'"
-is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+is_nvim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|nvim?x?)(diff)?$'"
 is_less="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '^:$'"
 is_nested_tmux="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep -E '.+'" # Matching my status line
 
@@ -41,15 +41,15 @@ bind -n M-W send-keys M-w
 
 ##### PANE NAVIGATION #####
 # Move around with alt+arrow/ctrl+hjkl
-bind -n M-Left if-shell "$is_vim" 'send-keys M-Left'  'select-pane -L'
-bind -n M-Down if-shell "$is_vim" 'send-keys M-Down'  'select-pane -D'
-bind -n M-Up if-shell "$is_vim" 'send-keys M-Up'  'select-pane -U'
-bind -n M-Right if-shell "$is_vim" 'send-keys M-Right'  'select-pane -R'
+bind -n M-Left if-shell "$is_nvim" 'send-keys M-Left'  'select-pane -L'
+bind -n M-Down if-shell "$is_nvim" 'send-keys M-Down'  'select-pane -D'
+bind -n M-Up if-shell "$is_nvim" 'send-keys M-Up'  'select-pane -U'
+bind -n M-Right if-shell "$is_nvim" 'send-keys M-Right'  'select-pane -R'
 
-bind -n C-h if-shell "$is_vim || $is_nested_tmux" 'send-keys C-h'  'select-pane -L'
-bind -n C-j if-shell "$is_vim || $is_nested_tmux || $is_fzf" 'send-keys C-j'  'select-pane -D'
-bind -n C-k if-shell "$is_vim || $is_nested_tmux || $is_fzf" 'send-keys C-k'  'select-pane -U'
-bind -n C-l if-shell "$is_vim || $is_nested_tmux" 'send-keys C-l'  'select-pane -R'
+bind -n C-h if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-h'  'select-pane -L'
+bind -n C-j if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-j'  'select-pane -D'
+bind -n C-k if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-k'  'select-pane -U'
+bind -n C-l if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-l'  'select-pane -R'
 
 # Override alt+up/down for copy-mode
 bind -T copy-mode-vi M-Up select-pane -U
@@ -69,7 +69,7 @@ bind -r -T prefix C-Up resize-pane -U 1
 bind -r -T prefix C-Right resize-pane -R 1
 bind -n M-z resize-pane -Z # Zoom/Unzoom pane
 # Zoom/Unzoom remote pane with ALT+SHIFT+z
-bind -n M-Z if-shell "$is_vim" 'send-keys M-Z' 'send-keys M-z'
+bind -n M-Z if-shell "$is_nvim" 'send-keys M-Z' 'send-keys M-z'
 bind -T prefix = select-layout even-horizontal # Equally sized panes (like vim)
 bind -T prefix + select-layout even-vertical # Equally sized panes (like vim)
 
@@ -195,7 +195,7 @@ bind -n M-s thumbs-pick
 
 ##### TMUX-COPYCAT #####
 # copy git file (after git status)
-bind -n M-d if-shell "$is_vim || $is_nested_tmux" 'send-keys M-d' "run-shell $HOME/.tmux/plugins/tmux-copycat/scripts/copycat_git_special.sh #{pane_current_path}"
+bind -n M-d if-shell "$is_nvim || $is_nested_tmux" 'send-keys M-d' "run-shell $HOME/.tmux/plugins/tmux-copycat/scripts/copycat_git_special.sh #{pane_current_path}"
 
 # copy url ALT+[
 bind -n M-[ run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(https?://|git@|git://|ssh://|ftp://|file:///)[[:alnum:]?=%/_.:,;~@!#$&()*+-]*'"
