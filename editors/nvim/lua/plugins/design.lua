@@ -83,10 +83,12 @@ local monokai = require('monokai')
 local palette = monokai.classic
 palette = palette
 highlighted_word_bg = '#343942'
+background = '#22221c'
+const_pink = '#e878d2'
 monokai.setup {
 	palette = {
-		base2 = '#23241e',
-		base0 = '#23241e',
+		base2 = background,
+		base0 = background,
 		-- base3 = '#272a33',
 		base3 = '#1d2026',
 		brown = '#d1ca86',
@@ -121,7 +123,7 @@ monokai.setup {
 			style = 'none',
 		},
 		TSFuncMacro = {
-			fg = '#e878d2',
+			fg = const_pink,
 			style = 'italic',
 		},
 		TSAttribute = {
@@ -129,7 +131,7 @@ monokai.setup {
 			style = 'none',
 		},
 		TSConstant = {
-			fg = '#e878d2',
+			fg = const_pink,
 			style = 'none',
 		},
 		TSComment = {
@@ -201,7 +203,32 @@ monokai.setup {
 			fg = palette.pink,
 			bg = palette.base3,
 			style = 'bold'
-		}
+		},
+		-- Complete menu
+		Pmenu = {
+			fg = palette.white,
+			bg = '#2c2c26',
+		},
+		PmenuSel = {
+			fg = palette.white,
+			bg = '#40403a',
+		},
+		PmenuSelBold = {
+			fg = palette.white,
+			bg = '#40403a',
+		},
+		PmenuThumb = {
+			fg = palette.purple,
+			bg = '#47473b',
+		},
+		-- hrsh7th/nvim-cmp
+		CmpItemAbbrMatch = {
+			fg = '#fc97e8',
+			-- fg = '#34d8f7',
+		},
+		CmpItemAbbrMatchFuzzy = {
+			fg = '#fc97e8',
+		},
 	}
 }
 
