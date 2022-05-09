@@ -199,6 +199,10 @@ monokai.setup {
 			bg = palette.base3,
 			style = 'none'
 		},
+		-- nvim-tree
+		NvimTreeNormal = {
+			bg = '#181816'
+		},
 		NvimTreeWindowPicker = {
 			fg = palette.pink,
 			bg = palette.base3,
