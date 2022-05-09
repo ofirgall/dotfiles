@@ -193,19 +193,6 @@ set -g @suspend_key 'M-Enter'
 # Tmux (like acejump or vimium) with ALT+s
 bind -n M-s thumbs-pick
 
-##### TMUX-COPYCAT #####
-# copy git file (after git status)
-bind -n M-d if-shell "$is_nvim || $is_nested_tmux" 'send-keys M-d' "run-shell $HOME/.tmux/plugins/tmux-copycat/scripts/copycat_git_special.sh #{pane_current_path}"
-
-# copy url ALT+[
-bind -n M-[ run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '(https?://|git@|git://|ssh://|ftp://|file:///)[[:alnum:]?=%/_.:,;~@!#$&()*+-]*'"
-
-# copy Hashes
-bind -n M-a run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '\\b([0-9a-f]{7,40}|[[:alnum:]]{52}|[0-9a-f]{64})\\b'"
-
-# copy ip ALT+p
-bind -n M-p run-shell "$HOME/.tmux/plugins/tmux-copycat/scripts/copycat_mode_start.sh '[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}'"
-
 ##### TMUX-OPEN #####
 # Open text in google search
 set -g @open-s 'https://www.google.com/search?q='
