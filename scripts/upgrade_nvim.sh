@@ -23,5 +23,4 @@ rm -rf neovim
 git clone https://github.com/neovim/neovim.git -b $COMMIT --depth=1 --single-branch
 cd neovim
 
-make CMAKE_BUILD_TYPE=Release -j
-make CMAKE_INSTALL_PREFIX=$HOME/.local/ install -j
+make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME/.local/ install -j
