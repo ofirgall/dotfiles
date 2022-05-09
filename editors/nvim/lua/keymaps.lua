@@ -98,11 +98,14 @@ map('n', '<leader>l', '<cmd>DevDocsUnderCursor<cr>', default_opts) -- Search cur
 map('n', 'gx', '<cmd>call OpenInBrowser()<CR>', default_opts)
 
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
+-- Add cursor down/up Alt+n/p (like ctrl+down/up in subl)
 cmd([[
 let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<M-d>'
-let g:VM_maps['Find Subword Under'] = '<M-d>']]
-)
+let g:VM_maps['Find Subword Under'] = '<M-d>'
+let g:VM_maps['Add Cursor Down'] = '<M-n>'
+let g:VM_maps['Add Cursor Up'] = '<M-p>'
+]])
 
 -- Adding <leader> prefix for sandwich to avoid conflicting with lightspeed
 vim.g.sandwich_no_default_key_mappings = 1
@@ -230,7 +233,6 @@ map('n', '<C-]>', '<cmd>diffget //3<CR>', default_opts) -- Apply right change
 -----------------------------------
 -- File Sidebar
 map('n', '<M-m>', '<cmd>NvimTreeToggle<cr>', default_opts)
-map('n', '<M-n>', '<cmd>NvimTreeFocus<cr>', default_opts)
 
 -- Tabline binds
 map('n', 'Q', '<cmd>BufferClose!<CR>', default_opts) -- shift+Quit to close current tab
