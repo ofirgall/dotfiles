@@ -18,7 +18,36 @@ neogen.setup {
 
 local cmp = require'cmp'
 local lspkind = require('lspkind')
-cmp.setup({
+
+local kind_icons = {
+	Text = "",
+	Method = "",
+	Function = "",
+	Constructor = "",
+	Field = "",
+	Variable = "",
+	Class = "ﴯ",
+	Interface = "",
+	Module = "",
+	Property = "ﰠ",
+	Unit = "",
+	Value = "",
+	Enum = "",
+	Keyword = "",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "",
+	Event = "",
+	Operator = "",
+	TypeParameter = ""
+}
+
+cmp_setup_dict = {
 	snippet = {
 		expand = function(args)
 			require('snippy').expand_snippet(args.body) -- For `snippy` users.
@@ -41,11 +70,9 @@ cmp.setup({
 	},
 	formatting = {
 		format = lspkind.cmp_format({
-			with_text = false,
 			maxwidth = 50,
-			before = function (entry, vim_item)
-				return vim_item
-			end
+			symbol_map = kind_icons,
+			mode = 'symbol'
 		})
 	},
 	sources = cmp.config.sources({
@@ -55,7 +82,9 @@ cmp.setup({
 	}, {
 		{ name = 'buffer' },
 	})
-})
+}
+
+cmp.setup(cmp_setup_dict)
 
 cmp.setup.cmdline('/', {
 	sources = {
