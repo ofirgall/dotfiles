@@ -83,8 +83,8 @@ map('n', '<M-Up>', '<cmd>TmuxNavigateUp<cr>', default_opts)
 map('n', '<M-Right>', '<cmd>TmuxNavigateRight<cr>', default_opts)
 
 -- Duplicate your view into split (MAX 2)
-map('n', 'gV', vsplit_if_not_exist, default_opts)
-map('n', 'gX', xsplit_if_not_exist, default_opts)
+map('n', 'gV', function() split_if_not_exist(true) end, default_opts)
+map('n', 'gX', function() split_if_not_exist(false) end, default_opts)
 
 -----------------------------------
 --          MISC PLUGINS         --
@@ -184,12 +184,12 @@ map('n', 'gD', vim.lsp.buf.declaration, default_opts) -- Go to Declaration
 
 -- Telescope LSP Binds
 map('n', 'gd', require'telescope.builtin'.lsp_definitions, default_opts) -- Go to Definition
-map('n', 'gvd', function() vsplit_if_not_exist() require'telescope.builtin'.lsp_definitions{} end, default_opts) -- Go to Definition in Vsplit
-map('n', 'gxd', function() xsplit_if_not_exist() require'telescope.builtin'.lsp_definitions{} end, default_opts) -- Go to Definition in Xsplit
+map('n', 'gvd', function() split_if_not_exist(true) require'telescope.builtin'.lsp_definitions{} end, default_opts) -- Go to Definition in Vsplit
+map('n', 'gxd', function() split_if_not_exist(false) require'telescope.builtin'.lsp_definitions{} end, default_opts) -- Go to Definition in Xsplit
 map('n', 'gKD', function() require("telescope.builtin").lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")}) end, default_opts) -- (Go) search Definition under current word
 map('n', 'gi', require'telescope.builtin'.lsp_implementations, default_opts) -- Go to Implementation
-map('n', 'gvi', function() vsplit_if_not_exist() require'telescope.builtin'.lsp_implementations{} end, default_opts) -- Go to Implementation in Vsplit
-map('n', 'gxi', function() xsplit_if_not_exist() require'telescope.builtin'.lsp_implementations{} end, default_opts) -- Go to Implementation in Xsplit
+map('n', 'gvi', function() split_if_not_exist(true) require'telescope.builtin'.lsp_implementations{} end, default_opts) -- Go to Implementation in Vsplit
+map('n', 'gxi', function() split_if_not_exist(false) require'telescope.builtin'.lsp_implementations{} end, default_opts) -- Go to Implementation in Xsplit
 
 map('n', 'gs', require'telescope.builtin'.lsp_document_symbols, default_opts) -- Go Symbols
 map('n', 'gS', require'telescope.builtin'.lsp_dynamic_workspace_symbols, default_opts) -- Go workspace (S)ymbols
