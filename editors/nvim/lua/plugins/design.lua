@@ -227,11 +227,11 @@ monokai.setup {
 		},
 		-- hrsh7th/nvim-cmp
 		CmpItemAbbrMatch = {
-			fg = '#fc97e8',
-			-- fg = '#34d8f7',
+			-- fg = '#fc97e8',
+			fg = '#34d8f7',
 		},
 		CmpItemAbbrMatchFuzzy = {
-			fg = '#fc97e8',
+			fg = '#34d8f7',
 		},
 	}
 }
