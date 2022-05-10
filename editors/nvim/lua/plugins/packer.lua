@@ -69,7 +69,7 @@ return require('packer').startup(function()
 		}
 	}
 	use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- fzf integration for telescope
-	use 'nvim-telescope/telescope-live-grep-raw.nvim' -- Better live grep
+	use 'nvim-telescope/telescope-rg.nvim' -- Better live grep
 
 	-- Status Line
 	use {
