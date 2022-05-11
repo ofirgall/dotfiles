@@ -151,6 +151,11 @@ return require('packer').startup(function()
 		ft = {'markdown'}
 	}
 
+	use {
+		'nvim-neorg/neorg', -- .norg plugin better orgmode
+		requires = 'nvim-lua/plenary.nvim'
+	}
+
 	-- Startup Time --
 	use 'dstein64/vim-startuptime' -- Profile startuptime
 	use 'lewis6991/impatient.nvim' -- Faster startuptime

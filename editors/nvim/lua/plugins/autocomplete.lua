@@ -79,6 +79,7 @@ cmp_setup_dict = {
 		{ name = 'nvim_lsp' },
 		{ name = 'snippy' },
 		{ name = 'spell' },
+		{ name = 'neorg' },
 	}, {
 		{ name = 'buffer' },
 	})

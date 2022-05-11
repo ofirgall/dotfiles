@@ -14,6 +14,7 @@ else
 	require('plugins/lsp-servers')
 	require('plugins/treesitter')
 	require('plugins/git')
+	require('plugins/neorg')
 end
 require('plugins/design')
 require('plugins/autocomplete')
