@@ -150,6 +150,7 @@ return require('packer').startup(function()
 		run = function() vim.fn['mkdp#util#install']() end,
 		ft = {'markdown'}
 	}
+	use 'rust-lang/rust.vim' -- Rust utils (RustFmt on save)
 
 	use {
 		'nvim-neorg/neorg', -- .norg plugin better orgmode
