@@ -59,6 +59,14 @@ require'lspconfig'.rust_analyzer.setup{
 			},
 		}
 	},
+	handlers = {
+		["textDocument/publishDiagnostics"] = vim.lsp.with(
+			vim.lsp.diagnostic.on_publish_diagnostics, {
+				-- Enable virtual_text for rust_analyzer
+				virtual_text = true
+			}
+		),
+	}
 }
 require'lspconfig'.bashls.setup{
 	on_attach = lsp_on_attach,
