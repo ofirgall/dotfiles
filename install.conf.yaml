@@ -45,3 +45,4 @@
     - [sh editors/vscode/install_extensions.sh, Installing vscode extensions]
     - [sh install_scripts/install_fusuma.sh, Installing Fusuma]
     - [sh install_scripts/install_taskwarrior.sh, Installing Task Warrior]
+    - [sh install_scripts/install_fccf.sh, Installing fccf]
