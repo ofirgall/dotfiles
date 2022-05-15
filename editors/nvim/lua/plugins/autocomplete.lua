@@ -1,10 +1,10 @@
 local snippy = require("snippy")
 snippy.setup({
 	mappings = {
-		is = {
-			["<Tab>"] = "expand_or_advance",
-			["<S-Tab>"] = "previous",
-		},
+		-- is = {
+		-- 	["<Tab>"] = "expand_or_advance",
+		-- 	["<S-Tab>"] = "previous",
+		-- },
 		nx = {
 			["<leader>x"] = "cut_text",
 		},
@@ -47,6 +47,11 @@ local kind_icons = {
 	TypeParameter = ""
 }
 
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 cmp_setup_dict = {
 	snippet = {
 		expand = function(args)
@@ -57,8 +62,6 @@ cmp_setup_dict = {
 		['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
 		['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
 		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-		['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
-		['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
 		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
 		['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
 		['<C-y>'] = cmp.config.disable,
@@ -67,6 +70,27 @@ cmp_setup_dict = {
 			c = cmp.mapping.close(),
 		}),
 		['<CR>'] = cmp.mapping.confirm({ select = true }),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif snippy.can_expand_or_advance() then
+				snippy.expand_or_advance()
+			elseif has_words_before() then
+				cmp.complete()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif snippy.can_jump(-1) then
+				snippy.previous()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
 	},
 	formatting = {
 		format = lspkind.cmp_format({
