@@ -32,9 +32,7 @@ export LC_ALL=en_US.UTF-8
 
 export EDITOR='vim'
 if type nvim &> /dev/null; then
-	alias vim='nvim'
-	alias vi='nvim'
-	alias rvim='/usr/bin/vim'
+	alias vi='vim'
 	export EDITOR='nvim'
 fi
 

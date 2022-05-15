@@ -10,3 +10,10 @@
 nmap Q <nop>
 autocmd InsertEnter * let @/=''
 nnoremap <CR> i<Escape>l
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap <C-o> <C-o>zz
+nnoremap <C-i> <C-i>zz
+vnoremap <Enter> y
+nnoremap <M-y> "+y
+vnoremap <M-y> "+y
