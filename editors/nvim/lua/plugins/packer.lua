@@ -70,6 +70,7 @@ return require('packer').startup(function()
 	}
 	use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- fzf integration for telescope
 	use 'nvim-telescope/telescope-rg.nvim' -- Better live grep
+	use 'nvim-telescope/telescope-ui-select.nvim' -- native nvim ui select with telescope
 
 	-- Status Line
 	use {
