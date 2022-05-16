@@ -107,6 +107,9 @@ zinit light peterhurford/up.zsh
 zinit ice wait lucid
 zinit light joshskidmore/zsh-fzf-history-search
 
+zinit ice wait lucid
+zinit light larkery/zsh-histdb
+
 # zsh-completions
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions

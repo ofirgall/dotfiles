@@ -19,3 +19,5 @@ fi
 
 # zinit
 sudo apt install -y subversion
+# histdb
+sudo apt install -y sqlite3
