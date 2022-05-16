@@ -6,10 +6,18 @@ require('nvim-autopairs').setup{
 	-- enable_moveright = false,
 }
 
-require('autosave').setup{
+local autosave = require('autosave')
+autosave.setup{
 	clean_command_line_interval = 1000,
 	on_off_commands = true,
 }
+
+autosave.hook_before_actual_saving = function ()
+	mode = vim.api.nvim_get_mode()
+	if mode.mode ~= 'n' then -- Don't save while we in insert/select mode (triggered with autopair and such)
+		vim.g.auto_save_abort = true
+	end
+end
 
 require'nvim-lastplace'.setup{
 }

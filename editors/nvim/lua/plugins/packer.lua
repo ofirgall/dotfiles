@@ -100,7 +100,7 @@ return require('packer').startup(function()
 	use 'windwp/nvim-autopairs' -- Closes (--' etc.
 	use 'ellisonleao/glow.nvim' -- Markdown preview
 	use 'ntpeters/vim-better-whitespace' -- Whitespace trailing
-	use 'Pocco81/AutoSave.nvim' -- Auto save
+	use 'ofirgall/AutoSave.nvim' -- Auto save
 	use 'romgrk/barbar.nvim' -- Tabline
 	use {
 		'xolox/vim-session', -- Session Manager
