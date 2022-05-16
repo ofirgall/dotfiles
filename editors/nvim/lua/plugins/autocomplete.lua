@@ -80,7 +80,7 @@ cmp_setup_dict = {
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
+		end, { "i", "c" }),
 
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
@@ -90,7 +90,7 @@ cmp_setup_dict = {
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
+		end, { "i", "c" }),
 	},
 	formatting = {
 		format = lspkind.cmp_format({
