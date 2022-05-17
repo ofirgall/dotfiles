@@ -39,6 +39,7 @@ return require('packer').startup(function()
 	use 'ray-x/lsp_signature.nvim' -- Signature hint while typing
 	use 'onsails/lspkind-nvim' -- Adding sweet ui for kind (function/var/method)
 	use 'j-hui/fidget.nvim' -- Lsp Status in the bottom right corner
+	use 'Mofiqul/trld.nvim' -- Show diagnostics in the top right corner
 
 	-- TreeSitter
 	use {

@@ -153,4 +153,13 @@ require('refactoring').setup{}
 vim.g.maximizer_default_mapping_key = '<M-Z>'
 
 -- rust.vim
-vim.g.rustfmt_autosave = 1
+-- vim.g.rustfmt_autosave = 1
+
+-- trld.nvim
+require('trld').setup{
+	auto_cmds = false,
+}
+vim.api.nvim_create_autocmd('CursorMoved', {
+	pattern = '*',
+	callback = function() TRLDHide() TRLDShow() end
+})
