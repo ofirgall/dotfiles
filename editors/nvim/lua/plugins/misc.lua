@@ -159,7 +159,12 @@ vim.g.maximizer_default_mapping_key = '<M-Z>'
 require('trld').setup{
 	auto_cmds = false,
 }
-vim.api.nvim_create_autocmd('CursorMoved', {
+vim.api.nvim_create_autocmd('CursorHold', {
 	pattern = '*',
-	callback = function() TRLDHide() TRLDShow() end
+	callback = function() TRLDShow() end
+})
+
+vim.api.nvim_create_autocmd({'CursorMoved', 'CursorMovedI', 'InsertEnter'}, {
+	pattern = '*',
+	callback = function() TRLDHide() end
 })

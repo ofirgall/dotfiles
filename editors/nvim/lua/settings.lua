@@ -14,6 +14,7 @@ opt.ignorecase = true
 opt.splitright = true
 opt.splitbelow = true
 opt.swapfile = false
+opt.updatetime = 100 -- mainly for trld.nvim which utilize CursorHold autocmd
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
