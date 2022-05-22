@@ -107,8 +107,10 @@ zinit light peterhurford/up.zsh
 zinit ice wait lucid
 zinit light joshskidmore/zsh-fzf-history-search
 
-zinit ice wait lucid
-zinit light larkery/zsh-histdb
+if [[ ${ZSH_VERSION:0:3} -ge 5.1 ]]; then
+	zinit ice wait lucid
+	zinit light larkery/zsh-histdb
+fi
 
 # zsh-completions
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
