@@ -158,6 +158,9 @@ return require('packer').startup(function()
 		'nvim-neorg/neorg', -- .norg plugin better orgmode
 		requires = 'nvim-lua/plenary.nvim'
 	}
+	use {
+		'ofirgall/tmuxjump.vim', -- jump to files that printed in another tmux panes
+	}
 
 	-- Startup Time --
 	use 'dstein64/vim-startuptime' -- Profile startuptime
