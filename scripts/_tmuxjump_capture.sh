@@ -15,19 +15,24 @@ function capture_panes() {
 		fi
 	done
 
-	# Prev window
-	for pane in $(tmux list-panes -F "#{pane_id}" -t -1); do
-		captured+="$(tmux capture-pane -pJS - -t $pane)"
-		captured+=$'\n'
-	done
+	window_count=$(tmux list-windows | wc -l)
+	if [ $window_count -gt 1 ]; then
+		# Prev window
+		for pane in $(tmux list-panes -F "#{pane_id}" -t -1); do
+			captured+="$(tmux capture-pane -pJS - -t $pane)"
+			captured+=$'\n'
+		done
+	fi
 
-	# Next window
-	for pane in $(tmux list-panes -F "#{pane_id}" -t +1); do
-		captured+="$(tmux capture-pane -pJS - -t $pane)"
-		captured+=$'\n'
-	done
+	if [ $window_count -gt 2 ]; then
+		# Next window
+		for pane in $(tmux list-panes -F "#{pane_id}" -t +1); do
+			captured+="$(tmux capture-pane -pJS - -t $pane)"
+			captured+=$'\n'
+		done
+	fi
 
-	echo "$captured" | grep -oiE "[\/]?([a-z\_\-]+\/)+[a-z.]+(.)*" | cut -d' ' -f1 | grep "$pattern"
+	echo "$captured" | grep -oiE "[\/]?([a-z\_\-]+\/)+[a-z.]+(.)*" | cut -d' ' -f1 | grep "$pattern" | grep ":[0-9]"
 }
 
 capture_panes
