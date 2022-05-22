@@ -26,7 +26,7 @@ bind -n M-e split-window -h -c "#{pane_current_path}"
 bind -n M-o split-window -v -c "#{pane_current_path}"
 # Splits windows in nested session ALT+SHIFT+e/o
 bind -n M-E send-keys M-e
-bind -n M-O send-keys M-O
+bind -n M-O send-keys M-o
 # Split windows and ssh to the remote that was connected
 bind -r -T prefix e run-shell "$get_ssh_in_tty | xargs tmux split-window -h"
 bind -r -T prefix o run-shell "$get_ssh_in_tty | xargs tmux split-window -v"
