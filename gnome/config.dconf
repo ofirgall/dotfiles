@@ -47,7 +47,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='keyboard'
+last-panel='display'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -309,7 +309,7 @@ search-filter-time-type='last_modified'
 search-view='list-view'
 
 [org/gnome/nautilus/window-state]
-initial-size=(890, 467)
+initial-size=(1056, 441)
 maximized=false
 sidebar-width=189
 
@@ -482,5 +482,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(2279, 122)
+window-position=(359, 122)
 window-size=(1203, 790)

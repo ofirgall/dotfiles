@@ -51,6 +51,7 @@ map('n', '<C-i>', '<C-i>zz', default_opts) -- Recenter after C-i
 map('v', '<Enter>', 'y', default_opts) -- yank with Enter in visual mode
 map('i', '<C-k>', '<C-O>o', default_opts) -- Insert new line in insert mode
 map('', '<M-y>', '"+y', default_opts) -- Start copy to os clipboard E.g: M-yy will copy current line to os
+map('', '<M-Y>', '"+y$', default_opts) -- Copy rest of the line to os clipboard like "Y" but for os clipboard
 map('n', '<M-q>', '<cmd>q<cr>', default_opts) -- alt+Quit to close split
 
 -- Remap space as leader key
