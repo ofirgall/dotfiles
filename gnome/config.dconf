@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=24
-launch-time=int64 1652418412
+launch-count=25
+launch-time=int64 1653290158
 show-details=true
 window-height=503
 window-width=645
@@ -47,7 +47,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='display'
+last-panel='bluetooth'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -231,7 +231,7 @@ skip-newer=false
 list-mode='as-folder'
 name-column-width=463
 show-path=false
-sort-method='size'
+sort-method='name'
 sort-type='descending'
 
 [org/gnome/file-roller/ui]
@@ -482,5 +482,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(359, 122)
+window-position=(0, 0)
 window-size=(1203, 790)

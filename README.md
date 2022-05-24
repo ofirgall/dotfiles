@@ -44,7 +44,6 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
-* get lines + files from tmux to nvim
 * alacritty + nvim + tmux - undercurls
 * nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)
 * nvim - autosuspend Lsp/nvim if not active
