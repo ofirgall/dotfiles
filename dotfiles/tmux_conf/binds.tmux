@@ -140,6 +140,9 @@ bind -n M-i if-shell "$is_nested_tmux" 'send-keys M-i' 'select-window -n'
 bind -n M-U if-shell "$is_nested_tmux" 'send-keys M-U' 'swap-window -d -t -1'
 bind -n M-I if-shell "$is_nested_tmux" 'send-keys M-I' 'swap-window -d -t +1'
 
+# Choose paste buffer
+bind -T prefix '"' choose-buffer
+
 bind -T copy-mode-vi M-PPage select-window -p
 bind -T copy-mode-vi M-NPage select-window -n
 bind -T copy-mode-vi M-h select-window -p
