@@ -35,6 +35,9 @@ if type nvim &> /dev/null; then
 	alias vi='vim'
 	export EDITOR='nvim'
 fi
+function ssh() {
+	TERM=xterm-256color /usr/bin/ssh $@ # Adjust TERM for ssh
+}
 
 # ---------------------------
 #		   Aliases

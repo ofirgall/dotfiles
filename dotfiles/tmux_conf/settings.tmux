@@ -5,10 +5,12 @@ set -s focus-events on
 
 set -g history-limit 5000
 
-# Terminal colors
-set-option -ga terminal-overrides ",*256col*:Tc"
-# Using xterm on local and screen on remote
-if-shell -b 'test -f "$HOME/.remote_indicator"' 'set -g default-terminal "screen-256color"' 'set -g default-terminal "xterm-256color"'
+# Terminal Settings
+# Using tmux-256color on local and screen-256color on remote
+if-shell -b 'test -f "$HOME/.remote_indicator"' 'set -g default-terminal "screen-256color"' 'set -g default-terminal "tmux-256color"'
+set -ga terminal-overrides ',*:RGB' # Enable 24 bit true colors
+set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm' # Enable undercurl
+set -sa terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m' # Enable undercurl colors
 
 # Faster status bar
 set-option -g status-interval 10
