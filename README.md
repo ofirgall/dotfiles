@@ -24,9 +24,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 
 Incase you are using windows terminal add `windows_terminal_binds.json` to your windows terminal
 
-### Install Fonts for Terminal Icons
-* [Normal](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete%20Mono.ttf)
-
 ### Install TamperMonkey scripts
 * Install [TamperMonkey](https://www.tampermonkey.net/)
 * View the the [tampermonkey scripts](tampermonkey) as raw

@@ -229,7 +229,7 @@ skip-newer=false
 
 [org/gnome/file-roller/listing]
 list-mode='as-folder'
-name-column-width=463
+name-column-width=654
 show-path=false
 sort-method='name'
 sort-type='descending'
