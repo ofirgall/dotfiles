@@ -22,7 +22,7 @@ mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
 
 if ! $IS_REMOTE; then
-	sudo apt install -y xclip gnome-tweak-tool alacritty
+	sudo apt install -y xclip gnome-tweak-tool
 fi
 
 sudo usermod -a -G dialout $USER
@@ -41,3 +41,8 @@ rustup update
 
 cargo install difftastic
 cargo install du-dust
+if ! $IS_REMOTE; then
+	# Install latest alacritty
+	cargo install --git=https://github.com/alacritty/alacritty
+	sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $HOME/.cargo/bin/alacritty 100
+fi
