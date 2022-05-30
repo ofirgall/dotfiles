@@ -34,7 +34,7 @@ b_bg="#504945"
 seg_a="#a89984 #282828"
 seg_b="$b_bg #ddc7a1"
 
-inactive_bg="#32302f"
+inactive_bg="#33332a"
 inactive_fg="#ddc7a1"
 active_bg=$b_bg
 active_fg="#ddc7a1"
