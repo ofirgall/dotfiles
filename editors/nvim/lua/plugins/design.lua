@@ -81,10 +81,11 @@ end
 
 local monokai = require('monokai')
 local palette = monokai.classic
-palette = palette
-highlighted_word_bg = '#343942'
-background = '#22221c'
-const_pink = '#e878d2'
+local highlighted_word_bg = '#343942'
+local background = '#22221c'
+local const_pink = '#e878d2'
+local tree_bg = '#181816'
+local tab_visible_fg = '#d6cb63'
 monokai.setup {
 	palette = {
 		base2 = background,
@@ -201,7 +202,7 @@ monokai.setup {
 		},
 		-- nvim-tree
 		NvimTreeNormal = {
-			bg = '#181816'
+			bg = tree_bg
 		},
 		NvimTreeWindowPicker = {
 			fg = palette.pink,
@@ -232,6 +233,56 @@ monokai.setup {
 		},
 		CmpItemAbbrMatchFuzzy = {
 			fg = '#34d8f7',
+		},
+		-- romgrk/barbar.nvim
+		BufferCurrent = {
+			fg = palette.white
+		},
+		BufferVisible = {
+			fg = tab_visible_fg,
+			bg = tree_bg
+		},
+		BufferVisibleIndex = {
+			fg = tab_visible_fg,
+			bg = tree_bg
+		},
+		BufferVisibleMod = {
+			fg = tab_visible_fg,
+			bg = tree_bg
+		},
+		BufferVisibleSign = {
+			fg = tab_visible_fg,
+			bg = tree_bg
+		},
+		BufferVisibleTarget = {
+			fg = tab_visible_fg,
+			bg = tree_bg
+		},
+		BufferInActive = {
+			fg = palette.grey,
+			bg = tree_bg
+		},
+		BufferInactiveIndex = {
+			fg = palette.grey,
+			bg = tree_bg
+		},
+		BufferInactiveMod = {
+			fg = palette.grey,
+			bg = tree_bg
+		},
+		BufferInactiveSign = {
+			fg = palette.grey,
+			bg = tree_bg
+		},
+		BufferInactiveTarget = {
+			fg = palette.grey,
+			bg = tree_bg
+		},
+		BufferOffset = {
+			bg = tree_bg
+		},
+		BufferTabpageFill = {
+			bg = tree_bg
 		},
 	}
 }
