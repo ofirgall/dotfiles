@@ -86,6 +86,7 @@ local background = '#22221c'
 local const_pink = '#e878d2'
 local tree_bg = '#181816'
 local tab_visible_fg = '#d6cb63'
+local cursor_line_bg = '#2e2e27'
 monokai.setup {
 	palette = {
 		base2 = background,
@@ -157,11 +158,11 @@ monokai.setup {
 			fg = palette.orange,
 		},
 		CursorLineNr = {
-			bg = palette.base3,
+			bg = cursor_line_bg,
 			fg = palette.yellow,
 		},
 		CursorLine = {
-			bg = palette.base3,
+			bg = cursor_line_bg
 		},
 		TSLabel = {
 			fg = palette.white,
