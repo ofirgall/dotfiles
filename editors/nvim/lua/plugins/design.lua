@@ -1,4 +1,7 @@
 
+local monokai = require('monokai')
+local palette = monokai.classic
+
 vim.g.gitblame_display_virtual_text = 0
 vim.g.gitblame_message_template = '<author> • <date>'
 vim.g.gitblame_date_format = '%d/%m/%Y'
@@ -7,10 +10,60 @@ if not vim.g.started_by_firenvim then
 	local gps = require("nvim-gps")
 	local git_blame = require("gitblame")
 
-	local custom_modus = require'lualine.themes.modus-vivendi'
+	-- customized modus-vivendi
+	local colors = {
+		black      = '#000000',
+		white      = palette.white,
+		red        = '#ffa0a0',
+		green      = '#88cf88',
+		blue       = '#92baff',
+		magenta    = '#feacd0',
+		cyan       = '#a0bfdf',
+		brown      = '#33332a',
+		lightbrown = '#404036',
+		darkgray   = '#202020',
+		lightgray  = '#434343',
+		orange     = palette.orange
+	}
 
-	custom_modus.inactive.c.bg = '#141414'
-	custom_modus.inactive.c.fg = '#6b6a6a'
+	local lualine_theme = {
+		normal = {
+			a = { bg = colors.orange, fg = colors.lightgray, gui = 'bold' },
+			b = { bg = colors.lightbrown, fg = colors.orange },
+			c = { bg = colors.brown, fg = colors.white },
+			x = { bg = colors.brown, fg = colors.orange },
+		},
+		insert = {
+			a = { bg = colors.cyan, fg = colors.lightgray, gui = 'bold' },
+			b = { bg = colors.lightbrown, fg = colors.cyan },
+			c = { bg = colors.brown, fg = colors.white },
+			x = { bg = colors.brown, fg = colors.cyan },
+		},
+		visual = {
+			a = { bg = colors.magenta, fg = colors.lightgray, gui = 'bold' },
+			b = { bg = colors.lightbrown, fg = colors.magenta },
+			c = { bg = colors.brown, fg = colors.white },
+			x = { bg = colors.lightbrown, fg = colors.magenta },
+		},
+		replace = {
+			a = { bg = colors.red, fg = colors.lightgray, gui = 'bold' },
+			b = { bg = colors.lightbrown, fg = colors.red },
+			c = { bg = colors.brown, fg = colors.white },
+			x = { bg = colors.lightbrown, fg = colors.red },
+		},
+		command = {
+			a = { bg = colors.green, fg = colors.lightgray, gui = 'bold' },
+			b = { bg = colors.lightbrown, fg = colors.green },
+			c = { bg = colors.brown, fg = colors.white },
+			x = { bg = colors.lightbrown, fg = colors.green },
+		},
+		inactive = {
+			a = { bg = colors.darkgray, fg = colors.lightgray, gui = 'bold' },
+			b = { bg = colors.darkgray, fg = colors.lightgray },
+			c = { bg = colors.darkgray, fg = colors.lightgray },
+			x = { bg = colors.darkgray, fg = colors.lightgray },
+		},
+	}
 
 	lsp_server_component = {
 		function()
@@ -29,12 +82,11 @@ if not vim.g.started_by_firenvim then
 			return msg
 		end,
 		icon = ' LSP:',
-		color = { fg = custom_modus.normal.b.fg },
 	}
 
 	require'lualine'.setup {
 		options = {
-			theme = custom_modus,
+			theme = lualine_theme,
 			icons_enabled = true,
 			path = 1,
 			always_divide_middle = false,
@@ -45,14 +97,6 @@ if not vim.g.started_by_firenvim then
 			lualine_x = {lsp_server_component},
 			lualine_y = {{git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available}},
 			lualine_z = {'filetype'},
-		},
-		inactive_sections = {
-			lualine_a = {},
-			lualine_b = {},
-			lualine_c = {'filename', { gps.get_location, cond = gps.is_available }},
-			lualine_x = {'filetype'},
-			lualine_y = {},
-			lualine_z = {}
 		},
 	}
 
@@ -79,8 +123,6 @@ else
 	}
 end
 
-local monokai = require('monokai')
-local palette = monokai.classic
 local highlighted_word_bg = '#343942'
 local background = '#22221c'
 local const_pink = '#e878d2'
