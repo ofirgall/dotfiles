@@ -127,7 +127,7 @@ local highlighted_word_bg = '#343942'
 local background = '#22221c'
 local const_pink = '#e878d2'
 local tree_bg = '#181816'
-local tab_visible_fg = '#d6cb63'
+local tab_visible_fg = '#b3ab60'
 local cursor_line_bg = '#2e2e27'
 monokai.setup {
 	palette = {
