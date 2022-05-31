@@ -5,6 +5,7 @@ set -e # Exit if fail
 sudo apt install -y libclang-dev llvm
 
 cd ~/.local/share
+rm -rf fccf
 git clone https://github.com/p-ranav/fccf
 cd fccf
 

@@ -42,7 +42,7 @@ download_repo()
 
 build_taskwarrior()
 {
-	sudo apt-get install -y libgnutls28-dev
+	sudo apt-get install -y libgnutls28-dev uuid-dev
 	tar -xf task-*
 	cd task-*/
 	cmake -DCMAKE_BUILD_TYPE=release . && make -j && sudo make install

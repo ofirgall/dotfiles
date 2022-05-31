@@ -18,6 +18,6 @@ else
 fi
 
 # zinit
-sudo apt install -y subversion
+sudo apt install -y subversion jq
 # histdb
 sudo apt install -y sqlite3

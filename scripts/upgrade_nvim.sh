@@ -8,9 +8,12 @@ else
 	COMMIT=nightly
 fi
 
-echo "==== Current NVIM ===="
-nvim --version
-echo "======================"
+if command -v nvim &> /dev/null
+then
+	echo "==== Current NVIM ===="
+	nvim --version
+	echo "======================"
+fi
 
 echo "COMMIT: $COMMIT"
 NVIM_PATH=$HOME/.local/nvim-nightly
