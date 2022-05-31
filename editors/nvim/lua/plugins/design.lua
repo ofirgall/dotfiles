@@ -23,7 +23,7 @@ if not vim.g.started_by_firenvim then
 		lightbrown = '#404036',
 		darkgray   = '#202020',
 		lightgray  = '#434343',
-		orange     = palette.orange
+		orange     = '#de933c'
 	}
 
 	local lualine_theme = {
