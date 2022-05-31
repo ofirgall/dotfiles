@@ -222,6 +222,9 @@ monokai.setup {
 			bg = highlighted_word_bg,
 			style = 'underline',
 		},
+		VertSplit = {
+			fg = '#948f5a'
+		},
 		-- Multi Cursor Design
 		TabLineSel = {
 			fg = '#78b6e8',
