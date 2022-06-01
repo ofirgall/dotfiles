@@ -59,6 +59,7 @@ alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed
 alias cdn='cd $HOME/.local/share/nvim/site/pack/packer/start' # cd to neovim plugins
 function ngh() {nvim -c ":Flog -- $@" .} # git history with nvim and Flog
 function cg() { cd $(inner_cg.sh $@) } # cd to git repos
+function p() { python -c "print($@)"} # run python easily
 
 # Git aliases, no git plugin
 alias g='git'
