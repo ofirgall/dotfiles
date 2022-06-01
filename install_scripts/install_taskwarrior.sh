@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -e # Exit if fail
+
 echo 'Installing Task Warrior'
 
 #.taskrc

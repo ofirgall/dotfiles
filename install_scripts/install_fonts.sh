@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -e # Exit if fail
+
 mkdir -p ~/.local/share/fonts
 cd ~/.local/share/fonts
 
