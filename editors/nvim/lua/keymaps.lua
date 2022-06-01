@@ -187,7 +187,14 @@ map('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, defaul
 map('n', 'gD', vim.lsp.buf.declaration, default_opts) -- Go to Declaration
 
 -- Telescope LSP Binds
-map('n', 'gd', require'telescope.builtin'.lsp_definitions, default_opts) -- Go to Definition
+map('n', 'gd', function()
+	if vim.api.nvim_buf_get_option(0, 'filetype') == 'man' then
+		vim.api.nvim_command(':Man ' .. vim.fn.expand('<cword>'))
+	else
+		require'telescope.builtin'.lsp_definitions()
+	end
+	end, default_opts) -- Go to Definition
+
 map('n', 'gvd', function() split_if_not_exist(true) require'telescope.builtin'.lsp_definitions{} end, default_opts) -- Go to Definition in Vsplit
 map('n', 'gxd', function() split_if_not_exist(false) require'telescope.builtin'.lsp_definitions{} end, default_opts) -- Go to Definition in Xsplit
 map('n', 'gKD', function() require("telescope.builtin").lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")}) end, default_opts) -- (Go) search Definition under current word

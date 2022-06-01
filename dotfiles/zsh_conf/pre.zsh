@@ -34,6 +34,10 @@ export EDITOR='vim'
 if type nvim &> /dev/null; then
 	alias vi='vim'
 	export EDITOR='nvim'
+
+	# nvim as man viewer
+	export MANPAGER='nvim +Man! .'
+	export MANWIDTH=999
 fi
 function ssh() {
 	TERM=xterm-256color /usr/bin/ssh $@ # Adjust TERM for ssh

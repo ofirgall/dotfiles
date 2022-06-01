@@ -67,9 +67,6 @@ zinit snippet https://raw.githubusercontent.com/ofirgall/dotfiles/master/dotfile
 source $HOME/.zsh_conf/plugin_settings.zsh
 ## oh-my-zsh plugins ##
 zinit ice wait lucid
-zinit snippet OMZP::colored-man-pages
-
-zinit ice wait lucid
 zinit snippet OMZP::pip
 
 zinit ice wait lucid
