@@ -57,7 +57,7 @@ require'diffview'.setup{
 			["<Escape>"] = cb('close'),
 			["gf"] = cb("goto_file_edit"),
 			["<M-n>"] = cb("focus_files"),
-			["<M-m>"] = cb("toggle_files"),
+
 		},
 		file_history_panel = {
 			["q"] = cb('close'),
@@ -74,3 +74,38 @@ vim.g.flog_default_arguments = {
 	max_count = 512,
 	date = 'short',
 }
+
+-- git-messenger.vim
+vim.g.git_messenger_floating_win_opts = { border = 'single' }
+vim.g.git_messenger_popup_content_margins = false
+vim.g.git_messenger_always_into_popup = true
+vim.g.git_messenger_no_default_mappings = true
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = 'gitmessengerpopup',
+	callback = function()
+		vim.call('fugitive#MapJumps') -- map jumps to hunks/changes like fugitive
+		-- remove overlapping maps from fugitive
+		vim.keymap.del('n', 'dq', { buffer = 0 })
+		vim.keymap.del('n', 'r<Space>', {buffer = 0})
+		vim.keymap.del('n', 'r<CR>', {buffer = 0})
+		vim.keymap.del('n', 'ri', {buffer = 0})
+		vim.keymap.del('n', 'rf', {buffer = 0})
+		vim.keymap.del('n', 'ru', {buffer = 0})
+		vim.keymap.del('n', 'rp', {buffer = 0})
+		vim.keymap.del('n', 'rw', {buffer = 0})
+		vim.keymap.del('n', 'rm', {buffer = 0})
+		vim.keymap.del('n', 'rd', {buffer = 0})
+		vim.keymap.del('n', 'rk', {buffer = 0})
+		vim.keymap.del('n', 'rx', {buffer = 0})
+		vim.keymap.del('n', 'rr', {buffer = 0})
+		vim.keymap.del('n', 'rs', {buffer = 0})
+		vim.keymap.del('n', 're', {buffer = 0})
+		vim.keymap.del('n', 'ra', {buffer = 0})
+		vim.keymap.del('n', 'r?', {buffer = 0})
+
+		-- add overridden maps
+		vim.keymap.set('n', 'o', '<cmd>call b:__gitmessenger_popup.opts.mappings["o"][0]()<CR>', { buffer = 0 })
+		vim.keymap.set('n', 'i', '<cmd>call b:__gitmessenger_popup.opts.mappings["O"][0]()<CR>', { buffer = 0 })
+	end
+})

@@ -92,6 +92,7 @@ return require('packer').startup(function()
 	}
 	use 'whiteinge/diffconflicts' -- Better diffconflict viewer (use git mergetool with gitconfig)
 	use 'rbong/vim-flog' -- Show git history tree with :Flog (read doc for more)
+	use 'rhysd/git-messenger.vim' -- Git blame that allows to explore older commits
 
 	-- Misc
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
@@ -159,7 +160,7 @@ return require('packer').startup(function()
 		requires = 'nvim-lua/plenary.nvim'
 	}
 	use {
-		'ofirgall/tmuxjump.vim', -- jump to files that printed in another tmux panes
+		'shivamashtikar/tmuxjump.vim', -- jump to files that printed in another tmux panes
 	}
 
 	-- Startup Time --

@@ -233,6 +233,7 @@ map('n', '<leader>gc', '<cmd>Telescope git_branches<CR>', default_opts) -- Git c
 map('n', '<leader>gh', '<cmd>DiffviewFileHistory<CR>', default_opts) -- Git History
 map('n', '<leader>gH', '<cmd>DiffviewFileHistory .<CR>', default_opts) -- Git workspace History
 map('n', '<leader>gt', '<cmd>Flogsplit<CR>', default_opts) -- Git Tree
+map('n', '<leader>hh', '<cmd>GitMessenger<CR>')
 
 -- apply patches in 3 way split diff aka :SolveConflict
 map('n', '<C-[>', '<cmd>diffget //2<CR>', default_opts) -- Apply left change
