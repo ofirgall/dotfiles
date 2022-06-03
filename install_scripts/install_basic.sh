@@ -6,6 +6,7 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 
 python3 -m pip install -r scripts/requirements.txt --user
+python3 -m pip install brotab
 
 if $NO_SUDO; then
 	# Install fzf
