@@ -1,10 +1,5 @@
 # ---------------------------
-#		Load .zsh_pre
-# ---------------------------
-source $HOME/.zsh_conf/pre.zsh
-
-# ---------------------------
-# Install and load zinit
+# Install and load zinit (must be in .zshrc, zinit adding it if it doesn't)
 # ---------------------------
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -21,122 +16,20 @@ autoload -Uz _zinit
 # ---------------------------
 
 # ---------------------------
-# Basic ZSH Settings from oh-my-zsh
+# Source the actual .zshrc files
 # ---------------------------
+source $HOME/.zsh_conf/env.zsh # load env.zsh first
+source $HOME/.zsh_conf/aliases.zsh
+source $HOME/.zsh_conf/settings.zsh
+source $HOME/.zsh_conf/design.zsh
+source $HOME/.zsh_conf/plugins.zsh
 
-# Functions cant be turbo and must be first
-zinit snippet OMZL::functions.zsh
-# Can't be turbo for history plugins (autosuggestions)
-zinit snippet OMZL::history.zsh
-
-# Can't turbo git and theme for prompt
-zinit snippet OMZL::git.zsh
-zinit snippet OMZL::theme-and-appearance.zsh
-
-# Can't turbo key-bindings, conflicting with vim-mode
-zinit snippet OMZL::key-bindings.zsh
-
-zinit ice wait lucid
-zinit snippet OMZL::completion.zsh
-
-zinit ice wait lucid
-zinit snippet OMZL::correction.zsh
-
-# Not lucid to override alias later
-zinit snippet OMZL::directories.zsh
-# Override ll of oh-my-zsh
-alias ll='ls -alF'
-
-zinit ice wait lucid
-zinit snippet OMZL::grep.zsh
-
-zinit ice wait lucid
-zinit snippet OMZL::misc.zsh
-
-
-# ---------------------------
-#		Prompt & Theme
-# ---------------------------
-ZSH_THEME="ofir"
-setopt promptsubst
-zinit snippet https://raw.githubusercontent.com/ofirgall/dotfiles/master/dotfiles/zsh_conf/ofir.zsh-theme
-
-# ---------------------------
-#		  Plugins
-# ---------------------------
-source $HOME/.zsh_conf/plugin_settings.zsh
-## oh-my-zsh plugins ##
-zinit ice wait lucid
-zinit snippet OMZP::pip
-
-zinit ice wait lucid
-zinit snippet OMZP::sudo
-
-zinit ice wait lucid
-zinit snippet OMZP::tmux
-
-zinit ice wait lucid
-zinit snippet OMZP::rust
-
-zinit ice svn
-zinit snippet OMZP::gitfast
-
-## Custom Plugins ##
-if [[ ${ZSH_VERSION:0:3} -ge 5.1 ]]; then
-	zinit ice depth=1
-	zinit light jeffreytse/zsh-vi-mode
-fi
-
-zinit ice wait lucid atload'_zsh_autosuggest_start; bindkey "^ " autosuggest-accept'
-zinit light zsh-users/zsh-autosuggestions
-
-if [[ ${ZSH_VERSION:0:3} -ge 5.8 ]]; then
-	zinit ice wait lucid
-	zinit light Aloxaf/fzf-tab
-fi
-
-zinit ice wait lucid
-zinit light paulirish/git-open
-
-zinit ice wait lucid
-zinit light peterhurford/up.zsh
-
-zinit ice wait lucid
-zinit light joshskidmore/zsh-fzf-history-search
-
-if [[ ${ZSH_VERSION:0:3} -ge 5.1 ]]; then
-	zinit ice wait lucid
-	zinit light larkery/zsh-histdb
-fi
-
-# zsh-completions
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
-    zsh-users/zsh-completions
-
-zinit ice wait lucid
-zinit light popstas/zsh-command-time
-
-zinit ice wait lucid
-zinit light hlissner/zsh-autopair
-
-# if ! $IS_REMOTE; then
-# 	zinit ice wait lucid
-# 	zinit light MichaelAquilina/zsh-auto-notify
-# fi
-
-# ---------------------------
-#		  Binaries
-# ---------------------------
-zinit ice wait lucid
-zinit pack"binary" for fzf
-# TODO: rg & fd and such
-
-# ---------------------------
-#		Load .zsh_post
-# ---------------------------
-source $HOME/.zsh_conf/post.zsh
-
-# Typer
+# Typer (must be in .zshrc, typer adding it if it doesn't)
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
+
+# ---------------------------
+# Source post_init.zsh at the end
+# ---------------------------
+source $HOME/.zsh_conf/post_init.zsh

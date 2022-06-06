@@ -41,6 +41,7 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
+* nvim - title generator
 * tmux - Neo-Oli/tmux-text-macros integrate tmux fzf menu
 * tmux - Neo-Oli/tmux-text-macros better syntax for custom-macros
 * nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)

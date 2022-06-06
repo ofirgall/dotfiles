@@ -7,10 +7,10 @@ ZSH_TMUX_AUTOSTART_ONCE=false
 ZSH_TMUX_AUTOQUIT=false
 ZSH_TMUX_FIXTERM=false
 
+# ---------------------------
+#		  FZF Tab
+# ---------------------------
 if [[ ${ZSH_VERSION:0:3} -ge 5.8 ]]; then
-	# ---------------------------
-	#		  FZF Tab
-	# ---------------------------
 	# disable sort when completing `git checkout`
 	zstyle ':completion:*:git-checkout:*' sort false
 	# set descriptions format to enable group support
