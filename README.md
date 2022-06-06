@@ -42,6 +42,9 @@ Done by dconf (gnome tweaks):
 
 ## TODO
 * nvim - title generator
+* nvim - close inactive `man` buffers
+* nvim - gd in :help should jump to other :help <cword>
+* nvim - git-messanger support multiple lines (maybe like gh)
 * tmux - Neo-Oli/tmux-text-macros integrate tmux fzf menu
 * tmux - Neo-Oli/tmux-text-macros better syntax for custom-macros
 * nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)
