@@ -166,6 +166,10 @@ return require('packer').startup(function()
 		'nvim-neorg/neorg', -- .norg plugin better orgmode
 		requires = 'nvim-lua/plenary.nvim'
 	}
+	use {
+		'folke/todo-comments.nvim', -- review todo in the quickfix list with :Todo..
+		requires = 'nvim-lua/plenary.nvim',
+	}
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'

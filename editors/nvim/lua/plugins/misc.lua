@@ -172,3 +172,20 @@ vim.api.nvim_create_autocmd({'CursorMoved', 'CursorMovedI', 'InsertEnter'}, {
 -- tmuxjump.vim
 vim.g.tmuxjump_telescope = true
 vim.g.tmuxjump_custom_capture = "~/dotfiles_scripts/_tmuxjump_capture.sh"
+
+-- todo-comments.nvim
+require('todo-comments').setup{
+	signs = false,
+	highlight = {
+		before = '',
+		keyword = 'fg',
+		after = ''
+	},
+	colors = {
+		error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
+		warning = { "TSDanger", "DiagnosticWarning", "WarningMsg", "#FBBF24" },
+		info = { "TSWarning", "DiagnosticInfo", "#2563EB" },
+		hint = { "TSFuncBuiltin", "DiagnosticHint", "#10B981" },
+		default = { "TSNumber", "Identifier", "#7C3AED" },
+	},
+}
