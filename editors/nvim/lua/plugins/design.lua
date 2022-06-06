@@ -182,11 +182,6 @@ monokai.setup {
 			fg = palette.base6,
 			style = 'none',
 		},
-		-- For yaml fields, changes field of python and cpp too :(
-		-- TSField = {
-		-- 	fg = palette.pink,
-		-- 	style = 'none',
-		-- },
 		Whitespace = { -- Indent lines
 			fg = palette.base4,
 			style = 'none',
@@ -225,6 +220,10 @@ monokai.setup {
 		VertSplit = {
 			fg = '#948f5a'
 		},
+		SpellBad = {
+			style = 'undercurl'
+		},
+		------- PLUGINS -------
 		-- Multi Cursor Design
 		TabLineSel = {
 			fg = '#78b6e8',
