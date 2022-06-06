@@ -193,12 +193,12 @@ bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-line \; run-shell "
 set -g @suspend_key 'M-Enter'
 
 ##### TMUX-THUMBS #####
-# Copy fast with prefix+space
-set -g @thumbs-key space
+# Copy fast with Alt+s
+bind -n M-s thumbs-pick
 
 ##### TMUX-JUMP #####
-# Tmux (like acejump or vimium) with ALT+s
-bind -n M-s run-shell -b /home/ogal/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
+# Tmux (like acejump or vimium) with ALT+shift+s
+bind -n M-S run-shell -b /home/ogal/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
 
 ##### TMUX-OPEN #####
 # Open text in google search
