@@ -213,3 +213,6 @@ set -g @fuzzback-bind f
 ##### TMUX_CAPTURE_LAST_COMMAND_OUTPUT #####
 set -g @command-capture-key l
 
+##### tmux-text-macros #####
+# open macros menu with Alt+shift+m
+bind -n M-M run-shell "tmux split-window -v  \"PANE='#{pane_id}' /home/ogal/.tmux/plugins/tmux-text-macros/tmux-text-macros.tmux -r\""
