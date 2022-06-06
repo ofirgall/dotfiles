@@ -19,7 +19,7 @@ return require('packer').startup(function()
 	-------- LSP --------
 	use 'neovim/nvim-lspconfig'
 
-	-- Complete engine
+	-- Complete engine --
 	use {
 		'hrsh7th/nvim-cmp',
 		requires = {
@@ -41,7 +41,9 @@ return require('packer').startup(function()
 	use 'j-hui/fidget.nvim' -- Lsp Status in the bottom right corner
 	use 'Mofiqul/trld.nvim' -- Show diagnostics in the top right corner
 
-	-- TreeSitter
+	-------- END OF LSP --------
+
+	-- TreeSitter --
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
@@ -62,7 +64,7 @@ return require('packer').startup(function()
 	use 'nvim-treesitter/nvim-treesitter-textobjects' -- Movements base on treesitter
 	use 'lewis6991/spellsitter.nvim' -- Enable spellchecking with treesitter
 
-	-- Telescope
+	-- Telescope --
 	use {
 		'nvim-telescope/telescope.nvim', -- Fuzzy finder with alot of integration
 		requires = {
@@ -73,7 +75,7 @@ return require('packer').startup(function()
 	use 'nvim-telescope/telescope-rg.nvim' -- Better live grep
 	use 'nvim-telescope/telescope-ui-select.nvim' -- native nvim ui select with telescope
 
-	-- Status Line
+	-- Status Line --
 	use {
 		'nvim-lualine/lualine.nvim', -- Status line
 		requires = {
@@ -81,7 +83,7 @@ return require('packer').startup(function()
 		}
 	}
 
-	-- Git
+	-- Git --
 	use 'lewis6991/gitsigns.nvim' -- Show git diff in the sidebar, hunk actions and more
 	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' } -- Show large diffs :DiffviewOpen
 	use 'tpope/vim-fugitive' -- Git cli inside nvim with extra tools :Git, mergetool :Gdiff http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/
@@ -93,6 +95,11 @@ return require('packer').startup(function()
 	use 'whiteinge/diffconflicts' -- Better diffconflict viewer (use git mergetool with gitconfig)
 	use 'rbong/vim-flog' -- Show git history tree with :Flog (read doc for more)
 	use 'rhysd/git-messenger.vim' -- Git blame that allows to explore older commits
+
+	-- Startup Time --
+	use 'dstein64/vim-startuptime' -- Profile startuptime
+	use 'lewis6991/impatient.nvim' -- Faster startuptime
+	use 'nathom/filetype.nvim' -- faster filetype detection
 
 	-- Misc
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
@@ -140,6 +147,9 @@ return require('packer').startup(function()
 	use 'tversteeg/registers.nvim' -- visualize copy registers
 	use 'akinsho/toggleterm.nvim' -- Terminal toggle for nvim <C-t>
 	use 'NMAC427/guess-indent.nvim' -- Adjust tabs/spaces settings
+	use 'shivamashtikar/tmuxjump.vim' -- jump to files that printed in another tmux panes
+	use 'szw/vim-maximizer' -- Maximize windows (splits) in vim
+	use 'rust-lang/rust.vim' -- Rust utils (RustFmt on save)
 	use {
 		'ThePrimeagen/refactoring.nvim', -- Refactor tool
 		requires = {
@@ -147,26 +157,15 @@ return require('packer').startup(function()
 			{'nvim-treesitter/nvim-treesitter'}
 		}
 	}
-	use 'szw/vim-maximizer' -- Maximize windows (splits) in vim
 	use {
 		'iamcco/markdown-preview.nvim', -- Markdown preview
 		run = function() vim.fn['mkdp#util#install']() end,
 		ft = {'markdown'}
 	}
-	use 'rust-lang/rust.vim' -- Rust utils (RustFmt on save)
-
 	use {
 		'nvim-neorg/neorg', -- .norg plugin better orgmode
 		requires = 'nvim-lua/plenary.nvim'
 	}
-	use {
-		'shivamashtikar/tmuxjump.vim', -- jump to files that printed in another tmux panes
-	}
-
-	-- Startup Time --
-	use 'dstein64/vim-startuptime' -- Profile startuptime
-	use 'lewis6991/impatient.nvim' -- Faster startuptime
-	use 'nathom/filetype.nvim' -- faster filetype detection
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'
