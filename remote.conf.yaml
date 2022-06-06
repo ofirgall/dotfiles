@@ -22,6 +22,8 @@
         path: dotfiles/tmux.conf
     ~/.tmux_conf:
         path: dotfiles/tmux_conf
+    ~/.tmux/custom-macros:
+        path: dotfiles/tmux_conf/custom-macros
     ~/dotfiles_scripts:
         path: scripts
     ~/.config/nvim:
