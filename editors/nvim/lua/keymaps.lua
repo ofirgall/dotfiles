@@ -236,10 +236,29 @@ map('n', '<leader>gh', '<cmd>DiffviewFileHistory<CR>', default_opts) -- Git Hist
 map('n', '<leader>gH', '<cmd>DiffviewFileHistory .<CR>', default_opts) -- Git workspace History
 map('n', '<leader>gt', '<cmd>Flogsplit<CR>', default_opts) -- Git Tree
 map('n', '<leader>hh', '<cmd>GitMessenger<CR>')
+map('n', 'gh', ':set opfunc=GitHistoryOperator<CR>g@', default_opts) -- show Git History with operator, e.g: gh3<cr> shows the history of the 3 lines below
+map('v', 'gh', '<Esc><cmd>lua git_history("v")<cr>', default_opts) -- show Git History with visual mode
+vim.cmd("function! GitHistoryOperator(...) \n lua git_history('n') \n endfunction") -- used by `gh`
 
 -- apply patches in 3 way split diff aka :SolveConflict
 map('n', '<C-[>', '<cmd>diffget //2<CR>', default_opts) -- Apply left change
 map('n', '<C-]>', '<cmd>diffget //3<CR>', default_opts) -- Apply right change
+
+git_history = function(mode)
+	current_line = vim.api.nvim_get_current_line()
+	if mode == 'v' then
+		start_pos = vim.api.nvim_buf_get_mark(0, "<")
+		end_pos = vim.api.nvim_buf_get_mark(0, ">")
+	elseif mode == 'n' then
+		start_pos = vim.api.nvim_buf_get_mark(0, "[")
+		end_pos = vim.api.nvim_buf_get_mark(0, "]")
+	end
+
+	start_line = start_pos[1]
+	end_line = end_pos[1]
+
+	vim.api.nvim_command('Git log -L' .. start_line .. ',' .. end_line .. ':' .. vim.fn.expand('%'))
+end
 
 -----------------------------------
 --             UI                --
