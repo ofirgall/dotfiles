@@ -53,6 +53,8 @@ map('i', '<C-k>', '<C-O>o', default_opts) -- Insert new line in insert mode
 map('', '<M-y>', '"+y', default_opts) -- Start copy to os clipboard E.g: M-yy will copy current line to os
 map('', '<M-Y>', '"+y$', default_opts) -- Copy rest of the line to os clipboard like "Y" but for os clipboard
 map('n', '<M-q>', '<cmd>q<cr>', default_opts) -- alt+Quit to close split
+map('n', '<M-,>', '<cmd>tabprev<cr>', default_opts) -- Previous tabpage with Alt+, (<). NOT FILE TABS
+map('n', '<M-.>', '<cmd>tabnext<cr>', default_opts) -- Next tabpage with Alt+. (>). NOT FILE TABS
 
 -- Remap space as leader key
 map('', '<Space>', '<Nop>', default_opts) -- Unmap space
