@@ -221,7 +221,20 @@ monokai.setup {
 			fg = '#948f5a'
 		},
 		SpellBad = {
+			ctermfg = palette.red,
 			style = 'undercurl'
+		},
+		SpellCap = {
+			ctermfg = palette.purple,
+			style = 'undercurl',
+		},
+		SpellRare = {
+			ctermfg = palette.aqua,
+			style = 'undercurl',
+		},
+		SpellLocal = {
+			ctermfg = palette.pink,
+			style = 'undercurl',
 		},
 		------- PLUGINS -------
 		-- Multi Cursor Design
