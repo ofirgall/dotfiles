@@ -1,4 +1,4 @@
 custom=(
-'cds && cat messages.txt | grep $(hostname) | less :syslog'
+'cds && cat messages.txt | grep --text $(hostname) | less :syslog'
 'ps ax | grep -v grep | grep xn-infinidat-core | cut -f1 -d" " | xargs kill -11: killcore'
 )
