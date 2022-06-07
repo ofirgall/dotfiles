@@ -52,7 +52,6 @@ map('v', '<Enter>', 'y', default_opts) -- yank with Enter in visual mode
 map('i', '<C-k>', '<C-O>o', default_opts) -- Insert new line in insert mode
 map('', '<M-y>', '"+y', default_opts) -- Start copy to os clipboard E.g: M-yy will copy current line to os
 map('', '<M-Y>', '"+y$', default_opts) -- Copy rest of the line to os clipboard like "Y" but for os clipboard
-map('n', '<M-q>', '<cmd>q<cr>', default_opts) -- alt+Quit to close split
 map('n', '<M-,>', '<cmd>tabprev<cr>', default_opts) -- Previous tabpage with Alt+, (<). NOT FILE TABS
 map('n', '<M-.>', '<cmd>tabnext<cr>', default_opts) -- Next tabpage with Alt+. (>). NOT FILE TABS
 
@@ -75,6 +74,9 @@ map('', 'k', 'v:count ? "k" : "gk"', { silent = true, expr = true})
 map('n', '<F11>', ':set spell!<cr>', default_opts)
 map('i', '<F11>', '<C-O>:set spell!<cr>', default_opts)
 
+-----------------------------------
+--             TMUX              --
+-----------------------------------
 -- Navigate in panes + splits (requires vim-tmux-navigator)
 map('n', '<C-h>', '<cmd>TmuxNavigateLeft<cr>', default_opts)
 map('n', '<C-j>', '<cmd>TmuxNavigateDown<cr>', default_opts)
@@ -84,6 +86,11 @@ map('n', '<M-Left>', '<cmd>TmuxNavigateLeft<cr>', default_opts)
 map('n', '<M-Down>', '<cmd>TmuxNavigateDown<cr>', default_opts)
 map('n', '<M-Up>', '<cmd>TmuxNavigateUp<cr>', default_opts)
 map('n', '<M-Right>', '<cmd>TmuxNavigateRight<cr>', default_opts)
+-- Splits like tmux
+map('n', '<M-e>', '<cmd>vsplit<cr>', default_opts)
+map('n', '<M-o>', '<cmd>split<cr>', default_opts)
+
+map('n', '<M-w>', '<cmd>q<cr>', default_opts) -- close pane like tmux
 
 -- Duplicate your view into split (MAX 2)
 map('n', 'gV', function() split_if_not_exist(true) end, default_opts)

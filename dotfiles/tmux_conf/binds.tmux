@@ -21,23 +21,33 @@ bind -T suspended Home send-key C-a
 bind -T suspended End send-key C-e
 
 ##### SPLIT PANES #####
+# Binds for split/kill panes/windows are shared with nvim and remote nested sessions.
+# There are 3 contexts we care about:
+#	Inside nvim:
+#		The keys are passed to nvim which is configured to do the equivalent action in nvim, e.g: Alt+e will create vertical split in nvim.
+#		To send the action to tmux instead we add shift, e.g: Alt+shift+e will open tmux pane.
+
+#	Inside nested-session: to control nested session panes we add shift to the action, alt+shift+e will open tmux pane in the nested session
+
+#	Else: the action will be sent to tmux.
+
 # Splits windows with ALT+e/o
-bind -n M-e split-window -h -c "#{pane_current_path}"
-bind -n M-o split-window -v -c "#{pane_current_path}"
-# Splits windows in nested session ALT+SHIFT+e/o
-bind -n M-E send-keys M-e
-bind -n M-O send-keys M-o
+bind -n M-e if-shell "$is_nvim" "send-keys M-e" 'split-window -h -c "#{pane_current_path}"'
+bind -n M-o if-shell "$is_nvim" "send-keys M-o" 'split-window -v -c "#{pane_current_path}"'
+bind -n M-E if-shell "$is_nested_tmux" 'send-keys M-e' 'split-window -h -c "#{pane_current_path}"'
+bind -n M-O if-shell "$is_nested_tmux" 'send-keys M-o' 'split-window -v -c "#{pane_current_path}"'
+
+# Kill pane with ALT+w
+bind -n M-w if-shell "$is_nvim" "send-keys M-w" "kill-pane"
+bind -n M-W if-shell "$is_nested_tmux" "send-keys M-w" "kill-pane"
+
+## Split windows to reconnect with ssh
 # Split windows and ssh to the remote that was connected
 bind -r -T prefix e run-shell "$get_ssh_in_tty | xargs tmux split-window -h"
 bind -r -T prefix o run-shell "$get_ssh_in_tty | xargs tmux split-window -v"
 
 # Split window without activate it (I usually use it to swap hanging ssh)
 bind -r -T prefix x run-shell "$get_ssh_in_tty | xargs tmux split-window -v -d"
-
-# Kill pane with ALT+w
-bind -n M-w kill-pane
-# Kill remote pane with ALT+SHIFT+w
-bind -n M-W send-keys M-w
 
 ##### PANE NAVIGATION #####
 # Move around with alt+arrow/ctrl+hjkl
