@@ -197,8 +197,11 @@ map('n', 'gD', vim.lsp.buf.declaration, default_opts) -- Go to Declaration
 
 -- Telescope LSP Binds
 map('n', 'gd', function()
-	if vim.api.nvim_buf_get_option(0, 'filetype') == 'man' then
+	local ft = vim.api.nvim_buf_get_option(0, 'filetype')
+	if ft == 'man' then
 		vim.api.nvim_command(':Man ' .. vim.fn.expand('<cword>'))
+	elseif ft == 'help' then
+		vim.api.nvim_command(':help ' .. vim.fn.expand('<cword>'))
 	else
 		require'telescope.builtin'.lsp_definitions()
 	end

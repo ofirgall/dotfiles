@@ -41,7 +41,6 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
-* nvim - gd in :help should jump to other :help <cword>
 * tmux - create binds_begginer.tmux (no remote and no vim tricks, normal copy-mode too) + README
 * scripts - order them + README
 * nvim - title generator
