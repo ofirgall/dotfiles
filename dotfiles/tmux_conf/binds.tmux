@@ -224,5 +224,9 @@ set -g @fuzzback-bind f
 set -g @command-capture-key l
 
 ##### tmux-text-macros #####
-# open macros menu with Alt+shift+m
-bind -n M-M run-shell "tmux split-window -v  \"PANE='#{pane_id}' $HOME/.tmux/plugins/tmux-text-macros/tmux-text-macros.tmux -r\""
+open_macros="tmux split-window -v  \"PANE='#{pane_id}' $HOME/.tmux/plugins/tmux-text-macros/tmux-text-macros.tmux -r\""
+# open macros menu with Alt+m except in nvim
+bind -n M-m if-shell "$is_nvim" "send-keys M-m" 'run-shell $open_macros'
+
+# open macros menu with Alt+shift+m anywhere
+bind -n M-M run-shell $open_macros
