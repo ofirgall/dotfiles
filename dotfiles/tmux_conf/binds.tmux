@@ -208,7 +208,7 @@ bind -n M-s thumbs-pick
 
 ##### TMUX-JUMP #####
 # Tmux (like acejump or vimium) with ALT+shift+s
-bind -n M-S run-shell -b /home/ogal/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
+bind -n M-S run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
 
 ##### TMUX-OPEN #####
 # Open text in google search
@@ -225,4 +225,4 @@ set -g @command-capture-key l
 
 ##### tmux-text-macros #####
 # open macros menu with Alt+shift+m
-bind -n M-M run-shell "tmux split-window -v  \"PANE='#{pane_id}' /home/ogal/.tmux/plugins/tmux-text-macros/tmux-text-macros.tmux -r\""
+bind -n M-M run-shell "tmux split-window -v  \"PANE='#{pane_id}' $HOME/.tmux/plugins/tmux-text-macros/tmux-text-macros.tmux -r\""
