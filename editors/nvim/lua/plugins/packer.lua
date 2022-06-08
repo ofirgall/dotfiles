@@ -34,7 +34,7 @@ return require('packer').startup(function()
 		}
 	}
 
-	use 'honza/vim-snippets' -- Default snippets
+	use 'ofirgall/vim-snippets' -- Default snippets
 	use 'tami5/lspsaga.nvim' -- Sweet ui for rename + code action and hover doc
 	use 'RRethy/vim-illuminate' -- Mark word on cursor (ctrl+n/p to move across refs)
 	use 'ray-x/lsp_signature.nvim' -- Signature hint while typing
