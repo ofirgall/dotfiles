@@ -90,6 +90,7 @@ map('n', '<M-Right>', '<cmd>TmuxNavigateRight<cr>', default_opts)
 map('n', '<M-e>', '<cmd>vsplit<cr>', default_opts)
 map('n', '<M-o>', '<cmd>split<cr>', default_opts)
 
+map('n', '<M-q>', '<cmd>q<cr>', default_opts)
 map('n', '<M-w>', '<cmd>q<cr>', default_opts) -- close pane like tmux
 
 -- Duplicate your view into split (MAX 2)
