@@ -135,28 +135,14 @@ map('n', '<leader>srb', '<Plug>(sandwich-replace-auto)', sandwich_opts)
 -----------------------------------
 --        CODE NAVIGATION        --
 -----------------------------------
-escape_rg_text = function(text)
-	text = text:gsub('%(', '\\%(')
-	text = text:gsub('%)', '\\%)')
-	text = text:gsub('%[', '\\%[')
-	text = text:gsub('%]', '\\%]')
-	text = text:gsub('%{', '\\%{')
-	text = text:gsub('%}', '\\%}')
-	text = text:gsub('"', '\\"')
-	text = text:gsub('-', '\\-')
-	text = text:gsub('+', '\\-')
-
-	return text
-end
-
 live_grep_raw = function(opts, mode)
 	opts = opts or {}
 	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'
 	if not opts.default_text then
 		if mode then
-			opts.default_text = '"' .. escape_rg_text(get_text(mode)) .. '"'
+			opts.default_text = '-F "' .. get_text(mode) .. '"'
 		else
-			opts.default_text = '"'
+			opts.default_text = '-F "'
 		end
 	end
 
