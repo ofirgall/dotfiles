@@ -15,6 +15,7 @@ opt.splitright = true
 opt.splitbelow = true
 opt.swapfile = false
 opt.updatetime = 100 -- mainly for trld.nvim which utilize CursorHold autocmd
+opt.formatoptions:append('cro') -- continue comments when going down a line
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
