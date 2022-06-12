@@ -93,6 +93,12 @@ map('n', '<M-o>', '<cmd>split<cr>', default_opts)
 map('n', '<M-q>', '<cmd>q<cr>', default_opts)
 map('n', '<M-w>', '<cmd>q<cr>', default_opts) -- close pane like tmux
 
+-----------------------------------
+--           TERMINAL            --
+-----------------------------------
+map('t', '<Esc>', '<C-\\><C-n>', default_opts) -- Escape from terminal with escape key
+
+
 -- Duplicate your view into split (MAX 2)
 map('n', 'gV', function() split_if_not_exist(true) end, default_opts)
 map('n', 'gX', function() split_if_not_exist(false) end, default_opts)
@@ -238,8 +244,9 @@ map('v', 'gh', '<Esc><cmd>lua git_history("v")<cr>', default_opts) -- show Git H
 vim.cmd("function! GitHistoryOperator(...) \n lua git_history('n') \n endfunction") -- used by `gh`
 
 -- apply patches in 3 way split diff aka :SolveConflict
-map('n', '<C-[>', '<cmd>diffget //2<CR>', default_opts) -- Apply left change
-map('n', '<C-]>', '<cmd>diffget //3<CR>', default_opts) -- Apply right change
+-- TODO: after getting a good conflict solver rebind it with autocmd
+-- map('n', '<C-[>', '<cmd>diffget //2<CR>', default_opts) -- Apply left change
+-- map('n', '<C-]>', '<cmd>diffget //3<CR>', default_opts) -- Apply right change
 
 git_history = function(mode)
 	current_line = vim.api.nvim_get_current_line()

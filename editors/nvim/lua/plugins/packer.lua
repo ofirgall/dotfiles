@@ -172,6 +172,7 @@ return require('packer').startup(function()
 		'folke/todo-comments.nvim', -- review todo in the quickfix list with :Todo..
 		requires = 'nvim-lua/plenary.nvim',
 	}
+	use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'

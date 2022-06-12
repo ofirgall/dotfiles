@@ -189,3 +189,27 @@ require('todo-comments').setup{
 		default = { "TSNumber", "Identifier", "#7C3AED" },
 	},
 }
+
+-- iron.nvim
+require("iron.core").setup {
+	config = {
+		should_map_plug = false,
+		scratch_repl = true,
+		repl_definition = {
+			sh = {
+				command = {"zsh"}
+			}
+		},
+		repl_open_cmd = require('iron.view').curry.bottom(40),
+	},
+	keymaps = {
+		send_motion = "<space>sc",
+		visual_send = "<space>sc",
+		send_file = "<space>sf",
+		send_line = "<space>sl",
+		cr = "<space>s<cr>",
+		interrupt = "<space>s<space>",
+		exit = "<space>sq",
+		clear = "<space>cl",
+	},
+}
