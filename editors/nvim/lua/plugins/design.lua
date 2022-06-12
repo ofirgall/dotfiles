@@ -8,6 +8,7 @@ vim.g.gitblame_date_format = '%d/%m/%Y'
 
 if not vim.g.started_by_firenvim then
 	local gps = require("nvim-gps")
+	local lsp_gps = require("nvim-navic")
 	local git_blame = require("gitblame")
 
 	-- customized modus-vivendi
@@ -65,7 +66,7 @@ if not vim.g.started_by_firenvim then
 		},
 	}
 
-	lsp_server_component = {
+	local lsp_server_component = {
 		function()
 			local msg = '———'
 			local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
@@ -84,6 +85,10 @@ if not vim.g.started_by_firenvim then
 		icon = ' LSP:',
 	}
 
+	local is_treesitter_gps_available = function ()
+		return not lsp_gps.is_available() and gps.is_available()
+	end
+
 	require'lualine'.setup {
 		options = {
 			theme = lualine_theme,
@@ -93,7 +98,7 @@ if not vim.g.started_by_firenvim then
 		},
 		sections = {
 			lualine_b = {'diff', 'diagnostics'},
-			lualine_c = {'filename', { gps.get_location, cond = gps.is_available }},
+			lualine_c = {'filename', {lsp_gps.get_location, cond = lsp_gps.is_available }, { gps.get_location, cond = is_treesitter_gps_available }},
 			lualine_x = {lsp_server_component},
 			lualine_y = {{git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available}},
 			lualine_z = {'filetype'},

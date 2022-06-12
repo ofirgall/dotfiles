@@ -41,7 +41,7 @@ Done by dconf (gnome tweaks):
 ---
 
 ## TODO
-* tmux - create binds_begginer.tmux (no remote and no vim tricks, normal copy-mode too) + README
+* nvim - fugitive jump binds when filetype is git
 * scripts - order them + README
 * nvim - title generator
 * nvim - close inactive `man` buffers

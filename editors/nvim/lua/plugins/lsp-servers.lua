@@ -10,9 +10,10 @@ local lsp_signature_cfg = {
 	-- max_height 1,
 }
 
-local lsp_on_attach = function(client)
+local lsp_on_attach = function(client, bufnr)
 	require 'illuminate'.on_attach(client)
 	require "lsp_signature".on_attach(lsp_signature_cfg)
+	require 'nvim-navic'.attach(client, bufnr)
 end,
 
 require "lsp_signature".setup({lsp_signature_cfg})

@@ -41,6 +41,7 @@ return require('packer').startup(function()
 	use 'onsails/lspkind-nvim' -- Adding sweet ui for kind (function/var/method)
 	use 'j-hui/fidget.nvim' -- Lsp Status in the bottom right corner
 	use 'Mofiqul/trld.nvim' -- Show diagnostics in the top right corner
+	use 'SmiteshP/nvim-navic' -- same as nvim-gps but using LSP instead (more accurate)
 
 	-------- END OF LSP --------
 
@@ -52,7 +53,7 @@ return require('packer').startup(function()
 	use 'nvim-treesitter/playground' -- TreeSitter helper to customize
 	use 'tanvirtin/monokai.nvim' -- Color theme (customized)
 	use {
-		'SmiteshP/nvim-gps', -- Shows context in status line
+		'SmiteshP/nvim-gps', -- Shows context in status line (with treesitter)
 		requires = 'nvim-treesitter/nvim-treesitter'
 	}
 	use {
