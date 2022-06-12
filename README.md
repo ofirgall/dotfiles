@@ -1,6 +1,20 @@
 # Ofir's DotFiles
 
-## Install
+# WARNING
+This repo is mainly for saving my dotfiles, I don't recommend to clone and install it. \
+Feel free to use it as reference to your own dotfiles/config setup
+
+## Custom Key Mapping
+Done by dconf (gnome tweaks):
+* Capslock is mapped to Escape - Don't move your hands when escaping insert mode.
+* Both shift changes language - Don't move your hands while typing.
+* Right Alt is mapped to backspace - Same idea.. (done with ~/.xmodmap too)
+* Changing workspaces - Ctrl+J/H, Ctrl+Shift+J/H
+* [tmux-go](https://github.com/ofirgall/tmux-go) shortcuts, Alt+G, Super+J/K/L/M
+
+---
+
+# Install
 ### Enable pre-commit hook for saving stuff (like dconf)
 ```bash
 ln -s ../../pre-commit .git/hooks/pre-commit
@@ -22,25 +36,14 @@ Set your `global` git user at ~/.git_user
 git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ```
 
-Incase you are using windows terminal add `windows_terminal_binds.json` to your windows terminal
-
 ### Install TamperMonkey scripts
 * Install [TamperMonkey](https://www.tampermonkey.net/)
 * View the the [tampermonkey scripts](tampermonkey) as raw
 
 ---
 
-## Custom Mapping
-Done by dconf (gnome tweaks):
-* Capslock is mapped to Escape - Don't move your hands when escaping insert mode.
-* Both shift changes language - Don't move your hands while typing.
-* Right Alt is mapped to backspace - Same idea.. (done with ~/.xmodmap too)
-* Changing workspaces - Ctrl+J/H, Ctrl+Shift+J/H
-* [tmux-go](https://github.com/ofirgall/tmux-go) shortcuts, Alt+G, Super+J/K/L/M
-
----
-
 ## TODO
+* dotfiles - install scripts should be able to run twice for updates
 * nvim - fugitive jump binds when filetype is git
 * nvim - title generator
 * nvim - close inactive `man` buffers
