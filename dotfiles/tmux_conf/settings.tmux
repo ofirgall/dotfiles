@@ -16,7 +16,7 @@ set -sa terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{25
 set-option -g status-interval 10
 
 # Hook _on_tmux_attach.sh
-set-hook -g 'client-attached[10]' "run-shell $HOME/dotfiles_scripts/_on_tmux_attach.sh"
+set-hook -g 'client-attached[10]' "run-shell $HOME/dotfiles_scripts/inner/_on_tmux_attach.sh"
 
 # Default shell in no_sudo
 if-shell -b 'test -f "$HOME/.no_sudo_indicator"' 'set -g default-shell /bin/zsh'

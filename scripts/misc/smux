@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+# === Add this to the .bashrc of the remote server:
+# # Using lc_messages to pass tmux session
+# if [ ! -z "$LC_MESSAGES" ]; then
+#         export ATTACH_TO=$LC_MESSAGES
+#         zsh
+#         exit
+# fi
+
+
+TERM=xterm-256color LC_MESSAGES=$(tmux display-message -p '#S') ssh -o SendEnv=LC_MESSAGES $1

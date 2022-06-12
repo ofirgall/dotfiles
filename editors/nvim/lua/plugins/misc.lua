@@ -171,7 +171,7 @@ vim.api.nvim_create_autocmd({'CursorMoved', 'CursorMovedI', 'InsertEnter'}, {
 
 -- tmuxjump.vim
 vim.g.tmuxjump_telescope = true
-vim.g.tmuxjump_custom_capture = "~/dotfiles_scripts/_tmuxjump_capture.sh"
+vim.g.tmuxjump_custom_capture = "~/dotfiles_scripts/inner/_tmuxjump_capture.sh"
 
 -- todo-comments.nvim
 require('todo-comments').setup{

@@ -42,7 +42,6 @@ Done by dconf (gnome tweaks):
 
 ## TODO
 * nvim - fugitive jump binds when filetype is git
-* scripts - order them + README
 * nvim - title generator
 * nvim - close inactive `man` buffers
 * nvim - git-messanger support multiple lines (maybe like gh)

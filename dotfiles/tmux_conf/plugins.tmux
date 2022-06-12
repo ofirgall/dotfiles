@@ -9,7 +9,7 @@ set -g @tnotify-verbose-msg '#S: #I #W is done!'
 set -g @fzf-url-fzf-options '--reverse'
 set -g @fuzzback-fzf-layout 'default'
 set -g @command-capture-prompt-pattern ' $ '
-set -g @thumbs-command 'echo -n {} | $HOME/dotfiles_scripts/toclip; tmux display-message "Copied {}"'
+set -g @thumbs-command 'echo -n {} | $HOME/dotfiles_scripts/misc/toclip; tmux display-message "Copied {}"'
 set -g @resurrect-processes 'false' # Dont restore programs
 set -g @tnotify-sleep-duration '2'
 set -g @tmux_window_name_ignored_programs "['sqlite3']"
