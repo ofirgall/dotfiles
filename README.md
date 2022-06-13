@@ -46,7 +46,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * dotfiles - install scripts should be able to run twice for updates
 * nvim - fugitive jump binds when filetype is git
 * nvim - title generator
-* nvim - close inactive `man` buffers
 * nvim - git-messanger support multiple lines (maybe like gh)
 * tmux - Neo-Oli/tmux-text-macros integrate tmux fzf menu
 * tmux - Neo-Oli/tmux-text-macros better syntax for custom-macros
