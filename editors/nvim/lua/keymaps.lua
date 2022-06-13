@@ -112,7 +112,7 @@ map('n', '<leader>o', '<cmd>Telescope oldfiles<CR>', default_opts) -- open Old f
 map('n', '<leader>c', '<cmd>Telescope command_history<CR>', default_opts) -- history of Commands
 map('n', '<leader>ss', '<cmd>Telescope spell_suggest<CR>', default_opts) -- history of Commands
 map('n', '<leader>l', '<cmd>DevDocsUnderCursor<cr>', default_opts) -- Search current word in DevDocs
-map('n', 'gx', '<cmd>call OpenInBrowser()<CR>', default_opts)
+map('n', '<leader>gx', '<cmd>call OpenInBrowser()<CR>', default_opts)
 
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 -- Add cursor down/up Alt+n/p (like ctrl+down/up in subl)
