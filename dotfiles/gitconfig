@@ -26,7 +26,7 @@
 	hide-status = 1
 	hide-dirty = 1
 [mergetool "diffconflicts"]
-	cmd = nvim -c Mergetool -- \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	cmd = nvim -c DiffConflictsWithHistory \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
 	trustExitCode = true
 [mergetool]
 	keepBackup = false
