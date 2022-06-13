@@ -200,7 +200,7 @@ require("iron.core").setup {
 				command = {"zsh"}
 			}
 		},
-		repl_open_cmd = require('iron.view').curry.bottom(40),
+		repl_open_cmd = 'belowright 15 split',
 	},
 	keymaps = {
 		send_motion = "<space>sc",
@@ -212,4 +212,8 @@ require("iron.core").setup {
 		exit = "<space>sq",
 		clear = "<space>cl",
 	},
+	highlight = {
+		italic = false,
+		bold = false
+	}
 }
