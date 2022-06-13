@@ -82,7 +82,7 @@ vim.g.git_messenger_always_into_popup = true
 vim.g.git_messenger_no_default_mappings = true
 
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = 'gitmessengerpopup',
+	pattern = {'gitmessengerpopup', 'git'},
 	callback = function()
 		vim.call('fugitive#MapJumps') -- map jumps to hunks/changes like fugitive
 		-- remove overlapping maps from fugitive
