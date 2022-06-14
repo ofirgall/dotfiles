@@ -1,13 +1,23 @@
 # Ofir's DotFiles
 
 # Editor - [Neovim (nvim)](https://github.com/neovim/neovim)
-![nvim Screenshot](media/nvim.png)
+![nvim Screenshot](media/nvim/preview.png)
 
 # Terminal - [alacritty](https://github.com/alacritty/alacritty) with [tmux](https://github.com/tmux/tmux) that runs [zsh](https://wiki.archlinux.org/title/zsh) with [zinit](https://github.com/zdharma-continuum/zinit)
 ![Terminal Screenshot](media/terminal.png)
 
 # Task Managment - [taskwarrior-tui](https://github.com/kdheepak/taskwarrior-tui)
 ![TaskWarrior Screenshot](media/taskwarrior.png)
+
+# My Workflow
+Each workspace usually has 2 windows, terminal with tmux session attached and a webbrowser attached to the tmux session by [tmux-browser](https://github.com/ofirgall/tmux-browser).
+The only workspace that uas more 2 windows is the `main` session which runs `slack`, `spotify` and other GUIS I must use. \
+I jump between the workspace fast with [tmux-go](https://github.com/ofirgall/tmux-browser)
+
+How I use nvim for [everything everywhere all at once](editors/nvim/README.md).
+
+Q: Why don't you use i3? \
+A: This way I have only 2 windows per workspace and I can jump between them with ctrl+tab I don't need tiling manager, I do everything from the terminal.
 
 ---
 
