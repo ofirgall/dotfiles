@@ -41,6 +41,3 @@ if type nvim &> /dev/null; then
 	export MANPAGER='nvim +Man! .'
 	export MANWIDTH=999
 fi
-function ssh() {
-	TERM=xterm-256color /usr/bin/ssh $@ # Adjust TERM for ssh
-}

@@ -20,6 +20,9 @@ alias cdn='cd $HOME/.local/share/nvim/site/pack/packer/start' # cd to neovim plu
 function ngh() {nvim -c ":Flog -- $@" .} # git history with nvim and Flog
 function cg() { cd $(inner_cg.sh $@) } # cd to git repos
 function p() { python -c "print($@)"} # run python easily
+function ssh() {
+	TERM=xterm-256color /usr/bin/ssh $@ # Adjust TERM for ssh
+}
 
 # Git aliases, no git plugin
 alias g='git'
