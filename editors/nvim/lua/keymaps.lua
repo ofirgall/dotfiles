@@ -137,6 +137,9 @@ map('n', '<leader>sdb', '<Plug>(sandwich-delete-auto)', sandwich_opts)
 map('n', '<leader>sr', '<Plug>(sandwich-replace)', sandwich_opts)
 map('x', '<leader>sr', '<Plug>(sandwich-replace)', sandwich_opts)
 map('n', '<leader>srb', '<Plug>(sandwich-replace-auto)', sandwich_opts)
+-- sandwich word
+map('n', '<leader>sw', '<Plug>(sandwich-add)iw', sandwich_opts)
+map('n', '<leader>sW', '<Plug>(sandwich-add)iW', sandwich_opts)
 
 -----------------------------------
 --        CODE NAVIGATION        --
