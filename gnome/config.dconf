@@ -265,7 +265,7 @@ border-effect='none'
 delay=0
 include-border=false
 include-pointer=false
-last-save-directory='file:///home/ogal/Pictures'
+last-save-directory='file:///home/ogal/dotfiles/media/nvim'
 
 [org/gnome/gnome-system-monitor]
 current-tab='processes'
@@ -482,5 +482,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(359, 122)
+window-position=(166, 10)
 window-size=(1203, 790)

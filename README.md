@@ -54,7 +54,11 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
+* nvim - autocomplete list, add border?, use colored + text of types. https://preview.redd.it/0pmjqf5nxh591.png?width=960&crop=smart&auto=webp&s=2b26a1616a9394479c77e6c50580d16cd7b567ee
+* nvim - make file_exists global
 * tmux-go: last will be saved when moving from and not moving to
+* nvim - diffview sidebar/bottombar color like nvimtree
+* nvim - hunkhistory bg color need to be better.
 * dotfiles - install scripts should be able to run twice for updates
 * nvim - title generator
 * nvim - git-messanger support multiple lines (maybe like gh)
