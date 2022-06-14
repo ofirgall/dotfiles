@@ -119,6 +119,11 @@ vim.cmd([[
 command! Draw execute 'lua Toggle_Draw()'
 ]])
 
+function file_exists(name)
+	local f=io.open(name,"r")
+	if f~=nil then io.close(f) return true else return false end
+end
+
 local is_remote = file_exists(os.getenv("HOME") .. "/.remote_indicator")
 
 if is_remote then

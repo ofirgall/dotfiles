@@ -9,13 +9,13 @@ require('impatient') -- Load impatient.nvim to accelerate boot
 if vim.g.started_by_firenvim then
 	require('firenvim_settings')
 else
-	require('plugins/vim-sessions')
 	require('plugins/telescope')
 	require('plugins/lsp-servers')
 	require('plugins/treesitter')
 	require('plugins/git')
 	require('plugins/neorg')
 end
+require('plugins/vim-sessions')
 require('plugins/design')
 require('plugins/autocomplete')
 require('plugins/visual-multi')

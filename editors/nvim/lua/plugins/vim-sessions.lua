@@ -8,10 +8,8 @@
 -- set sessionoptions+=winpos,terminal
 
 if vim.g.started_by_firenvim or not (vim.call('argc', '') == 0) then
-	vim.cmd([[
-	let g:session_autosave = 'no'
-	let g:session_autoload = 'no'
-	]])
+	vim.g.session_autosave = 'no'
+	vim.g.session_autoload = 'no'
 else
 	vim.opt.sessionoptions:append({'buffers','tabpages','options'})
 	vim.cmd([[
