@@ -1,5 +1,16 @@
 # Ofir's DotFiles
 
+# Editor - [Neovim (nvim)](https://github.com/neovim/neovim)
+![nvim Screenshot](media/nvim.png)
+
+# Terminal - [alacritty](https://github.com/alacritty/alacritty) with [tmux](https://github.com/tmux/tmux) that runs [zsh](https://wiki.archlinux.org/title/zsh) with [zinit](https://github.com/zdharma-continuum/zinit)
+![Terminal Screenshot](media/terminal.png)
+
+# Task Managment - [taskwarrior-tui](https://github.com/kdheepak/taskwarrior-tui)
+![TaskWarrior Screenshot](media/taskwarrior.png)
+
+---
+
 # WARNING
 This repo is mainly for saving my dotfiles, I don't recommend to clone and install it. \
 Feel free to use it as reference to your own dotfiles/config setup
@@ -43,6 +54,7 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
+* tmux-go: last will be saved when moving from and not moving to
 * dotfiles - install scripts should be able to run twice for updates
 * nvim - title generator
 * nvim - git-messanger support multiple lines (maybe like gh)

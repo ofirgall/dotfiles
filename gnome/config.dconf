@@ -263,7 +263,7 @@ state=87168
 [org/gnome/gnome-screenshot]
 border-effect='none'
 delay=0
-include-border=true
+include-border=false
 include-pointer=false
 last-save-directory='file:///home/ogal/Pictures'
 
@@ -310,7 +310,7 @@ search-view='list-view'
 
 [org/gnome/nautilus/window-state]
 initial-size=(1056, 441)
-maximized=false
+maximized=true
 sidebar-width=189
 
 [org/gnome/nm-applet/eap/15778557-7790-4357-a1da-72b382d405ce]
