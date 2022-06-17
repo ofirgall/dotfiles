@@ -69,7 +69,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * tmux-go: last will be saved when moving from and not moving to
 * nvim - diffview sidebar/bottombar color like nvimtree
 * nvim - hunkhistory bg color need to be better.
-* dotfiles - install scripts should be able to run twice for updates
 * nvim - title generator
 * nvim - git-messanger support multiple lines (maybe like gh)
 * tmux - Neo-Oli/tmux-text-macros integrate tmux fzf menu

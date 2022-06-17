@@ -45,5 +45,4 @@
     - [editors/vscode/install_extensions.sh, Installing vscode extensions]
     - [install_scripts/install_fusuma.sh, Installing Fusuma]
     - [install_scripts/install_taskwarrior.sh, Installing Task Warrior]
-    - [install_scripts/install_fccf.sh, Installing fccf]
     - [install_scripts/install_fonts.sh, Installing nerd fonts]

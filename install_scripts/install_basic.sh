@@ -22,13 +22,14 @@ sudo apt install -y wget moreutils tmux ipython3 pcregrep python3-pip build-esse
 # Install bat & rg
 sudo apt install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
 mkdir -p ~/.local/bin
-ln -s /usr/bin/batcat ~/.local/bin/bat
+ln -f -s /usr/bin/batcat ~/.local/bin/bat
 
 if ! $IS_REMOTE; then
 	sudo apt install -y xclip gnome-tweaks
 fi
 
-# Instlal tpm
+# Install tpm
+rm -rf ~/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Rustup
