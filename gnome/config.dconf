@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=27
-launch-time=int64 1654675170
+launch-count=26
+launch-time=int64 1653993637
 show-details=true
 window-height=503
 window-width=645
@@ -19,7 +19,7 @@ window-width=540
 
 [com/ubuntu/update-notifier]
 no-show-notifications=true
-release-check-time=uint32 1655015567
+release-check-time=uint32 1655475479
 
 [com/uploadedlobster/peek]
 persist-window-geometry=(349, 183, 794, 593)
@@ -30,6 +30,10 @@ hotkey=@as []
 [org/gnome/Totem]
 active-plugins=['open-directory', 'autoload-subtitles', 'variable-rate', 'apple-trailers', 'skipto', 'save-file', 'vimeo', 'screenshot', 'media-player-keys', 'rotation', 'recent', 'movie-properties', 'screensaver']
 subtitle-encoding='UTF-8'
+
+[org/gnome/baobab/ui]
+window-size=(960, 600)
+window-state=87168
 
 [org/gnome/calculator]
 accuracy=9
@@ -47,7 +51,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='power'
+last-panel='ubuntu'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -78,18 +82,22 @@ secondary-color='#000000'
 
 [org/gnome/desktop/input-sources]
 mru-sources=[('xkb', 'us'), ('xkb', 'il')]
+per-window=false
 sources=[('xkb', 'us'), ('xkb', 'il')]
 xkb-options=['grp_led:scroll', 'grp:shifts_toggle', 'caps:escape']
 
 [org/gnome/desktop/interface]
+color-scheme='prefer-dark'
 enable-animations=true
+font-hinting='slight'
 gtk-im-module='gtk-im-context-simple'
 gtk-theme='Yaru-dark'
+icon-theme='Yaru'
 show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams', 'kupfer', 'org-gnome-screenshot', 'com-uploadedlobster-peek', 'signal-desktop', 'slack', 'virtualbox', 'snap-store-ubuntu-software-local-file']
+application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams', 'kupfer', 'org-gnome-screenshot', 'com-uploadedlobster-peek', 'signal-desktop', 'slack', 'virtualbox', 'snap-store-ubuntu-software-local-file', 'firefox-firefox', 'io-snapcraft-sessionagent']
 show-banners=true
 
 [org/gnome/desktop/notifications/application/apport-gtk]
@@ -108,6 +116,9 @@ application-id='com.cisco.anyconnect.gui.desktop'
 [org/gnome/desktop/notifications/application/com-uploadedlobster-peek]
 application-id='com.uploadedlobster.peek.desktop'
 
+[org/gnome/desktop/notifications/application/firefox-firefox]
+application-id='firefox_firefox.desktop'
+
 [org/gnome/desktop/notifications/application/firefox]
 application-id='firefox.desktop'
 
@@ -122,6 +133,9 @@ application-id='gnome-power-panel.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-printers-panel]
 application-id='gnome-printers-panel.desktop'
+
+[org/gnome/desktop/notifications/application/io-snapcraft-sessionagent]
+application-id='io.snapcraft.SessionAgent.desktop'
 
 [org/gnome/desktop/notifications/application/kupfer]
 application-id='kupfer.desktop'
@@ -240,14 +254,15 @@ window-height=812
 window-width=1476
 
 [org/gnome/gedit/plugins]
-active-plugins=['spell', 'modelines', 'filebrowser', 'sort', 'docinfo']
+active-plugins=['filebrowser', 'modelines', 'spell', 'docinfo', 'sort']
 
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///home/ogal/.local/share/kupfer/plugins'
+virtual-root='file:///home/ofirg/Downloads'
 
 [org/gnome/gedit/preferences/editor]
+scheme='Yaru-dark'
 wrap-last-split-mode='word'
 
 [org/gnome/gedit/preferences/ui]
@@ -263,9 +278,9 @@ state=87168
 [org/gnome/gnome-screenshot]
 border-effect='none'
 delay=0
-include-border=false
+include-border=true
 include-pointer=false
-last-save-directory='file:///home/ogal/dotfiles/media/nvim'
+last-save-directory='file:///home/ogal/Pictures'
 
 [org/gnome/gnome-system-monitor]
 current-tab='processes'
@@ -310,7 +325,7 @@ search-view='list-view'
 
 [org/gnome/nautilus/window-state]
 initial-size=(1056, 441)
-maximized=true
+maximized=false
 sidebar-width=189
 
 [org/gnome/nm-applet/eap/15778557-7790-4357-a1da-72b382d405ce]
@@ -404,21 +419,21 @@ name='tmux-go: next'
 sleep-inactive-ac-timeout=3600
 sleep-inactive-ac-type='nothing'
 
-[org/gnome/settings-daemon/plugins/xsettings]
-hinting='slight'
-
 [org/gnome/shell]
+app-picker-layout=[{'software-properties-drivers.desktop': <{'position': <0>}>, 'sol.desktop': <{'position': <1>}>, 'org.gnome.Calendar.desktop': <{'position': <2>}>, 'gnome-language-selector.desktop': <{'position': <3>}>, 'libreoffice-startcenter.desktop': <{'position': <4>}>, 'libreoffice-calc.desktop': <{'position': <5>}>, 'libreoffice-draw.desktop': <{'position': <6>}>, 'org.gnome.Totem.desktop': <{'position': <7>}>, 'libreoffice-impress.desktop': <{'position': <8>}>, 'org.gnome.gedit.desktop': <{'position': <9>}>, 'libreoffice-math.desktop': <{'position': <10>}>, 'org.gnome.Mahjongg.desktop': <{'position': <11>}>, 'org.gnome.Mines.desktop': <{'position': <12>}>, 'org.gnome.PowerStats.desktop': <{'position': <13>}>, 'org.remmina.Remmina.desktop': <{'position': <14>}>, 'Utilities': <{'position': <15>}>, 'gnome-control-center.desktop': <{'position': <16>}>, 'shotwell.desktop': <{'position': <17>}>, 'software-properties-gtk.desktop': <{'position': <18>}>, 'org.gnome.Cheese.desktop': <{'position': <19>}>}, {'update-manager.desktop': <{'position': <0>}>, 'gnome-session-properties.desktop': <{'position': <1>}>, 'usb-creator-gtk.desktop': <{'position': <2>}>, 'org.gnome.Sudoku.desktop': <{'position': <3>}>, 'org.gnome.Todo.desktop': <{'position': <4>}>, 'transmission-gtk.desktop': <{'position': <5>}>, 'firefox_firefox.desktop': <{'position': <6>}>, 'libreoffice-writer.desktop': <{'position': <7>}>, 'rhythmbox.desktop': <{'position': <8>}>, 'thunderbird.desktop': <{'position': <9>}>, 'snap-store_ubuntu-software.desktop': <{'position': <10>}>}]
 command-history=['', 'r']
 disable-user-extensions=false
 disabled-extensions=['wsmatrix@martin.zurowietz.de']
 enabled-extensions=['disable-gestures-2021@verycrazydog.gmail.com', 'switchtwolayouts@qtmax.dev', 'hidetopbar@mathieu.bidon.ca', 'transparentnotification@ipaq3870', 'panel-osd@berend.de.schouwer.gmail.com']
-favorite-apps=['firefox.desktop', 'com.alacritty.Alacritty.desktop', 'spotify_spotify.desktop', 'slack_slack.desktop', 'org.gnome.Nautilus.desktop', 'com.cisco.anyconnect.gui.desktop']
+favorite-apps=['firefox_firefox.desktop', 'org.gnome.Terminal.desktop']
 had-bluetooth-devices-setup=true
+welcome-dialog-last-shown-version='42.0'
 
 [org/gnome/shell/extensions/dash-to-dock]
 dock-fixed=false
 dock-position='BOTTOM'
-preferred-monitor=0
+preferred-monitor=-2
+preferred-monitor-by-connector='DP-2'
 
 [org/gnome/shell/extensions/extendedgestures]
 down-three-action='switch-workspace'
@@ -482,5 +497,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(166, 10)
+window-position=(2279, 122)
 window-size=(1203, 790)
