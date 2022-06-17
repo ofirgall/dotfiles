@@ -3,7 +3,7 @@
  *
  *  GNOME Shell Extension Panel OSD
  *
- * Copyright (C) 2014 - 2015
+ * Copyright (C) 2014 - 2021
  *     Jens Lody <jens@jenslody.de>,
 
  *  Idea: Grab MessageTray OSD widget, and give it new .x and .y co-ordinates.

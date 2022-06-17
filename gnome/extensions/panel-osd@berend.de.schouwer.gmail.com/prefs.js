@@ -4,7 +4,7 @@
  *  GNOME Shell Extension Panel OSD preferences
  *  - Creates a widget to set the preferences of the panel-osd extension
  *
- * Copyright (C) 2014 - 2015
+ * Copyright (C) 2014 - 2021
  *     Jens Lody <jens@jenslody.de>,
  *
  * This file is part of gnome-shell-extension-panel-osd.
@@ -57,7 +57,6 @@ const PanelOsdPrefsWidget = new GObject.Class({
 
         this.initWindow();
 
-        this.add(this.MainWidget);
     },
 
     Window: new Gtk.Builder(),
@@ -69,7 +68,7 @@ const PanelOsdPrefsWidget = new GObject.Class({
         this.Window.set_translation_domain('gnome-shell-extension-panel-osd');
         this.Window.add_from_file(EXTENSIONDIR + "/panel-osd-settings.ui");
 
-        this.MainWidget = this.Window.get_object("main-widget");
+        this.mainWidget = this.Window.get_object("main-widget");
 
         this.x_scale = this.Window.get_object("scale-x-pos");
         this.x_scale.set_value(this.x_position);
@@ -250,7 +249,8 @@ function init() {
 }
 
 function buildPrefsWidget() {
-    let widget = new PanelOsdPrefsWidget();
-    widget.show_all();
+    let prefs = new PanelOsdPrefsWidget();
+    let widget = prefs.mainWidget;
+    widget.show();
     return widget;
 }

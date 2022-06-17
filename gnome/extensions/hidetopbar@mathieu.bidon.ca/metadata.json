@@ -4,13 +4,12 @@
   "name": "Hide Top Bar",
   "settings-schema": "org.gnome.shell.extensions.hidetopbar",
   "shell-version": [
-    "3.34",
-    "3.36",
     "3.38",
     "40",
-    "41"
+    "41",
+    "42"
   ],
   "url": "https://github.com/mlutfy/hidetopbar",
   "uuid": "hidetopbar@mathieu.bidon.ca",
-  "version": 100
+  "version": 107
 }
