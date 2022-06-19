@@ -2,14 +2,7 @@
 -- Tree Sitter
 -----------------------------------------------------------
 
-function file_exists(name)
-	local f=io.open(name,"r")
-	if f~=nil then io.close(f) return true else return false end
-end
-
-local is_remote = file_exists(os.getenv("HOME") .. "/.remote_indicator")
-
-if is_remote then
+if IS_REMOTE then
 	ignore_install_langs = { "norg", "foam", "haskell"}
 else
 	ignore_install_langs = {}
