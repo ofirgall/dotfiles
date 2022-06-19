@@ -272,6 +272,10 @@ monokai.setup {
 			bg = palette.base3,
 			style = 'bold'
 		},
+		-- diffview.nvim
+		DiffviewNormal = {
+			bg = tree_bg
+		},
 		-- Complete menu
 		Pmenu = {
 			fg = palette.white,
