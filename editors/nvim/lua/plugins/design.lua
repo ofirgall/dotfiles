@@ -256,7 +256,7 @@ monokai.setup {
 			bg = '#790f91',
 		},
 		Visual = {
-			bg = '#1322ad',
+			bg = '#555449',
 		},
 		TelescopeSelection = {
 			fg = palette.white,
