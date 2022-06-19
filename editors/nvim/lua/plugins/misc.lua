@@ -222,3 +222,8 @@ require("iron.core").setup {
 		bold = false
 	}
 }
+
+-- nvim-colorizer.lua
+require('colorizer').setup{
+	'*'
+}

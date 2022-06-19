@@ -173,6 +173,7 @@ return require('packer').startup(function()
 		requires = 'nvim-lua/plenary.nvim',
 	}
 	use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
+	use 'norcalli/nvim-colorizer.lua' -- colorize hexcolor values in buffer
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'
