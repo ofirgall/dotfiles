@@ -136,8 +136,9 @@ local tab_visible_fg = '#b3ab60'
 local cursor_line_bg = '#2e2e27'
 monokai.setup {
 	palette = {
-		base2 = background,
 		base0 = background,
+		base1 = background,
+		base2 = background,
 		-- base3 = '#272a33',
 		base3 = '#1d2026',
 		brown = '#d1ca86',

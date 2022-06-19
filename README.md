@@ -66,7 +66,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ## TODO
 * nvim - make file_exists global
 * tmux-go: last will be saved when moving from and not moving to
-* nvim - hunkhistory bg color need to be better.
 * nvim - title generator
 * nvim - git-messanger support multiple lines (maybe like gh)
 * tmux - Neo-Oli/tmux-text-macros integrate tmux fzf menu
