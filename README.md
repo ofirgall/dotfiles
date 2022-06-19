@@ -64,7 +64,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
-* tmux-go: last will be saved when moving from and not moving to
 * nvim - title generator
 * nvim - git-messanger support multiple lines (maybe like gh)
 * tmux - Neo-Oli/tmux-text-macros integrate tmux fzf menu
