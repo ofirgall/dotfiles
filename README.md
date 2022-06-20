@@ -68,19 +68,15 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - git-messanger support multiple lines (maybe like gh)
 * tmux - Neo-Oli/tmux-text-macros integrate tmux fzf menu
 * tmux - Neo-Oli/tmux-text-macros better syntax for custom-macros
-* nvim - diffconflicts isn't perfect yet (need to test with multiple conflicts in file + merges that solved)
 * nvim - autosuspend Lsp/nvim if not active
 * nvim - on save session ignore more file like flog diffview fugitive and such
-* nvim - learn to use marks
 * zellij
 * firenvim - paste
 * nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
-* increase osc52 yank amount (when alacritty will support that)
 * git squash - if master/base branch moved forward can't find the ref
 * nvim - build & run + quickfix errors
 * nvim - try distant one day
 * tuis to try - slack, mail, calander, jira
-* autoupdate dotfiles on remote machines
 
 ## TODO Takes time
 * tmux-go
