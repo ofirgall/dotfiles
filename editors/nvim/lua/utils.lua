@@ -1,6 +1,14 @@
 
 local api = vim.api
 
+local file_exists = function(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
+NO_SUDO = file_exists(os.getenv("HOME") .. "/.no_sudo_indicator")
+IS_REMOTE = file_exists(os.getenv("HOME") .. "/.remote_indicator")
+
 split_if_not_exist = function(is_vsplit)
 	if is_vsplit then
 		pos_index = 1
@@ -33,11 +41,3 @@ split_if_not_exist = function(is_vsplit)
 	-- Didnt return create new split
 	vim.fn.execute(split_command)
 end
-
-local file_exists = function(name)
-   local f=io.open(name,"r")
-   if f~=nil then io.close(f) return true else return false end
-end
-
-NO_SUDO = file_exists(os.getenv("HOME") .. "/.no_sudo_indicator")
-IS_REMOTE = file_exists(os.getenv("HOME") .. "/.remote_indicator")
