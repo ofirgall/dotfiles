@@ -46,20 +46,11 @@ return require('packer').startup(function()
 	-------- END OF LSP --------
 
 	-- TreeSitter --
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate'
-	}
+	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use 'nvim-treesitter/playground' -- TreeSitter helper to customize
 	use 'tanvirtin/monokai.nvim' -- Color theme (customized)
-	use {
-		'SmiteshP/nvim-gps', -- Shows context in status line (with treesitter)
-		requires = 'nvim-treesitter/nvim-treesitter'
-	}
-	use {
-		'yioneko/nvim-yati', -- Better auto-indent atm
-		requires = 'nvim-treesitter/nvim-treesitter'
-	}
+	use { 'SmiteshP/nvim-gps', requires = 'nvim-treesitter/nvim-treesitter' } -- Shows context in status line (with treesitter)
+	use { 'yioneko/nvim-yati', requires = 'nvim-treesitter/nvim-treesitter' } -- Better auto-indent atm
 
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent line helper
 	use 'numToStr/Comment.nvim' -- Comments
@@ -67,23 +58,13 @@ return require('packer').startup(function()
 	use 'lewis6991/spellsitter.nvim' -- Enable spellchecking with treesitter
 
 	-- Telescope --
-	use {
-		'nvim-telescope/telescope.nvim', -- Fuzzy finder with alot of integration
-		requires = {
-			'nvim-lua/plenary.nvim'
-		}
-	}
+	use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' } -- Fuzzy finder with alot of integration
 	use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- fzf integration for telescope
 	use 'nvim-telescope/telescope-rg.nvim' -- Better live grep
 	use 'nvim-telescope/telescope-ui-select.nvim' -- native nvim ui select with telescope
 
 	-- Status Line --
-	use {
-		'nvim-lualine/lualine.nvim', -- Status line
-		requires = {
-			'kyazdani42/nvim-web-devicons' -- Web icons (more plugins using this)
-		}
-	}
+	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' } -- Status line
 
 	-- Git --
 	use 'lewis6991/gitsigns.nvim' -- Show git diff in the sidebar, hunk actions and more
@@ -113,10 +94,7 @@ return require('packer').startup(function()
 	use 'ntpeters/vim-better-whitespace' -- Whitespace trailing
 	use 'ofirgall/AutoSave.nvim' -- Auto save
 	use 'romgrk/barbar.nvim' -- Tabline
-	use {
-		'xolox/vim-session', -- Session Manager
-		requires = { 'xolox/vim-misc' }
-	}
+	use { 'xolox/vim-session', requires = 'xolox/vim-misc' } -- Session Manager
 	use 'ethanholz/nvim-lastplace' -- Save last place
 	use 'mg979/vim-visual-multi' -- Multi cursors
 	use 'mizlan/iswap.nvim' -- Swap arguments, elements (:ISwap)
@@ -124,26 +102,12 @@ return require('packer').startup(function()
 	use 'rhysd/devdocs.vim' -- Open DevDocs from nvim
 	use 'lyokha/vim-xkbswitch' -- Switch to english for normal mode
 	use { 'michaelb/sniprun', run = 'bash ./install.sh'} -- Run snippets in your code
-	use {
-		'AckslD/nvim-revJ.lua', -- Reverse join (split)
-		requires = {'kana/vim-textobj-user', 'sgur/vim-textobj-parameter'},
-	}
+	use { 'AckslD/nvim-revJ.lua', requires = {'kana/vim-textobj-user', 'sgur/vim-textobj-parameter'} } -- Reverse join (split)
 	use 'nacro90/numb.nvim' -- Peek at line number before jump
-	use {
-		'danymat/neogen', -- Doc generator
-		requires = 'nvim-treesitter/nvim-treesitter'
-	}
-	use {
-		'kyazdani42/nvim-tree.lua', -- File Tree
-		requires = {
-			'kyazdani42/nvim-web-devicons',
-		},
-	}
+	use { 'danymat/neogen', requires = 'nvim-treesitter/nvim-treesitter' } -- Doc generator
+	use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', } -- File Tree
 	use 'jbyuki/venn.nvim' -- Draw ascii boxes and arrows, start the mode with :Draw, exit with escape, HJKL for arrows, f for box (inside <C-v>)
-	use {
-		'glacambre/firenvim', -- NVIM in firefox
-		run = function() vim.fn['firenvim#install'](0) end
-	}
+	use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end } -- NVIM in firefox
 	use 'ojroques/vim-oscyank' -- Yank from remote
 	use 'mbbill/undotree' -- visualize undo/redo tree (F5)
 	use 'tversteeg/registers.nvim' -- visualize copy registers
@@ -152,29 +116,17 @@ return require('packer').startup(function()
 	use 'shivamashtikar/tmuxjump.vim' -- jump to files that printed in another tmux panes
 	use 'szw/vim-maximizer' -- Maximize windows (splits) in vim
 	use 'rust-lang/rust.vim' -- Rust utils (RustFmt on save)
-	use {
-		'ThePrimeagen/refactoring.nvim', -- Refactor tool
-		requires = {
-			{'nvim-lua/plenary.nvim'},
-			{'nvim-treesitter/nvim-treesitter'}
-		}
-	}
+	use { 'ThePrimeagen/refactoring.nvim', requires = {'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter'} } -- Refactor tool
+	use { 'nvim-neorg/neorg', requires = 'nvim-lua/plenary.nvim' } -- .norg plugin better orgmode
+	use { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' } -- review todo in the quickfix list with :Todo..
+	use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
+	use 'norcalli/nvim-colorizer.lua' -- colorize hexcolor values in buffer
+	use 'hrsh7th/nvim-pasta' -- Auto indent on paste, cycle on yank history after paste with <C-n>/<C-p>
 	use {
 		'iamcco/markdown-preview.nvim', -- Markdown preview
 		run = function() vim.fn['mkdp#util#install']() end,
 		ft = {'markdown'}
 	}
-	use {
-		'nvim-neorg/neorg', -- .norg plugin better orgmode
-		requires = 'nvim-lua/plenary.nvim'
-	}
-	use {
-		'folke/todo-comments.nvim', -- review todo in the quickfix list with :Todo..
-		requires = 'nvim-lua/plenary.nvim',
-	}
-	use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
-	use 'norcalli/nvim-colorizer.lua' -- colorize hexcolor values in buffer
-	use 'hrsh7th/nvim-pasta' -- Auto indent on paste, cycle on yank history after paste with <C-n>/<C-p>
 
 	-- Improvment Games
 	use 'ThePrimeagen/vim-be-good'
