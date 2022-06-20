@@ -128,14 +128,12 @@ let g:VM_maps['Add Cursor Up'] = '<M-p>'
 vim.g.sandwich_no_default_key_mappings = 1
 local sandwich_opts = {}
 -- add
-map('n', '<leader>sa', '<Plug>(sandwich-add)', sandwich_opts)
+map({'n', 'x', 'o'}, '<leader>sa', '<Plug>(sandwich-add)', sandwich_opts)
 -- delete
-map('n', '<leader>sd', '<Plug>(sandwich-delete)', sandwich_opts)
-map('x', '<leader>sd', '<Plug>(sandwich-delete)', sandwich_opts)
+map({'n', 'x'}, '<leader>sd', '<Plug>(sandwich-delete)', sandwich_opts)
 map('n', '<leader>sdb', '<Plug>(sandwich-delete-auto)', sandwich_opts)
 -- replace
-map('n', '<leader>sr', '<Plug>(sandwich-replace)', sandwich_opts)
-map('x', '<leader>sr', '<Plug>(sandwich-replace)', sandwich_opts)
+map({'n', 'x'}, '<leader>sr', '<Plug>(sandwich-replace)', sandwich_opts)
 map('n', '<leader>srb', '<Plug>(sandwich-replace-auto)', sandwich_opts)
 -- sandwich word
 map('n', '<leader>sw', '<Plug>(sandwich-add)iw', sandwich_opts)

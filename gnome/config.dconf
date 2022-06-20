@@ -482,5 +482,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(166, 10)
+window-position=(166, 14)
 window-size=(1203, 790)
