@@ -41,3 +41,35 @@ split_if_not_exist = function(is_vsplit)
 	-- Didnt return create new split
 	vim.fn.execute(split_command)
 end
+
+create_title = function()
+	local title = vim.fn.input("Title: ")
+	local len = vim.fn.input("Title Length: ", 30)
+	local filler_char = vim.fn.input("Filler: ", "-")
+	local amount_of_lines = vim.fn.input("Amount of lines: ", "1")
+
+	local filler_amount = (len - string.len(title) - 2) / 2
+	local filler = ""
+	for _ = 1, filler_amount, 1 do
+		filler = filler .. filler_char
+	end
+
+	local output_title = filler .. ' ' .. title .. ' ' .. filler
+	local wrapped_line = ""
+	for _ = 1, len, 1 do
+		wrapped_line = wrapped_line .. filler_char
+	end
+
+	local lines = {}
+	for _ = 1, amount_of_lines / 2, 1 do
+		table.insert(lines, wrapped_line)
+	end
+	table.insert(lines, output_title)
+	for _ = 1, amount_of_lines / 2, 1 do
+		table.insert(lines, wrapped_line)
+	end
+
+	local pos = api.nvim_win_get_cursor(0)[1] - 1
+	api.nvim_buf_set_lines(0, pos, pos, false, lines)
+end
+vim.cmd('command! Title lua create_title()')
