@@ -220,3 +220,7 @@ require("iron.core").setup {
 require('colorizer').setup{
 	'*'
 }
+
+-- nvim-pasta
+require('pasta').setup{
+}

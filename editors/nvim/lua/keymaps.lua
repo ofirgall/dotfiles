@@ -113,6 +113,8 @@ map('n', '<leader>c', '<cmd>Telescope command_history<CR>', default_opts) -- his
 map('n', '<leader>ss', '<cmd>Telescope spell_suggest<CR>', default_opts) -- history of Commands
 map('n', '<leader>l', '<cmd>DevDocsUnderCursor<cr>', default_opts) -- Search current word in DevDocs
 map('n', '<leader>gx', '<cmd>call OpenInBrowser()<CR>', default_opts)
+map({'n', 'x'}, 'p', require('pasta.mappings').p) -- override paste with smarter paste
+map({'n', 'x'}, 'P', require('pasta.mappings').P) -- override paste with smarter paste
 
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 -- Add cursor down/up Alt+n/p (like ctrl+down/up in subl)
