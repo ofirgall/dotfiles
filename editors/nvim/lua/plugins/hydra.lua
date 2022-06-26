@@ -24,8 +24,69 @@ Hydra({
 		{ '-', '<C-w>-' },
 		{ '>', '2<C-w>>', { desc = 'increase width' } },
 		{ '<', '2<C-w><', { desc = 'decrease width' } },
-		{ '=', '<C-w>=', { desc = 'equalize'} },
+		{ '=', '<C-w>=', { exit = true, desc = 'equalize'} },
 		--
 		{ '<Esc>', nil,  { exit = true }}
+	}
+})
+
+-- Git submode
+local gitsigns = require('gitsigns')
+local hint = [[
+ _<C-j>_: next hunk   _s_: stage hunk        _r_: reset hunk     _d_: show deleted   _b_: blame line
+ _<C-k>_: prev hunk   _u_: undo stage hunk   _R_: reset buffer   _p_: preview hunk   _B_: blame show full
+ ^ ^                  _S_: stage buffer      ^ ^                 _/_: show base file
+ ^
+ ^ ^				_<Enter>_: Fugitive       _<Esc>_: exit       _q_: exit
+]]
+
+Hydra({
+	hint = hint,
+	config = {
+		color = 'pink',
+		invoke_on_body = true,
+		hint = {
+			position = 'bottom',
+			border = 'rounded'
+		},
+		on_enter = function()
+			-- vim.bo.modifiable = false
+			gitsigns.toggle_signs(true)
+			gitsigns.toggle_linehl(true)
+			gitsigns.toggle_deleted(true)
+		end,
+		on_exit = function()
+			gitsigns.toggle_signs(true)
+			gitsigns.toggle_linehl(false)
+			gitsigns.toggle_deleted(false)
+			vim.cmd 'echo' -- clear the echo area
+		end
+	},
+	mode = {'n','x'},
+	body = '<leader>gg',
+	heads = {
+		{ '<C-j>', function()
+			if vim.wo.diff then return ']c' end
+			vim.schedule(function() gitsigns.next_hunk() end)
+			return '<Ignore>'
+		end, { expr = true } },
+		{ '<C-k>', function()
+			if vim.wo.diff then return '[c' end
+			vim.schedule(function() gitsigns.prev_hunk() end)
+			return '<Ignore>'
+		end, { expr = true } },
+		{ 's', ':Gitsigns stage_hunk<CR>', { silent = true } },
+		{ 'r', ':Gitsigns reset_hunk<CR>', { silent = true } },
+		{ 'R', ':Gitsigns reset_buffer<CR>', { silent = true } },
+		{ 'u', gitsigns.undo_stage_hunk },
+		{ 'S', gitsigns.stage_buffer },
+		{ 'p', gitsigns.preview_hunk },
+		{ 'd', gitsigns.toggle_deleted, { nowait = true } },
+		{ 'b', gitsigns.blame_line },
+		{ 'B', function() gitsigns.blame_line{ full = true } end },
+		{ '/', gitsigns.show, { exit = true } }, -- show the base of the file
+		{ '<Enter>', '<cmd>Git<CR>', { exit = true } },
+		{ 'q', nil, { exit = true, nowait = true } },
+		{ '<Esc>', nil, { exit = true, nowait = true } },
 	}
 })

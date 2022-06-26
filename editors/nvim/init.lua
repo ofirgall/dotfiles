@@ -14,6 +14,7 @@ else
 	require('plugins/treesitter')
 	require('plugins/git')
 	require('plugins/neorg')
+	require('plugins/hydra')
 end
 require('plugins/vim-sessions')
 require('plugins/design')
