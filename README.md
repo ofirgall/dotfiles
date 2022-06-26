@@ -30,7 +30,7 @@ Done by dconf (gnome tweaks):
 * Capslock is mapped to Escape - Don't move your hands when escaping insert mode.
 * Both shift changes language - Don't move your hands while typing.
 * Right Alt is mapped to backspace - Same idea.. (done with ~/.xmodmap too)
-* Changing workspaces - Ctrl+J/H, Ctrl+Shift+J/H
+* Changing workspaces - Ctrl+H/J/K/L, Ctrl+Shift+H/J/K/L
 * [tmux-go](https://github.com/ofirgall/tmux-go) shortcuts, Alt+G, Super+J/K/L/M
 
 ---

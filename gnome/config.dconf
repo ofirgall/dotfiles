@@ -217,6 +217,8 @@ event-sounds=true
 
 [org/gnome/desktop/wm/keybindings]
 move-to-workspace-down=['<Primary><Shift><Alt>j']
+move-to-workspace-left=['<Primary><Shift><Alt>h']
+move-to-workspace-right=['<Primary><Shift><Alt>l']
 move-to-workspace-up=['<Primary><Shift><Alt>k']
 switch-to-workspace-down=['<Primary><Alt>j']
 switch-to-workspace-left=['<Primary><Alt>h']
