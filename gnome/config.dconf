@@ -429,7 +429,7 @@ command-history=['', 'r']
 disable-user-extensions=false
 disabled-extensions=['wsmatrix@martin.zurowietz.de']
 enabled-extensions=['disable-gestures-2021@verycrazydog.gmail.com', 'switchtwolayouts@qtmax.dev', 'hidetopbar@mathieu.bidon.ca', 'transparentnotification@ipaq3870', 'panel-osd@berend.de.schouwer.gmail.com']
-favorite-apps=['firefox_firefox.desktop', 'org.gnome.Terminal.desktop']
+favorite-apps=['firefox_firefox.desktop']
 had-bluetooth-devices-setup=true
 welcome-dialog-last-shown-version='42.0'
 
