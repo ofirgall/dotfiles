@@ -51,12 +51,12 @@ Hydra({
 		},
 		on_enter = function()
 			-- vim.bo.modifiable = false
-			gitsigns.toggle_signs(true)
+			-- gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(true)
 			gitsigns.toggle_deleted(true)
 		end,
 		on_exit = function()
-			gitsigns.toggle_signs(true)
+			-- gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(false)
 			gitsigns.toggle_deleted(false)
 			vim.cmd 'echo' -- clear the echo area
@@ -66,13 +66,19 @@ Hydra({
 	body = '<leader>gg',
 	heads = {
 		{ '<C-j>', function()
-			if vim.wo.diff then return ']c' end
-			vim.schedule(function() gitsigns.next_hunk() end)
+			if vim.wo.diff then return ']czz' end
+			vim.schedule(function()
+				gitsigns.next_hunk()
+				vim.api.nvim_feedkeys('zz', '', false)
+			end)
 			return '<Ignore>'
 		end, { expr = true } },
 		{ '<C-k>', function()
-			if vim.wo.diff then return '[c' end
-			vim.schedule(function() gitsigns.prev_hunk() end)
+			if vim.wo.diff then return '[czz' end
+			vim.schedule(function()
+				gitsigns.prev_hunk()
+				vim.api.nvim_feedkeys('zz', '', false)
+			end)
 			return '<Ignore>'
 		end, { expr = true } },
 		{ 's', ':Gitsigns stage_hunk<CR>', { silent = true } },
