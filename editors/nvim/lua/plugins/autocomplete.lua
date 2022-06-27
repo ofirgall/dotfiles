@@ -52,6 +52,12 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+cmp_completion_design = {
+	border = 'rounded',
+	winhighlight = 'Normal:Normal,CursorLine:Visual,Search:None',
+	zindex = 1001,
+}
+
 cmp_setup_dict = {
 	snippet = {
 		expand = function(args)
@@ -97,8 +103,8 @@ cmp_setup_dict = {
 		})
 	},
 	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
+		completion = cmp_completion_design,
+		documentation = cmp_completion_design,
 	},
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
