@@ -72,4 +72,4 @@ create_title = function()
 	local pos = api.nvim_win_get_cursor(0)[1] - 1
 	api.nvim_buf_set_lines(0, pos, pos, false, lines)
 end
-vim.cmd('command! Title lua create_title()')
+api.nvim_create_user_command('Title', create_title, {})

@@ -81,9 +81,7 @@ vim.api.nvim_create_autocmd('BufWinLeave', {
 	end
 })
 
-vim.cmd([[
-command! Locate execute 'NvimTreeFindFile'
-]])
+vim.api.nvim_create_user_command('Locate', ':NvimTreeFindFile', {})
 
 vim.cmd([[
 let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
@@ -115,9 +113,7 @@ function _G.Toggle_Draw()
 	end
 end
 
-vim.cmd([[
-command! Draw execute 'lua Toggle_Draw()'
-]])
+vim.api.nvim_create_user_command('Draw', Toggle_Draw, {})
 
 if IS_REMOTE then
 	-- Enable osc(remote) yank

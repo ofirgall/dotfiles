@@ -1,11 +1,4 @@
 
-vim.cmd([[
-command! SolveConflict execute ':Gvdiffsplit!'
-command! Conflict execute ':Gvdiffsplit!'
-command! Wrap execute ':windo set wrap'
-command! NoWrap execute ':windo set nowrap'
-]])
-
 require('gitsigns').setup {
 	sign_priority = 10000,
 	on_attach = function(bufnr)
