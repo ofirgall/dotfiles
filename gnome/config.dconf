@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=28
-launch-time=int64 1656227689
+launch-count=29
+launch-time=int64 1656845649
 show-details=true
 window-height=503
 window-width=645
@@ -19,7 +19,7 @@ window-width=540
 
 [com/ubuntu/update-notifier]
 no-show-notifications=true
-release-check-time=uint32 1655475479
+release-check-time=uint32 1656845643
 
 [com/uploadedlobster/peek]
 persist-window-geometry=(349, 183, 794, 593)
@@ -97,7 +97,7 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams', 'kupfer', 'org-gnome-screenshot', 'com-uploadedlobster-peek', 'signal-desktop', 'slack', 'virtualbox', 'snap-store-ubuntu-software-local-file', 'firefox-firefox', 'io-snapcraft-sessionagent']
+application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams', 'kupfer', 'org-gnome-screenshot', 'com-uploadedlobster-peek', 'signal-desktop', 'slack', 'virtualbox', 'snap-store-ubuntu-software-local-file', 'firefox-firefox', 'io-snapcraft-sessionagent', 'teamspeak3-client']
 show-banners=true
 
 [org/gnome/desktop/notifications/application/apport-gtk]
@@ -178,6 +178,9 @@ application-id='sublime_text.desktop'
 
 [org/gnome/desktop/notifications/application/teams-teams]
 application-id='teams_teams.desktop'
+
+[org/gnome/desktop/notifications/application/teamspeak3-client]
+application-id='teamspeak3-client.desktop'
 
 [org/gnome/desktop/notifications/application/update-manager]
 application-id='update-manager.desktop'
@@ -263,7 +266,7 @@ active-plugins=['filebrowser', 'modelines', 'spell', 'docinfo', 'sort']
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///home/ofirg/Downloads'
+virtual-root='file:///home/ofirg/.local/lib/python3.10/site-packages/brotab'
 
 [org/gnome/gedit/preferences/editor]
 scheme='Yaru-dark'

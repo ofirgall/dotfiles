@@ -14,9 +14,9 @@ require('telescope').setup{
 		layout_config = {
 			horizontal = {
 				-- prompt_position = 'top'
-				width = 0.99,
+				width = 0.95,
 				preview_width = 0.5,
-				height = 0.99
+				height = 0.95
 			}
 		}
 	},
