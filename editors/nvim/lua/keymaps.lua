@@ -144,7 +144,7 @@ map('n', '<leader>sW', '<Plug>(sandwich-add)iW', sandwich_opts)
 -----------------------------------
 --        CODE NAVIGATION        --
 -----------------------------------
-live_grep_raw = function(opts, mode)
+live_grep = function(opts, mode)
 	opts = opts or {}
 	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'
 	if not opts.default_text then
@@ -155,7 +155,7 @@ live_grep_raw = function(opts, mode)
 		end
 	end
 
-	require('telescope').extensions.live_grep_raw.live_grep_raw(opts)
+	require('telescope').extensions.live_grep_args.live_grep_args(opts)
 end
 
 get_text = function(mode)
@@ -175,13 +175,13 @@ map('n', 'KR', '<cmd>Telescope resume<cr>', default_opts) -- Resume last telesco
 map('n', 'KL', function() require("telescope.builtin").find_files({hidden=true, follow=true}) end, default_opts) -- find files (ctrl+p)
 map('n', 'Kd', function() require("telescope.builtin").find_files({hidden=true, follow=true, default_text = vim.fn.expand("<cword>")}) end, default_opts) -- find files (ctrl+p) starting with current word
 map('v', 'KL', '<Esc><cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true, default_text=get_visual_text()})<cr>', default_opts) -- find files text from visual
-map('n', 'KJ', live_grep_raw, default_opts) -- search in all files (fuzzy finder)
-map('v', 'KJ', '<Esc><cmd>lua live_grep_raw({}, "v")<cr>', default_opts) -- search in all files (default text is from visual)
-map('n', 'KD', function() live_grep_raw({default_text = vim.fn.expand("<cword>")}) end, default_opts) -- Search in all files with current word inserted
+map('n', 'KJ', live_grep, default_opts) -- search in all files (fuzzy finder)
+map('v', 'KJ', '<Esc><cmd>lua live_grep({}, "v")<cr>', default_opts) -- search in all files (default text is from visual)
+map('n', 'KD', function() live_grep({default_text = vim.fn.expand("<cword>")}) end, default_opts) -- Search in all files with current word inserted
 map('n', 'KF', ':set opfunc=LiveGrepRawOperator<CR>g@', default_opts) -- Search in all files with word from move operator
-vim.cmd("function! LiveGrepRawOperator(...) \n lua live_grep_raw({}, 'n') \n endfunction") -- used by `KF`
-map('n', 'Kj', function() live_grep_raw({default_text = '-g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*" '}) end, default_opts) -- Search in all files in your current directory
-map('n', 'Kjd', function() live_grep_raw({default_text = vim.fn.expand("<cword>") .. ' -g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*"'}) end, default_opts) -- Search in all files in your current directory + with your current word
+vim.cmd("function! LiveGrepRawOperator(...) \n lua live_grep({}, 'n') \n endfunction") -- used by `KF`
+map('n', 'Kj', function() live_grep({default_text = '-g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*" '}) end, default_opts) -- Search in all files in your current directory
+map('n', 'Kjd', function() live_grep({default_text = vim.fn.expand("<cword>") .. ' -g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*"'}) end, default_opts) -- Search in all files in your current directory + with your current word
 
 
 -----------------------------------

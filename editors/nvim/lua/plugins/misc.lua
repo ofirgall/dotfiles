@@ -44,7 +44,7 @@ end
 local find_in_path = function(node)
 	opts = {}
 	opts.default_text = '-g"'.. node_relative_path(node) .. '/**" "'
-	require('telescope').extensions.live_grep_raw.live_grep_raw(opts)
+	require('telescope').extensions.live_grep_args.live_grep_args(opts)
 end
 
 local git_hist_path = function(node)

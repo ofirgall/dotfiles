@@ -60,7 +60,7 @@ return require('packer').startup(function()
 	-- Telescope --
 	use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' } -- Fuzzy finder with alot of integration
 	use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- fzf integration for telescope
-	use 'nvim-telescope/telescope-rg.nvim' -- Better live grep
+	use 'nvim-telescope/telescope-live-grep-args.nvim' -- Better live grep
 	use 'nvim-telescope/telescope-ui-select.nvim' -- native nvim ui select with telescope
 
 	-- Status Line --
