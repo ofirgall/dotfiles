@@ -274,22 +274,22 @@ end
 map('n', '<M-m>', '<cmd>NvimTreeToggle<cr>', default_opts)
 
 -- Tabline binds
-map('n', 'Q', '<cmd>BufferClose!<CR>', default_opts) -- shift+Quit to close current tab
-map('n', 'g1', '<cmd>BufferGoto 1<CR>', default_opts)
-map('n', 'g2', '<cmd>BufferGoto 2<CR>', default_opts)
-map('n', 'g3', '<cmd>BufferGoto 3<CR>', default_opts)
-map('n', 'g4', '<cmd>BufferGoto 4<CR>', default_opts)
-map('n', 'g5', '<cmd>BufferGoto 5<CR>', default_opts)
-map('n', 'g6', '<cmd>BufferGoto 6<CR>', default_opts)
-map('n', 'g7', '<cmd>BufferGoto 7<CR>', default_opts)
-map('n', 'g8', '<cmd>BufferGoto 8<CR>', default_opts)
-map('n', 'g9', '<cmd>BufferGoto 9<CR>', default_opts)
-map('n', 'g0', '<cmd>BufferLast<CR>', default_opts)
+map('n', 'Q', function() require('bufdelete').bufdelete(0, true) end, default_opts) -- shift+Quit to close current tab
+map('n', 'g1', function() require('bufferline').go_to_buffer(1, true) end, default_opts)
+map('n', 'g2', function() require('bufferline').go_to_buffer(2, true) end, default_opts)
+map('n', 'g3', function() require('bufferline').go_to_buffer(3, true) end, default_opts)
+map('n', 'g4', function() require('bufferline').go_to_buffer(4, true) end, default_opts)
+map('n', 'g5', function() require('bufferline').go_to_buffer(5, true) end, default_opts)
+map('n', 'g6', function() require('bufferline').go_to_buffer(6, true) end, default_opts)
+map('n', 'g7', function() require('bufferline').go_to_buffer(7, true) end, default_opts)
+map('n', 'g8', function() require('bufferline').go_to_buffer(8, true) end, default_opts)
+map('n', 'g9', function() require('bufferline').go_to_buffer(9, true) end, default_opts)
+map('n', 'g0', function() require('bufferline').go_to_buffer(10, true) end, default_opts)
 -- Tab control, tmux binds are "outer" Alt+h/l and vim is "inner" Alt+j/k
-map('n', '<M-j>', '<cmd>BufferPrevious<CR>', default_opts) -- Alt+j to move to left
-map('n', '<M-k>', '<cmd>BufferNext<CR>', default_opts) -- Alt+k to move to right
-map('n', '<M-J>', '<cmd>BufferMovePrevious<CR>', default_opts) -- Alt+Shift+j grab to with you to left
-map('n', '<M-K>', '<cmd>BufferMoveNext<CR>', default_opts) -- Alt+Shift+k grab to with you to right
+map('n', '<M-j>', '<cmd>BufferLineCyclePrev<CR>', default_opts) -- Alt+j to move to left
+map('n', '<M-k>', '<cmd>BufferLineCycleNext<CR>', default_opts) -- Alt+k to move to right
+map('n', '<M-J>', '<cmd>BufferLineMovePrev<CR>', default_opts) -- Alt+Shift+j grab to with you to left
+map('n', '<M-K>', '<cmd>BufferLineMoveNext<CR>', default_opts) -- Alt+Shift+k grab to with you to right
 
 -----------------------------------
 --         REFACTORING           --

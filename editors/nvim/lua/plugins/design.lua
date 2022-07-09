@@ -105,13 +105,6 @@ if not vim.g.started_by_firenvim then
 		},
 	}
 
-	-- barbar
-	vim.g.bufferline = {
-		icons = 'both',
-		closable = false,
-		clickable = false,
-	}
-
 	-- Load lualine late (buggy if not)
 	late_lualine_setup_id = vim.api.nvim_create_autocmd({'BufEnter', 'InsertEnter'}, {
 		pattern = '*',
@@ -121,11 +114,6 @@ if not vim.g.started_by_firenvim then
 			vim.api.nvim_del_autocmd(late_lualine_setup_id)
 		end
 	})
-else
-	-- barbar
-	vim.g.bufferline = {
-		auto_hide = true,
-	}
 end
 
 local highlighted_word_bg = '#343942'
@@ -302,56 +290,6 @@ monokai.setup {
 		CmpItemAbbrMatchFuzzy = {
 			fg = '#34d8f7',
 		},
-		-- romgrk/barbar.nvim
-		BufferCurrent = {
-			fg = palette.white
-		},
-		BufferVisible = {
-			fg = tab_visible_fg,
-			bg = tree_bg
-		},
-		BufferVisibleIndex = {
-			fg = tab_visible_fg,
-			bg = tree_bg
-		},
-		BufferVisibleMod = {
-			fg = tab_visible_fg,
-			bg = tree_bg
-		},
-		BufferVisibleSign = {
-			fg = tab_visible_fg,
-			bg = tree_bg
-		},
-		BufferVisibleTarget = {
-			fg = tab_visible_fg,
-			bg = tree_bg
-		},
-		BufferInActive = {
-			fg = palette.grey,
-			bg = tree_bg
-		},
-		BufferInactiveIndex = {
-			fg = palette.grey,
-			bg = tree_bg
-		},
-		BufferInactiveMod = {
-			fg = palette.grey,
-			bg = tree_bg
-		},
-		BufferInactiveSign = {
-			fg = palette.grey,
-			bg = tree_bg
-		},
-		BufferInactiveTarget = {
-			fg = palette.grey,
-			bg = tree_bg
-		},
-		BufferOffset = {
-			bg = tree_bg
-		},
-		BufferTabpageFill = {
-			bg = tree_bg
-		},
 	}
 }
 
@@ -362,3 +300,24 @@ require("indent_blankline").setup {
 	show_trailing_blankline_indent = false,
 	space_char_blankline = " ",
 }
+
+if not vim.g.started_by_firenvim then
+	-- bufferline.nvim, must be loaded after color scheme
+	require('bufferline').setup {
+		options = {
+			separator_style = 'slant',
+			offsets = {{filetype = 'NvimTree', text = 'File Explorer', text_align = 'center'}},
+			show_buffer_icons = true,
+			themable = true,
+			numbers = 'ordinal',
+		},
+		highlights = {
+			buffer_selected = {
+				gui = 'bold'
+			},
+			numbers_selected = {
+				gui = 'bold'
+			},
+		}
+	}
+end

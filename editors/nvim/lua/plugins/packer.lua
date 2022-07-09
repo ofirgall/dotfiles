@@ -93,7 +93,8 @@ return require('packer').startup(function()
 	use 'ellisonleao/glow.nvim' -- Markdown preview
 	use 'ntpeters/vim-better-whitespace' -- Whitespace trailing
 	use 'ofirgall/AutoSave.nvim' -- Auto save
-	use 'romgrk/barbar.nvim' -- Tabline
+	use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'} -- Tabline
+	use 'famiu/bufdelete.nvim'
 	use { 'xolox/vim-session', requires = 'xolox/vim-misc' } -- Session Manager
 	use 'ethanholz/nvim-lastplace' -- Save last place
 	use 'mg979/vim-visual-multi' -- Multi cursors
