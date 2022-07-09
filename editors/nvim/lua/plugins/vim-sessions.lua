@@ -19,4 +19,10 @@ else
 	let g:session_autoload = 'yes'
 	let g:session_default_name = getcwd()
 	]])
+	vim.api.nvim_create_autocmd('SessionLoadPost', {
+		pattern = '*',
+		callback = function()
+			vim.opt.cmdheight = 1
+		end
+	})
 end
