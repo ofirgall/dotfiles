@@ -242,7 +242,7 @@ monokai.setup {
 			-- style = 'reverse',
 		},
 		Search = {
-			bg = '#790f91',
+			bg = '#555449',
 		},
 		Visual = {
 			bg = '#555449',
