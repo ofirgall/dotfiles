@@ -195,8 +195,7 @@ map('n', 'Kjd', function() live_grep({default_text = vim.fn.expand("<cword>") ..
 map('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, default_opts) -- Format code
 map('n', 'gD', vim.lsp.buf.declaration, default_opts) -- Go to Declaration
 
--- Telescope LSP Binds
-map('n', 'gd', function()
+local goto_def = function()
 	local ft = vim.api.nvim_buf_get_option(0, 'filetype')
 	if ft == 'man' then
 		vim.api.nvim_command(':Man ' .. vim.fn.expand('<cword>'))
@@ -205,7 +204,10 @@ map('n', 'gd', function()
 	else
 		require'telescope.builtin'.lsp_definitions()
 	end
-	end, default_opts) -- Go to Definition
+end
+-- Telescope LSP Binds
+map('n', 'gd', goto_def, default_opts) -- Go to Definition
+map('n', '<C-LeftMouse>', goto_def, default_opts) -- Go to Definition
 
 map('n', 'gvd', function() split_if_not_exist(true) require'telescope.builtin'.lsp_definitions{} end, default_opts) -- Go to Definition in Vsplit
 map('n', 'gxd', function() split_if_not_exist(false) require'telescope.builtin'.lsp_definitions{} end, default_opts) -- Go to Definition in Xsplit
@@ -228,6 +230,7 @@ map('n', '<C-p>', function() require"illuminate".next_reference{reverse=true,wra
 map('n', '<F2>', '<cmd>Lspsaga rename<cr>', default_opts) -- Rename symbols with F2
 map('n', '<F4>', '<cmd>Lspsaga code_action<cr>', default_opts) -- Code action with F4
 map('n', 'KK',  '<cmd>Lspsaga hover_doc<cr>', default_opts) -- Trigger hover (KJ is fast to use)
+map('n', '<RightMouse>',  '<LeftMouse><cmd>Lspsaga hover_doc<cr>', default_opts) -- Trigger hover
 map('n', '<leader>d',  '<cmd>Neogen<cr>', default_opts) -- Document function
 map('n', '<leader>p', '<cmd>Lspsaga show_line_diagnostics<cr>', default_opts) -- show Problem
 map('n', ']p', '<cmd>Lspsaga diagnostic_jump_next<cr>', default_opts) -- next Problem

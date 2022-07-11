@@ -185,15 +185,7 @@ bind -T copy-mode-vi y run-shell "tmux send-keys -X copy-pipe \"xclip -i -select
 
 ##### MOUSE COPY MODE #####
 # Copy word with double click
-bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-word \; run-shell "sleep 0.2" \; send-keys -X copy-pipe-and-cancel
-
-# Copy line with C-double click
-bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-line \; run-shell "sleep 0.2" \; send-keys -X copy-pipe-and-cancel
-# Copy word with double click
-bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-word \; run-shell "sleep 0.2" \; send-keys -X copy-pipe-and-cancel
-
-# Copy line with C-double click
-bind -n DoubleClick1Pane copy-mode -M \; send-keys -X select-line \; run-shell "sleep 0.2" \; send-keys -X copy-pipe-and-cancel
+bind -n DoubleClick1Pane if-shell "$is_nvim" "" 'copy-mode -M; send-keys -X select-word; run-shell "sleep 0.2"; send-keys -X copy-pipe-and-cancel'
 
 # -------------------------
 #	    PLUGINS BINDS
