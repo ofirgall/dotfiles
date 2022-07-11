@@ -131,6 +131,8 @@ vim.g.sandwich_no_default_key_mappings = 1
 local sandwich_opts = {}
 -- add
 map({'n', 'x', 'o'}, '<leader>sa', '<Plug>(sandwich-add)', sandwich_opts)
+-- add current line as a block (convert single line ifs to blocked ifs)
+map('n', '<leader>ssa', 'V<Plug>(sandwich-add)', sandwich_opts)
 -- delete
 map({'n', 'x'}, '<leader>sd', '<Plug>(sandwich-delete)', sandwich_opts)
 map('n', '<leader>sdb', '<Plug>(sandwich-delete-auto)', sandwich_opts)
