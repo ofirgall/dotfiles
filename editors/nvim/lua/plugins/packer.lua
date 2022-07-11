@@ -124,6 +124,7 @@ return require('packer').startup(function()
 	use 'norcalli/nvim-colorizer.lua' -- colorize hexcolor values in buffer
 	use 'hrsh7th/nvim-pasta' -- Auto indent on paste, cycle on yank history after paste with <C-n>/<C-p>
 	use { 'anuvyklack/hydra.nvim', requires = 'anuvyklack/keymap-layer.nvim' }
+	use 'ziontee113/color-picker.nvim' -- color picker
 	use {
 		'iamcco/markdown-preview.nvim', -- Markdown preview
 		run = function() vim.fn['mkdp#util#install']() end,
