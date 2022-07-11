@@ -312,6 +312,12 @@ if not vim.g.started_by_firenvim then
 			numbers = 'ordinal',
 		},
 		highlights = {
+			buffer_visible = {
+				guifg = tab_visible_fg,
+			},
+			numbers_visible = {
+				guifg = tab_visible_fg,
+			},
 			buffer_selected = {
 				gui = 'bold'
 			},
