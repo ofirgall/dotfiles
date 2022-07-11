@@ -134,7 +134,7 @@ local sandwich_opts = {}
 -- add
 map({'n', 'x', 'o'}, '<leader>sa', '<Plug>(sandwich-add)', sandwich_opts)
 -- add current line as a block (convert single line ifs to blocked ifs)
-map('n', '<leader>ssa', 'V<Plug>(sandwich-add)', sandwich_opts)
+map('n', '<leader>Sa', 'V<Plug>(sandwich-add)', sandwich_opts)
 -- delete
 map({'n', 'x'}, '<leader>sd', '<Plug>(sandwich-delete)', sandwich_opts)
 map('n', '<leader>sdb', '<Plug>(sandwich-delete-auto)', sandwich_opts)
@@ -201,9 +201,9 @@ map('n', 'gD', vim.lsp.buf.declaration, default_opts) -- Go to Declaration
 local goto_def = function()
 	local ft = vim.api.nvim_buf_get_option(0, 'filetype')
 	if ft == 'man' then
-		vim.api.nvim_command(':Man ' .. vim.fn.expand('<cword>'))
+		vim.api.nvim_command(':Man ' .. vim.fn.expand('<cWORD>'))
 	elseif ft == 'help' then
-		vim.api.nvim_command(':help ' .. vim.fn.expand('<cword>'))
+		vim.api.nvim_command(':help ' .. vim.fn.expand('<cWORD>'))
 	else
 		require'telescope.builtin'.lsp_definitions()
 	end
