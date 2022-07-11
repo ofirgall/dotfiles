@@ -144,6 +144,9 @@ map('n', '<leader>srb', '<Plug>(sandwich-replace-auto)', sandwich_opts)
 -- sandwich word
 map('n', '<leader>sw', '<Plug>(sandwich-add)iw', sandwich_opts)
 map('n', '<leader>sW', '<Plug>(sandwich-add)iW', sandwich_opts)
+-- Some special cases
+map('n', "<leader>'", '<Plug>(sandwich-replace)"\'', sandwich_opts) -- replace " with '
+map('n', '<leader>"', '<Plug>(sandwich-replace)\'"', sandwich_opts) -- replace ' with "
 
 -----------------------------------
 --        CODE NAVIGATION        --
