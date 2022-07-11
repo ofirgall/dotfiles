@@ -213,3 +213,6 @@ require('go').setup{
 	dap_debug_keymap = false,
 	textobjects = false,
 }
+
+-- markdown-preview.nvim
+vim.g.mkdp_auto_close = 0
