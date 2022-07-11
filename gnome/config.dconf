@@ -51,7 +51,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='sound'
+last-panel='bluetooth'
 
 [org/gnome/deja-dup]
 backend='google'
