@@ -115,6 +115,7 @@ map('n', '<leader>c', '<cmd>Telescope command_history<CR>', default_opts) -- his
 map('n', '<leader>ss', '<cmd>Telescope spell_suggest<CR>', default_opts) -- history of Commands
 map('n', '<leader>l', '<cmd>DevDocsUnderCursor<cr>', default_opts) -- Search current word in DevDocs
 map('n', '<leader>gx', '<cmd>call OpenInBrowser()<CR>', default_opts)
+map('n', '<leader>pc', '<cmd>PickColor<CR>', default_opts)
 map({'n', 'x'}, 'p', require('pasta.mappings').p) -- override paste with smarter paste
 map({'n', 'x'}, 'P', require('pasta.mappings').P) -- override paste with smarter paste
 
@@ -153,7 +154,7 @@ map('n', '<leader>"', '<Plug>(sandwich-replace)\'"', sandwich_opts) -- replace '
 -----------------------------------
 live_grep = function(opts, mode)
 	opts = opts or {}
-	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'
+	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob]")'
 	if not opts.default_text then
 		if mode then
 			opts.default_text = '-F "' .. get_text(mode) .. '"'

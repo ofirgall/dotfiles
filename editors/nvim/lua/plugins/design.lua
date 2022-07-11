@@ -122,6 +122,9 @@ local const_pink = '#e878d2'
 local tree_bg = '#181816'
 local tab_visible_fg = '#b3ab60'
 local cursor_line_bg = '#2e2e27'
+local visual_bg = '#555449'
+local orange = '#de933c'
+local telescope_prompt = '#1d1d1a'
 monokai.setup {
 	palette = {
 		base0 = background,
@@ -242,14 +245,50 @@ monokai.setup {
 			-- style = 'reverse',
 		},
 		Search = {
-			bg = '#555449',
+			bg = visual_bg,
 		},
 		Visual = {
-			bg = '#555449',
+			bg = visual_bg,
+		},
+		-- telescope.nvim
+		TelescopeBorder = {
+			fg = tree_bg,
+			bg = tree_bg,
+		},
+		TelescopePromptBorder = {
+			fg = telescope_prompt,
+			bg = telescope_prompt,
+		},
+		TelescopePromptNormal = {
+			fg = palette.white,
+			bg = telescope_prompt,
+		},
+		TelescopePromptPrefix = {
+			fg = orange,
+			bg = telescope_prompt,
+		},
+		TelescopeNormal = {
+			bg = tree_bg
+		},
+		TelescopePreviewNormal = {
+			bg = background
+		},
+		TelescopePreviewTitle = {
+			fg = palette.white,
+			style = 'underline'
+		},
+		TelescopePromptTitle = {
+			fg = palette.white,
+			bg = telescope_prompt,
+			style = 'bold'
+		},
+		TelescopeResultsTitle = {
+			fg = tree_bg,
+			bg = tree_bg,
 		},
 		TelescopeSelection = {
+			bg = cursor_line_bg,
 			fg = palette.white,
-			bg = palette.base3,
 			style = 'none'
 		},
 		-- nvim-tree

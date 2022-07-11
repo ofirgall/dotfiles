@@ -14,11 +14,12 @@ require('telescope').setup{
 		layout_config = {
 			horizontal = {
 				-- prompt_position = 'top'
-				width = 0.95,
+				width = 0.90,
 				preview_width = 0.5,
-				height = 0.95
-			}
-		}
+				height = 0.90
+			},
+		},
+		prompt_prefix = " ",
 	},
 	pickers = {
 	},
