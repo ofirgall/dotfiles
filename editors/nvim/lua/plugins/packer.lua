@@ -125,6 +125,7 @@ return require('packer').startup(function()
 	use 'hrsh7th/nvim-pasta' -- Auto indent on paste, cycle on yank history after paste with <C-n>/<C-p>
 	use { 'anuvyklack/hydra.nvim', requires = 'anuvyklack/keymap-layer.nvim' }
 	use 'ziontee113/color-picker.nvim' -- color picker
+	use {'ray-x/go.nvim', requires = 'ray-x/guihua.lua', run = ':GoUpdateBinaries'} -- Golang tools
 	use {
 		'iamcco/markdown-preview.nvim', -- Markdown preview
 		run = function() vim.fn['mkdp#util#install']() end,

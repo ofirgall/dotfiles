@@ -308,3 +308,8 @@ map('v', '<leader>rf', '<Esc><cmd>lua require("telescope").extensions.refactorin
 map('n', '<leader>dp', function() require("refactoring").debug.printf({}) end, default_opts) -- add Debug Print
 map('v', '<leader>dp', function() require("refactoring").debug.print_var({}) end, default_opts) -- add Debug Print
 map('n', '<leader>dc', function() require("refactoring").debug.cleanup({}) end, default_opts) -- Clean Debug prints
+
+-----------------------------------
+--           GOLANG              --
+-----------------------------------
+map('n', '<leader>e', '<cmd>GoIfErr<cr>', default_opts)
