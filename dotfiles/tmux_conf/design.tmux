@@ -75,11 +75,14 @@ set -g @nova-segment-battery-colors "$seg_b"
 set -g @nova-segment-layout "#(~/.tmux/plugins/tmux-keyboard-layout/scripts/get_keyboard_layout.sh)"
 set -g @nova-segment-layout-colors "$seg_a"
 
+set -g @nova-segment-time "%H:%M"
+set -g @nova-segment-time-colors "$seg_a"
+
 set -g @nova-segment-suspended "#{@suspended_mode}"
 set -g @nova-segment-suspended-colors "$seg_a"
 
 set -g @nova-segments-0-left "session"
-set -g @nova-segments-0-right "prefix cpu battery layout whoami"
+set -g @nova-segments-0-right "prefix cpu battery layout time whoami"
 
 ### SUSPENDED MODE ###
 set -g @suspend_on_resume_command "tmux \
