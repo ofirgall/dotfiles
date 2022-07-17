@@ -19,7 +19,7 @@ window-width=540
 
 [com/ubuntu/update-notifier]
 no-show-notifications=true
-release-check-time=uint32 1656845643
+release-check-time=uint32 1658055246
 
 [com/uploadedlobster/peek]
 persist-window-geometry=(349, 183, 794, 593)
@@ -51,7 +51,7 @@ window-position=(45, 72)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='bluetooth'
+last-panel='keyboard'
 
 [org/gnome/deja-dup]
 backend='google'
@@ -219,6 +219,12 @@ allow-volume-above-100-percent=true
 event-sounds=true
 
 [org/gnome/desktop/wm/keybindings]
+maximize=['<Super>k']
+minimize=@as []
+move-to-monitor-down=['<Shift><Super>j']
+move-to-monitor-left=['<Shift><Super>h']
+move-to-monitor-right=['<Shift><Super>l']
+move-to-monitor-up=['<Shift><Super>k']
 move-to-workspace-down=['<Primary><Shift><Alt>j']
 move-to-workspace-left=['<Primary><Shift><Alt>h']
 move-to-workspace-right=['<Primary><Shift><Alt>l']
@@ -228,6 +234,7 @@ switch-to-workspace-left=['<Primary><Alt>h']
 switch-to-workspace-right=['<Primary><Alt>l']
 switch-to-workspace-up=['<Primary><Alt>k']
 toggle-fullscreen=['<Super>F12']
+unmaximize=['<Super>j']
 
 [org/gnome/desktop/wm/preferences]
 num-workspaces=8
@@ -319,6 +326,10 @@ dynamic-workspaces=true
 experimental-features=['scale-monitor-framebuffer', 'x11-randr-fractional-scaling']
 workspaces-only-on-primary=false
 
+[org/gnome/mutter/keybindings]
+toggle-tiled-left=['<Super>h']
+toggle-tiled-right=['<Super>l']
+
 [org/gnome/mutter/wayland/keybindings]
 restore-shortcuts=@as []
 
@@ -408,17 +419,17 @@ command='/home/ogal/.tmux/tmux-go/src/tmux_go.py -s main'
 name='tmux-go: main'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
-binding='<Super>l'
+binding=''
 command='/home/ogal/.tmux/tmux-go/src/tmux_go.py --last'
 name='tmux-go: last'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3]
-binding='<Super>j'
+binding=''
 command='/home/ogal/.tmux/tmux-go/src/tmux_go.py --prev'
 name='tmux-go: prev'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4]
-binding='<Super>k'
+binding=''
 command='/home/ogal/.tmux/tmux-go/src/tmux_go.py --next'
 name='tmux-go: next'
 
@@ -504,7 +515,7 @@ sort-column='name'
 sort-directories-first=false
 sort-order='ascending'
 type-format='category'
-window-size=(1100, 618)
+window-size=(1920, 1080)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'

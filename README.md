@@ -31,6 +31,9 @@ Done by dconf (gnome tweaks):
 * Both shift changes language - Don't move your hands while typing.
 * Right Alt is mapped to backspace - Same idea.. (done with ~/.xmodmap too)
 * Changing workspaces - Ctrl+H/J/K/L, Ctrl+Shift+H/J/K/L
+* Maximizing/Restoring window - Ctrl+J/K
+* Move window to right/left - Ctrl+H/L
+* Move window across monitors - Shift+Super+H/J/K/L
 * [tmux-go](https://github.com/ofirgall/tmux-go) shortcuts, Alt+G, Super+J/K/L/M
 
 ---
