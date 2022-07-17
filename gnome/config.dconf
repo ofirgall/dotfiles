@@ -504,7 +504,7 @@ sort-column='name'
 sort-directories-first=false
 sort-order='ascending'
 type-format='category'
-window-size=(978, 496)
+window-size=(1100, 618)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'

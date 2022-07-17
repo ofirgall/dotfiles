@@ -119,7 +119,8 @@ end
 local highlighted_word_bg = '#343942'
 local background = '#22221c'
 local const_pink = '#e878d2'
-local tree_bg = '#181816'
+local tree_bg = '#1a1a18'
+local telescope_bg =  '#181816'-- Slightly darker than tree_bg
 local tab_visible_fg = '#b3ab60'
 local cursor_line_bg = '#2e2e27'
 local visual_bg = '#555449'
@@ -252,8 +253,8 @@ monokai.setup {
 		},
 		-- telescope.nvim
 		TelescopeBorder = {
-			fg = tree_bg,
-			bg = tree_bg,
+			fg = telescope_bg,
+			bg = telescope_bg,
 		},
 		TelescopePromptBorder = {
 			fg = telescope_prompt,
@@ -268,7 +269,7 @@ monokai.setup {
 			bg = telescope_prompt,
 		},
 		TelescopeNormal = {
-			bg = tree_bg
+			bg = telescope_bg
 		},
 		TelescopePreviewNormal = {
 			bg = background
@@ -283,8 +284,8 @@ monokai.setup {
 			style = 'bold'
 		},
 		TelescopeResultsTitle = {
-			fg = tree_bg,
-			bg = tree_bg,
+			fg = telescope_bg,
+			bg = telescope_bg,
 		},
 		TelescopeSelection = {
 			bg = cursor_line_bg,
