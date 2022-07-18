@@ -117,11 +117,8 @@ Hydra({
 			border = 'rounded'
 		},
 		on_enter = function()
-			vim.opt_local.virtualedit = 'all'
+			vim.o.virtualedit = 'all'
 		end,
-		on_exit = function()
-			vim.opt_local.virtualedit = ''
-		end
 	},
 	mode = {'n'},
 	body = '<leader>draw',
