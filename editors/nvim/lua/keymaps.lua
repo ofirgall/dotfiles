@@ -35,7 +35,7 @@ local cmd = vim.cmd
 -----------------------------------
 --     KEYMAPS FROM PLUGINS      --
 -----------------------------------
--- lightspeed.nvim: Default
+-- leap.nvim: Default
 -- gitsigns.nvim: git.lua
 -- treesitter-textobjects: treesitter.lua
 
@@ -129,7 +129,7 @@ let g:VM_maps['Add Cursor Down'] = '<M-n>'
 let g:VM_maps['Add Cursor Up'] = '<M-p>'
 ]])
 
--- Adding <leader> prefix for sandwich to avoid conflicting with lightspeed
+-- Adding <leader> prefix for sandwich to avoid conflicting with leap.nvim
 vim.g.sandwich_no_default_key_mappings = 1
 local sandwich_opts = {}
 -- add

@@ -90,7 +90,7 @@ return require('packer').startup(function()
 
 	-- Misc
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
-	-- use 'ggandor/lightspeed.nvim' -- Lightspeed motions (s, S)
+	use 'ggandor/leap.nvim' -- Leap around the code (vimium/easymotion jumps)
 	use 'rhysd/clever-f.vim' -- Highlight results from f/F/t/T and let you go back forward with the same keys
 	use 'machakann/vim-sandwich' -- Sandwich text (sa action)
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)

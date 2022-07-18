@@ -189,3 +189,10 @@ require('go').setup{
 
 -- markdown-preview.nvim
 vim.g.mkdp_auto_close = 0
+
+-- leap.nvim
+require('leap').set_default_keymaps()
+require('leap').setup {
+	max_aot_targets = nil,
+	highlight_unlabeled = false,
+}
