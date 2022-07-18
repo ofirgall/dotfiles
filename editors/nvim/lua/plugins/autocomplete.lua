@@ -73,7 +73,7 @@ cmp_setup_dict = {
 		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
 		['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
 		['<CR>'] = cmp.mapping.confirm({ select = true }),
-		["<Tab>"] = cmp.mapping(function(fallback)
+		['<Tab>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif snippy.can_expand_or_advance() then
@@ -84,8 +84,7 @@ cmp_setup_dict = {
 				fallback()
 			end
 		end, { "i", "c" }),
-
-		["<S-Tab>"] = cmp.mapping(function(fallback)
+		['<S-Tab>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
 			elseif snippy.can_jump(-1) then
