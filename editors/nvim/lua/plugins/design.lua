@@ -330,6 +330,12 @@ monokai.setup {
 		CmpItemAbbrMatchFuzzy = {
 			fg = '#34d8f7',
 		},
+		-- clever-f
+		CleverF = {
+			fg = '#ffffff',
+			bg = '#f00077',
+			style = 'bold'
+		},
 	}
 }
 

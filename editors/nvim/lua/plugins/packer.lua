@@ -14,6 +14,10 @@ vim.g.XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 vim.g.XkbSwitchEnabled = 1
 vim.g.XkbSwitchSkipGhKeys = {'gh', 'gH'}
 
+-- Configure 'clever-f' before loading
+vim.g.clever_f_mark_cursor_color = 'CleverF'
+vim.g.clever_f_mark_char_color = 'CleverF'
+
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim' -- packer can manage itself
 
@@ -86,7 +90,8 @@ return require('packer').startup(function()
 
 	-- Misc
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
-	use 'ggandor/lightspeed.nvim' -- Lightspeed motions (s, S)
+	-- use 'ggandor/lightspeed.nvim' -- Lightspeed motions (s, S)
+	use 'rhysd/clever-f.vim' -- Highlight results from f/F/t/T and let you go back forward with the same keys
 	use 'machakann/vim-sandwich' -- Sandwich text (sa action)
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
 	use 'windwp/nvim-autopairs' -- Closes (--' etc.
