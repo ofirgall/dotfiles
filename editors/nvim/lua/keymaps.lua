@@ -283,6 +283,7 @@ end
 -----------------------------------
 -- File Sidebar
 map('n', '<M-m>', '<cmd>NvimTreeToggle<cr>', default_opts)
+map('n', '<M-N>', '<cmd>NvimTreeFindFile<cr>', default_opts) -- Locate file
 
 -- Tabline binds
 map('n', 'Q', function() require('bufdelete').bufdelete(0, true) end, default_opts) -- shift+Quit to close current tab
