@@ -88,11 +88,20 @@ return require('packer').startup(function()
 	use 'lewis6991/impatient.nvim' -- Faster startuptime
 	use 'nathom/filetype.nvim' -- faster filetype detection
 
-	-- Misc
+	-- Motion
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
 	use 'ggandor/leap.nvim' -- Leap around the code (vimium/easymotion jumps)
 	use 'rhysd/clever-f.vim' -- Highlight results from f/F/t/T and let you go back forward with the same keys
-	use 'machakann/vim-sandwich' -- Sandwich text (sa action)
+	use 'machakann/vim-sandwich' -- Sandwich text (<leader>sa action)
+	use {
+		'ggandor/leap-ast.nvim', -- Use leap.nvim to jump around to treesitter contexts
+		requires = {
+			'rhysd/clever-f.vim',
+			'nvim-treesitter/nvim-treesitter'
+		}
+	}
+
+	-- Misc
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
 	use 'windwp/nvim-autopairs' -- Closes (--' etc.
 	use 'ellisonleao/glow.nvim' -- Markdown preview
@@ -105,7 +114,6 @@ return require('packer').startup(function()
 	use 'mg979/vim-visual-multi' -- Multi cursors
 	use 'mizlan/iswap.nvim' -- Swap arguments, elements (:ISwap)
 	use 'christoomey/vim-tmux-navigator' -- Navigate in panes integrated in vim and tmux
-	use 'rhysd/devdocs.vim' -- Open DevDocs from nvim
 	use 'lyokha/vim-xkbswitch' -- Switch to english for normal mode
 	use { 'michaelb/sniprun', run = 'bash ./install.sh'} -- Run snippets in your code
 	use { 'AckslD/nvim-revJ.lua', requires = {'kana/vim-textobj-user', 'sgur/vim-textobj-parameter'} } -- Reverse join (split)
@@ -137,7 +145,7 @@ return require('packer').startup(function()
 		ft = {'markdown'}
 	}
 
-	-- Improvment Games
+	-- Improvement Games
 	use 'ThePrimeagen/vim-be-good'
 
 
