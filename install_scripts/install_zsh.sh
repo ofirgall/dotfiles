@@ -23,3 +23,6 @@ fi
 sudo apt install -y subversion jq
 # histdb
 sudo apt install -y sqlite3
+
+# fix zinit issues with OMZ:rust
+mkdir -p mkdir $HOME/.cache/zinit/completions
