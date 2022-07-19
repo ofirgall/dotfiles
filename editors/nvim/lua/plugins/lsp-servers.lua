@@ -78,6 +78,10 @@ require'lspconfig'.gopls.setup{
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
+require'lspconfig'.cucumber_language_server.setup{
+	on_attach = lsp_on_attach,
+	capabilities = capabilities,
+}
 
 local clang_cmd = { "clangd", "--background-index", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}
 -- local clang_cmd = { "clangd", "--background-index=false", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}
@@ -94,6 +98,7 @@ require'lspconfig'.clangd.setup{
 	capabilities = capabilities,
 	cmd = clang_cmd,
 }
+
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")

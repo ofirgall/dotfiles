@@ -56,3 +56,6 @@ ln -f -s $HOME/.local/lua-server/bin/lua-language-server $HOME/.local/bin/lua-la
 # GOLANG
 sudo apt-get install -y golang
 GO111MODULE=on go get golang.org/x/tools/gopls@latest
+
+# Cocumber
+sudo npm install -g @cucumber/language-server
