@@ -5,8 +5,10 @@
 if ! $IS_REMOTE; then
 	. "$HOME/.cargo/env" # Rust
 
-	xmodmap ~/.xmodmaprc 2> /dev/null # key mapping, xev to see keys
-	xset r rate 200 35 # Faster repeat rate
+	if ! $WSL; then
+		xmodmap ~/.xmodmaprc 2> /dev/null # key mapping, xev to see keys
+		xset r rate 200 35 # Faster repeat rate
+	fi
 fi
 
 # ---------------------------
@@ -26,9 +28,11 @@ fi
 #		  Daemons
 # ---------------------------
 if ! $IS_REMOTE; then
-	if ! pgrep fusuma > /dev/null;
-	then
-		fusuma --daemon
+	if ! $WSL; then
+		if ! pgrep fusuma > /dev/null;
+		then
+			fusuma --daemon
+		fi
 	fi
 fi
 
@@ -36,7 +40,7 @@ fi
 #		  Auto tmux
 # ---------------------------
 export ZSH_TMUX_ALWAYS_SELECT_SESSION=true
-if ! $IS_REMOTE; then
+if ! $IS_REMOTE && ! $WSL; then
 	$HOME/.tmux/tmux-go/src/tmux_go_attach.sh
 fi
 
