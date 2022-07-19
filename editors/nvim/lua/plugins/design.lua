@@ -117,7 +117,7 @@ if not vim.g.started_by_firenvim then
 end
 
 local highlighted_word_bg = '#343942'
-local background = '#22221c'
+local background = '#2a2a24'
 local const_pink = '#e878d2'
 local tree_bg = '#1a1a18'
 local telescope_bg =  '#181816'-- Slightly darker than tree_bg
