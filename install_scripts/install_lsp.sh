@@ -38,6 +38,7 @@ sudo npm install -g vim-language-server
 sudo npm install -g bash-language-server
 
 # RLS + rust-analyzer
+source $HOME/.cargo/env
 rustup component add rls rust-analysis rust-src
 rustup +nightly component add rust-analyzer-preview
 ln -f -s $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer $HOME/.local/bin/rust-analyzer
@@ -54,4 +55,4 @@ ln -f -s $HOME/.local/lua-server/bin/lua-language-server $HOME/.local/bin/lua-la
 
 # GOLANG
 sudo apt-get install -y golang
-go install golang.org/x/tools/gopls@latest
+GO111MODULE=on go get golang.org/x/tools/gopls@latest

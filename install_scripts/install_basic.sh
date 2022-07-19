@@ -5,20 +5,20 @@ set -e # Exit if fail
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 
-python3 -m pip install -r scripts/requirements.txt --user
-python3 -m pip install brotab
-bt install
-
 if $NO_SUDO; then
 	# Install fzf
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 	~/.fzf/install --no-update-rc
+	python3 -m pip install -r scripts/requirements.txt --user
 	exit 0
 fi
 
 echo 'Installing Basic Libs'
 sudo apt install -y wget moreutils tmux ipython3 pcregrep python3-pip build-essential fzf daemon curl cmake
+
+python3 -m pip install brotab
+$HOME/.local/bin/bt install
 
 # Install bat & rg
 sudo apt install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
