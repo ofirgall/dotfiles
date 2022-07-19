@@ -23,3 +23,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
 	callback = function() vim.highlight.on_yank({timeout=350, higroup='Visual'}) end
 })
+
+if vim.fn.has('wsl') == 1 then
+	vim.g.clipboard = {
+		name = "win32yank-wsl",
+		copy = {
+			["+"] = "win32yank.exe -i --crlf",
+		},
+		paste = {
+			["+"] = "win32yank.exe -o --lf",
+		},
+		cache_enabled = false
+	}
+end

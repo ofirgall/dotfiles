@@ -1,7 +1,9 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 if test -f "$HOME/.remote_indicator"; then
 	"$HOME/dotfiles_scripts/inner/osc52_yank.sh" <&0
+elif command -v clip.exe &> /dev/null; then
+	clip.exe
 else
 	xclip -sel clip <&0
 fi

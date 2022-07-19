@@ -50,6 +50,11 @@ if ! $IS_REMOTE; then
 	sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $HOME/.cargo/bin/alacritty 100
 fi
 
+# Install wsl utils
+if $WSL; then
+	$CURRENT_DIR/install_wsl_utils.sh
+fi
+
 # Must be at the end
 sudo usermod -a -G dialout $USER
 newgrp dialout

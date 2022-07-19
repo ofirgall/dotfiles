@@ -15,3 +15,27 @@ NO_SUDO=false
 if test -f "$HOME/.no_sudo_indicator"; then
   NO_SUDO=true
 fi
+
+WSL=false
+if [[ $(uname -a) == *"Microsoft"* ]]; then
+	WSL=true
+fi
+
+download_latest_release()
+{
+	# Downloading a github release file
+	# $1 - dest dir (recreating it)
+	# $2 - github repo e.g: GothenburgBitFactory/taskwarrior
+	# $3 - grep match file e.g: task-.*
+	# $4 - function to call after download inside $1
+
+	local old_pwd=$(pwd)
+	rm -rf $1
+	mkdir -p $1
+
+	curl -s https://api.github.com/repos/$2/releases/latest | grep "browser_download_url.*$3" | cut -d : -f 2,3 | tr -d \" | wget -P $1 -qi -
+
+	cd $1
+	eval $4
+	cd $old_pwd
+}
