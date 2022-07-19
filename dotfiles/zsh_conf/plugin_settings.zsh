@@ -36,7 +36,7 @@ export AUTO_NOTIFY_THRESHOLD=300 # 5 minutes
 # ---------------------------
 #	histdb integ for zsh-autosuggestions
 # ---------------------------
-if [[ ${ZSH_VERSION:0:3} -ge 5.1 ]]; then
+if [[ ${ZSH_VERSION:0:3} -ge 5.1 ]] && ! $WSL; then
 	_zsh_autosuggest_strategy_histdb_top() {
 		local query="
 			select commands.argv from history

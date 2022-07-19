@@ -15,6 +15,12 @@ if test -f "$HOME/.no_sudo_indicator"; then
 	export NO_SUDO=true
 fi
 
+# Check if WSL
+export WSL=false
+if [[ $(uname -a) == *"Microsoft"* ]]; then
+	export WSL=true
+fi
+
 # Export Local pkgs if on remote (non-root usage)
 if $NO_SUDO; then
 	export PATH="$HOME/pkgs/usr/sbin:$HOME/pkgs/usr/bin:$HOME/pkgs/bin:$PATH"

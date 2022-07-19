@@ -41,7 +41,7 @@ zinit light peterhurford/up.zsh
 zinit ice wait lucid
 zinit light joshskidmore/zsh-fzf-history-search
 
-if [[ ${ZSH_VERSION:0:3} -ge 5.1 ]]; then
+if [[ ${ZSH_VERSION:0:3} -ge 5.1 ]] && ! $WSL; then
 	zinit ice wait lucid
 	zinit light larkery/zsh-histdb
 fi
