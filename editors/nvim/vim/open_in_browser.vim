@@ -14,6 +14,6 @@ function! OpenInBrowser()
 		\ . '[a-zA-Z0-9][a-zA-Z0-9_-]*'
 		\ . '\(\.[a-zA-Z0-9][a-zA-Z0-9_-]*\)\+\(:\d\+\)\?'
 		\ . '\(/[a-zA-Z0-9_/.+%#?&=;@$,!''*~-]*\)\?'
-		call system(printf('firefox -new-tab %s', shellescape(url, 1)))
+		silent execute '!xdg-open ' . shellescape(url,1) . '&'
 	endif
 endfunction
