@@ -15,6 +15,7 @@ else
 	require('plugins/git')
 	require('plugins/neorg')
 	require('plugins/hydra')
+	require('plugins/debug')
 end
 require('plugins/vim-sessions')
 require('plugins/design')

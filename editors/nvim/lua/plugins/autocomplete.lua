@@ -143,9 +143,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	}
 )
 
+vim.diagnostic.config{
+	signs = {
+		priority = 8
+	}
+}
 require('lspsaga').init_lsp_saga({
 	code_action_keys = {
 		quit = "<Escape>",
 		exec = "<CR>",
+	},
+	code_action_lightbulb = {
+		sign_priority = 9,
 	},
 })

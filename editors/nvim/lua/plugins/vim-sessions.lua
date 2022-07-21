@@ -14,7 +14,7 @@ else
 	vim.opt.sessionoptions:append({'buffers','tabpages','options'})
 	vim.cmd([[
 	let g:session_autosave = 'no' " Doesnt save unsaved session for some reason using autocmd instead
-	autocmd ExitPre * exec "NvimTreeClose" | exec "DiffviewClose" | exec "redraw!"
+	autocmd ExitPre * exec "lua require('dapui').close()" | exec "NvimTreeClose" | exec "DiffviewClose" | exec "redraw!"
 	autocmd VimLeavePre * SaveSession
 	let g:session_autoload = 'yes'
 	let g:session_default_name = getcwd()

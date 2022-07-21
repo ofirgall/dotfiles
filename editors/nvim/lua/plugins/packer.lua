@@ -83,6 +83,10 @@ return require('packer').startup(function()
 	use 'rbong/vim-flog' -- Show git history tree with :Flog (read doc for more)
 	use 'rhysd/git-messenger.vim' -- Git blame that allows to explore older commits
 
+	-- Debugging --
+	use 'mfussenegger/nvim-dap'	-- DAP client for nvim
+	use { 'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap' } -- UI for debugging
+
 	-- Startup Time --
 	use 'dstein64/vim-startuptime' -- Profile startuptime
 	use 'lewis6991/impatient.nvim' -- Faster startuptime

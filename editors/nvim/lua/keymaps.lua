@@ -108,7 +108,7 @@ map('n', 'gX', function() split_if_not_exist(false) end, default_opts)
 -----------------------------------
 --          MISC PLUGINS         --
 -----------------------------------
-map('n', '<F5>', '<cmd>UndotreeToggle<CR>', default_opts) -- Toggle undotree
+map('n', '<F8>', '<cmd>UndotreeToggle<CR>', default_opts) -- Toggle undotree
 map('n', '<leader>b', '<cmd>Telescope buffers<CR>', default_opts) -- browse your open Buffers (tabs)
 map('n', '<leader>o', '<cmd>Telescope oldfiles<CR>', default_opts) -- open Old files
 map('n', '<leader>c', '<cmd>Telescope command_history<CR>', default_opts) -- history of Commands
@@ -302,6 +302,22 @@ map('n', '<M-j>', '<cmd>BufferLineCyclePrev<CR>', default_opts) -- Alt+j to move
 map('n', '<M-k>', '<cmd>BufferLineCycleNext<CR>', default_opts) -- Alt+k to move to right
 map('n', '<M-J>', '<cmd>BufferLineMovePrev<CR>', default_opts) -- Alt+Shift+j grab to with you to left
 map('n', '<M-K>', '<cmd>BufferLineMoveNext<CR>', default_opts) -- Alt+Shift+k grab to with you to right
+
+-----------------------------------
+--          DEBUGGING            --
+-----------------------------------
+map('n', '<F5>', require'dap'.continue, default_opts)
+map('n', '<F6>', require'dap'.terminate, default_opts)
+map('n', '<F9>', require'dap'.toggle_breakpoint, default_opts)
+map('n', '<leader>cb', function () require'dap'.toggle_breakpoint(vim.fn.input('Breakpoing condition:')) end, default_opts)
+map('n', '<F10>', require'dap'.step_over, default_opts)
+map('n', '<F11>', require'dap'.step_into, default_opts)
+map('n', '<F12>', require'dap'.step_out, default_opts)
+
+map('n', '<F4>', require'dap'.repl.open, default_opts)
+
+map('n', '<leader>db', require'dapui'.toggle, default_opts)
+map('n', '<leader>ev', require'dapui'.eval, default_opts)
 
 -----------------------------------
 --         REFACTORING           --
