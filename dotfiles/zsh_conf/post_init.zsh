@@ -14,11 +14,6 @@ fi
 # ---------------------------
 #			Misc
 # ---------------------------
-# Load wslrc (needs to be at the post_init to override stuff)
-if [[ $(uname -a) == *"WSL"* ]]; then
-	source ~/.wslrc
-fi
-
 # Extra utils not in dotfiles
 if test -f $HOME/.extra_utils; then
 	source $HOME/.extra_utils

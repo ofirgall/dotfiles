@@ -30,9 +30,9 @@ Done by dconf (gnome tweaks):
 * Capslock is mapped to Escape - Don't move your hands when escaping insert mode.
 * Both shift changes language - Don't move your hands while typing.
 * Right Alt is mapped to backspace - Same idea.. (done with ~/.xmodmap too)
-* Changing workspaces - Ctrl+H/J/K/L, Ctrl+Shift+H/J/K/L
-* Maximizing/Restoring window - Ctrl+J/K
-* Move window to right/left - Ctrl+H/L
+* Changing workspaces - Ctrl+Alt+H/J/K/L, Ctrl+Alt+Shift+H/J/K/L
+* Maximizing/Restoring window - Super+J/K
+* Move window to right/left - Super+H/L
 * Move window across monitors - Shift+Super+H/J/K/L
 * [tmux-go](https://github.com/ofirgall/tmux-go) shortcuts, Alt+G, Super+J/K/L/M
 
@@ -67,6 +67,7 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
+* tmux - zsh vim mode in status bar
 * nvim - norg dont fold
 * nvim - git-messanger support multiple lines (maybe like gh)
 * tmux - Neo-Oli/tmux-text-macros integrate tmux fzf menu

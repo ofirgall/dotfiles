@@ -10,5 +10,4 @@ The files here are linked to `$HOME` (`~`). Check `*.conf.yaml` in the root dir 
 * `profile` - my `~/.profile`
 * `taskrc` - config for my task manager, [taskwarrior](https://github.com/GothenburgBitFactory/taskwarrior) which I use with [taskwarrior-tui](https://github.com/kdheepak/taskwarrior-tui)
 * `vimrc` - basic `~/.vimrc`
-* `wslrc` - `.zshrc` addition for WSL
 * `xmodmaprc` - Configures custom keymaps
