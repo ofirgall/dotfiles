@@ -7,10 +7,10 @@
 * Run `disable_office_pop.bat` to disable CTRL+ALT+SHIFT+Key office popup
 * Multitasking -> disable `When I snap a window, show what I can snap next`
 * Keyboard -> Shortest repeat delay, highest Repeate rate
+* Run `Set-ExecutionPolicy -ExecutionPolicy Unrestricted` in powershell from admin, to allow the execute of `windows_notify.ps1`
 
 ## TODO
 * Download MoveToDesktop + cp ini
-* notify
 * tmux keyboard layout
 * Both shift to change lang
 
