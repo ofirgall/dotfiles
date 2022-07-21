@@ -67,6 +67,7 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
+* nvim - norg dont fold
 * nvim - git-messanger support multiple lines (maybe like gh)
 * tmux - Neo-Oli/tmux-text-macros integrate tmux fzf menu
 * tmux - Neo-Oli/tmux-text-macros better syntax for custom-macros

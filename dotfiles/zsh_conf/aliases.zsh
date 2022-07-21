@@ -14,6 +14,7 @@ alias ticket='xdg-open https://jira.infinidat.com/browse/$(get_ticket)'
 alias cbranch='git rev-parse --abbrev-ref HEAD | tr -d "\n" | toclip'
 alias tkill='tmux kill-session'
 alias trename='tmux rename-session'
+alias todo='nvim ~/todo.norg'
 alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed "s/.*-- \([0-9]*\)/\1/" | sponge | { IFS= read -r x; { printf "%s\n" "$x"; cat; } | xargs taskopen }'
 alias cdn='cd $HOME/.local/share/nvim/site/pack/packer/start' # cd to neovim plugins
 alias cdd='cd $HOME/dotfiles'
