@@ -8,6 +8,8 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 ; ^ = ctrl
 ; # = Winkey
 
+Capslock::Esc ; Capslock -> Escape
+
 ; Changing workspaces - Ctrl+Alt+H/J/K/L, Ctrl+Alt+Shift+H/J/K/L
 ^!l::
 Send, {Ctrl down}{LWin down}{Right}{LWin up}{Ctrl up}
