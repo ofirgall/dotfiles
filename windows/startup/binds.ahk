@@ -22,10 +22,14 @@ return
 ; Move window workspaces (requires MoveToDesktop)
 ^!+l::
 Send, {Alt down}{LWin down}{Right}{LWin up}{Alt up}
+Sleep 10
+Send, {Ctrl down}{LWin down}{Right}{LWin up}{Ctrl up}
 return
 
 ^!+h::
 Send, {Alt down}{LWin down}{Left}{LWin up}{Alt up}
+Sleep 10
+Send, {Ctrl down}{LWin down}{Left}{LWin up}{Ctrl up}
 return
 
 ; Maximizing/Restoring window - Super+J/K
