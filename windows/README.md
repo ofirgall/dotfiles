@@ -9,6 +9,7 @@
 * Multitasking -> disable `When I snap a window, show what I can snap next`
 * Keyboard -> Shortest repeat delay, highest Repeate rate
 * Run `Set-ExecutionPolicy -ExecutionPolicy Unrestricted` in powershell from admin, to allow the execute of `windows_notify.ps1`
+* Right click on the task bar -> Task bar settings -> Automatically hide the task bar in desktop mode
 
 ## TODO
 * Download MoveToDesktop
