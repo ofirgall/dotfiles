@@ -122,7 +122,7 @@ local const_pink = '#e878d2'
 local tree_bg = '#1a1a18'
 local telescope_bg =  '#181816'-- Slightly darker than tree_bg
 local tab_visible_fg = '#b3ab60'
-local cursor_line_bg = '#2e2e27'
+local cursor_line_bg = '#33332c'
 local orange = '#de933c'
 local telescope_prompt = '#1d1d1a'
 monokai.setup {
