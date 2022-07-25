@@ -10,11 +10,12 @@ dapui.setup{
 			}
 		},
 		{
-			size = 0.25,
+			size = 0.20,
 			position = 'left',
 			elements = {
-				'stacks',
+				'breakpoints',
 				'watches',
+				'stacks',
 			}
 		},
 	}
@@ -58,3 +59,10 @@ end
 dap.listeners.before.event_exited['dapui_config'] = function()
   dapui.close()
 end
+
+-- automatically load breakpoints when a file is loaded into the buffer.
+require('persistent-breakpoints').setup{}
+vim.api.nvim_create_autocmd('BufReadPost', {
+	pattern = '*',
+	callback = require('persistent-breakpoints.api').load_breakpoints
+})

@@ -62,12 +62,6 @@ map('', '<Space>', '<Nop>', default_opts) -- Unmap space
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Remove arrows in normal mode
-map('n', '<Left>', '<nop>', default_opts)
-map('n', '<Right>', '<nop>', default_opts)
-map('n', '<Up>', '<nop>', default_opts)
-map('n', '<Down>', '<nop>', default_opts)
-
 -- Move through wrapped lines
 map('', 'j', 'v:count ? "j" : "gj"', { silent = true, expr = true})
 map('', 'k', 'v:count ? "k" : "gk"', { silent = true, expr = true})
@@ -308,13 +302,14 @@ map('n', '<M-K>', '<cmd>BufferLineMoveNext<CR>', default_opts) -- Alt+Shift+k gr
 -----------------------------------
 map('n', '<F5>', require'dap'.continue, default_opts)
 map('n', '<F6>', require'dap'.terminate, default_opts)
-map('n', '<F9>', require'dap'.toggle_breakpoint, default_opts)
-map('n', '<leader>cb', function () require'dap'.toggle_breakpoint(vim.fn.input('Breakpoing condition:')) end, default_opts)
+map('n', '<F9>', require('persistent-breakpoints.api').toggle_breakpoint, default_opts)
+map('n', '<leader>cb', require('persistent-breakpoints.api').set_conditional_breakpoint, default_opts)
+map('n', '<leader>ccb', require('persistent-breakpoints.api').clear_all_breakpoints, default_opts)
 map('n', '<F10>', require'dap'.step_over, default_opts)
 map('n', '<F11>', require'dap'.step_into, default_opts)
 map('n', '<F12>', require'dap'.step_out, default_opts)
 
-map('n', '<F4>', require'dap'.repl.open, default_opts)
+map('n', '<leader>rp', require'dap'.repl.open, default_opts)
 
 map('n', '<leader>db', require'dapui'.toggle, default_opts)
 map('n', '<leader>ev', require'dapui'.eval, default_opts)
