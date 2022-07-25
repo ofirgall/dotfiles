@@ -1,11 +1,18 @@
-require('dapui').setup{
+local dapui = require('dapui')
+dapui.setup{
 	expand_lines = false,
 	layouts = {
 		{
 			size = 0.25,
 			position = 'bottom',
 			elements = {
-				{ id = 'scopes', size = 0.5 }, -- local vars
+				'scopes' -- local vars
+			}
+		},
+		{
+			size = 0.25,
+			position = 'left',
+			elements = {
 				'stacks',
 				'watches',
 			}
@@ -40,3 +47,14 @@ dap.adapters.go = {
 	host = 'rv1',
 	port = 2345,
 }
+
+-- Auto open and close dapui
+dap.listeners.after.event_initialized['dapui_config'] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated['dapui_config'] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited['dapui_config'] = function()
+  dapui.close()
+end

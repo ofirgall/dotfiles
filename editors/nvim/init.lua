@@ -15,13 +15,15 @@ else
 	require('plugins/git')
 	require('plugins/neorg')
 	require('plugins/hydra')
-	require('plugins/debug')
 end
 require('plugins/vim-sessions')
 require('plugins/design')
 require('plugins/autocomplete')
 require('plugins/visual-multi')
 require('plugins/misc')
+if not vim.g.started_by_firenvim then
+	require('plugins/debug') -- Must be loaded after design.lua for highlights
+end
 
 vim.cmd([[
 source $HOME/.config/nvim/vim/file_util.vim
