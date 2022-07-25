@@ -198,7 +198,7 @@ local goto_def = function()
 	if ft == 'man' then
 		vim.api.nvim_command(':Man ' .. vim.fn.expand('<cWORD>'))
 	elseif ft == 'help' then
-		vim.api.nvim_command(':help ' .. vim.fn.expand('<cWORD>'))
+		vim.api.nvim_command(':help ' .. vim.fn.expand('<cword>'))
 	else
 		require'telescope.builtin'.lsp_definitions()
 	end
@@ -207,8 +207,8 @@ end
 map('n', 'gd', goto_def, default_opts) -- Go to Definition
 map('n', '<C-LeftMouse>', goto_def, default_opts) -- Go to Definition
 
-map('n', 'gvd', function() split_if_not_exist(true) require'telescope.builtin'.lsp_definitions{} end, default_opts) -- Go to Definition in Vsplit
-map('n', 'gxd', function() split_if_not_exist(false) require'telescope.builtin'.lsp_definitions{} end, default_opts) -- Go to Definition in Xsplit
+map('n', 'gvd', function() split_if_not_exist(true) goto_def() end, default_opts) -- Go to Definition in Vsplit
+map('n', 'gxd', function() split_if_not_exist(false) goto_def() end, default_opts) -- Go to Definition in Xsplit
 map('n', 'gKD', function() require("telescope.builtin").lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")}) end, default_opts) -- (Go) search Definition under current word
 map('n', 'gi', require'telescope.builtin'.lsp_implementations, default_opts) -- Go to Implementation
 map('n', 'gvi', function() split_if_not_exist(true) require'telescope.builtin'.lsp_implementations{} end, default_opts) -- Go to Implementation in Vsplit
@@ -300,14 +300,18 @@ map('n', '<M-K>', '<cmd>BufferLineMoveNext<CR>', default_opts) -- Alt+Shift+k gr
 -----------------------------------
 --          DEBUGGING            --
 -----------------------------------
+local center_screen = function ()
+	vim.api.nvim_feedkeys('zz', 'n', false)
+end
+
 map('n', '<F5>', require'dap'.continue, default_opts)
 map('n', '<F6>', require'dap'.terminate, default_opts)
 map('n', '<F9>', require('persistent-breakpoints.api').toggle_breakpoint, default_opts)
 map('n', '<leader>cb', require('persistent-breakpoints.api').set_conditional_breakpoint, default_opts)
 map('n', '<leader>ccb', require('persistent-breakpoints.api').clear_all_breakpoints, default_opts)
-map('n', '<F10>', require'dap'.step_over, default_opts)
-map('n', '<F11>', require'dap'.step_into, default_opts)
-map('n', '<F12>', require'dap'.step_out, default_opts)
+map('n', '<F10>', function() require'dap'.step_over() center_screen() end, default_opts)
+map('n', '<F11>', function() require'dap'.step_into() center_screen() end, default_opts)
+map('n', '<F12>', function() require'dap'.step_out() center_screen() end, default_opts)
 
 map('n', '<leader>rp', require'dap'.repl.open, default_opts)
 
