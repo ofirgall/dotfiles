@@ -144,6 +144,7 @@ return require('packer').startup(function()
 	use { 'anuvyklack/hydra.nvim', requires = 'anuvyklack/keymap-layer.nvim' }
 	use 'ziontee113/color-picker.nvim' -- color picker
 	use {'ray-x/go.nvim', requires = 'ray-x/guihua.lua', run = ':GoUpdateBinaries'} -- Golang tools
+	use 'rbong/vim-buffest' -- edit macros and registers
 	use {
 		'iamcco/markdown-preview.nvim', -- Markdown preview
 		run = function() vim.fn['mkdp#util#install']() end,
