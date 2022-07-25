@@ -15,7 +15,7 @@ if $NO_SUDO; then
 fi
 
 echo 'Installing Basic Libs'
-sudo apt install -y wget moreutils tmux ipython3 pcregrep python3-pip build-essential fzf daemon curl cmake
+sudo apt install -y wget moreutils ipython3 pcregrep python3-pip build-essential fzf daemon curl cmake
 
 python3 -m pip install brotab
 $HOME/.local/bin/bt install
@@ -28,10 +28,6 @@ ln -f -s /usr/bin/batcat ~/.local/bin/bat
 if ! $IS_REMOTE; then
 	sudo apt install -y xclip gnome-tweaks
 fi
-
-# Install tpm
-rm -rf ~/.tmux/plugins/tpm
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Rustup
 if ! command -v rustup &> /dev/null

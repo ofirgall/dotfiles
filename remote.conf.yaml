@@ -40,3 +40,4 @@
     - [install_scripts/install_basic.sh, Running basic libs installation]
     - [install_scripts/install_lsp.sh, Installing LSP Utils]
     - [install_scripts/install_nvim.sh, Installing Neovim]
+    - [install_scripts/install_tmux.sh, Installing tmux]
