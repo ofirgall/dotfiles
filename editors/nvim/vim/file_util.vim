@@ -4,7 +4,7 @@
 " the current file.
 
 function! SetGlobalCopyBuffer(content)
-    call system('echo "' . a:content . '"| xclip -sel clip')
+    call system('echo "' . a:content . '"| toclip')
 endfunction
 
 function! CopyRelativePath()

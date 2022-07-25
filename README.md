@@ -67,6 +67,7 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
+* nvim - dap, go to current stopped line
 * tmux - relative numbers in copy mode
 * nvim - leap in nvim-tree
 * nvim - norg dont fold
