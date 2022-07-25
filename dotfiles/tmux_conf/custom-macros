@@ -1,5 +1,4 @@
 custom=(
-'cds && cat messages.txt | grep --text $(hostname) | less :syslog'
-'ps ax | grep -v grep | grep xn-infinidat-core | cut -f1 -d" " | xargs kill -11: killcore'
-'watch service -q core: watchcore'
+'cd /var/logs/volumez/ :logs'
+'rm *\.test && go test -c -gcflags "all=-N -l" && scp *\.test root@rv1:~/ :test'
 )
