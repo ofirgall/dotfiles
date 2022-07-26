@@ -155,5 +155,6 @@ require('lspsaga').init_lsp_saga({
 	},
 	code_action_lightbulb = {
 		sign_priority = 9,
+		virtual_text = false,
 	},
 })
