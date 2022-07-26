@@ -53,6 +53,7 @@ end
 
 require'nvim-tree'.setup {
 	view = {
+		adaptive_size = true,
 		mappings = {
 			list = {
 				{ key = "<Escape>", action = "close_node" },
@@ -60,6 +61,9 @@ require'nvim-tree'.setup {
 				{ key = "gh", action = "git history in path", action_cb = git_hist_path },
 			}
 		}
+	},
+	renderer = {
+		symlink_destination = false
 	}
 }
 
