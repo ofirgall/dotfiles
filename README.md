@@ -67,6 +67,9 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
+* nvim - telescope on git dirty files
+* nvim - pasta.nvim is stuck in go
+* nvim - improve startuptime
 * nvim - navic/gps in telescope preview
 * nvim - dap, go to current stopped line
 * tmux - relative numbers in copy mode
