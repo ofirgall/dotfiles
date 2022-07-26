@@ -67,6 +67,7 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
+* nvim - navic/gps in telescope preview
 * nvim - dap, go to current stopped line
 * tmux - relative numbers in copy mode
 * nvim - leap in nvim-tree

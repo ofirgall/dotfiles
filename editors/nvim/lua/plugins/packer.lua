@@ -77,7 +77,7 @@ return require('packer').startup(function()
 	use 'f-person/git-blame.nvim' -- Git blame (status line)
 	use {
 		'tpope/vim-unimpaired', -- More ][ motions ]n [n for conflicts
-		event = 'BufRead', -- Lazyload
+		-- event = 'BufRead', -- Lazyload, doesn't work for some reason
 	}
 	use 'whiteinge/diffconflicts' -- Better diffconflict viewer (use git mergetool with gitconfig)
 	use 'rbong/vim-flog' -- Show git history tree with :Flog (read doc for more)
