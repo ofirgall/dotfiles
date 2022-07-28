@@ -13,6 +13,7 @@ else
 	require('plugins/git')
 	require('plugins/neorg')
 	require('plugins/hydra')
+	require('plugins/easypick')
 end
 require('plugins/vim-sessions')
 require('plugins/design')
