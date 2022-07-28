@@ -281,7 +281,7 @@ map('n', '<M-m>', '<cmd>NvimTreeToggle<cr>', default_opts)
 map('n', '<M-N>', '<cmd>NvimTreeFindFile<cr>', default_opts) -- Locate file
 
 -- Tabline binds
-map('n', 'Q', function() require('bufdelete').bufdelete(0, true) end, default_opts) -- shift+Quit to close current tab
+map('n', '<C-q>', function() require('bufdelete').bufdelete(0, true) end, default_opts) -- ctrl+Quit to close current tab
 map('n', 'g1', function() require('bufferline').go_to_buffer(1, true) end, default_opts)
 map('n', 'g2', function() require('bufferline').go_to_buffer(2, true) end, default_opts)
 map('n', 'g3', function() require('bufferline').go_to_buffer(3, true) end, default_opts)
