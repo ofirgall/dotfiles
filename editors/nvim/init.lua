@@ -1,4 +1,6 @@
 
+vim.g.did_load_filetypes = 1 -- dont load filetypes.vim we are loading filetypes.nvim instead
+
 require('settings')
 require('utils')
 require('plugins/packer')
