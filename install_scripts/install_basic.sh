@@ -14,6 +14,9 @@ if $NO_SUDO; then
 	exit 0
 fi
 
+# Add 3rd party repos
+sudo add-apt-repository ppa:git-core/ppa -y # newer git, requires update and upgrade git package
+
 echo 'Installing Basic Libs'
 sudo apt install -y wget moreutils ipython3 pcregrep python3-pip build-essential fzf daemon curl cmake
 

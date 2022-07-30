@@ -244,7 +244,7 @@ map('n', '<leader>gd', '<cmd>Easypick dirtyfiles<CR>', default_opts) -- Git dirt
 map('n', '<leader>gD', '<cmd>DiffviewOpen<CR>', default_opts) -- Git Sdiff
 map('n', '<leader>gS', '<cmd>DiffviewOpen HEAD^..HEAD<CR>', default_opts) -- Git Show
 map('n', '<leader>gc', '<cmd>Telescope git_branches<CR>', default_opts) -- Git checkout
-map('n', '<leader>gh', '<cmd>DiffviewFileHistory<CR>', default_opts) -- Git History
+map('n', '<leader>gh', '<cmd>DiffviewFileHistory %<CR>', default_opts) -- Git History
 map('n', '<leader>gH', '<cmd>DiffviewFileHistory .<CR>', default_opts) -- Git workspace History
 map('n', '<leader>gt', '<cmd>Flogsplit<CR>', default_opts) -- Git Tree
 map('n', '<leader>hh', '<cmd>GitMessenger<CR>')
