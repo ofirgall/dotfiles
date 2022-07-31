@@ -159,4 +159,5 @@ require('lspsaga').init_lsp_saga({
 		virtual_text = true,
 		enable_in_insert  = false
 	},
+	rename_in_select = false,
 })
