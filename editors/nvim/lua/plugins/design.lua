@@ -275,7 +275,6 @@ monokai.setup {
 		},
 		TelescopePreviewTitle = {
 			fg = palette.white,
-			style = 'underline'
 		},
 		TelescopePromptTitle = {
 			fg = palette.white,
