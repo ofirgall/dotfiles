@@ -200,3 +200,19 @@ require('leap').setup {
 	max_aot_targets = nil,
 	highlight_unlabeled = false,
 }
+
+-- neoscroll.nvim
+local neoscroll = require('neoscroll')
+neoscroll.setup{
+	mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>'}, -- Dont override zz/zt/zb
+}
+-- Recenter after scroll
+local scroll_speed = 150
+vim.keymap.set('n', '<C-u>', function()
+	neoscroll.scroll(-vim.wo.scroll, true, scroll_speed)
+	vim.api.nvim_feedkeys('zz', 'n', false)
+end, {})
+vim.keymap.set('n', '<C-d>', function()
+	neoscroll.scroll(vim.wo.scroll, true, scroll_speed)
+	vim.api.nvim_feedkeys('zz', 'n', false)
+end, {})
