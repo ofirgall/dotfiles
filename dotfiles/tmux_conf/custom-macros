@@ -1,4 +1,4 @@
 custom=(
 'cd /var/logs/volumez/ :logs'
-'rm *\.test && go test -c -gcflags "all=-N -l" && scp *\.test root@rv1:~/ :test'
+'rm *\.test; go test -c -gcflags "all=-N -l" && scp *\.test root@rv1:~/ :test'
 )
