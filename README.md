@@ -67,11 +67,11 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
-* nvim - navic/gps in telescope preview
 * nvim - dap, go to current stopped line
+
+## TODO Takes time
 * tmux - relative numbers in copy mode
 * nvim - leap in nvim-tree
-* nvim - norg dont fold
 * nvim - git-messanger support multiple lines (maybe like gh)
 * tmux - Neo-Oli/tmux-text-macros integrate tmux fzf menu
 * tmux - Neo-Oli/tmux-text-macros better syntax for custom-macros
@@ -84,8 +84,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - build & run + quickfix errors
 * nvim - try distant one day
 * tuis to try - slack, mail, calander, jira
-
-## TODO Takes time
 * tmux-go
 * when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
 * backup non-dotfiles - tmux sessions, tasks of taskwarrior, nvim sessions
