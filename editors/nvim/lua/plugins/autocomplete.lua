@@ -154,7 +154,9 @@ require('lspsaga').init_lsp_saga({
 		exec = "<CR>",
 	},
 	code_action_lightbulb = {
-		sign_priority = 9,
-		virtual_text = false,
+		-- sign_priority = 9,
+		sign = false,
+		virtual_text = true,
+		enable_in_insert  = false
 	},
 })
