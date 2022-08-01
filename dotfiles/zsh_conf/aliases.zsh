@@ -17,7 +17,8 @@ alias todo='nvim ~/todo.norg'
 alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed "s/.*-- \([0-9]*\)/\1/" | sponge | { IFS= read -r x; { printf "%s\n" "$x"; cat; } | xargs taskopen }'
 alias cdn='cd $HOME/.local/share/nvim/site/pack/packer/start' # cd to neovim plugins
 alias cdd='cd $HOME/dotfiles'
-function ngh() {nvim -c ":Flog -- $@" .} # git history with nvim and Flog
+function g() {nvim -c ":G $@" ./dontsavethis} # git fugitive
+function ngh() {nvim -c ":Flog -- $@" ./dontsavethis} # git history with nvim and Flog
 function cg() { cd $(inner_cg.sh $@) } # cd to git repos
 alias cgg='cg ~/go' # cg to go
 function p() { python -c "print($@)"} # run python easily
@@ -26,7 +27,6 @@ function ssh() {
 }
 
 # Git aliases, no git plugin
-alias g='git'
 alias ga='git add'
 alias gc='git commit'
 alias gcam='git commit -a -m'
