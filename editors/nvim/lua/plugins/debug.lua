@@ -52,16 +52,16 @@ dap.adapters.go = {
 
 -- Auto open and close dapui
 dap.listeners.after.event_initialized['dapui_config'] = function()
-	vim.api.nvim_command("tabnew $") -- $(last) is the debug page
+	vim.api.nvim_command("$tabnew") -- $(last) is the debug page
 	dapui.open()
 end
 dap.listeners.before.event_terminated['dapui_config'] = function()
-	vim.api.nvim_command("tabclose $") -- $(last) is the debug page
 	dapui.close()
+	vim.api.nvim_command("tabclose $") -- $(last) is the debug page
 end
 dap.listeners.before.event_exited['dapui_config'] = function()
-	vim.api.nvim_command("tabclose $") -- $(last) is the debug page
 	dapui.close()
+	vim.api.nvim_command("tabclose $") -- $(last) is the debug page
 end
 
 -- automatically load breakpoints when a file is loaded into the buffer.

@@ -82,6 +82,7 @@ map({'n', 't'}, '<M-Left>', '<cmd>TmuxNavigateLeft<cr>', default_opts)
 map({'n', 't'}, '<M-Down>', '<cmd>TmuxNavigateDown<cr>', default_opts)
 map({'n', 't'}, '<M-Up>', '<cmd>TmuxNavigateUp<cr>', default_opts)
 map({'n', 't'}, '<M-Right>', '<cmd>TmuxNavigateRight<cr>', default_opts)
+map({'n', 't'}, '<leader>t', '<cmd>TmuxJumpFile<cr>', default_opts) -- Jump to file pathes from sibiling tmux pane
 -- Splits like tmux
 map('n', '<M-e>', '<cmd>vsplit<cr>', default_opts)
 map('n', '<M-o>', '<cmd>split<cr>', default_opts)
