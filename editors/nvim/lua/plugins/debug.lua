@@ -30,6 +30,32 @@ vim.fn.sign_define('DapBreakpointRejected', {text='', texthl='DiagnosticWarn'
 vim.fn.sign_define('DapLogPoint', {text='', texthl='DiagnosticWarn', linehl='', numhl=''})
 vim.fn.sign_define('DapStopped', {text='', texthl='DiagnosticInfo', linehl='CursorLine', numhl='CursorLine'})
 
+-- C/C++/Rust
+dap.configurations.cpp = {
+	{
+		name = 'Launch file',
+		type = 'codelldb',
+		request = 'launch',
+		program = function()
+			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/a.out', 'file')
+		end,
+		cwd = vim.fn.getcwd(),
+		stopOnEntry = false,
+	},
+}
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
+
+dap.adapters.codelldb = {
+	type = 'server',
+	port = "${port}",
+	executable = {
+		command = 'codelldb',
+		args = {"--port", "${port}"},
+	}
+}
+
+-- Golang
 dap.configurations.go = {
 	{
 		name = 'Launch Remote',
