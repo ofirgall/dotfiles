@@ -67,6 +67,10 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
+* nvim - fix nvim-cmp with ~/nvim-cmp-test.c, <Esc> if cmp.visible try to jump to next
+* nvim - leap-ast forward/backward
+* nvim - telescope and nvim-tree C-o to open in xsplit
+* nvim - different tab line for differnt tab pages
 * nvim - dap, go to current stopped line
 
 ## TODO Takes time
