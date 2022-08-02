@@ -70,6 +70,9 @@ map('', 'k', 'v:count ? "k" : "gk"', { silent = true, expr = true})
 map('n', '<F11>', ':set spell!<cr>', default_opts)
 map('i', '<F11>', '<C-O>:set spell!<cr>', default_opts)
 
+-- Search current word without jump
+map('n', '*', "<cmd>let @/= '\\<' . expand('<cword>') . '\\>'<cr>zz", default_opts)
+
 -----------------------------------
 --             TMUX              --
 -----------------------------------
