@@ -2,7 +2,7 @@ local snippy = require("snippy")
 snippy.setup({
 	mappings = {
 		s = {
-			["<Tab>"] = "expand_or_advance",
+			["<Tab>"] = "next",
 			["<S-Tab>"] = "previous",
 		},
 		nx = {
@@ -72,12 +72,24 @@ cmp_setup_dict = {
 		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
 		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
 		['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-		['<CR>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
+		['<CR>'] = cmp.mapping(function (fallback)
+			if cmp.visible() then
+				cmp.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert })
+			else
+				fallback()
+			end
+		end, { 'i' }),
+		['<Esc>'] = cmp.mapping(function (fallback)
+			if snippy.can_jump(1) then
+				snippy.next()
+			end
+			fallback()
+		end, { 'i' }),
 		['<Tab>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif snippy.can_expand_or_advance() then
-				snippy.expand_or_advance()
+			elseif snippy.can_jump(1) then
+				snippy.next()
 			elseif has_words_before() then
 				cmp.complete()
 			else
