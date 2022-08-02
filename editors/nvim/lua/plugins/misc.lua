@@ -84,8 +84,9 @@ end
 vim.g.undotree_WindowLayout = 3 -- undotree at right
 
 -- registers.nvim
-vim.g.registers_show = '\"*+-/_=#%.0123456789abcdefghijklmnopqrstuvwxyz:' -- move " register to first
+vim.g.registers_show = '\"-/_=#%.0123456789abcdefghijklmnopqrstuvwxyz:' -- move " register to first
 vim.g.registers_paste_in_normal_mode = 2
+vim.g.registers_window_border = 'single'
 
 -- toggleterm.nvim
 require("toggleterm").setup {
