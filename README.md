@@ -68,7 +68,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 
 ## TODO
 * nvim - leap-ast forward/backward
-* nvim - telescope and nvim-tree C-o to open in xsplit
 * nvim - different tab line for differnt tab pages
 * nvim - dap, go to current stopped line
 

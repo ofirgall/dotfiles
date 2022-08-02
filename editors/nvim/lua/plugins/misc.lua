@@ -56,9 +56,10 @@ require'nvim-tree'.setup {
 		adaptive_size = true,
 		mappings = {
 			list = {
-				{ key = "<Escape>", action = "close_node" },
-				{ key = "f", action = "find in path", action_cb = find_in_path },
-				{ key = "gh", action = "git history in path", action_cb = git_hist_path },
+				{ key = '<Escape>', action = 'close_node' },
+				{ key = 'f', action = 'find in path', action_cb = find_in_path },
+				{ key = 'gh', action = 'git history in path', action_cb = git_hist_path },
+				{ key = '<C-o>', action = 'split' },
 			}
 		}
 	},

@@ -4,12 +4,13 @@ require('telescope').setup{
 		dynamic_preview_title = true,
 		mappings = {
 			i = {
-				["<C-j>"] = "move_selection_next",
-				["<C-k>"] = "move_selection_previous",
+				['<C-j>'] = 'move_selection_next',
+				['<C-k>'] = 'move_selection_previous',
 			},
 			n = {
-				["<C-j>"] = "move_selection_next",
-				["<C-k>"] = "move_selection_previous",
+				['<C-j>'] = 'move_selection_next',
+				['<C-k>'] = 'move_selection_previous',
+				['<C-o>'] = 'select_horizontal',
 			}
 		},
 		layout_config = {
@@ -20,7 +21,7 @@ require('telescope').setup{
 				height = 0.90
 			},
 		},
-		prompt_prefix = " ",
+		prompt_prefix = ' ',
 	},
 	pickers = {
 	},
