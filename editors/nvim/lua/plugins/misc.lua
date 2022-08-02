@@ -217,3 +217,7 @@ vim.keymap.set('n', '<C-d>', function()
 	neoscroll.scroll(vim.wo.scroll, true, scroll_speed)
 	vim.api.nvim_feedkeys('zz', 'n', false)
 end, {})
+
+-- scope.nvim
+require('scope').setup{
+}

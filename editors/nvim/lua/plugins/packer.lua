@@ -114,7 +114,8 @@ return require('packer').startup(function()
 	use 'ntpeters/vim-better-whitespace' -- Whitespace trailing
 	use 'ofirgall/AutoSave.nvim' -- Auto save
 	use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'} -- Tabline
-	use 'famiu/bufdelete.nvim'
+	use 'tiagovla/scope.nvim' -- Scopes buffers for tabpages
+	use 'famiu/bufdelete.nvim' -- delete buffers ctrl+q
 	use { 'xolox/vim-session', requires = 'xolox/vim-misc' } -- Session Manager
 	use 'ethanholz/nvim-lastplace' -- Save last place
 	use 'mg979/vim-visual-multi' -- Multi cursors
