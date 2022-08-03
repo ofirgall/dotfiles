@@ -35,6 +35,7 @@ return require('packer').startup(function()
 			'dcampos/nvim-snippy',
 			'dcampos/cmp-snippy',
 			'f3fora/cmp-spell',
+			'petertriho/cmp-git',
 		}
 	}
 

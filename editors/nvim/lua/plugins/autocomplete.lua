@@ -122,6 +122,7 @@ cmp_setup_dict = {
 		{ name = 'snippy' },
 		{ name = 'spell' },
 		{ name = 'neorg' },
+		{ name = 'git' },
 	}, {
 		{ name = 'buffer' },
 	})
@@ -173,3 +174,6 @@ require('lspsaga').init_lsp_saga({
 	},
 	rename_in_select = false,
 })
+
+require('cmp_git').setup{
+}
