@@ -9,7 +9,6 @@ vim.g.gitblame_date_format = '%d/%m/%Y'
 if not vim.g.started_by_firenvim then
 	local gps = require("nvim-gps")
 	local lsp_gps = require("nvim-navic")
-	local git_blame = require("gitblame")
 
 	-- customized modus-vivendi
 	local colors = {
@@ -89,6 +88,14 @@ if not vim.g.started_by_firenvim then
 		return not lsp_gps.is_available() and gps.is_available()
 	end
 
+	y_section = {}
+	if vim.fn.has('wsl') == 1 then -- don't use git blame in wsl because of performance
+		vim.g.gitblame_enabled = 0
+	else
+		local git_blame = require("gitblame")
+		table.insert(y_section, {git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available})
+	end
+
 	require'lualine'.setup {
 		options = {
 			theme = lualine_theme,
@@ -100,7 +107,7 @@ if not vim.g.started_by_firenvim then
 			lualine_b = {'diff', 'diagnostics'},
 			lualine_c = {'filename', {lsp_gps.get_location, cond = lsp_gps.is_available }, { gps.get_location, cond = is_treesitter_gps_available }},
 			lualine_x = {lsp_server_component},
-			lualine_y = {{git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available}},
+			lualine_y = y_section,
 			lualine_z = {'filetype'},
 		},
 	}
