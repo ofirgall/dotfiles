@@ -95,6 +95,7 @@ require("toggleterm").setup {
 	insert_mappings = false,
 	terminal_mappings = true,
 	direction = 'horizontal',
+	size = 20,
 }
 
 -- guess-indent.nvim
@@ -205,7 +206,7 @@ require('leap').setup {
 -- neoscroll.nvim
 local neoscroll = require('neoscroll')
 neoscroll.setup{
-	mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>'}, -- Dont override zz/zt/zb
+	mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>'}, -- Dont override zz/zt/zb, C-e, C-y
 }
 -- Recenter after scroll
 local scroll_speed = 150
