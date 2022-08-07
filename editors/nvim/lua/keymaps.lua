@@ -336,4 +336,6 @@ map('n', '<leader>dc', function() require("refactoring").debug.cleanup({}) end, 
 -----------------------------------
 --           GOLANG              --
 -----------------------------------
+-- TODO: load only in go
 map('n', '<leader>e', '<cmd>GoIfErr<cr>', default_opts)
+map('n', '<leader>dc', 'diw<Plug>(sandwich-delete)(', default_opts) -- delete convertsion, e.g: int64(a) -> a
