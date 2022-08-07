@@ -54,8 +54,10 @@ map('', '<M-y>', '"+y', default_opts) -- Start copy to os clipboard E.g: M-yy wi
 map('', '<M-Y>', '"+y$', default_opts) -- Copy rest of the line to os clipboard like "Y" but for os clipboard
 map('n', '<M-v>', '"+p', default_opts) -- paste from os clipboard
 map('n', '<M-V>', '"+P', default_opts) -- paste from os clipboard
-map('n', '<M-,>', '<cmd>tabprev<cr>', default_opts) -- Previous tabpage with Alt+, (<). NOT FILE TABS
-map('n', '<M-.>', '<cmd>tabnext<cr>', default_opts) -- Next tabpage with Alt+. (>). NOT FILE TABS
+map({'n', 'v', 't'}, '<M-,>', '<cmd>tabprev<cr>', default_opts) -- Previous tabpage with Alt+, (<). NOT FILE TABS
+map({'n', 'v', 't'}, '<M-.>', '<cmd>tabnext<cr>', default_opts) -- Next tabpage with Alt+. (>). NOT FILE TABS
+map('i', '<M-,>', '<C-O><cmd>tabprev<cr>', default_opts) -- Previous tabpage with Alt+, (<). NOT FILE TABS
+map('i', '<M-.>', '<C-O><cmd>tabnext<cr>', default_opts) -- Next tabpage with Alt+. (>). NOT FILE TABS
 
 -- Remap space as leader key
 map('', '<Space>', '<Nop>', default_opts) -- Unmap space
