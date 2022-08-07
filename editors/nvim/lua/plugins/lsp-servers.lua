@@ -84,7 +84,10 @@ require'lspconfig'.cucumber_language_server.setup{
 }
 
 local clang_cmd = { "clangd", "--background-index", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}
--- local clang_cmd = { "clangd", "--background-index=false", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}
+
+if vim.fn.has('wsl') == 1 then
+	table.insert(clang_cmd, "-j=4") -- Limit resources on wsl
+end
 
 if NO_SUDO then
 	clang_cmd = { "clangd", "-completion-style=bundled" }
