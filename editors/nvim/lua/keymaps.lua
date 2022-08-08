@@ -209,9 +209,16 @@ local goto_def = function()
 		require'telescope.builtin'.lsp_definitions()
 	end
 end
+
+local goto_def_mouse = function()
+	vim.api.nvim_input('<LeftMouse>')
+	goto_def()
+end
+
 -- Telescope LSP Binds
 map('n', 'gd', goto_def, default_opts) -- Go to Definition
-map('n', '<C-LeftMouse>', goto_def, default_opts) -- Go to Definition
+map('n', '<C-LeftMouse>', goto_def_mouse, default_opts) -- Go to Definition
+map('n', '<MiddleMouse>', goto_def_mouse, default_opts) -- Go to Definition
 
 map('n', 'gvd', function() split_if_not_exist(true) goto_def() end, default_opts) -- Go to Definition in Vsplit
 map('n', 'gxd', function() split_if_not_exist(false) goto_def() end, default_opts) -- Go to Definition in Xsplit
