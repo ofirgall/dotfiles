@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 # its a "program" to make `tmux-window-name` to support it as a program
 
-nvim -c ":G $@" ./dontsavethis
+nvim -c ":Flog" -c ":G $@" ./dontsavethis
