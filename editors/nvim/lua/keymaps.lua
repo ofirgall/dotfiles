@@ -87,10 +87,22 @@ map({'n', 't'}, '<M-Left>', '<cmd>TmuxNavigateLeft<cr>', default_opts)
 map({'n', 't'}, '<M-Down>', '<cmd>TmuxNavigateDown<cr>', default_opts)
 map({'n', 't'}, '<M-Up>', '<cmd>TmuxNavigateUp<cr>', default_opts)
 map({'n', 't'}, '<M-Right>', '<cmd>TmuxNavigateRight<cr>', default_opts)
-map({'n', 't'}, '<leader>t', '<cmd>TmuxJumpFile<cr>', default_opts) -- Jump to file pathes from sibiling tmux pane
+map({'n', 't'}, '<leader>o', '<cmd>TmuxJumpFile<cr>', default_opts) -- Open file pathes from sibiling tmux pane
 -- Splits like tmux
-map('n', '<M-e>', '<cmd>vsplit<cr>', default_opts)
-map('n', '<M-o>', '<cmd>split<cr>', default_opts)
+local split = function(direction)
+	local ft = vim.api.nvim_buf_get_option(0, 'filetype')
+	if ft == 'toggleterm' then
+		open_new_terminal(direction)
+	else
+		if direction == 'vertical' then
+			vim.api.nvim_input('<cmd>vsplit<cr>')
+		else
+			vim.api.nvim_input('<cmd>split<cr>')
+		end
+	end
+end
+map('n', '<M-e>', function() split('vertical') end, default_opts)
+map('n', '<M-o>', function() split('horizontal') end, default_opts)
 
 map('n', '<M-q>', '<cmd>q<cr>', default_opts)
 map('n', '<M-w>', '<cmd>q<cr>', default_opts) -- close pane like tmux
@@ -110,7 +122,6 @@ map('n', 'gX', function() split_if_not_exist(false) end, default_opts)
 -----------------------------------
 map('n', '<F8>', '<cmd>UndotreeToggle<CR>', default_opts) -- Toggle undotree
 map('n', '<leader>b', '<cmd>Telescope buffers<CR>', default_opts) -- browse your open Buffers (tabs)
-map('n', '<leader>o', '<cmd>Telescope oldfiles<CR>', default_opts) -- open Old files
 map('n', '<leader>c', '<cmd>Telescope command_history<CR>', default_opts) -- history of Commands
 map('n', '<leader>ss', '<cmd>Telescope spell_suggest<CR>', default_opts) -- history of Commands
 map('n', '<leader>gx', '<cmd>call OpenInBrowser()<CR>', default_opts)
@@ -118,6 +129,9 @@ map('n', '<leader>pc', '<cmd>PickColor<CR>', default_opts)
 map({'n', 'x'}, 'p', require('pasta.mappings').p) -- override paste with smarter paste
 map({'n', 'x'}, 'P', require('pasta.mappings').P) -- override paste with smarter paste
 map({'n', 'x', 'o'}, '<leader>l', require'leap-ast'.leap, default_opts) -- Leap to treesitter objects
+map({'n', 't', 'v'}, '<C-t>', function() toggle_or_open_terminal() end, default_opts) -- toggle all terminals
+map('t', '<M-e>', function() open_new_terminal('vertical') end, default_opts) -- Split terminal
+map('t', '<M-q>', function() require('bufdelete').bufdelete(0, true) end, default_opts) -- Close terminal
 
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 -- Add cursor down/up Alt+n/p (like ctrl+down/up in subl)

@@ -20,6 +20,7 @@ autosave.hook_before_actual_saving = function ()
 end
 
 require'nvim-lastplace'.setup{
+	lastplace_ignore_buftype = {'terminal'}
 }
 
 require'sniprun'.setup{
@@ -90,13 +91,48 @@ vim.g.registers_paste_in_normal_mode = 2
 vim.g.registers_window_border = 'single'
 
 -- toggleterm.nvim
-require("toggleterm").setup {
-	open_mapping = [[<C-t>]],
+-- TODO: fix this annoying bug
+--		reproduce:	1. Open terminal (C-t)
+--					2. Split it (M-e) twice
+--					3. Close all (M-q) * 3
+--					4. Reopen terminal, will show term2 instead of 1 and continue to create term2
+local toggle_term = require('toggleterm')
+toggle_term.setup {
+	open_mapping = [[<leader>t]],
 	insert_mappings = false,
-	terminal_mappings = true,
+	terminal_mappings = false,
 	direction = 'horizontal',
 	size = 20,
+	shade_terminals = false,
+	highlights = {
+		Normal = {
+			link = 'NvimTreeNormal'
+		}
+	}
 }
+
+local terms = require('toggleterm.terminal')
+
+toggle_or_open_terminal = function(direction)
+	print("toggle "..#terms.get_all().. " hidden "..#terms.get_all(true))
+	if #terms.get_all() == 0 then
+		open_new_terminal(direction)
+	else
+		toggle_term.toggle_all(true)
+	end
+end
+
+open_new_terminal = function(direction)
+	-- Flip directions...
+	if direction == "horizontal" then
+		direction = "vertical"
+	else
+		direction = "horizontal"
+	end
+	print(#terms.get_all() + 1)
+	local term = terms.Terminal:new({id = #terms.get_all() + 1, dir = nil, direction = direction})
+	term:open(nil, direction, true)
+end
 
 -- guess-indent.nvim
 require('guess-indent').setup{}

@@ -67,7 +67,9 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
+* nvim - nvim-cmp sources from all buffers/git tree in gitcommit ft
 * tmux - window-name doesn't detect ngh and g with the correct names
+* nvim - try winbar from lualine
 * nvim - cmp-jira (https://gitlab.com/msvechla/cmp-jira)
 * nvim - split_if_not_exist, dont add it to the jump list
 * nvim - undercurl on errors and warnings
