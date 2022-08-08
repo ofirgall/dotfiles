@@ -1,16 +1,25 @@
 #!/bin/bash
 
 pattern=$1
+PANE_FORMAT="#{pane_id}|#{pane_current_path}"
+
+function echo_pane () {
+	pane_id=$(echo "$1" | cut -d'|' -f1)
+	pane_path=$(echo "$1" | cut -d'|' -f2)
+	captured="$(tmux capture-pane -pJS - -t $pane_id)"
+	cd $pane_path
+	echo "$captured" | grep -oiE "[\/]?([a-z\_\-\.]+\/)+[a-z.]+(.)*" | cut -d' ' -f1 | grep "$pattern" | grep ":[0-9]" | sed -E 's/([0-9]+:[0-9]+).+/\1/' | xargs realpath 2> /dev/null
+}
 
 function capture_panes() {
 	local pane captured current_pane
+	current_pane=$(tmux display -pt "${TMUX_PANE:?}" '#{pane_id}')
 	captured=""
-	current_pane=$(tmux display -pt "${TMUX_PANE:?}" '#{pane_index}')
 
 	# Siblings panes
-	for pane in $(tmux list-panes -F "#{pane_index}"); do
+	for pane in $(tmux list-panes -F "$PANE_FORMAT"); do
 		if [[ $pane != $current_pane ]]; then
-			captured+="$(tmux capture-pane -pJS - -t $pane)"
+			captured+="$(echo_pane "$pane")"
 			captured+=$'\n'
 		fi
 	done
@@ -18,21 +27,21 @@ function capture_panes() {
 	window_count=$(tmux list-windows | wc -l)
 	if [ $window_count -gt 1 ]; then
 		# Prev window
-		for pane in $(tmux list-panes -F "#{pane_id}" -t -1); do
-			captured+="$(tmux capture-pane -pJS - -t $pane)"
+		for pane in $(tmux list-panes -F "$PANE_FORMAT" -t -1); do
+			captured+="$(echo_pane "$pane")"
 			captured+=$'\n'
 		done
 	fi
 
 	if [ $window_count -gt 2 ]; then
 		# Next window
-		for pane in $(tmux list-panes -F "#{pane_id}" -t +1); do
-			captured+="$(tmux capture-pane -pJS - -t $pane)"
+		for pane in $(tmux list-panes -F "$PANE_FORMAT" -t +1); do
+			captured+="$(echo_pane "$pane")"
 			captured+=$'\n'
 		done
 	fi
 
-	echo "$captured" | grep -oiE "[\/]?([a-z\_\-]+\/)+[a-z.]+(.)*" | cut -d' ' -f1 | grep "$pattern" | grep ":[0-9]"
+	echo "$captured" | sort | uniq
 }
 
 capture_panes
