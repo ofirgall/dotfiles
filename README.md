@@ -72,10 +72,7 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - try winbar from lualine
 * nvim - cmp-jira (https://gitlab.com/msvechla/cmp-jira)
 * nvim - split_if_not_exist, dont add it to the jump list
-* nvim - undercurl on errors and warnings
-* nvim - leap-ast forward/backward
-* nvim - different tab line for differnt tab pages
-* nvim - dap, go to current stopped line
+* nvim - ][ to breakpoints
 
 ## TODO Takes time
 * tmux - relative numbers in copy mode
