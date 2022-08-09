@@ -15,7 +15,11 @@ build_tmux()
 	sudo make install
 }
 
+# For compile
 sudo apt-get install -y libevent-dev libncurses-dev
+
+# For plugins
+sudo apt-get install -y ruby
 
 download_latest_release /tmp/tmux tmux/tmux *\.tar\.gz build_tmux
 
