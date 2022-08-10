@@ -54,6 +54,7 @@ Hydra({
 			-- gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(true)
 			gitsigns.toggle_deleted(true)
+			gitsigns.next_hunk()
 		end,
 		on_exit = function()
 			-- gitsigns.toggle_signs(true)
@@ -66,22 +67,18 @@ Hydra({
 	body = '<leader>gg',
 	heads = {
 		{ '<C-j>', function()
-			if vim.wo.diff then return ']czz' end
-			vim.schedule(function()
-				gitsigns.next_hunk()
-				vim.api.nvim_feedkeys('zz', '', false)
-			end)
-			return '<Ignore>'
+			gitsigns.next_hunk()
+			vim.api.nvim_input('zz')
 		end, { expr = true } },
 		{ '<C-k>', function()
-			if vim.wo.diff then return '[czz' end
-			vim.schedule(function()
-				gitsigns.prev_hunk()
-				vim.api.nvim_feedkeys('zz', '', false)
-			end)
-			return '<Ignore>'
+			gitsigns.next_hunk()
+			vim.api.nvim_input('zz')
 		end, { expr = true } },
-		{ 's', ':Gitsigns stage_hunk<CR>', { silent = true } },
+		{ 's', function()
+				gitsigns.stage_hunk(nil)
+				gitsigns.next_hunk()
+				vim.api.nvim_input('zz')
+		end, { silent = true } },
 		{ 'r', ':Gitsigns reset_hunk<CR>', { silent = true } },
 		{ 'R', ':Gitsigns reset_buffer<CR>', { silent = true } },
 		{ 'u', gitsigns.undo_stage_hunk },
