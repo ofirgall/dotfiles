@@ -10,7 +10,8 @@ original_pwd=$(pwd)
 
 ls_with_branch()
 {
-	 for i in $(ls -d */); do echo "$i ($(cat $i/.git/HEAD 2> /dev/null | sed 's,ref: refs/heads/,,'))"; done
+	# TODO: make it work for worktrees
+	for i in $(ls -d */); do echo "$i ($(cat $i/.git/HEAD 2> /dev/null | sed 's,ref: refs/heads/,,'))"; done
 }
 
 choose_dir()
@@ -20,7 +21,7 @@ choose_dir()
 		return
 	fi
 
-	if [ -d ".git" ]; then
+	if [ -d ".git" ] || [ -f ".git" ]; then
 		return
 	fi
 
