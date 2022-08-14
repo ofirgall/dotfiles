@@ -67,16 +67,16 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
-* nvim - gitmode go to next hunk after staging go to next dirty file if finished
+* nvim - gitmode go to next dirty file if finished
+* nvim - gJ/K hydra for down/up functions with only j/k
 * playgrounds - create them on first install, like `cg` choose a language and open nvim in left side of tmux and right side leave a pane for run/compile
 * nvim - M-q if buffer not visible anymore delete it
-* nvim - gvr/gxr
-* nvim - nvim-cmp sources from all buffers/git tree in gitcommit ft
 * tmux - window-name doesn't detect ngh and g with the correct names
+* nvim - ][ to breakpoints
+* nvim - nvim-cmp sources from all buffers/git tree in gitcommit ft
 * nvim - cmp-jira (https://gitlab.com/msvechla/cmp-jira)
 * nvim - split_if_not_exist, dont add it to the jump list
 * tmux - control window size like nvim
-* nvim - ][ to breakpoints
 
 ## TODO Takes time
 * tmux - relative numbers in copy mode

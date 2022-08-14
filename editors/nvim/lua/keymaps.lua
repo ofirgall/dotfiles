@@ -239,14 +239,19 @@ end, default_opts) -- Go to Definition
 
 map('n', 'gvd', function() split_if_not_exist(true) goto_def() end, default_opts) -- Go to Definition in Vsplit
 map('n', 'gxd', function() split_if_not_exist(false) goto_def() end, default_opts) -- Go to Definition in Xsplit
+map('n', 'god', function() split_if_not_exist(false) goto_def() end, default_opts) -- Go to Definition in Xsplit
 map('n', 'gKD', function() require("telescope.builtin").lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")}) end, default_opts) -- (Go) search Definition under current word
 map('n', 'gi', require'telescope.builtin'.lsp_implementations, default_opts) -- Go to Implementation
 map('n', 'gvi', function() split_if_not_exist(true) require'telescope.builtin'.lsp_implementations{} end, default_opts) -- Go to Implementation in Vsplit
 map('n', 'gxi', function() split_if_not_exist(false) require'telescope.builtin'.lsp_implementations{} end, default_opts) -- Go to Implementation in Xsplit
+map('n', 'goi', function() split_if_not_exist(false) require'telescope.builtin'.lsp_implementations{} end, default_opts) -- Go to Implementation in Xsplit
 
 map('n', 'gs', require'telescope.builtin'.lsp_document_symbols, default_opts) -- Go Symbols
 map('n', 'gS', require'telescope.builtin'.lsp_dynamic_workspace_symbols, default_opts) -- Go workspace (S)ymbols
 map('n', 'gr', require'telescope.builtin'.lsp_references, default_opts) -- Go to References
+map('n', 'gvr', function() split_if_not_exist(true) require'telescope.builtin'.lsp_references() end, default_opts) -- Go to References in Vsplit
+map('n', 'gxr', function() split_if_not_exist(false) require'telescope.builtin'.lsp_references() end, default_opts) -- Go to References in Xsplit
+map('n', 'gor', function() split_if_not_exist(false) require'telescope.builtin'.lsp_references() end, default_opts) -- Go to References xsplit
 map('n', 'gp', function() require'telescope.builtin'.diagnostics{bufnr=0} end, default_opts) -- Go to Problems
 map('n', 'gP', require'telescope.builtin'.diagnostics, default_opts) -- Go to workspace (P)roblems
 
