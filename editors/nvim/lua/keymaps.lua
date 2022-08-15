@@ -245,6 +245,10 @@ map('n', 'gi', require'telescope.builtin'.lsp_implementations, default_opts) -- 
 map('n', 'gvi', function() split_if_not_exist(true) require'telescope.builtin'.lsp_implementations{} end, default_opts) -- Go to Implementation in Vsplit
 map('n', 'gxi', function() split_if_not_exist(false) require'telescope.builtin'.lsp_implementations{} end, default_opts) -- Go to Implementation in Xsplit
 map('n', 'goi', function() split_if_not_exist(false) require'telescope.builtin'.lsp_implementations{} end, default_opts) -- Go to Implementation in Xsplit
+map('n', 'gt', require'telescope.builtin'.lsp_type_definitions, default_opts) -- Go to Type
+map('n', 'gvt', function() split_if_not_exist(true) require'telescope.builtin'.lsp_type_definitions{} end, default_opts) -- Go to Type in Vsplit
+map('n', 'gxt', function() split_if_not_exist(false) require'telescope.builtin'.lsp_type_definitions{} end, default_opts) -- Go to Type in Xsplit
+map('n', 'got', function() split_if_not_exist(false) require'telescope.builtin'.lsp_type_definitions{} end, default_opts) -- Go to Type in Xsplit
 
 map('n', 'gs', require'telescope.builtin'.lsp_document_symbols, default_opts) -- Go Symbols
 map('n', 'gS', require'telescope.builtin'.lsp_dynamic_workspace_symbols, default_opts) -- Go workspace (S)ymbols
