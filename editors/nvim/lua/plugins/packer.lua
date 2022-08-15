@@ -149,6 +149,7 @@ return require('packer').startup(function()
 	use {'ray-x/go.nvim', requires = 'ray-x/guihua.lua', run = ':GoUpdateBinaries'} -- Golang tools
 	use 'rbong/vim-buffest' -- edit macros and registers
 	use 'karb94/neoscroll.nvim' -- smooth scrolling
+	use 'tmux-plugins/vim-tmux-focus-events' -- FocusGained/FocusLost events
 	use {
 		'iamcco/markdown-preview.nvim', -- Markdown preview
 		run = function() vim.fn['mkdp#util#install']() end,
