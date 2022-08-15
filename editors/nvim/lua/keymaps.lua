@@ -65,8 +65,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Move through wrapped lines
-map('', 'j', 'v:count ? "j" : "gj"', { silent = true, expr = true})
-map('', 'k', 'v:count ? "k" : "gk"', { silent = true, expr = true})
+map({'n', 'x'}, 'j', 'v:count ? "j" : "gj"', { silent = true, expr = true})
+map({'n', 'x'}, 'k', 'v:count ? "k" : "gk"', { silent = true, expr = true})
 
 -- Toggle spell check
 map('n', '<F11>', ':set spell!<cr>', default_opts)
