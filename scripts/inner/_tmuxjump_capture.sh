@@ -8,7 +8,8 @@ function echo_pane () {
 	pane_path=$(echo "$1" | cut -d'|' -f2)
 	captured="$(tmux capture-pane -pJS - -t $pane_id)"
 	cd $pane_path
-	echo "$captured" | grep -oiE "[\/]?([a-z\_\-\.]+\/)+[a-z.]+(.)*" | cut -d' ' -f1 | grep "$pattern" | grep ":[0-9]" | sed -E 's/([0-9]+:[0-9]+).+/\1/' | xargs realpath 2> /dev/null
+	# echo "$captured" | grep -oiE "[\/]?([a-z\_\-\.]+\/)+[a-z.]+(.)*" | cut -d' ' -f1 | grep "$pattern" | grep ":[0-9]" | sed -E 's/([0-9]+:[0-9]+).+/\1/' | xargs realpath 2> /dev/null
+	echo "$captured" | grep -oiE ".+\..+:[0-9]+:[0-9]+" | grep "$pattern" | xargs realpath 2> /dev/null
 }
 
 function capture_panes() {
