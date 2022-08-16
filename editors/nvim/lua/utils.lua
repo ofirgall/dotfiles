@@ -44,7 +44,7 @@ end
 
 create_title = function()
 	local title = vim.fn.input("Title: ")
-	local len = vim.fn.input("Title Length: ", 30)
+	local len = vim.fn.input("Title Length: ", 60)
 	local filler_char = vim.fn.input("Filler: ", "-")
 	local amount_of_lines = vim.fn.input("Amount of lines: ", "1")
 
