@@ -2,9 +2,10 @@
 require('gitsigns').setup {
 	sign_priority = 1,
 	on_attach = function(bufnr)
-		local function map(mode, lhs, rhs, opts)
-			opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
-			vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
+		local function map(mode, l, r, opts)
+			opts = opts or {}
+			opts.buffer = bufnr
+			vim.keymap.set(mode, l, r, opts)
 		end
 		-- Navigation
 		map('n', ']c', "&diff ? ']czz' : '<cmd>Gitsigns next_hunk<CR>zz'", {expr=true})
@@ -23,8 +24,7 @@ require('gitsigns').setup {
 		map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
 		-- map('n', '<leader>gd', '<cmd>Gitsigns toggle_deleted<CR>')
 		-- Text object
-		map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-		map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+		map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 	end
 }
 
