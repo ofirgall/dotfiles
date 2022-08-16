@@ -372,12 +372,3 @@ map('n', '<leader>dc', function() require("refactoring").debug.cleanup({}) end, 
 -- TODO: load only in go
 map('n', '<leader>e', '<cmd>GoIfErr<cr>', default_opts)
 map('n', '<leader>dc', 'diw<Plug>(sandwich-delete)(', default_opts) -- delete convertsion, e.g: int64(a) -> a
-
------------------------------------
---      TREESITTER OBJECTS       --
------------------------------------
-local ts_move = require'nvim-treesitter.textobjects.move'
-map('n', 'gK', function() ts_move.goto_previous_end('@function.outer') center_screen() end, default_opts)
-map('n', 'gk', function() ts_move.goto_previous_start('@function.outer') center_screen() end, default_opts)
-map('n', 'gJ', function() ts_move.goto_next_end('@function.outer') center_screen() end, default_opts)
-map('n', 'gj', function() ts_move.goto_next_start('@function.outer') center_screen() end, default_opts)

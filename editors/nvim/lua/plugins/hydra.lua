@@ -1,4 +1,5 @@
 local Hydra = require('hydra')
+local map = vim.keymap.set
 
 -- Window resizer
 Hydra({
@@ -128,3 +129,65 @@ Hydra({
 		{ '<Esc>', nil, { exit = true, nowait = true } },
 	}
 })
+
+
+local center_screen = function ()
+	vim.api.nvim_feedkeys('zz', 'n', false)
+end
+local ts_move = require'nvim-treesitter.textobjects.move'
+-- Move up/down functions
+local curr = Hydra({
+	hint = [[
+ _j_ _J_ : up
+ _k_ _K_ : down
+  _<Esc>_
+	]],
+	config = {
+		timeout = 4000,
+		hint = {
+			border = 'rounded'
+		}
+	},
+	mode = {'n', 'x'},
+	heads = {
+		-- Size
+		{ 'j', function ()
+			ts_move.goto_next_start('@function.outer')
+			center_screen()
+		end },
+		{ 'J', function ()
+			ts_move.goto_next_end('@function.outer')
+			center_screen()
+		end },
+		{ 'k', function ()
+			ts_move.goto_previous_start('@function.outer')
+			center_screen()
+		end },
+		{ 'K', function ()
+			ts_move.goto_previous_end('@function.outer')
+			center_screen()
+		end },
+		--
+		{ '<Esc>', nil,  { exit = true }}
+	}
+})
+map({'n', 'x'}, 'gj', function ()
+	ts_move.goto_next_start('@function.outer')
+	center_screen()
+	curr:activate()
+end)
+map({'n', 'x'}, 'gk', function ()
+	ts_move.goto_previous_start('@function.outer')
+	center_screen()
+	curr:activate()
+end)
+map({'n', 'x'}, 'gJ', function ()
+	ts_move.goto_next_end('@function.outer')
+	center_screen()
+	curr:activate()
+end)
+map({'n', 'x'}, 'gK', function ()
+	ts_move.goto_previous_end('@function.outer')
+	center_screen()
+	curr:activate()
+end)
