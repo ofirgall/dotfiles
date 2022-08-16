@@ -70,7 +70,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * try wezterm
 * nvim - gitmode go to next dirty file if finished
 * playgrounds - create them on first install, like `cg` choose a language and open nvim in left side of tmux and right side leave a pane for run/compile
-* nvim - M-q if buffer not visible anymore delete it, CloseAllButCurrent - ignore visible too
 * tmux - window-name doesn't detect ngh and g with the correct names
 * nvim - ][ to breakpoints
 * nvim - custom textobjects, function name, better call (all call, the function that called)

@@ -104,8 +104,18 @@ end
 map('n', '<M-e>', function() split('vertical') end, default_opts)
 map('n', '<M-o>', function() split('horizontal') end, default_opts)
 
-map('n', '<M-q>', '<cmd>q<cr>', default_opts)
-map('n', '<M-w>', '<cmd>q<cr>', default_opts) -- close pane like tmux
+local close_pane = function()
+	local buf = vim.api.nvim_get_current_buf()
+	vim.api.nvim_win_close(0, true)
+	local win_id = vim.fn.bufwinnr(buf)
+	if win_id < 0 then
+		if vim.api.nvim_buf_is_loaded(buf) then
+			require('bufdelete').bufdelete(buf, true)
+		end
+	end
+end
+map('n', '<M-q>', close_pane, default_opts)
+map('n', '<M-w>', close_pane, default_opts) -- close pane like tmux
 
 -----------------------------------
 --           TERMINAL            --
@@ -126,8 +136,8 @@ map('n', '<leader>c', '<cmd>Telescope command_history<CR>', default_opts) -- his
 map('n', '<leader>ss', '<cmd>Telescope spell_suggest<CR>', default_opts) -- history of Commands
 map('n', '<leader>gx', '<cmd>call OpenInBrowser()<CR>', default_opts)
 map('n', '<leader>pc', '<cmd>PickColor<CR>', default_opts)
-map({'n', 'x'}, 'p', require('pasta.mappings').p) -- override paste with smarter paste
-map({'n', 'x'}, 'P', require('pasta.mappings').P) -- override paste with smarter paste
+-- map({'n', 'x'}, 'p', require('pasta.mappings').p) -- override paste with smarter paste
+-- map({'n', 'x'}, 'P', require('pasta.mappings').P) -- override paste with smarter paste
 map({'n', 'x', 'o'}, '<leader>l', require'leap-ast'.leap, default_opts) -- Leap to treesitter objects
 map({'n', 't', 'v'}, '<C-t>', function() toggle_or_open_terminal() end, default_opts) -- toggle all terminals
 map('t', '<M-e>', function() open_new_terminal('vertical') end, default_opts) -- Split terminal
