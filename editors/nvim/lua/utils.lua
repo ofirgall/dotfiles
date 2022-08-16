@@ -42,7 +42,7 @@ split_if_not_exist = function(is_vsplit)
 	vim.fn.execute(split_command)
 end
 
-create_title = function()
+local create_title = function()
 	local title = vim.fn.input("Title: ")
 	local len = vim.fn.input("Title Length: ", 60)
 	local filler_char = vim.fn.input("Filler: ", "-")
@@ -73,3 +73,85 @@ create_title = function()
 	api.nvim_buf_set_lines(0, pos, pos, false, lines)
 end
 api.nvim_create_user_command('Title', create_title, {})
+
+smart_split = function(direction)
+	local ft = vim.api.nvim_buf_get_option(0, 'filetype')
+	if ft == 'toggleterm' then
+		open_new_terminal(direction)
+	else
+		if direction == 'vertical' then
+			vim.api.nvim_input('<cmd>vsplit<cr>')
+		else
+			vim.api.nvim_input('<cmd>split<cr>')
+		end
+	end
+end
+
+local buf_is_visible = function(bufnr)
+	return vim.api.nvim_buf_is_loaded(bufnr) and vim.fn.bufwinnr(bufnr) > 0
+end
+
+close_pane = function()
+	local bufnr = vim.api.nvim_get_current_buf()
+	vim.api.nvim_win_close(0, true)
+	if buf_is_visible(bufnr) then
+		require('bufdelete').bufdelete(bufnr, true)
+	end
+end
+
+live_grep = function(opts, mode)
+	opts = opts or {}
+	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob]")'
+	if not opts.default_text then
+		if mode then
+			opts.default_text = '-F "' .. get_text(mode) .. '"'
+		else
+			opts.default_text = '-F "'
+		end
+	end
+
+	require('telescope').extensions.live_grep_args.live_grep_args(opts)
+end
+
+get_text = function(mode)
+	current_line = vim.api.nvim_get_current_line()
+	if mode == 'v' then
+		start_pos = vim.api.nvim_buf_get_mark(0, "<")
+		end_pos = vim.api.nvim_buf_get_mark(0, ">")
+	elseif mode == 'n' then
+		start_pos = vim.api.nvim_buf_get_mark(0, "[")
+		end_pos = vim.api.nvim_buf_get_mark(0, "]")
+	end
+
+	return string.sub(current_line, start_pos[2]+1, end_pos[2]+1)
+end
+
+goto_def = function()
+	local ft = vim.api.nvim_buf_get_option(0, 'filetype')
+	if ft == 'man' then
+		vim.api.nvim_command(':Man ' .. vim.fn.expand('<cWORD>'))
+	elseif ft == 'help' then
+		vim.api.nvim_command(':help ' .. vim.fn.expand('<cword>'))
+	else
+		require'telescope.builtin'.lsp_definitions()
+	end
+end
+
+center_screen = function ()
+	vim.api.nvim_feedkeys('zz', 'n', false)
+end
+
+api.nvim_create_user_command('CloseAllButCurrent', function()
+	for _, bufnr in pairs(api.nvim_list_bufs()) do
+		if not buf_is_visible(bufnr) then
+			require('bufdelete').bufdelete(bufnr, true)
+		end
+	end
+end, {})
+
+api.nvim_create_user_command('CloseBuffersLeft', function()
+	vim.api.nvim_command('BufferLineCloseLeft')
+end, {})
+api.nvim_create_user_command('CloseBuffersRight', function()
+	vim.api.nvim_command('BufferLineCloseRight')
+end, {})

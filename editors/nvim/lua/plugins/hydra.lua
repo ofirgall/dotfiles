@@ -131,9 +131,6 @@ Hydra({
 })
 
 
-local center_screen = function ()
-	vim.api.nvim_feedkeys('zz', 'n', false)
-end
 local ts_move = require'nvim-treesitter.textobjects.move'
 -- Move up/down functions
 local curr = Hydra({

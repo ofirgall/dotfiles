@@ -111,3 +111,20 @@ vim.api.nvim_create_autocmd('FileType', {
 		vim.keymap.set('n', 'i', '<cmd>call b:__gitmessenger_popup.opts.mappings["O"][0]()<CR>', { buffer = 0 })
 	end
 })
+
+git_history = function(mode)
+	current_line = vim.api.nvim_get_current_line()
+	if mode == 'v' then
+		start_pos = vim.api.nvim_buf_get_mark(0, "<")
+		end_pos = vim.api.nvim_buf_get_mark(0, ">")
+	elseif mode == 'n' then
+		start_pos = vim.api.nvim_buf_get_mark(0, "[")
+		end_pos = vim.api.nvim_buf_get_mark(0, "]")
+	end
+
+	start_line = start_pos[1]
+	end_line = end_pos[1]
+
+	vim.api.nvim_command('Git log -L' .. start_line .. ',' .. end_line .. ':' .. vim.fn.expand('%'))
+end
+

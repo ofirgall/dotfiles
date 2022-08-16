@@ -89,31 +89,9 @@ map({'n', 't'}, '<M-Up>', '<cmd>TmuxNavigateUp<cr>', default_opts)
 map({'n', 't'}, '<M-Right>', '<cmd>TmuxNavigateRight<cr>', default_opts)
 map({'n', 't'}, '<leader>o', '<cmd>TmuxJumpFile<cr>', default_opts) -- Open file pathes from sibiling tmux pane
 -- Splits like tmux
-local split = function(direction)
-	local ft = vim.api.nvim_buf_get_option(0, 'filetype')
-	if ft == 'toggleterm' then
-		open_new_terminal(direction)
-	else
-		if direction == 'vertical' then
-			vim.api.nvim_input('<cmd>vsplit<cr>')
-		else
-			vim.api.nvim_input('<cmd>split<cr>')
-		end
-	end
-end
-map('n', '<M-e>', function() split('vertical') end, default_opts)
-map('n', '<M-o>', function() split('horizontal') end, default_opts)
+map('n', '<M-e>', function() smart_split('vertical') end, default_opts)
+map('n', '<M-o>', function() smart_split('horizontal') end, default_opts)
 
-local close_pane = function()
-	local buf = vim.api.nvim_get_current_buf()
-	vim.api.nvim_win_close(0, true)
-	local win_id = vim.fn.bufwinnr(buf)
-	if win_id < 0 then
-		if vim.api.nvim_buf_is_loaded(buf) then
-			require('bufdelete').bufdelete(buf, true)
-		end
-	end
-end
 map('n', '<M-q>', close_pane, default_opts)
 map('n', '<M-w>', close_pane, default_opts) -- close pane like tmux
 
@@ -176,33 +154,6 @@ map('n', '<leader>"', '<Plug>(sandwich-replace)\'"', sandwich_opts) -- replace '
 -----------------------------------
 --        CODE NAVIGATION        --
 -----------------------------------
-live_grep = function(opts, mode)
-	opts = opts or {}
-	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob]")'
-	if not opts.default_text then
-		if mode then
-			opts.default_text = '-F "' .. get_text(mode) .. '"'
-		else
-			opts.default_text = '-F "'
-		end
-	end
-
-	require('telescope').extensions.live_grep_args.live_grep_args(opts)
-end
-
-get_text = function(mode)
-	current_line = vim.api.nvim_get_current_line()
-	if mode == 'v' then
-		start_pos = vim.api.nvim_buf_get_mark(0, "<")
-		end_pos = vim.api.nvim_buf_get_mark(0, ">")
-	elseif mode == 'n' then
-		start_pos = vim.api.nvim_buf_get_mark(0, "[")
-		end_pos = vim.api.nvim_buf_get_mark(0, "]")
-	end
-
-	return string.sub(current_line, start_pos[2]+1, end_pos[2]+1)
-end
-
 map('n', 'KR', '<cmd>Telescope resume<cr>', default_opts) -- Resume last telescope
 map('n', 'KL', function() require("telescope.builtin").find_files({hidden=true, follow=true}) end, default_opts) -- find files (ctrl+p)
 map('n', 'Kd', function() require("telescope.builtin").find_files({hidden=true, follow=true, default_text = vim.fn.expand("<cword>")}) end, default_opts) -- find files (ctrl+p) starting with current word
@@ -222,17 +173,6 @@ map('n', 'Kjd', function() live_grep({default_text = vim.fn.expand("<cword>") ..
 -- Builtin LSP Binds
 map('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, default_opts) -- Format code
 map('n', 'gD', vim.lsp.buf.declaration, default_opts) -- Go to Declaration
-
-local goto_def = function()
-	local ft = vim.api.nvim_buf_get_option(0, 'filetype')
-	if ft == 'man' then
-		vim.api.nvim_command(':Man ' .. vim.fn.expand('<cWORD>'))
-	elseif ft == 'help' then
-		vim.api.nvim_command(':help ' .. vim.fn.expand('<cword>'))
-	else
-		require'telescope.builtin'.lsp_definitions()
-	end
-end
 
 -- Telescope LSP Binds
 map('n', 'gd', goto_def, default_opts) -- Go to Definition
@@ -306,22 +246,6 @@ vim.cmd("function! GitHistoryOperator(...) \n lua git_history('n') \n endfunctio
 -- map('n', '<C-[>', '<cmd>diffget //2<CR>', default_opts) -- Apply left change
 -- map('n', '<C-]>', '<cmd>diffget //3<CR>', default_opts) -- Apply right change
 
-git_history = function(mode)
-	current_line = vim.api.nvim_get_current_line()
-	if mode == 'v' then
-		start_pos = vim.api.nvim_buf_get_mark(0, "<")
-		end_pos = vim.api.nvim_buf_get_mark(0, ">")
-	elseif mode == 'n' then
-		start_pos = vim.api.nvim_buf_get_mark(0, "[")
-		end_pos = vim.api.nvim_buf_get_mark(0, "]")
-	end
-
-	start_line = start_pos[1]
-	end_line = end_pos[1]
-
-	vim.api.nvim_command('Git log -L' .. start_line .. ',' .. end_line .. ':' .. vim.fn.expand('%'))
-end
-
 -----------------------------------
 --             UI                --
 -----------------------------------
@@ -350,10 +274,6 @@ map('n', '<M-K>', '<cmd>BufferLineMoveNext<CR>', default_opts) -- Alt+Shift+k gr
 -----------------------------------
 --          DEBUGGING            --
 -----------------------------------
-local center_screen = function ()
-	vim.api.nvim_feedkeys('zz', 'n', false)
-end
-
 map('n', '<F5>', require'dap'.continue, default_opts)
 map('n', '<F6>', require'dap'.terminate, default_opts)
 map('n', '<F9>', require('persistent-breakpoints.api').toggle_breakpoint, default_opts)
