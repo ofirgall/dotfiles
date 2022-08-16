@@ -69,8 +69,8 @@ map({'n', 'x'}, 'j', 'v:count ? "j" : "gj"', { silent = true, expr = true})
 map({'n', 'x'}, 'k', 'v:count ? "k" : "gk"', { silent = true, expr = true})
 
 -- Toggle spell check
-map('n', '<F11>', ':set spell!<cr>', default_opts)
-map('i', '<F11>', '<C-O>:set spell!<cr>', default_opts)
+map('n', '<F1>', ':set spell!<cr>', default_opts)
+map('i', '<F1>', '<C-O>:set spell!<cr>', default_opts)
 
 -- Search current word without jump
 map('n', '*', "<cmd>let @/= '\\<' . expand('<cword>') . '\\>'<cr>zz", default_opts)
