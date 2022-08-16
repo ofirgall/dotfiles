@@ -1,5 +1,6 @@
 
-require('gitsigns').setup {
+local gs = require('gitsigns')
+gs.setup {
 	sign_priority = 1,
 	on_attach = function(bufnr)
 		local function map(mode, l, r, opts)
@@ -8,13 +9,20 @@ require('gitsigns').setup {
 			vim.keymap.set(mode, l, r, opts)
 		end
 		-- Navigation
-		map('n', ']c', "&diff ? ']czz' : '<cmd>Gitsigns next_hunk<CR>zz'", {expr=true})
-		map('n', '[c', "&diff ? '[czz' : '<cmd>Gitsigns prev_hunk<CR>zz'", {expr=true})
+		map('n', ']c', function()
+			if vim.wo.diff then return ']c' end
+			vim.schedule(function() gs.next_hunk() end)
+			return '<Ignore>'
+		end, {expr=true})
+
+		map('n', '[c', function()
+			if vim.wo.diff then return '[c' end
+			vim.schedule(function() gs.prev_hunk() end)
+			return '<Ignore>'
+		end, {expr=true})
 		-- Actions
-		map('n', '<leader>hs', "&diff ? '<cmd>Gitsigns stage_hunk<CR>]c' : '<cmd>Gitsigns stage_hunk<CR>'", {expr=true})
-		map('v', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
-		map('n', '<leader>hr', "&diff ? '<cmd>Gitsigns reset_hunk<CR>]c' : '<cmd>Gitsigns reset_hunk<CR>'", {expr=true})
-		map('v', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
+		map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
+		map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
 		map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
 		map('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
 		map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
