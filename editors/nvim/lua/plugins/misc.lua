@@ -258,3 +258,8 @@ end, {})
 -- scope.nvim
 require('scope').setup{
 }
+
+-- debugprint.nvim
+require('debugprint').setup{
+	print_tag = '--- DEBUG PRINT ---'
+}
