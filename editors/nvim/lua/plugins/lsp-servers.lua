@@ -77,6 +77,11 @@ require'lspconfig'.cmake.setup{
 require'lspconfig'.gopls.setup{
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
+	settings = {
+		gopls = {
+			usePlaceholders = true
+		}
+	}
 }
 require'lspconfig'.cucumber_language_server.setup{
 	on_attach = lsp_on_attach,
