@@ -200,12 +200,18 @@ map('n', 'gvt', function() split_if_not_exist(true) require'telescope.builtin'.l
 map('n', 'gxt', function() split_if_not_exist(false) require'telescope.builtin'.lsp_type_definitions{} end, default_opts) -- Go to Type in Xsplit
 map('n', 'got', function() split_if_not_exist(false) require'telescope.builtin'.lsp_type_definitions{} end, default_opts) -- Go to Type in Xsplit
 
+local lsp_references = function()
+	require'telescope.builtin'.lsp_references({
+		include_declaration = false,
+		show_line = false
+	})
+end
 map('n', 'gs', require'telescope.builtin'.lsp_document_symbols, default_opts) -- Go Symbols
 map('n', 'gS', require'telescope.builtin'.lsp_dynamic_workspace_symbols, default_opts) -- Go workspace (S)ymbols
-map('n', 'gr', require'telescope.builtin'.lsp_references, default_opts) -- Go to References
-map('n', 'gvr', function() split_if_not_exist(true) require'telescope.builtin'.lsp_references() end, default_opts) -- Go to References in Vsplit
-map('n', 'gxr', function() split_if_not_exist(false) require'telescope.builtin'.lsp_references() end, default_opts) -- Go to References in Xsplit
-map('n', 'gor', function() split_if_not_exist(false) require'telescope.builtin'.lsp_references() end, default_opts) -- Go to References xsplit
+map('n', 'gr', lsp_references, default_opts) -- Go to References
+map('n', 'gvr', function() split_if_not_exist(true) lsp_references() end, default_opts) -- Go to References in Vsplit
+map('n', 'gxr', function() split_if_not_exist(false) lsp_references() end, default_opts) -- Go to References in Xsplit
+map('n', 'gor', function() split_if_not_exist(false) lsp_references() end, default_opts) -- Go to References xsplit
 map('n', 'gp', function() require'telescope.builtin'.diagnostics{bufnr=0} end, default_opts) -- Go to Problems
 map('n', 'gP', require'telescope.builtin'.diagnostics, default_opts) -- Go to workspace (P)roblems
 
