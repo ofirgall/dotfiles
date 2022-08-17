@@ -75,25 +75,25 @@ end
 api.nvim_create_user_command('Title', create_title, {})
 
 smart_split = function(direction)
-	local ft = vim.api.nvim_buf_get_option(0, 'filetype')
+	local ft = api.nvim_buf_get_option(0, 'filetype')
 	if ft == 'toggleterm' then
 		open_new_terminal(direction)
 	else
 		if direction == 'vertical' then
-			vim.api.nvim_input('<cmd>vsplit<cr>')
+			api.nvim_input('<cmd>vsplit<cr>')
 		else
-			vim.api.nvim_input('<cmd>split<cr>')
+			api.nvim_input('<cmd>split<cr>')
 		end
 	end
 end
 
 local buf_is_visible = function(bufnr)
-	return vim.api.nvim_buf_is_loaded(bufnr) and vim.fn.bufwinnr(bufnr) > 0
+	return api.nvim_buf_is_loaded(bufnr) and vim.fn.bufwinnr(bufnr) > 0
 end
 
 close_pane = function()
-	local bufnr = vim.api.nvim_get_current_buf()
-	vim.api.nvim_win_close(0, true)
+	local bufnr = api.nvim_get_current_buf()
+	api.nvim_win_close(0, true)
 	if buf_is_visible(bufnr) then
 		require('bufdelete').bufdelete(bufnr, true)
 	end
@@ -114,31 +114,31 @@ live_grep = function(opts, mode)
 end
 
 get_text = function(mode)
-	current_line = vim.api.nvim_get_current_line()
+	current_line = api.nvim_get_current_line()
 	if mode == 'v' then
-		start_pos = vim.api.nvim_buf_get_mark(0, "<")
-		end_pos = vim.api.nvim_buf_get_mark(0, ">")
+		start_pos = api.nvim_buf_get_mark(0, "<")
+		end_pos = api.nvim_buf_get_mark(0, ">")
 	elseif mode == 'n' then
-		start_pos = vim.api.nvim_buf_get_mark(0, "[")
-		end_pos = vim.api.nvim_buf_get_mark(0, "]")
+		start_pos = api.nvim_buf_get_mark(0, "[")
+		end_pos = api.nvim_buf_get_mark(0, "]")
 	end
 
 	return string.sub(current_line, start_pos[2]+1, end_pos[2]+1)
 end
 
 goto_def = function()
-	local ft = vim.api.nvim_buf_get_option(0, 'filetype')
+	local ft = api.nvim_buf_get_option(0, 'filetype')
 	if ft == 'man' then
-		vim.api.nvim_command(':Man ' .. vim.fn.expand('<cWORD>'))
+		api.nvim_command(':Man ' .. vim.fn.expand('<cWORD>'))
 	elseif ft == 'help' then
-		vim.api.nvim_command(':help ' .. vim.fn.expand('<cword>'))
+		api.nvim_command(':help ' .. vim.fn.expand('<cword>'))
 	else
 		require'telescope.builtin'.lsp_definitions()
 	end
 end
 
 center_screen = function ()
-	vim.api.nvim_feedkeys('zz', 'n', false)
+	api.nvim_feedkeys('zz', 'n', false)
 end
 
 api.nvim_create_user_command('CloseAllButCurrent', function()
@@ -150,8 +150,8 @@ api.nvim_create_user_command('CloseAllButCurrent', function()
 end, {})
 
 api.nvim_create_user_command('CloseBuffersLeft', function()
-	vim.api.nvim_command('BufferLineCloseLeft')
+	api.nvim_command('BufferLineCloseLeft')
 end, {})
 api.nvim_create_user_command('CloseBuffersRight', function()
-	vim.api.nvim_command('BufferLineCloseRight')
+	api.nvim_command('BufferLineCloseRight')
 end, {})
