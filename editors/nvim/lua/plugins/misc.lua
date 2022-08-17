@@ -263,3 +263,7 @@ require('scope').setup{
 require('debugprint').setup{
 	print_tag = '--- DEBUG PRINT ---'
 }
+
+-- nvim-toggler
+require('nvim-toggler').setup{
+}

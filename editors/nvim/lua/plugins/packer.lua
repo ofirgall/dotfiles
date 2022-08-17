@@ -151,6 +151,7 @@ return require('packer').startup(function()
 	use 'karb94/neoscroll.nvim' -- smooth scrolling
 	use 'tmux-plugins/vim-tmux-focus-events' -- FocusGained/FocusLost events
 	use 'andrewferrier/debugprint.nvim' -- make debug prints fast
+	use 'nguyenvukhang/nvim-toggler' -- Invert words like true<->false, on<->off with <leader>i
 	use {
 		'iamcco/markdown-preview.nvim', -- Markdown preview
 		run = function() vim.fn['mkdp#util#install']() end,
