@@ -93,9 +93,15 @@ end
 
 close_pane = function()
 	local bufnr = api.nvim_get_current_buf()
+	if #api.nvim_list_wins() == 1 then -- Sometimes its reports 2 instead of 1
+		api.nvim_feedkeys(':q\n', 'n', false)
+		return
+	end
 	api.nvim_win_close(0, true)
-	if buf_is_visible(bufnr) then
-		require('bufdelete').bufdelete(bufnr, true)
+	if not buf_is_visible(bufnr) then
+		if api.nvim_buf_is_loaded(bufnr) then
+			require('bufdelete').bufdelete(bufnr, true)
+		end
 	end
 end
 
