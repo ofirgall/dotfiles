@@ -71,7 +71,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - gitmode go to next dirty file if finished
 * playgrounds - create them on first install, like `cg` choose a language and open nvim in left side of tmux and right side leave a pane for run/compile
 * tmux - window-name doesn't detect ngh and g with the correct names
-* nvim - ][ to breakpoints
 * nvim - custom textobjects, function name, better call (all call, the function that called)
 * nvim - nvim-cmp sources from all buffers/git tree in gitcommit ft
 * nvim - cmp-jira (https://gitlab.com/msvechla/cmp-jira)

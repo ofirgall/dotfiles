@@ -120,6 +120,8 @@ map({'n', 'x', 'o'}, '<leader>l', require'leap-ast'.leap, default_opts) -- Leap 
 map({'n', 't', 'v'}, '<C-t>', function() toggle_or_open_terminal() end, default_opts) -- toggle all terminals
 map('t', '<M-e>', function() open_new_terminal('vertical') end, default_opts) -- Split terminal
 map('t', '<M-q>', function() require('bufdelete').bufdelete(0, true) end, default_opts) -- Close terminal
+map('n', ']d', require('goto-breakpoints').next, default_opts)
+map('n', '[d', require('goto-breakpoints').prev, default_opts)
 
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 -- Add cursor down/up Alt+n/p (like ctrl+down/up in subl)
