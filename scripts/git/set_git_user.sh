@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-echo "Email: ofirgal753@gmail.com"
+echo "Email: ofir@gal.software"
 echo "Name: Ofir Gal"
 
-git config user.email "ofirgal753@gmail.com"
+git config user.email "ofir@gal.software"
 git config user.user "Ofir Gal"

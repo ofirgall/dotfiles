@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=32
-launch-time=int64 1659470784
+launch-count=33
+launch-time=int64 1660758880
 show-details=true
 window-height=503
 window-width=645
@@ -19,7 +19,7 @@ window-width=540
 
 [com/ubuntu/update-notifier]
 no-show-notifications=true
-release-check-time=uint32 1659470773
+release-check-time=uint32 1660758873
 
 [com/uploadedlobster/peek]
 persist-window-geometry=(349, 183, 794, 593)
@@ -351,6 +351,14 @@ ignore-ca-cert=true
 ignore-phase2-ca-cert=false
 
 [org/gnome/nm-applet/eap/5e0debfc-bd3c-490d-9937-4575d2cc11f9]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/7aabe30a-e740-45da-a05f-ee391062e6fd]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/9a23cdcb-693a-41c1-b267-7f2c8e2c9927]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
