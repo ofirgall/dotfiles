@@ -10,6 +10,7 @@ local autosave = require('autosave')
 autosave.setup{
 	clean_command_line_interval = 1000,
 	on_off_commands = true,
+	execution_message = '',
 }
 
 autosave.hook_before_actual_saving = function ()
