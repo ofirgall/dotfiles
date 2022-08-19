@@ -36,6 +36,7 @@ return require('packer').startup(function()
 			'dcampos/cmp-snippy',
 			'f3fora/cmp-spell',
 			'petertriho/cmp-git',
+			'rcarriga/cmp-dap',
 		}
 	}
 
