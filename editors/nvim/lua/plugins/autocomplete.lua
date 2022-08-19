@@ -123,6 +123,7 @@ cmp_setup_dict = {
 		{ name = 'spell' },
 		{ name = 'neorg' },
 		{ name = 'git' },
+		{ name = 'path', option = {trailing_slash = true}}
 	}, {
 		{ name = 'buffer' },
 	})
@@ -138,7 +139,7 @@ cmp.setup.cmdline('/', {
 
 cmp.setup.cmdline(':', {
 	sources = cmp.config.sources({
-		{ name = 'path' }
+		{ name = 'path', option = {trailing_slash = true}}
 	}, {
 		{ name = 'cmdline' }
 	})
