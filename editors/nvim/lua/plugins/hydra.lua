@@ -134,7 +134,7 @@ Hydra({
 
 local ts_move = require'nvim-treesitter.textobjects.move'
 -- Move up/down functions
-local curr = Hydra({
+local move_funcs = Hydra({
 	hint = [[
  _j_ _J_ : up
  _k_ _K_ : down
@@ -171,34 +171,34 @@ local curr = Hydra({
 map({'n', 'x'}, 'gj', function ()
 	ts_move.goto_next_start('@function.outer')
 	center_screen()
-	curr:activate()
+	move_funcs:activate()
 end)
 map('o', 'gj', function () ts_move.goto_next_start('@function.outer') end)
 
 map({'n', 'x'}, 'gk', function ()
 	ts_move.goto_previous_start('@function.outer')
 	center_screen()
-	curr:activate()
+	move_funcs:activate()
 end)
 map('o', 'gk', function () ts_move.goto_previous_start('@function.outer') end)
 
 map({'n', 'x'}, 'gJ', function ()
 	ts_move.goto_next_end('@function.outer')
 	center_screen()
-	curr:activate()
+	move_funcs:activate()
 end)
 map('o', 'gJ', function () ts_move.goto_next_end('@function.outer') end)
 
 map({'n', 'x'}, 'gK', function ()
 	ts_move.goto_previous_end('@function.outer')
 	center_screen()
-	curr:activate()
+	move_funcs:activate()
 end)
 map('o', 'gK', function () ts_move.goto_previous_end('@function.outer') end)
 
 -- Spell fixing quickly
 local telescope_builtin = require('telescope.builtin')
-curr = Hydra({
+Hydra({
 	hint = [[
  _j_: Next _k_: Prev
  _<Enter>_: Suggest Fix
