@@ -68,6 +68,7 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 
 ## TODO
 * try wezterm
+* nvim - create the color scheme
 * nvim - gitmode go to next dirty file if finished
 * playgrounds - create them on first install, like `cg` choose a language and open nvim in left side of tmux and right side leave a pane for run/compile
 * nvim - custom textobjects, function name, better call (all call, the function that called)

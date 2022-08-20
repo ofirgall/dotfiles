@@ -1,5 +1,6 @@
 local Hydra = require('hydra')
 local map = vim.keymap.set
+local api = vim.api
 
 -- Window resizer
 Hydra({
@@ -147,7 +148,6 @@ local curr = Hydra({
 	},
 	mode = {'n', 'x'},
 	heads = {
-		-- Size
 		{ 'j', function ()
 			ts_move.goto_next_start('@function.outer')
 			center_screen()
@@ -195,3 +195,46 @@ map({'n', 'x'}, 'gK', function ()
 	curr:activate()
 end)
 map('o', 'gK', function () ts_move.goto_previous_end('@function.outer') end)
+
+-- Spell fixing quickly
+local telescope_builtin = require('telescope.builtin')
+curr = Hydra({
+	hint = [[
+ _j_: Next _k_: Prev
+ _<Enter>_: Suggest Fix
+
+  _<Esc>_ quit _q_ quit
+	]],
+	config = {
+		color = 'pink',
+		timeout = 10000,
+		invoke_on_body = true,
+		hint = {
+			border = 'rounded'
+		},
+		on_enter = function()
+			vim.opt.spell = true
+		end,
+		on_exit = function()
+			vim.opt.spell = false
+		end
+	},
+	mode = 'n',
+	body = '<leader>ss',
+	heads = {
+		{ 'j', function ()
+			api.nvim_input(']s')
+			center_screen()
+		end },
+		{ 'k', function ()
+			api.nvim_input('[s')
+			center_screen()
+		end },
+		{ '<Enter>', function ()
+			telescope_builtin.spell_suggest()
+		end },
+		--
+		{ '<Esc>', nil,  { exit = true, nowait = true }},
+		{ 'q', nil,  { exit = true, nowait = true }},
+	}
+})

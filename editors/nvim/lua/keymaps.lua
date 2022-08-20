@@ -113,7 +113,6 @@ map('n', 'gX', function() split_if_not_exist(false) end)
 map('n', '<F8>', '<cmd>UndotreeToggle<CR>') -- Toggle undotree
 map('n', '<leader>b', '<cmd>Telescope buffers<CR>') -- browse your open Buffers (tabs)
 map('n', '<leader>c', '<cmd>Telescope command_history<CR>') -- history of Commands
-map('n', '<leader>ss', '<cmd>Telescope spell_suggest<CR>') -- history of Commands
 map('n', '<leader>gx', '<cmd>call OpenInBrowser()<CR>')
 map('n', '<leader>pc', '<cmd>PickColor<CR>')
 -- map({'n', 'x'}, 'p', require('pasta.mappings').p) -- override paste with smarter paste
