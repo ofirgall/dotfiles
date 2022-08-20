@@ -34,8 +34,8 @@ Hydra({
 -- Git submode
 local gitsigns = require('gitsigns')
 local hint = [[
- _<C-j>_: next hunk   _s_: stage hunk        _r_: reset hunk     _d_: show deleted   _b_: blame line
- _<C-k>_: prev hunk   _u_: undo stage hunk   _R_: reset buffer   _p_: preview hunk   _B_: blame show full
+ _j_: next hunk   _s_: stage hunk        _r_: reset hunk     _d_: show deleted   _b_: blame line
+ _k_: prev hunk   _u_: undo stage hunk   _R_: reset buffer   _p_: preview hunk   _B_: blame show full
  ^ ^                  _S_: stage buffer      ^ ^                 _/_: show base file
  ^
  ^ ^				_<Enter>_: Fugitive       _<Esc>_: exit       _q_: exit
@@ -67,18 +67,18 @@ Hydra({
 	mode = {'n','x'},
 	body = '<leader>gg',
 	heads = {
-		{ '<C-j>', function()
+		{ 'j', function()
 			gitsigns.next_hunk()
-			vim.api.nvim_input('zz')
+			center_screen()
 		end, { expr = true } },
-		{ '<C-k>', function()
-			gitsigns.next_hunk()
-			vim.api.nvim_input('zz')
+		{ 'k', function()
+			gitsigns.prev_hunk()
+			center_screen()
 		end, { expr = true } },
 		{ 's', function()
-				gitsigns.stage_hunk(nil)
-				gitsigns.next_hunk()
-				vim.api.nvim_input('zz')
+			gitsigns.stage_hunk(nil)
+			gitsigns.next_hunk()
+			center_screen()
 		end, { silent = true } },
 		{ 'r', ':Gitsigns reset_hunk<CR>', { silent = true } },
 		{ 'R', ':Gitsigns reset_buffer<CR>', { silent = true } },
