@@ -14,10 +14,6 @@ vim.g.XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 vim.g.XkbSwitchEnabled = 1
 vim.g.XkbSwitchSkipGhKeys = {'gh', 'gH'}
 
--- Configure 'clever-f' before loading
-vim.g.clever_f_mark_cursor_color = 'CleverF'
-vim.g.clever_f_mark_char_color = 'CleverF'
-
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim' -- packer can manage itself
 
@@ -97,16 +93,15 @@ return require('packer').startup(function()
 	use 'lewis6991/impatient.nvim' -- Faster startuptime
 	use 'nathom/filetype.nvim' -- faster filetype detection
 
-	-- Motion
+	-- Motion --
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
-	use 'ggandor/leap.nvim' -- Leap around the code (vimium/easymotion jumps)
-	use 'rhysd/clever-f.vim' -- Highlight results from f/F/t/T and let you go back forward with the same keys
 	use 'machakann/vim-sandwich' -- Sandwich text (<leader>sa action)
+	-- Leap --
 	use {
-		'ggandor/leap-ast.nvim', -- Use leap.nvim to jump around to treesitter contexts
-		requires = {
-			'rhysd/clever-f.vim',
-			'nvim-treesitter/nvim-treesitter'
+		'ggandor/leap.nvim', -- Leap around the code (vimium/easymotion jumps)
+		requires = { -- plugins
+			'ggandor/leap-ast.nvim', -- Use leap.nvim to jump around to treesitter contexts
+			'ggandor/flit.nvim', -- Highlight results from f/F/t/T and let you go back forward with the same keys
 		}
 	}
 

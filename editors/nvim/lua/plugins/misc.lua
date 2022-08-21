@@ -240,6 +240,10 @@ require('leap').setup {
 	highlight_unlabeled = false,
 }
 
+-- flit.nvim
+require('flit').setup{
+}
+
 -- neoscroll.nvim
 local neoscroll = require('neoscroll')
 neoscroll.setup{
