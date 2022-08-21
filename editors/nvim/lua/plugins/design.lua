@@ -364,16 +364,18 @@ if not vim.g.started_by_firenvim then
 		},
 		highlights = {
 			buffer_visible = {
-				guifg = tab_visible_fg,
+				fg = tab_visible_fg,
 			},
 			numbers_visible = {
-				guifg = tab_visible_fg,
+				fg = tab_visible_fg,
 			},
 			buffer_selected = {
-				gui = 'bold'
+				bold = true,
+				italic = false,
 			},
 			numbers_selected = {
-				gui = 'bold'
+				bold = true,
+				italic = false,
 			},
 		}
 	}

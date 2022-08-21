@@ -1,5 +1,4 @@
 
-local cmd = vim.cmd
 local opt = vim.opt
 
 opt.number = true
