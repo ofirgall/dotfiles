@@ -174,7 +174,8 @@ map('n', 'Kjd', function() live_grep({default_text = vim.fn.expand("<cword>") ..
 --             LSP               --
 -----------------------------------
 -- Builtin LSP Binds
-map('n', '<leader>f', function() vim.lsp.buf.format { async = true } end) -- Format code
+map('n', '<leader>f', function() vim.lsp.buf.format{async = true} end) -- Format code
+map('v', '<leader>f', '<Esc><cmd>lua vim.lsp.buf.range_formatting()<cr>') -- range Format code
 map('n', 'gD', vim.lsp.buf.declaration) -- Go to Declaration
 
 -- Telescope LSP Binds

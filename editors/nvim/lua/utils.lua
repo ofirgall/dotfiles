@@ -105,22 +105,7 @@ close_pane = function()
 	end
 end
 
-live_grep = function(opts, mode)
-	opts = opts or {}
-	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob]")'
-	if not opts.default_text then
-		if mode then
-			opts.default_text = '-F "' .. get_text(mode) .. '"'
-		else
-			opts.default_text = '-F "'
-		end
-	end
-
-	require('telescope').extensions.live_grep_args.live_grep_args(opts)
-end
-
-get_text = function(mode)
-	current_line = api.nvim_get_current_line()
+local get_range = function(mode)
 	if mode == 'v' then
 		start_pos = api.nvim_buf_get_mark(0, "<")
 		end_pos = api.nvim_buf_get_mark(0, ">")
@@ -129,7 +114,28 @@ get_text = function(mode)
 		end_pos = api.nvim_buf_get_mark(0, "]")
 	end
 
+	return start_pos, end_pos
+end
+
+local get_current_line_text = function(mode)
+	current_line = api.nvim_get_current_line()
+	start_pos, end_pos = get_range(mode)
+
 	return string.sub(current_line, start_pos[2]+1, end_pos[2]+1)
+end
+
+live_grep = function(opts, mode)
+	opts = opts or {}
+	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob]")'
+	if not opts.default_text then
+		if mode then
+			opts.default_text = '-F "' .. get_current_line_text(mode) .. '"'
+		else
+			opts.default_text = '-F "'
+		end
+	end
+
+	require('telescope').extensions.live_grep_args.live_grep_args(opts)
 end
 
 goto_def = function()
