@@ -191,14 +191,20 @@ map('n', '<MiddleMouse>', function()
 	goto_def()
 end) -- Go to Definition
 
+local lsp_implementations = function()
+	require'telescope.builtin'.lsp_implementations{
+		show_line = false
+	}
+end
+
 map('n', 'gvd', function() split_if_not_exist(true) goto_def() end) -- Go to Definition in Vsplit
 map('n', 'gxd', function() split_if_not_exist(false) goto_def() end) -- Go to Definition in Xsplit
 map('n', 'god', function() split_if_not_exist(false) goto_def() end) -- Go to Definition in Xsplit
 map('n', 'gKD', function() require("telescope.builtin").lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")}) end) -- (Go) search Definition under current word
-map('n', 'gi', require'telescope.builtin'.lsp_implementations) -- Go to Implementation
-map('n', 'gvi', function() split_if_not_exist(true) require'telescope.builtin'.lsp_implementations{} end) -- Go to Implementation in Vsplit
-map('n', 'gxi', function() split_if_not_exist(false) require'telescope.builtin'.lsp_implementations{} end) -- Go to Implementation in Xsplit
-map('n', 'goi', function() split_if_not_exist(false) require'telescope.builtin'.lsp_implementations{} end) -- Go to Implementation in Xsplit
+map('n', 'gi', lsp_implementations) -- Go to Implementation
+map('n', 'gvi', function() split_if_not_exist(true) lsp_implementations() end) -- Go to Implementation in Vsplit
+map('n', 'gxi', function() split_if_not_exist(false) lsp_implementations() end) -- Go to Implementation in Xsplit
+map('n', 'goi', function() split_if_not_exist(false) lsp_implementations() end) -- Go to Implementation in Xsplit
 map('n', 'gt', require'telescope.builtin'.lsp_type_definitions) -- Go to Type
 map('n', 'gvt', function() split_if_not_exist(true) require'telescope.builtin'.lsp_type_definitions{} end) -- Go to Type in Vsplit
 map('n', 'gxt', function() split_if_not_exist(false) require'telescope.builtin'.lsp_type_definitions{} end) -- Go to Type in Xsplit
@@ -210,7 +216,7 @@ local lsp_references = function()
 		show_line = false
 	})
 end
-map('n', 'gs', require'telescope.builtin'.lsp_document_symbols) -- Go Symbols
+map('n', 'gs', function() require'telescope.builtin'.lsp_document_symbols({fname_width=100}) end) -- Go Symbols
 map('n', 'gS', require'telescope.builtin'.lsp_dynamic_workspace_symbols) -- Go workspace (S)ymbols
 map('n', 'gr', lsp_references) -- Go to References
 map('n', 'gvr', function() split_if_not_exist(true) lsp_references() end) -- Go to References in Vsplit

@@ -69,6 +69,7 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ## TODO
 * nvim - function hydra, copy name to +y or y
 * try wezterm
+* nvim - config illuminate new version
 * nvim - create the color scheme
 * nvim - gitmode go to next dirty file if finished
 * playgrounds - create them on first install, like `cg` choose a language and open nvim in left side of tmux and right side leave a pane for run/compile
