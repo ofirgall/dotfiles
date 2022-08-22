@@ -221,4 +221,4 @@ open_macros="tmux split-window -v  \"PANE='#{pane_id}' $HOME/.tmux/plugins/tmux-
 bind -n M-m if-shell "$is_nvim" "send-keys M-m" 'run-shell $open_macros'
 
 # open macros menu with Alt+shift+m anywhere
-bind -n M-M run-shell $open_macros
+bind -n M-N run-shell $open_macros

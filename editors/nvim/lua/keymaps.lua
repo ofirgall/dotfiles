@@ -267,7 +267,7 @@ vim.cmd("function! GitHistoryOperator(...) \n lua git_history('n') \n endfunctio
 -----------------------------------
 -- File Sidebar
 map('n', '<M-m>', '<cmd>NvimTreeToggle<cr>')
-map('n', '<M-N>', '<cmd>NvimTreeFindFile<cr>') -- Locate file
+map('n', '<M-M>', '<cmd>NvimTreeFindFile<cr>') -- Locate file
 
 -- Tabline binds
 map('n', '<C-q>', function() require('bufdelete').bufdelete(0, true) end) -- ctrl+Quit to close current tab
