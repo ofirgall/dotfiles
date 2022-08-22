@@ -138,7 +138,7 @@ return require('packer').startup(function()
 	use { 'ThePrimeagen/refactoring.nvim', requires = {'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter'} } -- Refactor tool
 	use { 'nvim-neorg/neorg', requires = 'nvim-lua/plenary.nvim' } -- .norg plugin better orgmode
 	use { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' } -- review todo in the quickfix list with :Todo..
-	use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
+	-- use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
 	use 'norcalli/nvim-colorizer.lua' -- colorize hexcolor values in buffer
 	use 'hrsh7th/nvim-pasta' -- Auto indent on paste, cycle on yank history after paste with <C-n>/<C-p>
 	use { 'anuvyklack/hydra.nvim', requires = 'anuvyklack/keymap-layer.nvim' }
@@ -149,6 +149,7 @@ return require('packer').startup(function()
 	use 'tmux-plugins/vim-tmux-focus-events' -- FocusGained/FocusLost events
 	use 'andrewferrier/debugprint.nvim' -- make debug prints fast
 	use 'nguyenvukhang/nvim-toggler' -- Invert words like true<->false, on<->off with <leader>i
+	use { 'phaazon/mind.nvim', tag = "v2.*" } -- notetaking with tree
 	use {
 		'iamcco/markdown-preview.nvim', -- Markdown preview
 		run = function() vim.fn['mkdp#util#install']() end,

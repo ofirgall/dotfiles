@@ -182,33 +182,33 @@ require('todo-comments').setup{
 	},
 }
 
--- iron.nvim
-require("iron.core").setup {
-	config = {
-		should_map_plug = false,
-		scratch_repl = true,
-		repl_definition = {
-			sh = {
-				command = {"zsh"}
-			}
-		},
-		repl_open_cmd = 'belowright 15 split',
-	},
-	keymaps = {
-		send_motion = "<space>sc",
-		visual_send = "<space>sc",
-		send_file = "<space>sf",
-		send_line = "<space>sl",
-		cr = "<space>s<cr>",
-		interrupt = "<space>s<space>",
-		exit = "<space>sq",
-		clear = "<space>cl",
-	},
-	highlight = {
-		italic = false,
-		bold = false
-	}
-}
+-- iron.nvim - XXX BROKEN
+-- require("iron.core").setup {
+-- 	config = {
+-- 		should_map_plug = false,
+-- 		scratch_repl = true,
+-- 		repl_definition = {
+-- 			sh = {
+-- 				command = {"zsh"}
+-- 			}
+-- 		},
+-- 		repl_open_cmd = 'belowright 15 split',
+-- 	},
+-- 	keymaps = {
+-- 		send_motion = "<space>sc",
+-- 		visual_send = "<space>sc",
+-- 		send_file = "<space>sf",
+-- 		send_line = "<space>sl",
+-- 		cr = "<space>s<cr>",
+-- 		interrupt = "<space>s<space>",
+-- 		exit = "<space>sq",
+-- 		clear = "<space>cl",
+-- 	},
+-- 	highlight = {
+-- 		italic = false,
+-- 		bold = false
+-- 	}
+-- }
 
 -- nvim-colorizer.lua
 require('colorizer').setup{
@@ -273,4 +273,18 @@ require('debugprint').setup{
 require('nvim-toggler').setup{
 	['to'] = 'from',
 	['failed'] = 'succeeded',
+}
+
+-- mind.nvim
+require('mind').setup{
+	keymaps = {
+		normal = {
+			["<cr>"] = "toggle_node",
+			["e"] = "open_data",
+		},
+		selection = {
+			["<cr>"] = "toggle_node",
+			["e"] = "open_data",
+		}
+	}
 }
