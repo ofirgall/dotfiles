@@ -271,4 +271,6 @@ require('debugprint').setup{
 
 -- nvim-toggler
 require('nvim-toggler').setup{
+	['to'] = 'from',
+	['failed'] = 'succeeded',
 }
