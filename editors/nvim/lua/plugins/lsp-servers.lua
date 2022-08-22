@@ -12,11 +12,9 @@ local lsp_signature_cfg = {
 
 local lsp_on_attach = function(client, bufnr)
 	require 'illuminate'.on_attach(client)
-	require "lsp_signature".on_attach(lsp_signature_cfg)
+	-- require "lsp_signature".on_attach(lsp_signature_cfg)
 	require 'nvim-navic'.attach(client, bufnr)
-end,
-
-require "lsp_signature".setup({lsp_signature_cfg})
+end
 
 -- logs at "$HOME/.cache/nvim/lsp.log"
 -- vim.lsp.set_log_level("debug")
