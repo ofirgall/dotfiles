@@ -131,6 +131,7 @@ local telescope_bg =  '#181816'-- Slightly darker than tree_bg
 local tab_visible_fg = '#b3ab60'
 local cursor_line_bg = '#36352a'
 local orange = '#de933c'
+local lightorange = '#dea255'
 local telescope_prompt = '#1d1d1a'
 monokai.setup {
 	palette = {
@@ -220,6 +221,10 @@ monokai.setup {
 		LspReferenceWrite = {
 			bg = highlighted_word_bg,
 			style = 'underline',
+		},
+		LspSignatureHintVirtualText = {
+			fg = lightorange,
+			style = 'bold'
 		},
 		VertSplit = {
 			fg = '#948f5a'

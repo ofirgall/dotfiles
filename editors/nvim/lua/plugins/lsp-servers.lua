@@ -7,12 +7,15 @@ local lsp_signature_cfg = {
 	use_lspsaga = true,
 	doc_lines = 0,
 	toggle_key = '<M-x>',
+	floating_window = false,
+	hint_scheme = 'LspSignatureHintVirtualText',
+	hint_prefix = ' ',
 	-- max_height 1,
 }
 
 local lsp_on_attach = function(client, bufnr)
 	require 'illuminate'.on_attach(client)
-	-- require "lsp_signature".on_attach(lsp_signature_cfg)
+	require "lsp_signature".on_attach(lsp_signature_cfg)
 	require 'nvim-navic'.attach(client, bufnr)
 end
 
