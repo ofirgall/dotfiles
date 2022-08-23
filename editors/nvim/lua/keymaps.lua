@@ -114,7 +114,7 @@ map('n', '<F8>', '<cmd>UndotreeToggle<CR>') -- Toggle undotree
 map('n', '<leader>b', '<cmd>Telescope buffers<CR>') -- browse your open Buffers (tabs)
 map('n', '<leader>c', '<cmd>Telescope command_history<CR>') -- history of Commands
 map('n', '<leader>gx', '<cmd>call OpenInBrowser()<CR>')
-map('n', '<leader>pc', '<cmd>PickColor<CR>')
+map('n', '<leader>cp', '<cmd>PickColor<CR>')
 -- map({'n', 'x'}, 'p', require('pasta.mappings').p) -- override paste with smarter paste
 -- map({'n', 'x'}, 'P', require('pasta.mappings').P) -- override paste with smarter paste
 map({'n', 'x', 'o'}, '<leader>l', require'leap-ast'.leap) -- Leap to treesitter objects
@@ -236,7 +236,7 @@ map('n', '<F4>', '<cmd>Lspsaga code_action<cr>') -- Code action with F4
 map('n', 'KK',  '<cmd>Lspsaga hover_doc<cr>') -- Trigger hover (KJ is fast to use)
 map('n', '<RightMouse>',  '<LeftMouse><cmd>Lspsaga hover_doc<cr>') -- Trigger hover
 map('n', '<leader>d',  '<cmd>Neogen<cr>') -- Document function
-map('n', '<leader>p', '<cmd>Lspsaga show_line_diagnostics<cr>') -- show Problem
+map('n', '<leader>p', require('lsp_lines').toggle) -- show Problem
 map('n', ']p', '<cmd>Lspsaga diagnostic_jump_next<cr>') -- next Problem
 map('n', '[p', '<cmd>Lspsaga diagnostic_jump_prev<cr>') -- prev Problem
 map('n', '<C-u>', function() require("lspsaga.action").smart_scroll_with_saga(-1) end, {}) -- scroll Up in document

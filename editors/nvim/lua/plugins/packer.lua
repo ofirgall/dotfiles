@@ -44,6 +44,7 @@ return require('packer').startup(function()
 	use 'j-hui/fidget.nvim' -- Lsp Status in the bottom right corner
 	use 'Mofiqul/trld.nvim' -- Show diagnostics in the top right corner
 	use 'SmiteshP/nvim-navic' -- same as nvim-gps but using LSP instead (more accurate)
+	use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' -- show diagnostics as virtual lines
 
 	-------- END OF LSP --------
 

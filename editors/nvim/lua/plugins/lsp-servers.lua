@@ -132,4 +132,5 @@ require'lspconfig'.sumneko_lua.setup {
 	},
 }
 
-require"fidget".setup{}
+require('fidget').setup{
+}

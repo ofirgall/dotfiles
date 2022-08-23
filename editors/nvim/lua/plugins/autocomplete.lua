@@ -156,13 +156,6 @@ local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
 
 -- LSP SAGA --
--- Disable builtin diagnostic
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-	vim.lsp.diagnostic.on_publish_diagnostics, {
-		virtual_text = false
-	}
-)
-
 vim.diagnostic.config{
 	signs = {
 		priority = 8
@@ -182,5 +175,17 @@ require('lspsaga').init_lsp_saga({
 	rename_in_select = false,
 })
 
+-- cmp-git
 require('cmp_git').setup{
+}
+
+-- lsp_lines.nvim
+-- Disable builtin diagnostic
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+	vim.lsp.diagnostic.on_publish_diagnostics, {
+		virtual_text = false
+	}
+)
+
+require('lsp_lines').setup{
 }
