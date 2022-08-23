@@ -167,3 +167,21 @@ end, {})
 api.nvim_create_user_command('CloseBuffersRight', function()
 	api.nvim_command('BufferLineCloseRight')
 end, {})
+
+goto_next_diag = function ()
+	local next = vim.diagnostic.get_next()
+	if next == nil then
+		return
+	end
+	api.nvim_win_set_cursor(0, { next.lnum + 1, next.col })
+	center_screen()
+end
+
+goto_prev_diag = function()
+	local prev = vim.diagnostic.get_prev(opts)
+	if not prev then
+		return
+	end
+	api.nvim_win_set_cursor(0, { prev.lnum + 1, prev.col })
+	center_screen()
+end

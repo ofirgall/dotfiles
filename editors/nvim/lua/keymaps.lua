@@ -237,8 +237,8 @@ map('n', 'KK',  '<cmd>Lspsaga hover_doc<cr>') -- Trigger hover (KJ is fast to us
 map('n', '<RightMouse>',  '<LeftMouse><cmd>Lspsaga hover_doc<cr>') -- Trigger hover
 map('n', '<leader>d',  '<cmd>Neogen<cr>') -- Document function
 map('n', '<leader>p', require('lsp_lines').toggle) -- show Problem
-map('n', ']p', '<cmd>Lspsaga diagnostic_jump_next<cr>') -- next Problem
-map('n', '[p', '<cmd>Lspsaga diagnostic_jump_prev<cr>') -- prev Problem
+map('n', ']p', goto_next_diag) -- next Problem
+map('n', '[p', goto_prev_diag) -- prev Problem
 map('n', '<C-u>', function() require("lspsaga.action").smart_scroll_with_saga(-1) end, {}) -- scroll Up in document
 map('n', '<C-d>', function() require("lspsaga.action").smart_scroll_with_saga(1) end, {}) -- scroll Down in Document
 
