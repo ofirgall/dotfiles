@@ -104,7 +104,7 @@ if not vim.g.started_by_firenvim then
 			always_divide_middle = false,
 		},
 		sections = {
-			lualine_b = {'diff', 'diagnostics'},
+			lualine_b = {'branch', 'diff', 'diagnostics'},
 			lualine_c = {'filename', {lsp_gps.get_location, cond = lsp_gps.is_available }, { gps.get_location, cond = is_treesitter_gps_available }},
 			lualine_x = {lsp_server_component},
 			lualine_y = y_section,
