@@ -56,7 +56,9 @@ Hydra({
 			-- gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(true)
 			gitsigns.toggle_deleted(true)
-			gitsigns.next_hunk()
+			-- Go to first hunk
+			api.nvim_feedkeys('gg]c', 'm', false)
+			center_screen()
 		end,
 		on_exit = function()
 			-- gitsigns.toggle_signs(true)
