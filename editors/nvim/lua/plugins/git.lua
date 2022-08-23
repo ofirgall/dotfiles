@@ -1,7 +1,7 @@
 
 local gs = require('gitsigns')
 gs.setup {
-	sign_priority = 1,
+	sign_priority = 10,
 	on_attach = function(bufnr)
 		local function map(mode, l, r, opts)
 			opts = opts or { silent=true }

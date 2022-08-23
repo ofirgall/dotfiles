@@ -17,7 +17,7 @@ opt.updatetime = 100 -- mainly for trld.nvim which utilize CursorHold autocmd
 opt.formatoptions:append('cro') -- continue comments when going down a line
 opt.mouse = 'a' -- Enable mouse when guest are using my nvim
 opt.foldlevelstart = 99 -- no auto folding
-opt.signcolumn = 'yes:2' -- Enable 2 signs in the column TODO: do 1 sign when undercurls will exits, remove E/W/H
+opt.signcolumn = 'yes:1' -- Enable 2 signs in the column TODO: do 1 sign when undercurls will exits, remove E/W/H
 
 -- Enable and disable mouse when gaining/losing focus to avoid the first click jump
 vim.api.nvim_create_autocmd('FocusGained', {
