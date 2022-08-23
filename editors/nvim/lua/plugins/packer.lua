@@ -149,7 +149,11 @@ return require('packer').startup(function()
 	use 'tmux-plugins/vim-tmux-focus-events' -- FocusGained/FocusLost events
 	use 'andrewferrier/debugprint.nvim' -- make debug prints fast
 	use 'nguyenvukhang/nvim-toggler' -- Invert words like true<->false, on<->off with <leader>i
-	use { 'phaazon/mind.nvim', tag = "v2.*" } -- notetaking with tree
+	use {
+		'phaazon/mind.nvim', -- notetaking with tree
+		tag = "v2.*",
+		requires = { 's1n7ax/nvim-window-picker', tag = 'v1.*' }
+	}
 	use {
 		'iamcco/markdown-preview.nvim', -- Markdown preview
 		run = function() vim.fn['mkdp#util#install']() end,

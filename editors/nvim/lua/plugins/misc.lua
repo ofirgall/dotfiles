@@ -288,3 +288,6 @@ require('mind').setup{
 		}
 	}
 }
+
+require'window-picker'.setup{
+}
