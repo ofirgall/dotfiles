@@ -281,6 +281,8 @@ require('mind').setup{
 		normal = {
 			["<cr>"] = "toggle_node",
 			["e"] = "open_data",
+			["dd"] = "delete",
+			["<leader>m"] = "quit",
 		},
 		selection = {
 			["<cr>"] = "toggle_node",

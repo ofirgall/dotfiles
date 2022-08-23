@@ -123,6 +123,7 @@ map('t', '<M-e>', function() open_new_terminal('vertical') end) -- Split termina
 map('t', '<M-q>', function() require('bufdelete').bufdelete(0, true) end) -- Close terminal
 map('n', ']d', require('goto-breakpoints').next)
 map('n', '[d', require('goto-breakpoints').prev)
+map('n', '<leader>m', require('mind').open_main)
 
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 -- Add cursor down/up Alt+n/p (like ctrl+down/up in subl)
