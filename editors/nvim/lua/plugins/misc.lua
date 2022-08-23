@@ -280,6 +280,7 @@ require('mind').setup{
 	keymaps = {
 		normal = {
 			["<cr>"] = "toggle_node",
+			["<Esc>"] = "toggle_parent",
 			["e"] = "open_data",
 			["dd"] = "delete",
 			["<leader>m"] = "quit",
