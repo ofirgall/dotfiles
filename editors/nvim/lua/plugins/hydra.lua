@@ -81,7 +81,11 @@ Hydra({
 			gitsigns.next_hunk()
 			center_screen()
 		end, { silent = true } },
-		{ 'r', ':Gitsigns reset_hunk<CR>', { silent = true } },
+		{ 'r', function()
+			gitsigns.reset_hunk(nil)
+			gitsigns.next_hunk()
+			center_screen()
+		end, { silent = true } },
 		{ 'R', ':Gitsigns reset_buffer<CR>', { silent = true } },
 		{ 'u', gitsigns.undo_stage_hunk },
 		{ 'S', gitsigns.stage_buffer },
