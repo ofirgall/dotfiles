@@ -288,6 +288,18 @@ map('n', '<M-k>', '<cmd>BufferLineCycleNext<CR>') -- Alt+k to move to right
 map('n', '<M-J>', '<cmd>BufferLineMovePrev<CR>') -- Alt+Shift+j grab to with you to left
 map('n', '<M-K>', '<cmd>BufferLineMoveNext<CR>') -- Alt+Shift+k grab to with you to right
 
+-- Tabpage binds
+map('n', '<leader>1', '<cmd>tabnext1<cr>')
+map('n', '<leader>2', '<cmd>tabnext2<cr>')
+map('n', '<leader>3', '<cmd>tabnext3<cr>')
+map('n', '<leader>4', '<cmd>tabnext4<cr>')
+map('n', '<leader>5', '<cmd>tabnext5<cr>')
+map('n', '<leader>6', '<cmd>tabnext6<cr>')
+map('n', '<leader>7', '<cmd>tabnext7<cr>')
+map('n', '<leader>8', '<cmd>tabnext8<cr>')
+map('n', '<leader>9', '<cmd>tabnext9<cr>')
+map('n', '<leader>0', '<cmd>tabnext10<cr>')
+
 -----------------------------------
 --          DEBUGGING            --
 -----------------------------------
