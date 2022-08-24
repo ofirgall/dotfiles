@@ -22,6 +22,26 @@ set -g @ttm-window-mode 'vertical'
 if-shell "$is_wsl" "set -g @browser_brotab_timeout '15.0'"
 if-shell "$is_wsl" "set -g @browser_wait_timeout '15.0'"
 
+# -------------------------
+#	    PLUGINS BINDS
+# -------------------------
+##### TMUX-SUSPEND #####
+# tmux-suspend, focus on nested ssh session (Alt+Enter)
+set -g @suspend_key 'M-Enter'
+
+##### TMUX-OPEN #####
+# Open text in google search
+set -g @open-s 'https://www.google.com/search?q='
+
+##### TMUX-FZF-URL #####
+set -g @fzf-url-bind 'u'
+
+##### TMUX-FUZZBACK #####
+set -g @fuzzback-bind f
+
+##### TMUX_CAPTURE_LAST_COMMAND_OUTPUT #####
+set -g @command-capture-key l
+
 ###################
 ##### PLUGINS #####
 ###################

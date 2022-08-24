@@ -190,10 +190,6 @@ bind -n DoubleClick1Pane if-shell "$is_nvim" "" 'copy-mode -M; send-keys -X sele
 # -------------------------
 #	    PLUGINS BINDS
 # -------------------------
-##### TMUX-SUSPEND #####
-# tmux-suspend, focus on nested ssh session (Alt+Enter)
-set -g @suspend_key 'M-Enter'
-
 ##### TMUX-THUMBS #####
 # Copy fast with Alt+s
 bind -n M-s thumbs-pick
@@ -201,19 +197,6 @@ bind -n M-s thumbs-pick
 ##### TMUX-JUMP #####
 # Tmux (like acejump or vimium) with ALT+shift+s
 bind -n M-S run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
-
-##### TMUX-OPEN #####
-# Open text in google search
-set -g @open-s 'https://www.google.com/search?q='
-
-##### TMUX-FZF-URL #####
-set -g @fzf-url-bind 'u'
-
-##### TMUX-FUZZBACK #####
-set -g @fuzzback-bind f
-
-##### TMUX_CAPTURE_LAST_COMMAND_OUTPUT #####
-set -g @command-capture-key l
 
 ##### tmux-text-macros #####
 open_macros="tmux split-window -v  \"PANE='#{pane_id}' $HOME/.tmux/plugins/tmux-text-macros/tmux-text-macros.tmux -r\""
