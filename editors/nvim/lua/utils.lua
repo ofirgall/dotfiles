@@ -145,7 +145,9 @@ goto_def = function()
 	elseif ft == 'help' then
 		api.nvim_command(':help ' .. vim.fn.expand('<cword>'))
 	else
-		require'telescope.builtin'.lsp_definitions()
+		require'telescope.builtin'.lsp_definitions({
+			show_line = false
+		})
 	end
 end
 
