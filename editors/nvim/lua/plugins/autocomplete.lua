@@ -118,15 +118,19 @@ cmp_setup_dict = {
 		documentation = cmp_completion_design,
 	},
 	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'snippy' },
+		{ name = 'nvim_lsp', priority = 1000 },
+		{ name = 'snippy', priority = 100 },
+	}, {
 		{ name = 'spell' },
 		{ name = 'neorg' },
 		{ name = 'git' },
-		{ name = 'path', option = {trailing_slash = true}}
-	}, {
+		{ name = 'path', option = {trailing_slash = true}},
 		{ name = 'buffer' },
-	})
+	}),
+	performance = {
+		debounce = 30, -- default: 60
+		throttle = 15, -- default: 30
+	}
 }
 
 cmp.setup(cmp_setup_dict)
