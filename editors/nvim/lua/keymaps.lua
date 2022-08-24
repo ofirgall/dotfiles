@@ -167,7 +167,7 @@ map('v', 'KJ', '<Esc><cmd>lua live_grep({}, "v")<cr>') -- search in all files (d
 map('n', 'KD', function() live_grep({default_text = vim.fn.expand("<cword>")}) end) -- Search in all files with current word inserted
 map('n', 'KF', ':set opfunc=LiveGrepRawOperator<CR>g@') -- Search in all files with word from move operator
 vim.cmd("function! LiveGrepRawOperator(...) \n lua live_grep({}, 'n') \n endfunction") -- used by `KF`
-map('n', 'Kj', function() live_grep({default_text = '-g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*" '}) end) -- Search in all files in your current directory
+map('n', 'Kjj', function() live_grep({default_text = '-g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*" -F "'}) end) -- Search in all files in your current directory
 map('n', 'Kjd', function() live_grep({default_text = vim.fn.expand("<cword>") .. ' -g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*"'}) end) -- Search in all files in your current directory + with your current word
 
 
