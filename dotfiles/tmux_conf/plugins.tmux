@@ -31,7 +31,7 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 set -g @plugin 'MunifTanjim/tmux-suspend'
-set -g @plugin 'ofirgall/tmux-browser'
+if-shell "!$is_wsl" "set -g @plugin 'ofirgall/tmux-browser'"
 set -g @plugin 'ofirgall/tmux-notify'
 set -g @plugin 'wfxr/tmux-fzf-url'
 set -g @plugin 'roosta/tmux-fuzzback'
