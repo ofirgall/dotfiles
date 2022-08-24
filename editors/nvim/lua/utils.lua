@@ -153,10 +153,33 @@ center_screen = function ()
 	api.nvim_feedkeys('zz', 'n', false)
 end
 
+local catch = function(what)
+   return what[1]
+end
+
+local try = function(what)
+   status, result = pcall(what[1])
+   if not status then
+      what[2](result)
+   end
+   return result
+end
+
 api.nvim_create_user_command('CloseAllButCurrent', function()
 	for _, bufnr in pairs(api.nvim_list_bufs()) do
 		if not buf_is_visible(bufnr) then
-			require('bufdelete').bufdelete(bufnr, true)
+			if api.nvim_buf_is_valid(bufnr) then
+				try {
+					function()
+						require('bufdelete').bufdelete(bufnr, true)
+					end,
+					catch {
+						function ()
+							-- print('Failed to delete buffer: ' .. bufnr)
+						end
+					}
+				}
+			end
 		end
 	end
 end, {})
