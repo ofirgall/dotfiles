@@ -153,7 +153,16 @@ cmp.setup.filetype({ 'dap-repl', 'dapui_watches' }, {
 
 -- add pair when accepting autocomplet
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+local on_confirm_done_callback = function(evt)
+	entry = evt.entry
+	if entry.source.name ~= 'snippy' and snippy.can_jump(1) then
+		snippy.next()
+	else
+		cmp_autopairs.on_confirm_done({ map_char = { tex = '' } })
+	end
+end
+
+cmp.event:on('confirm_done', on_confirm_done_callback)
 
 -- LSP SAGA --
 vim.diagnostic.config{
