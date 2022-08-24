@@ -37,6 +37,7 @@ require("revj").setup{
 }
 
 require('numb').setup{
+	number_only = true,
 }
 
 local node_relative_path = function(node)
