@@ -360,6 +360,9 @@ if not vim.g.started_by_firenvim then
 			show_buffer_icons = true,
 			themable = true,
 			numbers = 'ordinal',
+            max_name_length = 40,
+            -- max_prefix_length = 15,
+            -- tab_size = 18,
 		},
 		highlights = {
 			buffer_visible = {
@@ -376,6 +379,10 @@ if not vim.g.started_by_firenvim then
 				bold = true,
 				italic = false,
 			},
+            tab_selected = {
+                fg = palette.white,
+				bold = true,
+            },
 		}
 	}
 end
