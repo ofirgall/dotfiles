@@ -68,6 +68,11 @@ Send, {Shift Down}{LWin down}{Right}{LWin up}{Shift up}
 return
 
 ; Open alacritty with ctrl+alt+t
+; ^!t::
+; Run, %A_ProgramFiles%\Alacritty\alacritty.exe
+; return
+
+; Open wezterm with ctrl+alt+t
 ^!t::
-Run, %A_ProgramFiles%\Alacritty\alacritty.exe
+Run, %A_ProgramFiles%\WezTerm\wezterm-gui.exe
 return

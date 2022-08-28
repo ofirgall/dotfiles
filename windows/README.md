@@ -3,6 +3,7 @@
 
 ## Install & Config
 * Install [alacritty](https://github.com/alacritty/alacritty/releases)
+* Install [wezterm](https://wezfurlong.org/wezterm/)
 * [AutoHotKey](https://www.autohotkey.com/)
 * Run `disable_win_l.reg` to disable Winkey+L to lock
 * Run `disable_office_pop.bat` to disable CTRL+ALT+SHIFT+Key office popup
