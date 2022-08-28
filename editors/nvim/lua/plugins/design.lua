@@ -105,7 +105,11 @@ if not vim.g.started_by_firenvim then
 		},
 		sections = {
 			lualine_b = {'branch', 'diff', 'diagnostics'},
-			lualine_c = {'filename', {lsp_gps.get_location, cond = lsp_gps.is_available }, { gps.get_location, cond = is_treesitter_gps_available }},
+			lualine_c = {
+				{ 'filename', shorting_target = 0 },
+				{ lsp_gps.get_location, cond = lsp_gps.is_available },
+				{ gps.get_location, cond = is_treesitter_gps_available },
+			},
 			lualine_x = {lsp_server_component},
 			lualine_y = y_section,
 			lualine_z = {'filetype'},
