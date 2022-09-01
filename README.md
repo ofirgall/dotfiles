@@ -67,6 +67,9 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
+* nvim - find a better session manager
+* nvim - yank color isn't clear when illuminate
+* nvim - lsp lines put a special color in a error line to empahsise it isn't a code line
 * nvim - gitsign less brighter green
 * nvim - git commit ft should take source from all buffers & git tree tickets
 * nvim - function hydra, copy name to +y or y
