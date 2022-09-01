@@ -285,6 +285,7 @@ require('mind').setup{
 			["e"] = "open_data",
 			["dd"] = "delete",
 			["<leader>m"] = "quit",
+			["R"] = "change_icon_menu",
 		},
 		selection = {
 			["<cr>"] = "toggle_node",
