@@ -29,30 +29,34 @@ require'nvim-treesitter.configs'.setup {
 				["]]"] = "@class.outer",
 				["]b"] = "@block.outer",
 				["]a"] = "@parameter.inner",
+				["]k"] = "@call.outer",
 			},
 			goto_next_end = {
 				["]M"] = "@function.outer",
 				["]["] = "@class.outer",
 				["]B"] = "@block.outer",
 				["]A"] = "@parameter.inner",
+				["]K"] = "@call.outer",
 			},
 			goto_previous_start = {
 				["[m"] = "@function.outer",
 				["[["] = "@class.outer",
 				["[b"] = "@block.outer",
 				["[a"] = "@parameter.inner",
+				["[k"] = "@call.inner",
 			},
 			goto_previous_end = {
 				["[M"] = "@function.outer",
 				["[]"] = "@class.outer",
 				["[B"] = "@block.outer",
 				["[A"] = "@parameter.inner",
+				["[K"] = "@call.inner",
 			},
 		},
 		select = {
 			enable = true,
 			lookahead = true,
-			include_surrounding_whitespace = true,
+			include_surrounding_whitespace = false, -- Only good for function, TODO: create an issue for that
 			keymaps = {
 				["af"] = "@function.outer",
 				["if"] = "@function.inner",
@@ -66,6 +70,8 @@ require'nvim-treesitter.configs'.setup {
 				["i/"] = "@comment.outer", -- no inner for comment
 				["aa"] = "@parameter.outer", -- parameter -> argument
 				["ia"] = "@parameter.inner",
+				["ak"] = "@call.outer",
+				["ik"] = "@call.inner",
 			},
 		},
 	},
