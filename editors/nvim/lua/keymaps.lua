@@ -251,8 +251,8 @@ map('n', '<C-d>', function() require("lspsaga.action").smart_scroll_with_saga(1)
 --             GIT               --
 -----------------------------------
 map('n', '<leader>gs', '<cmd>:G<CR>') -- Open fugitive.vim (git status)
-map('n', '<leader>gd', '<cmd>Easypick dirtyfiles<CR>') -- Git dirtyfiles
-map('n', '<leader>gD', '<cmd>DiffviewOpen<CR>') -- Git Sdiff
+map('n', '<leader>gD', '<cmd>Easypick dirtyfiles<CR>') -- Git dirtyfiles
+map('n', '<leader>gd', '<cmd>DiffviewOpen<CR>') -- Git Sdiff
 map('n', '<leader>gS', '<cmd>DiffviewOpen HEAD^..HEAD<CR>') -- Git Show
 map('n', '<leader>gc', '<cmd>Telescope git_branches<CR>') -- Git checkout
 map('n', '<leader>gh', '<cmd>DiffviewFileHistory %<CR>') -- Git History

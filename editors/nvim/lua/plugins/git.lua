@@ -1,4 +1,5 @@
 
+local api = vim.api
 local gs = require('gitsigns')
 gs.setup {
 	sign_priority = 10,
@@ -94,7 +95,7 @@ vim.g.git_messenger_popup_content_margins = false
 vim.g.git_messenger_always_into_popup = true
 vim.g.git_messenger_no_default_mappings = true
 
-vim.api.nvim_create_autocmd('FileType', {
+api.nvim_create_autocmd('FileType', {
 	pattern = {'gitmessengerpopup', 'git'},
 	callback = function()
 		vim.call('fugitive#MapJumps') -- map jumps to hunks/changes like fugitive
@@ -124,18 +125,69 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 git_history = function(mode)
-	current_line = vim.api.nvim_get_current_line()
+	current_line = api.nvim_get_current_line()
 	if mode == 'v' then
-		start_pos = vim.api.nvim_buf_get_mark(0, "<")
-		end_pos = vim.api.nvim_buf_get_mark(0, ">")
+		start_pos = api.nvim_buf_get_mark(0, "<")
+		end_pos = api.nvim_buf_get_mark(0, ">")
 	elseif mode == 'n' then
-		start_pos = vim.api.nvim_buf_get_mark(0, "[")
-		end_pos = vim.api.nvim_buf_get_mark(0, "]")
+		start_pos = api.nvim_buf_get_mark(0, "[")
+		end_pos = api.nvim_buf_get_mark(0, "]")
 	end
 
 	start_line = start_pos[1]
 	end_line = end_pos[1]
 
-	vim.api.nvim_command('Git log -L' .. start_line .. ',' .. end_line .. ':' .. vim.fn.expand('%'))
+	api.nvim_command('Git log -L' .. start_line .. ',' .. end_line .. ':' .. vim.fn.expand('%'))
 end
+
+-- Git submode
+local Hydra = require('hydra')
+local gitsigns = gs
+local hint = [[
+ _j_: next hunk   _s_: stage hunk        _r_: reset hunk
+ _k_: prev hunk   _u_: undo stage hunk   _R_: reset buffer
+ ^ ^              _S_: stage buffer
+ ^
+ _<Enter>_: Fugitive  _<Esc>_: exit  _q_: exit  _<C-c>_: exit
+]]
+diffview_hydra = Hydra({
+	hint = hint,
+	config = {
+		color = 'pink',
+		invoke_on_body = true,
+		hint = {
+			position = 'bottom',
+			border = 'rounded'
+		},
+	},
+	mode = {'n','x'},
+	body = '<leader>gg',
+	heads = {
+		{ 'j', function()
+			gitsigns.next_hunk()
+			center_screen()
+		end, { expr = true } },
+		{ 'k', function()
+			gitsigns.prev_hunk()
+			center_screen()
+		end, { expr = true } },
+		{ 's', function()
+			gitsigns.stage_hunk(nil)
+			gitsigns.next_hunk()
+			center_screen()
+		end, { silent = true } },
+		{ 'r', function()
+			gitsigns.reset_hunk(nil)
+			gitsigns.next_hunk()
+			center_screen()
+		end, { silent = true } },
+		{ 'R', ':Gitsigns reset_buffer<CR>', { silent = true } },
+		{ 'u', gitsigns.undo_stage_hunk },
+		{ 'S', gitsigns.stage_buffer },
+		{ '<Enter>', '<cmd>Git<CR>', { exit = true } },
+		{ '<C-c>', nil, { exit = true, nowait = true } },
+		{ 'q', nil, { exit = true, nowait = true } },
+		{ '<Esc>', nil, { exit = true, nowait = true } },
+	}
+})
 

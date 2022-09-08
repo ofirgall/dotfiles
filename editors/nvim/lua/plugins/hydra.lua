@@ -32,78 +32,8 @@ Hydra({
 	}
 })
 
--- Git submode
-local gitsigns = require('gitsigns')
-local hint = [[
- _j_: next hunk   _s_: stage hunk        _r_: reset hunk     _d_: show deleted   _b_: blame line
- _k_: prev hunk   _u_: undo stage hunk   _R_: reset buffer   _p_: preview hunk   _B_: blame show full
- ^ ^                  _S_: stage buffer      ^ ^                 _/_: show base file
- ^
- ^ ^				_<Enter>_: Fugitive       _<Esc>_: exit       _q_: exit
-]]
-
-Hydra({
-	hint = hint,
-	config = {
-		color = 'pink',
-		invoke_on_body = true,
-		hint = {
-			position = 'bottom',
-			border = 'rounded'
-		},
-		on_enter = function()
-			-- vim.bo.modifiable = false
-			-- gitsigns.toggle_signs(true)
-			gitsigns.toggle_linehl(true)
-			gitsigns.toggle_deleted(true)
-			-- Go to first hunk
-			api.nvim_feedkeys('gg]c', 'm', false)
-			center_screen()
-		end,
-		on_exit = function()
-			-- gitsigns.toggle_signs(true)
-			gitsigns.toggle_linehl(false)
-			gitsigns.toggle_deleted(false)
-			vim.cmd 'echo' -- clear the echo area
-		end
-	},
-	mode = {'n','x'},
-	body = '<leader>gg',
-	heads = {
-		{ 'j', function()
-			gitsigns.next_hunk()
-			center_screen()
-		end, { expr = true } },
-		{ 'k', function()
-			gitsigns.prev_hunk()
-			center_screen()
-		end, { expr = true } },
-		{ 's', function()
-			gitsigns.stage_hunk(nil)
-			gitsigns.next_hunk()
-			center_screen()
-		end, { silent = true } },
-		{ 'r', function()
-			gitsigns.reset_hunk(nil)
-			gitsigns.next_hunk()
-			center_screen()
-		end, { silent = true } },
-		{ 'R', ':Gitsigns reset_buffer<CR>', { silent = true } },
-		{ 'u', gitsigns.undo_stage_hunk },
-		{ 'S', gitsigns.stage_buffer },
-		{ 'p', gitsigns.preview_hunk },
-		{ 'd', gitsigns.toggle_deleted, { nowait = true } },
-		{ 'b', gitsigns.blame_line },
-		{ 'B', function() gitsigns.blame_line{ full = true } end },
-		{ '/', gitsigns.show, { exit = true } }, -- show the base of the file
-		{ '<Enter>', '<cmd>Git<CR>', { exit = true } },
-		{ 'q', nil, { exit = true, nowait = true } },
-		{ '<Esc>', nil, { exit = true, nowait = true } },
-	}
-})
-
 -- Draw boxes and arrows (venn.nvim)
-hint = [[
+local hint = [[
 ^^^^    Draw
 ^^^^-------------
 Arrows: _<C-h>_ _<C-j>_ _<C-k>_ _<C-l>_
