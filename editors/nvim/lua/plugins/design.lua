@@ -389,4 +389,9 @@ if not vim.g.started_by_firenvim then
             },
 		}
 	}
+
+	-- WSL 1 is too slow for that
+	if vim.fn.has('wsl') == 0 then
+		require('tint').setup()
+	end
 end

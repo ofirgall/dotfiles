@@ -51,11 +51,9 @@ return require('packer').startup(function()
 	-- TreeSitter --
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use 'nvim-treesitter/playground' -- TreeSitter helper to customize
-	use 'tanvirtin/monokai.nvim' -- Color theme (customized)
 	use { 'SmiteshP/nvim-gps', requires = 'nvim-treesitter/nvim-treesitter' } -- Shows context in status line (with treesitter)
 	use { 'yioneko/nvim-yati', requires = 'nvim-treesitter/nvim-treesitter' } -- Better auto-indent atm
 
-	use 'lukas-reineke/indent-blankline.nvim' -- Indent line helper
 	use 'numToStr/Comment.nvim' -- Comments
 	use 'nvim-treesitter/nvim-treesitter-textobjects' -- Movements base on treesitter
 	use 'lewis6991/spellsitter.nvim' -- Enable spellchecking with treesitter
@@ -66,9 +64,6 @@ return require('packer').startup(function()
 	use 'nvim-telescope/telescope-live-grep-args.nvim' -- Better live grep
 	use 'nvim-telescope/telescope-ui-select.nvim' -- native nvim ui select with telescope
 	use 'axkirillov/easypick.nvim' -- Create telescope from cmd line output, dirty git files for example
-
-	-- Status Line --
-	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' } -- Status line
 
 	-- Git --
 	use 'lewis6991/gitsigns.nvim' -- Show git diff in the sidebar, hunk actions and more
@@ -106,13 +101,20 @@ return require('packer').startup(function()
 		}
 	}
 
-	-- Misc
+	-- Design & UI --
+	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' } -- Status line
+	use 'levouh/tint.nvim' -- Tint inactive splits
+	use 'lukas-reineke/indent-blankline.nvim' -- Indent line helper
+	use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'} -- Tabline
+	use 'tanvirtin/monokai.nvim' -- Color theme (customized)
+	use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', } -- File Tree
+
+	-- Misc --
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
 	use 'windwp/nvim-autopairs' -- Closes (--' etc.
 	use 'ellisonleao/glow.nvim' -- Markdown preview
 	use 'ntpeters/vim-better-whitespace' -- Whitespace trailing
 	use 'ofirgall/AutoSave.nvim' -- Auto save
-	use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'} -- Tabline
 	use 'tiagovla/scope.nvim' -- Scopes buffers for tabpages
 	use 'famiu/bufdelete.nvim' -- delete buffers ctrl+q
 	use { 'xolox/vim-session', requires = 'xolox/vim-misc' } -- Session Manager
@@ -125,7 +127,6 @@ return require('packer').startup(function()
 	use { 'AckslD/nvim-revJ.lua', requires = {'kana/vim-textobj-user', 'sgur/vim-textobj-parameter'} } -- Reverse join (split)
 	use 'nacro90/numb.nvim' -- Peek at line number before jump
 	use { 'danymat/neogen', requires = 'nvim-treesitter/nvim-treesitter' } -- Doc generator
-	use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', } -- File Tree
 	use 'jbyuki/venn.nvim' -- Draw ascii boxes and arrows, start the mode with :Draw, exit with escape, HJKL for arrows, f for box (inside <C-v>)
 	use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end } -- NVIM in firefox
 	use 'ojroques/vim-oscyank' -- Yank from remote

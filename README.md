@@ -67,6 +67,9 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
+* nvim - diffview as conflict solver, cleanup dotfiles from other shit, make binds for open and for solve, maybe hydra, on everything done, open git fugitive
+* nvim - hover on the function on current line, probably requires treesitter
+* nvim - dap, mouse2 will evaulate the clicked value, implement it with keylayering like hydra
 * nvim - find a better session manager
 * nvim - yank color isn't clear when illuminate
 * nvim - lsp lines put a special color in a error line to empahsise it isn't a code line
@@ -77,7 +80,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - lsp signature in normal mode
 * nvim - lsp signature return value in virtual
 * nvim - lsp signature out of screen argument doesn't shown
-* assh - always ssh, rssh in a while loop
 * tmux - get all the command lines that ran in this window and let you choose from fzf pop up
 * tmux - plugin to add relative line numbers in copy mode
 * nvim - config illuminate new version

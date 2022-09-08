@@ -59,7 +59,6 @@ require'diffview'.setup{
 			["<Escape>"] = cb('close'),
 			["gf"] = cb("goto_file_edit"),
 			["<M-n>"] = cb("focus_files"),
-
 		},
 		file_history_panel = {
 			["q"] = cb('close'),
@@ -68,7 +67,19 @@ require'diffview'.setup{
 			["<M-n>"] = cb("focus_files"),
 			["<M-m>"] = cb("toggle_files"),
 		},
-	}
+	},
+	view = {
+		default = {
+			layout = "diff2_horizontal",
+		},
+		merge_tool = {
+			layout = "diff4_mixed",
+			disable_diagnostics = true,
+		},
+		file_history = {
+			layout = "diff2_horizontal",
+		},
+	},
 }
 
 -- Flog
