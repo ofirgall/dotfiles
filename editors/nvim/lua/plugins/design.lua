@@ -1,6 +1,7 @@
 
 local monokai = require('monokai')
 local palette = monokai.classic
+local api = vim.api
 
 vim.g.gitblame_display_virtual_text = 0
 vim.g.gitblame_message_template = '<author> • <date>'
@@ -364,9 +365,9 @@ if not vim.g.started_by_firenvim then
 			show_buffer_icons = true,
 			themable = true,
 			numbers = 'ordinal',
-            max_name_length = 40,
-            -- max_prefix_length = 15,
-            -- tab_size = 18,
+			max_name_length = 40,
+			-- max_prefix_length = 15,
+			-- tab_size = 18,
 		},
 		highlights = {
 			buffer_visible = {
@@ -383,15 +384,36 @@ if not vim.g.started_by_firenvim then
 				bold = true,
 				italic = false,
 			},
-            tab_selected = {
-                fg = palette.white,
+			tab_selected = {
+				fg = palette.white,
 				bold = true,
-            },
+			},
 		}
 	}
 
 	-- WSL 1 is too slow for that
 	if vim.fn.has('wsl') == 0 then
-		require('tint').setup()
+		local tint_ft_ignore = {
+			'terminal',
+			'NvimTree'
+		}
+		require('tint').setup({
+			tint = -60,
+			saturation = 0.5,
+			highlight_ignore_patterns = { 'WinSeparator', 'Status.*', 'IndentBlankline', 'EndOfBuffer' },
+			window_ignore_function = function(winid)
+				local bufid = api.nvim_win_get_buf(winid)
+				local buf_ft = api.nvim_buf_get_option(bufid, 'filetype')
+				local floating = api.nvim_win_get_config(winid).relative ~= ''
+
+				for _, ft in ipairs(tint_ft_ignore) do
+					if buf_ft == ft then
+						return true
+					end
+				end
+
+				return floating
+			end
+		})
 	end
 end
