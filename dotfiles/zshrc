@@ -23,6 +23,7 @@ source $HOME/.zsh_conf/aliases.zsh
 source $HOME/.zsh_conf/settings.zsh
 source $HOME/.zsh_conf/design.zsh
 source $HOME/.zsh_conf/plugins.zsh
+source $HOME/.zsh_conf/hooks.zsh
 
 # Typer (must be in .zshrc, typer adding it if it doesn't)
 autoload -Uz compinit
