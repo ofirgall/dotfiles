@@ -76,7 +76,10 @@ require'lspconfig'.cmake.setup{
 	capabilities = capabilities,
 }
 require'lspconfig'.gopls.setup{
-	on_attach = lsp_on_attach,
+	on_attach = function(client, bufnr)
+		require('lsp-format').on_attach(client)
+		lsp_on_attach(client, bufnr)
+	end,
 	capabilities = capabilities,
 	settings = {
 		gopls = {
