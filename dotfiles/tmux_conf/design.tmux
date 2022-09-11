@@ -1,5 +1,4 @@
 ### PLUGINS ###
-set -g @plugin 'o0th/tmux-nova'
 set -g @plugin 'tmux-plugins/tmux-cpu'
 set -g @plugin 'tmux-plugins/tmux-battery'
 set -g @plugin 'ofirgall/tmux-keyboard-layout'
@@ -51,7 +50,7 @@ set -g "@nova-status-style-active-bg" "$active_bg"
 set -g "@nova-status-style-active-fg" "$active_fg"
 
 set -g "@nova-pane-active-border-style" "#44475a"
-set -g "@nova-pane-border-style" "#827d51"
+set -g "@nova-pane-border-style" "#fad7ab"
 
 ### STATUS BAR ###
 set -g @nova-segment-prefix "#{?client_prefix,PREFIX,}"
@@ -94,3 +93,5 @@ set -g @suspend_on_resume_command "tmux \
 set -g @suspend_on_suspend_command "tmux \
 	set window-status-current-format '#[fg=$suspended_active_fg]#[bg=$suspended_inactive_bg]\#I \#W' \\; \
 	set status-style 'fg=$suspended_inactive_fg,bg=$suspended_inactive_bg'"
+
+set -g @plugin 'o0th/tmux-nova'
