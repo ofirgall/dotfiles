@@ -67,6 +67,12 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ## TODO
+### Important
+* nvim - complete engine
+* nvim - golang fors leaving whitespaces
+* nvim - gd adds too many jumps to the jumplist
+* auto format for - golang
+---
 * nvim - diffview as conflict solver, cleanup dotfiles from other shit, make binds for open and for solve, maybe hydra, on everything done, open git fugitive
 * nvim - hover on the function on current line, probably requires treesitter
 * nvim - dap, mouse2 will evaulate the clicked value, implement it with keylayering like hydra

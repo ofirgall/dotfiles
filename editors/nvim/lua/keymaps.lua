@@ -41,6 +41,11 @@ end
 -- gitsigns.nvim: git.lua
 -- treesitter-textobjects: treesitter.lua
 
+-- Remap space as leader key
+map('', '<Space>', '<Nop>') -- Unmap space
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -----------------------------------
 --           BUILTIN             --
 -----------------------------------
@@ -60,14 +65,10 @@ map({'n', 'v', 't'}, '<M-,>', '<cmd>tabprev<cr>') -- Previous tabpage with Alt+,
 map({'n', 'v', 't'}, '<M-.>', '<cmd>tabnext<cr>') -- Next tabpage with Alt+. (>). NOT FILE TABS
 map('i', '<M-,>', '<C-O><cmd>tabprev<cr>') -- Previous tabpage with Alt+, (<). NOT FILE TABS
 map('i', '<M-.>', '<C-O><cmd>tabnext<cr>') -- Next tabpage with Alt+. (>). NOT FILE TABS
+map('n', '<leader>n',  'i\\r\\n<Esc>') -- Add newline
 
 map('', '<Down>', '<C-e>') -- Down to scroll
 map('', '<Up>', '<C-y>') -- Up to scroll
-
--- Remap space as leader key
-map('', '<Space>', '<Nop>') -- Unmap space
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 -- Move through wrapped lines
 map({'n', 'x'}, 'j', 'v:count ? "j" : "gj"', { silent = true, expr = true})
