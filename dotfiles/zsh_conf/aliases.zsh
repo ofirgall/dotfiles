@@ -26,6 +26,7 @@ function p() { python -c "print($@)"} # run python easily
 function ssh() {
 	TERM=xterm-256color /usr/bin/ssh $@ # Adjust TERM for ssh
 }
+alias cls='tmux clear-history; clear'
 
 # Git aliases, no git plugin
 alias ga='git add'
