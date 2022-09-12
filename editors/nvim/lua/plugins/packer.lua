@@ -46,6 +46,7 @@ return require('packer').startup(function()
 	use 'SmiteshP/nvim-navic' -- same as nvim-gps but using LSP instead (more accurate)
 	use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' -- show diagnostics as virtual lines
 	use 'lukas-reineke/lsp-format.nvim' -- Auto format on save
+	use 'folke/lua-dev.nvim' -- Adding nvim api signatures and more
 
 	-------- END OF LSP --------
 

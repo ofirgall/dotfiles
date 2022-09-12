@@ -116,6 +116,9 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 table.insert(runtime_path, "lua/plugins/?.lua")
 
+require('lua-dev').setup{
+}
+
 require'lspconfig'.sumneko_lua.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
