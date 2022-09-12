@@ -188,7 +188,7 @@ bind -T copy-mode-vi y run-shell "tmux send-keys -X copy-pipe \"xclip -i -select
 bind -n DoubleClick1Pane if-shell "$is_nvim" "" 'copy-mode -M; send-keys -X select-word; run-shell "sleep 0.2"; send-keys -X copy-pipe-and-cancel'
 
 # Dont finish copy when mouse drag end
-bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-selection
+unbind -T copy-mode-vi MouseDragEnd1Pane
 
 # -------------------------
 #	    PLUGINS BINDS
