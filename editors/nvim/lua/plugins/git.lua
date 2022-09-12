@@ -159,6 +159,20 @@ diffview_hydra = Hydra({
 			position = 'bottom',
 			border = 'rounded'
 		},
+		on_enter = function()
+			if not vim.wo.diff then
+				gitsigns.toggle_linehl(true)
+				gitsigns.toggle_deleted(true)
+				vim.cmd 'echo'
+			end
+		end,
+		on_exit = function()
+			if not vim.wo.diff then
+				gitsigns.toggle_linehl(false)
+				gitsigns.toggle_deleted(false)
+				vim.cmd 'echo'
+			end
+		end,
 	},
 	mode = {'n','x'},
 	body = '<leader>gg',
@@ -190,4 +204,3 @@ diffview_hydra = Hydra({
 		{ '<Esc>', nil, { exit = true, nowait = true } },
 	}
 })
-
