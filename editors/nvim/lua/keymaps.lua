@@ -66,6 +66,8 @@ map({'n', 'v', 't'}, '<M-.>', '<cmd>tabnext<cr>') -- Next tabpage with Alt+. (>)
 map('i', '<M-,>', '<C-O><cmd>tabprev<cr>') -- Previous tabpage with Alt+, (<). NOT FILE TABS
 map('i', '<M-.>', '<C-O><cmd>tabnext<cr>') -- Next tabpage with Alt+. (>). NOT FILE TABS
 map('n', '<leader>n',  'i\\r\\n<Esc>') -- Add newline
+map('x', '<leader>p',  '"_dP') -- replace text without changing the copy register
+map('n', '<leader>dd',  '"_dd') -- delete without yanking
 
 map('', '<Down>', '<C-e>') -- Down to scroll
 map('', '<Up>', '<C-y>') -- Up to scroll
