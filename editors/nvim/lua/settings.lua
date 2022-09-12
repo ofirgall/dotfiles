@@ -22,11 +22,17 @@ opt.signcolumn = 'yes:1' -- Enable 2 signs in the column TODO: do 1 sign when un
 -- Enable and disable mouse when gaining/losing focus to avoid the first click jump
 vim.api.nvim_create_autocmd('FocusGained', {
 	pattern = '*',
-	callback = function() opt.mouse = 'a' end
+	callback = function()
+		opt.relativenumber = true
+		opt.mouse = 'a'
+	end
 })
 vim.api.nvim_create_autocmd('FocusLost', {
 	pattern = '*',
-	callback = function() opt.mouse = '' end
+	callback = function()
+		opt.relativenumber = false
+		opt.mouse = ''
+	end
 })
 
 -- Highlight on yank
