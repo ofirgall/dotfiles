@@ -208,3 +208,5 @@ bind -n M-m if-shell "$is_nvim" "send-keys M-m" 'run-shell $open_macros'
 
 # open macros menu with Alt+shift+m anywhere
 bind -n M-N run-shell $open_macros
+
+bind -n M-R run-shell -b "TMUX_FZF_OPTIONS='-p -w 80% -h 80% -m' $HOME/.tmux/plugins/tmux-fzf/scripts/clipboard.sh buffer"

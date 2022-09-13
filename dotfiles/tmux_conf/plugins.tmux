@@ -59,6 +59,7 @@ set -g @plugin 'ofirgall/tmux_capture_last_command_output'
 set -g @plugin 'fcsonline/tmux-thumbs'
 set -g @plugin 'schasse/tmux-jump'
 set -g @plugin 'Neo-Oli/tmux-text-macros'
+set -g @plugin 'sainnhe/tmux-fzf'
 
 ###########
 # RUN TPM #
