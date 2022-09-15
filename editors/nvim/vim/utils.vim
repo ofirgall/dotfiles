@@ -16,7 +16,7 @@ endfunction
 
 command! QuickFixOpenAll call QuickFixOpenAll()
 
-au FileType qf call AdjustWindowHeight(3, 3)
+au FileType qf call AdjustWindowHeight(6, 6)
 " au FileType fugitive call AdjustWindowHeight(12, 20)
 function! AdjustWindowHeight(minheight, maxheight)
 	exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
