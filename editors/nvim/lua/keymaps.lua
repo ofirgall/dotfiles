@@ -121,8 +121,10 @@ map('n', '<leader>b', '<cmd>Telescope buffers<CR>') -- browse your open Buffers 
 map('n', '<leader>c', '<cmd>Telescope command_history<CR>') -- history of Commands
 map('n', '<leader>gx', '<cmd>call OpenInBrowser()<CR>')
 map('n', '<leader>cp', '<cmd>PickColor<CR>')
--- map({'n', 'x'}, 'p', require('pasta.mappings').p) -- override paste with smarter paste
--- map({'n', 'x'}, 'P', require('pasta.mappings').P) -- override paste with smarter paste
+if vim.fn.has('wsl') ~= 1 then -- WSL is too slow for that
+	map({'n', 'x'}, 'p', require('pasta.mappings').p) -- override paste with smarter paste
+	map({'n', 'x'}, 'P', require('pasta.mappings').P) -- override paste with smarter paste
+end
 map({'n', 'x', 'o'}, '<leader>l', require'leap-ast'.leap) -- Leap to treesitter objects
 map({'n', 't', 'v'}, '<C-t>', function() toggle_or_open_terminal() end) -- toggle all terminals
 map('t', '<M-e>', function() open_new_terminal('vertical') end) -- Split terminal
