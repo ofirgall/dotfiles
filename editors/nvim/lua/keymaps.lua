@@ -149,17 +149,19 @@ map({'n', 'x', 'o'}, '<leader>sa', '<Plug>(sandwich-add)', sandwich_opts)
 -- add current line as a block (convert single line ifs to blocked ifs)
 map('n', '<leader>Sa', 'V<Plug>(sandwich-add)', sandwich_opts)
 -- delete
-map({'n', 'x'}, '<leader>sd', '<Plug>(sandwich-delete)', sandwich_opts)
-map('n', '<leader>sdb', '<Plug>(sandwich-delete-auto)', sandwich_opts)
+map('x', '<leader>sd', '<Plug>(sandwich-delete)', sandwich_opts)
+map('n', '<leader>sd', '<Plug>(sandwich-delete-auto)', sandwich_opts)
 -- replace
-map({'n', 'x'}, '<leader>sr', '<Plug>(sandwich-replace)', sandwich_opts)
-map('n', '<leader>srb', '<Plug>(sandwich-replace-auto)', sandwich_opts)
+map('x', '<leader>sr', '<Plug>(sandwich-replace)', sandwich_opts)
+map('n', '<leader>sr', '<Plug>(sandwich-replace-auto)', sandwich_opts)
 -- sandwich word
 map('n', '<leader>sw', '<Plug>(sandwich-add)iw', sandwich_opts)
 map('n', '<leader>sW', '<Plug>(sandwich-add)iW', sandwich_opts)
 -- Some special cases
-map('n', "<leader>'", '<Plug>(sandwich-replace)"\'', sandwich_opts) -- replace " with '
-map('n', '<leader>"', '<Plug>(sandwich-replace)\'"', sandwich_opts) -- replace ' with "
+local fast_sandwich_maps = {"'", '"', '`'}
+for _, char in ipairs(fast_sandwich_maps) do
+	map('n', "<leader>"..char, '<Plug>(sandwich-replace-auto)'..char, sandwich_opts) -- <leader>{char} to replace sandwich to {char}
+end
 
 -----------------------------------
 --        CODE NAVIGATION        --
