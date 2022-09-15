@@ -23,14 +23,12 @@ opt.signcolumn = 'yes:1' -- Enable 2 signs in the column TODO: do 1 sign when un
 vim.api.nvim_create_autocmd('FocusGained', {
 	pattern = '*',
 	callback = function()
-		opt.relativenumber = true
 		opt.mouse = 'a'
 	end
 })
 vim.api.nvim_create_autocmd('FocusLost', {
 	pattern = '*',
 	callback = function()
-		opt.relativenumber = false
 		opt.mouse = ''
 	end
 })
