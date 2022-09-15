@@ -7,6 +7,8 @@ snippy.setup({
 		},
 		nx = {
 			["<leader>x"] = "cut_text",
+			["<Tab>"] = "next",
+			["<S-Tab>"] = "previous",
 		},
 	},
 })
@@ -79,12 +81,13 @@ cmp_setup_dict = {
 				fallback()
 			end
 		end, { 'i' }),
-		['<Esc>'] = cmp.mapping(function (fallback)
-			if snippy.can_jump(1) then
-				snippy.next()
-			end
-			fallback()
-		end, { 'i' }),
+		-- ['<Esc>'] = cmp.mapping(function (fallback)
+		-- 	-- if cmp.visible() and snippy.can_jump(1) then
+		-- 	if snippy.can_jump(1) then
+		-- 		snippy.next()
+		-- 	end
+		-- 	fallback()
+		-- end, { 'i' }),
 		['<Tab>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -159,11 +162,13 @@ cmp.setup.filetype({ 'dap-repl', 'dapui_watches' }, {
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local on_confirm_done_callback = function(evt)
 	entry = evt.entry
-	if entry.source.name ~= 'snippy' and snippy.can_jump(1) then
-		snippy.next()
-	else
-		cmp_autopairs.on_confirm_done({ map_char = { tex = '' } })
-	end
+	-- print(entry.source.name)
+	-- if entry.source.name ~= 'snippy' and snippy.can_jump(1) then
+	-- 	snippy.next()
+	-- else
+	-- 	cmp_autopairs.on_confirm_done({ map_char = { tex = '' } })
+	-- end
+	cmp_autopairs.on_confirm_done({ map_char = { tex = '' } })
 end
 
 cmp.event:on('confirm_done', on_confirm_done_callback)
