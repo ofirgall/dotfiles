@@ -71,7 +71,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - golang fors leaving whitespaces
 * nvim - gd adds too many jumps to the jumplist (in golang)
 * nvim - bg color for lsp_lines (virtual lines)
-* nvim - ClearAllBreakpoints
 * nvim - code compiler to volumez machines
 ---
 * nvim - diffview as conflict solver, cleanup dotfiles from other shit, make binds for open and for solve, maybe hydra, on everything done, open git fugitive
