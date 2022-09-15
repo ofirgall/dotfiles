@@ -1,3 +1,5 @@
+local api = vim.api
+
 require('Comment').setup{
 }
 
@@ -131,8 +133,14 @@ open_new_terminal = function(direction)
 	else
 		direction = "horizontal"
 	end
-	print(#terms.get_all() + 1)
-	local term = terms.Terminal:new({id = #terms.get_all() + 1, dir = nil, direction = direction})
+	local ft = api.nvim_buf_get_option(0, 'filetype')
+	local dir = vim.fn.expand('%:p:h')
+	if ft == 'toggleterm' then
+		-- TODO: this should open in the same dir as the term but it doesn't work
+		dir = string.gsub(string.gsub(vim.fn.expand('%:h:h:h'), "term://", ""), "//.+", "")
+	end
+
+	local term = terms.Terminal:new({id = #terms.get_all() + 1, dir = dir, direction = direction})
 	term:open(nil, direction, true)
 end
 
