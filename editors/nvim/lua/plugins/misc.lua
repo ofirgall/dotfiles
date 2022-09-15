@@ -89,10 +89,11 @@ end
 
 vim.g.undotree_WindowLayout = 3 -- undotree at right
 
--- registers.nvim
-vim.g.registers_show = '\"-/_=#%.0123456789abcdefghijklmnopqrstuvwxyz:' -- move " register to first
-vim.g.registers_paste_in_normal_mode = 2
-vim.g.registers_window_border = 'single'
+-- nvim-peekup
+local peekup_config = require('nvim-peekup.config')
+peekup_config.on_keystroke['delay'] = ''
+peekup_config.on_keystroke['autoclose'] = true
+peekup_config.on_keystroke['paste_reg'] = '"'
 
 -- toggleterm.nvim
 -- TODO: fix this annoying bug

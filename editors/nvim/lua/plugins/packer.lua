@@ -133,7 +133,7 @@ return require('packer').startup(function()
 	use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end } -- NVIM in firefox
 	use 'ojroques/vim-oscyank' -- Yank from remote
 	use 'mbbill/undotree' -- visualize undo/redo tree (F5)
-	use 'tversteeg/registers.nvim' -- visualize copy registers
+	use 'gennaro-tedesco/nvim-peekup' -- visualize copy registers
 	use 'akinsho/toggleterm.nvim' -- Terminal toggle for nvim <C-t>
 	use 'NMAC427/guess-indent.nvim' -- Adjust tabs/spaces settings
 	use 'shivamashtikar/tmuxjump.vim' -- jump to files that printed in another tmux panes
