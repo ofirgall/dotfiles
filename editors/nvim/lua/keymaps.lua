@@ -49,6 +49,7 @@ vim.g.maplocalleader = ' '
 -----------------------------------
 --           BUILTIN             --
 -----------------------------------
+local add_new_line = 'i\\r\\n<Esc>'
 map('n', '<M-r>', '<cmd>echo "Current File Reloaded!"<cr><cmd>luafile %<cr>') -- Reload current luafile
 map('n', 'n', 'nzz') -- Auto recenter after n
 map('n', 'N', 'Nzz') -- Auto recenter after N
@@ -65,9 +66,9 @@ map({'n', 'v', 't'}, '<M-,>', '<cmd>tabprev<cr>') -- Previous tabpage with Alt+,
 map({'n', 'v', 't'}, '<M-.>', '<cmd>tabnext<cr>') -- Next tabpage with Alt+. (>). NOT FILE TABS
 map('i', '<M-,>', '<C-O><cmd>tabprev<cr>') -- Previous tabpage with Alt+, (<). NOT FILE TABS
 map('i', '<M-.>', '<C-O><cmd>tabnext<cr>') -- Next tabpage with Alt+. (>). NOT FILE TABS
-map('n', '<leader>n',  'i\\r\\n<Esc>') -- Add newline
-map('x', '<leader>p',  '"_dP') -- replace text without changing the copy register
-map('n', '<leader>dd',  '"_dd') -- delete without yanking
+map('n', '<leader>n', add_new_line) -- Add newline
+map('x', '<leader>p', '"_dP') -- replace text without changing the copy register
+map('n', '<leader>dd', '"_dd') -- delete without yanking
 
 map('', '<Down>', '<C-e>') -- Down to scroll
 map('', '<Up>', '<C-y>') -- Up to scroll
@@ -164,6 +165,7 @@ local fast_sandwich_maps = {"'", '"', '`'}
 for _, char in ipairs(fast_sandwich_maps) do
 	map('n', "<leader>"..char, '<Plug>(sandwich-replace-auto)'..char, sandwich_opts) -- <leader>{char} to replace sandwich to {char}
 end
+map('n', '<leader>dc', 'diw<Plug>(sandwich-delete)(') -- delete convertsion, e.g: int64(a) -> a
 
 -----------------------------------
 --        CODE NAVIGATION        --
@@ -342,4 +344,4 @@ map('n', '<leader>dc', function() require("refactoring").debug.cleanup({}) end) 
 -----------------------------------
 -- TODO: load only in go
 map('n', '<leader>e', '<cmd>GoIfErr<cr>')
-map('n', '<leader>dc', 'diw<Plug>(sandwich-delete)(') -- delete convertsion, e.g: int64(a) -> a
+map('n', '<leader>ln', '<cmd>s/Println/Printf/<cr>$F"'..add_new_line)
