@@ -1,6 +1,5 @@
 custom=(
 'cd /var/log/volumez/ :logs'
-'rm *\.test; go test -c -gcflags "all=-N -l" && scp *\.test root@rv1:~/ :complietest'
 'rm -rf /var/log/volumez/*; /root/go/bin/dlv exec --api-version=2 --listen=:2345 --headless --log ~/ -- --test.v: debugtest'
 'mdadm -S /dev/md_*; dmsetup remove_all; modprobe -r brd; docker stop dynamock; docker rm dynamock; : cleantest'
 'dmsetup ls --tree -oblkdevname: lsdm'

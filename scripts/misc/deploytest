@@ -1,0 +1,5 @@
+#!/bin/sh
+
+HOST="${1:-rv1}"
+echo "Host: $HOST"
+rm *\.test; go test -c -gcflags "all=-N -l" && scp *\.test root@rv1:~/
