@@ -286,16 +286,16 @@ map('n', '<M-M>', '<cmd>NvimTreeFindFile<cr>') -- Locate file
 
 -- Tabline binds
 map('n', '<C-q>', function() require('bufdelete').bufdelete(0, true) end) -- ctrl+Quit to close current tab
-map('n', 'g1', function() require('bufferline').go_to_buffer(1, true) end)
-map('n', 'g2', function() require('bufferline').go_to_buffer(2, true) end)
-map('n', 'g3', function() require('bufferline').go_to_buffer(3, true) end)
-map('n', 'g4', function() require('bufferline').go_to_buffer(4, true) end)
-map('n', 'g5', function() require('bufferline').go_to_buffer(5, true) end)
-map('n', 'g6', function() require('bufferline').go_to_buffer(6, true) end)
-map('n', 'g7', function() require('bufferline').go_to_buffer(7, true) end)
-map('n', 'g8', function() require('bufferline').go_to_buffer(8, true) end)
-map('n', 'g9', function() require('bufferline').go_to_buffer(9, true) end)
-map('n', 'g0', function() require('bufferline').go_to_buffer(10, true) end)
+map('n', '<leader>1', function() require('bufferline').go_to_buffer(1, true) end)
+map('n', '<leader>2', function() require('bufferline').go_to_buffer(2, true) end)
+map('n', '<leader>3', function() require('bufferline').go_to_buffer(3, true) end)
+map('n', '<leader>4', function() require('bufferline').go_to_buffer(4, true) end)
+map('n', '<leader>5', function() require('bufferline').go_to_buffer(5, true) end)
+map('n', '<leader>6', function() require('bufferline').go_to_buffer(6, true) end)
+map('n', '<leader>7', function() require('bufferline').go_to_buffer(7, true) end)
+map('n', '<leader>8', function() require('bufferline').go_to_buffer(8, true) end)
+map('n', '<leader>9', function() require('bufferline').go_to_buffer(9, true) end)
+map('n', '<leader>0', function() require('bufferline').go_to_buffer(10, true) end)
 -- Tab control, tmux binds are "outer" Alt+h/l and vim is "inner" Alt+j/k
 map('n', '<M-j>', '<cmd>BufferLineCyclePrev<CR>') -- Alt+j to move to left
 map('n', '<M-k>', '<cmd>BufferLineCycleNext<CR>') -- Alt+k to move to right
@@ -303,16 +303,16 @@ map('n', '<M-J>', '<cmd>BufferLineMovePrev<CR>') -- Alt+Shift+j grab to with you
 map('n', '<M-K>', '<cmd>BufferLineMoveNext<CR>') -- Alt+Shift+k grab to with you to right
 
 -- Tabpage binds
-map('n', '<leader>1', '<cmd>tabnext1<cr>')
-map('n', '<leader>2', '<cmd>tabnext2<cr>')
-map('n', '<leader>3', '<cmd>tabnext3<cr>')
-map('n', '<leader>4', '<cmd>tabnext4<cr>')
-map('n', '<leader>5', '<cmd>tabnext5<cr>')
-map('n', '<leader>6', '<cmd>tabnext6<cr>')
-map('n', '<leader>7', '<cmd>tabnext7<cr>')
-map('n', '<leader>8', '<cmd>tabnext8<cr>')
-map('n', '<leader>9', '<cmd>tabnext9<cr>')
-map('n', '<leader>0', '<cmd>tabnext10<cr>')
+map('n', 'g1', '<cmd>tabnext1<cr>')
+map('n', 'g2', '<cmd>tabnext2<cr>')
+map('n', 'g3', '<cmd>tabnext3<cr>')
+map('n', 'g4', '<cmd>tabnext4<cr>')
+map('n', 'g5', '<cmd>tabnext5<cr>')
+map('n', 'g6', '<cmd>tabnext6<cr>')
+map('n', 'g7', '<cmd>tabnext7<cr>')
+map('n', 'g8', '<cmd>tabnext8<cr>')
+map('n', 'g9', '<cmd>tabnext9<cr>')
+map('n', 'g0', '<cmd>tabnext10<cr>')
 
 -----------------------------------
 --          DEBUGGING            --
