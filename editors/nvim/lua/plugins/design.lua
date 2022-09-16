@@ -356,6 +356,23 @@ require("indent_blankline").setup {
 	space_char_blankline = " ",
 }
 
+-- SmoothCursor.nvim
+require('smoothcursor').setup{
+	fancy = {
+		enable = true,
+		head = { cursor = nil },
+		body = {
+            { cursor = "▷", texthl = "SmoothCursorRed" },
+            { cursor = "", texthl = "SmoothCursorOrange" },
+            { cursor = "●", texthl = "SmoothCursorYellow" },
+            { cursor = "●", texthl = "SmoothCursorGreen" },
+            { cursor = "•", texthl = "SmoothCursorAqua" },
+            { cursor = ".", texthl = "SmoothCursorBlue" },
+            { cursor = ".", texthl = "SmoothCursorPurple" },
+        },
+	},
+}
+
 if not vim.g.started_by_firenvim then
 	-- bufferline.nvim, must be loaded after color scheme
 	require('bufferline').setup {

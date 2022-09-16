@@ -255,20 +255,20 @@ require('flit').setup{
 }
 
 -- neoscroll.nvim
-local neoscroll = require('neoscroll')
-neoscroll.setup{
-	mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>'}, -- Dont override zz/zt/zb, C-e, C-y
-}
--- Recenter after scroll
-local scroll_speed = 150
-vim.keymap.set('n', '<C-u>', function()
-	neoscroll.scroll(-vim.wo.scroll, true, scroll_speed)
-	vim.api.nvim_feedkeys('zz', 'n', false)
-end, {})
-vim.keymap.set('n', '<C-d>', function()
-	neoscroll.scroll(vim.wo.scroll, true, scroll_speed)
-	vim.api.nvim_feedkeys('zz', 'n', false)
-end, {})
+-- local neoscroll = require('neoscroll')
+-- neoscroll.setup{
+-- 	mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>'}, -- Dont override zz/zt/zb, C-e, C-y
+-- }
+-- -- Recenter after scroll
+-- local scroll_speed = 150
+-- vim.keymap.set('n', '<C-u>', function()
+-- 	neoscroll.scroll(-vim.wo.scroll, true, scroll_speed)
+-- 	vim.api.nvim_feedkeys('zz', 'n', false)
+-- end, {})
+-- vim.keymap.set('n', '<C-d>', function()
+-- 	neoscroll.scroll(vim.wo.scroll, true, scroll_speed)
+-- 	vim.api.nvim_feedkeys('zz', 'n', false)
+-- end, {})
 
 -- scope.nvim
 require('scope').setup{

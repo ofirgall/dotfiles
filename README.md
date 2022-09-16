@@ -68,10 +68,10 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ## TODO
 ### Important
 * nvim - complete engine (must be on top first)
-* nvim - golang fors leaving whitespaces
 * nvim - gd adds too many jumps to the jumplist (in golang)
 * nvim - bg color for lsp_lines (virtual lines)
 * nvim - code compiler to volumez machines
+* nvim - transfer telescope binds to <leader>
 ---
 * nvim - diffview as conflict solver, cleanup dotfiles from other shit, make binds for open and for solve, maybe hydra, on everything done, open git fugitive
 * nvim - hover on the function on current line, probably requires treesitter

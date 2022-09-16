@@ -56,6 +56,8 @@ map('n', 'N', 'Nzz') -- Auto recenter after N
 map('n', '<F3>', '<cmd>let @/ = "not_gonna_find_this_______"<cr>') -- Disable find highlight
 map('n', '<C-o>', '<C-o>zz') -- Recenter after C-o
 map('n', '<C-i>', '<C-i>zz') -- Recenter after C-i
+map('n', '<C-u>', '<C-u>zz') -- recenter after scroll down
+map('n', '<C-d>', '<C-d>zz') -- recenter after scroll down
 map('v', '<Enter>', 'y') -- yank with Enter in visual mode
 map('i', '<C-k>', '<C-O>o') -- Insert new line in insert mode
 map('', '<M-y>', '"+y') -- Start copy to os clipboard E.g: M-yy will copy current line to os
@@ -253,8 +255,6 @@ map('n', ']p', goto_next_diag) -- next Problem
 map('n', '[p', goto_prev_diag) -- prev Problem
 map('n', ']g', goto_next_diag) -- next Problem
 map('n', '[g', goto_prev_diag) -- prev Problem
-map('n', '<C-u>', function() require("lspsaga.action").smart_scroll_with_saga(-1) end, {}) -- scroll Up in document
-map('n', '<C-d>', function() require("lspsaga.action").smart_scroll_with_saga(1) end, {}) -- scroll Down in Document
 
 -----------------------------------
 --             GIT               --

@@ -110,6 +110,7 @@ return require('packer').startup(function()
 	use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'} -- Tabline
 	use 'tanvirtin/monokai.nvim' -- Color theme (customized)
 	use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', } -- File Tree
+	use 'gen740/SmoothCursor.nvim' -- track cursor movment in columns markers
 
 	-- Misc --
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
@@ -149,7 +150,6 @@ return require('packer').startup(function()
 	use 'ziontee113/color-picker.nvim' -- color picker
 	use {'ray-x/go.nvim', requires = 'ray-x/guihua.lua', run = ':GoUpdateBinaries'} -- Golang tools
 	use 'rbong/vim-buffest' -- edit macros and registers
-	use 'karb94/neoscroll.nvim' -- smooth scrolling
 	use 'tmux-plugins/vim-tmux-focus-events' -- FocusGained/FocusLost events
 	use 'andrewferrier/debugprint.nvim' -- make debug prints fast
 	use 'nguyenvukhang/nvim-toggler' -- Invert words like true<->false, on<->off with <leader>i
