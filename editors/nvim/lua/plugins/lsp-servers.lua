@@ -19,6 +19,11 @@ local lsp_on_attach = function(client, bufnr)
 	require 'nvim-navic'.attach(client, bufnr)
 end
 
+local lsp_on_attach_format = function(client, bufnr)
+	require('lsp-format').on_attach(client)
+	lsp_on_attach(client, bufnr)
+end
+
 -- logs at "$HOME/.cache/nvim/lsp.log"
 -- vim.lsp.set_log_level("debug")
 
@@ -44,7 +49,7 @@ else
 end
 
 require'lspconfig'.rust_analyzer.setup{
-	on_attach = lsp_on_attach,
+	on_attach = lsp_on_attach_format,
 	capabilities = capabilities,
 	settings = {
 		["rust-analyzer"] = {
@@ -76,10 +81,7 @@ require'lspconfig'.cmake.setup{
 	capabilities = capabilities,
 }
 require'lspconfig'.gopls.setup{
-	on_attach = function(client, bufnr)
-		require('lsp-format').on_attach(client)
-		lsp_on_attach(client, bufnr)
-	end,
+	on_attach = lsp_on_attach_format,
 	capabilities = capabilities,
 	settings = {
 		gopls = {
@@ -115,7 +117,7 @@ require('lua-dev').setup{
 }
 
 require'lspconfig'.sumneko_lua.setup {
-	on_attach = lsp_on_attach,
+	on_attach = lsp_on_attach_format,
 	capabilities = capabilities,
 	settings = {
 		Lua = {
