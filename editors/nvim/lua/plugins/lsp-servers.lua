@@ -131,3 +131,6 @@ require 'lspconfig'.sumneko_lua.setup {
 
 require('fidget').setup {
 }
+
+require('lsp-format').setup {
+}
