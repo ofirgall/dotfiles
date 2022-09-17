@@ -134,6 +134,7 @@ map('o', 'gK', function() ts_move.goto_previous_end('@function.outer') end)
 
 -- Spell fixing quickly
 local telescope_builtin = require('telescope.builtin')
+local spell_status_before = false
 Hydra({
 	hint = [[
  _j_: Next _k_: Prev
@@ -149,14 +150,15 @@ Hydra({
 			border = 'rounded'
 		},
 		on_enter = function()
+			spell_status_before = vim.opt.spell
 			vim.opt.spell = true
 		end,
 		on_exit = function()
-			vim.opt.spell = false
+			vim.opt.spell = spell_status_before
 		end
 	},
 	mode = 'n',
-	body = '<leader>ss',
+	body = '<leader>S',
 	heads = {
 		{ 'j', function()
 			api.nvim_input(']s')

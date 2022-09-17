@@ -137,6 +137,17 @@ map('n', ']d', require('goto-breakpoints').next)
 map('n', '[d', require('goto-breakpoints').prev)
 map('n', '<leader>m', require('mind').open_main)
 
+-- Spell Suggest
+map('n', '<leader>ss', function()
+	require('telescope.builtin').spell_suggest({
+		prompt_title = '',
+		layout_config = {
+			height = 0.25,
+			width = 0.25
+		}
+	})
+end)
+
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 -- Add cursor down/up Alt+n/p (like ctrl+down/up in subl)
 cmd([[
