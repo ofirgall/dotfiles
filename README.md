@@ -70,7 +70,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - code compiler to volumez machines
 * nvim - transfer telescope binds to <leader>
 ---
-* nvim - diffview as conflict solver, cleanup dotfiles from other shit, make binds for open and for solve, maybe hydra, on everything done, open git fugitive
 * nvim - hover on the function on current line, probably requires treesitter
 * nvim - dap, mouse2 will evaulate the clicked value, implement it with keylayering like hydra
 * nvim - find a better session manager

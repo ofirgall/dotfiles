@@ -39,6 +39,7 @@ gs.setup {
 
 local cb = require 'diffview.config'.diffview_callback
 require 'diffview'.setup {
+	auto_refresh = false,
 	file_history_panel = {
 		log_options = {
 			single_file = {
