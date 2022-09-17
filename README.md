@@ -78,9 +78,7 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - git commit ft should take source from all buffers & git tree tickets
 * nvim - function hydra, copy name to +y or y
 * tmux - remove notifcation color in nova, to recreate attach to same session from two other windows (tmux link-window) and run stuff on the linked window
-* nvim - lsp signature in normal mode
 * nvim - lsp signature return value in virtual
-* nvim - lsp signature out of screen argument doesn't shown
 * tmux - get all the command lines that ran in this window and let you choose from fzf pop up
 * tmux - plugin to add relative line numbers in copy mode
 * nvim - config illuminate new version

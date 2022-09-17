@@ -4,13 +4,11 @@ capabilities.window.workDoneProgress = true
 
 local lsp_signature_cfg = {
 	bind = true,
-	use_lspsaga = true,
+	use_lspsaga = false,
 	doc_lines = 0,
-	toggle_key = '<M-x>',
 	floating_window = false,
 	hint_scheme = 'LspSignatureHintVirtualText',
 	hint_prefix = ' ',
-	-- max_height 1,
 }
 
 local lsp_on_attach = function(client, bufnr)
