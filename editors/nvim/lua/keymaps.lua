@@ -259,6 +259,7 @@ map('n', 'KK', '<cmd>Lspsaga hover_doc<cr>') -- Trigger hover (KJ is fast to use
 map('n', '<RightMouse>', '<LeftMouse><cmd>Lspsaga hover_doc<cr>') -- Trigger hover
 map('n', '<leader>d', '<cmd>Neogen<cr>') -- Document function
 map('n', '<leader>p', require('lsp_lines').toggle) -- show Problem
+map('n', '<leader>P', '<cmd>Lspsaga show_line_diagnostics<CR>') -- show Problem
 map('n', ']p', goto_next_diag) -- next Problem
 map('n', '[p', goto_prev_diag) -- prev Problem
 map('n', ']g', goto_next_diag) -- next Problem

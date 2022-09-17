@@ -344,6 +344,13 @@ monokai.setup {
 		CmpItemAbbrMatchFuzzy = {
 			fg = '#34d8f7',
 		},
+		-- gitsigns.nvim
+		GitSignsChange = {
+			fg = '#0e72cf'
+		},
+		GitSignsAdd = {
+			fg = '#6a921a'
+		},
 	}
 }
 
