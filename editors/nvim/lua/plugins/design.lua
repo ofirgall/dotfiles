@@ -1,4 +1,3 @@
-
 local monokai = require('monokai')
 local palette = monokai.classic
 local api = vim.api
@@ -85,7 +84,7 @@ if not vim.g.started_by_firenvim then
 		icon = ' LSP:',
 	}
 
-	local is_treesitter_gps_available = function ()
+	local is_treesitter_gps_available = function()
 		return not lsp_gps.is_available() and gps.is_available()
 	end
 
@@ -94,10 +93,10 @@ if not vim.g.started_by_firenvim then
 		vim.g.gitblame_enabled = 0
 	else
 		local git_blame = require("gitblame")
-		table.insert(y_section, {git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available})
+		table.insert(y_section, { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available })
 	end
 
-	require'lualine'.setup {
+	require 'lualine'.setup {
 		options = {
 			theme = lualine_theme,
 			icons_enabled = true,
@@ -105,20 +104,20 @@ if not vim.g.started_by_firenvim then
 			always_divide_middle = false,
 		},
 		sections = {
-			lualine_b = {'branch', 'diff', 'diagnostics'},
+			lualine_b = { 'branch', 'diff', 'diagnostics' },
 			lualine_c = {
 				{ 'filename', shorting_target = 0 },
 				{ lsp_gps.get_location, cond = lsp_gps.is_available },
 				{ gps.get_location, cond = is_treesitter_gps_available },
 			},
-			lualine_x = {lsp_server_component},
+			lualine_x = { lsp_server_component },
 			lualine_y = y_section,
-			lualine_z = {'filetype'},
+			lualine_z = { 'filetype' },
 		},
 	}
 
 	-- Load lualine late (buggy if not)
-	late_lualine_setup_id = vim.api.nvim_create_autocmd({'BufEnter', 'InsertEnter'}, {
+	late_lualine_setup_id = vim.api.nvim_create_autocmd({ 'BufEnter', 'InsertEnter' }, {
 		pattern = '*',
 		callback = function()
 			require('lualine').setup()
@@ -132,7 +131,7 @@ local highlighted_word_bg = '#343942'
 local background = '#282923'
 local const_pink = '#e878d2'
 local tree_bg = '#1a1a18'
-local telescope_bg =  '#181816'-- Slightly darker than tree_bg
+local telescope_bg = '#181816' -- Slightly darker than tree_bg
 local tab_visible_fg = '#b3ab60'
 local cursor_line_bg = '#36352a'
 local orange = '#de933c'
@@ -357,19 +356,19 @@ require("indent_blankline").setup {
 }
 
 -- SmoothCursor.nvim
-require('smoothcursor').setup{
+require('smoothcursor').setup {
 	fancy = {
 		enable = true,
 		head = { cursor = nil },
 		body = {
-            { cursor = "▷", texthl = "SmoothCursorRed" },
-            { cursor = "", texthl = "SmoothCursorOrange" },
-            { cursor = "●", texthl = "SmoothCursorYellow" },
-            { cursor = "●", texthl = "SmoothCursorGreen" },
-            { cursor = "•", texthl = "SmoothCursorAqua" },
-            { cursor = ".", texthl = "SmoothCursorBlue" },
-            { cursor = ".", texthl = "SmoothCursorPurple" },
-        },
+			{ cursor = "▷", texthl = "SmoothCursorRed" },
+			{ cursor = "", texthl = "SmoothCursorOrange" },
+			{ cursor = "●", texthl = "SmoothCursorYellow" },
+			{ cursor = "●", texthl = "SmoothCursorGreen" },
+			{ cursor = "•", texthl = "SmoothCursorAqua" },
+			{ cursor = ".", texthl = "SmoothCursorBlue" },
+			{ cursor = ".", texthl = "SmoothCursorPurple" },
+		},
 	},
 }
 
@@ -378,7 +377,7 @@ if not vim.g.started_by_firenvim then
 	require('bufferline').setup {
 		options = {
 			separator_style = 'slant',
-			offsets = {{filetype = 'NvimTree', text = 'File Explorer', text_align = 'center'}},
+			offsets = { { filetype = 'NvimTree', text = 'File Explorer', text_align = 'center' } },
 			show_buffer_icons = true,
 			themable = true,
 			numbers = 'ordinal',
@@ -430,7 +429,7 @@ if not vim.g.started_by_firenvim then
 				end
 
 				local floating = api.nvim_win_get_config(winid).relative ~= ''
-				local diff = api.nvim_get_option_value('diff', {buf = bufid})
+				local diff = api.nvim_get_option_value('diff', { buf = bufid })
 
 				if floating or diff then
 					return false

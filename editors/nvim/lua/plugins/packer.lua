@@ -12,7 +12,7 @@ cmd [[packadd packer.nvim]]
 -- Configure 'lyokha/vim-xkbswitch' before loading
 vim.g.XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 vim.g.XkbSwitchEnabled = 1
-vim.g.XkbSwitchSkipGhKeys = {'gh', 'gH'}
+vim.g.XkbSwitchSkipGhKeys = { 'gh', 'gH' }
 
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim' -- packer can manage itself
@@ -62,7 +62,7 @@ return require('packer').startup(function()
 
 	-- Telescope --
 	use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' } -- Fuzzy finder with alot of integration
-	use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- fzf integration for telescope
+	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- fzf integration for telescope
 	use 'nvim-telescope/telescope-live-grep-args.nvim' -- Better live grep
 	use 'nvim-telescope/telescope-ui-select.nvim' -- native nvim ui select with telescope
 	use 'axkirillov/easypick.nvim' -- Create telescope from cmd line output, dirty git files for example
@@ -81,7 +81,7 @@ return require('packer').startup(function()
 	use 'rhysd/git-messenger.vim' -- Git blame that allows to explore older commits
 
 	-- Debugging --
-	use 'mfussenegger/nvim-dap'	-- DAP client for nvim
+	use 'mfussenegger/nvim-dap' -- DAP client for nvim
 	use { 'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap' } -- UI for debugging
 	use 'Weissle/persistent-breakpoints.nvim' -- Keep breakpoints after nvim restart
 	use 'ofirgall/goto-breakpoints.nvim' -- Cycle breakpoints with ]d/[d
@@ -107,7 +107,7 @@ return require('packer').startup(function()
 	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' } -- Status line
 	use 'levouh/tint.nvim' -- Tint inactive splits
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent line helper
-	use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'} -- Tabline
+	use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' } -- Tabline
 	use 'tanvirtin/monokai.nvim' -- Color theme (customized)
 	use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', } -- File Tree
 	use 'gen740/SmoothCursor.nvim' -- track cursor movment in columns markers
@@ -126,8 +126,8 @@ return require('packer').startup(function()
 	use 'mizlan/iswap.nvim' -- Swap arguments, elements (:ISwap)
 	use 'christoomey/vim-tmux-navigator' -- Navigate in panes integrated in vim and tmux
 	use 'lyokha/vim-xkbswitch' -- Switch to english for normal mode
-	use { 'michaelb/sniprun', run = 'bash ./install.sh'} -- Run snippets in your code
-	use { 'AckslD/nvim-revJ.lua', requires = {'kana/vim-textobj-user', 'sgur/vim-textobj-parameter'} } -- Reverse join (split)
+	use { 'michaelb/sniprun', run = 'bash ./install.sh' } -- Run snippets in your code
+	use { 'AckslD/nvim-revJ.lua', requires = { 'kana/vim-textobj-user', 'sgur/vim-textobj-parameter' } } -- Reverse join (split)
 	use 'nacro90/numb.nvim' -- Peek at line number before jump
 	use { 'danymat/neogen', requires = 'nvim-treesitter/nvim-treesitter' } -- Doc generator
 	use 'jbyuki/venn.nvim' -- Draw ascii boxes and arrows, start the mode with :Draw, exit with escape, HJKL for arrows, f for box (inside <C-v>)
@@ -140,7 +140,7 @@ return require('packer').startup(function()
 	use 'shivamashtikar/tmuxjump.vim' -- jump to files that printed in another tmux panes
 	use 'szw/vim-maximizer' -- Maximize windows (splits) in vim
 	use 'rust-lang/rust.vim' -- Rust utils (RustFmt on save)
-	use { 'ThePrimeagen/refactoring.nvim', requires = {'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter'} } -- Refactor tool
+	use { 'ThePrimeagen/refactoring.nvim', requires = { 'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter' } } -- Refactor tool
 	use { 'nvim-neorg/neorg', requires = 'nvim-lua/plenary.nvim' } -- .norg plugin better orgmode
 	use { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' } -- review todo in the quickfix list with :Todo..
 	-- use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
@@ -148,7 +148,7 @@ return require('packer').startup(function()
 	use 'hrsh7th/nvim-pasta' -- Auto indent on paste, cycle on yank history after paste with <C-n>/<C-p>
 	use { 'anuvyklack/hydra.nvim', requires = 'anuvyklack/keymap-layer.nvim' }
 	use 'ziontee113/color-picker.nvim' -- color picker
-	use {'ray-x/go.nvim', requires = 'ray-x/guihua.lua', run = ':GoUpdateBinaries'} -- Golang tools
+	use { 'ray-x/go.nvim', requires = 'ray-x/guihua.lua', run = ':GoUpdateBinaries' } -- Golang tools
 	use 'rbong/vim-buffest' -- edit macros and registers
 	use 'tmux-plugins/vim-tmux-focus-events' -- FocusGained/FocusLost events
 	use 'andrewferrier/debugprint.nvim' -- make debug prints fast
@@ -161,7 +161,7 @@ return require('packer').startup(function()
 	use {
 		'iamcco/markdown-preview.nvim', -- Markdown preview
 		run = function() vim.fn['mkdp#util#install']() end,
-		ft = {'markdown'}
+		ft = { 'markdown' }
 	}
 
 	-- Improvement Games

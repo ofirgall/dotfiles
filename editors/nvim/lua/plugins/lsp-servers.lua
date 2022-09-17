@@ -28,12 +28,12 @@ end
 -- vim.lsp.set_log_level("debug")
 
 if not NO_SUDO then
-	require'lspconfig'.pyright.setup{
+	require 'lspconfig'.pyright.setup {
 		on_attach = lsp_on_attach,
 		capabilities = capabilities,
 	}
 else
-	require'lspconfig'.pylsp.setup{
+	require 'lspconfig'.pylsp.setup {
 		on_attach = lsp_on_attach,
 		capabilities = capabilities,
 		settings = {
@@ -48,7 +48,7 @@ else
 	}
 end
 
-require'lspconfig'.rust_analyzer.setup{
+require 'lspconfig'.rust_analyzer.setup {
 	on_attach = lsp_on_attach_format,
 	capabilities = capabilities,
 	settings = {
@@ -68,19 +68,19 @@ require'lspconfig'.rust_analyzer.setup{
 	-- 	),
 	-- }
 }
-require'lspconfig'.bashls.setup{
+require 'lspconfig'.bashls.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
-require'lspconfig'.vimls.setup{
+require 'lspconfig'.vimls.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
-require'lspconfig'.cmake.setup{
+require 'lspconfig'.cmake.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
-require'lspconfig'.gopls.setup{
+require 'lspconfig'.gopls.setup {
 	on_attach = lsp_on_attach_format,
 	capabilities = capabilities,
 	settings = {
@@ -89,12 +89,13 @@ require'lspconfig'.gopls.setup{
 		}
 	}
 }
-require'lspconfig'.cucumber_language_server.setup{
+require 'lspconfig'.cucumber_language_server.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
 
-local clang_cmd = { "clangd", "--background-index", "--fallback-style=none", "--header-insertion=never", "--all-scopes-completion", "--cross-file-rename"}
+local clang_cmd = { "clangd", "--background-index", "--fallback-style=none", "--header-insertion=never",
+	"--all-scopes-completion", "--cross-file-rename" }
 
 if vim.fn.has('wsl') == 1 then
 	table.insert(clang_cmd, "-j=4") -- Limit resources on wsl
@@ -104,19 +105,19 @@ if NO_SUDO then
 	clang_cmd = { "clangd", "-completion-style=bundled" }
 end
 
-require'lspconfig'.clangd.setup{
+require 'lspconfig'.clangd.setup {
 	init_options = {
-	    clangdFileStatus = true
+		clangdFileStatus = true
 	},
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 	cmd = clang_cmd,
 }
 
-require('lua-dev').setup{
+require('lua-dev').setup {
 }
 
-require'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.sumneko_lua.setup {
 	on_attach = lsp_on_attach_format,
 	capabilities = capabilities,
 	settings = {
@@ -128,5 +129,5 @@ require'lspconfig'.sumneko_lua.setup {
 	},
 }
 
-require('fidget').setup{
+require('fidget').setup {
 }

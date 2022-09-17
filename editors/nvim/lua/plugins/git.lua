@@ -1,29 +1,29 @@
-
 local api = vim.api
 local gs = require('gitsigns')
 gs.setup {
 	sign_priority = 10,
 	on_attach = function(bufnr)
 		local function map(mode, l, r, opts)
-			opts = opts or { silent=true }
+			opts = opts or { silent = true }
 			opts.buffer = bufnr
 			vim.keymap.set(mode, l, r, opts)
 		end
+
 		-- Navigation
 		map('n', ']c', function()
 			if vim.wo.diff then return ']c' end
 			vim.schedule(function() gs.next_hunk() end)
 			return '<Ignore>'
-		end, {expr=true})
+		end, { expr = true })
 
 		map('n', '[c', function()
 			if vim.wo.diff then return '[c' end
 			vim.schedule(function() gs.prev_hunk() end)
 			return '<Ignore>'
-		end, {expr=true})
+		end, { expr = true })
 		-- Actions
-		map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
-		map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+		map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>')
+		map({ 'n', 'v' }, '<leader>hr', ':Gitsigns reset_hunk<CR>')
 		map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
 		map('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
 		map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
@@ -33,12 +33,12 @@ gs.setup {
 		map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
 		map('n', '<leader>hd', '<cmd>Gitsigns toggle_deleted<CR>')
 		-- Text object
-		map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+		map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 	end
 }
 
-local cb = require'diffview.config'.diffview_callback
-require'diffview'.setup{
+local cb = require 'diffview.config'.diffview_callback
+require 'diffview'.setup {
 	file_history_panel = {
 		log_options = {
 			single_file = {
@@ -96,27 +96,27 @@ vim.g.git_messenger_always_into_popup = true
 vim.g.git_messenger_no_default_mappings = true
 
 api.nvim_create_autocmd('FileType', {
-	pattern = {'gitmessengerpopup', 'git'},
+	pattern = { 'gitmessengerpopup', 'git' },
 	callback = function()
 		vim.call('fugitive#MapJumps') -- map jumps to hunks/changes like fugitive
 		-- remove overlapping maps from fugitive
 		vim.keymap.del('n', 'dq', { buffer = 0 })
-		vim.keymap.del('n', 'r<Space>', {buffer = 0})
-		vim.keymap.del('n', 'r<CR>', {buffer = 0})
-		vim.keymap.del('n', 'ri', {buffer = 0})
-		vim.keymap.del('n', 'rf', {buffer = 0})
-		vim.keymap.del('n', 'ru', {buffer = 0})
-		vim.keymap.del('n', 'rp', {buffer = 0})
-		vim.keymap.del('n', 'rw', {buffer = 0})
-		vim.keymap.del('n', 'rm', {buffer = 0})
-		vim.keymap.del('n', 'rd', {buffer = 0})
-		vim.keymap.del('n', 'rk', {buffer = 0})
-		vim.keymap.del('n', 'rx', {buffer = 0})
-		vim.keymap.del('n', 'rr', {buffer = 0})
-		vim.keymap.del('n', 'rs', {buffer = 0})
-		vim.keymap.del('n', 're', {buffer = 0})
-		vim.keymap.del('n', 'ra', {buffer = 0})
-		vim.keymap.del('n', 'r?', {buffer = 0})
+		vim.keymap.del('n', 'r<Space>', { buffer = 0 })
+		vim.keymap.del('n', 'r<CR>', { buffer = 0 })
+		vim.keymap.del('n', 'ri', { buffer = 0 })
+		vim.keymap.del('n', 'rf', { buffer = 0 })
+		vim.keymap.del('n', 'ru', { buffer = 0 })
+		vim.keymap.del('n', 'rp', { buffer = 0 })
+		vim.keymap.del('n', 'rw', { buffer = 0 })
+		vim.keymap.del('n', 'rm', { buffer = 0 })
+		vim.keymap.del('n', 'rd', { buffer = 0 })
+		vim.keymap.del('n', 'rk', { buffer = 0 })
+		vim.keymap.del('n', 'rx', { buffer = 0 })
+		vim.keymap.del('n', 'rr', { buffer = 0 })
+		vim.keymap.del('n', 'rs', { buffer = 0 })
+		vim.keymap.del('n', 're', { buffer = 0 })
+		vim.keymap.del('n', 'ra', { buffer = 0 })
+		vim.keymap.del('n', 'r?', { buffer = 0 })
 
 		-- add overridden maps
 		vim.keymap.set('n', 'o', '<cmd>call b:__gitmessenger_popup.opts.mappings["o"][0]()<CR>', { buffer = 0 })
@@ -174,7 +174,7 @@ diffview_hydra = Hydra({
 			end
 		end,
 	},
-	mode = {'n','x'},
+	mode = { 'n', 'x' },
 	body = '<leader>gg',
 	heads = {
 		{ 'j', function()

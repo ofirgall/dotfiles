@@ -1,5 +1,5 @@
 local dapui = require('dapui')
-dapui.setup{
+dapui.setup {
 	expand_lines = false,
 	layouts = {
 		{
@@ -24,11 +24,11 @@ dapui.setup{
 -- DAP Config
 local dap = require('dap')
 -- Sign priority = 11
-vim.fn.sign_define('DapBreakpoint', {text='', texthl='DiagnosticError', linehl='', numhl=''})
-vim.fn.sign_define('DapBreakpointCondition', {text='', texthl='DiagnosticWarn', linehl='', numhl=''})
-vim.fn.sign_define('DapBreakpointRejected', {text='', texthl='DiagnosticWarn', linehl='', numhl=''})
-vim.fn.sign_define('DapLogPoint', {text='', texthl='DiagnosticWarn', linehl='', numhl=''})
-vim.fn.sign_define('DapStopped', {text='', texthl='DiagnosticInfo', linehl='CursorLine', numhl='CursorLine'})
+vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DiagnosticError', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointCondition', { text = '', texthl = 'DiagnosticWarn', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'DiagnosticWarn', linehl = '', numhl = '' })
+vim.fn.sign_define('DapLogPoint', { text = '', texthl = 'DiagnosticWarn', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = '', texthl = 'DiagnosticInfo', linehl = 'CursorLine', numhl = 'CursorLine' })
 
 -- C/C++/Rust
 dap.configurations.cpp = {
@@ -51,7 +51,7 @@ dap.adapters.codelldb = {
 	port = "${port}",
 	executable = {
 		command = 'codelldb',
-		args = {"--port", "${port}"},
+		args = { "--port", "${port}" },
 	}
 }
 
@@ -91,7 +91,7 @@ dap.listeners.before.event_exited['dapui_config'] = function()
 end
 
 -- automatically load breakpoints when a file is loaded into the buffer.
-require('persistent-breakpoints').setup{}
+require('persistent-breakpoints').setup {}
 vim.api.nvim_create_autocmd('BufReadPost', {
 	pattern = '*',
 	callback = require('persistent-breakpoints.api').load_breakpoints

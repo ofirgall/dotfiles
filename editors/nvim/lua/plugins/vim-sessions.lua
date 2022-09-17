@@ -11,7 +11,7 @@ if vim.g.started_by_firenvim or not (vim.call('argc', '') == 0) then
 	vim.g.session_autosave = 'no'
 	vim.g.session_autoload = 'no'
 else
-	vim.opt.sessionoptions:append({'buffers','tabpages','options'})
+	vim.opt.sessionoptions:append({ 'buffers', 'tabpages', 'options' })
 	vim.cmd([[
 	let g:session_autosave = 'no' " Doesnt save unsaved session for some reason using autocmd instead
 	autocmd ExitPre * exec "lua require('dapui').close()" | exec "NvimTreeClose" | exec "DiffviewClose" | exec "redraw!"

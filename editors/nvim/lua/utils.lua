@@ -1,9 +1,8 @@
-
 local api = vim.api
 
 local file_exists = function(name)
-   local f=io.open(name,"r")
-   if f~=nil then io.close(f) return true else return false end
+	local f = io.open(name, "r")
+	if f ~= nil then io.close(f) return true else return false end
 end
 
 NO_SUDO = file_exists(os.getenv("HOME") .. "/.no_sudo_indicator")
@@ -121,7 +120,7 @@ local get_current_line_text = function(mode)
 	current_line = api.nvim_get_current_line()
 	start_pos, end_pos = get_range(mode)
 
-	return string.sub(current_line, start_pos[2]+1, end_pos[2]+1)
+	return string.sub(current_line, start_pos[2] + 1, end_pos[2] + 1)
 end
 
 live_grep = function(opts, mode)
@@ -145,26 +144,26 @@ goto_def = function()
 	elseif ft == 'help' then
 		api.nvim_command(':help ' .. vim.fn.expand('<cword>'))
 	else
-		require'telescope.builtin'.lsp_definitions({
+		require 'telescope.builtin'.lsp_definitions({
 			show_line = false
 		})
 	end
 end
 
-center_screen = function ()
+center_screen = function()
 	api.nvim_feedkeys('zz', 'n', false)
 end
 
 local catch = function(what)
-   return what[1]
+	return what[1]
 end
 
 local try = function(what)
-   status, result = pcall(what[1])
-   if not status then
-      what[2](result)
-   end
-   return result
+	status, result = pcall(what[1])
+	if not status then
+		what[2](result)
+	end
+	return result
 end
 
 api.nvim_create_user_command('CloseAllButCurrent', function()
@@ -176,7 +175,7 @@ api.nvim_create_user_command('CloseAllButCurrent', function()
 						require('bufdelete').bufdelete(bufnr, true)
 					end,
 					catch {
-						function ()
+						function()
 							-- print('Failed to delete buffer: ' .. bufnr)
 						end
 					}
@@ -193,7 +192,7 @@ api.nvim_create_user_command('CloseBuffersRight', function()
 	api.nvim_command('BufferLineCloseRight')
 end, {})
 
-goto_next_diag = function ()
+goto_next_diag = function()
 	local next = vim.diagnostic.get_next()
 	if next == nil then
 		return

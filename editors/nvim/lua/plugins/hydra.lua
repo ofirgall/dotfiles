@@ -26,9 +26,9 @@ Hydra({
 		{ '-', '<C-w>-' },
 		{ '>', '2<C-w>>', { desc = 'increase width' } },
 		{ '<', '2<C-w><', { desc = 'decrease width' } },
-		{ '=', '<C-w>=', { exit = true, desc = 'equalize'} },
+		{ '=', '<C-w>=', { exit = true, desc = 'equalize' } },
 		--
-		{ '<Esc>', nil,  { exit = true }}
+		{ '<Esc>', nil, { exit = true } }
 	}
 })
 
@@ -55,20 +55,20 @@ Hydra({
 			vim.o.virtualedit = 'all'
 		end,
 	},
-	mode = {'n'},
+	mode = { 'n' },
 	body = '<leader>draw',
 	heads = {
 		{ '<C-h>', '<C-v>h:VBox<CR>' },
 		{ '<C-j>', '<C-v>j:VBox<CR>' },
 		{ '<C-k>', '<C-v>k:VBox<CR>' },
 		{ '<C-l>', '<C-v>l:VBox<CR>' },
-		{ '<C-f>', ':VBox<CR>', { mode = 'v' }},
+		{ '<C-f>', ':VBox<CR>', { mode = 'v' } },
 		{ '<Esc>', nil, { exit = true, nowait = true } },
 	}
 })
 
 
-local ts_move = require'nvim-treesitter.textobjects.move'
+local ts_move = require 'nvim-treesitter.textobjects.move'
 -- Move up/down functions
 local move_funcs = Hydra({
 	hint = [[
@@ -82,55 +82,55 @@ local move_funcs = Hydra({
 			border = 'rounded'
 		}
 	},
-	mode = {'n', 'x'},
+	mode = { 'n', 'x' },
 	heads = {
-		{ 'j', function ()
+		{ 'j', function()
 			ts_move.goto_next_start('@function.outer')
 			center_screen()
 		end },
-		{ 'J', function ()
+		{ 'J', function()
 			ts_move.goto_next_end('@function.outer')
 			center_screen()
 		end },
-		{ 'k', function ()
+		{ 'k', function()
 			ts_move.goto_previous_start('@function.outer')
 			center_screen()
 		end },
-		{ 'K', function ()
+		{ 'K', function()
 			ts_move.goto_previous_end('@function.outer')
 			center_screen()
 		end },
 		--
-		{ '<Esc>', nil,  { exit = true }}
+		{ '<Esc>', nil, { exit = true } }
 	}
 })
-map({'n', 'x'}, 'gj', function ()
+map({ 'n', 'x' }, 'gj', function()
 	ts_move.goto_next_start('@function.outer')
 	center_screen()
 	move_funcs:activate()
 end)
-map('o', 'gj', function () ts_move.goto_next_start('@function.outer') end)
+map('o', 'gj', function() ts_move.goto_next_start('@function.outer') end)
 
-map({'n', 'x'}, 'gk', function ()
+map({ 'n', 'x' }, 'gk', function()
 	ts_move.goto_previous_start('@function.outer')
 	center_screen()
 	move_funcs:activate()
 end)
-map('o', 'gk', function () ts_move.goto_previous_start('@function.outer') end)
+map('o', 'gk', function() ts_move.goto_previous_start('@function.outer') end)
 
-map({'n', 'x'}, 'gJ', function ()
+map({ 'n', 'x' }, 'gJ', function()
 	ts_move.goto_next_end('@function.outer')
 	center_screen()
 	move_funcs:activate()
 end)
-map('o', 'gJ', function () ts_move.goto_next_end('@function.outer') end)
+map('o', 'gJ', function() ts_move.goto_next_end('@function.outer') end)
 
-map({'n', 'x'}, 'gK', function ()
+map({ 'n', 'x' }, 'gK', function()
 	ts_move.goto_previous_end('@function.outer')
 	center_screen()
 	move_funcs:activate()
 end)
-map('o', 'gK', function () ts_move.goto_previous_end('@function.outer') end)
+map('o', 'gK', function() ts_move.goto_previous_end('@function.outer') end)
 
 -- Spell fixing quickly
 local telescope_builtin = require('telescope.builtin')
@@ -158,19 +158,19 @@ Hydra({
 	mode = 'n',
 	body = '<leader>ss',
 	heads = {
-		{ 'j', function ()
+		{ 'j', function()
 			api.nvim_input(']s')
 			center_screen()
 		end },
-		{ 'k', function ()
+		{ 'k', function()
 			api.nvim_input('[s')
 			center_screen()
 		end },
-		{ '<Enter>', function ()
+		{ '<Enter>', function()
 			telescope_builtin.spell_suggest()
 		end },
 		--
-		{ '<Esc>', nil,  { exit = true, nowait = true }},
-		{ 'q', nil,  { exit = true, nowait = true }},
+		{ '<Esc>', nil, { exit = true, nowait = true } },
+		{ 'q', nil, { exit = true, nowait = true } },
 	}
 })

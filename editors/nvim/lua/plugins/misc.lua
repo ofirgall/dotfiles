@@ -1,44 +1,44 @@
 local api = vim.api
 
-require('Comment').setup{
+require('Comment').setup {
 }
 
-require('nvim-autopairs').setup{
+require('nvim-autopairs').setup {
 	check_ts = true,
 	-- enable_moveright = false,
 }
 
 local autosave = require('autosave')
-autosave.setup{
+autosave.setup {
 	clean_command_line_interval = 1000,
 	on_off_commands = true,
 	execution_message = '',
 }
 
-autosave.hook_before_actual_saving = function ()
+autosave.hook_before_actual_saving = function()
 	mode = vim.api.nvim_get_mode()
 	if mode.mode ~= 'n' then -- Don't save while we in insert/select mode (triggered with autopair and such)
 		vim.g.auto_save_abort = true
 	end
 end
 
-require'nvim-lastplace'.setup{
-	lastplace_ignore_buftype = {'terminal'}
+require 'nvim-lastplace'.setup {
+	lastplace_ignore_buftype = { 'terminal' }
 }
 
-require'sniprun'.setup{
+require 'sniprun'.setup {
 	display = {
 		"Classic"
 	}
 }
 
-require("revj").setup{
+require("revj").setup {
 	new_line_before_last_bracket = false,
 	add_seperator_for_last_parameter = false,
 	enable_default_keymaps = true,
 }
 
-require('numb').setup{
+require('numb').setup {
 	number_only = true,
 }
 
@@ -48,7 +48,7 @@ end
 
 local find_in_path = function(node)
 	opts = {}
-	opts.default_text = '-g"'.. node_relative_path(node) .. '/**" "'
+	opts.default_text = '-g"' .. node_relative_path(node) .. '/**" "'
 	require('telescope').extensions.live_grep_args.live_grep_args(opts)
 end
 
@@ -56,7 +56,7 @@ local git_hist_path = function(node)
 	vim.fn.execute('DiffviewFileHistory ' .. node_relative_path(node))
 end
 
-require'nvim-tree'.setup {
+require 'nvim-tree'.setup {
 	view = {
 		adaptive_size = true,
 		mappings = {
@@ -119,7 +119,7 @@ toggle_term.setup {
 local terms = require('toggleterm.terminal')
 
 toggle_or_open_terminal = function(direction)
-	print("toggle "..#terms.get_all().. " hidden "..#terms.get_all(true))
+	print("toggle " .. #terms.get_all() .. " hidden " .. #terms.get_all(true))
 	if #terms.get_all() == 0 then
 		open_new_terminal(direction)
 	else
@@ -141,15 +141,15 @@ open_new_terminal = function(direction)
 		dir = string.gsub(string.gsub(vim.fn.expand('%:h:h:h'), "term://", ""), "//.+", "")
 	end
 
-	local term = terms.Terminal:new({id = #terms.get_all() + 1, dir = dir, direction = direction})
+	local term = terms.Terminal:new({ id = #terms.get_all() + 1, dir = dir, direction = direction })
 	term:open(nil, direction, true)
 end
 
 -- guess-indent.nvim
-require('guess-indent').setup{}
+require('guess-indent').setup {}
 
 -- refactoring.nvim
-require('refactoring').setup{}
+require('refactoring').setup {}
 
 -- vim-maximizer
 vim.g.maximizer_default_mapping_key = '<M-Z>'
@@ -158,7 +158,7 @@ vim.g.maximizer_default_mapping_key = '<M-Z>'
 -- vim.g.rustfmt_autosave = 1
 
 -- trld.nvim
-require('trld').setup{
+require('trld').setup {
 	auto_cmds = false,
 }
 vim.api.nvim_create_autocmd('CursorHold', {
@@ -166,7 +166,7 @@ vim.api.nvim_create_autocmd('CursorHold', {
 	callback = function() TRLDShow() end
 })
 
-vim.api.nvim_create_autocmd({'CursorMoved', 'CursorMovedI', 'InsertEnter'}, {
+vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', 'InsertEnter' }, {
 	pattern = '*',
 	callback = function() TRLDHide() end
 })
@@ -176,7 +176,7 @@ vim.g.tmuxjump_telescope = true
 vim.g.tmuxjump_custom_capture = "~/dotfiles_scripts/inner/_tmuxjump_capture.sh"
 
 -- todo-comments.nvim
-require('todo-comments').setup{
+require('todo-comments').setup {
 	signs = false,
 	highlight = {
 		before = '',
@@ -221,20 +221,20 @@ require('todo-comments').setup{
 -- }
 
 -- nvim-colorizer.lua
-require('colorizer').setup{
+require('colorizer').setup {
 	'*'
 }
 
 -- nvim-pasta
-require('pasta').setup{
+require('pasta').setup {
 }
 
 -- color-picker.nvim
-require('color-picker').setup{
+require('color-picker').setup {
 }
 
 -- go.nvim
-require('go').setup{
+require('go').setup {
 	lsp_keymaps = false,
 	dap_debug_keymap = false,
 	textobjects = false,
@@ -251,42 +251,26 @@ require('leap').setup {
 }
 
 -- flit.nvim
-require('flit').setup{
+require('flit').setup {
 }
 
--- neoscroll.nvim
--- local neoscroll = require('neoscroll')
--- neoscroll.setup{
--- 	mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>'}, -- Dont override zz/zt/zb, C-e, C-y
--- }
--- -- Recenter after scroll
--- local scroll_speed = 150
--- vim.keymap.set('n', '<C-u>', function()
--- 	neoscroll.scroll(-vim.wo.scroll, true, scroll_speed)
--- 	vim.api.nvim_feedkeys('zz', 'n', false)
--- end, {})
--- vim.keymap.set('n', '<C-d>', function()
--- 	neoscroll.scroll(vim.wo.scroll, true, scroll_speed)
--- 	vim.api.nvim_feedkeys('zz', 'n', false)
--- end, {})
-
 -- scope.nvim
-require('scope').setup{
+require('scope').setup {
 }
 
 -- debugprint.nvim
-require('debugprint').setup{
+require('debugprint').setup {
 	print_tag = '--- DEBUG PRINT ---'
 }
 
 -- nvim-toggler
-require('nvim-toggler').setup{
+require('nvim-toggler').setup {
 	['to'] = 'from',
 	['failed'] = 'succeeded',
 }
 
 -- mind.nvim
-require('mind').setup{
+require('mind').setup {
 	keymaps = {
 		normal = {
 			["<cr>"] = "toggle_node",
@@ -303,5 +287,5 @@ require('mind').setup{
 	}
 }
 
-require'window-picker'.setup{
+require 'window-picker'.setup {
 }

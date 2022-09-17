@@ -18,7 +18,7 @@ neogen.setup {
 	enabled = true
 }
 
-local cmp = require'cmp'
+local cmp = require 'cmp'
 local lspkind = require('lspkind')
 
 local kind_icons = {
@@ -74,7 +74,7 @@ cmp_setup_dict = {
 		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
 		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
 		['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-		['<CR>'] = cmp.mapping(function (fallback)
+		['<CR>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert })
 			else
@@ -127,7 +127,7 @@ cmp_setup_dict = {
 		{ name = 'spell' },
 		{ name = 'neorg' },
 		{ name = 'git' },
-		{ name = 'path', option = {trailing_slash = true}},
+		{ name = 'path', option = { trailing_slash = true } },
 		{ name = 'buffer' },
 	}),
 	performance = {
@@ -146,7 +146,7 @@ cmp.setup.cmdline('/', {
 
 cmp.setup.cmdline(':', {
 	sources = cmp.config.sources({
-		{ name = 'path', option = {trailing_slash = true}}
+		{ name = 'path', option = { trailing_slash = true } }
 	}, {
 		{ name = 'cmdline' }
 	})
@@ -174,7 +174,7 @@ end
 cmp.event:on('confirm_done', on_confirm_done_callback)
 
 -- LSP SAGA --
-vim.diagnostic.config{
+vim.diagnostic.config {
 	signs = {
 		priority = 8
 	}
@@ -186,24 +186,24 @@ require('lspsaga').init_lsp_saga({
 	},
 	code_action_lightbulb = {
 		-- sign_priority = 9,
-		sign = false,
-		virtual_text = true,
-		enable_in_insert  = false
+		sign             = false,
+		virtual_text     = true,
+		enable_in_insert = false
 	},
 	rename_in_select = false,
 })
 
 -- cmp-git
-require('cmp_git').setup{
+require('cmp_git').setup {
 }
 
 -- lsp_lines.nvim
 -- Disable builtin diagnostic
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	vim.lsp.diagnostic.on_publish_diagnostics, {
-		virtual_text = false
-	}
+	virtual_text = false
+}
 )
 
-require('lsp_lines').setup{
+require('lsp_lines').setup {
 }

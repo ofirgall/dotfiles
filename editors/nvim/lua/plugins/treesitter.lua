@@ -3,12 +3,12 @@
 -----------------------------------------------------------
 
 if IS_REMOTE then
-	ignore_install_langs = { "norg", "foam", "haskell"}
+	ignore_install_langs = { "norg", "foam", "haskell" }
 else
 	ignore_install_langs = {}
 end
 
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
 	ensure_installed = "all",
 	sync_install = false,
 	ignore_install = ignore_install_langs,

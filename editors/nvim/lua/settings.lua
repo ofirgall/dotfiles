@@ -1,4 +1,3 @@
-
 local opt = vim.opt
 
 opt.number = true
@@ -36,7 +35,7 @@ vim.api.nvim_create_autocmd('FocusLost', {
 -- Highlight on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
-	callback = function() vim.highlight.on_yank({timeout=350, higroup='Visual'}) end
+	callback = function() vim.highlight.on_yank({ timeout = 350, higroup = 'Visual' }) end
 })
 
 if vim.fn.has('wsl') == 1 then

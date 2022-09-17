@@ -3,9 +3,10 @@
 local cmd = vim.cmd
 
 local function map(mode, l, r, opts)
-	opts = opts or { silent=true }
+	opts = opts or { silent = true }
 	vim.keymap.set(mode, l, r, opts)
 end
+
 ----------------------------------------------------------------------------------
 --
 -- This file contains the custom keymaps.
@@ -64,8 +65,8 @@ map('', '<M-y>', '"+y') -- Start copy to os clipboard E.g: M-yy will copy curren
 map('', '<M-Y>', '"+y$') -- Copy rest of the line to os clipboard like "Y" but for os clipboard
 map('n', '<M-v>', '"+p') -- paste from os clipboard
 map('n', '<M-V>', '"+P') -- paste from os clipboard
-map({'n', 'v', 't'}, '<M-,>', '<cmd>tabprev<cr>') -- Previous tabpage with Alt+, (<). NOT FILE TABS
-map({'n', 'v', 't'}, '<M-.>', '<cmd>tabnext<cr>') -- Next tabpage with Alt+. (>). NOT FILE TABS
+map({ 'n', 'v', 't' }, '<M-,>', '<cmd>tabprev<cr>') -- Previous tabpage with Alt+, (<). NOT FILE TABS
+map({ 'n', 'v', 't' }, '<M-.>', '<cmd>tabnext<cr>') -- Next tabpage with Alt+. (>). NOT FILE TABS
 map('i', '<M-,>', '<C-O><cmd>tabprev<cr>') -- Previous tabpage with Alt+, (<). NOT FILE TABS
 map('i', '<M-.>', '<C-O><cmd>tabnext<cr>') -- Next tabpage with Alt+. (>). NOT FILE TABS
 map('n', '<leader>n', add_new_line) -- Add newline
@@ -76,8 +77,8 @@ map('', '<Down>', '<C-e>') -- Down to scroll
 map('', '<Up>', '<C-y>') -- Up to scroll
 
 -- Move through wrapped lines
-map({'n', 'x'}, 'j', 'v:count ? "j" : "gj"', { silent = true, expr = true})
-map({'n', 'x'}, 'k', 'v:count ? "k" : "gk"', { silent = true, expr = true})
+map({ 'n', 'x' }, 'j', 'v:count ? "j" : "gj"', { silent = true, expr = true })
+map({ 'n', 'x' }, 'k', 'v:count ? "k" : "gk"', { silent = true, expr = true })
 
 -- Toggle spell check
 map('n', '<F1>', ':set spell!<cr>')
@@ -90,15 +91,15 @@ map('n', '*', "<cmd>let @/= '\\<' . expand('<cword>') . '\\>'<cr>zz")
 --             TMUX              --
 -----------------------------------
 -- Navigate in panes + splits (requires vim-tmux-navigator)
-map({'n', 't'}, '<C-h>', '<cmd>TmuxNavigateLeft<cr>')
-map({'n', 't'}, '<C-j>', '<cmd>TmuxNavigateDown<cr>')
-map({'n', 't'}, '<C-k>', '<cmd>TmuxNavigateUp<cr>')
-map({'n', 't'}, '<C-l>', '<cmd>TmuxNavigateRight<cr>')
-map({'n', 't'}, '<M-Left>', '<cmd>TmuxNavigateLeft<cr>')
-map({'n', 't'}, '<M-Down>', '<cmd>TmuxNavigateDown<cr>')
-map({'n', 't'}, '<M-Up>', '<cmd>TmuxNavigateUp<cr>')
-map({'n', 't'}, '<M-Right>', '<cmd>TmuxNavigateRight<cr>')
-map({'n', 't'}, '<leader>o', '<cmd>TmuxJumpFile<cr>') -- Open file pathes from sibiling tmux pane
+map({ 'n', 't' }, '<C-h>', '<cmd>TmuxNavigateLeft<cr>')
+map({ 'n', 't' }, '<C-j>', '<cmd>TmuxNavigateDown<cr>')
+map({ 'n', 't' }, '<C-k>', '<cmd>TmuxNavigateUp<cr>')
+map({ 'n', 't' }, '<C-l>', '<cmd>TmuxNavigateRight<cr>')
+map({ 'n', 't' }, '<M-Left>', '<cmd>TmuxNavigateLeft<cr>')
+map({ 'n', 't' }, '<M-Down>', '<cmd>TmuxNavigateDown<cr>')
+map({ 'n', 't' }, '<M-Up>', '<cmd>TmuxNavigateUp<cr>')
+map({ 'n', 't' }, '<M-Right>', '<cmd>TmuxNavigateRight<cr>')
+map({ 'n', 't' }, '<leader>o', '<cmd>TmuxJumpFile<cr>') -- Open file pathes from sibiling tmux pane
 -- Splits like tmux
 map('n', '<M-e>', function() smart_split('vertical') end)
 map('n', '<M-o>', function() smart_split('horizontal') end)
@@ -125,11 +126,11 @@ map('n', '<leader>c', '<cmd>Telescope command_history<CR>') -- history of Comman
 map('n', '<leader>gx', '<cmd>call OpenInBrowser()<CR>')
 map('n', '<leader>cp', '<cmd>PickColor<CR>')
 if vim.fn.has('wsl') ~= 1 then -- WSL is too slow for that
-	map({'n', 'x'}, 'p', require('pasta.mappings').p) -- override paste with smarter paste
-	map({'n', 'x'}, 'P', require('pasta.mappings').P) -- override paste with smarter paste
+	map({ 'n', 'x' }, 'p', require('pasta.mappings').p) -- override paste with smarter paste
+	map({ 'n', 'x' }, 'P', require('pasta.mappings').P) -- override paste with smarter paste
 end
-map({'n', 'x', 'o'}, '<leader>l', require'leap-ast'.leap) -- Leap to treesitter objects
-map({'n', 't', 'v'}, '<C-t>', function() toggle_or_open_terminal() end) -- toggle all terminals
+map({ 'n', 'x', 'o' }, '<leader>l', require 'leap-ast'.leap) -- Leap to treesitter objects
+map({ 'n', 't', 'v' }, '<C-t>', function() toggle_or_open_terminal() end) -- toggle all terminals
 map('t', '<M-e>', function() open_new_terminal('vertical') end) -- Split terminal
 map('t', '<M-q>', function() require('bufdelete').bufdelete(0, true) end) -- Close terminal
 map('n', ']d', require('goto-breakpoints').next)
@@ -150,7 +151,7 @@ let g:VM_maps['Add Cursor Up'] = '<M-p>'
 vim.g.sandwich_no_default_key_mappings = 1
 local sandwich_opts = {}
 -- add
-map({'n', 'x', 'o'}, '<leader>sa', '<Plug>(sandwich-add)', sandwich_opts)
+map({ 'n', 'x', 'o' }, '<leader>sa', '<Plug>(sandwich-add)', sandwich_opts)
 -- add current line as a block (convert single line ifs to blocked ifs)
 map('n', '<leader>Sa', 'V<Plug>(sandwich-add)', sandwich_opts)
 -- delete
@@ -163,9 +164,9 @@ map('n', '<leader>sr', '<Plug>(sandwich-replace-auto)', sandwich_opts)
 map('n', '<leader>sw', '<Plug>(sandwich-add)iw', sandwich_opts)
 map('n', '<leader>sW', '<Plug>(sandwich-add)iW', sandwich_opts)
 -- Some special cases
-local fast_sandwich_maps = {"'", '"', '`'}
+local fast_sandwich_maps = { "'", '"', '`' }
 for _, char in ipairs(fast_sandwich_maps) do
-	map('n', "<leader>"..char, '<Plug>(sandwich-replace-auto)'..char, sandwich_opts) -- <leader>{char} to replace sandwich to {char}
+	map('n', "<leader>" .. char, '<Plug>(sandwich-replace-auto)' .. char, sandwich_opts) -- <leader>{char} to replace sandwich to {char}
 end
 map('n', '<leader>dc', 'diw<Plug>(sandwich-delete)(') -- delete convertsion, e.g: int64(a) -> a
 
@@ -173,16 +174,24 @@ map('n', '<leader>dc', 'diw<Plug>(sandwich-delete)(') -- delete convertsion, e.g
 --        CODE NAVIGATION        --
 -----------------------------------
 map('n', 'KR', '<cmd>Telescope resume<cr>') -- Resume last telescope
-map('n', 'KL', function() require("telescope.builtin").find_files({hidden=true, follow=true}) end) -- find files (ctrl+p)
-map('n', 'Kd', function() require("telescope.builtin").find_files({hidden=true, follow=true, default_text = vim.fn.expand("<cword>")}) end) -- find files (ctrl+p) starting with current word
-map('v', 'KL', '<Esc><cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true, default_text=get_visual_text()})<cr>') -- find files text from visual
+map('n', 'KL', function() require("telescope.builtin").find_files({ hidden = true, follow = true }) end) -- find files (ctrl+p)
+map('n', 'Kd',
+	function() require("telescope.builtin").find_files({ hidden = true, follow = true,
+			default_text = vim.fn.expand("<cword>") })
+	end) -- find files (ctrl+p) starting with current word
+map('v', 'KL',
+	'<Esc><cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true, default_text=get_visual_text()})<cr>') -- find files text from visual
 map('n', 'KJ', live_grep) -- search in all files (fuzzy finder)
 map('v', 'KJ', '<Esc><cmd>lua live_grep({}, "v")<cr>') -- search in all files (default text is from visual)
-map('n', 'KD', function() live_grep({default_text = vim.fn.expand("<cword>")}) end) -- Search in all files with current word inserted
+map('n', 'KD', function() live_grep({ default_text = vim.fn.expand("<cword>") }) end) -- Search in all files with current word inserted
 map('n', 'KF', ':set opfunc=LiveGrepRawOperator<CR>g@') -- Search in all files with word from move operator
 vim.cmd("function! LiveGrepRawOperator(...) \n lua live_grep({}, 'n') \n endfunction") -- used by `KF`
-map('n', 'Kjj', function() live_grep({default_text = '-g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*" -F "'}) end) -- Search in all files in your current directory
-map('n', 'Kjd', function() live_grep({default_text = vim.fn.expand("<cword>") .. ' -g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*"'}) end) -- Search in all files in your current directory + with your current word
+map('n', 'Kjj',
+	function() live_grep({ default_text = '-g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*" -F "' }) end) -- Search in all files in your current directory
+map('n', 'Kjd',
+	function() live_grep({ default_text = vim.fn.expand("<cword>") ..
+			' -g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*"' })
+	end) -- Search in all files in your current directory + with your current word
 
 
 -----------------------------------
@@ -205,7 +214,7 @@ map('n', '<MiddleMouse>', function()
 end) -- Go to Definition
 
 local lsp_implementations = function()
-	require'telescope.builtin'.lsp_implementations{
+	require 'telescope.builtin'.lsp_implementations {
 		show_line = false
 	}
 end
@@ -213,41 +222,42 @@ end
 map('n', 'gvd', function() split_if_not_exist(true) goto_def() end) -- Go to Definition in Vsplit
 map('n', 'gxd', function() split_if_not_exist(false) goto_def() end) -- Go to Definition in Xsplit
 map('n', 'god', function() split_if_not_exist(false) goto_def() end) -- Go to Definition in Xsplit
-map('n', 'gKD', function() require("telescope.builtin").lsp_dynamic_workspace_symbols({default_text = vim.fn.expand("<cword>")}) end) -- (Go) search Definition under current word
+map('n', 'gKD',
+	function() require("telescope.builtin").lsp_dynamic_workspace_symbols({ default_text = vim.fn.expand("<cword>") }) end) -- (Go) search Definition under current word
 map('n', 'gi', lsp_implementations) -- Go to Implementation
 map('n', 'gvi', function() split_if_not_exist(true) lsp_implementations() end) -- Go to Implementation in Vsplit
 map('n', 'gxi', function() split_if_not_exist(false) lsp_implementations() end) -- Go to Implementation in Xsplit
 map('n', 'goi', function() split_if_not_exist(false) lsp_implementations() end) -- Go to Implementation in Xsplit
-map('n', 'gt', require'telescope.builtin'.lsp_type_definitions) -- Go to Type
-map('n', 'gvt', function() split_if_not_exist(true) require'telescope.builtin'.lsp_type_definitions{} end) -- Go to Type in Vsplit
-map('n', 'gxt', function() split_if_not_exist(false) require'telescope.builtin'.lsp_type_definitions{} end) -- Go to Type in Xsplit
-map('n', 'got', function() split_if_not_exist(false) require'telescope.builtin'.lsp_type_definitions{} end) -- Go to Type in Xsplit
+map('n', 'gt', require 'telescope.builtin'.lsp_type_definitions) -- Go to Type
+map('n', 'gvt', function() split_if_not_exist(true) require 'telescope.builtin'.lsp_type_definitions {} end) -- Go to Type in Vsplit
+map('n', 'gxt', function() split_if_not_exist(false) require 'telescope.builtin'.lsp_type_definitions {} end) -- Go to Type in Xsplit
+map('n', 'got', function() split_if_not_exist(false) require 'telescope.builtin'.lsp_type_definitions {} end) -- Go to Type in Xsplit
 
 local lsp_references = function()
-	require'telescope.builtin'.lsp_references({
+	require 'telescope.builtin'.lsp_references({
 		include_declaration = false,
 		show_line = false
 	})
 end
-map('n', 'gs', function() require'telescope.builtin'.lsp_document_symbols({fname_width=100}) end) -- Go Symbols
-map('n', 'gS', require'telescope.builtin'.lsp_dynamic_workspace_symbols) -- Go workspace (S)ymbols
+map('n', 'gs', function() require 'telescope.builtin'.lsp_document_symbols({ fname_width = 100 }) end) -- Go Symbols
+map('n', 'gS', require 'telescope.builtin'.lsp_dynamic_workspace_symbols) -- Go workspace (S)ymbols
 map('n', 'gr', lsp_references) -- Go to References
 map('n', 'gvr', function() split_if_not_exist(true) lsp_references() end) -- Go to References in Vsplit
 map('n', 'gxr', function() split_if_not_exist(false) lsp_references() end) -- Go to References in Xsplit
 map('n', 'gor', function() split_if_not_exist(false) lsp_references() end) -- Go to References xsplit
-map('n', 'gp', function() require'telescope.builtin'.diagnostics{bufnr=0} end) -- Go to Problems
-map('n', 'gP', require'telescope.builtin'.diagnostics) -- Go to workspace (P)roblems
+map('n', 'gp', function() require 'telescope.builtin'.diagnostics { bufnr = 0 } end) -- Go to Problems
+map('n', 'gP', require 'telescope.builtin'.diagnostics) -- Go to workspace (P)roblems
 
 -- illumante
-map('n', '<C-n>', function() require"illuminate".next_reference{wrap=true} end) -- jump to Next occurrence of var on cursor
-map('n', '<C-p>', function() require"illuminate".next_reference{reverse=true,wrap=true} end) -- jump to Previous occurrence of var on cursor
+map('n', '<C-n>', function() require "illuminate".next_reference { wrap = true } end) -- jump to Next occurrence of var on cursor
+map('n', '<C-p>', function() require "illuminate".next_reference { reverse = true, wrap = true } end) -- jump to Previous occurrence of var on cursor
 
 -- Lsp UI
 map('n', '<F2>', '<cmd>Lspsaga rename<cr>') -- Rename symbols with F2
 map('n', '<F4>', '<cmd>Lspsaga code_action<cr>') -- Code action with F4
-map('n', 'KK',  '<cmd>Lspsaga hover_doc<cr>') -- Trigger hover (KJ is fast to use)
-map('n', '<RightMouse>',  '<LeftMouse><cmd>Lspsaga hover_doc<cr>') -- Trigger hover
-map('n', '<leader>d',  '<cmd>Neogen<cr>') -- Document function
+map('n', 'KK', '<cmd>Lspsaga hover_doc<cr>') -- Trigger hover (KJ is fast to use)
+map('n', '<RightMouse>', '<LeftMouse><cmd>Lspsaga hover_doc<cr>') -- Trigger hover
+map('n', '<leader>d', '<cmd>Neogen<cr>') -- Document function
 map('n', '<leader>p', require('lsp_lines').toggle) -- show Problem
 map('n', ']p', goto_next_diag) -- next Problem
 map('n', '[p', goto_prev_diag) -- prev Problem
@@ -315,20 +325,20 @@ map('n', 'g0', '<cmd>tabnext10<cr>')
 -----------------------------------
 --          DEBUGGING            --
 -----------------------------------
-map('n', '<F5>', require'dap'.continue)
-map('n', '<F6>', require'dap'.terminate)
+map('n', '<F5>', require 'dap'.continue)
+map('n', '<F6>', require 'dap'.terminate)
 map('n', '<F9>', require('persistent-breakpoints.api').toggle_breakpoint)
 map('n', '<leader>cb', require('persistent-breakpoints.api').set_conditional_breakpoint)
 vim.api.nvim_create_user_command('ClearBreakpoints', require('persistent-breakpoints.api').clear_all_breakpoints, {})
 
-map('n', '<F10>', function() require'dap'.step_over() center_screen() end)
-map('n', '<F11>', function() require'dap'.step_into() center_screen() end)
-map('n', '<F12>', function() require'dap'.step_out() center_screen() end)
+map('n', '<F10>', function() require 'dap'.step_over() center_screen() end)
+map('n', '<F11>', function() require 'dap'.step_into() center_screen() end)
+map('n', '<F12>', function() require 'dap'.step_out() center_screen() end)
 
-map('n', '<leader>rp', require'dap'.repl.open)
+map('n', '<leader>rp', require 'dap'.repl.open)
 
-map('n', '<leader>db', require'dapui'.toggle)
-map('n', '<leader>ev', require'dapui'.eval)
+map('n', '<leader>db', require 'dapui'.toggle)
+map('n', '<leader>ev', require 'dapui'.eval)
 
 -----------------------------------
 --         REFACTORING           --
@@ -343,4 +353,4 @@ map('n', '<leader>dc', function() require("refactoring").debug.cleanup({}) end) 
 -----------------------------------
 -- TODO: load only in go
 map('n', '<leader>e', '<cmd>GoIfErr<cr>')
-map('n', '<leader>ln', '<cmd>s/Println/Printf/<cr>$F"'..add_new_line)
+map('n', '<leader>ln', '<cmd>s/Println/Printf/<cr>$F"' .. add_new_line)
