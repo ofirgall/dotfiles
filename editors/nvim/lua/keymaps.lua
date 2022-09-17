@@ -61,10 +61,10 @@ map('n', '<C-u>', '<C-u>zz') -- recenter after scroll down
 map('n', '<C-d>', '<C-d>zz') -- recenter after scroll down
 map('v', '<Enter>', 'y') -- yank with Enter in visual mode
 map('i', '<C-k>', '<C-O>o') -- Insert new line in insert mode
-map('', '<M-y>', '"+y') -- Start copy to os clipboard E.g: M-yy will copy current line to os
-map('', '<M-Y>', '"+y$') -- Copy rest of the line to os clipboard like "Y" but for os clipboard
-map('n', '<M-v>', '"+p') -- paste from os clipboard
-map('n', '<M-V>', '"+P') -- paste from os clipboard
+map('', '<leader>y', '"+y') -- Start copy to os clipboard E.g: <leader>yy will copy current line to os
+map('', '<leader>Y', '"+y$') -- Copy rest of the line to os clipboard like "Y" but for os clipboard
+map('n', '<leader>v', '"+p') -- paste from os clipboard
+map('n', '<leader>V', '"+P') -- paste from os clipboard
 map({ 'n', 'v', 't' }, '<M-,>', '<cmd>tabprev<cr>') -- Previous tabpage with Alt+, (<). NOT FILE TABS
 map({ 'n', 'v', 't' }, '<M-.>', '<cmd>tabnext<cr>') -- Next tabpage with Alt+. (>). NOT FILE TABS
 map('i', '<M-,>', '<C-O><cmd>tabprev<cr>') -- Previous tabpage with Alt+, (<). NOT FILE TABS
