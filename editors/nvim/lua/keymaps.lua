@@ -281,11 +281,6 @@ map('n', 'gh', ':set opfunc=GitHistoryOperator<CR>g@') -- show Git History with 
 map('v', 'gh', '<Esc><cmd>lua git_history("v")<cr>') -- show Git History with visual mode
 vim.cmd("function! GitHistoryOperator(...) \n lua git_history('n') \n endfunction") -- used by `gh`
 
--- apply patches in 3 way split diff aka :SolveConflict
--- TODO: after getting a good conflict solver rebind it with autocmd
--- map('n', '<C-[>', '<cmd>diffget //2<CR>') -- Apply left change
--- map('n', '<C-]>', '<cmd>diffget //3<CR>') -- Apply right change
-
 -----------------------------------
 --             UI                --
 -----------------------------------

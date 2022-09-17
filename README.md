@@ -67,9 +67,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 ## TODO
 ### Important
-* nvim - complete engine (must be on top first)
-* nvim - gd adds too many jumps to the jumplist (in golang)
-* nvim - bg color for lsp_lines (virtual lines)
 * nvim - code compiler to volumez machines
 * nvim - transfer telescope binds to <leader>
 ---
@@ -79,7 +76,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - find a better session manager
 * nvim - yank color isn't clear when illuminate
 * nvim - lsp lines put a special color in a error line to empahsise it isn't a code line
-* nvim - gitsign less brighter green
 * nvim - git commit ft should take source from all buffers & git tree tickets
 * nvim - function hydra, copy name to +y or y
 * tmux - remove notifcation color in nova, to recreate attach to same session from two other windows (tmux link-window) and run stuff on the linked window
