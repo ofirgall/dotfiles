@@ -8,10 +8,24 @@ START_DIR=$HOME/workspace
 
 original_pwd=$(pwd)
 
+get_branch()
+{
+	# $1: dir
+	git_dir=""
+	if [ -d "$1/.git" ]; then
+		git_dir="$1/.git"
+	elif [ -f "$1/.git" ]; then # worktree
+		git_dir=$(cat "$1/.git" | sed 's/gitdir: //')
+	else
+		return
+	fi
+
+	cat "$git_dir/HEAD" 2> /dev/null | sed 's,ref: refs/heads/,,'
+}
+
 ls_with_branch()
 {
-	# TODO: make it work for worktrees
-	for i in $(ls -d */); do echo "$i ($(cat $i/.git/HEAD 2> /dev/null | sed 's,ref: refs/heads/,,'))"; done
+	for i in $(ls -d */); do echo "$i ($(get_branch $i))"; done
 }
 
 choose_dir()
