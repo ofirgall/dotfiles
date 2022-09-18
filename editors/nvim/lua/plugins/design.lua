@@ -356,6 +356,7 @@ monokai.setup {
 			bg = '#414241'
 		},
 		TreesitterContextLineNumber = {
+			bg = '#414241', -- TODO: make it a common var with TreesitterContext
 			fg = '#78b6e8',
 		},
 	}
