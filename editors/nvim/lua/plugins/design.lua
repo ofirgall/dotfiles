@@ -375,7 +375,7 @@ require('smoothcursor').setup {
 		enable = true,
 		head = { cursor = nil },
 		body = {
-			{ cursor = "▷", texthl = "SmoothCursorRed" },
+			{ cursor = "▷", texthl = "Normal" },
 			{ cursor = "", texthl = "SmoothCursorOrange" },
 			{ cursor = "●", texthl = "SmoothCursorYellow" },
 			{ cursor = "●", texthl = "SmoothCursorGreen" },
