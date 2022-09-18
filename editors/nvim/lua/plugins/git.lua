@@ -38,6 +38,7 @@ gs.setup {
 }
 
 local cb = require 'diffview.config'.diffview_callback
+local actions = require("diffview.actions")
 require 'diffview'.setup {
 	watch_index = false,
 	file_history_panel = {
@@ -49,11 +50,12 @@ require 'diffview'.setup {
 	},
 	key_bindings = {
 		view = {
-			["q"] = '<cmd>:DiffviewClose<cr>',
-			["<Escape>"] = '<cmd>:DiffviewClose<cr>',
-			["gf"] = cb("goto_file_edit"),
-			["<M-n>"] = cb("focus_files"),
-			["<M-m>"] = cb("toggle_files"),
+			["q"]          = '<cmd>:DiffviewClose<cr>',
+			["<Escape>"]   = '<cmd>:DiffviewClose<cr>',
+			["<M-n>"]      = actions.focus_files,
+			["<M-m>"]      = actions.toggle_files,
+			["<leader>ck"] = actions.conflict_choose("ours"),
+			["<leader>cj"] = actions.conflict_choose("theirs"),
 		},
 		file_panel = {
 			["s"] = cb("toggle_stage_entry"),
