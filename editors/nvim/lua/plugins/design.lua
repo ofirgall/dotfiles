@@ -351,6 +351,13 @@ monokai.setup {
 		GitSignsAdd = {
 			fg = '#6a921a'
 		},
+		-- nvim-tresitter-context
+		TreesitterContext = {
+			bg = '#414241'
+		},
+		TreesitterContextLineNumber = {
+			fg = '#78b6e8',
+		},
 	}
 }
 
@@ -387,6 +394,9 @@ require('dressing').setup {
 		max_width = { 140, 0.9 },
 		min_width = { 60, 0.2 },
 	},
+}
+
+require 'treesitter-context'.setup {
 }
 
 if not vim.g.started_by_firenvim then
