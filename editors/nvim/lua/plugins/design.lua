@@ -379,6 +379,16 @@ require('smoothcursor').setup {
 	},
 }
 
+require('dressing').setup {
+	input = {
+		insert_only = false,
+		start_in_insert = false,
+
+		max_width = { 140, 0.9 },
+		min_width = { 60, 0.2 },
+	},
+}
+
 if not vim.g.started_by_firenvim then
 	-- bufferline.nvim, must be loaded after color scheme
 	require('bufferline').setup {
