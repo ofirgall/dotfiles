@@ -145,6 +145,11 @@ monokai.setup {
 		-- base3 = '#272a33',
 		base3 = '#1d2026',
 		brown = '#d1ca86',
+		-- TODO: change colors to sublime merge colors
+		-- diff_add = '#3d5213',
+		-- diff_remove = '#4a0f23',
+		-- diff_change = '#27406b',
+		-- diff_text = '#23324d',
 	},
 	custom_hlgroups = {
 		TSFunction = {
@@ -353,10 +358,10 @@ monokai.setup {
 		},
 		-- nvim-tresitter-context
 		TreesitterContext = {
-			bg = '#414241'
+			bg = tree_bg,
 		},
 		TreesitterContextLineNumber = {
-			bg = '#414241', -- TODO: make it a common var with TreesitterContext
+			bg = tree_bg, -- TODO: make it a common var with TreesitterContext
 			fg = '#78b6e8',
 		},
 	}
