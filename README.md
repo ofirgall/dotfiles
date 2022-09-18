@@ -71,7 +71,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - transfer telescope binds to <leader>
 ---
 * nvim - hover on the function on current line, probably requires treesitter
-* nvim - dap, mouse2 will evaulate the clicked value, implement it with keylayering like hydra
 * nvim - find a better session manager
 * nvim - yank color isn't clear when illuminate
 * nvim - lsp lines put a special color in a error line to empahsise it isn't a code line

@@ -76,18 +76,28 @@ dap.adapters.go = {
 	port = 2345,
 }
 
+local function map(mode, l, r, opts)
+	opts = opts or { silent = true }
+	vim.keymap.set(mode, l, r, opts)
+end
+
+local dap_closed = function()
+	dapui.close()
+	vim.api.nvim_command("tabclose $") -- $(last) is the debug page
+	map('n', '<RightMouse>', '<LeftMouse><cmd>Lspsaga hover_doc<cr>') -- Trigger hover
+end
+
 -- Auto open and close dapui
 dap.listeners.after.event_initialized['dapui_config'] = function()
 	vim.api.nvim_command("$tabnew") -- $(last) is the debug page
 	dapui.open()
+	map('n', '<RightMouse>', '<LeftMouse><cmd>lua require"dapui".eval()<cr>') -- Trigger hover
 end
 dap.listeners.before.event_terminated['dapui_config'] = function()
-	dapui.close()
-	vim.api.nvim_command("tabclose $") -- $(last) is the debug page
+	dap_closed()
 end
 dap.listeners.before.event_exited['dapui_config'] = function()
-	dapui.close()
-	vim.api.nvim_command("tabclose $") -- $(last) is the debug page
+	dap_closed()
 end
 
 -- automatically load breakpoints when a file is loaded into the buffer.
