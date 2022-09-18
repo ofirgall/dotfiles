@@ -193,6 +193,9 @@ require('lspsaga').init_lsp_saga({
 	rename_in_select = false,
 })
 
+-- nvim-code-action-menu
+vim.g.code_action_menu_show_details = false
+
 -- cmp-git
 require('cmp_git').setup {
 }

@@ -265,7 +265,7 @@ map('n', '<C-p>', function() require "illuminate".next_reference { reverse = tru
 
 -- Lsp UI
 map('n', '<F2>', '<cmd>Lspsaga rename<cr>') -- Rename symbols with F2
-map('n', '<F4>', '<cmd>Lspsaga code_action<cr>') -- Code action with F4
+map('n', '<F4>', '<cmd>CodeActionMenu<cr>') -- Code action with F4
 map('n', 'KK', '<cmd>Lspsaga hover_doc<cr>') -- Trigger hover (KJ is fast to use)
 map('n', '<RightMouse>', '<LeftMouse><cmd>Lspsaga hover_doc<cr>') -- Trigger hover
 map('n', '<leader>d', '<cmd>Neogen<cr>') -- Document function
