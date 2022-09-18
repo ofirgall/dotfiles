@@ -396,7 +396,7 @@ require('dressing').setup {
 	},
 }
 
-require 'treesitter-context'.setup {
+require('treesitter-context').setup {
 }
 
 if not vim.g.started_by_firenvim then
