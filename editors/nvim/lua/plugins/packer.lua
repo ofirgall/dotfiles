@@ -47,7 +47,7 @@ return require('packer').startup(function()
 	use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' -- show diagnostics as virtual lines
 	use 'lukas-reineke/lsp-format.nvim' -- Auto format on save
 	use 'folke/lua-dev.nvim' -- Adding nvim api signatures and more
-	use { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' } -- Advanced code action menu
+	use 'weilbith/nvim-code-action-menu' -- Advanced code action menu
 
 	-------- END OF LSP --------
 
