@@ -110,7 +110,6 @@ return require('packer').startup(function()
 	use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' } -- Tabline
 	use 'tanvirtin/monokai.nvim' -- Color theme (customized)
 	use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', } -- File Tree
-	use 'gen740/SmoothCursor.nvim' -- track cursor movment in columns markers
 	use 'stevearc/dressing.nvim' -- Add ui for default vim.ui.input
 	use 'nvim-treesitter/nvim-treesitter-context' -- Add code context to top of the line
 

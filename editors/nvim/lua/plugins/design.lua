@@ -375,23 +375,6 @@ require("indent_blankline").setup {
 	space_char_blankline = " ",
 }
 
--- SmoothCursor.nvim
-require('smoothcursor').setup {
-	fancy = {
-		enable = true,
-		head = { cursor = nil },
-		body = {
-			{ cursor = "▷", texthl = "Normal" },
-			{ cursor = "", texthl = "SmoothCursorOrange" },
-			{ cursor = "●", texthl = "SmoothCursorYellow" },
-			{ cursor = "●", texthl = "SmoothCursorGreen" },
-			{ cursor = "•", texthl = "SmoothCursorAqua" },
-			{ cursor = ".", texthl = "SmoothCursorBlue" },
-			{ cursor = ".", texthl = "SmoothCursorPurple" },
-		},
-	},
-}
-
 require('dressing').setup {
 	input = {
 		insert_only = false,
