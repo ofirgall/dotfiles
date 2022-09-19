@@ -83,7 +83,7 @@ require 'lspconfig'.gopls.setup {
 	capabilities = capabilities,
 	settings = {
 		gopls = {
-			-- usePlaceholders = true
+			usePlaceholders = true
 		}
 	}
 }
