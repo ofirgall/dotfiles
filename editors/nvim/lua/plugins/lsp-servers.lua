@@ -17,13 +17,6 @@ local lsp_on_attach = function(client, bufnr)
 	require 'nvim-navic'.attach(client, bufnr)
 end
 
-local lsp_on_attach_format = function(client, bufnr)
-	require('lsp-format').on_attach(client)
-	lsp_on_attach(client, bufnr)
-end
-
--- logs at "$HOME/.cache/nvim/lsp.log"
--- vim.lsp.set_log_level("debug")
 
 if not NO_SUDO then
 	require 'lspconfig'.pyright.setup {
@@ -47,7 +40,7 @@ else
 end
 
 require 'lspconfig'.rust_analyzer.setup {
-	on_attach = lsp_on_attach_format,
+	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 	settings = {
 		["rust-analyzer"] = {
@@ -57,14 +50,6 @@ require 'lspconfig'.rust_analyzer.setup {
 			},
 		}
 	},
-	-- handlers = {
-	-- 	["textDocument/publishDiagnostics"] = vim.lsp.with(
-	-- 		vim.lsp.diagnostic.on_publish_diagnostics, {
-	-- 			-- Enable virtual_text for rust_analyzer
-	-- 			virtual_text = true
-	-- 		}
-	-- 	),
-	-- }
 }
 require 'lspconfig'.bashls.setup {
 	on_attach = lsp_on_attach,
@@ -79,7 +64,7 @@ require 'lspconfig'.cmake.setup {
 	capabilities = capabilities,
 }
 require 'lspconfig'.gopls.setup {
-	on_attach = lsp_on_attach_format,
+	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 	settings = {
 		gopls = {
@@ -116,7 +101,7 @@ require('lua-dev').setup {
 }
 
 require 'lspconfig'.sumneko_lua.setup {
-	on_attach = lsp_on_attach_format,
+	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 	settings = {
 		Lua = {
@@ -130,5 +115,50 @@ require 'lspconfig'.sumneko_lua.setup {
 require('fidget').setup {
 }
 
-require('lsp-format').setup {
-}
+local auto_format_cmd = -1
+local auto_format_cmd_save = -1
+local auto_format_patterns = { '*.lua', '*.rs', '*.go' }
+local buffers_in_format = {}
+
+local disable_auto_format = function()
+	if auto_format_cmd ~= -1 then
+		vim.api.nvim_del_autocmd(auto_format_cmd)
+		auto_format_cmd = -1
+	end
+
+	if auto_format_cmd_save ~= -1 then
+		vim.api.nvim_del_autocmd(auto_format_cmd_save)
+		auto_format_cmd_save = -1
+	end
+end
+
+local enable_auto_format = function()
+	disable_auto_format()
+
+	auto_format_cmd = vim.api.nvim_create_autocmd('BufLeave', {
+		pattern = auto_format_patterns,
+		callback = function(params)
+			-- TODO: change to async true if you can write after sync
+			vim.lsp.buf.format({ bufnr = params.buf, async = false })
+			vim.cmd("silent! write")
+			-- table.insert(buffers_in_format, params.buf)
+		end
+	})
+
+	-- auto_format_cmd_save = vim.api.nvim_create_autocmd('FileWritePost', {
+	-- 	pattern = auto_format_patterns,
+	-- 	callback = function(params)
+	-- 		vim.pretty_print(params)
+	-- 		-- for _, bufnr in ipairs(buffers_in_format) do
+	-- 		-- 	if params.buf == bufnr then
+	-- 		-- 		vim.cmd('slient! write')
+	-- 		-- 		break
+	-- 		-- 	end
+	-- 		-- end
+	-- 	end
+	-- })
+end
+
+vim.api.nvim_create_user_command('FormatEnable', enable_auto_format, {})
+vim.api.nvim_create_user_command('FormatDisable', disable_auto_format, {})
+enable_auto_format()

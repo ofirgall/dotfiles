@@ -220,6 +220,7 @@ map('n', 'Kjd',
 -----------------------------------
 -- Builtin LSP Binds
 map('n', 'gD', vim.lsp.buf.declaration) -- Go to Declaration
+map('n', '<leader>f', function() vim.lsp.buf.format({ async = true }) end) -- Format
 
 -- Telescope LSP Binds
 map('n', 'gd', goto_def) -- Go to Definition
