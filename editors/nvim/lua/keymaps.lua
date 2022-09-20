@@ -359,14 +359,6 @@ map('n', '<leader>db', require 'dapui'.toggle)
 map('n', '<leader>ev', require 'dapui'.eval)
 
 -----------------------------------
---         REFACTORING           --
------------------------------------
-map('v', '<leader>rf', '<Esc><cmd>lua require("telescope").extensions.refactoring.refactors()<CR>') -- open Refactor menu
-map('n', '<leader>dp', function() require("refactoring").debug.printf({}) end) -- add Debug Print
-map('v', '<leader>dp', function() require("refactoring").debug.print_var({}) end) -- add Debug Print
-map('n', '<leader>dc', function() require("refactoring").debug.cleanup({}) end) -- Clean Debug prints
-
------------------------------------
 --           GOLANG              --
 -----------------------------------
 -- TODO: load only in go

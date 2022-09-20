@@ -140,7 +140,6 @@ return require('packer').startup(function()
 	use 'shivamashtikar/tmuxjump.vim' -- jump to files that printed in another tmux panes
 	use 'szw/vim-maximizer' -- Maximize windows (splits) in vim
 	use 'rust-lang/rust.vim' -- Rust utils (RustFmt on save)
-	use { 'ThePrimeagen/refactoring.nvim', requires = { 'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter' } } -- Refactor tool
 	use { 'nvim-neorg/neorg', requires = 'nvim-lua/plenary.nvim' } -- .norg plugin better orgmode
 	use { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' } -- review todo in the quickfix list with :Todo..
 	-- use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
