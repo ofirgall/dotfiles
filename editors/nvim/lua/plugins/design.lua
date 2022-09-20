@@ -404,6 +404,27 @@ require('dressing').setup {
 
 		max_width = { 140, 0.9 },
 		min_width = { 60, 0.2 },
+
+		winblend = 0,
+
+		mappings = {
+			n = {
+				["q"] = "Close",
+				["<Esc>"] = "Close",
+				["<CR>"] = "Confirm",
+				["<C-p>"] = "HistoryPrev",
+				["<C-n>"] = "HistoryNext",
+			},
+			i = {
+				["<M-q>"] = "Close",
+				["<C-c>"] = "Close",
+				["<CR>"] = "Confirm",
+				["<Up>"] = "HistoryPrev",
+				["<Down>"] = "HistoryNext",
+				["<C-p>"] = "HistoryPrev",
+				["<C-n>"] = "HistoryNext",
+			},
+		}
 	},
 }
 

@@ -67,6 +67,7 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 ## TODO
 ### Important
+* nvim - solve https://github.com/neovim/neovim/issues/18625 to be able to format async
 * nvim - code compiler to volumez machines
 * nvim - transfer telescope binds to <leader>
 ---
