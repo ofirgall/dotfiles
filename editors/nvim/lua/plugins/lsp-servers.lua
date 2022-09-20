@@ -138,10 +138,12 @@ local enable_auto_format = function()
 	auto_format_cmd = vim.api.nvim_create_autocmd('BufLeave', {
 		pattern = auto_format_patterns,
 		callback = function(params)
-			-- TODO: change to async true if you can write after sync
-			vim.lsp.buf.format({ bufnr = params.buf, async = false })
-			vim.cmd("silent! write")
-			-- table.insert(buffers_in_format, params.buf)
+			if #vim.lsp.get_active_clients({ bufnr = params.buf }) > 0 then
+				-- TODO: change to async true if you can write after sync
+				vim.lsp.buf.format({ bufnr = params.buf, async = false })
+				vim.cmd("silent! write")
+				-- table.insert(buffers_in_format, params.buf)
+			end
 		end
 	})
 
