@@ -292,3 +292,8 @@ require('window-picker').setup {
 
 require('title-nvim').setup {
 }
+-- TODO: create UserCommandToAllCases
+
+-- johmsalas/text-case.nvim
+require('textcase').setup {
+}

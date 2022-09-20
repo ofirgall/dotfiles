@@ -64,6 +64,13 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * Install [TamperMonkey](https://www.tampermonkey.net/)
 * View the the [tampermonkey scripts](tampermonkey) as raw
 
+## TODO Clean
+* on top of each setup have the githublink
+* require standard
+* everything to "
+* change folder structure (make some thinking)
+	* packer.lua -> plugin_list.lua (in main)
+
 ---
 ## TODO
 ### Important

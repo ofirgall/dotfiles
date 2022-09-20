@@ -154,6 +154,7 @@ return require('packer').startup(function()
 	use 'andrewferrier/debugprint.nvim' -- make debug prints fast
 	use 'nguyenvukhang/nvim-toggler' -- Invert words like true<->false, on<->off with <leader>i
 	use 'ofirgall/title.nvim' -- Title generator
+	use 'johmsalas/text-case.nvim' -- Smart substitute
 	use {
 		'phaazon/mind.nvim', -- notetaking with tree
 		tag = "v2.*",
