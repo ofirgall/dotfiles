@@ -184,8 +184,19 @@ map('n', '<leader>dc', 'diw<Plug>(sandwich-delete)(') -- delete convertsion, e.g
 -----------------------------------
 --        CODE NAVIGATION        --
 -----------------------------------
+local find_current_file = function()
+	local current_file = vim.fn.expand('%:t:r')
+	require("telescope.builtin").find_files({
+		prompt_title = 'Looking for `' .. current_file .. '` files',
+		hidden = true,
+		follow = true,
+		search_file = current_file,
+	})
+end
+
 map('n', 'KR', '<cmd>Telescope resume<cr>') -- Resume last telescope
 map('n', 'KL', function() require("telescope.builtin").find_files({ hidden = true, follow = true }) end) -- find files (ctrl+p)
+map('n', '<leader>t', find_current_file) -- find files with the current file (use to find _test fast)
 map('n', 'Kd',
 	function() require("telescope.builtin").find_files({ hidden = true, follow = true,
 			default_text = vim.fn.expand("<cword>") })

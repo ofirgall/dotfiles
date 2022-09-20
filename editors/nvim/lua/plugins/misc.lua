@@ -103,7 +103,7 @@ peekup_config.on_keystroke['paste_reg'] = '"'
 --					4. Reopen terminal, will show term2 instead of 1 and continue to create term2
 local toggle_term = require('toggleterm')
 toggle_term.setup {
-	open_mapping = [[<leader>t]],
+	open_mapping = [[<Nop>]],
 	insert_mappings = false,
 	terminal_mappings = false,
 	direction = 'horizontal',
