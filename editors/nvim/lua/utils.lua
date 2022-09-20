@@ -24,8 +24,9 @@ split_if_not_exist = function(is_vsplit)
 
 	for _, win_id in ipairs(win_ids) do
 		if win_id ~= current_win then
+			local floating = api.nvim_win_get_config(win_id).relative ~= ''
 			local file_type = api.nvim_buf_get_option(api.nvim_win_get_buf(win_id), 'filetype')
-			if file_type ~= 'NvimTree' then
+			if file_type ~= 'NvimTree' and not floating then
 				local row = api.nvim_win_get_position(win_id)[pos_index]
 				if current_win_pos == row then
 					api.nvim_win_set_buf(win_id, api.nvim_win_get_buf(0))
