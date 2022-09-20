@@ -6,25 +6,24 @@ vim.g.gitblame_display_virtual_text = 0
 vim.g.gitblame_message_template = '<author> • <date>'
 vim.g.gitblame_date_format = '%d/%m/%Y'
 
+-- customized modus-vivendi
+local colors = {
+	black      = '#000000',
+	white      = palette.white,
+	red        = '#ffa0a0',
+	green      = '#88cf88',
+	blue       = '#92baff',
+	magenta    = '#feacd0',
+	cyan       = '#a0bfdf',
+	brown      = '#33332a',
+	lightbrown = '#404036',
+	darkgray   = '#202020',
+	lightgray  = '#434343',
+	orange     = '#de933c'
+}
 if not vim.g.started_by_firenvim then
 	local gps = require("nvim-gps")
 	local lsp_gps = require("nvim-navic")
-
-	-- customized modus-vivendi
-	local colors = {
-		black      = '#000000',
-		white      = palette.white,
-		red        = '#ffa0a0',
-		green      = '#88cf88',
-		blue       = '#92baff',
-		magenta    = '#feacd0',
-		cyan       = '#a0bfdf',
-		brown      = '#33332a',
-		lightbrown = '#404036',
-		darkgray   = '#202020',
-		lightgray  = '#434343',
-		orange     = '#de933c'
-	}
 
 	local lualine_theme = {
 		normal = {
@@ -104,7 +103,17 @@ if not vim.g.started_by_firenvim then
 			always_divide_middle = false,
 		},
 		sections = {
-			lualine_b = { 'branch', 'diff', 'diagnostics' },
+			lualine_b = {
+				'branch',
+				{
+					'diff',
+					diff_color = {
+						added    = 'LuaLineDiffAdd',
+						modified = 'LuaLineDiffChange',
+						removed  = 'LuaLineDiffDelete',
+					},
+				},
+				'diagnostics' },
 			lualine_c = {
 				{ 'filename', shorting_target = 0 },
 				{ lsp_gps.get_location, cond = lsp_gps.is_available },
@@ -363,6 +372,19 @@ monokai.setup {
 		TreesitterContextLineNumber = {
 			bg = tree_bg, -- TODO: make it a common var with TreesitterContext
 			fg = '#78b6e8',
+		},
+		-- lualine
+		LuaLineDiffAdd = {
+			fg = palette.green,
+			bg = colors.lightbrown,
+		},
+		LuaLineDiffChange = {
+			fg = palette.aqua,
+			bg = colors.lightbrown,
+		},
+		LuaLineDiffDelete = {
+			fg = palette.red,
+			bg = colors.lightbrown,
 		},
 	}
 }
