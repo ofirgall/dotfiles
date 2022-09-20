@@ -48,18 +48,7 @@ if not vim.g.started_by_firenvim then
 			always_divide_middle = false,
 		},
 		sections = {
-			lualine_b = {
-				'branch',
-				{
-					-- TODO: solve this without setting colors
-					'diff',
-					diff_color = {
-						added    = 'LuaLineDiffAdd',
-						modified = 'LuaLineDiffChange',
-						removed  = 'LuaLineDiffDelete',
-					},
-				},
-				'diagnostics' },
+			lualine_b = { 'branch', 'diff', 'diagnostics' },
 			lualine_c = {
 				{ 'filename', shorting_target = 0 },
 				{ lsp_gps.get_location, cond = lsp_gps.is_available },
@@ -82,7 +71,7 @@ if not vim.g.started_by_firenvim then
 	})
 end
 
-require('ofirkay').setup{
+require('ofirkay').setup {
 }
 
 vim.opt.list = true
