@@ -103,11 +103,11 @@ return require('packer').startup(function()
 	}
 
 	-- Design & UI --
+	use 'ofirgall/ofirkay.nvim' -- my colorscheme
 	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' } -- Status line
 	use 'levouh/tint.nvim' -- Tint inactive splits
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent line helper
 	use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' } -- Tabline
-	use 'tanvirtin/monokai.nvim' -- Color theme (customized)
 	use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', } -- File Tree
 	use 'stevearc/dressing.nvim' -- Add ui for default vim.ui.input
 	use 'nvim-treesitter/nvim-treesitter-context' -- Add code context to top of the line

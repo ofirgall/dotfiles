@@ -1,5 +1,4 @@
-local monokai = require('monokai')
-local palette = monokai.classic
+local scheme = require('ofirkay').scheme
 local api = vim.api
 
 vim.g.gitblame_display_virtual_text = 0
@@ -9,7 +8,7 @@ vim.g.gitblame_date_format = '%d/%m/%Y'
 -- customized modus-vivendi
 local colors = {
 	black      = '#000000',
-	white      = palette.white,
+	white      = scheme.white,
 	red        = '#ffa0a0',
 	green      = '#88cf88',
 	blue       = '#92baff',
@@ -146,8 +145,8 @@ local cursor_line_bg = '#36352a'
 local orange = '#de933c'
 local lightorange = '#dea255'
 local telescope_prompt = '#1d1d1a'
-monokai.setup {
-	palette = {
+require('ofirkay').setup {
+	scheme = {
 		base0 = background,
 		base1 = background,
 		base2 = background,
@@ -162,31 +161,31 @@ monokai.setup {
 	},
 	custom_hlgroups = {
 		TSFunction = {
-			fg = palette.aqua,
+			fg = scheme.aqua,
 			style = 'none',
 		},
 		TSKeywordFunction = {
-			fg = palette.green,
+			fg = scheme.green,
 			style = 'italic',
 		},
 		TSParameter = {
-			fg = palette.orange,
+			fg = scheme.orange,
 			style = 'italic',
 		},
 		TSMethod = {
-			fg = palette.aqua,
+			fg = scheme.aqua,
 			style = 'none',
 		},
 		TSConstructor = {
-			fg = palette.aqua,
+			fg = scheme.aqua,
 			style = 'none',
 		},
 		TSType = {
-			fg = palette.green,
+			fg = scheme.green,
 			style = 'italic',
 		},
 		TSConstMacro = {
-			fg = palette.pink,
+			fg = scheme.pink,
 			style = 'none',
 		},
 		TSFuncMacro = {
@@ -194,7 +193,7 @@ monokai.setup {
 			style = 'italic',
 		},
 		TSAttribute = {
-			fg = palette.pink,
+			fg = scheme.pink,
 			style = 'none',
 		},
 		TSConstant = {
@@ -202,30 +201,30 @@ monokai.setup {
 			style = 'none',
 		},
 		TSComment = {
-			fg = palette.base6,
+			fg = scheme.base6,
 			style = 'none',
 		},
 		Whitespace = { -- Indent lines
-			fg = palette.base4,
+			fg = scheme.base4,
 			style = 'none',
 		},
 		TSCall = {
-			fg = palette.pink,
+			fg = scheme.pink,
 			style = 'none',
 		},
 		LineNr = {
 			bg = '#282923',
-			fg = palette.orange,
+			fg = scheme.orange,
 		},
 		CursorLineNr = {
 			bg = cursor_line_bg,
-			fg = palette.yellow,
+			fg = scheme.yellow,
 		},
 		CursorLine = {
 			bg = cursor_line_bg
 		},
 		TSLabel = {
-			fg = palette.white,
+			fg = scheme.white,
 			style = 'italic',
 		},
 		LspReferenceText = {
@@ -248,19 +247,19 @@ monokai.setup {
 			fg = '#948f5a'
 		},
 		SpellBad = {
-			ctermfg = palette.red,
+			ctermfg = scheme.red,
 			style = 'undercurl'
 		},
 		SpellCap = {
-			ctermfg = palette.purple,
+			ctermfg = scheme.purple,
 			style = 'undercurl',
 		},
 		SpellRare = {
-			ctermfg = palette.aqua,
+			ctermfg = scheme.aqua,
 			style = 'undercurl',
 		},
 		SpellLocal = {
-			ctermfg = palette.pink,
+			ctermfg = scheme.pink,
 			style = 'undercurl',
 		},
 		------- PLUGINS -------
@@ -290,7 +289,7 @@ monokai.setup {
 			bg = telescope_prompt,
 		},
 		TelescopePromptNormal = {
-			fg = palette.white,
+			fg = scheme.white,
 			bg = telescope_prompt,
 		},
 		TelescopePromptPrefix = {
@@ -304,10 +303,10 @@ monokai.setup {
 			bg = background
 		},
 		TelescopePreviewTitle = {
-			fg = palette.white,
+			fg = scheme.white,
 		},
 		TelescopePromptTitle = {
-			fg = palette.white,
+			fg = scheme.white,
 			bg = telescope_prompt,
 			style = 'bold'
 		},
@@ -317,7 +316,7 @@ monokai.setup {
 		},
 		TelescopeSelection = {
 			bg = cursor_line_bg,
-			fg = palette.white,
+			fg = scheme.white,
 			style = 'none'
 		},
 		-- nvim-tree
@@ -325,8 +324,8 @@ monokai.setup {
 			bg = tree_bg
 		},
 		NvimTreeWindowPicker = {
-			fg = palette.pink,
-			bg = palette.base3,
+			fg = scheme.pink,
+			bg = scheme.base3,
 			style = 'bold'
 		},
 		-- diffview.nvim
@@ -335,19 +334,19 @@ monokai.setup {
 		},
 		-- Complete menu
 		Pmenu = {
-			fg = palette.white,
+			fg = scheme.white,
 			bg = '#2c2c26',
 		},
 		PmenuSel = {
-			fg = palette.white,
+			fg = scheme.white,
 			bg = '#40403a',
 		},
 		PmenuSelBold = {
-			fg = palette.white,
+			fg = scheme.white,
 			bg = '#40403a',
 		},
 		PmenuThumb = {
-			fg = palette.purple,
+			fg = scheme.purple,
 			bg = '#47473b',
 		},
 		-- hrsh7th/nvim-cmp
@@ -375,15 +374,15 @@ monokai.setup {
 		},
 		-- lualine
 		LuaLineDiffAdd = {
-			fg = palette.green,
+			fg = scheme.green,
 			bg = colors.lightbrown,
 		},
 		LuaLineDiffChange = {
-			fg = palette.aqua,
+			fg = scheme.aqua,
 			bg = colors.lightbrown,
 		},
 		LuaLineDiffDelete = {
-			fg = palette.red,
+			fg = scheme.red,
 			bg = colors.lightbrown,
 		},
 	}
@@ -460,7 +459,7 @@ if not vim.g.started_by_firenvim then
 				italic = false,
 			},
 			tab_selected = {
-				fg = palette.white,
+				fg = scheme.white,
 				bold = true,
 			},
 		}
