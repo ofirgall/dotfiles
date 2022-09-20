@@ -187,10 +187,9 @@ map('n', '<leader>dc', 'diw<Plug>(sandwich-delete)(') -- delete convertsion, e.g
 local find_current_file = function()
 	local current_file = vim.fn.expand('%:t:r')
 	require("telescope.builtin").find_files({
-		prompt_title = 'Looking for `' .. current_file .. '` files',
+		default_text = current_file,
 		hidden = true,
 		follow = true,
-		search_file = current_file,
 	})
 end
 
