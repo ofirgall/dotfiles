@@ -56,7 +56,7 @@ Hydra({
 		end,
 	},
 	mode = { 'n' },
-	body = '<leader>draw',
+	body = '<leader>boxes',
 	heads = {
 		{ '<C-h>', '<C-v>h:VBox<CR>' },
 		{ '<C-j>', '<C-v>j:VBox<CR>' },

@@ -71,7 +71,8 @@ map('i', '<M-,>', '<C-O><cmd>tabprev<cr>') -- Previous tabpage with Alt+, (<). N
 map('i', '<M-.>', '<C-O><cmd>tabnext<cr>') -- Next tabpage with Alt+. (>). NOT FILE TABS
 map('n', '<leader>n', add_new_line) -- Add newline
 map('x', '<leader>p', '"_dP') -- replace text without changing the copy register
-map('n', '<leader>dd', '"_dd') -- delete without yanking
+map('n', '<leader>d', '"_d') -- delete without yanking
+map('n', '<leader>D', '"_D') -- delete without yanking
 
 map('', '<Down>', '<C-e>') -- Down to scroll
 map('', '<Up>', '<C-y>') -- Up to scroll
@@ -179,7 +180,7 @@ local fast_sandwich_maps = { "'", '"', '`' }
 for _, char in ipairs(fast_sandwich_maps) do
 	map('n', "<leader>" .. char, '<Plug>(sandwich-replace-auto)' .. char, sandwich_opts) -- <leader>{char} to replace sandwich to {char}
 end
-map('n', '<leader>dc', 'diw<Plug>(sandwich-delete)(') -- delete convertsion, e.g: int64(a) -> a
+map('n', '<leader>cd', 'diw<Plug>(sandwich-delete)(') -- delete convertsion, e.g: int64(a) -> a
 
 -----------------------------------
 --        CODE NAVIGATION        --
@@ -279,7 +280,7 @@ map('n', '<F2>', '<cmd>Lspsaga rename<cr>') -- Rename symbols with F2
 map('n', '<F4>', '<cmd>CodeActionMenu<cr>') -- Code action with F4
 map('n', 'KK', '<cmd>Lspsaga hover_doc<cr>') -- Trigger hover (KJ is fast to use)
 map('n', '<RightMouse>', '<LeftMouse><cmd>Lspsaga hover_doc<cr>') -- Trigger hover
-map('n', '<leader>d', '<cmd>Neogen<cr>') -- Document function
+map('n', '<leader>i', '<cmd>Neogen<cr>') -- document (Instructions) function
 map('n', '<leader>p', require('lsp_lines').toggle) -- show Problem
 map('n', '<leader>P', '<cmd>Lspsaga show_line_diagnostics<CR>') -- show Problem
 map('n', ']p', goto_next_diag) -- next Problem
@@ -355,7 +356,6 @@ map('n', '<F12>', function() require 'dap'.step_out() center_screen() end)
 
 map('n', '<leader>rp', require 'dap'.repl.open)
 
-map('n', '<leader>db', require 'dapui'.toggle)
 map('n', '<leader>ev', require 'dapui'.eval)
 
 -----------------------------------
