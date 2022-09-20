@@ -115,6 +115,8 @@ require 'lspconfig'.sumneko_lua.setup {
 require('fidget').setup {
 }
 
+-- TODO: export it to a plugin
+local api = vim.api
 local auto_format_cmd = -1
 local auto_format_cmd_save = -1
 local auto_format_patterns = { '*.lua', '*.rs', '*.go' }
@@ -138,12 +140,25 @@ local enable_auto_format = function()
 	auto_format_cmd = vim.api.nvim_create_autocmd('BufLeave', {
 		pattern = auto_format_patterns,
 		callback = function(params)
-			if #vim.lsp.get_active_clients({ bufnr = params.buf }) > 0 then
-				-- TODO: change to async true if you can write after sync
-				vim.lsp.buf.format({ bufnr = params.buf, async = false })
-				vim.cmd("silent! write")
-				-- table.insert(buffers_in_format, params.buf)
+			local bufid = params.buf
+			local diff = api.nvim_get_option_value('diff', { buf = bufid })
+			if diff then
+				return
 			end
+
+			local readonly = api.nvim_get_option_value('readonly', { buf = bufid })
+			if readonly then
+				return
+			end
+
+			if #vim.lsp.get_active_clients({ bufnr = bufid }) == 0 then
+				return
+			end
+
+			-- TODO: change to async true if you can write after sync
+			vim.lsp.buf.format({ bufnr = bufid, async = false })
+			vim.cmd("silent! write")
+			-- table.insert(buffers_in_format, buf)
 		end
 	})
 
