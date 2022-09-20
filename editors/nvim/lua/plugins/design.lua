@@ -1,4 +1,3 @@
-local scheme = require('ofirkay').scheme
 local api = vim.api
 
 vim.g.gitblame_display_virtual_text = 0
@@ -6,62 +5,9 @@ vim.g.gitblame_message_template = '<author> • <date>'
 vim.g.gitblame_date_format = '%d/%m/%Y'
 
 -- customized modus-vivendi
-local colors = {
-	black      = '#000000',
-	white      = scheme.white,
-	red        = '#ffa0a0',
-	green      = '#88cf88',
-	blue       = '#92baff',
-	magenta    = '#feacd0',
-	cyan       = '#a0bfdf',
-	brown      = '#33332a',
-	lightbrown = '#404036',
-	darkgray   = '#202020',
-	lightgray  = '#434343',
-	orange     = '#de933c'
-}
 if not vim.g.started_by_firenvim then
 	local gps = require("nvim-gps")
 	local lsp_gps = require("nvim-navic")
-
-	local lualine_theme = {
-		normal = {
-			a = { bg = colors.orange, fg = colors.lightgray, gui = 'bold' },
-			b = { bg = colors.lightbrown, fg = colors.orange },
-			c = { bg = colors.brown, fg = colors.white },
-			x = { bg = colors.brown, fg = colors.orange },
-		},
-		insert = {
-			a = { bg = colors.cyan, fg = colors.lightgray, gui = 'bold' },
-			b = { bg = colors.lightbrown, fg = colors.cyan },
-			c = { bg = colors.brown, fg = colors.white },
-			x = { bg = colors.brown, fg = colors.cyan },
-		},
-		visual = {
-			a = { bg = colors.magenta, fg = colors.lightgray, gui = 'bold' },
-			b = { bg = colors.lightbrown, fg = colors.magenta },
-			c = { bg = colors.brown, fg = colors.white },
-			x = { bg = colors.lightbrown, fg = colors.magenta },
-		},
-		replace = {
-			a = { bg = colors.red, fg = colors.lightgray, gui = 'bold' },
-			b = { bg = colors.lightbrown, fg = colors.red },
-			c = { bg = colors.brown, fg = colors.white },
-			x = { bg = colors.lightbrown, fg = colors.red },
-		},
-		command = {
-			a = { bg = colors.green, fg = colors.lightgray, gui = 'bold' },
-			b = { bg = colors.lightbrown, fg = colors.green },
-			c = { bg = colors.brown, fg = colors.white },
-			x = { bg = colors.lightbrown, fg = colors.green },
-		},
-		inactive = {
-			a = { bg = colors.darkgray, fg = colors.lightgray, gui = 'bold' },
-			b = { bg = colors.darkgray, fg = colors.lightgray },
-			c = { bg = colors.darkgray, fg = colors.lightgray },
-			x = { bg = colors.darkgray, fg = colors.lightgray },
-		},
-	}
 
 	local lsp_server_component = {
 		function()
@@ -96,7 +42,7 @@ if not vim.g.started_by_firenvim then
 
 	require 'lualine'.setup {
 		options = {
-			theme = lualine_theme,
+			theme = require('ofirkay.statuslines.lualine').theme,
 			icons_enabled = true,
 			path = 1,
 			always_divide_middle = false,
@@ -105,6 +51,7 @@ if not vim.g.started_by_firenvim then
 			lualine_b = {
 				'branch',
 				{
+					-- TODO: solve this without setting colors
 					'diff',
 					diff_color = {
 						added    = 'LuaLineDiffAdd',
@@ -193,26 +140,7 @@ if not vim.g.started_by_firenvim then
 			-- max_prefix_length = 15,
 			-- tab_size = 18,
 		},
-		highlights = {
-			buffer_visible = {
-				fg = tab_visible_fg,
-			},
-			numbers_visible = {
-				fg = tab_visible_fg,
-			},
-			buffer_selected = {
-				bold = true,
-				italic = false,
-			},
-			numbers_selected = {
-				bold = true,
-				italic = false,
-			},
-			tab_selected = {
-				fg = scheme.white,
-				bold = true,
-			},
-		}
+		highlights = require('ofirkay.tablines.bufferline').highlights
 	}
 
 	-- WSL 1 is too slow for that
