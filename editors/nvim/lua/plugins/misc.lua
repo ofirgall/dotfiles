@@ -287,5 +287,8 @@ require('mind').setup {
 	}
 }
 
-require 'window-picker'.setup {
+require('window-picker').setup {
+}
+
+require('title-nvim').setup {
 }

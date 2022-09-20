@@ -153,6 +153,7 @@ return require('packer').startup(function()
 	use 'tmux-plugins/vim-tmux-focus-events' -- FocusGained/FocusLost events
 	use 'andrewferrier/debugprint.nvim' -- make debug prints fast
 	use 'nguyenvukhang/nvim-toggler' -- Invert words like true<->false, on<->off with <leader>i
+	use 'ofirgall/title.nvim' -- Title generator
 	use {
 		'phaazon/mind.nvim', -- notetaking with tree
 		tag = "v2.*",
