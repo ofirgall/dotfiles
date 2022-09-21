@@ -43,7 +43,7 @@ return require('packer').startup(function()
 	use 'onsails/lspkind-nvim' -- Adding sweet ui for kind (function/var/method)
 	use 'j-hui/fidget.nvim' -- Lsp Status in the bottom right corner
 	use 'Mofiqul/trld.nvim' -- Show diagnostics in the top right corner
-	use 'SmiteshP/nvim-navic' -- same as nvim-gps but using LSP instead (more accurate)
+	use 'SmiteshP/nvim-navic' -- Shows context in status line (with lsp)
 	use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' -- show diagnostics as virtual lines
 	use 'folke/lua-dev.nvim' -- Adding nvim api signatures and more
 	use 'weilbith/nvim-code-action-menu' -- Advanced code action menu
@@ -53,7 +53,6 @@ return require('packer').startup(function()
 	-- TreeSitter --
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use 'nvim-treesitter/playground' -- TreeSitter helper to customize
-	use { 'SmiteshP/nvim-gps', requires = 'nvim-treesitter/nvim-treesitter' } -- Shows context in status line (with treesitter)
 	use { 'yioneko/nvim-yati', requires = 'nvim-treesitter/nvim-treesitter' } -- Better auto-indent atm
 
 	use 'numToStr/Comment.nvim' -- Comments
