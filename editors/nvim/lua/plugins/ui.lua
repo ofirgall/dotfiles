@@ -45,6 +45,24 @@ require('dressing').setup {
 require('treesitter-context').setup {
 }
 
+require 'nvim-tree'.setup {
+	view = {
+		adaptive_size = true,
+		mappings = {
+			list = {
+				{ key = '<Escape>', action = 'close_node' },
+				{ key = 'f', action = 'find in path', action_cb = find_in_path },
+				{ key = 'gh', action = 'git history in path', action_cb = git_hist_path },
+				{ key = '<C-o>', action = 'split' },
+			}
+		}
+	},
+	renderer = {
+		symlink_destination = false
+	}
+}
+vim.api.nvim_create_user_command('Locate', ':NvimTreeFindFile', {})
+
 vim.g.gitblame_display_virtual_text = 0
 vim.g.gitblame_message_template = '<author> • <date>'
 vim.g.gitblame_date_format = '%d/%m/%Y'

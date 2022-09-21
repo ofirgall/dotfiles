@@ -241,3 +241,17 @@ get_current_lsp_server_name = function()
 	end
 	return msg
 end
+
+node_relative_path = function(node)
+	return vim.fn.fnamemodify(node.absolute_path, ":~:.")
+end
+
+find_in_path = function(node)
+	opts = {}
+	opts.default_text = '-g"' .. node_relative_path(node) .. '/**" "'
+	require('telescope').extensions.live_grep_args.live_grep_args(opts)
+end
+
+git_hist_path = function(node)
+	vim.fn.execute('DiffviewFileHistory ' .. node_relative_path(node))
+end

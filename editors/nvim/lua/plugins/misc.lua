@@ -42,39 +42,6 @@ require('numb').setup {
 	number_only = true,
 }
 
-local node_relative_path = function(node)
-	return vim.fn.fnamemodify(node.absolute_path, ":~:.")
-end
-
-local find_in_path = function(node)
-	opts = {}
-	opts.default_text = '-g"' .. node_relative_path(node) .. '/**" "'
-	require('telescope').extensions.live_grep_args.live_grep_args(opts)
-end
-
-local git_hist_path = function(node)
-	vim.fn.execute('DiffviewFileHistory ' .. node_relative_path(node))
-end
-
-require 'nvim-tree'.setup {
-	view = {
-		adaptive_size = true,
-		mappings = {
-			list = {
-				{ key = '<Escape>', action = 'close_node' },
-				{ key = 'f', action = 'find in path', action_cb = find_in_path },
-				{ key = 'gh', action = 'git history in path', action_cb = git_hist_path },
-				{ key = '<C-o>', action = 'split' },
-			}
-		}
-	},
-	renderer = {
-		symlink_destination = false
-	}
-}
-
-vim.api.nvim_create_user_command('Locate', ':NvimTreeFindFile', {})
-
 vim.cmd([[
 let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 let g:XkbSwitchEnabled = 1
