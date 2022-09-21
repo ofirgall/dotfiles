@@ -21,34 +21,6 @@ neogen.setup {
 local cmp = require 'cmp'
 local lspkind = require('lspkind')
 
-local kind_icons = {
-	Text = "",
-	Method = "",
-	Function = "",
-	Constructor = "",
-	Field = "",
-	Variable = "",
-	Class = "ﴯ",
-	Interface = "",
-	Module = "",
-	Property = "ﰠ",
-	Unit = "",
-	Value = "",
-	Enum = "",
-	Keyword = "",
-	Snippet = "",
-	Color = "",
-	File = "",
-	Reference = "",
-	Folder = "",
-	EnumMember = "",
-	Constant = "",
-	Struct = "",
-	Event = "",
-	Operator = "",
-	TypeParameter = ""
-}
-
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -105,8 +77,8 @@ cmp_setup_dict = {
 	},
 	formatting = {
 		format = lspkind.cmp_format({
+			symbol_map = require('ofirkai.plugins.nvim-cmp').kind_icons,
 			maxwidth = 50,
-			symbol_map = kind_icons,
 			mode = 'symbol'
 		})
 	},
