@@ -42,7 +42,7 @@ if not vim.g.started_by_firenvim then
 
 	require 'lualine'.setup {
 		options = {
-			theme = require('ofirkay.statuslines.lualine').theme,
+			theme = require('ofirkai.statuslines.lualine').theme,
 			icons_enabled = true,
 			path = 1,
 			always_divide_middle = false,
@@ -71,7 +71,7 @@ if not vim.g.started_by_firenvim then
 	})
 end
 
-require('ofirkay').setup {
+require('ofirkai').setup {
 }
 
 vim.opt.list = true
@@ -129,7 +129,7 @@ if not vim.g.started_by_firenvim then
 			-- max_prefix_length = 15,
 			-- tab_size = 18,
 		},
-		highlights = require('ofirkay.tablines.bufferline').highlights
+		highlights = require('ofirkai.tablines.bufferline').highlights
 	}
 
 	-- WSL 1 is too slow for that

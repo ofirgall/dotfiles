@@ -103,7 +103,7 @@ return require('packer').startup(function()
 	}
 
 	-- Design & UI --
-	use 'ofirgall/ofirkay.nvim' -- my colorscheme
+	use 'ofirgall/ofirkai.nvim' -- my colorscheme
 	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' } -- Status line
 	use 'levouh/tint.nvim' -- Tint inactive splits
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent line helper
