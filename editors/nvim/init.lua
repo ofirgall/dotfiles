@@ -17,7 +17,7 @@ else
 	require('plugins/easypick')
 end
 require('plugins/vim-sessions')
-require('plugins/design')
+require('plugins/ui')
 require('plugins/autocomplete')
 require('plugins/visual-multi')
 require('plugins/misc')
