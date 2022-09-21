@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=36
-launch-time=int64 1663140881
+launch-count=37
+launch-time=int64 1663777504
 show-details=true
 window-height=503
 window-width=645
@@ -28,7 +28,7 @@ persist-window-geometry=(349, 183, 794, 593)
 hotkey=@as []
 
 [org/gnome/Totem]
-active-plugins=['open-directory', 'autoload-subtitles', 'variable-rate', 'apple-trailers', 'skipto', 'save-file', 'vimeo', 'screenshot', 'media-player-keys', 'rotation', 'recent', 'movie-properties', 'screensaver']
+active-plugins=['rotation', 'variable-rate', 'recent', 'screenshot', 'skipto', 'mpris', 'vimeo', 'movie-properties', 'screensaver', 'apple-trailers', 'autoload-subtitles', 'save-file', 'open-directory']
 subtitle-encoding='UTF-8'
 
 [org/gnome/baobab/ui]
@@ -337,13 +337,13 @@ restore-shortcuts=@as []
 default-compression-format='zip'
 
 [org/gnome/nautilus/preferences]
-default-folder-viewer='icon-view'
+default-folder-viewer='list-view'
 search-filter-time-type='last_modified'
 search-view='list-view'
 
 [org/gnome/nautilus/window-state]
 initial-size=(1412, 623)
-maximized=false
+maximized=true
 sidebar-width=189
 
 [org/gnome/nm-applet/eap/15778557-7790-4357-a1da-72b382d405ce]

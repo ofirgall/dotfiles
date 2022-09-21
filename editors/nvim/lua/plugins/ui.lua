@@ -91,7 +91,7 @@ if not vim.g.started_by_firenvim then
 				{ 'filename', shorting_target = 0 },
 				{ lsp_gps.get_location, cond = lsp_gps.is_available },
 			},
-			lualine_x = { get_current_lsp_server_name, icon = ' LSP:' },
+			lualine_x = { { get_current_lsp_server_name, icon = ' LSP:' } },
 			lualine_y = y_section,
 			lualine_z = { 'filetype' },
 		},
