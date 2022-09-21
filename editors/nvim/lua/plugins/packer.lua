@@ -104,7 +104,6 @@ return require('packer').startup(function()
 	-- Design & UI --
 	use 'ofirgall/ofirkai.nvim' -- my colorscheme
 	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' } -- Status line
-	use 'levouh/tint.nvim' -- Tint inactive splits
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent line helper
 	use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' } -- Tabline
 	use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', } -- File Tree

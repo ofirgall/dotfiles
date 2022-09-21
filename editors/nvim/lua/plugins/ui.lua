@@ -111,36 +111,4 @@ if not vim.g.started_by_firenvim then
 		highlights = require('ofirkai.tablines.bufferline').highlights
 	}
 
-	-- WSL 1 is too slow for that
-	if vim.fn.has('wsl') == 0 then
-		local tint_ft_ignore = {
-			'toggleterm',
-			'NvimTree',
-			'DiffviewFiles',
-		}
-		require('tint').setup({
-			tint = -45,
-			saturation = 0.6,
-			highlight_ignore_patterns = { 'WinSeparator', 'Status.*', 'IndentBlankline', 'EndOfBuffer' },
-			window_ignore_function = function(winid)
-				local bufid = api.nvim_win_get_buf(winid)
-				local buf_ft = api.nvim_buf_get_option(bufid, 'filetype')
-
-				for _, ft in ipairs(tint_ft_ignore) do
-					if buf_ft == ft then
-						return true
-					end
-				end
-
-				local floating = api.nvim_win_get_config(winid).relative ~= ''
-				local diff = api.nvim_get_option_value('diff', { buf = bufid })
-
-				if floating or diff then
-					return false
-				end
-
-				return floating
-			end
-		})
-	end
 end

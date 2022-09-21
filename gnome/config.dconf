@@ -343,7 +343,7 @@ search-view='list-view'
 
 [org/gnome/nautilus/window-state]
 initial-size=(1412, 623)
-maximized=true
+maximized=false
 sidebar-width=189
 
 [org/gnome/nm-applet/eap/15778557-7790-4357-a1da-72b382d405ce]
