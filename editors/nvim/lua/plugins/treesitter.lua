@@ -77,5 +77,4 @@ require 'nvim-treesitter.configs'.setup {
 	},
 }
 
-require("nvim-gps").setup()
 require('spellsitter').setup()
