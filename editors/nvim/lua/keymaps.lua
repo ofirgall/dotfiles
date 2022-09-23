@@ -73,6 +73,8 @@ map('n', '<leader>n', add_new_line) -- Add newline
 map('x', '<leader>p', '"_dP') -- replace text without changing the copy register
 map('n', '<leader>d', '"_d') -- delete without yanking
 map('n', '<leader>D', '"_D') -- delete without yanking
+map('n', '<leader>c', '"_c') -- change without yanking
+map('n', '<leader>C', '"_C') -- change without yanking
 
 map('', '<Down>', '<C-e>') -- Down to scroll
 map('', '<Up>', '<C-y>') -- Up to scroll
@@ -123,9 +125,8 @@ map('n', 'gX', function() split_if_not_exist(false) end)
 -----------------------------------
 map('n', '<F8>', '<cmd>UndotreeToggle<CR>') -- Toggle undotree
 map('n', '<leader>b', '<cmd>Telescope buffers<CR>') -- browse your open Buffers (tabs)
-map('n', '<leader>c', '<cmd>Telescope command_history<CR>') -- history of Commands
 map('n', '<leader>gx', '<cmd>call OpenInBrowser()<CR>')
-map('n', '<leader>cp', '<cmd>PickColor<CR>')
+map('n', '<leader>pc', '<cmd>PickColor<CR>')
 if vim.fn.has('wsl') ~= 1 then -- WSL is too slow for that
 	map({ 'n', 'x' }, 'p', require('pasta.mappings').p) -- override paste with smarter paste
 	map({ 'n', 'x' }, 'P', require('pasta.mappings').P) -- override paste with smarter paste
@@ -180,7 +181,7 @@ local fast_sandwich_maps = { "'", '"', '`' }
 for _, char in ipairs(fast_sandwich_maps) do
 	map('n', "<leader>" .. char, '<Plug>(sandwich-replace-auto)' .. char, sandwich_opts) -- <leader>{char} to replace sandwich to {char}
 end
-map('n', '<leader>cd', 'diw<Plug>(sandwich-delete)(') -- delete convertsion, e.g: int64(a) -> a
+map('n', '<leader>scd', 'diw<Plug>(sandwich-delete)(') -- delete convertsion, e.g: int64(a) -> a
 
 -----------------------------------
 --        CODE NAVIGATION        --
@@ -347,7 +348,7 @@ map('n', 'g0', '<cmd>tabnext10<cr>')
 map('n', '<F5>', require 'dap'.continue)
 map('n', '<F6>', require 'dap'.terminate)
 map('n', '<F9>', require('persistent-breakpoints.api').toggle_breakpoint)
-map('n', '<leader>cb', require('persistent-breakpoints.api').set_conditional_breakpoint)
+map('n', '<leader><F9>', require('persistent-breakpoints.api').set_conditional_breakpoint)
 vim.api.nvim_create_user_command('ClearBreakpoints', require('persistent-breakpoints.api').clear_all_breakpoints, {})
 
 map('n', '<F10>', function() require 'dap'.step_over() center_screen() end)
