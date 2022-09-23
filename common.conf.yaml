@@ -9,7 +9,7 @@
 
 - link:
     ~/.zshrc:
-        path: dotfiles/zshrc
+        path: dotfiles/zsh_conf/entrypoint.zsh
     ~/.zsh_conf:
         path: dotfiles/zsh_conf
     ~/.profile:
@@ -19,7 +19,7 @@
     ~/.gitignore_global:
         path: dotfiles/gitignore_global
     ~/.tmux.conf:
-        path: dotfiles/tmux.conf
+        path: dotfiles/tmux_conf/entrypoint.tmux
     ~/.tmux_conf:
         path: dotfiles/tmux_conf
     ~/.tmux/custom-macros:

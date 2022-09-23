@@ -12,8 +12,8 @@ git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
 
-echo "========================= REMOTE DOTFILES ========================="
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "remote.conf.yaml" "${@}"
+echo "========================= COMMON DOTFILES ========================="
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "common.conf.yaml" "${@}"
 if test -f "$HOME/.remote_indicator"; then
 	exit 0
 fi

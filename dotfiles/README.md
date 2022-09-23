@@ -1,8 +1,8 @@
 # Dotfiles
 The files here are linked to `$HOME` (`~`). Check `*.conf.yaml` in the root dir for more details
 
-* `zsh_conf` - the actual zsh config which `.zshrc` is loading
-* `tmux_conf` - the actual tmux config which `.tmux.conf` is loading
+* `zsh_conf` - the zsh config
+* `tmux_conf` - the tmux config
 * `gitconfig` - my `.gitconfig`
 * `gitignore_global` - gitignore for all my repos, configured through `.gitconfig`
 * `alacritty.yml` - config for my terminal, [alacritty](https://github.com/alacritty/alacritty)

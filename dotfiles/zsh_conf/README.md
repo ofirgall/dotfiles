@@ -1,6 +1,7 @@
 # Zsh Conf
 The actual zsh config
 
+* `entrypoint.zsh` - The entrypoint of the config aka `~/.zshrc`
 * `aliases.zsh ` - Aliases and functions that loads with zsh.
 * `design.zsh ` - Desing of the prompt.
 * `env.zsh ` - Enviorment variables.
