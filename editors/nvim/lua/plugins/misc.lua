@@ -262,5 +262,18 @@ require('title-nvim').setup {
 -- TODO: create UserCommandToAllCases
 
 -- johmsalas/text-case.nvim
-require('textcase').setup {
+local textcase = require('textcase')
+textcase.setup {
 }
+
+api.nvim_create_user_command('UpperCase', function() textcase.current_word('to_upper_case') end, {})
+api.nvim_create_user_command('LowerCase', function() textcase.current_word('to_lower_case') end, {})
+api.nvim_create_user_command('SnakeCase', function() textcase.current_word('to_snake_case') end, {})
+api.nvim_create_user_command('ConstantCase', function() textcase.current_word('to_dash_case') end, {})
+api.nvim_create_user_command('DashCase', function() textcase.current_word('to_constant_case') end, {})
+api.nvim_create_user_command('DotCase', function() textcase.current_word('to_dot_case') end, {})
+api.nvim_create_user_command('CamelCase', function() textcase.current_word('to_camel_case') end, {})
+api.nvim_create_user_command('PascalCase', function() textcase.current_word('to_pascal_case') end, {})
+api.nvim_create_user_command('TitleCase', function() textcase.current_word('to_title_case') end, {})
+api.nvim_create_user_command('PathCase', function() textcase.current_word('to_path_case') end, {})
+api.nvim_create_user_command('PhraseCase', function() textcase.current_word('to_phrase_case') end, {})
