@@ -16,7 +16,6 @@ else
 	require('plugins/hydra')
 	require('plugins/easypick')
 end
-require('plugins/vim-sessions')
 require('plugins/ui')
 require('plugins/autocomplete')
 require('plugins/visual-multi')

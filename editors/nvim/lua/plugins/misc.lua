@@ -8,6 +8,9 @@ require('nvim-autopairs').setup {
 	-- enable_moveright = false,
 }
 
+require('auto-session').setup {
+}
+
 local autosave = require('autosave')
 autosave.setup {
 	clean_command_line_interval = 1000,

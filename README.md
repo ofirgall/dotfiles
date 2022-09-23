@@ -79,7 +79,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - transfer telescope binds to <leader>
 ---
 * nvim - hover on the function on current line, probably requires treesitter
-* nvim - find a better session manager
 * nvim - yank color isn't clear when illuminate
 * nvim - lsp lines put a special color in a error line to empahsise it isn't a code line
 * nvim - git commit ft should take source from all buffers & git tree tickets

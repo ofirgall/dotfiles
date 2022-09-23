@@ -119,7 +119,7 @@ return require('packer').startup(function()
 	use 'ofirgall/AutoSave.nvim' -- Auto save
 	use 'tiagovla/scope.nvim' -- Scopes buffers for tabpages
 	use 'famiu/bufdelete.nvim' -- delete buffers ctrl+q
-	use { 'xolox/vim-session', requires = 'xolox/vim-misc' } -- Session Manager
+	use 'rmagatti/auto-session' -- Session Manager
 	use 'ethanholz/nvim-lastplace' -- Save last place
 	use 'mg979/vim-visual-multi' -- Multi cursors
 	use 'mizlan/iswap.nvim' -- Swap arguments, elements (:ISwap)
