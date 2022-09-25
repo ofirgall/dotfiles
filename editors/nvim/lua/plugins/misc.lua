@@ -8,7 +8,10 @@ require('nvim-autopairs').setup {
 	-- enable_moveright = false,
 }
 
+-- rmagatti/auto-session
 require('auto-session').setup {
+	log_level = 'error',
+	auto_session_suppress_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
 }
 
 local autosave = require('autosave')
