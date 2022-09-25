@@ -1,16 +1,17 @@
-local api = vim.api
-
+-- ofirgall/ofirkay.nvim
 require('ofirkai').setup {
 }
 
-vim.opt.list = true
-vim.opt.listchars:append('space:⋅')
+-- lukas-reineke/indent-blankline.nvim
 require('indent_blankline').setup {
 	use_treesitter = true,
 	show_trailing_blankline_indent = false,
 	space_char_blankline = ' ',
 }
+vim.opt.list = true
+vim.opt.listchars:append('space:⋅')
 
+-- stevearc/dressing.nvim
 require('dressing').setup {
 	input = {
 		insert_only = false,
@@ -42,9 +43,11 @@ require('dressing').setup {
 	},
 }
 
+-- nvim-treesitter/nvim-treesitter-context
 require('treesitter-context').setup {
 }
 
+-- kyazdani42/nvim-tree.lua
 require 'nvim-tree'.setup {
 	view = {
 		adaptive_size = true,
@@ -63,21 +66,24 @@ require 'nvim-tree'.setup {
 }
 vim.api.nvim_create_user_command('Locate', ':NvimTreeFindFile', {})
 
-vim.g.gitblame_display_virtual_text = 0
-vim.g.gitblame_message_template = '<author> • <date>'
-vim.g.gitblame_date_format = '%d/%m/%Y'
-
 if not vim.g.started_by_firenvim then
-	local lsp_gps = require('nvim-navic')
-
 	y_section = {}
+
+	-- f-person/git-blame.nvim
 	if vim.fn.has('wsl') == 1 then -- don't use git blame in wsl because of performance
 		vim.g.gitblame_enabled = 0
 	else
 		local git_blame = require('gitblame')
 		table.insert(y_section, { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available })
+		vim.g.gitblame_display_virtual_text = 0
+		vim.g.gitblame_message_template = '<author> • <date>'
+		vim.g.gitblame_date_format = '%d/%m/%Y'
 	end
 
+	-- SmiteshP/nvim-navic
+	local navic = require('nvim-navic')
+
+	-- nvim-lualine/lualine.nvim
 	require 'lualine'.setup {
 		options = {
 			theme = require('ofirkai.statuslines.lualine').theme,
@@ -89,7 +95,7 @@ if not vim.g.started_by_firenvim then
 			lualine_b = { 'branch', 'diff', 'diagnostics' },
 			lualine_c = {
 				{ 'filename', shorting_target = 0 },
-				{ lsp_gps.get_location, cond = lsp_gps.is_available },
+				{ navic.get_location, cond = navic.is_available },
 			},
 			lualine_x = { { get_current_lsp_server_name, icon = ' LSP:' } },
 			lualine_y = y_section,
@@ -110,5 +116,4 @@ if not vim.g.started_by_firenvim then
 		},
 		highlights = require('ofirkai.tablines.bufferline').highlights
 	}
-
 end
