@@ -1,29 +1,33 @@
-local snippy = require("snippy")
+-- dcampos/nvim-snippy
+local snippy = require('snippy')
 snippy.setup({
 	mappings = {
 		s = {
-			["<Tab>"] = "next",
-			["<S-Tab>"] = "previous",
+			['<Tab>'] = 'next',
+			['<S-Tab>'] = 'previous',
 		},
 		nx = {
-			["<leader>x"] = "cut_text",
-			["<Tab>"] = "next",
-			["<S-Tab>"] = "previous",
+			['<leader>x'] = 'cut_text',
+			['<Tab>'] = 'next',
+			['<S-Tab>'] = 'previous',
 		},
 	},
 })
 
+-- danymat/neogen
 local neogen = require('neogen')
 neogen.setup {
 	enabled = true
 }
 
-local cmp = require 'cmp'
+-- hrsh7th/nvim-cmp
+local cmp = require('cmp')
+-- onsails/lspkind-nvim
 local lspkind = require('lspkind')
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
 cmp_setup_dict = {
@@ -64,7 +68,7 @@ cmp_setup_dict = {
 			else
 				fallback()
 			end
-		end, { "i", "c" }),
+		end, { 'i', 'c' }),
 		['<S-Tab>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
@@ -73,7 +77,7 @@ cmp_setup_dict = {
 			else
 				fallback()
 			end
-		end, { "i", "c" }),
+		end, { 'i', 'c' }),
 	},
 	formatting = {
 		format = lspkind.cmp_format({
@@ -121,7 +125,8 @@ cmp.setup.filetype({ 'dap-repl', 'dapui_watches' }, {
 	},
 })
 
--- add pair when accepting autocomplet
+-- add pair when accepting autocomplete
+-- windwp/nvim-autopairs
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local on_confirm_done_callback = function(evt)
 	entry = evt.entry
@@ -136,7 +141,7 @@ end
 
 cmp.event:on('confirm_done', on_confirm_done_callback)
 
--- LSP SAGA --
+-- glepnir/lspsaga.nvim
 vim.diagnostic.config {
 	signs = {
 		priority = 8
@@ -144,8 +149,8 @@ vim.diagnostic.config {
 }
 require('lspsaga').init_lsp_saga({
 	code_action_keys = {
-		quit = "<Escape>",
-		exec = "<CR>",
+		quit = '<Escape>',
+		exec = '<CR>',
 	},
 	code_action_lightbulb = {
 		-- sign_priority = 9,
@@ -156,18 +161,18 @@ require('lspsaga').init_lsp_saga({
 	rename_in_select = false,
 })
 
--- nvim-code-action-menu
+-- weilbith/nvim-code-action-menu
 vim.g.code_action_menu_show_details = false
 vim.g.code_action_menu_show_diff = true
 vim.g.code_action_menu_window_border = 'rounded'
 
--- cmp-git
+-- petertriho/cmp-git
 require('cmp_git').setup {
 }
 
--- lsp_lines.nvim
+-- https://git.sr.ht/~whynothugo/lsp_lines.nvim
 -- Disable builtin diagnostic
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 	vim.lsp.diagnostic.on_publish_diagnostics, {
 	virtual_text = false
 }
