@@ -9,6 +9,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 ; # = Winkey
 
 Capslock::Esc ; Capslock -> Escape
+RAlt::Backspace ; Right Alt -> Backspace
 
 ; Changing workspaces - Ctrl+Alt+H/J/K/L, Ctrl+Alt+Shift+H/J/K/L
 ^!l::
