@@ -1,3 +1,6 @@
+-- neovim/nvim-lspconfig
+local lspconfig = require('lspconfig')
+
 -- Update capabilities to autocomplete
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.window.workDoneProgress = true
@@ -12,19 +15,22 @@ local lsp_signature_cfg = {
 }
 
 local lsp_on_attach = function(client, bufnr)
+	-- RRethy/vim-illuminate
 	require 'illuminate'.on_attach(client)
-	require "lsp_signature".on_attach(lsp_signature_cfg)
+	-- ray-x/lsp_signature.nvim
+	require 'lsp_signature'.on_attach(lsp_signature_cfg)
+	-- SmiteshP/nvim-navic
 	require 'nvim-navic'.attach(client, bufnr)
 end
 
 
 if not NO_SUDO then
-	require 'lspconfig'.pyright.setup {
+	lspconfig.pyright.setup {
 		on_attach = lsp_on_attach,
 		capabilities = capabilities,
 	}
 else
-	require 'lspconfig'.pylsp.setup {
+	lspconfig.pylsp.setup {
 		on_attach = lsp_on_attach,
 		capabilities = capabilities,
 		settings = {
@@ -39,31 +45,31 @@ else
 	}
 end
 
-require 'lspconfig'.rust_analyzer.setup {
+lspconfig.rust_analyzer.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 	settings = {
-		["rust-analyzer"] = {
+		['rust-analyzer'] = {
 			-- enable clippy on save
 			checkOnSave = {
-				command = "clippy"
+				command = 'clippy'
 			},
 		}
 	},
 }
-require 'lspconfig'.bashls.setup {
+lspconfig.bashls.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
-require 'lspconfig'.vimls.setup {
+lspconfig.vimls.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
-require 'lspconfig'.cmake.setup {
+lspconfig.cmake.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
-require 'lspconfig'.gopls.setup {
+lspconfig.gopls.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 	settings = {
@@ -72,23 +78,23 @@ require 'lspconfig'.gopls.setup {
 		}
 	}
 }
-require 'lspconfig'.cucumber_language_server.setup {
+lspconfig.cucumber_language_server.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
 
-local clang_cmd = { "clangd", "--background-index", "--fallback-style=none", "--header-insertion=never",
-	"--all-scopes-completion", "--cross-file-rename" }
+local clang_cmd = { 'clangd', '--background-index', '--fallback-style=none', '--header-insertion=never',
+	'--all-scopes-completion', '--cross-file-rename' }
 
 if vim.fn.has('wsl') == 1 then
-	table.insert(clang_cmd, "-j=4") -- Limit resources on wsl
+	table.insert(clang_cmd, '-j=4') -- Limit resources on wsl
 end
 
 if NO_SUDO then
-	clang_cmd = { "clangd", "-completion-style=bundled" }
+	clang_cmd = { 'clangd', '-completion-style=bundled' }
 end
 
-require 'lspconfig'.clangd.setup {
+lspconfig.clangd.setup {
 	init_options = {
 		clangdFileStatus = true
 	},
@@ -97,10 +103,11 @@ require 'lspconfig'.clangd.setup {
 	cmd = clang_cmd,
 }
 
+-- folke/lua-dev.nvim
 require('lua-dev').setup {
 }
 
-require 'lspconfig'.sumneko_lua.setup {
+lspconfig.sumneko_lua.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 	settings = {
@@ -112,9 +119,11 @@ require 'lspconfig'.sumneko_lua.setup {
 	},
 }
 
+-- j-hui/fidget.nvim
 require('fidget').setup {
 }
 
+-- ofirgall/format-on-leave.nvim
 require('format-on-leave').setup {
 	pattern = { '*.lua', '*.rs', '*.go' }
 }
