@@ -1,3 +1,4 @@
+-- anuvyklack/hydra.nvim
 local Hydra = require('hydra')
 local map = vim.keymap.set
 local api = vim.api
