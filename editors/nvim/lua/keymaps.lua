@@ -126,7 +126,7 @@ map('n', 'gX', function() split_if_not_exist(false) end)
 map('n', '<F8>', '<cmd>UndotreeToggle<CR>') -- Toggle undotree
 map('n', '<leader>b', '<cmd>Telescope buffers<CR>') -- browse your open Buffers (tabs)
 map('n', '<leader>gx', '<cmd>call OpenInBrowser()<CR>')
-map('n', '<leader>pc', '<cmd>PickColor<CR>')
+map('n', '<leader>rgb', '<cmd>PickColor<CR>')
 if vim.fn.has('wsl') ~= 1 then -- WSL is too slow for that
 	map({ 'n', 'x' }, 'p', require('pasta.mappings').p) -- override paste with smarter paste
 	map({ 'n', 'x' }, 'P', require('pasta.mappings').P) -- override paste with smarter paste
