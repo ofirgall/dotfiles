@@ -57,6 +57,11 @@ lspconfig.rust_analyzer.setup {
 		}
 	},
 }
+
+-- Saecki/crates.nvim
+require('crates').setup {
+}
+
 lspconfig.bashls.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,

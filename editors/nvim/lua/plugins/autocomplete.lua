@@ -89,6 +89,7 @@ cmp_setup_dict = {
 	window = require('ofirkai.plugins.nvim-cmp').window,
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp', priority = 1000 },
+		{ name = 'crates', priority = 500 },
 		{ name = 'snippy', priority = 100 },
 	}, {
 		{ name = 'spell' },

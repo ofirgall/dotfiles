@@ -48,6 +48,7 @@ return require('packer').startup(function()
 	use 'folke/lua-dev.nvim' -- Adding nvim api signatures and more
 	use 'weilbith/nvim-code-action-menu' -- Advanced code action menu
 	use 'ofirgall/format-on-leave.nvim' -- Format the code when leaving the buffer.
+	use 'saecki/crates.nvim' -- "LSP" for `Cargo.toml`
 
 	-------- END OF LSP --------
 
