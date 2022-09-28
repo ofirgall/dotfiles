@@ -86,12 +86,6 @@ require 'diffview'.setup {
 	},
 }
 
--- Flog
-vim.g.flog_default_arguments = {
-	max_count = 512,
-	date = 'short',
-}
-
 -- git-messenger.vim
 vim.g.git_messenger_floating_win_opts = { border = 'single' }
 vim.g.git_messenger_popup_content_margins = false
@@ -218,3 +212,21 @@ diffview_hydra = Hydra({
 		-- { '<Esc>', nil, { exit = true, nowait = true } },
 	}
 })
+
+-- Flog
+vim.g.flog_default_arguments = {
+	max_count = 512,
+	date = 'short',
+}
+
+local function flog_current_commit()
+	return vim.call('flog#get_commit_at_line')['short_commit_hash']
+end
+
+function flog_diff_current()
+	vim.cmd('DiffviewOpen ' .. flog_current_commit() .. '^')
+end
+
+function flog_show_current()
+	vim.cmd('DiffviewOpen ' .. flog_current_commit() .. '..' .. flog_current_commit() .. '^')
+end

@@ -1,9 +1,17 @@
 ---@diagnostic disable: lowercase-global
 -- Default bindings https://hea-www.harvard.edu/~fine/Tech/vi.html
 local cmd = vim.cmd
+local api = vim.api
 
+local default_opts = { silent = true }
 local function map(mode, l, r, opts)
-	opts = opts or { silent = true }
+	opts = opts or default_opts
+	vim.keymap.set(mode, l, r, opts)
+end
+
+local function map_buffer(bufid, mode, l, r, opts)
+	opts = opts or default_opts
+	opts.buffer = bufid
 	vim.keymap.set(mode, l, r, opts)
 end
 
@@ -345,6 +353,7 @@ map('n', 'g0', '<cmd>tabnext10<cr>')
 -----------------------------------
 --          DEBUGGING            --
 -----------------------------------
+-- TODO: create hydra for it
 map('n', '<F5>', require 'dap'.continue)
 map('n', '<F6>', require 'dap'.terminate)
 map('n', '<F9>', require('persistent-breakpoints.api').toggle_breakpoint)
@@ -360,8 +369,33 @@ map('n', '<leader>rp', require 'dap'.repl.open)
 map('n', '<leader>ev', require 'dapui'.eval)
 
 -----------------------------------
---           GOLANG              --
+--         File Specific         --
 -----------------------------------
--- TODO: load only in go
-map('n', '<leader>e', '<cmd>GoIfErr<cr>')
-map('n', '<leader>ln', '<cmd>s/Println/Printf/<cr>$F"' .. add_new_line)
+-- TODO: unload (using keymap layer like in hydra)
+local keys_by_ft = {
+	-- Golang
+	['go'] = function(bufid)
+		map_buffer(bufid, 'n', '<leader>e', '<cmd>GoIfErr<cr>')
+		map_buffer(bufid, 'n', '<leader>ln', '<cmd>s/Println/Printf/<cr>$F"' .. add_new_line)
+	end,
+	-- Floggraph
+	['floggraph'] = function(bufid)
+		map_buffer(bufid, 'n', '<C-d>', flog_diff_current)
+		map_buffer(bufid, 'n', '<C-s>', flog_show_current)
+		-- TODO: visual selection of multiple commits to diff/show
+	end
+}
+keymaps_autocmd_group = api.nvim_create_augroup('KeyMaps', {})
+
+api.nvim_create_autocmd('FileType', {
+	group = keymaps_autocmd_group,
+	pattern = "*",
+	callback = function(events)
+		local buf_ft = events.match
+		for ft, set_keys_func in pairs(keys_by_ft) do
+			if buf_ft == ft then
+				set_keys_func(events.buf)
+			end
+		end
+	end
+})
