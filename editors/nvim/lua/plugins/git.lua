@@ -181,11 +181,19 @@ diffview_hydra = Hydra({
 	body = '<leader>gg',
 	heads = {
 		{ 'j', function()
-			gitsigns.next_hunk()
+			if vim.wo.diff then
+				api.nvim_feedkeys(']c', 'n', false)
+			else
+				gitsigns.next_hunk()
+			end
 			center_screen()
 		end, { expr = true } },
 		{ 'k', function()
-			gitsigns.prev_hunk()
+			if vim.wo.diff then
+				api.nvim_feedkeys('[c', 'n', false)
+			else
+				gitsigns.prev_hunk()
+			end
 			center_screen()
 		end, { expr = true } },
 		{ 's', function()
