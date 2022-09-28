@@ -81,7 +81,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - integrate flog in diffview (TODOS)
 ---
 * nvim - hover on the function on current line, probably requires treesitter
-* nvim - yank color isn't clear when illuminate
 * nvim - lsp lines put a special color in a error line to empahsise it isn't a code line
 * nvim - git commit ft should take source from all buffers & git tree tickets
 * nvim - function hydra, copy name to +y or y
@@ -90,7 +89,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * tmux - get all the command lines that ran in this window and let you choose from fzf pop up
 * tmux - plugin to add relative line numbers in copy mode
 * nvim - config illuminate new version
-* nvim - create the color scheme
 * playgrounds - create them on first install, like `cg` choose a language and open nvim in left side of tmux and right side leave a pane for run/compile
 * nvim - custom textobjects, function name, better call (all call, the function that called)
 * nvim - nvim-cmp sources from all buffers/git tree in gitcommit ft
