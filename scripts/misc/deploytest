@@ -2,4 +2,8 @@
 
 HOST="${1:-rv1}"
 echo "Host: $HOST"
-rm *\.test; go test -c -gcflags "all=-N -l" && scp *\.test root@rv1:~/
+rm *\.test
+echo "Building..."
+go test -c -gcflags "all=-N -l"
+echo "Delivering..."
+scp *\.test root@rv1:~/
