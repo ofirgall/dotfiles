@@ -77,6 +77,7 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - solve https://github.com/neovim/neovim/issues/18625 to be able to format async
 * nvim - code compiler to volumez machines
 * nvim - transfer telescope binds to <leader>
+* nvim - try to default register to the void register and <leader> to actually copy
 ---
 * nvim - hover on the function on current line, probably requires treesitter
 * nvim - yank color isn't clear when illuminate

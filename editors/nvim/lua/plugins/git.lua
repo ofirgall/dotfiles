@@ -151,8 +151,9 @@ local hint = [[
  _k_: prev hunk   _u_: undo stage hunk   _R_: reset buffer
  ^ ^              _S_: stage buffer
  ^
- _<Enter>_: Fugitive  _<Esc>_: exit  _q_: exit  _<C-c>_: exit
+		  _<Enter>_: Fugitive  _<C-c>_: exit
 ]]
+-- _<Enter>_: Fugitive  _<Esc>_: exit  _q_: exit  _<C-c>_: exit
 diffview_hydra = Hydra({
 	hint = hint,
 	config = {
@@ -163,14 +164,16 @@ diffview_hydra = Hydra({
 			border = 'rounded'
 		},
 		on_enter = function()
-			if not vim.wo.diff then
+			local diff = api.nvim_get_option_value('diff', {})
+			if not diff then
 				gitsigns.toggle_linehl(true)
 				gitsigns.toggle_deleted(true)
 				vim.cmd 'echo'
 			end
 		end,
 		on_exit = function()
-			if not vim.wo.diff then
+			local diff = api.nvim_get_option_value('diff', {})
+			if not diff then
 				gitsigns.toggle_linehl(false)
 				gitsigns.toggle_deleted(false)
 				vim.cmd 'echo'
@@ -211,7 +214,7 @@ diffview_hydra = Hydra({
 		{ 'S', gitsigns.stage_buffer },
 		{ '<Enter>', '<cmd>Git<CR>', { exit = true } },
 		{ '<C-c>', nil, { exit = true, nowait = true } },
-		{ 'q', nil, { exit = true, nowait = true } },
-		{ '<Esc>', nil, { exit = true, nowait = true } },
+		-- { 'q', nil, { exit = true, nowait = true } },
+		-- { '<Esc>', nil, { exit = true, nowait = true } },
 	}
 })
