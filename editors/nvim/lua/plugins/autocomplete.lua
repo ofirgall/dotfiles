@@ -104,11 +104,24 @@ cmp_setup_dict = {
 	}
 }
 
+local all_visible_buffers_source = {
+	name = 'buffer',
+	option = {
+		get_bufnrs = function()
+			local bufs = {}
+			for _, win in ipairs(vim.api.nvim_list_wins()) do
+				bufs[vim.api.nvim_win_get_buf(win)] = true
+			end
+			return vim.tbl_keys(bufs)
+		end
+	}
+}
+
 cmp.setup(cmp_setup_dict)
 
 cmp.setup.cmdline('/', {
 	sources = {
-		{ name = 'buffer' }
+		all_visible_buffers_source,
 	}
 })
 
@@ -124,6 +137,12 @@ cmp.setup.filetype({ 'dap-repl', 'dapui_watches' }, {
 	sources = {
 		{ name = 'dap' },
 	},
+})
+
+cmp.setup.filetype('gitcommit', {
+	sources = {
+		all_visible_buffers_source
+	}
 })
 
 -- add pair when accepting autocomplete
