@@ -148,7 +148,6 @@ return require('packer').startup(function()
 	use 'ziontee113/color-picker.nvim' -- color picker
 	use { 'ray-x/go.nvim', requires = 'ray-x/guihua.lua', run = ':GoUpdateBinaries' } -- Golang tools
 	use 'rbong/vim-buffest' -- edit macros and registers
-	use 'tmux-plugins/vim-tmux-focus-events' -- FocusGained/FocusLost events
 	use 'andrewferrier/debugprint.nvim' -- make debug prints fast
 	use 'nguyenvukhang/nvim-toggler' -- Invert words like true<->false, on<->off with <leader>i
 	use 'ofirgall/title.nvim' -- Title generator
