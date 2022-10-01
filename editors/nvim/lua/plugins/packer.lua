@@ -59,7 +59,6 @@ return require('packer').startup(function()
 
 	use 'numToStr/Comment.nvim' -- Comments
 	use 'nvim-treesitter/nvim-treesitter-textobjects' -- Movements base on treesitter
-	use 'lewis6991/spellsitter.nvim' -- Enable spellchecking with treesitter
 
 	-- Telescope --
 	use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' } -- Fuzzy finder with alot of integration
