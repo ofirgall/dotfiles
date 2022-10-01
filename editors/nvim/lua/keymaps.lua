@@ -349,6 +349,7 @@ map('n', 'g7', '<cmd>tabnext7<cr>')
 map('n', 'g8', '<cmd>tabnext8<cr>')
 map('n', 'g9', '<cmd>tabnext9<cr>')
 map('n', 'g0', '<cmd>tabnext10<cr>')
+map('n', 'gq', '<cmd>tabclose<cr>')
 
 -----------------------------------
 --          DEBUGGING            --
