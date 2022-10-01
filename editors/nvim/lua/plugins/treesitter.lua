@@ -15,7 +15,10 @@ require('nvim-treesitter.configs').setup {
 	highlight = {
 		enable = true,
 	},
-	yati = { enable = true },
+	indent = {
+		enable = true
+	},
+	-- yati = { enable = true },
 	textobjects = {
 		move = {
 			enable = true,

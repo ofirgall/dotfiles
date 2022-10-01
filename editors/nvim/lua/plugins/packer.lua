@@ -55,7 +55,7 @@ return require('packer').startup(function()
 	-- TreeSitter --
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use 'nvim-treesitter/playground' -- TreeSitter helper to customize
-	use { 'yioneko/nvim-yati', requires = 'nvim-treesitter/nvim-treesitter' } -- Better auto-indent atm
+	-- use { 'yioneko/nvim-yati', requires = 'nvim-treesitter/nvim-treesitter' } -- Better auto-indent atm -- TODO: trying treesitter native indentation
 
 	use 'numToStr/Comment.nvim' -- Comments
 	use 'nvim-treesitter/nvim-treesitter-textobjects' -- Movements base on treesitter
