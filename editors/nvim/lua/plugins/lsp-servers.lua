@@ -130,5 +130,5 @@ require('fidget').setup {
 
 -- ofirgall/format-on-leave.nvim
 require('format-on-leave').setup {
-	pattern = { '*.lua', '*.rs', '*.go' }
+	pattern = { '*.rs', '*.go' }
 }
