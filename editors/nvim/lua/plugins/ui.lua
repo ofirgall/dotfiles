@@ -48,7 +48,7 @@ require('treesitter-context').setup {
 }
 
 -- kyazdani42/nvim-tree.lua
-require 'nvim-tree'.setup {
+require('nvim-tree').setup {
 	view = {
 		adaptive_size = true,
 		mappings = {
@@ -105,17 +105,48 @@ if not vim.g.started_by_firenvim then
 
 	-- SmiteshP/nvim-navic
 	local navic = require('nvim-navic')
+	navic.setup {
+		separator = "  "
+	}
+
+	local ofirkai_lualine = require('ofirkai.statuslines.lualine')
+	local winbar = {
+		lualine_a = {},
+		lualine_b = {
+			{
+				'filename',
+				icon = '',
+				color = ofirkai_lualine.winbar_color,
+				padding = { left = 4 }
+			},
+		},
+		lualine_c = {
+			{
+				navic.get_location,
+				icon = "",
+				cond = navic.is_available,
+				color = ofirkai_lualine.winbar_color,
+			},
+		},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = {}
+	}
 
 	-- nvim-lualine/lualine.nvim
 	require('lualine').setup {
 		options = {
-			theme = require('ofirkai.statuslines.lualine').theme,
+			theme = ofirkai_lualine.theme,
 			icons_enabled = true,
 			path = 1,
 			always_divide_middle = false,
+			disabled_filetypes = {
+				winbar = { 'gitcommit', 'NvimTree', 'toggleterm', 'fugitive' },
+			},
+			globalstatus = true,
 		},
 		sections = {
-			lualine_b = { 'branch', 'diff', 'diagnostics' },
+			lualine_b = { { 'branch', icon = '' }, 'diff', 'diagnostics' },
 			lualine_c = {
 				{ 'filename', shorting_target = 0 },
 				{ navic.get_location, cond = navic.is_available },
@@ -124,8 +155,9 @@ if not vim.g.started_by_firenvim then
 			lualine_y = y_section,
 			lualine_z = { 'filetype' },
 		},
+		winbar = winbar,
+		inactive_winbar = winbar,
 	}
-	vim.opt.laststatus = 3
 
 	-- bufferline.nvim, must be loaded after color scheme
 	require('bufferline').setup {
