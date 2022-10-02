@@ -161,26 +161,6 @@ end
 
 cmp.event:on('confirm_done', on_confirm_done_callback)
 
--- glepnir/lspsaga.nvim
-vim.diagnostic.config {
-	signs = {
-		priority = 8
-	}
-}
-require('lspsaga').init_lsp_saga({
-	code_action_keys = {
-		quit = '<Escape>',
-		exec = '<CR>',
-	},
-	code_action_lightbulb = {
-		-- sign_priority = 9,
-		sign             = false,
-		virtual_text     = true,
-		enable_in_insert = false
-	},
-	rename_in_select = false,
-})
-
 -- weilbith/nvim-code-action-menu
 vim.g.code_action_menu_show_details = false
 vim.g.code_action_menu_show_diff = true

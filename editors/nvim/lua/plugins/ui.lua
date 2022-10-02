@@ -66,6 +66,29 @@ require 'nvim-tree'.setup {
 }
 vim.api.nvim_create_user_command('Locate', ':NvimTreeFindFile', {})
 
+-- glepnir/lspsaga.nvim
+vim.diagnostic.config {
+	signs = {
+		priority = 8
+	}
+}
+require('lspsaga').init_lsp_saga({
+	code_action_keys = {
+		quit = '<Escape>',
+		exec = '<CR>',
+	},
+	code_action_lightbulb = {
+		-- sign_priority = 9,
+		sign             = false,
+		virtual_text     = true,
+		enable_in_insert = false
+	},
+	rename_in_select = false,
+	symbol_in_winbar = {
+		enable = false
+	}
+})
+
 if not vim.g.started_by_firenvim then
 	y_section = {}
 
@@ -84,7 +107,7 @@ if not vim.g.started_by_firenvim then
 	local navic = require('nvim-navic')
 
 	-- nvim-lualine/lualine.nvim
-	require 'lualine'.setup {
+	require('lualine').setup {
 		options = {
 			theme = require('ofirkai.statuslines.lualine').theme,
 			icons_enabled = true,
