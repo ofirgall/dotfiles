@@ -16,11 +16,11 @@ local lsp_signature_cfg = {
 
 local lsp_on_attach = function(client, bufnr)
 	-- RRethy/vim-illuminate
-	require 'illuminate'.on_attach(client)
+	require('illuminate').on_attach(client)
 	-- ray-x/lsp_signature.nvim
-	require 'lsp_signature'.on_attach(lsp_signature_cfg)
+	require('lsp_signature').on_attach(lsp_signature_cfg)
 	-- SmiteshP/nvim-navic
-	require 'nvim-navic'.attach(client, bufnr)
+	require('nvim-navic').attach(client, bufnr)
 end
 
 
