@@ -28,6 +28,10 @@ sudo apt install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
 mkdir -p ~/.local/bin
 ln -f -s /usr/bin/batcat ~/.local/bin/bat
 
+# Install fd-find
+sudo apt install -y fd-find
+ln -s $(which fdfind) ~/.local/bin/fd
+
 if ! $IS_REMOTE; then
 	sudo apt install -y xclip gnome-tweaks
 fi
