@@ -115,6 +115,7 @@ if not vim.g.started_by_firenvim then
 		lualine_b = {
 			{
 				'filename',
+				file_status = false,
 				icon = '',
 				color = ofirkai_lualine.winbar_color,
 				padding = { left = 4 }
