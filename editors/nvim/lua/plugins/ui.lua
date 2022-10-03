@@ -141,7 +141,7 @@ if not vim.g.started_by_firenvim then
 			path = 1,
 			always_divide_middle = false,
 			disabled_filetypes = {
-				winbar = { 'gitcommit', 'NvimTree', 'toggleterm', 'fugitive' },
+				winbar = { 'gitcommit', 'NvimTree', 'toggleterm', 'fugitive', 'floggraph', 'git' },
 			},
 			globalstatus = true,
 		},

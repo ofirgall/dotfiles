@@ -222,7 +222,7 @@ require('leap').setup {
 
 -- flit.nvim
 require('flit').setup {
-	labeled_modes = 'nvo',
+	labeled_modes = 'nv',
 }
 
 -- scope.nvim
