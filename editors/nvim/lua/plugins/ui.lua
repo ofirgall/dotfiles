@@ -153,7 +153,7 @@ if not vim.g.started_by_firenvim then
 			},
 			lualine_x = { { get_current_lsp_server_name, icon = ' LSP:' } },
 			lualine_y = y_section,
-			lualine_z = { 'filetype' },
+			lualine_z = { { 'filetype', separator = '' }, 'progress' },
 		},
 		winbar = winbar,
 		inactive_winbar = winbar,
