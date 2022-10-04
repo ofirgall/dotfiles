@@ -71,8 +71,8 @@ map('v', '<Enter>', 'y') -- yank with Enter in visual mode
 map('i', '<C-k>', '<C-O>o') -- Insert new line in insert mode
 map('', '<leader>y', '"+y') -- Start copy to os clipboard E.g: <leader>yy will copy current line to os
 map('', '<leader>Y', '"+y$') -- Copy rest of the line to os clipboard like "Y" but for os clipboard
-map('n', '<leader>v', '"+p') -- paste from os clipboard
-map('n', '<leader>V', '"+P') -- paste from os clipboard
+map('n', '<leader>p', '"+p') -- paste from os clipboard
+map('n', '<leader>P', '"+P') -- paste from os clipboard
 map({ 'n', 'v', 't' }, '<M-,>', '<cmd>tabprev<cr>') -- Previous tabpage with Alt+, (<). NOT FILE TABS
 map({ 'n', 'v', 't' }, '<M-.>', '<cmd>tabnext<cr>') -- Next tabpage with Alt+. (>). NOT FILE TABS
 map('i', '<M-,>', '<C-O><cmd>tabprev<cr>') -- Previous tabpage with Alt+, (<). NOT FILE TABS
@@ -139,7 +139,6 @@ if vim.fn.has('wsl') ~= 1 then -- WSL is too slow for that
 	map({ 'n', 'x' }, 'p', require('pasta.mappings').p) -- override paste with smarter paste
 	map({ 'n', 'x' }, 'P', require('pasta.mappings').P) -- override paste with smarter paste
 end
-map({ 'n', 'x', 'o' }, '<leader>l', require 'leap-ast'.leap) -- Leap to treesitter objects
 map({ 'n', 't', 'v' }, '<C-t>', function() toggle_or_open_terminal() end) -- toggle all terminals
 map('t', '<M-e>', function() open_new_terminal('vertical') end) -- Split terminal
 map('t', '<M-q>', function() require('bufdelete').bufdelete(0, true) end) -- Close terminal
@@ -290,8 +289,8 @@ map('n', '<F4>', '<cmd>CodeActionMenu<cr>') -- Code action with F4
 map('n', 'KK', '<cmd>Lspsaga hover_doc<cr>') -- Trigger hover (KJ is fast to use)
 map('n', '<RightMouse>', '<LeftMouse><cmd>Lspsaga hover_doc<cr>') -- Trigger hover
 map('n', '<leader>i', '<cmd>Neogen<cr>') -- document (Instructions) function
-map('n', '<leader>p', require('lsp_lines').toggle) -- show Problem
-map('n', '<leader>P', '<cmd>Lspsaga show_line_diagnostics<CR>') -- show Problem
+map('n', '<leader>l', require('lsp_lines').toggle) -- show Problem
+map('n', '<leader>L', '<cmd>Lspsaga show_line_diagnostics<CR>') -- show Problem
 map('n', ']p', goto_next_diag) -- next Problem
 map('n', '[p', goto_prev_diag) -- prev Problem
 map('n', ']g', goto_next_diag) -- next Problem

@@ -19,7 +19,7 @@ window-width=540
 
 [com/ubuntu/update-notifier]
 no-show-notifications=true
-release-check-time=uint32 1663606546
+release-check-time=uint32 1664878509
 
 [com/uploadedlobster/peek]
 persist-window-geometry=(349, 183, 794, 593)
