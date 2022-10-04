@@ -309,3 +309,23 @@ require('femaco').setup {
 		}
 	end
 }
+
+-- nvim-neorg/neorg
+require('neorg').setup {
+	load = {
+		["core.defaults"] = {},
+		["core.norg.concealer"] = {},
+		["core.norg.completion"] = {
+			config = {
+				engine = 'nvim-cmp'
+			}
+		},
+	}
+}
+
+-- mg979/vim-visual-multi
+vim.g.VM_highlight_matches = 'hi! link Search LspReferenceWrite' -- Non selected matches
+vim.g.VM_Mono_hl   = 'TabLine' -- Cursor while in normal
+vim.g.VM_Extend_hl = 'TabLineSel' -- In Selection (NotUsed)
+vim.g.VM_Cursor_hl = 'TabLineSel' -- Cursor while in alt+d
+vim.g.VM_Insert_hl = 'TabLineSel' -- Cursor in insert
