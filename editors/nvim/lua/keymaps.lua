@@ -287,7 +287,7 @@ map('n', '<C-p>', function() require "illuminate".next_reference { reverse = tru
 map('n', '<F2>', '<cmd>Lspsaga rename<cr>') -- Rename symbos with F2
 map('n', '<leader><F2>', '*:%s///g<left><left>') -- Rename current word with <leader>F2
 map('x', '<F2>', '"hy:%s/<C-r>h//g<left><left>') -- Rename visual
-map('n', '<F4>', '<cmd>CodeActionMenu<cr>') -- Code action with F4
+map('n', '<F4>', '<cmd>Lspsaga code_action<cr>') -- Code action with F4
 map('n', 'KK', '<cmd>Lspsaga hover_doc<cr>') -- Trigger hover (KJ is fast to use)
 map('n', '<RightMouse>', '<LeftMouse><cmd>Lspsaga hover_doc<cr>') -- Trigger hover
 map('n', '<leader>i', '<cmd>Neogen<cr>') -- document (Instructions) function

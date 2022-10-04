@@ -161,11 +161,6 @@ end
 
 cmp.event:on('confirm_done', on_confirm_done_callback)
 
--- weilbith/nvim-code-action-menu
-vim.g.code_action_menu_show_details = false
-vim.g.code_action_menu_show_diff = true
-vim.g.code_action_menu_window_border = 'rounded'
-
 -- petertriho/cmp-git
 require('cmp_git').setup {
 }
