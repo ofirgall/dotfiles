@@ -284,7 +284,8 @@ map('n', '<C-n>', function() require "illuminate".next_reference { wrap = true }
 map('n', '<C-p>', function() require "illuminate".next_reference { reverse = true, wrap = true } end) -- jump to Previous occurrence of var on cursor
 
 -- Lsp UI
-map('n', '<F2>', '<cmd>Lspsaga rename<cr>') -- Rename symbols with F2
+map('n', '<F2>', '<cmd>Lspsaga rename<cr>') -- Rename symbos with F2
+map('n', '<leader>-F2>', '*:%s//') -- Rename symbols with F2
 map('n', '<F4>', '<cmd>CodeActionMenu<cr>') -- Code action with F4
 map('n', 'KK', '<cmd>Lspsaga hover_doc<cr>') -- Trigger hover (KJ is fast to use)
 map('n', '<RightMouse>', '<LeftMouse><cmd>Lspsaga hover_doc<cr>') -- Trigger hover
@@ -306,7 +307,8 @@ map('n', '<leader>gS', '<cmd>DiffviewOpen HEAD^..HEAD<CR>') -- Git Show
 map('n', '<leader>gc', '<cmd>Telescope git_branches<CR>') -- Git checkout
 map('n', '<leader>gh', '<cmd>DiffviewFileHistory %<CR>') -- Git History
 map('n', '<leader>gH', '<cmd>DiffviewFileHistory .<CR>') -- Git workspace History
-map('n', '<leader>gt', '<cmd>Flogsplit<CR>') -- Git Tree
+map('n', '<leader>gt', '<cmd>vert Flogsplit<CR>') -- Git Tree
+map('n', '<leader>got', '<cmd>Flogsplit<CR>') -- Git Tree (split)
 map('n', '<leader>hh', '<cmd>GitMessenger<CR>')
 map('n', 'gh', ':set opfunc=GitHistoryOperator<CR>g@') -- show Git History with operator, e.g: gh3<cr> shows the history of the 3 lines below
 map('v', 'gh', '<Esc><cmd>lua git_history("v")<cr>') -- show Git History with visual mode

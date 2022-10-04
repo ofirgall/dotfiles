@@ -14,8 +14,9 @@ opt.splitbelow = true
 opt.swapfile = false
 opt.updatetime = 100 -- mainly for trld.nvim which utilize CursorHold autocmd
 opt.formatoptions:append('cro') -- continue comments when going down a line
-opt.mouse = 'a' -- Enable mouse when guest are using my nvim
+opt.sessionoptions:remove('options') -- don't save keymaps and local options
 opt.foldlevelstart = 99 -- no auto folding
+opt.mouse = 'a' -- Enable mouse when guest are using my nvim
 opt.signcolumn = 'yes:1' -- Enable 1 signs in the column
 
 -- Enable and disable mouse when gaining/losing focus to avoid the first click jump
