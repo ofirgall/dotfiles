@@ -1,3 +1,7 @@
+if vim.g.started_by_firenvim then
+	do return end
+end
+
 -- axkirillov/easypick.nvim
 local easypick = require('easypick')
 

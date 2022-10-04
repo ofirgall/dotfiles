@@ -1,3 +1,7 @@
+if vim.g.started_by_firenvim then
+	do return end
+end
+
 local api = vim.api
 
 local file_exists = function(name)

@@ -1,4 +1,8 @@
 -- neovim/nvim-lspconfig
+if vim.g.started_by_firenvim then
+	do return end
+end
+
 local lspconfig = require('lspconfig')
 
 -- Update capabilities to autocomplete

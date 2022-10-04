@@ -1,3 +1,7 @@
+if vim.g.started_by_firenvim then
+	do return end
+end
+
 -- anuvyklack/hydra.nvim
 local Hydra = require('hydra')
 local map = vim.keymap.set

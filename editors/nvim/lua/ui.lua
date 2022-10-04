@@ -176,4 +176,10 @@ if not vim.g.started_by_firenvim then
 		},
 		highlights = require('ofirkai.tablines.bufferline').highlights
 	}
+
+	-- require('noice').setup {
+	-- 	popupmenu = {
+	-- 		enabled = false,
+	-- 	}
+	-- }
 end
