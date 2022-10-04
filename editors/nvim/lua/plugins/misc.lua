@@ -281,3 +281,7 @@ api.nvim_create_user_command('PascalCase', function() textcase.current_word('to_
 api.nvim_create_user_command('TitleCase', function() textcase.current_word('to_title_case') end, {})
 api.nvim_create_user_command('PathCase', function() textcase.current_word('to_path_case') end, {})
 api.nvim_create_user_command('PhraseCase', function() textcase.current_word('to_phrase_case') end, {})
+
+-- micarmst/vim-spellsync
+vim.g.spellsync_enable_git_union_merge = 0
+vim.g.spellsync_enable_git_ignore = 0

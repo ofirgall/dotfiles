@@ -6,3 +6,4 @@ editors/nvim/.*
 autokey/My\ Phrases
 autokey/Sample\ Scripts
 */__pycache__
+*.spl

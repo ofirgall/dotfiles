@@ -152,6 +152,7 @@ return require('packer').startup(function()
 	use 'nguyenvukhang/nvim-toggler' -- Invert words like true<->false, on<->off with <leader>i
 	use 'ofirgall/title.nvim' -- Title generator
 	use 'johmsalas/text-case.nvim' -- Smart substitute
+	use 'micarmst/vim-spellsync' -- Rebuild sync files when needed
 	use {
 		'phaazon/mind.nvim', -- notetaking with tree
 		tag = "v2.*",
