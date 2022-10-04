@@ -1,5 +1,6 @@
 -- Require all other `.lua` files in the same directory
 -- Credit: https://github.com/hallettj/dot-vim
+local M = {}
 
 local info = debug.getinfo(1, 'S')
 local module_directory = string.match(info.source, '^@(.*)/')
@@ -28,7 +29,11 @@ local config_files = vim.tbl_filter(function(filename)
 	return is_lua_module and not is_this_file
 end, scandir(module_directory))
 
-for _, filename in ipairs(config_files) do
-	local config_module = string.match(filename, "(.+).lua$")
-	require(module_name .. "." .. config_module)
+M.setup = function()
+	for _, filename in ipairs(config_files) do
+		local config_module = string.match(filename, "(.+).lua$")
+		require(module_name .. "." .. config_module)
+	end
 end
+
+return M
