@@ -1,4 +1,5 @@
 local opt = vim.opt
+local api = vim.api
 
 opt.number = true
 opt.relativenumber = true
@@ -19,14 +20,18 @@ opt.foldlevelstart = 99 -- no auto folding
 opt.mouse = 'a' -- Enable mouse when guest are using my nvim
 opt.signcolumn = 'yes:1' -- Enable 1 signs in the column
 
+config_autocmds = api.nvim_create_augroup('config', { clear = true })
+
 -- Enable and disable mouse when gaining/losing focus to avoid the first click jump
-vim.api.nvim_create_autocmd('FocusGained', {
+api.nvim_create_autocmd('FocusGained', {
+	group = config_autocmds,
 	pattern = '*',
 	callback = function()
 		opt.mouse = 'a'
 	end
 })
-vim.api.nvim_create_autocmd('FocusLost', {
+api.nvim_create_autocmd('FocusLost', {
+	group = config_autocmds,
 	pattern = '*',
 	callback = function()
 		opt.mouse = ''
@@ -34,9 +39,21 @@ vim.api.nvim_create_autocmd('FocusLost', {
 })
 
 -- Highlight on yank
-vim.api.nvim_create_autocmd('TextYankPost', {
+api.nvim_create_autocmd('TextYankPost', {
+	group = config_autocmds,
 	pattern = '*',
-	callback = function() vim.highlight.on_yank({ timeout = 350, higroup = 'Visual' }) end
+	callback = function()
+		vim.highlight.on_yank({ timeout = 350, higroup = 'Visual' })
+	end
+})
+
+-- Auto spell files
+api.nvim_create_autocmd('FileType', {
+	group = config_autocmds,
+	pattern = { 'markdown' },
+	callback = function()
+		vim.opt_local.spell = true
+	end
 })
 
 if vim.fn.has('wsl') == 1 then
