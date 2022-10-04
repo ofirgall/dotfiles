@@ -153,6 +153,7 @@ return require('packer').startup(function()
 	use 'ofirgall/title.nvim' -- Title generator
 	use 'johmsalas/text-case.nvim' -- Smart substitute
 	use 'micarmst/vim-spellsync' -- Rebuild sync files when needed
+	use 'AckslD/nvim-FeMaco.lua' -- edit code blocks in markdown
 	use {
 		'phaazon/mind.nvim', -- notetaking with tree
 		tag = "v2.*",

@@ -285,3 +285,27 @@ api.nvim_create_user_command('PhraseCase', function() textcase.current_word('to_
 -- micarmst/vim-spellsync
 vim.g.spellsync_enable_git_union_merge = 0
 vim.g.spellsync_enable_git_ignore = 0
+
+-- AckslD/nvim-FeMaco.lua
+local femaco_margin = {
+	width = 10,
+	height = 6,
+	top = 2
+}
+require('femaco').setup {
+	post_open_float = function(winnr)
+		_ = winnr
+	end,
+	float_opts = function(code_block)
+		_ = code_block
+		return {
+			relative = 'win',
+			width = vim.api.nvim_win_get_width(0) - femaco_margin.width,
+			height = vim.api.nvim_win_get_height(0) - femaco_margin.height,
+			col = femaco_margin.width / 2,
+			row = femaco_margin.height / 2 - femaco_margin.top,
+			border = 'rounded',
+			zindex = 1,
+		}
+	end
+}
