@@ -79,6 +79,9 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * nvim - transfer telescope binds to <leader>
 * nvim - try to default register to the void register and <leader> to actually copy
 * nvim - integrate flog in diffview (TODOS)
+* git - script for setting upstream remote in a fork
+* git - script for changing http to ssh + set git user
+* git - change the default git user to personal, and workspace to other
 ---
 * nvim - hover on the function on current line, probably requires treesitter
 * nvim - lsp lines put a special color in a error line to empahsise it isn't a code line
