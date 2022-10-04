@@ -234,7 +234,7 @@ require('debugprint').setup {
 	print_tag = '--- DEBUG PRINT ---'
 }
 
--- nvim-toggler
+-- nguyenvukhang/nvim-toggler
 require('nvim-toggler').setup {
 	['to'] = 'from',
 	['failed'] = 'succeeded',

@@ -1,4 +1,5 @@
 -- ofirgall/ofirkay.nvim
+local scheme = require('ofirkai.design').scheme
 require('ofirkai').setup {
 }
 
@@ -177,7 +178,23 @@ if not vim.g.started_by_firenvim then
 		highlights = require('ofirkai.tablines.bufferline').highlights
 	}
 
+	require('notify').setup {
+		background_colour = scheme.ui_bg,
+		fps = 60,
+		stages = "slide",
+		timeout = 1000,
+		max_width = 30,
+		max_height = 20,
+	}
+
 	-- require('noice').setup {
+	-- 	cmdline = {
+	-- 		icons = {
+	-- 			["/"] = { hl_group = "DiagnosticWarn" },
+	-- 			["?"] = { hl_group = "DiagnosticWarn" },
+	-- 			[":"] = { icon = "", hl_group = "DiagnosticInfo", firstc = false },
+	-- 		}
+	-- 	},
 	-- 	popupmenu = {
 	-- 		enabled = false,
 	-- 	}

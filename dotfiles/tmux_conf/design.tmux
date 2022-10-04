@@ -28,14 +28,13 @@ set -g @nova-pane "#I #W"
 set -g @nova-rows 0
 
 ### COLORS ###
-b_bg="#504945"
+sides_color="#a89984 #282828"
+active_tab_bg="#504945"
+active_tab_color="$active_tab_bg #ddc7a1"
 
-seg_a="#a89984 #282828"
-seg_b="$b_bg #ddc7a1"
-
-inactive_bg="#33332a"
+inactive_bg="#282923" # Same as nvim background
 inactive_fg="#ddc7a1"
-active_bg=$b_bg
+active_bg=$active_tab_bg
 active_fg="#ddc7a1"
 
 suspended_inactive_bg="#1f1c1b"
@@ -55,31 +54,31 @@ set-window-option -g mode-style "bg=#27406b,fg=#ffffff"
 
 ### STATUS BAR ###
 set -g @nova-segment-prefix "#{?client_prefix,PREFIX,}"
-set -g @nova-segment-prefix-colors "$seg_b"
+set -g @nova-segment-prefix-colors "$active_tab_color"
 
 set -g @nova-segment-session "#{session_name}"
-set -g @nova-segment-session-colors "$seg_a"
+set -g @nova-segment-session-colors "$sides_color"
 
 set -g @nova-segment-whoami "#(whoami)@#h"
-set -g @nova-segment-whoami-colors "$seg_a"
+set -g @nova-segment-whoami-colors "$sides_color"
 
 set -g @nova-segment-cpu " #(~/.tmux/plugins/tmux-cpu/scripts/cpu_percentage.sh) #(~/.tmux/plugins/tmux-cpu/scripts/ram_percentage.sh)"
-set -g @nova-segment-cpu-colors "$seg_b"
+set -g @nova-segment-cpu-colors "$active_tab_color"
 
 set -g @batt_icon_status_charging '↑'
 set -g @batt_icon_status_discharging '↓'
 set -g @batt_icon_status_charged '↑'
 set -g @nova-segment-battery "#{battery_icon_status} #{battery_percentage}"
-set -g @nova-segment-battery-colors "$seg_b"
+set -g @nova-segment-battery-colors "$active_tab_color"
 
 set -g @nova-segment-layout "#(~/.tmux/plugins/tmux-keyboard-layout/scripts/get_keyboard_layout.sh)"
-set -g @nova-segment-layout-colors "$seg_a"
+set -g @nova-segment-layout-colors "$sides_color"
 
 set -g @nova-segment-time "%H:%M"
-set -g @nova-segment-time-colors "$seg_a"
+set -g @nova-segment-time-colors "$sides_color"
 
 set -g @nova-segment-suspended "#{@suspended_mode}"
-set -g @nova-segment-suspended-colors "$seg_a"
+set -g @nova-segment-suspended-colors "$sides_color"
 
 set -g @nova-segments-0-left "session"
 set -g @nova-segments-0-right "prefix cpu battery layout time whoami"
