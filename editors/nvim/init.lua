@@ -1,6 +1,7 @@
 vim.g.did_load_filetypes = 1 -- dont load filetypes.vim we are loading filetypes.nvim instead
 
 require('settings')
+require('autocmds')
 require('utils')
 require('plugin_list')
 require('keymaps')
