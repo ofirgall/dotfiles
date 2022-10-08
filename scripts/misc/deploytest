@@ -1,9 +1,9 @@
 #!/bin/sh
 
-HOST="${1:-rv1}"
+HOST="${1:-rhel8-5.local}"
 echo "Host: $HOST"
 rm *\.test
 echo "Building..."
 go test -c -gcflags "all=-N -l"
 echo "Delivering..."
-scp *\.test root@rv1:~/
+scp *\.test root@$1:~/
