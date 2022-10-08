@@ -8,7 +8,7 @@ source "$CURRENT_DIR/helpers.sh"
 install_codelldb()
 {
 	unzip codelldb-x86_64-linux.vsix
-	ln -s $HOME/.local/dap/codelldb/extension/adapter/codelldb $HOME/.local/bin/codelldb
+	ln -f -s $HOME/.local/dap/codelldb/extension/adapter/codelldb $HOME/.local/bin/codelldb
 }
 
 # C/C++/Rust debug adapter
