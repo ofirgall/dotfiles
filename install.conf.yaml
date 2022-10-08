@@ -46,3 +46,4 @@
     - [install_scripts/install_fusuma.sh, Installing Fusuma]
     - [install_scripts/install_taskwarrior.sh, Installing Task Warrior]
     - [install_scripts/install_fonts.sh, Installing nerd fonts]
+    - [install_scripts/firefox_from_deb.sh, Installing firefox from deb]
