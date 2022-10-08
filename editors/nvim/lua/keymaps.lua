@@ -59,6 +59,8 @@ vim.g.maplocalleader = ' '
 --           BUILTIN             --
 -----------------------------------
 local add_new_line = 'i\\r\\n<Esc>'
+map('', '<leader><leader>', ':') -- Enter command with double leader
+map('n', 'n', 'nzz') -- Auto recenter after n
 map('n', '<M-r>', '<cmd>echo "Current File Reloaded!"<cr><cmd>luafile %<cr>') -- Reload current luafile
 map('n', 'n', 'nzz') -- Auto recenter after n
 map('n', 'N', 'Nzz') -- Auto recenter after N
