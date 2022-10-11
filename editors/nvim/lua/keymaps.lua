@@ -83,18 +83,17 @@ map('n', '<leader>n', add_new_line) -- Add newline
 
 -- Dont yank text on default
 map('x', 'p', '"_dP')
-map({'n', 'x'}, 'x', '"_x')
-map({'n', 'x'}, 'd', '"_d')
-map({'n', 'x'}, 'c', '"_c')
-map({'n', 'x'}, 'C', '"_C')
+map('', 'd', '"_d')
+map('', 'D', '"_D')
+map('', 'c', '"_c')
+map('', 'C', '"_C')
 
 -- Yank on leader
-map('x', '<leader>p', '""p')
-map({'n', 'x'}, '<leader>x', '""x')
-map({'n', 'x'}, '<leader>d', '""d')
-map({'n', 'x'}, '<leader>D', '""D')
-map({'n', 'x'}, '<leader>c', '""c')
-map({'n', 'x'}, '<leader>C', '""C')
+map('x', '<leader>p', 'p')
+map('', '<leader>d', 'd')
+map('', '<leader>D', 'D')
+map('', '<leader>c', 'c')
+map('', '<leader>C', 'C')
 
 map('', '<Down>', '<C-e>') -- Down to scroll
 map('', '<Up>', '<C-y>') -- Up to scroll
