@@ -14,13 +14,15 @@ vim.fn.sign_define('DapLogPoint', { text = '', texthl = 'DiagnosticWarn', lin
 vim.fn.sign_define('DapStopped', { text = '', texthl = 'DiagnosticInfo', linehl = 'CursorLine', numhl = 'CursorLine' })
 
 -- C/C++/Rust
+local last_file = './a.out'
 dap.configurations.cpp = {
 	{
 		name = 'Launch file',
 		type = 'codelldb',
 		request = 'launch',
 		program = function()
-			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/a.out', 'file')
+			last_file = vim.fn.input('Path to executable: ', last_file, 'file')
+			return last_file
 		end,
 		cwd = vim.fn.getcwd(),
 		stopOnEntry = false,
