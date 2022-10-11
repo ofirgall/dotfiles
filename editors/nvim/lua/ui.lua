@@ -139,8 +139,9 @@ if not vim.g.started_by_firenvim then
 			{
 				json_path.get,
 				icon = "",
-				cond = function ()
-					return api.nvim_buf_get_option(0, 'filetype') == 'json'
+				cond = function()
+					local ft = api.nvim_buf_get_option(0, 'filetype')
+					return ft == 'json' or ft == 'jsonc'
 				end,
 				color = ofirkai_lualine.winbar_color,
 			}
