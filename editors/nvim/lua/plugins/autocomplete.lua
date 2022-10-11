@@ -30,6 +30,22 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
+local function all_visible_buffers_source(priority)
+	return {
+		name = 'buffer',
+		priority = priority,
+		option = {
+			get_bufnrs = function()
+				local bufs = {}
+				for _, win in ipairs(vim.api.nvim_list_wins()) do
+					bufs[vim.api.nvim_win_get_buf(win)] = true
+				end
+				return vim.tbl_keys(bufs)
+			end
+		}
+	}
+end
+
 cmp_setup_dict = {
 	snippet = {
 		expand = function(args)
@@ -90,14 +106,14 @@ cmp_setup_dict = {
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp', priority = 1000 },
 		{ name = 'crates', priority = 500 },
-		{ name = 'buffer', priority = 150},
+		all_visible_buffers_source(150),
 		{ name = 'snippy', priority = 100 },
 	}, {
 		{ name = 'spell' },
 		{ name = 'neorg' },
 		{ name = 'git' },
 		{ name = 'path', option = { trailing_slash = true } },
-		{ name = 'buffer' },
+		all_visible_buffers_source(nil),
 	}),
 	performance = {
 		debounce = 30, -- default: 60
@@ -105,24 +121,11 @@ cmp_setup_dict = {
 	}
 }
 
-local all_visible_buffers_source = {
-	name = 'buffer',
-	option = {
-		get_bufnrs = function()
-			local bufs = {}
-			for _, win in ipairs(vim.api.nvim_list_wins()) do
-				bufs[vim.api.nvim_win_get_buf(win)] = true
-			end
-			return vim.tbl_keys(bufs)
-		end
-	}
-}
-
 cmp.setup(cmp_setup_dict)
 
 cmp.setup.cmdline('/', {
 	sources = {
-		all_visible_buffers_source,
+		all_visible_buffers_source(nil),
 	}
 })
 
@@ -142,7 +145,7 @@ cmp.setup.filetype({ 'dap-repl', 'dapui_watches' }, {
 
 cmp.setup.filetype('gitcommit', {
 	sources = {
-		all_visible_buffers_source
+		all_visible_buffers_source(nil)
 	}
 })
 
