@@ -80,20 +80,11 @@ map({ 'n', 'v', 't' }, '<M-.>', '<cmd>tabnext<cr>') -- Next tabpage with Alt+. (
 map('i', '<M-,>', '<C-O><cmd>tabprev<cr>') -- Previous tabpage with Alt+, (<). NOT FILE TABS
 map('i', '<M-.>', '<C-O><cmd>tabnext<cr>') -- Next tabpage with Alt+. (>). NOT FILE TABS
 map('n', '<leader>n', add_new_line) -- Add newline
-
--- Dont yank text on default
-map('x', 'p', '"_dP')
-map('', 'd', '"_d')
-map('', 'D', '"_D')
-map('', 'c', '"_c')
-map('', 'C', '"_C')
-
--- Yank on leader
-map('x', '<leader>p', 'p')
-map('', '<leader>d', 'd')
-map('', '<leader>D', 'D')
-map('', '<leader>c', 'c')
-map('', '<leader>C', 'C')
+map('x', '<leader>p', '"_dP') -- replace text without changing the copy register
+map('n', '<leader>d', '"_d') -- delete without yanking
+map('n', '<leader>D', '"_D') -- delete without yanking
+map('n', '<leader>c', '"_c') -- change without yanking
+map('n', '<leader>C', '"_C') -- change without yanking
 
 map('', '<Down>', '<C-e>') -- Down to scroll
 map('', '<Up>', '<C-y>') -- Up to scroll
