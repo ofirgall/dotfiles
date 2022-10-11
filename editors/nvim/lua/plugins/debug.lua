@@ -4,7 +4,7 @@ end
 
 -- mfussenegger/nvim-dap
 local dap = require('dap')
-
+dap.defaults.fallback.stepping_granularity  = 'line'
 --- Signs ---
 -- Sign priority = 11
 vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DiagnosticError', linehl = '', numhl = '' })
