@@ -1,3 +1,5 @@
+local api = vim.api
+
 -- ofirgall/ofirkay.nvim
 local scheme = require('ofirkai.design').scheme
 require('ofirkai').setup {
@@ -115,6 +117,7 @@ if not vim.g.started_by_firenvim then
 	}
 
 	local ofirkai_lualine = require('ofirkai.statuslines.lualine')
+	local json_path = require('jsonpath')
 	local winbar = {
 		lualine_a = {},
 		lualine_b = {
@@ -133,6 +136,14 @@ if not vim.g.started_by_firenvim then
 				cond = navic.is_available,
 				color = ofirkai_lualine.winbar_color,
 			},
+			{
+				json_path.get,
+				icon = "",
+				cond = function ()
+					return api.nvim_buf_get_option(0, 'filetype') == 'json'
+				end,
+				color = ofirkai_lualine.winbar_color,
+			}
 		},
 		lualine_x = {},
 		lualine_y = {},
