@@ -90,6 +90,7 @@ cmp_setup_dict = {
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp', priority = 1000 },
 		{ name = 'crates', priority = 500 },
+		{ name = 'buffer', priority = 150},
 		{ name = 'snippy', priority = 100 },
 	}, {
 		{ name = 'spell' },
