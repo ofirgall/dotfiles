@@ -83,6 +83,7 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * git - script for changing http to ssh + set git user
 * git - change the default git user to personal, and workspace to other
 * nvim - nvimtree relative number
+* nvim - <count>Alt-y for "yank" a relative line and put it in the cursor
 ---
 * nvim - hover on the function on current line, probably requires treesitter
 * nvim - lsp lines put a special color in a error line to empahsise it isn't a code line

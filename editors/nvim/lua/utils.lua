@@ -260,4 +260,7 @@ git_hist_path = function(node)
 	vim.fn.execute('DiffviewFileHistory ' .. node_relative_path(node))
 end
 
-api.nvim_create_user_command("PrettifyJson", ":%!python3 -m json.tool", {})
+api.nvim_create_user_command("PrettifyJson", function()
+	api.nvim_exec(":%!python3 -m json.tool --sort-keys --indent 2", false)
+	vim.opt_local.filetype = "jsonc"
+end, {})
