@@ -379,6 +379,12 @@ local keys_by_ft = {
 		map_buffer(bufid, 'n', '<leader>e', '<cmd>GoIfErr<cr>')
 		map_buffer(bufid, 'n', '<leader>ln', '<cmd>s/Println/Printf/<cr>$F"' .. add_new_line)
 	end,
+	-- Rust
+	['rust'] = function(bufid)
+		map_buffer(bufid, 'n', 'J', require('rust-tools').join_lines.join_lines)
+		map_buffer(bufid, 'n', '<leader>r', require('rust-tools').runnables.runnables)
+		map_buffer(bufid, 'n', '<F4>', require('rust-tools').hover_actions.hover_actions)
+	end,
 	-- Floggraph
 	['floggraph'] = function(bufid)
 		map_buffer(bufid, 'n', '<C-d>', flog_diff_current)

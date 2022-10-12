@@ -62,6 +62,20 @@ lspconfig.rust_analyzer.setup {
 	},
 }
 
+-- simrat39/rust-tools.nvim
+require('rust-tools').setup {
+	server = nil, -- Skip rust-tools lsp setup
+	dap = nil, -- Skip rust-tools dap setup
+	tools = {
+		inlay_hints = {
+			auto = false,
+		},
+		hover_actions = {
+			auto_focus = true,
+		},
+	}
+}
+
 -- Saecki/crates.nvim
 require('crates').setup {
 }

@@ -124,9 +124,6 @@ require('guess-indent').setup {}
 -- vim-maximizer
 vim.g.maximizer_default_mapping_key = '<M-Z>'
 
--- rust.vim
--- vim.g.rustfmt_autosave = 1
-
 -- trld.nvim
 require('trld').setup {
 	auto_cmds = false,

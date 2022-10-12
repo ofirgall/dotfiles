@@ -45,9 +45,13 @@ return require('packer').startup(function()
 	use 'Mofiqul/trld.nvim' -- Show diagnostics in the top right corner
 	use 'SmiteshP/nvim-navic' -- Shows context in status line (with lsp)
 	use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' -- show diagnostics as virtual lines
-	use 'folke/lua-dev.nvim' -- Adding nvim api signatures and more
 	use 'ofirgall/format-on-leave.nvim' -- Format the code when leaving the buffer.
 	use 'saecki/crates.nvim' -- "LSP" for `Cargo.toml`
+
+	-- Language Specific --
+	use 'simrat39/rust-tools.nvim' -- Rust tools
+	use { 'ray-x/go.nvim', requires = 'ray-x/guihua.lua', run = ':GoUpdateBinaries' } -- Golang tools
+	use 'folke/lua-dev.nvim' -- Adding nvim api signatures and more
 
 	-------- END OF LSP --------
 
@@ -145,14 +149,12 @@ return require('packer').startup(function()
 	use 'NMAC427/guess-indent.nvim' -- Adjust tabs/spaces settings
 	use 'shivamashtikar/tmuxjump.vim' -- jump to files that printed in another tmux panes
 	use 'szw/vim-maximizer' -- Maximize windows (splits) in vim
-	use 'rust-lang/rust.vim' -- Rust utils (RustFmt on save)
 	use { 'nvim-neorg/neorg', requires = 'nvim-lua/plenary.nvim' } -- .norg plugin better orgmode
 	use { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' } -- review todo in the quickfix list with :Todo..
 	-- use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
 	use 'norcalli/nvim-colorizer.lua' -- colorize hexcolor values in buffer
 	use { 'anuvyklack/hydra.nvim', requires = 'anuvyklack/keymap-layer.nvim' }
 	use 'ziontee113/color-picker.nvim' -- color picker
-	use { 'ray-x/go.nvim', requires = 'ray-x/guihua.lua', run = ':GoUpdateBinaries' } -- Golang tools
 	use 'rbong/vim-buffest' -- edit macros and registers
 	use 'andrewferrier/debugprint.nvim' -- make debug prints fast
 	use 'nguyenvukhang/nvim-toggler' -- Invert words like true<->false, on<->off with <leader>i
