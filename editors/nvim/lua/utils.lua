@@ -264,3 +264,8 @@ api.nvim_create_user_command("PrettifyJson", function()
 	api.nvim_exec(":%!python3 -m json.tool --sort-keys --indent 2", false)
 	vim.opt_local.filetype = "jsonc"
 end, {})
+
+api.nvim_create_user_command("CompactJson", function()
+	api.nvim_exec(":%!python3 -m json.tool --compact", false)
+	vim.opt_local.filetype = "jsonc"
+end, {})
