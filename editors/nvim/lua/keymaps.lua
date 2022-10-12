@@ -382,8 +382,8 @@ local keys_by_ft = {
 	-- Rust
 	['rust'] = function(bufid)
 		map_buffer(bufid, 'n', 'J', require('rust-tools').join_lines.join_lines)
-		map_buffer(bufid, 'n', '<leader>r', require('rust-tools').runnables.runnables)
-		map_buffer(bufid, 'n', '<F4>', require('rust-tools').hover_actions.hover_actions)
+		map_buffer(bufid, 'n', '<leader>rr', require('rust-tools').runnables.runnables)
+		map_buffer(bufid, 'n', '<leader>rt', require('rust-tools').hover_actions.hover_actions) -- run test
 	end,
 	-- Floggraph
 	['floggraph'] = function(bufid)
