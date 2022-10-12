@@ -195,10 +195,6 @@ require('colorizer').setup {
 	'*'
 }
 
--- nvim-pasta
-require('pasta').setup {
-}
-
 -- color-picker.nvim
 require('color-picker').setup {
 }

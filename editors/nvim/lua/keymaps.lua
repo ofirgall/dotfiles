@@ -137,10 +137,6 @@ map('n', '<F8>', '<cmd>UndotreeToggle<CR>') -- Toggle undotree
 map('n', '<leader>b', '<cmd>Telescope buffers<CR>') -- browse your open Buffers (tabs)
 map('n', '<leader>gx', '<cmd>call OpenInBrowser()<CR>')
 map('n', '<leader>rgb', '<cmd>PickColor<CR>')
-if vim.fn.has('wsl') ~= 1 then -- WSL is too slow for that
-	map({ 'n', 'x' }, 'p', require('pasta.mappings').p) -- override paste with smarter paste
-	map({ 'n', 'x' }, 'P', require('pasta.mappings').P) -- override paste with smarter paste
-end
 map({ 'n', 't', 'v' }, '<C-t>', function() toggle_or_open_terminal() end) -- toggle all terminals
 map('t', '<M-e>', function() open_new_terminal('vertical') end) -- Split terminal
 map('t', '<M-q>', function() require('bufdelete').bufdelete(0, true) end) -- Close terminal

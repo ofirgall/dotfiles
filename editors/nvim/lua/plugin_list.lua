@@ -150,7 +150,6 @@ return require('packer').startup(function()
 	use { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' } -- review todo in the quickfix list with :Todo..
 	-- use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
 	use 'norcalli/nvim-colorizer.lua' -- colorize hexcolor values in buffer
-	use 'hrsh7th/nvim-pasta' -- Auto indent on paste, cycle on yank history after paste with <C-n>/<C-p>
 	use { 'anuvyklack/hydra.nvim', requires = 'anuvyklack/keymap-layer.nvim' }
 	use 'ziontee113/color-picker.nvim' -- color picker
 	use { 'ray-x/go.nvim', requires = 'ray-x/guihua.lua', run = ':GoUpdateBinaries' } -- Golang tools
