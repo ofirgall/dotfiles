@@ -318,13 +318,23 @@ require('neorg').setup {
 
 -- mg979/vim-visual-multi
 vim.g.VM_highlight_matches = 'hi! link Search LspReferenceWrite' -- Non selected matches
-vim.g.VM_Mono_hl   = 'TabLine' -- Cursor while in normal
-vim.g.VM_Extend_hl = 'TabLineSel' -- In Selection (NotUsed)
-vim.g.VM_Cursor_hl = 'TabLineSel' -- Cursor while in alt+d
-vim.g.VM_Insert_hl = 'TabLineSel' -- Cursor in insert
+vim.g.VM_Mono_hl           = 'TabLine' -- Cursor while in normal
+vim.g.VM_Extend_hl         = 'TabLineSel' -- In Selection (NotUsed)
+vim.g.VM_Cursor_hl         = 'TabLineSel' -- Cursor while in alt+d
+vim.g.VM_Insert_hl         = 'TabLineSel' -- Cursor in insert
 
 -- lyokha/vim-xkbswitch
 vim.g.XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 vim.g.XkbSwitchEnabled = 1
 vim.g.XkbSwitchSkipGhKeys = { 'gh', 'gH' }
 
+-- gbprod/yanky.nvim
+require('yanky').setup {
+	system_clipboard = {
+		sync_with_ring = false,
+	},
+	highlight = {
+		on_put = false,
+		on_yank = false,
+	},
+}

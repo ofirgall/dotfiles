@@ -101,6 +101,16 @@ map('i', '<F1>', '<C-O>:set spell!<cr>')
 map('n', '*', "<cmd>let @/= '\\<' . expand('<cword>') . '\\>'<cr>zz")
 
 -----------------------------------
+--            Yanky              --
+-----------------------------------
+map({ 'n', 'x' }, 'y', '<Plug>(YankyYank)')
+map({ 'n', 'x' }, 'p', '<Plug>(YankyPutAfter)')
+map({ 'n', 'x' }, 'P', '<Plug>(YankyPutBefore)')
+
+map('n', '<C-[>', '<Plug>(YankyCycleForward)')
+map('n', '<C-]>', '<Plug>(YankyCycleBackward)')
+
+-----------------------------------
 --             TMUX              --
 -----------------------------------
 -- Navigate in panes + splits (requires vim-tmux-navigator)
