@@ -9,11 +9,6 @@
 local cmd = vim.cmd
 cmd [[packadd packer.nvim]]
 
--- Configure 'lyokha/vim-xkbswitch' before loading
-vim.g.XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
-vim.g.XkbSwitchEnabled = 1
-vim.g.XkbSwitchSkipGhKeys = { 'gh', 'gH' }
-
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim' -- packer can manage itself
 
