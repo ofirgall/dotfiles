@@ -87,7 +87,6 @@ return require('packer').startup(function()
 	-- Startup Time --
 	use 'dstein64/vim-startuptime' -- Profile startuptime
 	use 'lewis6991/impatient.nvim' -- Faster startuptime
-	use 'nathom/filetype.nvim' -- faster filetype detection
 
 	-- Motion --
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
