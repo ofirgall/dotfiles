@@ -153,6 +153,7 @@ map('t', '<M-q>', function() require('bufdelete').bufdelete(0, true) end) -- Clo
 map('n', ']d', require('goto-breakpoints').next)
 map('n', '[d', require('goto-breakpoints').prev)
 map('n', '<leader>m', require('mind').open_main)
+map('n', '<leader>e', require('femaco.edit').edit_code_block)
 
 -- Spell Suggest
 map('n', '<leader>ss', function()
@@ -377,7 +378,7 @@ map('n', '<F12>', function() require 'dap'.step_out() center_screen() end)
 
 map('n', '<leader>rp', require 'dap'.repl.open)
 
-map('n', '<leader>ev', require 'dapui'.eval)
+map('n', '<leader>k', require 'dapui'.eval)
 
 -----------------------------------
 --         File Specific         --
