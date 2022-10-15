@@ -105,6 +105,10 @@ lspconfig.cucumber_language_server.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
+lspconfig.tsserver.setup {
+	on_attach = lsp_on_attach,
+	capabilities = capabilities,
+}
 
 local clang_cmd = { 'clangd', '--background-index', '--fallback-style=none', '--header-insertion=never',
 	'--all-scopes-completion', '--cross-file-rename' }
