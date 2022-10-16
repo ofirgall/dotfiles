@@ -62,3 +62,13 @@ sudo npm install -g @cucumber/language-server
 
 # javascript + typescript
 sudo npm install -g typescript typescript-language-server
+
+# ltex-ls markdown
+install_ltex_ls()
+{
+	tar -xf *
+	ln -f -s $HOME/.local/lsp/ltex-ls/ltex-ls-*/bin/ltex-ls $HOME/.local/bin/ltex-ls
+	rm *.tar.gz
+}
+
+download_latest_release ~/.local/lsp/ltex-ls valentjn/ltex-ls linux-x64 install_ltex_ls
