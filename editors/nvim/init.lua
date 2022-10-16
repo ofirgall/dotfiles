@@ -1,9 +1,9 @@
 -- vim.g.did_load_filetypes = 0 -- dont load filetypes.vim we are loading filetypes.nvim instead
 
 require('settings')
+require('plugin_list')
 require('autocmds')
 require('utils')
-require('plugin_list')
 require('keymaps')
 require('impatient') -- Load impatient.nvim to accelerate boot
 require('ui')
