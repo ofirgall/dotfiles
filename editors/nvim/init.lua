@@ -3,11 +3,11 @@
 require('settings')
 require('autocmds')
 require('utils')
+require('plugin_list')
 require('keymaps')
 require('impatient') -- Load impatient.nvim to accelerate boot
 require('ui')
 require('plugins').setup()
-require('plugin_list')
 
 vim.cmd([[
 source $HOME/.config/nvim/vim/file_util.vim
