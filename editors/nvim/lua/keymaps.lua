@@ -166,6 +166,16 @@ map('n', '<leader>ss', function()
 	})
 end)
 
+map('n', '<leader>sy', function()
+	require('telescope').extensions.dict.synonyms({
+		prompt_title = '',
+		layout_config = {
+			height = 0.4,
+			width = 0.60
+		}
+	})
+end)
+
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 -- Add cursor down/up Alt+n/p (like ctrl+down/up in subl)
 cmd([[

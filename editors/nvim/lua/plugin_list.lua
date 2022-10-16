@@ -76,6 +76,7 @@ return require('packer').startup(function()
 	use 'nvim-telescope/telescope-live-grep-args.nvim' -- Better live grep
 	use 'nvim-telescope/telescope-ui-select.nvim' -- native nvim ui select with telescope
 	use 'axkirillov/easypick.nvim' -- Create telescope from cmd line output, dirty git files for example
+	use 'https://code.sitosis.com/rudism/telescope-dict.nvim'
 
 	-- Git --
 	use 'lewis6991/gitsigns.nvim' -- Show git diff in the sidebar, hunk actions and more

@@ -2,10 +2,16 @@
 
 set -e # Exit if fail
 
+# To build neovim
 sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
 
 # numToStr/lemmy-help
 cargo install lemmy-help --features=cli
+
+# https://code.sitosis.com/rudism/telescope-dict.nvim
+sudo apt-get install -y dictd dict-wn
+wget http://archive.ubuntu.com/ubuntu/pool/main/d/dict-moby-thesaurus/dict-moby-thesaurus_1.0-6.4_all.deb -P ~/Downloads
+sudo dpkg -i ~/Downloads/dict-moby-thesaurus_1.0-6.4_all.deb
 
 if -d ~/.local/share/nvim; then
 	echo "Skipping nvim install"
