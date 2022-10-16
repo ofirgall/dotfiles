@@ -145,7 +145,8 @@ cmp.setup.filetype({ 'dap-repl', 'dapui_watches' }, {
 
 cmp.setup.filetype('gitcommit', {
 	sources = {
-		all_visible_buffers_source(nil)
+		all_visible_buffers_source(nil),
+		{ name = 'spell' },
 	}
 })
 
