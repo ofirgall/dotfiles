@@ -108,9 +108,6 @@ lspconfig.tsserver.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
-lspconfig.ltex.setup {
-	filetypes = { 'bib', 'markdown', 'org', 'plaintex', 'rst', 'rnoweb', 'tex' }
-}
 
 local clang_cmd = { 'clangd', '--background-index', '--fallback-style=none', '--header-insertion=never',
 	'--all-scopes-completion', '--cross-file-rename' }
@@ -155,4 +152,22 @@ require('fidget').setup {
 -- ofirgall/format-on-leave.nvim
 require('format-on-leave').setup {
 	pattern = { '*.rs', '*.go' }
+}
+
+local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+local words = {}
+
+for word in io.open(path, "r"):lines() do
+	table.insert(words, word)
+end
+
+lspconfig.ltex.setup {
+	filetypes = { 'bib', 'markdown', 'org', 'plaintex', 'rst', 'rnoweb', 'tex' },
+	settings = {
+		ltex = {
+			dictionary = {
+				['en-US'] = words,
+			},
+		},
+	},
 }
