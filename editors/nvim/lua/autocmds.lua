@@ -31,7 +31,7 @@ api.nvim_create_autocmd('TextYankPost', {
 -- Auto spell files
 api.nvim_create_autocmd('FileType', {
 	group = config_autocmds,
-	pattern = { 'gitcommit' },
+	pattern = { 'gitcommit', 'markdown' },
 	callback = function()
 		vim.opt_local.spell = true
 	end
