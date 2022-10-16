@@ -46,7 +46,7 @@ return require('packer').startup(function()
 	-- Language Specific --
 	use 'simrat39/rust-tools.nvim' -- Rust tools
 	use { 'ray-x/go.nvim', requires = 'ray-x/guihua.lua', run = ':GoUpdateBinaries' } -- Golang tools
-	use 'folke/lua-dev.nvim' -- Adding nvim api signatures and more
+	use 'folke/neodev.nvim' -- Adding nvim api signatures and more
 
 	-------- END OF LSP --------
 

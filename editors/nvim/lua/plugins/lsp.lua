@@ -130,8 +130,8 @@ lspconfig.clangd.setup {
 	cmd = clang_cmd,
 }
 
--- folke/lua-dev.nvim
-require('lua-dev').setup {
+-- folke/neodev.nvim
+require('neodev').setup {
 }
 
 lspconfig.sumneko_lua.setup {
