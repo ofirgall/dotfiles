@@ -117,6 +117,7 @@ return require('packer').startup(function()
 	}
 
 	-- Misc --
+	use 'ofirgall/open.nvim'
 	use 'gbprod/yanky.nvim' -- Improve yank experience
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
 	use 'windwp/nvim-autopairs' -- Closes (--' etc.

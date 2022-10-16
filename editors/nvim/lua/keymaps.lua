@@ -145,7 +145,7 @@ map('n', 'gX', function() split_if_not_exist(false) end)
 -----------------------------------
 map('n', '<F8>', '<cmd>UndotreeToggle<CR>') -- Toggle undotree
 map('n', '<leader>b', '<cmd>Telescope buffers<CR>') -- browse your open Buffers (tabs)
-map('n', '<leader>gx', '<cmd>call OpenInBrowser()<CR>')
+map('n', '<leader>gx', require('open').open_cword)
 map('n', '<leader>rgb', '<cmd>PickColor<CR>')
 map({ 'n', 't', 'v' }, '<C-t>', function() toggle_or_open_terminal() end) -- toggle all terminals
 map('t', '<M-e>', function() open_new_terminal('vertical') end) -- Split terminal

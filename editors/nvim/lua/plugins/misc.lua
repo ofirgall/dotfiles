@@ -322,3 +322,7 @@ require('yanky').setup {
 		on_yank = false,
 	},
 }
+
+-- ofirgall/open.nvim
+require('open').setup {
+}
