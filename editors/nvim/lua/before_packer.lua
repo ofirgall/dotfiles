@@ -15,4 +15,3 @@ vim.g.VM_Insert_hl         = 'TabLineSel' -- Cursor in insert
 vim.g.XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 vim.g.XkbSwitchEnabled = 1
 vim.g.XkbSwitchSkipGhKeys = { 'gh', 'gH' }
-
