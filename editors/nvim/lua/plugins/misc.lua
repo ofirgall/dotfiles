@@ -142,7 +142,7 @@ vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', 'InsertEnter' }, {
 vim.g.tmuxjump_telescope = true
 vim.g.tmuxjump_custom_capture = "~/dotfiles_scripts/inner/_tmuxjump_capture.sh"
 
--- todo-comments.nvim
+-- folke/todo-comments.nvim
 require('todo-comments').setup {
 	signs = false,
 	highlight = {
@@ -152,10 +152,10 @@ require('todo-comments').setup {
 	},
 	colors = {
 		error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
-		warning = { "TSDanger", "DiagnosticWarning", "WarningMsg", "#FBBF24" },
-		info = { "TSWarning", "DiagnosticInfo", "#2563EB" },
-		hint = { "TSFuncBuiltin", "DiagnosticHint", "#10B981" },
-		default = { "TSNumber", "Identifier", "#7C3AED" },
+		warning = { "@text.danger", "DiagnosticWarning", "WarningMsg", "#FBBF24" },
+		info = { "@text.warning", "DiagnosticInfo", "#2563EB" },
+		hint = { "@text.note", "DiagnosticHint", "#10B981" },
+		default = { "@text.note", "#7C3AED" },
 	},
 }
 
