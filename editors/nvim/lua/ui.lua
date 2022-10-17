@@ -177,7 +177,7 @@ if not vim.g.started_by_firenvim then
 		inactive_winbar = winbar,
 	}
 
-	-- bufferline.nvim, must be loaded after color scheme
+	-- akinsho/bufferline.nvim must be loaded after color scheme
 	require('bufferline').setup {
 		options = {
 			separator_style = 'slant',
@@ -190,25 +190,39 @@ if not vim.g.started_by_firenvim then
 		highlights = require('ofirkai.tablines.bufferline').highlights
 	}
 
+	-- rcarriga/nvim-notify
 	require('notify').setup {
 		background_colour = scheme.ui_bg,
 		fps = 60,
 		stages = "slide",
 		timeout = 1000,
-		max_width = 30,
+		max_width = 50,
 		max_height = 20,
 	}
 
-	-- require('noice').setup {
-	-- 	cmdline = {
-	-- 		icons = {
-	-- 			["/"] = { hl_group = "DiagnosticWarn" },
-	-- 			["?"] = { hl_group = "DiagnosticWarn" },
-	-- 			[":"] = { icon = "", hl_group = "DiagnosticInfo", firstc = false },
-	-- 		}
-	-- 	},
-	-- 	popupmenu = {
-	-- 		enabled = false,
-	-- 	}
-	-- }
+	-- folke/noice.nvim
+	require('noice').setup {
+		cmdline = {
+			icons = {
+				["/"] = { hl_group = "DiagnosticWarn" },
+				["?"] = { hl_group = "DiagnosticWarn" },
+				[":"] = { icon = "", hl_group = "DiagnosticSignHint", firstc = false },
+			}
+		},
+		popupmenu = {
+			enabled = false,
+		},
+		views = {
+			cmdline_popup = {
+				border = {
+					style = "none",
+					padding = { 2, 1 },
+				},
+				filter_options = {},
+				win_options = {
+					winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat",
+				},
+			},
+		},
+	}
 end

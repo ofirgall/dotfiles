@@ -286,7 +286,9 @@ local femaco_margin = {
 }
 require('femaco').setup {
 	post_open_float = function(winnr)
-		_ = winnr
+		local ns = api.nvim_create_namespace('FeMaco')
+		api.nvim_set_hl(ns, 'NormalFloat', { bg = require('ofirkai').scheme.background })
+		api.nvim_win_set_hl_ns(winnr, ns)
 	end,
 	float_opts = function(code_block)
 		_ = code_block
@@ -299,7 +301,11 @@ require('femaco').setup {
 			border = 'rounded',
 			zindex = 1,
 		}
-	end
+	end,
+	ensure_newline = function(base_filetype)
+		_ = base_filetype
+		return true
+	end,
 }
 
 -- nvim-neorg/neorg
