@@ -111,7 +111,6 @@ cmp_setup_dict = {
 	}, {
 		{ name = 'spell' },
 		{ name = 'neorg' },
-		{ name = 'git' },
 		{ name = 'path', option = { trailing_slash = true } },
 		all_visible_buffers_source(nil),
 	}),
@@ -145,6 +144,7 @@ cmp.setup.filetype({ 'dap-repl', 'dapui_watches' }, {
 
 cmp.setup.filetype('gitcommit', {
 	sources = {
+		{ name = 'git' },
 		all_visible_buffers_source(nil),
 		{ name = 'spell' },
 	}
