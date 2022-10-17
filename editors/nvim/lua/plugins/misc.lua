@@ -203,8 +203,11 @@ require('go').setup {
 	textobjects = false,
 }
 
--- markdown-preview.nvim
-vim.g.mkdp_auto_close = 0
+-- toppair/peek.nvim
+require('peek').setup {
+}
+vim.api.nvim_create_user_command('MarkdownPreviewOpen', require('peek').open, {})
+vim.api.nvim_create_user_command('MarkdownPreviewClose', require('peek').close, {})
 
 -- leap.nvim
 require('leap').set_default_keymaps()

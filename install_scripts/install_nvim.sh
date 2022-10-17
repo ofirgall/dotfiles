@@ -13,6 +13,10 @@ sudo apt-get install -y dictd dict-wn
 wget http://archive.ubuntu.com/ubuntu/pool/main/d/dict-moby-thesaurus/dict-moby-thesaurus_1.0-6.4_all.deb -P ~/Downloads
 sudo dpkg -i ~/Downloads/dict-moby-thesaurus_1.0-6.4_all.deb
 
+# toppair/peek.nvim
+curl -fsSL https://deno.land/install.sh | sh
+ln -s -f $HOME/.deno/bin/deno $HOME/.local/bin/deno
+
 if -d ~/.local/share/nvim; then
 	echo "Skipping nvim install"
 else

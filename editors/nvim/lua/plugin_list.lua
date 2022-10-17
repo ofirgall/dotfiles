@@ -133,7 +133,6 @@ return require('packer').startup(function()
 	use 'gbprod/yanky.nvim' -- Improve yank experience
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
 	use 'windwp/nvim-autopairs' -- Closes (--' etc.
-	use 'ellisonleao/glow.nvim' -- Markdown preview
 	use 'ntpeters/vim-better-whitespace' -- Whitespace trailing
 	use 'ofirgall/AutoSave.nvim' -- Auto save
 	use 'tiagovla/scope.nvim' -- Scopes buffers for tabpages
@@ -175,11 +174,7 @@ return require('packer').startup(function()
 		tag = "v2.*",
 		requires = { 's1n7ax/nvim-window-picker', tag = 'v1.*' }
 	}
-	use {
-		'iamcco/markdown-preview.nvim', -- Markdown preview
-		run = function() vim.fn['mkdp#util#install']() end,
-		ft = { 'markdown' }
-	}
+	use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }
 
 	-- Improvement Games
 	use 'ThePrimeagen/vim-be-good'
