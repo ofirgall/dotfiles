@@ -102,7 +102,7 @@ return require('packer').startup(function()
 
 	-- Motion --
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
-	use 'machakann/vim-sandwich' -- Sandwich text (<leader>sa action)
+	use 'kylechui/nvim-surround' -- Surround text (action)
 	-- Leap --
 	use {
 		'ggandor/leap.nvim', -- Leap around the code (vimium/easymotion jumps)

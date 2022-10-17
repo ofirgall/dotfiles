@@ -186,28 +186,14 @@ let g:VM_maps['Add Cursor Down'] = '<M-n>'
 let g:VM_maps['Add Cursor Up'] = '<M-p>'
 ]])
 
--- Adding <leader> prefix for sandwich to avoid conflicting with leap.nvim
-vim.g.sandwich_no_default_key_mappings = 1
-local sandwich_opts = {}
--- add
-map({ 'n', 'x', 'o' }, '<leader>sa', '<Plug>(sandwich-add)', sandwich_opts)
--- add current line as a block (convert single line ifs to blocked ifs)
-map('n', '<leader>Sa', 'V<Plug>(sandwich-add)', sandwich_opts)
--- delete
-map('x', '<leader>sd', '<Plug>(sandwich-delete)', sandwich_opts)
-map('n', '<leader>sd', '<Plug>(sandwich-delete-auto)', sandwich_opts)
--- replace
-map('x', '<leader>sr', '<Plug>(sandwich-replace)', sandwich_opts)
-map('n', '<leader>sr', '<Plug>(sandwich-replace-auto)', sandwich_opts)
--- sandwich word
-map('n', '<leader>sw', '<Plug>(sandwich-add)iw', sandwich_opts)
-map('n', '<leader>sW', '<Plug>(sandwich-add)iW', sandwich_opts)
--- Some special cases
-local fast_sandwich_maps = { "'", '"', '`' }
-for _, char in ipairs(fast_sandwich_maps) do
-	map('n', "<leader>" .. char, '<Plug>(sandwich-replace-auto)' .. char, sandwich_opts) -- <leader>{char} to replace sandwich to {char}
+-- Surround words
+map('n', '<leader>sw', '<leader>saiw', { remap = true })
+map('n', '<leader>sW', '<leader>saiW', { remap = true })
+-- Replace qoutes
+local qoutes = { "'", '"', '`' }
+for _, char in ipairs(qoutes) do
+	map('n', "<leader>" .. char, '<leader>srq' .. char, { remap = true }) -- <leader>{char} to replace sandwich to {char}
 end
-map('n', '<leader>scd', 'diw<Plug>(sandwich-delete)(') -- delete convertsion, e.g: int64(a) -> a
 
 -----------------------------------
 --        CODE NAVIGATION        --
