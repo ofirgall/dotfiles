@@ -107,8 +107,8 @@ map({ 'n', 'x' }, 'y', '<Plug>(YankyYank)')
 map({ 'n', 'x' }, 'p', '<Plug>(YankyPutAfter)')
 map({ 'n', 'x' }, 'P', '<Plug>(YankyPutBefore)')
 
-map('n', '<C-[>', '<Plug>(YankyCycleForward)')
-map('n', '<C-]>', '<Plug>(YankyCycleBackward)')
+map('n', '<M-[>', '<Plug>(YankyCycleForward)')
+map('n', '<M-]>', '<Plug>(YankyCycleBackward)')
 
 -----------------------------------
 --             TMUX              --
