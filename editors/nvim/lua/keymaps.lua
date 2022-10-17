@@ -284,9 +284,9 @@ map('n', 'gor', function() split_if_not_exist(false) lsp_references() end) -- Go
 map('n', 'gp', function() require 'telescope.builtin'.diagnostics { bufnr = 0 } end) -- Go to Problems
 map('n', 'gP', require 'telescope.builtin'.diagnostics) -- Go to workspace (P)roblems
 
--- illumante
-map('n', '<C-n>', function() require "illuminate".next_reference { wrap = true } end) -- jump to Next occurrence of var on cursor
-map('n', '<C-p>', function() require "illuminate".next_reference { reverse = true, wrap = true } end) -- jump to Previous occurrence of var on cursor
+-- RRethy/vim-illuminate
+map('n', '<C-n>', function() require "illuminate".goto_next_reference({ wrap = true }) end) -- jump to Next occurrence of var on cursor
+map('n', '<C-p>', function() require "illuminate".goto_prev_reference({ reverse = true, wrap = true }) end) -- jump to Previous occurrence of var on cursor
 
 -- Lsp UI
 map('n', '<F2>', '<cmd>Lspsaga rename<cr>') -- Rename symbos with F2

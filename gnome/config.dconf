@@ -97,7 +97,7 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams', 'kupfer', 'org-gnome-screenshot', 'com-uploadedlobster-peek', 'signal-desktop', 'slack', 'virtualbox', 'snap-store-ubuntu-software-local-file', 'firefox-firefox', 'io-snapcraft-sessionagent', 'teamspeak3-client']
+application-children=['zoom', 'gnome-power-panel', 'sublime-text', 'org-gnome-dejadup', 'spotify-spotify', 'firefox', 'org-gnome-extensions-desktop', 'org-gnome-chromegnomeshell', 'gnome-network-panel', 'slack-slack', 'com-cisco-anyconnect-gui', 'apport-gtk', 'gnome-printers-panel', 'gnome-control-center', 'update-manager', 'com-alacritty-alacritty', 'org-gnome-nautilus', 'autokey-gtk', 'teams-teams', 'kupfer', 'org-gnome-screenshot', 'com-uploadedlobster-peek', 'signal-desktop', 'slack', 'virtualbox', 'snap-store-ubuntu-software-local-file', 'firefox-firefox', 'io-snapcraft-sessionagent', 'teamspeak3-client', 'discord-discord']
 show-banners=true
 
 [org/gnome/desktop/notifications/application/apport-gtk]
@@ -115,6 +115,9 @@ application-id='com.cisco.anyconnect.gui.desktop'
 
 [org/gnome/desktop/notifications/application/com-uploadedlobster-peek]
 application-id='com.uploadedlobster.peek.desktop'
+
+[org/gnome/desktop/notifications/application/discord-discord]
+application-id='discord_discord.desktop'
 
 [org/gnome/desktop/notifications/application/firefox-firefox]
 application-id='firefox_firefox.desktop'
