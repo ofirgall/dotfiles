@@ -53,10 +53,6 @@ curl -s https://api.github.com/repos/sumneko/lua-language-server/releases/latest
 tar -xf $HOME/.local/lua-server/lua-language-server-*.tar.gz -C $HOME/.local/lua-server/
 ln -f -s $HOME/.local/lua-server/bin/lua-language-server $HOME/.local/bin/lua-language-server
 
-# GOLANG
-sudo apt-get install -y golang
-GO111MODULE=on go install golang.org/x/tools/gopls@latest
-
 # Cocumber
 sudo npm install -g @cucumber/language-server
 
@@ -72,3 +68,7 @@ install_ltex_ls()
 }
 
 download_latest_release ~/.local/lsp/ltex-ls valentjn/ltex-ls linux-x64 install_ltex_ls
+
+# GOLANG
+sudo apt-get install -y golang
+GO111MODULE=on go install golang.org/x/tools/gopls@latest
