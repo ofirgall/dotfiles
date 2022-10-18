@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-HOST="${1:-rv1}"
-
-
-tmux split-window -h -l 30% 'ssh -t rv1 "/usr/bin/watch -n0.2 cat /proc/mdstat"'
-tmux split-window -v -l 50% 'ssh -t rv1 "/usr/bin/watch -n0.2 lsblk -s"'
-
-rssh $HOST
