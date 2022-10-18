@@ -129,6 +129,7 @@ return require('packer').startup(function()
 	}
 
 	-- Misc --
+	use 'takac/vim-hardtime' -- Hardcore vim
 	use 'ofirgall/open.nvim'
 	use 'gbprod/yanky.nvim' -- Improve yank experience
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
