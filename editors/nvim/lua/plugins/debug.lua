@@ -94,6 +94,7 @@ local dap_closed = function()
 	dapui.close({})
 	vim.api.nvim_command('tabclose $') -- $(last) is the debug page
 	map('n', '<RightMouse>', '<LeftMouse><cmd>Lspsaga hover_doc<cr>') -- Trigger hover
+	require('format-on-leave').enable()
 end
 
 -- Hooks to dap, opens/cloes dap-ui binds rightlick to evaluate
@@ -101,6 +102,7 @@ dap.listeners.after.event_initialized['dapui_config'] = function()
 	vim.api.nvim_command('$tabnew') -- $(last) is the debug page
 	dapui.open({})
 	map('n', '<RightMouse>', '<LeftMouse><cmd>lua require"dapui".eval()<cr>') -- Trigger hover
+	require('format-on-leave').disable()
 end
 dap.listeners.before.event_terminated['dapui_config'] = function()
 	dap_closed()
