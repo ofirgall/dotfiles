@@ -6,4 +6,4 @@ rm *\.test
 echo "Building..."
 go test -c -gcflags "all=-N -l"
 echo "Delivering..."
-scp *\.test root@$1:~/
+scp *\.test root@$HOST:~/

@@ -57,7 +57,7 @@ dap.configurations.go = {
 
 dap.adapters.go = {
 	type = 'server',
-	host = 'rv1',
+	host = 'rhel8-5.local',
 	port = 2345,
 }
 
