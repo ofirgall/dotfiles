@@ -2,7 +2,10 @@ setw -g xterm-keys on
 set -s escape-time 1 # Faster escape time
 set -sg repeat-time 600 # Increase repeat timeout
 set -s focus-events on
-set monitor-activity off
+
+# Disable activity events "{SESSION} is ready!"
+set -g monitor-activity off
+set -g monitor-bell off
 
 set -g history-limit 5000
 
