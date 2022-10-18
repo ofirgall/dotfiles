@@ -129,6 +129,7 @@ return require('packer').startup(function()
 	}
 
 	-- Misc --
+	use { 'nagy135/typebreak.nvim', requires = 'nvim-lua/plenary.nvim' } -- Type practice from nvim
 	use 'takac/vim-hardtime' -- Hardcore vim
 	use 'ofirgall/open.nvim'
 	use 'gbprod/yanky.nvim' -- Improve yank experience

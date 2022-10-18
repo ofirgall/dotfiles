@@ -154,6 +154,7 @@ map('n', ']d', require('goto-breakpoints').next)
 map('n', '[d', require('goto-breakpoints').prev)
 map('n', '<leader>m', require('mind').open_main)
 map('n', '<leader>e', require('femaco.edit').edit_code_block)
+map('n', '<leader>w', require('typebreak').start) -- <leader>Wpm
 
 -- Spell Suggest
 map('n', '<leader>ss', function()
