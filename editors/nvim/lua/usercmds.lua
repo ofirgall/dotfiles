@@ -3,13 +3,25 @@ local api = vim.api
 local opt = vim.opt
 local opt_local = vim.opt_local
 
+local catch = function(what)
+	return what[1]
+end
+
+local try = function(what)
+	status, result = pcall(what[1])
+	if not status then
+		what[2](result)
+	end
+	return result
+end
+
 api.nvim_create_user_command('CloseAllButCurrent', function()
 	for _, bufnr in pairs(api.nvim_list_bufs()) do
 		if not buf_is_visible(bufnr) then
 			if api.nvim_buf_is_valid(bufnr) then
 				try {
 					function()
-						require('bufdelete').bufdelete(bufnr, true)
+						require('bufdelete').bufwipeout(bufnr, true)
 					end,
 					catch {
 						function()

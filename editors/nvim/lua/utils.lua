@@ -1,3 +1,4 @@
+-- TODO: Change it to module
 if vim.g.started_by_firenvim then
 	do return end
 end
@@ -106,7 +107,7 @@ smart_split = function(direction)
 	end
 end
 
-local buf_is_visible = function(bufnr)
+buf_is_visible = function(bufnr)
 	return api.nvim_buf_is_loaded(bufnr) and vim.fn.bufwinnr(bufnr) > 0
 end
 
@@ -172,18 +173,6 @@ end
 
 center_screen = function()
 	api.nvim_feedkeys('zz', 'n', false)
-end
-
-local catch = function(what)
-	return what[1]
-end
-
-local try = function(what)
-	status, result = pcall(what[1])
-	if not status then
-		what[2](result)
-	end
-	return result
 end
 
 goto_next_diag = function()
