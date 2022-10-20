@@ -25,6 +25,7 @@ end, {})
 api.nvim_create_user_command('CloseBuffersLeft', function()
 	api.nvim_command('BufferLineCloseLeft')
 end, {})
+
 api.nvim_create_user_command('CloseBuffersRight', function()
 	api.nvim_command('BufferLineCloseRight')
 end, {})
@@ -49,3 +50,5 @@ end, {})
 
 
 api.nvim_create_user_command('ClearBreakpoints', require('persistent-breakpoints.api').clear_all_breakpoints, {})
+
+api.nvim_create_user_command('ListKeys', require('telescope.builtin').keymaps, {})
