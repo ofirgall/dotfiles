@@ -1,3 +1,4 @@
+---@diagnostic disable: assign-type-mismatch
 local api = vim.api
 local opt = vim.opt
 
@@ -34,5 +35,15 @@ api.nvim_create_autocmd('FileType', {
 	pattern = { 'gitcommit', 'markdown' },
 	callback = function()
 		vim.opt_local.spell = true
+	end
+})
+
+-- Small quickfix
+local QUICKFIX_HEIGHT = 6
+api.nvim_create_autocmd('FileType', {
+	group = config_autocmds,
+	pattern = { 'qf' },
+	callback = function()
+		api.nvim_win_set_height(0, QUICKFIX_HEIGHT)
 	end
 })

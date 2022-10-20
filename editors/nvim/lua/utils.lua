@@ -186,32 +186,6 @@ local try = function(what)
 	return result
 end
 
-api.nvim_create_user_command('CloseAllButCurrent', function()
-	for _, bufnr in pairs(api.nvim_list_bufs()) do
-		if not buf_is_visible(bufnr) then
-			if api.nvim_buf_is_valid(bufnr) then
-				try {
-					function()
-						require('bufdelete').bufdelete(bufnr, true)
-					end,
-					catch {
-						function()
-							-- print('Failed to delete buffer: ' .. bufnr)
-						end
-					}
-				}
-			end
-		end
-	end
-end, {})
-
-api.nvim_create_user_command('CloseBuffersLeft', function()
-	api.nvim_command('BufferLineCloseLeft')
-end, {})
-api.nvim_create_user_command('CloseBuffersRight', function()
-	api.nvim_command('BufferLineCloseRight')
-end, {})
-
 goto_next_diag = function()
 	local next = vim.diagnostic.get_next()
 	if next == nil then
@@ -259,13 +233,3 @@ end
 git_hist_path = function(node)
 	vim.fn.execute('DiffviewFileHistory ' .. node_relative_path(node))
 end
-
-api.nvim_create_user_command("PrettifyJson", function()
-	api.nvim_exec(":%!python3 -m json.tool --sort-keys --indent 2", false)
-	vim.opt_local.filetype = "jsonc"
-end, {})
-
-api.nvim_create_user_command("CompactJson", function()
-	api.nvim_exec(":%!python3 -m json.tool --compact", false)
-	vim.opt_local.filetype = "jsonc"
-end, {})
