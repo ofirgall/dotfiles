@@ -215,27 +215,8 @@ if not vim.g.started_by_firenvim then
 
 	-- folke/noice.nvim
 	require('noice').setup {
-		cmdline = {
-			icons = {
-				["/"] = { hl_group = "DiagnosticWarn" },
-				["?"] = { hl_group = "DiagnosticWarn" },
-				[":"] = { icon = "", hl_group = "DiagnosticSignHint", firstc = false },
-			}
-		},
 		popupmenu = {
 			enabled = false,
-		},
-		views = {
-			cmdline_popup = {
-				border = {
-					style = "none",
-					padding = { 2, 1 },
-				},
-				filter_options = {},
-				win_options = {
-					winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat",
-				},
-			},
 		},
 	}
 end

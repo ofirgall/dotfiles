@@ -142,10 +142,6 @@ lspconfig.sumneko_lua.setup {
 	},
 }
 
--- j-hui/fidget.nvim
-require('fidget').setup {
-}
-
 -- ofirgall/format-on-leave.nvim
 require('format-on-leave').setup {
 	pattern = { '*.rs', '*.go' }
