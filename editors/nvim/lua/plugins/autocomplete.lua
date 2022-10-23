@@ -172,7 +172,8 @@ require('cmp_git').setup {
 require('cmp_dictionary').setup {
 	dic = {
 		["*"] = { "/usr/share/dict/words" },
-	}
+	},
+	first_case_insensitive = true,
 }
 
 -- https://git.sr.ht/~whynothugo/lsp_lines.nvim

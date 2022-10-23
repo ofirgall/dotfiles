@@ -159,33 +159,43 @@ require('todo-comments').setup {
 	},
 }
 
--- iron.nvim - XXX BROKEN
--- require("iron.core").setup {
--- 	config = {
--- 		should_map_plug = false,
--- 		scratch_repl = true,
--- 		repl_definition = {
--- 			sh = {
--- 				command = {"zsh"}
--- 			}
--- 		},
--- 		repl_open_cmd = 'belowright 15 split',
--- 	},
--- 	keymaps = {
--- 		send_motion = "<space>sc",
--- 		visual_send = "<space>sc",
--- 		send_file = "<space>sf",
--- 		send_line = "<space>sl",
--- 		cr = "<space>s<cr>",
--- 		interrupt = "<space>s<space>",
--- 		exit = "<space>sq",
--- 		clear = "<space>cl",
--- 	},
--- 	highlight = {
--- 		italic = false,
--- 		bold = false
--- 	}
--- }
+-- hkupty/iron.nvim
+require('iron.core').setup {
+	config = {
+		should_map_plug = false,
+		scratch_repl = true,
+		close_window_on_exit = true,
+		repl_definition = {
+			sh = {
+				command = { 'zsh' }
+			},
+			python = {
+				command = { 'ipython3' }
+			}
+		},
+		repl_open_cmd = 'belowright 15 split',
+	},
+	keymaps = {
+		send_motion = '<space>sc',
+		visual_send = '<space>sc',
+		send_file = '<space>sf',
+		send_line = '<space>sl',
+		cr = '<space>s<cr>',
+		interrupt = '<space>s<space>',
+		exit = '<space>sq',
+		clear = '<space>cl',
+	},
+	highlight = {
+		italic = false,
+		bold = false
+	}
+}
+
+api.nvim_create_user_command('IPython', function()
+	require('iron.core').repl_for('python')
+	require('iron.core').focus_on('python')
+	api.nvim_feedkeys('i', 'n', false)
+end, {})
 
 -- nvim-colorizer.lua
 require('colorizer').setup {

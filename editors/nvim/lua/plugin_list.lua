@@ -160,7 +160,7 @@ return require('packer').startup(function()
 	use 'szw/vim-maximizer' -- Maximize windows (splits) in vim
 	use { 'nvim-neorg/neorg', requires = 'nvim-lua/plenary.nvim' } -- .norg plugin better orgmode
 	use { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' } -- review todo in the quickfix list with :Todo..
-	-- use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
+	use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
 	use 'norcalli/nvim-colorizer.lua' -- colorize hexcolor values in buffer
 	use { 'anuvyklack/hydra.nvim', requires = 'anuvyklack/keymap-layer.nvim' }
 	use 'ziontee113/color-picker.nvim' -- color picker
