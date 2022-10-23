@@ -197,6 +197,12 @@ api.nvim_create_user_command('IPython', function()
 	api.nvim_feedkeys('i', 'n', false)
 end, {})
 
+api.nvim_create_user_command('Lua', function()
+	require('iron.core').repl_for('lua')
+	require('iron.core').focus_on('lua')
+	api.nvim_feedkeys('i', 'n', false)
+end, {})
+
 -- nvim-colorizer.lua
 require('colorizer').setup {
 	'*'
