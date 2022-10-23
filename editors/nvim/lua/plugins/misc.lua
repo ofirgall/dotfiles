@@ -371,10 +371,3 @@ require('nvim-surround').setup {
 	},
 	move_cursor = false,
 }
-
--- takac/vim-hardtime
-vim.g.hardtime_default_on = 1
-vim.g.hardtime_showmsg = 1
-vim.g.hardtime_allow_different_key = 1
-vim.g.hardtime_maxcount = 2
-vim.g.hardtime_motion_with_count_resets = 1
