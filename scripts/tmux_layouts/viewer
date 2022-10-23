@@ -2,10 +2,15 @@
 
 HOST="${1:-rhel8-5.local}"
 
+# Sidebar
 tmux split-window -h -l 35% "ssh -t root@$HOST '/usr/bin/watch -n0.2 cat /proc/mdstat'"
 tmux split-window -v -l 66% "ssh -t root@$HOST '/usr/bin/watch -n0.2 lsblk -s -o NAME'"
 tmux split-window -v -l 20% "ssh -t root@$HOST '/usr/bin/watch -n0.2 free -m'"
 
 tmux select-pane -t 1
+# Bottom panel for logs
+tmux split-window -v -l 50% "ssh -t root@$HOST 'cd /var/log/volumez/; zsh'"
 
-rssh root@$HOST
+# Panel to run (top)
+tmux select-pane -t 1
+ssh root@$HOST
