@@ -92,7 +92,7 @@ toggle_term.setup {
 local terms = require('toggleterm.terminal')
 
 toggle_or_open_terminal = function(direction)
-	print("toggle " .. #terms.get_all() .. " hidden " .. #terms.get_all(true))
+	-- print("toggle " .. #terms.get_all() .. " hidden " .. #terms.get_all(true))
 	if #terms.get_all() == 0 then
 		open_new_terminal(direction)
 	else
