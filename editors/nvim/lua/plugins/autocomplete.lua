@@ -105,14 +105,12 @@ cmp_setup_dict = {
 	window = require('ofirkai.plugins.nvim-cmp').window,
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp', priority = 1000 },
+		{ name = 'path', option = { trailing_slash = true }, priority = 500 },
 		{ name = 'crates', priority = 500 },
 		all_visible_buffers_source(150),
 		{ name = 'snippy', priority = 100 },
-	}, {
-		{ name = 'dictionary' },
-		{ name = 'neorg' },
-		{ name = 'path', option = { trailing_slash = true } },
-		all_visible_buffers_source(nil),
+		{ name = 'dictionary', priority = 50 },
+		{ name = 'neorg', priority = 50 },
 	}),
 	performance = {
 		debounce = 30, -- default: 60
