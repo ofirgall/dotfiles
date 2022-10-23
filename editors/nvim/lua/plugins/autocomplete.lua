@@ -109,7 +109,7 @@ cmp_setup_dict = {
 		all_visible_buffers_source(150),
 		{ name = 'snippy', priority = 100 },
 	}, {
-		{ name = 'spell' },
+		{ name = 'dictionary' },
 		{ name = 'neorg' },
 		{ name = 'path', option = { trailing_slash = true } },
 		all_visible_buffers_source(nil),
@@ -146,7 +146,7 @@ cmp.setup.filetype('gitcommit', {
 	sources = {
 		{ name = 'git' },
 		all_visible_buffers_source(nil),
-		{ name = 'spell' },
+		{ name = 'dictionary' },
 	}
 })
 
@@ -168,6 +168,13 @@ cmp.event:on('confirm_done', on_confirm_done_callback)
 
 -- petertriho/cmp-git
 require('cmp_git').setup {
+}
+
+-- uga-rosa/cmp-dictionary
+require('cmp_dictionary').setup {
+	dic = {
+		["*"] = { "/usr/share/dict/words" },
+	}
 }
 
 -- https://git.sr.ht/~whynothugo/lsp_lines.nvim
