@@ -42,7 +42,8 @@ require('dressing').setup {
 				['<C-p>'] = 'HistoryPrev',
 				['<C-n>'] = 'HistoryNext',
 			},
-		}
+		},
+		winhighlight = require('ofirkai.plugins.dressing').winhighlight
 	},
 }
 
@@ -167,15 +168,27 @@ if not vim.g.started_by_firenvim then
 			lualine_b = { { 'branch', icon = '' }, 'diff', 'diagnostics' },
 			lualine_c = {
 				{ 'filename', shorting_target = 0 },
-				{ navic.get_location, cond = navic.is_available },
 			},
-			lualine_x = { { get_current_lsp_server_name, icon = ' LSP:' } },
+			lualine_x = {
+				{
+					function() return ' RECORDING ' .. vim.fn.reg_recording() end,
+					cond = function() return vim.fn.reg_recording() ~= '' end,
+					separator = ' | ',
+				},
+				{ get_current_lsp_server_name, icon = ' LSP:' }
+			},
 			lualine_y = y_section,
 			lualine_z = { { 'filetype', separator = '' }, 'progress' },
 		},
 		winbar = winbar,
 		inactive_winbar = winbar,
 	}
+
+	-- Refresh lualine for recording macros
+	api.nvim_create_autocmd({ 'RecordingEnter', 'RecordingLeave' }, {
+		group = config_autocmds,
+		callback = require('lualine').refresh
+	})
 
 	-- akinsho/bufferline.nvim must be loaded after color scheme
 	require('bufferline').setup {
