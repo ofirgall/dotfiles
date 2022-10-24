@@ -88,6 +88,14 @@ map('n', '<leader>D', '"_D', 'delete without yanking')
 map('n', '<leader>c', '"_c', 'change without yanking')
 map('n', '<leader>C', '"_C', 'change without yanking')
 
+map('n', '<M-y>', function ()
+	yank_line(vim.v.count)
+end)
+
+map('n', '<M-Y>', function ()
+	yank_line(-vim.v.count)
+end)
+
 map('', '<Down>', '<C-e>', 'Down to scroll')
 map('', '<Up>', '<C-y>', 'Up to scroll')
 

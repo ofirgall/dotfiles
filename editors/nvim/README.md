@@ -8,12 +8,11 @@ nvim is my main editor and [much more](https://github.com/ofirgall/learn-nvim/bl
 
 ---
 ## TODO
+nvim - hover stack, move back/forward in the current function over
 ### Important
 * nvim - solve https://github.com/neovim/neovim/issues/18625 to be able to format async
 * nvim - transfer telescope binds to <leader>
 * nvim - integrate flog in diffview (TODOS)
-* nvim - nvimtree relative number
-* nvim - <count>Alt-y for "yank" a relative line and put it in the cursor
 * nvim[rust] - require'rust-tools'.move_item.move_item(up) with ctrl+shift+j/k (requires alacritty setup)
 * nvim - custom textobjects, function name, better call (all call, the function that called)
 ---

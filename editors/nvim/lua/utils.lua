@@ -222,3 +222,11 @@ end
 git_hist_path = function(node)
 	vim.fn.execute('DiffviewFileHistory ' .. node_relative_path(node))
 end
+
+yank_line = function(count)
+	local cursor = api.nvim_win_get_cursor(0)
+	local line_index = cursor[1] + count - 1
+	local lines = api.nvim_buf_get_lines(0, line_index, line_index+1, true)
+
+	api.nvim_buf_set_lines(0, cursor[1], cursor[1], true, lines)
+end
