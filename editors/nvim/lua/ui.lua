@@ -62,7 +62,10 @@ require('nvim-tree').setup {
 				{ key = 'gh', action = 'git history in path', action_cb = git_hist_path },
 				{ key = '<C-o>', action = 'split' },
 			}
-		}
+		},
+		relativenumber = true,
+		number = false,
+		signcolumn = 'no'
 	},
 	renderer = {
 		symlink_destination = false

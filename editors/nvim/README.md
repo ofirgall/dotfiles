@@ -8,13 +8,9 @@ nvim is my main editor and [much more](https://github.com/ofirgall/learn-nvim/bl
 
 ---
 ## TODO
-### Uncatagorized
-* nvim - leap in nvim-tree
 ### Important
 * nvim - solve https://github.com/neovim/neovim/issues/18625 to be able to format async
-* nvim - code compiler to volumez machines
 * nvim - transfer telescope binds to <leader>
-* nvim - try to default register to the void register and <leader> to actually copy
 * nvim - integrate flog in diffview (TODOS)
 * nvim - nvimtree relative number
 * nvim - <count>Alt-y for "yank" a relative line and put it in the cursor
