@@ -415,8 +415,9 @@ local keys_by_ft = {
 	-- Floggraph
 	['floggraph'] = function(bufid)
 		map_buffer(bufid, 'n', '<C-d>', flog_diff_current, 'Floggraph: show diff from head to current')
+		map_buffer(bufid, 'x', '<C-d>', '<Esc><cmd>lua flog_diff_current_visual()<cr>', 'Floggraph: show diff of selection')
+		map_buffer(bufid, 'x', '<C-s>', '<Esc><cmd>lua flog_diff_current_visual()<cr>', 'Floggraph: show diff of selection')
 		map_buffer(bufid, 'n', '<C-s>', flog_show_current, 'Floggraph: show current in diffview')
-		-- TODO: visual selection of multiple commits to diff/show
 	end
 }
 keymaps_autocmd_group = api.nvim_create_augroup('KeyMaps', {})

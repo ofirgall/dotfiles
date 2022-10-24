@@ -12,11 +12,9 @@ nvim - hover stack, move back/forward in the current function over
 ### Important
 * nvim - solve https://github.com/neovim/neovim/issues/18625 to be able to format async
 * nvim - transfer telescope binds to <leader>
-* nvim - integrate flog in diffview (TODOS)
 * nvim[rust] - require'rust-tools'.move_item.move_item(up) with ctrl+shift+j/k (requires alacritty setup)
 * nvim - custom textobjects, function name, better call (all call, the function that called)
 ---
-* nvim - hover on the function on current line, probably requires treesitter
 * nvim - lsp lines put a special color in a error line to empahsise it isn't a code line
 * nvim - git commit ft should take source from all buffers & git tree tickets
 * nvim - function hydra, copy name to +y or y
