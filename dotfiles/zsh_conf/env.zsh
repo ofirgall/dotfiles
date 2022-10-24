@@ -3,6 +3,9 @@
 #		 ENV VARS
 # ---------------------------
 
+# Skip global compinit before addons
+skip_global_compinit=1
+
 # Check if remote
 export IS_REMOTE=false
 if test -f "$HOME/.remote_indicator"; then

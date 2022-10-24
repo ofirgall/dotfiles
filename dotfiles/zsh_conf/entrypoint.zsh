@@ -18,7 +18,6 @@ autoload -Uz _zinit
 # ---------------------------
 # Source the actual .zshrc files
 # ---------------------------
-source $HOME/.zsh_conf/env.zsh # load env.zsh first
 source $HOME/.zsh_conf/aliases.zsh
 source $HOME/.zsh_conf/settings.zsh
 source $HOME/.zsh_conf/design.zsh
@@ -29,6 +28,7 @@ source $HOME/.zsh_conf/hooks.zsh
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
+compinit # Build completions
 
 # ---------------------------
 # Source post_init.zsh at the end

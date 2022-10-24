@@ -10,6 +10,8 @@
 - link:
     ~/.zshrc:
         path: dotfiles/zsh_conf/entrypoint.zsh
+    ~/.zshenv:
+        path: dotfiles/zsh_conf/env.zsh
     ~/.zsh_conf:
         path: dotfiles/zsh_conf
     ~/.profile:
