@@ -74,48 +74,22 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 ## TODO
 ### Important
-* nvim - solve https://github.com/neovim/neovim/issues/18625 to be able to format async
-* nvim - code compiler to volumez machines
-* nvim - transfer telescope binds to <leader>
-* nvim - try to default register to the void register and <leader> to actually copy
-* nvim - integrate flog in diffview (TODOS)
 * git - script for setting upstream remote in a fork
 * git - script for changing http to ssh + set git user
 * git - change the default git user to personal, and workspace to other
-* nvim - nvimtree relative number
-* nvim - <count>Alt-y for "yank" a relative line and put it in the cursor
-* nvim[rust] - require'rust-tools'.move_item.move_item(up) with ctrl+shift+j/k (requires alacritty setup)
 ---
-* nvim - hover on the function on current line, probably requires treesitter
-* nvim - lsp lines put a special color in a error line to empahsise it isn't a code line
-* nvim - git commit ft should take source from all buffers & git tree tickets
-* nvim - function hydra, copy name to +y or y
 * tmux - remove notifcation color in nova, to recreate attach to same session from two other windows (tmux link-window) and run stuff on the linked window
-* nvim - lsp signature return value in virtual
 * tmux - get all the command lines that ran in this window and let you choose from fzf pop up
 * tmux - plugin to add relative line numbers in copy mode
-* nvim - config illuminate new version
 * playgrounds - create them on first install, like `cg` choose a language and open nvim in left side of tmux and right side leave a pane for run/compile
-* nvim - custom textobjects, function name, better call (all call, the function that called)
-* nvim - nvim-cmp sources from all buffers/git tree in gitcommit ft
-* nvim - cmp-jira (https://gitlab.com/msvechla/cmp-jira)
-* nvim - split_if_not_exist, dont add it to the jump list
 * tmux - control window size like nvim
 
 ## TODO Takes time
 * tmux - relative numbers in copy mode
-* nvim - leap in nvim-tree
-* nvim - git-messanger support multiple lines (maybe like gh)
 * tmux - Neo-Oli/tmux-text-macros integrate tmux fzf menu
 * tmux - Neo-Oli/tmux-text-macros better syntax for custom-macros
-* nvim - autosuspend Lsp/nvim if not active
-* nvim - on save session ignore more file like flog diffview fugitive and such
 * zellij
-* firenvim - paste
-* nvim - fix neogen next/prev (collides with snippy (tab/s-tab))
 * git squash - if master/base branch moved forward can't find the ref
-* nvim - build & run + quickfix errors
-* nvim - try distant one day
 * tuis to try - slack, mail, calander, jira
 * tmux-go
 * when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
@@ -124,6 +98,3 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * tmux - better session workflow, session per feature:repo, fzf for features -> fzf for repo
 * convert todos to tasks/issues
 
-
-## Improvements Ideas
-* nvim? - signature renaming using tree sitter and LSP
