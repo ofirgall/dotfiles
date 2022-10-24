@@ -47,3 +47,12 @@ api.nvim_create_autocmd('FileType', {
 		api.nvim_win_set_height(0, QUICKFIX_HEIGHT)
 	end
 })
+
+-- Auto set .tmux filetype
+api.nvim_create_autocmd('BufEnter', {
+	group = config_autocmds,
+	pattern = '*.tmux',
+	callback = function(events)
+		api.nvim_buf_set_option(events.buf, 'filetype', 'tmux')
+	end
+})
