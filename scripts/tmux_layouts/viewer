@@ -11,6 +11,12 @@ tmux select-pane -t 1
 # Bottom panel for logs
 tmux split-window -v -l 50% "ssh -t root@$HOST 'cd /var/log/volumez/; zsh'"
 
+# Rename
+CURR_SESSION=$(tmux display-message -p '#S')
+tmux rename-window "$CURR_SESSION-viewer"
+# Link to `viewer` session
+tmux link-window -t viewer
+
 # Panel to run (top)
 tmux select-pane -t 1
 ssh root@$HOST
