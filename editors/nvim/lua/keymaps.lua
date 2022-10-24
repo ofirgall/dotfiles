@@ -88,11 +88,11 @@ map('n', '<leader>D', '"_D', 'delete without yanking')
 map('n', '<leader>c', '"_c', 'change without yanking')
 map('n', '<leader>C', '"_C', 'change without yanking')
 
-map('n', '<M-y>', function ()
+map('n', '<M-y>', function()
 	yank_line(vim.v.count)
 end)
 
-map('n', '<M-Y>', function ()
+map('n', '<M-Y>', function()
 	yank_line(-vim.v.count)
 end)
 
@@ -209,38 +209,26 @@ end
 -----------------------------------
 --        CODE NAVIGATION        --
 -----------------------------------
-local find_current_file = function()
-	local current_file = vim.fn.expand('%:t:r')
-	require("telescope.builtin").find_files({
-		default_text = current_file,
-		hidden = true,
-		follow = true,
-	})
-end
-
-map('n', 'KR', '<cmd>Telescope resume<cr>', 'Resume last telescope')
-map('n', 'KL', function() require("telescope.builtin").find_files({ hidden = true, follow = true }) end, 'Find files')
+-- Utils
 map('n', '<leader>t', find_current_file, 'find files with the current file (use to find _test fast)')
-map('n', 'Kd',
-	function() require("telescope.builtin").find_files({ hidden = true, follow = true,
-			default_text = vim.fn.expand("<cword>") })
-	end, 'find files (ctrl+p) starting with current word')
-map('v', 'KL',
-	'<Esc><cmd>lua require("telescope.builtin").find_files({hidden=true, follow=true, default_text=get_visual_text()})<cr>'
-	, 'find files text from visual')
-map('n', 'KJ', live_grep, 'search in all files (fuzzy finder)')
-map('v', 'KJ', '<Esc><cmd>lua live_grep({}, "v")<cr>', 'search in all files (default text is from visual)')
-map('n', 'KD', function() live_grep({ default_text = vim.fn.expand("<cword>") }) end,
-	'Search in all files with current word inserted')
-map('n', 'KF', ':set opfunc=LiveGrepRawOperator<CR>g@', 'Search in all files with word from move operator')
-vim.cmd("function! LiveGrepRawOperator(...) \n lua live_grep({}, 'n') \n endfunction") -- used by `KF`
-map('n', 'Kjj',
-	function() live_grep({ default_text = '-g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*" -F "' }) end,
-	'Search in all files in your current directory')
-map('n', 'Kjd',
-	function() live_grep({ default_text = vim.fn.expand("<cword>") ..
-			' -g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*"' })
-	end, 'Search in all files in your current directory + with your current word')
+map('n', '<leader>fr', '<cmd>Telescope resume<cr>', 'Find resume')
+
+-- Find files
+map('n', '<leader>ff', find_files, 'Find file')
+map('x', '<leader>ff', '<Esc><cmd>lua find_files("v")<cr>', 'find file, text from visual')
+map('n', '<leader>fcf', function() find_files('cwrod') end, 'Find files with current word')
+
+-- Find word
+map('n', '<leader>fw', live_grep, 'search in all files (fuzzy finder)')
+map('v', '<leader>fw', '<Esc><cmd>lua live_grep({}, "v")<cr>', 'search in all files (default text is from visual)')
+map('n', '<leader>fcw', function() live_grep({}, "cword") end, 'Find current word')
+map('n', '<leader>fcW', function() live_grep({}, "cWORD") end, 'Find current word')
+map('n', '<leader>fmw', ':set opfunc=LiveGrepRawOperator<CR>g@', 'Find word with movement')
+vim.cmd("function! LiveGrepRawOperator(...) \n lua live_grep({}, 'n') \n endfunction") -- used by `<leader>fmw`
+
+-- Find in current dir
+map('n', '<leader>fcd', live_grep_current_dir, 'Find in current dir')
+map('n', '<leader>fcdw', function() live_grep_current_dir(vim.fn.expand("<cword>")) end, 'Find in current dir current word')
 
 
 -----------------------------------
@@ -248,7 +236,7 @@ map('n', 'Kjd',
 -----------------------------------
 -- Builtin LSP Binds
 map('n', 'gD', vim.lsp.buf.declaration, 'Go to Declaration')
-map('n', '<leader>f', function() vim.lsp.buf.format({ async = true }) end, 'Format')
+map('n', '<leader>F', function() vim.lsp.buf.format({ async = true }) end, 'Format')
 
 -- Telescope LSP Binds
 map('n', 'gd', goto_def, 'Go to Definition')
@@ -313,7 +301,7 @@ map('n', '<F2>', '<cmd>Lspsaga rename<cr>', 'Rename symbos with F2')
 map('n', '<leader><F2>', '*:%s///g<left><left>', 'Rename current word with <leader>F2')
 map('x', '<F2>', '"hy:%s/<C-r>h//g<left><left>', 'Rename visual')
 map('n', '<F4>', '<cmd>Lspsaga code_action<cr>', 'Code action with F4')
-map('n', 'KK', '<cmd>Lspsaga hover_doc<cr>', 'Trigger hover (KJ is fast to use)')
+map('n', 'K', '<cmd>Lspsaga hover_doc<cr>', 'Trigger hover')
 map('n', '<RightMouse>', '<LeftMouse><cmd>Lspsaga hover_doc<cr>', 'Trigger hover')
 map('n', '<leader>i', '<cmd>Neogen<cr>', 'document function')
 map('n', '<leader>l', require('lsp_lines').toggle, 'show Problem')
@@ -386,7 +374,8 @@ map('n', 'gq', '<cmd>tabclose<cr>', 'Close tabpage')
 map('n', '<F5>', require 'dap'.continue, 'Debug: continue')
 map('n', '<F6>', require 'dap'.terminate, 'Debug: terminate')
 map('n', '<F9>', require('persistent-breakpoints.api').toggle_breakpoint, 'Debug: Toggle breakpoint')
-map('n', '<leader><F9>', require('persistent-breakpoints.api').set_conditional_breakpoint, 'Debug: toggle conditional breakpoint')
+map('n', '<leader><F9>', require('persistent-breakpoints.api').set_conditional_breakpoint,
+	'Debug: toggle conditional breakpoint')
 
 map('n', '<F10>', function() require 'dap'.step_over() center_screen() end, 'Debug: step over')
 map('n', '<F11>', function() require 'dap'.step_into() center_screen() end, 'Debug: step into')
@@ -404,7 +393,8 @@ local keys_by_ft = {
 	-- Golang
 	['go'] = function(bufid)
 		map_buffer(bufid, 'n', '<leader>e', '<cmd>GoIfErr<cr>', 'Golang: create if err')
-		map_buffer(bufid, 'n', '<leader>ln', '<cmd>s/Println/Printf/<cr>$F"' .. add_new_line, 'Golang: change println to printf')
+		map_buffer(bufid, 'n', '<leader>ln', '<cmd>s/Println/Printf/<cr>$F"' .. add_new_line,
+			'Golang: change println to printf')
 	end,
 	-- Rust
 	['rust'] = function(bufid)
