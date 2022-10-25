@@ -47,10 +47,6 @@ require('dressing').setup {
 	},
 }
 
--- nvim-treesitter/nvim-treesitter-context
-require('treesitter-context').setup {
-}
-
 -- kyazdani42/nvim-tree.lua
 require('nvim-tree').setup {
 	view = {
