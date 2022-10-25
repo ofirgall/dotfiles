@@ -174,6 +174,11 @@ if not vim.g.started_by_firenvim then
 					cond = function() return vim.fn.reg_recording() ~= '' end,
 					separator = ' | ',
 				},
+				{
+					'searchcount',
+					separator = ' | ',
+					icon = '',
+				},
 				{ get_current_lsp_server_name, icon = ' LSP:' }
 			},
 			lualine_y = y_section,
