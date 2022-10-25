@@ -172,11 +172,11 @@ if not vim.g.started_by_firenvim then
 				{
 					function() return ' RECORDING ' .. vim.fn.reg_recording() end,
 					cond = function() return vim.fn.reg_recording() ~= '' end,
-					separator = ' | ',
+					separator = '|',
 				},
 				{
 					'searchcount',
-					separator = ' | ',
+					separator = '|',
 					icon = '',
 				},
 				{ get_current_lsp_server_name, icon = ' LSP:' }
