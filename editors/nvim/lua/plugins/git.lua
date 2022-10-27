@@ -12,13 +12,13 @@ gs.setup {
 		-- Navigation
 		map('n', ']c', function()
 			if vim.wo.diff then return ']c' end
-			vim.schedule(function() gs.next_hunk() end)
+			vim.schedule(function() gs.next_hunk({navigation_message = false}) end)
 			return '<Ignore>'
 		end, { expr = true })
 
 		map('n', '[c', function()
 			if vim.wo.diff then return '[c' end
-			vim.schedule(function() gs.prev_hunk() end)
+			vim.schedule(function() gs.prev_hunk({navigation_message = false}) end)
 			return '<Ignore>'
 		end, { expr = true })
 		-- Actions
@@ -182,7 +182,7 @@ diffview_hydra = Hydra({
 			if vim.wo.diff then
 				api.nvim_feedkeys(']c', 'n', false)
 			else
-				gitsigns.next_hunk()
+				gitsigns.next_hunk({navigation_message = false})
 			end
 			center_screen()
 		end, { expr = true } },
@@ -190,18 +190,18 @@ diffview_hydra = Hydra({
 			if vim.wo.diff then
 				api.nvim_feedkeys('[c', 'n', false)
 			else
-				gitsigns.prev_hunk()
+				gitsigns.prev_hunk({navigation_message = false})
 			end
 			center_screen()
 		end, { expr = true } },
 		{ 's', function()
 			gitsigns.stage_hunk(nil)
-			gitsigns.next_hunk()
+			gitsigns.next_hunk({navigation_message = false})
 			center_screen()
 		end, { silent = true } },
 		{ 'r', function()
 			gitsigns.reset_hunk(nil)
-			gitsigns.next_hunk()
+			gitsigns.next_hunk({navigation_message = false})
 			center_screen()
 		end, { silent = true } },
 		{ 'R', ':Gitsigns reset_buffer<CR>', { silent = true } },
