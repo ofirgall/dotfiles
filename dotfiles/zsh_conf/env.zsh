@@ -52,6 +52,6 @@ if type nvim &> /dev/null; then
 	export EDITOR='nvim'
 
 	# nvim as man viewer
-	export MANPAGER='nvim +Man! .'
+	export MANPAGER='nvim +Man!'
 	export MANWIDTH=999
 fi

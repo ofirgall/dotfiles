@@ -63,6 +63,7 @@ require 'diffview'.setup {
 			["<Escape>"] = cb('close'),
 			["gf"] = cb("goto_file_edit"),
 			["<M-n>"] = cb("focus_files"),
+			["<M-m>"] = actions.toggle_files,
 		},
 		file_history_panel = {
 			["q"] = cb('close'),
