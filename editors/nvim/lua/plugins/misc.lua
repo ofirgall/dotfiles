@@ -248,9 +248,11 @@ require('debugprint').setup {
 
 -- nguyenvukhang/nvim-toggler
 require('nvim-toggler').setup {
-	['to'] = 'from',
-	['failed'] = 'succeeded',
-	['before'] = 'after,'
+	inverses = {
+		['to'] = 'from',
+		['failed'] = 'succeeded',
+		['before'] = 'after',
+	}
 }
 
 -- mind.nvim
