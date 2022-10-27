@@ -111,6 +111,9 @@ return require('packer').startup(function()
 		}
 	}
 
+	-- Navigation --
+	use { 'ThePrimeagen/harpoon', requires = 'nvim-lua/plenary.nvim' } -- Mark frequent files and get to there quickly
+
 	-- Design & UI --
 	use 'ofirgall/ofirkai.nvim' -- my colorscheme
 	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' } -- Status line

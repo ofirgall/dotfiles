@@ -10,6 +10,8 @@ nvim is my main editor and [much more](https://github.com/ofirgall/learn-nvim/bl
 ## TODO
 nvim - hover stack, move back/forward in the current function over
 ### Important
+* nvim - CloseAll, CloseAllButCurrent, only close buffers in the current tabpage
+* nvim - git hydra + diffview close binds
 * nvim - solve https://github.com/neovim/neovim/issues/18625 to be able to format async
 * nvim[rust] - require'rust-tools'.move_item.move_item(up) with ctrl+shift+j/k (requires alacritty setup)
 * nvim - custom textobjects, function name, better call (all call, the function that called)

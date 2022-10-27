@@ -162,9 +162,14 @@ map('t', '<M-e>', function() open_new_terminal('vertical') end, 'Split terminal'
 map('t', '<M-q>', '<cmd>bd!<CR>', 'Close terminal')
 map('n', ']d', require('goto-breakpoints').next, 'Goto next breakpoint')
 map('n', '[d', require('goto-breakpoints').prev, 'Goto prev breakpoint')
-map('n', '<leader>m', require('mind').open_main, 'Open mind.nvim')
+map('n', '<leader>M', require('mind').open_main, 'Open mind.nvim')
 map('n', '<leader>e', require('femaco.edit').edit_code_block, 'Edit markdown codeblocks')
 map('n', '<leader>w', require('typebreak').start, 'typebreak') -- <leader>Wpm
+
+-- ThePrimeagen/harpoon
+map('n', '<leader>m', require('harpoon.mark').add_file, 'Add file to harpoon')
+map('n', '<leader>A', require('telescope').extensions.harpoon.marks, 'Jump to harpoon file')
+map('n', '<leader>a', require("harpoon.ui").toggle_quick_menu, 'Jump to harpoon file')
 
 -- Spell Suggest
 map('n', '<leader>ss', function()

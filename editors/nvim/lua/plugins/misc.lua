@@ -250,6 +250,7 @@ require('debugprint').setup {
 require('nvim-toggler').setup {
 	['to'] = 'from',
 	['failed'] = 'succeeded',
+	['before'] = 'after,'
 }
 
 -- mind.nvim
