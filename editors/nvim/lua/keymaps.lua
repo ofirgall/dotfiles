@@ -69,8 +69,6 @@ map('n', 'N', 'Nzz', 'Auto recenter after N')
 map('n', '<F3>', '<cmd>let @/ = "not_gonna_find_this_______"<cr>', 'Disable find highlight')
 map('n', '<C-o>', '<C-o>zz', 'Recenter after C-o')
 map('n', '<C-i>', '<C-i>zz', 'Recenter after C-i')
-map('n', '<C-u>', '<C-u>zz', 'recenter after scroll down')
-map('n', '<C-d>', '<C-d>zz', 'recenter after scroll down')
 map('v', '<Enter>', 'y', 'yank with Enter in visual mode')
 map('i', '<C-k>', '<C-O>o', 'Insert new line in insert mode')
 map('', '<leader>y', '"+y', 'Start copy to os clipboard E.g: <leader>yy will copy current line to os')
@@ -233,7 +231,8 @@ vim.cmd("function! LiveGrepRawOperator(...) \n lua live_grep({}, 'n') \n endfunc
 
 -- Find in current dir
 map('n', '<leader>fcd', live_grep_current_dir, 'Find in current dir')
-map('n', '<leader>fcdw', function() live_grep_current_dir(vim.fn.expand("<cword>")) end, 'Find in current dir current word')
+map('n', '<leader>fcdw', function() live_grep_current_dir(vim.fn.expand("<cword>")) end,
+	'Find in current dir current word')
 
 
 -----------------------------------
@@ -306,8 +305,6 @@ map('n', '<F2>', '<cmd>Lspsaga rename<cr>', 'Rename symbos with F2')
 map('n', '<leader><F2>', '*:%s///g<left><left>', 'Rename current word with <leader>F2')
 map('x', '<F2>', '"hy:%s/<C-r>h//g<left><left>', 'Rename visual')
 map('n', '<F4>', '<cmd>Lspsaga code_action<cr>', 'Code action with F4')
-map('n', 'K', vim.lsp.buf.hover, 'Trigger hover')
-map('n', '<RightMouse>', '<LeftMouse><cmd>sleep 100m<cr><cmd>lua vim.lsp.buf.hover()<cr>', 'Trigger hover')
 map('n', '<leader>i', '<cmd>Neogen<cr>', 'document function')
 map('n', '<leader>l', require('lsp_lines').toggle, 'show Problem')
 map('n', '<leader>L', '<cmd>Lspsaga show_line_diagnostics<CR>', 'show Problem')
@@ -315,6 +312,18 @@ map('n', ']p', goto_next_diag, 'next Problem')
 map('n', '[p', goto_prev_diag, 'prev Problem')
 map('n', ']g', goto_next_diag, 'next Problem')
 map('n', '[g', goto_prev_diag, 'prev Problem')
+map('n', 'K', vim.lsp.buf.hover, 'Trigger hover')
+map('n', '<RightMouse>', '<LeftMouse><cmd>sleep 100m<cr><cmd>lua vim.lsp.buf.hover()<cr>', 'Trigger hover')
+map('n', '<c-u>', function()
+	if not require('noice.lsp').scroll(-4) then
+		return '<c-u>zz'
+	end
+end, 'Scroll up in hover', { silent = true, expr = true })
+map('n', '<c-d>', function()
+	if not require('noice.lsp').scroll(4) then
+		return '<c-d>zz'
+	end
+end, 'Scroll down in hover', { silent = true, expr = true })
 
 -----------------------------------
 --             GIT               --

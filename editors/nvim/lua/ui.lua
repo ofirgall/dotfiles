@@ -90,10 +90,6 @@ require('lspsaga').init_lsp_saga({
 	symbol_in_winbar = {
 		enable = false
 	},
-	scroll_in_preview = {
-		scroll_down = '<C-d>',
-		scroll_up = '<C-u>',
-	},
 })
 
 if not vim.g.started_by_firenvim then

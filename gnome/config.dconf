@@ -282,7 +282,7 @@ active-plugins=['filebrowser', 'modelines', 'spell', 'docinfo', 'sort']
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///home/ofirg/.local/lib/python3.10/site-packages/brotab'
+virtual-root='file:///home/ofirg/workspace/awesome-vim.nvim/.github/workflows'
 
 [org/gnome/gedit/preferences/editor]
 scheme='Yaru-dark'
