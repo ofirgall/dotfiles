@@ -115,7 +115,7 @@ return require('packer').startup(function()
 	use { 'ThePrimeagen/harpoon', requires = 'nvim-lua/plenary.nvim' } -- Mark frequent files and get to there quickly
 
 	-- Design & UI --
-	use 'ofirgall/ofirkai.nvim' -- my colorscheme
+	use {'ofirgall/ofirkai.nvim', branch = 'exp' } -- my colorscheme
 	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' } -- Status line
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent line helper
 	use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' } -- Tabline

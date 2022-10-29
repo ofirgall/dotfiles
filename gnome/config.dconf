@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=39
-launch-time=int64 1665472505
+launch-count=40
+launch-time=int64 1667032089
 show-details=true
 window-height=503
 window-width=645
@@ -19,7 +19,7 @@ window-width=540
 
 [com/ubuntu/update-notifier]
 no-show-notifications=true
-release-check-time=uint32 1664878509
+release-check-time=uint32 1667032081
 
 [com/uploadedlobster/peek]
 persist-window-geometry=(349, 183, 794, 593)
