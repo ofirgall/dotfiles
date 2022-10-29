@@ -355,6 +355,10 @@ require('yanky').setup {
 require('open').setup {
 }
 
+-- ofirgall/open-jira.nvim
+require('open-jira').setup {
+}
+
 -- kylechui/nvim-surround
 require('nvim-surround').setup {
 	keymaps = {

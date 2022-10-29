@@ -129,9 +129,12 @@ return require('packer').startup(function()
 		}
 	}
 
+	-- Openers --
+	use 'ofirgall/open.nvim'
+	use 'ofirgall/open-jira.nvim'
+
 	-- Misc --
 	use { 'nagy135/typebreak.nvim', requires = 'nvim-lua/plenary.nvim' } -- Type practice from nvim
-	use 'ofirgall/open.nvim'
 	use 'gbprod/yanky.nvim' -- Improve yank experience
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
 	use 'windwp/nvim-autopairs' -- Closes (--' etc.
