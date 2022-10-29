@@ -222,5 +222,26 @@ if not vim.g.started_by_firenvim then
 		popupmenu = {
 			enabled = false,
 		},
+		lsp = {
+			signature = {
+				enabled = false -- I prefer to use ray-x/lsp_signature.nvim with minimal design
+			},
+			override = {
+				-- Override `vim.lsp.buf.hover` and `nvim-cmp` doc formatter with `noice` doc formatter.
+				['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+				['vim.lsp.util.stylize_markdown'] = true,
+				['cmp.entry.get_documentation'] = true,
+			},
+		},
+		routes = {
+			{
+				-- Disable search count virtual text
+				filter = {
+					event = 'msg_show',
+					kind = 'search_count',
+				},
+				opts = { skip = true },
+			},
+		},
 	}
 end

@@ -93,7 +93,7 @@ end
 local dap_closed = function()
 	dapui.close({})
 	vim.api.nvim_command('tabclose $') -- $(last) is the debug page
-	map('n', '<RightMouse>', '<LeftMouse><cmd>Lspsaga hover_doc<cr>') -- Trigger hover
+	map('n', '<RightMouse>', '<LeftMouse><cmd>sleep 100m<cr><cmd>lua vim.lsp.buf.hover()<cr>', 'Trigger hover')
 	require('format-on-leave').enable()
 end
 
