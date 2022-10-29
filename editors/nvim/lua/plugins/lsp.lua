@@ -170,3 +170,7 @@ require('illuminate').configure {
 	modes_denylist = { 'i' },
 }
 
+-- Disable update diagnostic while inserting
+vim.diagnostic.config({
+	update_in_insert = false
+})
