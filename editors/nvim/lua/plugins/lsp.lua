@@ -156,6 +156,7 @@ end
 
 lspconfig.ltex.setup {
 	filetypes = { 'bib', 'markdown', 'org', 'plaintex', 'rst', 'rnoweb', 'tex' },
+	autostart = false,
 	settings = {
 		ltex = {
 			dictionary = {
