@@ -66,8 +66,12 @@ return require('packer').startup(function()
 	-- use { 'yioneko/nvim-yati', requires = 'nvim-treesitter/nvim-treesitter' } -- Better auto-indent atm -- TODO: trying treesitter native indentation
 
 	use 'numToStr/Comment.nvim' -- Comments
-	use 'nvim-treesitter/nvim-treesitter-textobjects' -- Movements base on treesitter
 	use 'phelipetls/jsonpath.nvim' -- Added json path winbar component
+
+	-- Textobjects --
+	use 'nvim-treesitter/nvim-treesitter-textobjects' -- Textobjects base on treesitter
+	use { 'Julian/vim-textobj-variable-segment', requires = 'kana/vim-textobj-user' } -- iv/av: foo_bar_baz = foo, bar, baz text objects
+	use { 'D4KU/vim-textobj-chainmember', requires = 'kana/vim-textobj-user' } -- im/am: foo.bar().baz() = foo, bar(), baz()
 
 	-- Telescope --
 	use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' } -- Fuzzy finder with alot of integration
@@ -116,7 +120,7 @@ return require('packer').startup(function()
 	use { 'ThePrimeagen/harpoon', requires = 'nvim-lua/plenary.nvim' } -- Mark frequent files and get to there quickly
 
 	-- Design & UI --
-	use {'ofirgall/ofirkai.nvim', branch = 'exp' } -- my colorscheme
+	use { 'ofirgall/ofirkai.nvim', branch = 'exp' } -- my colorscheme
 	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' } -- Status line
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent line helper
 	use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' } -- Tabline
