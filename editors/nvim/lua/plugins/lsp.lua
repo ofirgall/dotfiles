@@ -88,15 +88,6 @@ lspconfig.cmake.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
-lspconfig.gopls.setup {
-	on_attach = lsp_on_attach,
-	capabilities = capabilities,
-	settings = {
-		gopls = {
-			usePlaceholders = true
-		}
-	}
-}
 lspconfig.cucumber_language_server.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
@@ -175,3 +166,28 @@ require('illuminate').configure {
 vim.diagnostic.config({
 	update_in_insert = false
 })
+
+-- ray-x/go.nvim
+require('go').setup {
+	-- No keymaps
+	lsp_keymaps = false,
+	dap_debug_keymap = false,
+	textobjects = false,
+
+	lsp_cfg = {
+		capabilities = capabilities,
+		settings = {
+			gopls = {
+				analyses = {
+					ST1003 = false, -- Disable https://staticcheck.io/docs/checks#ST1003
+				}
+			}
+		}
+	},
+	lsp_on_attach = lsp_on_attach,
+	lsp_diag_hdlr = false, -- Disable go.nvim diagnostics viewer
+	lsp_inlay_hints = {
+		enable = true,
+		show_parameter_hints = false,
+	}
+}

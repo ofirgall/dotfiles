@@ -407,7 +407,7 @@ local keys_by_ft = {
 	-- Golang
 	['go'] = function(bufid)
 		map_buffer(bufid, 'n', '<leader>e', '<cmd>GoIfErr<cr>', 'Golang: create if err')
-		map_buffer(bufid, 'n', '<leader>ln', '<cmd>s/Println/Printf/<cr>$F"' .. add_new_line,
+		map_buffer(bufid, 'n', '<leader>fln', '<cmd>s/Println/Printf/<cr>$F"' .. add_new_line,
 			'Golang: change println to printf')
 	end,
 	-- Rust

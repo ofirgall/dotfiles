@@ -212,13 +212,6 @@ require('colorizer').setup {
 require('color-picker').setup {
 }
 
--- go.nvim
-require('go').setup {
-	lsp_keymaps = false,
-	dap_debug_keymap = false,
-	textobjects = false,
-}
-
 -- toppair/peek.nvim
 require('peek').setup {
 }
