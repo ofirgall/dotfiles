@@ -118,6 +118,8 @@ return require('packer').startup(function()
 	-- Operators --
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
 	use 'tommcdo/vim-exchange' -- Exchange texts operator with `cx`
+	use 'AndrewRadev/splitjoin.vim' -- split one liner to multi with gS, gJ to join
+	use { 'AckslD/nvim-revJ.lua', requires = { 'kana/vim-textobj-user', 'sgur/vim-textobj-parameter' } } -- Reverse join (split)
 
 	-- Navigation --
 	use { 'ThePrimeagen/harpoon', requires = 'nvim-lua/plenary.nvim' } -- Mark frequent files and get to there quickly
@@ -157,7 +159,6 @@ return require('packer').startup(function()
 	use 'christoomey/vim-tmux-navigator' -- Navigate in panes integrated in vim and tmux
 	use 'lyokha/vim-xkbswitch' -- Switch to english for normal mode
 	use { 'michaelb/sniprun', run = 'bash ./install.sh' } -- Run snippets in your code
-	use { 'AckslD/nvim-revJ.lua', requires = { 'kana/vim-textobj-user', 'sgur/vim-textobj-parameter' } } -- Reverse join (split)
 	use 'nacro90/numb.nvim' -- Peek at line number before jump
 	use { 'danymat/neogen', requires = 'nvim-treesitter/nvim-treesitter' } -- Doc generator
 	use 'jbyuki/venn.nvim' -- Draw ascii boxes and arrows, start the mode with :Draw, exit with escape, HJKL for arrows, f for box (inside <C-v>)
