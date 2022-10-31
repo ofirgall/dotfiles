@@ -382,6 +382,17 @@ map('n', 'g0', '<cmd>tabnext10<cr>', 'Go to tabpage #10')
 map('n', 'gq', '<cmd>tabclose<cr>', 'Close tabpage')
 map('n', '<M-t>', '<cmd>tabnew %<cr>', 'New tabpage')
 
+
+-----------------------------------
+--            DIAL               --
+-----------------------------------
+map('n', '<C-a>', require('dial.map').inc_normal())
+map('n', '<C-x>', require('dial.map').dec_normal())
+map('v', '<C-a>', require('dial.map').inc_visual())
+map('v', '<C-x>', require('dial.map').dec_visual())
+map('v', 'g<C-a>', require('dial.map').inc_gvisual())
+map('v', 'g<C-x>', require('dial.map').dec_gvisual())
+
 -----------------------------------
 --          DEBUGGING            --
 -----------------------------------

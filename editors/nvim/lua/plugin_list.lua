@@ -121,6 +121,7 @@ return require('packer').startup(function()
 	use 'tommcdo/vim-exchange' -- Exchange texts operator with `cx`
 	use 'AndrewRadev/splitjoin.vim' -- split one liner to multi with gS, gJ to join
 	use { 'AckslD/nvim-revJ.lua', requires = { 'kana/vim-textobj-user', 'sgur/vim-textobj-parameter' } } -- Reverse join (split)
+	use 'monaqa/dial.nvim' -- Enhance C-X/A
 
 	-- Navigation --
 	use { 'ThePrimeagen/harpoon', requires = 'nvim-lua/plenary.nvim' } -- Mark frequent files and get to there quickly
