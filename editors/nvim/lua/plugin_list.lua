@@ -105,7 +105,6 @@ return require('packer').startup(function()
 	use 'lewis6991/impatient.nvim' -- Faster startuptime
 
 	-- Motion --
-	use 'tpope/vim-repeat' -- Extending repeat (.) action
 	use 'kylechui/nvim-surround' -- Surround text (action)
 	-- Leap --
 	use {
@@ -115,6 +114,10 @@ return require('packer').startup(function()
 			'ggandor/flit.nvim', -- Highlight results from f/F/t/T and let you go back forward with the same keys
 		}
 	}
+
+	-- Operators --
+	use 'tpope/vim-repeat' -- Extending repeat (.) action
+	use 'tommcdo/vim-exchange' -- Exchange texts operator with `cx`
 
 	-- Navigation --
 	use { 'ThePrimeagen/harpoon', requires = 'nvim-lua/plenary.nvim' } -- Mark frequent files and get to there quickly
