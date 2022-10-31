@@ -66,7 +66,6 @@ return require('packer').startup(function()
 	use 'nvim-treesitter/playground' -- TreeSitter helper to customize
 	-- use { 'yioneko/nvim-yati', requires = 'nvim-treesitter/nvim-treesitter' } -- Better auto-indent atm -- TODO: trying treesitter native indentation
 
-	use 'numToStr/Comment.nvim' -- Comments
 	use 'phelipetls/jsonpath.nvim' -- Added json path winbar component
 
 	-- Textobjects --
@@ -117,6 +116,7 @@ return require('packer').startup(function()
 	}
 
 	-- Operators --
+	use 'numToStr/Comment.nvim' -- Comments
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
 	use 'tommcdo/vim-exchange' -- Exchange texts operator with `cx`
 	use 'AndrewRadev/splitjoin.vim' -- split one liner to multi with gS, gJ to join
