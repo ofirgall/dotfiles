@@ -234,7 +234,7 @@ require('flit').setup {
 require('scope').setup {
 }
 
--- debugprint.nvim
+-- andrewferrier/debugprint.nvim
 require('debugprint').setup {
 	print_tag = '--- DEBUG PRINT ---'
 }

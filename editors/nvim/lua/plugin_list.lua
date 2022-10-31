@@ -94,6 +94,7 @@ return require('packer').startup(function()
 	use { 'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap' } -- UI for debugging
 	use 'Weissle/persistent-breakpoints.nvim' -- Keep breakpoints after nvim restart
 	use 'ofirgall/goto-breakpoints.nvim' -- Cycle breakpoints with ]d/[d
+	use 'andrewferrier/debugprint.nvim' -- make debug prints fast
 
 	-- Startup Time --
 	use 'dstein64/vim-startuptime' -- Profile startuptime
@@ -168,7 +169,6 @@ return require('packer').startup(function()
 	use { 'anuvyklack/hydra.nvim', requires = 'anuvyklack/keymap-layer.nvim' }
 	use 'ziontee113/color-picker.nvim' -- color picker
 	use 'rbong/vim-buffest' -- edit macros and registers
-	use 'andrewferrier/debugprint.nvim' -- make debug prints fast
 	use 'nguyenvukhang/nvim-toggler' -- Invert words like true<->false, on<->off with <leader>i
 	use 'ofirgall/title.nvim' -- Title generator
 	use 'johmsalas/text-case.nvim' -- Smart substitute
