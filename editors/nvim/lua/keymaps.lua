@@ -219,7 +219,7 @@ map('n', '<leader>fr', '<cmd>Telescope resume<cr>', 'Find resume')
 -- Find files
 map('n', '<leader>ff', find_files, 'Find file')
 map('x', '<leader>ff', '<Esc><cmd>lua find_files("v")<cr>', 'find file, text from visual')
-map('n', '<leader>fcf', function() find_files('cwrod') end, 'Find files with current word')
+map('n', '<leader>fcf', function() find_files('cword') end, 'Find files with current word')
 
 -- Find word
 map('n', '<leader>fw', live_grep, 'search in all files (fuzzy finder)')
