@@ -380,6 +380,7 @@ map('n', 'g8', '<cmd>tabnext8<cr>', 'Go to tabpage #8')
 map('n', 'g9', '<cmd>tabnext9<cr>', 'Go to tabpage #9')
 map('n', 'g0', '<cmd>tabnext10<cr>', 'Go to tabpage #10')
 map('n', 'gq', '<cmd>tabclose<cr>', 'Close tabpage')
+map('n', '<M-t>', '<cmd>tabnew %<cr>', 'New tabpage')
 
 -----------------------------------
 --          DEBUGGING            --
