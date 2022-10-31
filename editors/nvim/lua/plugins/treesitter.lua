@@ -18,7 +18,7 @@ require('nvim-treesitter.configs').setup {
 	ignore_install = ignore_install_langs,
 	highlight = {
 		enable = true,
-		disable = { 'help' }
+		disable = { 'help', 'gitrebase' }
 	},
 	indent = {
 		enable = true
