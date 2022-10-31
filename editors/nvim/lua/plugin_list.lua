@@ -39,6 +39,7 @@ return require('packer').startup(function()
 			'uga-rosa/cmp-dictionary',
 			'petertriho/cmp-git',
 			'rcarriga/cmp-dap',
+			'f3fora/cmp-spell',
 		}
 	}
 

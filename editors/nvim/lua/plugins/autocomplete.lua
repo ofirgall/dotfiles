@@ -108,7 +108,7 @@ cmp_setup_dict = {
 		{ name = 'path', option = { trailing_slash = true }, priority = 500 },
 		all_visible_buffers_source(150),
 		{ name = 'snippy', priority = 100 },
-		-- { name = 'dictionary', priority = 50 },
+		{ name = 'spell', priority = 50 }, -- Spell here because we can toggle it easily
 		{ name = 'neorg', priority = 50 },
 	}),
 	performance = {
