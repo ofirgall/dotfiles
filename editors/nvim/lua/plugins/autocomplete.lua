@@ -106,10 +106,9 @@ cmp_setup_dict = {
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp', priority = 1000 },
 		{ name = 'path', option = { trailing_slash = true }, priority = 500 },
-		{ name = 'crates', priority = 500 },
 		all_visible_buffers_source(150),
 		{ name = 'snippy', priority = 100 },
-		{ name = 'dictionary', priority = 50 },
+		-- { name = 'dictionary', priority = 50 },
 		{ name = 'neorg', priority = 50 },
 	}),
 	performance = {
@@ -145,6 +144,13 @@ cmp.setup.filetype('gitcommit', {
 		{ name = 'git' },
 		all_visible_buffers_source(nil),
 		{ name = 'dictionary' },
+	}
+})
+
+cmp.setup.filetype('toml', {
+	sources = {
+		{ name = 'crates', priority = 500 },
+		all_visible_buffers_source(nil),
 	}
 })
 

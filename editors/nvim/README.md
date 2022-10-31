@@ -7,8 +7,11 @@ nvim is my main editor and [much more](https://github.com/ofirgall/learn-nvim/bl
 ![nvim Screenshot](../../media/nvim/preview.png)
 
 ---
+
 ## TODO
-nvim - hover stack, move back/forward in the current function over
+* nvim - Install gh.nvim and octo.nvim and write all this todos as issues
+* nvim - noice messages filter
+* nvim - hover stack, move back/forward in the current function over
 ### Important
 * nvim - CloseAll, CloseAllButCurrent, only close buffers in the current tabpage
 * nvim - git hydra + diffview close binds
