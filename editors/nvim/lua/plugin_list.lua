@@ -53,6 +53,7 @@ return require('packer').startup(function()
 	use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' -- show diagnostics as virtual lines
 	use 'ofirgall/format-on-leave.nvim' -- Format the code when leaving the buffer.
 	use 'saecki/crates.nvim' -- "LSP" for `Cargo.toml`
+	use 'simrat39/symbols-outline.nvim' -- Tree view for symbols
 
 	-- Language Specific --
 	use 'simrat39/rust-tools.nvim' -- Rust tools

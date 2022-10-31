@@ -194,3 +194,41 @@ require('go').setup {
 		highlight = 'InlayHints', -- TODO: try something different
 	}
 }
+
+require('symbols-outline').setup {
+	show_numbers = true,
+	show_relative_numbers = true,
+	keymaps = {
+		goto_location = 'o',
+		focus_location = '<Cr>',
+	},
+	-- TODO: remove when https://github.com/simrat39/symbols-outline.nvim/issues/185 is resolved
+	symbols = {
+		File = { hl = "@text.uri" },
+		Module = { hl = "@namespace" },
+		Namespace = { hl = "@namespace" },
+		Package = { hl = "@namespace" },
+		Class = { hl = "@type" },
+		Method = { hl = "@method" },
+		Property = { hl = "@method" },
+		Field = { hl = "@field" },
+		Constructor = { hl = "@constructor" },
+		Enum = { hl = "@type" },
+		Interface = { hl = "@type" },
+		Function = { hl = "@function" },
+		Variable = { hl = "@constant" },
+		Constant = { hl = "@constant" },
+		String = { hl = "@string" },
+		Number = { hl = "@number" },
+		Boolean = { hl = "@boolean" },
+		Array = { hl = "@constant" },
+		Object = { hl = "@type" },
+		Key = { hl = "@type" },
+		Null = { hl = "@type" },
+		EnumMember = { hl = "@field" },
+		Struct = { hl = "@type" },
+		Event = { hl = "@type" },
+		Operator = { hl = "@operator" },
+		TypeParameter = { hl = "@parameter" },
+	},
+}

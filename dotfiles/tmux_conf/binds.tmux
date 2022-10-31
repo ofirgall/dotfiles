@@ -198,7 +198,7 @@ unbind -T copy-mode-vi MouseDragEnd1Pane
 # -------------------------
 ##### TMUX-THUMBS #####
 # Copy fast with Alt+s
-bind -n M-s thumbs-pick
+bind -n M-s if-shell "$is_nvim" "send-keys M-s" 'thumbs-pick'
 
 ##### TMUX-JUMP #####
 # Tmux (like acejump or vimium) with ALT+shift+s
