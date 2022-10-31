@@ -350,6 +350,7 @@ require('open').setup {
 
 -- ofirgall/open-jira.nvim
 require('open-jira').setup {
+	url = 'https://volumez.atlassian.net/browse/'
 }
 
 -- kylechui/nvim-surround
