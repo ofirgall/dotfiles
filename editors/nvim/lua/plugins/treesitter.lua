@@ -79,4 +79,8 @@ require('nvim-treesitter.configs').setup {
 			},
 		},
 	},
+	-- andymass/vim-matchup
+	matchup = {
+		enable = true
+	}
 }

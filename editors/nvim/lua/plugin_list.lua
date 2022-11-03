@@ -69,6 +69,7 @@ return require('packer').startup(function()
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use 'nvim-treesitter/playground' -- TreeSitter helper to customize
 	-- use { 'yioneko/nvim-yati', requires = 'nvim-treesitter/nvim-treesitter' } -- Better auto-indent atm -- TODO: trying treesitter native indentation
+	use 'andymass/vim-matchup' -- Enhance `%` actions
 
 	use 'phelipetls/jsonpath.nvim' -- Added json path winbar component
 

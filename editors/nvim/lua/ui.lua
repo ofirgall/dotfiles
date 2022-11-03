@@ -241,3 +241,6 @@ if not vim.g.started_by_firenvim then
 		},
 	}
 end
+
+-- andymass/vim-matchup
+vim.g.matchup_matchparen_enabled = 0
