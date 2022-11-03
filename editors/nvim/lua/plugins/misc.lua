@@ -125,20 +125,6 @@ require('guess-indent').setup {}
 -- vim-maximizer
 vim.g.maximizer_default_mapping_key = '<M-Z>'
 
--- trld.nvim
-require('trld').setup {
-	auto_cmds = false,
-}
-vim.api.nvim_create_autocmd('CursorHold', {
-	pattern = '*',
-	callback = function() TRLDShow() end
-})
-
-vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', 'InsertEnter' }, {
-	pattern = '*',
-	callback = function() TRLDHide() end
-})
-
 -- tmuxjump.vim
 vim.g.tmuxjump_telescope = true
 vim.g.tmuxjump_custom_capture = "~/dotfiles_scripts/inner/_tmuxjump_capture.sh"

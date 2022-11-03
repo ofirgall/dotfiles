@@ -48,7 +48,6 @@ return require('packer').startup(function()
 	use 'RRethy/vim-illuminate' -- Mark word on cursor (ctrl+n/p to move across refs)
 	use 'ray-x/lsp_signature.nvim' -- Signature hint while typing
 	use 'onsails/lspkind-nvim' -- Adding sweet ui for kind (function/var/method)
-	use 'Mofiqul/trld.nvim' -- Show diagnostics in the top right corner
 	use 'SmiteshP/nvim-navic' -- Shows context in status line (with lsp)
 	use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' -- show diagnostics as virtual lines
 	use 'ofirgall/format-on-leave.nvim' -- Format the code when leaving the buffer.
