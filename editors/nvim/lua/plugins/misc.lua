@@ -84,7 +84,8 @@ toggle_term.setup {
 	shade_terminals = false,
 	highlights = {
 		Normal = {
-			link = 'NvimTreeNormal'
+			guibg = '#000000',
+			guifg = '#ffffff',
 		}
 	}
 }
