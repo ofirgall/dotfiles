@@ -154,6 +154,10 @@ cmp.setup.filetype('toml', {
 	}
 })
 
+-- ray-x/navigator.lua, No filetypes for guihua
+cmp.setup.filetype('guihua', {})
+cmp.setup.filetype('guihua_rust', {})
+
 -- add pair when accepting autocomplete
 -- windwp/nvim-autopairs
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')

@@ -3,8 +3,10 @@ local api = vim.api
 require('Comment').setup {
 }
 
+-- windwp/nvim-autopairs
 require('nvim-autopairs').setup {
 	check_ts = true,
+	disable_filetype = { 'TelescopePrompt' , 'guihua', 'guihua_rust', 'clap_input' },
 	-- enable_moveright = false,
 }
 
