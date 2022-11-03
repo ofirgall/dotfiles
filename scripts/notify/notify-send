@@ -3,5 +3,5 @@
 if command -v powershell.exe &> /dev/null; then
 	powershell.exe $(wslpath -m ~/dotfiles_scripts/notify/windows_notify.ps1) $@
 else
-	notify-send.sh -f $@
+	notify-send.sh $@
 fi
