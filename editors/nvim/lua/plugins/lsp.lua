@@ -250,7 +250,7 @@ require 'navigator'.setup {
 		disable_lsp = 'all',
 
 		diagnostic = {
-			underline = false,
+			underline = true,
 			virtual_text = false,
 		},
 		diagnostic_virtual_text = false,
