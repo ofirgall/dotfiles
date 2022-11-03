@@ -145,6 +145,7 @@ return require('packer').startup(function()
 			'hrsh7th/nvim-cmp',
 		}
 	}
+	use 'nvim-zh/colorful-winsep.nvim' -- Highlight current window seperator
 
 	-- Openers --
 	use 'ofirgall/open.nvim'
