@@ -173,6 +173,7 @@ vim.diagnostic.config({
 require('go').setup {
 	-- No keymaps
 	lsp_keymaps = false,
+	lsp_codelens = false,
 	dap_debug_keymap = false,
 	textobjects = false,
 
