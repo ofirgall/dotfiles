@@ -246,9 +246,9 @@ end
 vim.g.matchup_matchparen_enabled = 0
 
 -- nvim-zh/colorful-winsep.nvim
-require('colorful-winsep').setup {
-	highlight = {
-		guibg = scheme.background,
-		guifg = scheme.vert_split_fg_active
-	},
-}
+-- require('colorful-winsep').setup {
+-- 	highlight = {
+-- 		guibg = scheme.background,
+-- 		guifg = scheme.vert_split_fg_active
+-- 	},
+-- }
