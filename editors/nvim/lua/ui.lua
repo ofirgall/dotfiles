@@ -243,7 +243,14 @@ if not vim.g.started_by_firenvim then
 end
 
 -- andymass/vim-matchup
-vim.g.matchup_matchparen_enabled = 0
+-- Disable matchup higlights, use the default of vim
+api.nvim_create_autocmd('FileType', {
+	group = config_autocmds,
+	pattern = "*",
+	callback = function()
+		vim.b.matchup_matchparen_enabled = 0
+	end
+})
 
 -- nvim-zh/colorful-winsep.nvim
 -- require('colorful-winsep').setup {
