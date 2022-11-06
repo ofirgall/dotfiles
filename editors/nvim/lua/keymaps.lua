@@ -410,8 +410,9 @@ map('n', '<F11>', function() require 'dap'.step_into() center_screen() end, 'Deb
 map('n', '<F12>', function() require 'dap'.step_out() center_screen() end, 'Debug: set out')
 
 map('n', '<leader>rp', require 'dap'.repl.open, 'Debug: open repl')
+map('n', '<leader>rc', require 'dap'.run_to_cursor, 'Debug: Run to cursor')
 
-map('n', '<leader>k', require 'dapui'.eval, 'Devug: evaluate')
+map('n', '<leader>k', require 'dapui'.eval, 'Debug: evaluate')
 
 -----------------------------------
 --         File Specific         --
