@@ -23,6 +23,7 @@ opt.mouse = 'a' -- Enable mouse when guest are using my nvim
 opt.signcolumn = 'yes:1' -- Enable 1 signs in the column
 opt.cmdheight = 0
 opt.report = 2147483647 -- Don't report yanked/deleted lines
+opt.diffopt:append('linematch:60')
 
 if vim.fn.has('wsl') == 1 then
 	vim.g.clipboard = {
