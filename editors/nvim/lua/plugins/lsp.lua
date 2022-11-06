@@ -263,7 +263,7 @@ require 'navigator'.setup {
 		diagnostic_err = '',
 		diagnostic_warn = '',
 		diagnostic_info = '',
-		diagnostic_hint = '',
+		diagnostic_hint = '',
 
 		-- Warnings
 		diagnostic_head_severity_1 = '',
