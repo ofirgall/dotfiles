@@ -292,7 +292,6 @@ end
 map('n', 'gs', function() require 'telescope.builtin'.lsp_document_symbols({ fname_width = 100 }) end, 'Go Symbols')
 map('n', 'gS', require 'telescope.builtin'.lsp_dynamic_workspace_symbols, 'Go workspace Symbols')
 map('n', 'gr', lsp_references, 'Go to References')
-map('n', '<leader>gr', require('navigator.reference').async_ref, 'Go to References with navigator')
 map('n', 'gvr', function() split_if_not_exist(true) lsp_references() end, 'Go to References in Vsplit')
 map('n', 'gxr', function() split_if_not_exist(false) lsp_references() end, 'Go to References in Xsplit')
 map('n', 'gor', function() split_if_not_exist(false) lsp_references() end, 'Go to References xsplit')

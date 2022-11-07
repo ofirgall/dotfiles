@@ -22,8 +22,6 @@ local lsp_on_attach = function(client, bufnr)
 	require('lsp_signature').on_attach(lsp_signature_cfg)
 	-- SmiteshP/nvim-navic
 	require('nvim-navic').attach(client, bufnr)
-	-- ray-x/navigator.lua
-	require('navigator.lspclient.mapping').setup({ bufnr = bufnr, client = client })
 end
 
 if not NO_SUDO then
@@ -236,67 +234,4 @@ require('symbols-outline').setup {
 		Operator = { hl = "@operator" },
 		TypeParameter = { hl = "@parameter" },
 	},
-}
-
-require 'navigator'.setup {
-	-- No extra setups
-	default_mapping = false,
-	signature_help_cfg = nil,
-	lsp = {
-		code_action = { enable = false, sign = false, },
-		code_lens_action = { enable = false, sign = false },
-		format_on_save = false,
-		document_highlight = false, -- TODO
-		hover = false,
-
-		disable_lsp = 'all',
-
-		diagnostic = {
-			underline = true,
-			virtual_text = false,
-		},
-		diagnostic_virtual_text = false,
-		diagnostic_update_in_insert = false,
-		disply_diagnostic_qf = false,
-		diagnostic_scrollbar_sign = false,
-	},
-	icons = {
-		diagnostic_head = '🐛',
-		diagnostic_err = '',
-		diagnostic_warn = '',
-		diagnostic_info = '',
-		diagnostic_hint = '',
-
-		-- Warnings
-		diagnostic_head_severity_1 = '',
-		diagnostic_head_severity_2 = '',
-		diagnostic_head_severity_3 = '',
-
-		-- TODO
-		diagnostic_head_description = '👹',
-		diagnostic_virtual_text = '🦊',
-		diagnostic_file = '🚑',
-
-		-- TODO
-		value_changed = '📝',
-		value_definition = '🐶🍡', -- it is easier to see than 🦕
-
-		-- TODO
-		match_kinds = {
-			var = ' ', -- "👹", -- Vampaire
-			method = 'ƒ ', --  "🍔", -- mac
-			['function'] = ' ', -- "🤣", -- Fun
-			parameter = '  ', -- Pi
-			associated = '🤝',
-			namespace = '🚀',
-			type = ' ',
-			field = '🏈',
-			module = '📦',
-			flag = '🎏',
-		},
-		treesitter_defult = '🌲',
-		doc_symbols = '',
-	},
-
-	transparency = 100,
 }
