@@ -230,8 +230,8 @@ map('n', '<leader>fw', live_grep, 'search in all files (fuzzy finder)')
 map('v', '<leader>fw', '<Esc><cmd>lua live_grep({}, "v")<cr>', 'search in all files (default text is from visual)')
 map('n', '<leader>fcw', function() live_grep({}, "cword") end, 'Find current word')
 map('n', '<leader>fcW', function() live_grep({}, "cWORD") end, 'Find current word')
-map('n', '<leader>fmw', ':set opfunc=LiveGrepRawOperator<CR>g@', 'Find word with movement')
-vim.cmd("function! LiveGrepRawOperator(...) \n lua live_grep({}, 'n') \n endfunction") -- used by `<leader>fmw`
+map('n', '<leader>fm', ':set opfunc=LiveGrepRawOperator<CR>g@', 'Find with movement')
+vim.cmd("function! LiveGrepRawOperator(...) \n lua live_grep({}, 'n') \n endfunction") -- used by `<leader>fm`
 
 -- Find in current dir
 map('n', '<leader>fcd', live_grep_current_dir, 'Find in current dir')
