@@ -185,10 +185,14 @@ map('n', '<leader>sy', function()
 		prompt_title = '',
 		layout_config = {
 			height = 0.4,
-			width = 0.60
+			width = 0.60,
 		}
 	})
 end, 'Synonyms')
+
+-- AndrewRadev/splitjoin.vim
+map('n', '<leader>sj', '<cmd>SplitjoinJoin<cr>', 'Splitjoin Join line')
+map('n', '<leader>sJ', '<cmd>SplitjoinSplit<cr>', 'Splitjoin Split line')
 
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 -- Add cursor down/up Alt+n/p (like ctrl+down/up in subl)

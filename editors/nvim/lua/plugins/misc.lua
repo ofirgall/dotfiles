@@ -364,3 +364,8 @@ require('nvim-surround').setup {
 
 -- ntpeters/vim-better-whitespace
 vim.g.better_whitespace_filetypes_blacklist = { 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive', 'toggleterm' }
+
+-- AndrewRadev/splitjoin.vim
+vim.g.splitjoin_split_mapping = ''
+vim.g.splitjoin_join_mapping = ''
+vim.g.splitjoin_quiet = 1
