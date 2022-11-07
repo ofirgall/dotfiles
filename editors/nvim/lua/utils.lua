@@ -212,7 +212,7 @@ yank_line = function(count)
 	local line_index = cursor[1] + count - 1
 	local lines = api.nvim_buf_get_lines(0, line_index, line_index + 1, true)
 
-	api.nvim_buf_set_lines(0, cursor[1], cursor[1], true, lines)
+	api.nvim_buf_set_lines(0, cursor[1]-1, cursor[1], true, lines)
 end
 
 ------------------------------
