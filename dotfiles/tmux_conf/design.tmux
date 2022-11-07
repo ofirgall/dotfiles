@@ -68,7 +68,7 @@ set -g @nova-segment-cpu-colors "$active_tab_color"
 set -g @batt_icon_status_charging '↑'
 set -g @batt_icon_status_discharging '↓'
 set -g @batt_icon_status_charged '↑'
-set -g @nova-segment-battery "#{battery_icon_status} #{battery_percentage}"
+set -g @nova-segment-battery "#(~/.tmux/plugins/tmux-battery/scripts/battery_icon_status.sh) #(~/.tmux/plugins/tmux-battery/scripts/battery_percentage.sh)"
 set -g @nova-segment-battery-colors "$active_tab_color"
 
 set -g @nova-segment-layout "#(~/.tmux/plugins/tmux-keyboard-layout/scripts/get_keyboard_layout.sh)"
