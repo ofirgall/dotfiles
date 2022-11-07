@@ -166,7 +166,8 @@ require('illuminate').configure {
 
 -- Disable update diagnostic while inserting
 vim.diagnostic.config({
-	update_in_insert = false
+	update_in_insert = false,
+	virtual_lines = false, -- Start lsp_lines disabled as default
 })
 
 -- ray-x/go.nvim

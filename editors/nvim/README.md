@@ -13,6 +13,7 @@ nvim is my main editor and [much more](https://github.com/ofirgall/learn-nvim/bl
 * nvim - noice messages filter
 * nvim - hover stack, move back/forward in the current function over
 * flit - case sensitivity
+* nvim - Toggle lsp lines enables virtual text and vise versa
 ### Important
 * nvim - CloseAll, CloseAllButCurrent, only close buffers in the current tabpage
 * nvim - git hydra + diffview close binds
