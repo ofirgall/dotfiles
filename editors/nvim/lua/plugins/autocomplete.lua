@@ -115,11 +115,7 @@ cmp_setup_dict = {
 		debounce = 30, -- default: 60
 		throttle = 15, -- default: 30
 	},
-	-- Auto select the first item
-	preselect = cmp.PreselectMode.None,
-	completion = {
-		completeopt = 'menu,menuone',
-	},
+	preselect = cmp.PreselectMode.None, -- Auto select the first item
 }
 
 cmp.setup(cmp_setup_dict)
