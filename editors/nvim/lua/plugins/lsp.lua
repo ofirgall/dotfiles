@@ -193,7 +193,7 @@ require('go').setup {
 	lsp_inlay_hints = {
 		enable = true,
 		show_parameter_hints = false,
-		other_hints_prefix = '',
+		other_hints_prefix = '  ',
 		highlight = 'InlayHints', -- TODO: try something different
 	}
 }

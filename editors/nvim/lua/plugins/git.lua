@@ -1,7 +1,7 @@
 local api = vim.api
 local gs = require('gitsigns')
 gs.setup {
-	sign_priority = 10,
+	sign_priority = 9,
 	on_attach = function(bufnr)
 		local function map(mode, l, r, opts)
 			opts = opts or { silent = true }
