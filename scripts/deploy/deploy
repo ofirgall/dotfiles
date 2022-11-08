@@ -10,6 +10,6 @@ else
 fi
 
 echo ""
-echo "------------------------------"
+toilet --gay "DONE" --font=mono9
 echo "Press any key to continue..."
 read -n 1
