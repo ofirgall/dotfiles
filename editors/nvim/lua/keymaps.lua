@@ -311,7 +311,7 @@ map('n', '<leader><F2>', '*:%s///g<left><left>', 'Rename current word with <lead
 map('x', '<F2>', '"hy:%s/<C-r>h//g<left><left>', 'Rename visual')
 map('n', '<F4>', '<cmd>Lspsaga code_action<cr>', 'Code action with F4')
 map('n', '<leader>i', '<cmd>Neogen<cr>', 'document function')
-map('n', '<leader>l', require('lsp_lines').toggle, 'show Problem')
+map('n', '<leader>l', toggle_lsp_diagnostics, 'Toggle lsp diagnostics')
 map('n', '<leader>L', '<cmd>Lspsaga show_line_diagnostics<CR>', 'show Problem')
 map('n', ']p', goto_next_diag, 'next Problem')
 map('n', '[p', goto_prev_diag, 'prev Problem')

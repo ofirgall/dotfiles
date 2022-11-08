@@ -162,10 +162,16 @@ require('illuminate').configure {
 	modes_denylist = { 'i' },
 }
 
+require('lsp_lines').setup {
+}
+
 -- Disable update diagnostic while inserting
 vim.diagnostic.config({
 	update_in_insert = false,
-	virtual_lines = false, -- Start lsp_lines disabled as default
+
+	-- Start virtual text and lines disabled
+	virtual_lines = false,
+	virtual_text = { severity = vim.diagnostic.severity.ERROR },
 })
 
 -- ray-x/go.nvim

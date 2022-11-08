@@ -279,3 +279,20 @@ local deployTerminal = Terminal:new({ cmd = 'deploy', dir = '%:p:h' })
 function deploy()
 	deployTerminal:toggle()
 end
+
+-- Disable virtual text and enables lsp lines and vise versa
+toggle_lsp_diagnostics = function()
+	local new_lines_value = not vim.diagnostic.config().virtual_lines
+	local virtual_text = nil
+
+	if new_lines_value == false then
+		virtual_text = { severity = vim.diagnostic.severity.ERROR }
+	else
+		virtual_text = false
+	end
+
+	vim.diagnostic.config({
+		virtual_lines = new_lines_value,
+		virtual_text = virtual_text,
+	})
+end

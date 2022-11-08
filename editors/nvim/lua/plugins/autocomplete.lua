@@ -190,14 +190,3 @@ require('cmp_dictionary').setup {
 	},
 	first_case_insensitive = true,
 }
-
--- https://git.sr.ht/~whynothugo/lsp_lines.nvim
--- Disable builtin diagnostic
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-	vim.lsp.diagnostic.on_publish_diagnostics, {
-	virtual_text = false
-}
-)
-
-require('lsp_lines').setup {
-}
