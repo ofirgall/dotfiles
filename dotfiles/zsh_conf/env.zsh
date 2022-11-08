@@ -42,7 +42,7 @@ export GOROOT=/usr/local/go
 export GOPATH=~/go/
 export CGO_ENABLED=0
 
-export PATH=~/.local/bin:~/dotfiles_scripts/notify:~/dotfiles_scripts/misc:~/dotfiles_scripts/inner:~/dotfiles_scripts/git:~/dotfiles_scripts/tmux_layouts/:$GOPATH/bin:$GOROOT/bin:$PATH
+export PATH=~/.local/bin:~/dotfiles_scripts/notify:~/dotfiles_scripts/misc:~/dotfiles_scripts/inner:~/dotfiles_scripts/deploy/:~/dotfiles_scripts/git:~/dotfiles_scripts/tmux_layouts/:$GOPATH/bin:$GOROOT/bin:$PATH
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 

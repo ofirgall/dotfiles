@@ -152,7 +152,7 @@ map('n', 'gX', function() split_if_not_exist(false) end, 'Horziontal split if no
 --          MISC PLUGINS         --
 -----------------------------------
 map('n', '<F8>', '<cmd>UndotreeToggle<CR>', 'Toggle undotree')
-map('n', '<leader>b', '<cmd>Telescope buffers<CR>', 'Browse open buffers')
+map('n', '<leader>B', '<cmd>Telescope buffers<CR>', 'Browse open buffers')
 map('n', '<leader>gx', require('open').open_cword, 'Open current word')
 map('n', '<leader>rgb', '<cmd>PickColor<CR>', 'Pick color')
 map({ 'n', 't', 'v' }, '<C-t>', function() toggle_or_open_terminal() end, 'toggle all terminals')
@@ -163,6 +163,7 @@ map('n', '[d', require('goto-breakpoints').prev, 'Goto prev breakpoint')
 map('n', '<leader>M', require('mind').open_main, 'Open mind.nvim')
 map('n', '<leader>e', require('femaco.edit').edit_code_block, 'Edit markdown codeblocks')
 map('n', '<leader>w', require('typebreak').start, 'typebreak') -- <leader>Wpm
+map('n', '<leader>b', deploy, 'Build & deploy')
 
 -- ThePrimeagen/harpoon
 map('n', '<leader>m', require('harpoon.mark').add_file, 'Add file to harpoon')

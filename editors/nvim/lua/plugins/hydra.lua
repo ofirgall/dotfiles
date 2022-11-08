@@ -61,7 +61,6 @@ Hydra({
 		end,
 	},
 	mode = { 'n' },
-	body = '<leader>boxes',
 	heads = {
 		{ '<C-h>', '<C-v>h:VBox<CR>' },
 		{ '<C-j>', '<C-v>j:VBox<CR>' },
@@ -71,6 +70,7 @@ Hydra({
 		{ '<Esc>', nil, { exit = true, nowait = true } },
 	}
 })
+-- TOOD: usercommand for that hydra
 
 
 local ts_move = require 'nvim-treesitter.textobjects.move'

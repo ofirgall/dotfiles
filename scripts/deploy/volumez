@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "=== VOLUMEZ UT DEPLOY ==="
+
 HOST="${1:-rhel8-5.local}"
 echo "Host: $HOST"
 rm *\.test

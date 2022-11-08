@@ -1,0 +1,15 @@
+#!/bin/bash
+
+PWD="$(pwd)"
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if echo "$PWD" | grep -q "volumez"; then
+    $CURRENT_DIR/volumez
+else
+    echo "Deploy script for this folder not found"
+fi
+
+echo ""
+echo "------------------------------"
+echo "Press any key to continue..."
+read -n 1
