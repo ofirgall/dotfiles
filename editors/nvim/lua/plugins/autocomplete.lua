@@ -120,11 +120,6 @@ cmp_setup_dict = {
 	completion = {
 		completeopt = 'menu,menuone',
 	},
-
-	experimental = {
-		ghost_text = true,
-	},
-
 }
 
 cmp.setup(cmp_setup_dict)
