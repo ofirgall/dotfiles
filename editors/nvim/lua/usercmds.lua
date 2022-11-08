@@ -15,7 +15,7 @@ local try = function(what)
 	return result
 end
 
-api.nvim_create_user_command('CloseAllButCurrent', function()
+close_all_but_current = function()
 	for _, bufnr in pairs(api.nvim_list_bufs()) do
 		if not buf_is_visible(bufnr) and buf_is_valid(bufnr) then
 			try {
@@ -30,7 +30,9 @@ api.nvim_create_user_command('CloseAllButCurrent', function()
 			}
 		end
 	end
-end, {})
+end
+
+api.nvim_create_user_command('CloseAllButCurrent', close_all_but_current, {})
 
 api.nvim_create_user_command('CloseBuffersLeft', function()
 	api.nvim_command('BufferLineCloseLeft')
