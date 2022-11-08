@@ -51,7 +51,6 @@ require 'diffview'.setup {
 	key_bindings = {
 		view = {
 			["q"]          = '<cmd>:DiffviewClose<cr>',
-			["<Escape>"]   = '<cmd>:DiffviewClose<cr>',
 			["<M-n>"]      = actions.focus_files,
 			["<M-m>"]      = actions.toggle_files,
 			["<leader>ck"] = actions.conflict_choose("ours"),
@@ -60,14 +59,12 @@ require 'diffview'.setup {
 		file_panel = {
 			["s"] = cb("toggle_stage_entry"),
 			["q"] = cb('close'),
-			["<Escape>"] = cb('close'),
 			["gf"] = cb("goto_file_edit"),
 			["<M-n>"] = cb("focus_files"),
 			["<M-m>"] = actions.toggle_files,
 		},
 		file_history_panel = {
 			["q"] = cb('close'),
-			["<Escape>"] = cb('close'),
 			["gf"] = cb("goto_file_edit"),
 			["<M-n>"] = cb("focus_files"),
 			["<M-m>"] = cb("toggle_files"),
@@ -146,7 +143,7 @@ local hint = [[
  _k_: prev hunk   _u_: undo stage hunk   _R_: reset buffer
  ^ ^              _S_: stage buffer
  ^
-		  _<Enter>_: Fugitive  _<C-c>_: exit
+		  _<Enter>_: Fugitive  _<Esc>_: exit
 ]]
 -- _<Enter>_: Fugitive  _<Esc>_: exit  _q_: exit  _<C-c>_: exit
 diffview_hydra = Hydra({
@@ -179,7 +176,8 @@ diffview_hydra = Hydra({
 	body = '<leader>gg',
 	heads = {
 		{ 'j', function()
-			if vim.wo.diff then
+			local diff = api.nvim_get_option_value('diff', {})
+			if diff then
 				api.nvim_feedkeys(']c', 'n', false)
 			else
 				gitsigns.next_hunk({navigation_message = false})
@@ -187,7 +185,8 @@ diffview_hydra = Hydra({
 			center_screen()
 		end, { expr = true } },
 		{ 'k', function()
-			if vim.wo.diff then
+			local diff = api.nvim_get_option_value('diff', {})
+			if diff then
 				api.nvim_feedkeys('[c', 'n', false)
 			else
 				gitsigns.prev_hunk({navigation_message = false})
@@ -208,10 +207,22 @@ diffview_hydra = Hydra({
 		{ 'u', gitsigns.undo_stage_hunk },
 		{ 'S', gitsigns.stage_buffer },
 		{ '<Enter>', '<cmd>Git<CR>', { exit = true } },
-		{ '<C-c>', nil, { exit = true, nowait = true } },
 		-- { 'q', nil, { exit = true, nowait = true } },
-		-- { '<Esc>', nil, { exit = true, nowait = true } },
+		{ '<Esc>', nil, { exit = true, nowait = true } },
 	}
+})
+
+-- Auto git mode in diff files
+api.nvim_create_autocmd('BufEnter', {
+	group = config_autocmds,
+	pattern = '*',
+	callback = function(events)
+		local diff = api.nvim_get_option_value('diff', {buf = events.buf})
+
+		if diff then
+			diffview_hydra:activate()
+		end
+	end
 })
 
 -- Flog
