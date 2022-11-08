@@ -6,6 +6,7 @@ if [ -n "$TMUX" ]; then
 fi
 
 TMUX_RESERRUCT_DIR=$HOME/.tmux/resurrect
+source $HOME/dotfiles_scripts/helpers/git.sh
 
 tmux_ressurect_sessions()
 {
@@ -63,6 +64,24 @@ fix_reserruct()
 	fi
 }
 
+get_session_git_info()
+{
+	session="$1"
+	path="$(tmux display-message -t $session:1 -p '#{pane_current_path}')"
+	git_root=$(get_git_root $path)
+
+	# TODO: show git dir?
+	echo $(get_branch $git_root)
+}
+
+tmux_sessions_with_git_info()
+{
+	sessions=$(tmux ls -F '#S')
+	for session in $sessions; do
+		echo "$session ($(get_session_git_info $session))"
+	done
+}
+
 select_tmux_session()
 {
 	# Check if tmux server is running, run it otherwise
@@ -74,12 +93,15 @@ select_tmux_session()
 		tmux
 	fi
 
-	session=$(tmux ls -F '#S' | fzf --reverse --header="Select Tmux Session. Ctrl-f to Create New Session, Ctrl-C to exit." --bind "ctrl-f:abort+execute(echo ___new_session)")
+	session=$(tmux_sessions_with_git_info | fzf --reverse --header="Select Tmux Session. Ctrl-f to Create New Session, Ctrl-C to exit." --bind "ctrl-f:abort+execute(echo ___new_session)")
 
 	# ctrl-c
-	if [ -z $session ]; then
+	if [ -z "$session" ]; then
 		return
 	fi
+
+	# Strip git info
+	session=$(echo "$session" | sed "s/ (.*//")
 
 	if [ "$session" == "___new_session" ]; then
 		tmux new-session -s "new-session-$(uuidgen | cut -c1-8)"
