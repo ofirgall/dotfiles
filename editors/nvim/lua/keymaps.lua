@@ -173,6 +173,13 @@ map('n', '<leader>m', require('harpoon.mark').add_file, 'Add file to harpoon')
 map('n', '<leader>A', require('telescope').extensions.harpoon.marks, 'Jump to harpoon file')
 map('n', '<leader>a', require("harpoon.ui").toggle_quick_menu, 'Jump to harpoon file')
 
+-- cbochs/portal.nvim
+map('n', '<leader>o', require('portal').jump_backward, 'Portal: backward')
+map('n', '<leader>i', require('portal').jump_forward, 'Portal: forward')
+
+-- nguyenvukhang/nvim-toggler
+map({ 'n', 'v' }, '<leader>I', require('nvim-toggler').toggle, 'Invert words')
+
 -- Spell Suggest
 map('n', '<leader>ss', function()
 	require('telescope.builtin').spell_suggest({
@@ -313,7 +320,7 @@ map('n', '<F2>', '<cmd>Lspsaga rename<cr>', 'Rename symbos with F2')
 map('n', '<leader><F2>', '*:%s///g<left><left>', 'Rename current word with <leader>F2')
 map('x', '<F2>', '"hy:%s/<C-r>h//g<left><left>', 'Rename visual')
 map('n', '<F4>', '<cmd>Lspsaga code_action<cr>', 'Code action with F4')
-map('n', '<leader>i', '<cmd>Neogen<cr>', 'document function')
+-- map('n', '<leader>i', '<cmd>Neogen<cr>', 'document function')
 map('n', '<leader>l', toggle_lsp_diagnostics, 'Toggle lsp diagnostics')
 map('n', '<leader>L', '<cmd>Lspsaga show_line_diagnostics<CR>', 'show Problem')
 map('n', ']p', goto_next_diag, 'next Problem')

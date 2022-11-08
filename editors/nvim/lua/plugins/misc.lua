@@ -6,7 +6,7 @@ require('Comment').setup {
 -- windwp/nvim-autopairs
 require('nvim-autopairs').setup {
 	check_ts = true,
-	disable_filetype = { 'TelescopePrompt' , 'guihua', 'guihua_rust', 'clap_input' },
+	disable_filetype = { 'TelescopePrompt', 'guihua', 'guihua_rust', 'clap_input' },
 	-- enable_moveright = false,
 }
 
@@ -234,7 +234,8 @@ require('nvim-toggler').setup {
 		['to'] = 'from',
 		['failed'] = 'succeeded',
 		['before'] = 'after',
-	}
+	},
+	remove_default_keybinds = true,
 }
 
 -- mind.nvim
@@ -363,9 +364,18 @@ require('nvim-surround').setup {
 }
 
 -- ntpeters/vim-better-whitespace
-vim.g.better_whitespace_filetypes_blacklist = { 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive', 'toggleterm' }
+vim.g.better_whitespace_filetypes_blacklist = { 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive',
+	'toggleterm' }
 
 -- AndrewRadev/splitjoin.vim
 vim.g.splitjoin_split_mapping = ''
 vim.g.splitjoin_join_mapping = ''
 vim.g.splitjoin_quiet = 1
+
+-- cbochs/portal.nvim
+require('portal').setup {
+	integrations = {
+		---ThePrimeagen/harpoon: registers the "harpoon" query item
+		harpoon = false,
+	},
+}

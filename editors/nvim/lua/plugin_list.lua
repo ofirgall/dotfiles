@@ -126,6 +126,7 @@ return require('packer').startup(function()
 
 	-- Navigation --
 	use { 'ThePrimeagen/harpoon', requires = 'nvim-lua/plenary.nvim' } -- Mark frequent files and get to there quickly
+	use 'cbochs/portal.nvim' -- Improved jumplist navigation
 
 	-- Design & UI --
 	use { 'ofirgall/ofirkai.nvim', branch = 'exp' } -- my colorscheme
