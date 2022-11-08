@@ -114,6 +114,14 @@ buf_is_visible = function(bufnr)
 	return api.nvim_buf_is_loaded(bufnr) and vim.fn.bufwinnr(bufnr) > 0
 end
 
+buf_is_valid = function(buf_num)
+	if not buf_num or buf_num < 1 then
+		return false
+	end
+	local exists = vim.api.nvim_buf_is_valid(buf_num)
+	return vim.bo[buf_num].buflisted and exists
+end
+
 close_pane = function()
 	local bufnr = api.nvim_get_current_buf()
 	if #api.nvim_list_wins() == 1 then -- Sometimes its reports 2 instead of 1
@@ -129,8 +137,8 @@ close_pane = function()
 end
 
 local get_range = function(mode)
-	local start_pos = {0, 0}
-	local end_pos = {0, 0}
+	local start_pos = { 0, 0 }
+	local end_pos = { 0, 0 }
 	if mode == 'v' then
 		start_pos = api.nvim_buf_get_mark(0, "<")
 		end_pos = api.nvim_buf_get_mark(0, ">")
@@ -212,7 +220,7 @@ yank_line = function(count)
 	local line_index = cursor[1] + count - 1
 	local lines = api.nvim_buf_get_lines(0, line_index, line_index + 1, true)
 
-	api.nvim_buf_set_lines(0, cursor[1]-1, cursor[1], true, lines)
+	api.nvim_buf_set_lines(0, cursor[1] - 1, cursor[1], true, lines)
 end
 
 ------------------------------
@@ -245,7 +253,7 @@ live_grep = function(opts, mode)
 	opts = opts or {}
 	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob]")'
 	if not opts.default_text then
-		opts.default_text = '-F "'.. telescope_default_text(mode)
+		opts.default_text = '-F "' .. telescope_default_text(mode)
 	end
 
 	require('telescope').extensions.live_grep_args.live_grep_args(opts)
@@ -265,10 +273,9 @@ find_current_file = function()
 	})
 end
 
-local Terminal  = require('toggleterm.terminal').Terminal
+local Terminal       = require('toggleterm.terminal').Terminal
 local deployTerminal = Terminal:new({ cmd = 'deploy', dir = '%:p:h' })
 
 function deploy()
-  deployTerminal:toggle()
+	deployTerminal:toggle()
 end
-

@@ -17,19 +17,17 @@ end
 
 api.nvim_create_user_command('CloseAllButCurrent', function()
 	for _, bufnr in pairs(api.nvim_list_bufs()) do
-		if not buf_is_visible(bufnr) then
-			if api.nvim_buf_is_valid(bufnr) then
-				try {
+		if not buf_is_visible(bufnr) and buf_is_valid(bufnr) then
+			try {
+				function()
+					require('bufdelete').bufwipeout(bufnr, true)
+				end,
+				catch {
 					function()
-						require('bufdelete').bufwipeout(bufnr, true)
-					end,
-					catch {
-						function()
-							-- print('Failed to delete buffer: ' .. bufnr)
-						end
-					}
+						-- print('Failed to delete buffer: ' .. bufnr)
+					end
 				}
-			end
+			}
 		end
 	end
 end, {})
