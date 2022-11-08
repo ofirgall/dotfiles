@@ -18,7 +18,7 @@ fi
 sudo add-apt-repository ppa:git-core/ppa -y # newer git, requires update and upgrade git package
 
 echo 'Installing Basic Libs'
-sudo apt install -y wget moreutils ipython3 pcregrep python3-pip build-essential fzf daemon curl cmake
+sudo apt install -y wget moreutils ipython3 pcregrep python3-pip build-essential fzf daemon curl cmake btop
 
 python3 -m pip install brotab
 $HOME/.local/bin/bt install
