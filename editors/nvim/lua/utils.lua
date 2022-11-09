@@ -274,7 +274,12 @@ find_current_file = function()
 end
 
 local Terminal       = require('toggleterm.terminal').Terminal
-local deployTerminal = Terminal:new({ cmd = 'deploy', dir = '%:p:h' })
+local deployTerminal = nil
+function reset_deploy()
+	deployTerminal = Terminal:new({ cmd = 'deploy', dir = '%:p:h' })
+end
+
+reset_deploy()
 
 function deploy()
 	deployTerminal:toggle()

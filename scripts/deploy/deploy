@@ -3,6 +3,8 @@
 PWD="$(pwd)"
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+echo "WD: $PWD"
+
 if echo "$PWD" | grep -q "volumez"; then
     $CURRENT_DIR/volumez
 else
