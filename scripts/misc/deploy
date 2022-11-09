@@ -1,0 +1,30 @@
+#!/bin/bash
+
+PWD="$(pwd)"
+DEPLOY_DIR="$HOME/dotfiles_scripts/deploy/"
+GIT_ROOT="$(git rev-parse --show-toplevel 2> /dev/null)"
+FILES_IN_GIT_ROOT="$(ls $GIT_ROOT)"
+
+echo "WD: $PWD"
+
+DEPLOYER=""
+
+if echo "$PWD" | grep -q "volumez"; then
+    DEPLOYER=volumez
+elif echo "$FILES_IN_GIT_ROOT" | grep -q "Cargo\.toml"; then
+    DEPLOYER=rust
+else
+    echo "Deploy script for this folder not found"
+    echo "Press any key to continue..."
+    read -n 1
+    exit
+fi
+
+toilet --gay "${DEPLOYER^^}" --font=mono9
+
+$DEPLOY_DIR/$DEPLOYER
+
+echo ""
+toilet --gay "DONE" --font=mono9
+echo "Press any key to continue..."
+read -n 1

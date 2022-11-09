@@ -1,7 +1,5 @@
 #!/bin/sh
 
-toilet --gay "VOLUMEZ" --font=mono9
-
 HOST="${1:-rhel8-5.local}"
 echo "Host: $HOST"
 rm *\.test
