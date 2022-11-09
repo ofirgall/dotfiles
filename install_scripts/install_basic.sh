@@ -58,6 +58,16 @@ if $WSL; then
 	$CURRENT_DIR/install_wsl_utils.sh
 fi
 
+# Install npm
+sudo apt install -y npm
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+
+# Set npm install prefix to user
+mkdir -p "$HOME/.npm-packages"
+npm config set prefix "$HOME/.npm-packages"
+
 # Must be at the end
 sudo usermod -a -G dialout $USER
 newgrp dialout
