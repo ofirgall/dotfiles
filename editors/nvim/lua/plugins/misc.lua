@@ -343,7 +343,23 @@ require('open-jira').setup {
 	url = 'https://volumez.atlassian.net/browse/'
 }
 
+
 -- kylechui/nvim-surround
+
+-- switch the surround direction behavior
+local surrounds = require('nvim-surround.config').default_opts.surrounds
+local switched_surrounds = {
+	{ '{', '}' },
+	{ '(', ')' },
+	{ '[', ']' },
+	{ '<', '>' },
+}
+for _, pair in ipairs(switched_surrounds) do
+	local tmp = surrounds[pair[1]]
+	surrounds[pair[1]] = surrounds[pair[2]]
+	surrounds[pair[2]] = tmp
+end
+
 require('nvim-surround').setup {
 	keymaps = {
 		normal = '<leader>sa',
@@ -356,10 +372,11 @@ require('nvim-surround').setup {
 		change = '<leader>sr',
 	},
 	aliases = {
-		['i'] = ']', -- Index
-		['r'] = ')', -- Round
-		['b'] = '}', -- Brackets
+		['i'] = '[', -- Index
+		['r'] = '(', -- Round
+		['b'] = '{', -- Brackets
 	},
+	surrounds = surrounds,
 	move_cursor = false,
 }
 
@@ -381,6 +398,6 @@ require('portal').setup {
 }
 
 -- numToStr/Navigator.nvim
-require('Navigator').setup{
+require('Navigator').setup {
 	disable_on_zoom = true,
 }
