@@ -161,7 +161,7 @@ return require('packer').startup(function()
 	use 'ethanholz/nvim-lastplace' -- Save last place
 	use 'mg979/vim-visual-multi' -- Multi cursors
 	use 'mizlan/iswap.nvim' -- Swap arguments, elements (:ISwap)
-	use 'christoomey/vim-tmux-navigator' -- Navigate in panes integrated in vim and tmux
+	use 'numToStr/Navigator.nvim' -- Navigate in panes integrated in vim and tmux
 	use 'lyokha/vim-xkbswitch' -- Switch to english for normal mode
 	use { 'michaelb/sniprun', run = 'bash ./install.sh' } -- Run snippets in your code
 	use 'nacro90/numb.nvim' -- Peek at line number before jump

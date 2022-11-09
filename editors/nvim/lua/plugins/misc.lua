@@ -379,3 +379,8 @@ require('portal').setup {
 		harpoon = false,
 	},
 }
+
+-- numToStr/Navigator.nvim
+require('Navigator').setup{
+	disable_on_zoom = true,
+}
