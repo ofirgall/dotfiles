@@ -116,6 +116,10 @@ cmp_setup_dict = {
 		throttle = 15, -- default: 30
 	},
 	preselect = cmp.PreselectMode.None, -- Auto select the first item
+
+	experimental = {
+		ghost_text = true
+	},
 }
 
 cmp.setup(cmp_setup_dict)
