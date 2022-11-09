@@ -63,6 +63,15 @@ install_ltex_ls()
 
 download_latest_release ~/.local/lsp/ltex-ls valentjn/ltex-ls linux-x64 install_ltex_ls
 
+# marksman for markdown
+install_marksman()
+{
+	chmod +x marksman-linux
+	mv marksman-linux $HOME/.local/bin/marksman
+}
+
+download_latest_release ~/.local/lsp/marksman artempyanykh/marksman linux install_marksman
+
 # GOLANG
 sudo apt-get install -y golang
 GO111MODULE=on go install golang.org/x/tools/gopls@latest
