@@ -3,6 +3,13 @@ local awful = require("awful")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
+ALT_TAB_SWITCH = function()
+    awful.client.focus.history.previous()
+    if client.focus then
+        client.focus:raise()
+    end
+end
+
 globalkeys = gears.table.join(
     awful.key({ modkey, }, "s", hotkeys_popup.show_help,
         { description = "show help", group = "awesome" }),
@@ -39,13 +46,9 @@ globalkeys = gears.table.join(
         { description = "focus the previous screen", group = "screen" }),
     awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
         { description = "jump to urgent client", group = "client" }),
-    awful.key({ ALT, }, "Tab",
-        function()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end,
+    awful.key({ ALT, }, "Tab", ALT_TAB_SWITCH,
+        { description = "go back", group = "client" }),
+    awful.key({ modkey, }, "Tab", ALT_TAB_SWITCH,
         { description = "go back", group = "client" }),
 
     -- Standard program

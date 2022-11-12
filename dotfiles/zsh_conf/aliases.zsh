@@ -21,6 +21,7 @@ alias cdn='cd $HOME/dotfiles/editors/nvim/' # cd to neovim config
 alias cdp='cd $HOME/.local/share/nvim/site/pack/packer/start' # cd to packer/plugins
 alias cgp='cg $HOME/.local/share/nvim/site/pack/packer/start' # cd to packer/plugins
 alias cdt='cd $HOME/.local/share/nvim/site/pack/packer/start/ofirkai.nvim/' # cd to nvim theme
+alias cda='cd $HOME/.config/awesome/' # cd to awesome config
 alias g='fugitive' # git fugitive
 alias ngh='git_tree' # git history with nvim and Flog
 function cg() { cd $(inner_cg.sh $@) } # cd to git repos
