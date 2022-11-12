@@ -4,8 +4,8 @@ gravity=5
 [apps/update-manager]
 check-new-release-ignore='impish'
 first-run=false
-launch-count=40
-launch-time=int64 1667032089
+launch-count=41
+launch-time=int64 1668242661
 show-details=true
 window-height=503
 window-width=645
@@ -19,10 +19,14 @@ window-width=540
 
 [com/ubuntu/update-notifier]
 no-show-notifications=true
-release-check-time=uint32 1667032081
+release-check-time=uint32 1668242656
 
 [com/uploadedlobster/peek]
 persist-window-geometry=(349, 183, 794, 593)
+
+[desktop/ibus/general]
+preload-engines=['xkb:us::eng']
+version='1.5.26'
 
 [desktop/ibus/panel/emoji]
 hotkey=@as []
@@ -346,7 +350,7 @@ restore-shortcuts=@as []
 default-compression-format='zip'
 
 [org/gnome/nautilus/preferences]
-default-folder-viewer='list-view'
+default-folder-viewer='icon-view'
 search-filter-time-type='last_modified'
 search-view='list-view'
 

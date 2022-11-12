@@ -8,6 +8,7 @@ if ! $IS_REMOTE; then
 	if ! $WSL; then
 		xmodmap ~/.xmodmaprc 2> /dev/null # key mapping, xev to see keys
 		xset r rate 200 35 # Faster repeat rate
+		setxkbmap -option caps:escape # Capslock to escape
 	fi
 fi
 
