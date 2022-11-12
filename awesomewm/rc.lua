@@ -62,6 +62,7 @@ editor_cmd = terminal .. " -e " .. editor
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
+ALT = "Mod1"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -282,7 +283,7 @@ globalkeys = gears.table.join(
         { description = "focus the previous screen", group = "screen" }),
     awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
         { description = "jump to urgent client", group = "client" }),
-    awful.key({ modkey, }, "Tab",
+    awful.key({ ALT, }, "Tab",
         function()
             awful.client.focus.history.previous()
             if client.focus then
@@ -294,6 +295,8 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end,
         { description = "open a terminal", group = "launcher" }),
+    awful.key({ modkey, }, "b", function() awful.spawn('firefox') end,
+        { description = "open firefox", group = "launcher" }),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
         { description = "reload awesome", group = "awesome" }),
     awful.key({ modkey, "Shift" }, "q", awesome.quit,
@@ -355,6 +358,8 @@ clientkeys = gears.table.join(
         end,
         { description = "toggle fullscreen", group = "client" }),
     awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end,
+        { description = "close", group = "client" }),
+    awful.key({ modkey, }, "q", function(c) c:kill() end,
         { description = "close", group = "client" }),
     awful.key({ modkey, "Control" }, "space", awful.client.floating.toggle,
         { description = "toggle floating", group = "client" }),
