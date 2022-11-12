@@ -53,16 +53,17 @@ bind -r -T prefix o run-shell "$get_ssh_in_tty | xargs tmux split-window -v"
 bind -r -T prefix x run-shell "$get_ssh_in_tty | xargs tmux split-window -v -d"
 
 ##### PANE NAVIGATION #####
+navigator="~/.config/awesome/awesomewm-vim-tmux-navigator/tmux_focus.sh"
 # Move around with alt+arrow/ctrl+hjkl
-bind -n M-Left if-shell "$is_nvim" 'send-keys M-Left'  'select-pane -L'
-bind -n M-Down if-shell "$is_nvim" 'send-keys M-Down'  'select-pane -D'
-bind -n M-Up if-shell "$is_nvim" 'send-keys M-Up'  'select-pane -U'
-bind -n M-Right if-shell "$is_nvim" 'send-keys M-Right'  'select-pane -R'
+bind -n C-Left if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-Left' "run-shell '$navigator left'"
+bind -n C-Down if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-Down' "run-shell '$navigator down'"
+bind -n C-Up if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-Up' "run-shell '$navigator up'"
+bind -n C-Right if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-Right' "run-shell '$navigator right'"
 
-bind -n C-h if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-h'  'select-pane -L'
-bind -n C-j if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-j'  'select-pane -D'
-bind -n C-k if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-k'  'select-pane -U'
-bind -n C-l if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-l'  'select-pane -R'
+bind -n C-h if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-h' "run-shell '$navigator left'"
+bind -n C-j if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-j' "run-shell '$navigator down'"
+bind -n C-k if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-k' "run-shell '$navigator up'"
+bind -n C-l if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-l' "run-shell '$navigator right'"
 
 # Override alt+up/down for copy-mode
 bind -T copy-mode-vi M-Up select-pane -U
