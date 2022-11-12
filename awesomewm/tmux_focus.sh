@@ -1,9 +1,9 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Wrapper script for awesomewm-vim-tmux-navigator/tmux_focus.sh
 
 dir=$1
-if [[ "$XDG_CURRENT_DESKTOP" == "awesome" ]]; then
+if [[ "$XDG_SESSION_DESKTOP" == "awesome" ]]; then
     $HOME/.config/awesome/awesomewm-vim-tmux-navigator/tmux_focus.sh "$dir"
 else
     case "$dir" in
