@@ -380,11 +380,11 @@ map('n', '<leader>7', function() require('bufferline').go_to_buffer(7, true) end
 map('n', '<leader>8', function() require('bufferline').go_to_buffer(8, true) end, 'Go to tab #8')
 map('n', '<leader>9', function() require('bufferline').go_to_buffer(9, true) end, 'Go to tab #9')
 map('n', '<leader>0', function() require('bufferline').go_to_buffer(10, true) end, 'Go to tab #10')
--- Tab control, tmux binds are "outer" Alt+h/l and vim is "inner" Alt+j/k
-map('n', '<M-j>', '<cmd>BufferLineCyclePrev<CR>', 'Alt+j to move to left')
-map('n', '<M-k>', '<cmd>BufferLineCycleNext<CR>', 'Alt+k to move to right')
-map('n', '<M-J>', '<cmd>BufferLineMovePrev<CR>', 'Alt+Shift+j grab to with you to left')
-map('n', '<M-K>', '<cmd>BufferLineMoveNext<CR>', 'Alt+Shift+k grab to with you to right')
+-- Tab control
+map('n', '<M-->', '<cmd>BufferLineCyclePrev<CR>', 'Alt+j to move to left')
+map('n', '<M-=>', '<cmd>BufferLineCycleNext<CR>', 'Alt+k to move to right')
+map('n', '<M-_>', '<cmd>BufferLineMovePrev<CR>', 'Alt+Shift+j grab to with you to left')
+map('n', '<M-+>', '<cmd>BufferLineMoveNext<CR>', 'Alt+Shift+k grab to with you to right')
 
 -- Tabpage binds
 map('n', 'g1', '<cmd>tabnext1<cr>', 'Go to tabpage #1')

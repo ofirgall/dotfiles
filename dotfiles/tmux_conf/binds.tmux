@@ -64,6 +64,13 @@ bind -n C-h if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-h' "run-shell '$
 bind -n C-j if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-j' "run-shell '$navigator down'"
 bind -n C-k if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-k' "run-shell '$navigator up'"
 bind -n C-l if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-l' "run-shell '$navigator right'"
+# Manually set M-hjkl keys if not in awesomewm
+if-shell -b '[ "$XDG_SESSION_DESKTOP" != "awesome" ]' {
+    bind -n M-h if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-h' 'select-pane -L'
+    bind -n M-j if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-j' 'select-pane -D'
+    bind -n M-k if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-k' 'select-pane -U'
+    bind -n M-l if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-l' 'select-pane -R'
+}
 
 # Override alt+up/down for copy-mode
 bind -T copy-mode-vi M-Up select-pane -U
@@ -110,7 +117,6 @@ bind -n M-6 select-window -t :=6
 bind -n M-7 select-window -t :=7
 bind -n M-8 select-window -t :=8
 bind -n M-9 select-window -t :=9
-bind -n M-- last-window
 
 bind -T copy-mode-vi M-0 select-window -t :=10
 bind -T copy-mode-vi M-1 select-window -t :=1
@@ -141,14 +147,13 @@ bind -n M-( swap-window -d -t :=9
 bind -n M-PPage select-window -p
 bind -n M-NPage select-window -n
 
-# Alt+h/l - move tabs in tmux (outer binds)
-# Alt+j/k - move tabs in vim (inner bind)
+# Alt+,/. - move tabs in tmux
 # Alt+u/i - move tabs in nested tmux
 # Add +Shift to "Drag"
-bind -n M-h select-window -p
-bind -n M-l select-window -n
-bind -n M-H swap-window -d -t -1
-bind -n M-L swap-window -d -t +1
+bind -n M-, select-window -p
+bind -n M-. select-window -n
+bind -n M-< swap-window -d -t -1
+bind -n M-> swap-window -d -t +1
 bind -n M-u if-shell "$is_nested_tmux" 'send-keys M-u' 'select-window -p'
 bind -n M-i if-shell "$is_nested_tmux" 'send-keys M-i' 'select-window -n'
 bind -n M-U if-shell "$is_nested_tmux" 'send-keys M-U' 'swap-window -d -t -1'
