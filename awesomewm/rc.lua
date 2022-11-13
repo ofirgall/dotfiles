@@ -255,7 +255,7 @@ end)
 -- }}}
 
 
-require('keymaps')
+require('keymaps').setup()
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
