@@ -135,6 +135,7 @@ return require('packer').startup(function()
 	use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' } -- Tabline
 	use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', } -- File Tree
 	use 'stevearc/dressing.nvim' -- Add ui for default vim.ui.input
+	use 'nvim-treesitter/nvim-treesitter-context' -- Add code context to top of the line
 	use { 'folke/noice.nvim', -- Nice ui for notify, :messages, and better cmdline
 		requires = {
 			'MunifTanjim/nui.nvim',
