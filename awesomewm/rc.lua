@@ -255,7 +255,7 @@ end)
 -- }}}
 
 
-require('keymaps').setup()
+require('keymaps').setup(kbdcfg)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).

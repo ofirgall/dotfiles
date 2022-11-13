@@ -1,5 +1,6 @@
 local M = {}
-function M.setup()
+
+function M.setup(kbdcfg)
     local gears = require("gears")
     local awful = require("awful")
     local menubar = require("menubar")
@@ -66,6 +67,10 @@ function M.setup()
             { description = "go back", group = "client" }),
         awful.key({ modkey, }, "Tab", ALT_TAB_SWITCH,
             { description = "go back", group = "client" }),
+
+        -- Change Language
+        awful.key({ modkey, }, "Shift_R", kbdcfg.switch_next,
+            { description = "Change Language", group = "awesome" }),
 
         -- Standard program
         awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end,
