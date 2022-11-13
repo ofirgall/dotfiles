@@ -254,9 +254,9 @@ end
 
 function flog_diff_current_visual()
 	local commits = flog_commit_range_visual()
-	vim.cmd('DiffviewOpen ' .. commits[1] .. '..' .. commits[2]..'^')
+	vim.cmd('DiffviewOpen ' .. commits[2] .. '..' .. commits[1]..'^')
 end
 
 function flog_show_current()
-	vim.cmd('DiffviewOpen ' .. flog_current_commit() .. '..' .. flog_current_commit() .. '^')
+	vim.cmd('DiffviewOpen ' .. flog_current_commit() .. '^..' .. flog_current_commit())
 end
