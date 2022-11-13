@@ -120,7 +120,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+-- mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -181,6 +181,23 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+
+-- echuraev/keyboard_layout
+local keyboard_layout = require("keyboard_layout")
+local kbdcfg = keyboard_layout.kbdcfg({type = "tui"})
+
+kbdcfg.add_primary_layout("English", "US", "us")
+kbdcfg.add_primary_layout("Hebrew", "HE", "il")
+
+kbdcfg.bind()
+
+kbdcfg.widget:buttons(
+    awful.util.table.join(awful.button({}, 1, function() kbdcfg.switch_next() end),
+        awful.button({}, 3, function() kbdcfg.menu:toggle() end))
+)
+
+-- END OF echuraev/keyboard_layout
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -227,7 +244,8 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+            -- mykeyboardlayout,
+            kbdcfg.widget,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
