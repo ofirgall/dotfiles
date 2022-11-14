@@ -32,6 +32,8 @@
         path: editors/nvim
     ~/.vimrc:
         path: dotfiles/vimrc
+    ~/playgrounds:
+        path: playgrounds
 
 - create:
     - ~/projects

@@ -32,6 +32,7 @@ function ssh() {
 	TERM=xterm-256color /usr/bin/ssh $@ # Adjust TERM for ssh
 }
 alias cls='tmux clear-history; clear'
+alias pg='cg $HOME/playgrounds && nv' # cd to packer/plugins
 
 # Git aliases, no git plugin
 alias ga='git add'
