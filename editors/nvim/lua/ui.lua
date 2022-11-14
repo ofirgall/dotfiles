@@ -85,7 +85,7 @@ require('lspsaga').init_lsp_saga({
 		exec = '<CR>',
 	},
 	code_action_lightbulb = {
-		sign_priority = 10,
+		sign_priority    = 10,
 		sign             = true,
 		virtual_text     = false,
 		enable_in_insert = false
@@ -263,3 +263,14 @@ api.nvim_create_autocmd('FileType', {
 -- 		guifg = scheme.vert_split_fg_active
 -- 	},
 -- }
+
+-- petertriho/nvim-scrollbar
+require('scrollbar').setup {
+	handlers = {
+		diagnostic = true,
+		search = false, -- I don't like the dependence plugin
+		gitsigns = true,
+	},
+}
+require('scrollbar.handlers.gitsigns').setup {
+}
