@@ -257,12 +257,12 @@ api.nvim_create_autocmd('FileType', {
 })
 
 -- nvim-zh/colorful-winsep.nvim
--- require('colorful-winsep').setup {
--- 	highlight = {
--- 		guibg = scheme.background,
--- 		guifg = scheme.vert_split_fg_active
--- 	},
--- }
+require('colorful-winsep').setup {
+	highlight = {
+		guibg = scheme.background,
+		guifg = scheme.vert_split_fg_active
+	},
+}
 
 -- petertriho/nvim-scrollbar
 require('scrollbar').setup {
