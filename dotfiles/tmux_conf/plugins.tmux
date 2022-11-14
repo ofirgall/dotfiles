@@ -24,6 +24,9 @@ if-shell "$is_wsl" "set -g @browser_wait_timeout '15.0'"
 set -g @extrakto_split_direction 'p'
 set -g @extrakto_clip_tool 'toclip'
 set -g @extrakto_popup_size '50%'
+set -g @extrakto_grab_area 'window full'
+set -g @extrakto_copy_key 'y'
+set -g @extrakto_insert_key 'enter'
 
 # -------------------------
 #	    PLUGINS BINDS
