@@ -173,7 +173,18 @@ function M.setup(kbdcfg)
                 c.maximized_horizontal = not c.maximized_horizontal
                 c:raise()
             end,
-            { description = "(un)maximize horizontally", group = "client" })
+            { description = "(un)maximize horizontally", group = "client" }),
+
+        awful.key({ modkey, }, "F2",
+            function()
+                awful.prompt.run {
+                    prompt       = "rename current tag: ",
+                    text         = awful.tag.selected().name,
+                    textbox      = awful.screen.focused().mypromptbox.widget,
+                    exe_callback = function(s) awful.tag.selected().name = s end,
+                }
+            end,
+            { description = "rename tag", group = "awesome" })
     )
 
     -- Bind all key numbers to tags.
