@@ -14,6 +14,7 @@ nvim is my main editor and [much more](https://github.com/ofirgall/learn-nvim/bl
 * nvim - hover stack, move back/forward in the current function over
 * flit - case sensitivity
 * nvim - Toggle lsp lines enables virtual text and vise versa
+* nvim - yanky after <leader>p in visual and after alt+p
 ### Important
 * nvim - solve https://github.com/neovim/neovim/issues/18625 to be able to format async
 * nvim[rust] - require'rust-tools'.move_item.move_item(up) with ctrl+shift+j/k (requires alacritty setup)
