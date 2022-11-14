@@ -187,7 +187,15 @@ function M.setup(kbdcfg)
                     end,
                 }
             end,
-            { description = "rename tag", group = "awesome" })
+            { description = "rename tag", group = "awesome" }),
+
+        -- Media Keys
+        awful.key({ }, 'XF86AudioPlay', function () awful.util.spawn('playerctl play-pause') end, {description = "Play/Pause", group = "media"}),
+        awful.key({ }, 'XF86AudioNext', function () awful.util.spawn('playerctl next') end, {description = "Next", group = "media"}),
+        awful.key({ }, 'XF86AudioPrev', function () awful.util.spawn('playerctl previous') end, {description = "Prev", group = "media"}),
+        awful.key({ }, 'XF86AudioRaiseVolume', function () awful.util.spawn('playerctl volume 0.05+') end, {description = "Raise Vol", group = "media"}),
+        awful.key({ }, 'XF86AudioLowerVolume', function () awful.util.spawn('playerctl volume 0.05-') end, {description = "Lower Vol", group = "media"}),
+        awful.key({ }, 'XF86AudioMute', function () awful.util.spawn('playerctl volume 0.0') end, {description = "Set Vol 0", group = "media"})
     )
 
     -- Bind all key numbers to tags.
