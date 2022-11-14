@@ -383,11 +383,6 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-awesome.connect_signal(
-    'startup',
-    function(args)
-        awful.util.spawn('~/.config/awesome/autorun.sh')
-    end
-)
+awful.spawn.with_shell('~/.config/awesome/autorun.sh')
 
 require('plugins')
