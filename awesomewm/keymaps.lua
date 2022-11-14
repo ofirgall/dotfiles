@@ -179,7 +179,7 @@ function M.setup(kbdcfg)
             function()
                 awful.prompt.run {
                     prompt       = "rename current tag: ",
-                    text         = awful.tag.selected().name,
+                    text         = '',
                     textbox      = awful.screen.focused().mypromptbox.widget,
                     exe_callback = function(s) awful.tag.selected().name = s end,
                 }
