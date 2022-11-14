@@ -1,16 +1,21 @@
 #!/bin/bash
 
+FONT=pagga
+
 PWD="$(pwd)"
 DEPLOY_DIR="$HOME/dotfiles_scripts/deploy/"
 GIT_ROOT="$(git rev-parse --show-toplevel 2> /dev/null)"
 FILES_IN_GIT_ROOT="$(ls $GIT_ROOT)"
 
 echo "WD: $PWD"
+echo ""
 
 DEPLOYER=""
 
 if echo "$PWD" | grep -q "volumez"; then
     DEPLOYER=volumez
+elif echo "$PWD" | grep -q "$HOME/playgrounds/"; then
+    DEPLOYER=playground
 elif echo "$FILES_IN_GIT_ROOT" | grep -q "Cargo\.toml"; then
     DEPLOYER=rust
 else
@@ -20,11 +25,11 @@ else
     exit
 fi
 
-toilet --gay "${DEPLOYER^^}" --font=mono9
+# toilet --gay "${DEPLOYER^^}" --font=$FONT
 
 $DEPLOY_DIR/$DEPLOYER
 
 echo ""
-toilet --gay "DONE" --font=mono9
+# toilet --gay "DONE" --font=$FONT
 echo "Press any key to continue..."
 read -n 1
