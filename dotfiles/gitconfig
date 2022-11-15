@@ -10,6 +10,7 @@
 	show-merge = "!f() { git log \"$1^..$1\" --patch; }; f"
 	log-merge = "!f() { git hist \"$1^..$1\"; }; f"
 	dft = difftool
+	difft = difftool
 	stash-staged = "!bash -c \"git stash --keep-index; git stash push -m \"staged\" --keep-index; git stash pop stash@{1}\""
 [core]
 	editor = nvim
