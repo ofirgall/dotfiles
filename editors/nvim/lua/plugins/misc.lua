@@ -389,14 +389,6 @@ vim.g.splitjoin_split_mapping = ''
 vim.g.splitjoin_join_mapping = ''
 vim.g.splitjoin_quiet = 1
 
--- cbochs/portal.nvim
-require('portal').setup {
-	integrations = {
-		---ThePrimeagen/harpoon: registers the "harpoon" query item
-		harpoon = false,
-	},
-}
-
 -- numToStr/Navigator.nvim
 require('Navigator').setup {
 	disable_on_zoom = true,

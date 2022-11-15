@@ -174,12 +174,8 @@ map('n', '<leader>m', require('harpoon.mark').add_file, 'Add file to harpoon')
 map('n', '<leader>A', require('telescope').extensions.harpoon.marks, 'Jump to harpoon file')
 map('n', '<leader>a', require("harpoon.ui").toggle_quick_menu, 'Jump to harpoon file')
 
--- cbochs/portal.nvim
-map('n', '<leader>o', require('portal').jump_backward, 'Portal: backward')
-map('n', '<leader>i', require('portal').jump_forward, 'Portal: forward')
-
 -- nguyenvukhang/nvim-toggler
-map({ 'n', 'v' }, '<leader>I', require('nvim-toggler').toggle, 'Invert words')
+map({ 'n', 'v' }, '<leader>i', require('nvim-toggler').toggle, 'Invert words')
 
 -- Spell Suggest
 map('n', '<leader>ss', function()
