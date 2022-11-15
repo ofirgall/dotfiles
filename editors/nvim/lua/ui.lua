@@ -266,6 +266,29 @@ require('colorful-winsep').setup {
 
 -- petertriho/nvim-scrollbar
 require('scrollbar').setup {
+	marks = {
+		GitAdd = {
+			text = "|",
+			priority = 7,
+			color = nil,
+			cterm = nil,
+			highlight = "GitSignsAdd",
+		},
+		GitChange = {
+			text = "|",
+			priority = 7,
+			color = nil,
+			cterm = nil,
+			highlight = "GitSignsChange",
+		},
+		GitDelete = {
+			text = "_",
+			priority = 7,
+			color = nil,
+			cterm = nil,
+			highlight = "GitSignsDelete",
+		},
+	},
 	handlers = {
 		diagnostic = true,
 		search = false, -- I don't like the dependence plugin
