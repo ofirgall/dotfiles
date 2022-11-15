@@ -96,7 +96,7 @@ lspconfig.tsserver.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
-lspconfig.marksman.setup{
+lspconfig.marksman.setup {
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 }
@@ -193,6 +193,7 @@ require('go').setup {
 				analyses = {
 					ST1003 = false, -- Disable variables format https://staticcheck.io/docs/checks#ST1003
 					ST1005 = false, -- Disable error string format https://staticcheck.io/docs/checks#ST1005
+					QF1008 = false, -- Disable Hints for Omit embedded fields from selector expression
 				},
 				usePlaceholders = false,
 			}
