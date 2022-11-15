@@ -50,4 +50,4 @@
     - [install_scripts/install_fonts.sh, Installing nerd fonts]
     - [install_scripts/firefox_from_deb.sh, Installing firefox from deb]
     - [install_scripts/install_spotify.sh, Installing spotify]
-    - [install_scripts/install_awesomewm.sh, Installing awesome]
+    - [awesomewm/install_awesomewm.sh, Installing awesome]
