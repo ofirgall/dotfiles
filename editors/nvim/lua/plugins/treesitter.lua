@@ -76,6 +76,8 @@ require('nvim-treesitter.configs').setup {
 				['ia'] = '@parameter.inner',
 				['ak'] = '@call.outer',
 				['ik'] = '@call.inner',
+				['ai'] = '@conditional.outer', -- i as if
+				['ii'] = '@conditional.inner',
 			},
 		},
 	},
