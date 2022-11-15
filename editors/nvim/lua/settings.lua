@@ -15,6 +15,7 @@ opt.splitright = true
 opt.splitbelow = true
 opt.swapfile = false
 opt.wrap = true
+opt.undofile = true -- enable persistent undo
 opt.scrolloff = 4 -- minimal number of screen lines to keep above and below the cursor.
 opt.updatetime = 100 -- mainly for trld.nvim which utilize CursorHold autocmd
 opt.formatoptions:append('cro') -- continue comments when going down a line
