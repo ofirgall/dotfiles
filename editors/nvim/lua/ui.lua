@@ -268,14 +268,14 @@ require('colorful-winsep').setup {
 require('scrollbar').setup {
 	marks = {
 		GitAdd = {
-			text = "|",
+			text = "│",
 			priority = 7,
 			color = nil,
 			cterm = nil,
 			highlight = "GitSignsAdd",
 		},
 		GitChange = {
-			text = "|",
+			text = "│",
 			priority = 7,
 			color = nil,
 			cterm = nil,
