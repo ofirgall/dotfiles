@@ -14,7 +14,7 @@
 	stash-staged = "!bash -c \"git stash --keep-index; git stash push -m \"staged\" --keep-index; git stash pop stash@{1}\""
 [core]
 	editor = nvim
-[core]
+	pager = delta
 	excludesfile = ~/.gitignore_global
 [pull]
 	ff = only
@@ -22,27 +22,23 @@
 	default = current
 [merge]
 	ff = false
-	tool = diffconflicts
 [oh-my-zsh]
 	hide-status = 1
 	hide-dirty = 1
-[mergetool "diffconflicts"]
-	cmd = nvim -c DiffConflictsWithHistory \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
-	trustExitCode = true
-[mergetool]
-	keepBackup = false
 [diff]
+	colorMoved = default
 	tool = difftastic
 [difftool]
 	prompt = false
 [difftool "difftastic"]
 	cmd = difft "$LOCAL" "$REMOTE"
-[pager]
-	difftool = true
-[filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
 [color]
 	ui = auto
+[delta]
+	navigate = true # use n and N to move between diff sections
+	line-numbers = true
+	theme = Monokai Extended
+[interactive]
+	diffFilter = delta --color-only
+[pager]
+	difftool = true
