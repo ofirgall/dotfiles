@@ -380,9 +380,29 @@ require('nvim-surround').setup {
 	move_cursor = false,
 }
 
--- ntpeters/vim-better-whitespace
-vim.g.better_whitespace_filetypes_blacklist = { 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive',
-	'toggleterm' }
+-- zakharykaplan/nvim-retrail
+retrail = require('retrail')
+retrail.setup {
+	hlgroup = 'NvimInternalError',
+	filetype = {
+		exclude = {
+			'diff',
+			'git',
+			'gitcommit',
+			'unite',
+			'qf',
+			'help',
+			'markdown',
+			'fugitive',
+			'toggleterm',
+		},
+	},
+	trim = {
+		auto = false,
+		whitespace = true, -- Trailing whitespace as highlighted.
+		blanklines = true, -- Final blank (i.e. whitespace only) lines.
+	}
+}
 
 -- AndrewRadev/splitjoin.vim
 vim.g.splitjoin_split_mapping = ''

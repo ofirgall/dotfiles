@@ -154,7 +154,7 @@ return require('packer').startup(function()
 	use 'gbprod/yanky.nvim' -- Improve yank experience
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
 	use 'windwp/nvim-autopairs' -- Closes (--' etc.
-	use 'ntpeters/vim-better-whitespace' -- Whitespace trailing
+	use 'ofirgall/nvim-retrail' -- Whitespace trailing
 	use 'ofirgall/AutoSave.nvim' -- Auto save
 	use 'tiagovla/scope.nvim' -- Scopes buffers for tabpages
 	use 'famiu/bufdelete.nvim' -- delete buffers ctrl+q
