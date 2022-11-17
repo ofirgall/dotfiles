@@ -27,7 +27,7 @@ fi
 
 # toilet --gay "${DEPLOYER^^}" --font=$FONT
 
-$DEPLOY_DIR/$DEPLOYER
+$DEPLOY_DIR/$DEPLOYER $@
 
 echo ""
 # toilet --gay "DONE" --font=$FONT
