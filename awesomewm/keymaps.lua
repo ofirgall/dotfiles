@@ -174,6 +174,12 @@ function M.setup(kbdcfg)
                 c:raise()
             end,
             { description = "(un)maximize horizontally", group = "client" }),
+        awful.key({ modkey, }, "z",
+            function(c)
+                c.maximized = not c.maximized
+                c:raise()
+            end,
+            { description = "(un)maximize", group = "client" }),
 
         awful.key({ modkey, }, "F2",
             function()
