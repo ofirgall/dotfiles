@@ -205,6 +205,13 @@ kbdcfg.widget:buttons(
 )
 
 -- END OF echuraev/keyboard_layout
+--
+-- Widgets from streetturtle/awesome-wm-widgets
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+local spotify_widget = require("awesome-wm-widgets.spotify-widget.spotify")
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
+local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -253,8 +260,15 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             -- mykeyboardlayout,
+            cpu_widget(),
+            ram_widget(),
+            battery_widget(),
+            spotify_widget(),
+            volume_widget({
+                widget_type = 'arc'
+            }),
             kbdcfg.widget,
-            wibox.widget.systray(),
+            -- wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
         },
@@ -263,7 +277,7 @@ end)
 -- }}}
 
 
-require('keymaps').setup(kbdcfg)
+require('keymaps').setup(kbdcfg, volume_widget)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).

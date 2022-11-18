@@ -1,10 +1,8 @@
 # TODO Important
-- https://github.com/intrntbrn/smart_borders
 - Ctrl+hjkl to control instead of alt
 - Rename session on all windows
 
 # TODO
-- Widgets: spotify, cpu, ram, battery, clock (remove from tmux), https://github.com/streetturtle/awesome-wm-widgets
 - Sessions? if not at least save names across restarts
 - Auto name by tmux (zenity)
 - Screenshot

@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup(kbdcfg)
+function M.setup(kbdcfg, volume_widget)
     local gears = require("gears")
     local awful = require("awful")
     local menubar = require("menubar")
@@ -199,9 +199,9 @@ function M.setup(kbdcfg)
         awful.key({ }, 'XF86AudioPlay', function () awful.util.spawn('playerctl play-pause') end, {description = "Play/Pause", group = "media"}),
         awful.key({ }, 'XF86AudioNext', function () awful.util.spawn('playerctl next') end, {description = "Next", group = "media"}),
         awful.key({ }, 'XF86AudioPrev', function () awful.util.spawn('playerctl previous') end, {description = "Prev", group = "media"}),
-        awful.key({ }, 'XF86AudioRaiseVolume', function () awful.util.spawn('playerctl volume 0.05+') end, {description = "Raise Vol", group = "media"}),
-        awful.key({ }, 'XF86AudioLowerVolume', function () awful.util.spawn('playerctl volume 0.05-') end, {description = "Lower Vol", group = "media"}),
-        awful.key({ }, 'XF86AudioMute', function () awful.util.spawn('playerctl volume 0.0') end, {description = "Set Vol 0", group = "media"})
+        awful.key({ }, 'XF86AudioRaiseVolume', function () volume_widget:inc(5) end, {description = "Raise Vol", group = "media"}),
+        awful.key({ }, 'XF86AudioLowerVolume', function () volume_widget:dec(5) end, {description = "Lower Vol", group = "media"}),
+        awful.key({ }, 'XF86AudioMute', function () volume_widget:toggle() end, {description = "Set Vol 0", group = "media"})
     )
 
     -- Bind all key numbers to tags.
