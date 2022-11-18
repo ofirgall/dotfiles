@@ -208,7 +208,7 @@ kbdcfg.widget:buttons(
 -- END OF echuraev/keyboard_layout
 --
 -- Widgets from streetturtle/awesome-wm-widgets
-local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
 local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 local spotify_widget = require("awesome-wm-widgets.spotify-widget.spotify")
 local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
@@ -263,7 +263,10 @@ awful.screen.connect_for_each_screen(function(s)
             -- mykeyboardlayout,
             cpu_widget(),
             ram_widget(),
-            battery_widget(),
+            batteryarc_widget({
+                show_current_level = true,
+                arc_thickness = 2,
+            }),
             spotify_widget(),
             volume_widget({
                 widget_type = 'arc'
@@ -408,5 +411,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 awful.spawn.with_shell('~/.config/awesome/autorun.sh')
 
--- awful.screen.set_auto_dpi_enabled(true) -- Auto scaling for awful gui
+awful.screen.set_auto_dpi_enabled(true) -- Auto scaling for awful gui
 require('plugins')
