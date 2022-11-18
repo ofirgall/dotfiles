@@ -90,6 +90,7 @@ retain.tags.defaults = {
 	layouts=awful.layout.suit.tile,
 }
 retain.tags.load()
+retain.connect_signals()
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -277,7 +278,7 @@ end)
 -- }}}
 
 
-require('keymaps').setup(kbdcfg, volume_widget)
+require('keymaps').setup(kbdcfg, volume_widget, retain)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
@@ -407,5 +408,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 awful.spawn.with_shell('~/.config/awesome/autorun.sh')
 
-awful.screen.set_auto_dpi_enabled(true) -- Auto scaling for awful gui
+-- awful.screen.set_auto_dpi_enabled(true) -- Auto scaling for awful gui
 require('plugins')

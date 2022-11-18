@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup(kbdcfg, volume_widget)
+function M.setup(kbdcfg, volume_widget, retain)
     local gears = require("gears")
     local awful = require("awful")
     local menubar = require("menubar")
@@ -47,6 +47,14 @@ function M.setup(kbdcfg, volume_widget)
                 awful.client.focus.global_bydirection('left')
             end,
             { description = "focus left", group = "client" }
+        ),
+
+        -- Save env with retain
+        awful.key({ modkey, "Control" }, "s",
+            function()
+                retain.tags.save_all()
+            end,
+            { description = "Save env with retain", group = "client" }
         ),
 
         awful.key({ modkey, }, "w", function() mymainmenu:show() end,

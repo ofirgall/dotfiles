@@ -1,6 +1,7 @@
 awesomewm-vim-tmux-navigator
 keyboard_layout/
 retain/
+retain.json
 json.lua
 smart_borders
 awesome-wm-widgets/
