@@ -22,6 +22,9 @@ require("awful.hotkeys_popup.keys")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+-- Veratil/awesome-retain
+local retain = require("retain")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -82,6 +85,11 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.se,
 }
 -- }}}
+retain.tags.defaults = {
+	names={"1","2","3","4","5","6","7","8","9"},
+	layouts=awful.layout.suit.fair,
+}
+retain.tags.load()
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -203,7 +211,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag(retain.tags.getnames(s), s, retain.tags.getlayouts(s))
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
