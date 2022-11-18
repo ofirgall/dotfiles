@@ -10,6 +10,7 @@ AWESOME_CONFIG="$HOME/.config/awesome/"
 git clone https://github.com/intrntbrn/awesomewm-vim-tmux-navigator $AWESOME_CONFIG/awesomewm-vim-tmux-navigator
 git clone https://github.com/echuraev/keyboard_layout $AWESOME_CONFIG/keyboard_layout
 git clone https://github.com/Veratil/awesome-retain $AWESOME_CONFIG/retain
+git clone https://github.com/intrntbrn/smart_borders $AWESOME_CONFIG/smart_borders
 
 # Libs
 wget --directory-prefix=$AWESOME_CONFIG https://raw.githubusercontent.com/rxi/json.lua/master/json.lua

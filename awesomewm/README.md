@@ -11,6 +11,7 @@
 - Bluetooth
 - WIFI
 - Docking station (dynamic monitor detection)
+- Make awesome-retain work
 
 # Settings
 ## Screen
