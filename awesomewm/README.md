@@ -9,6 +9,9 @@
 - Sessions? if not at least save names across restarts
 - Auto name by tmux (zenity)
 - Screenshot
+- Bluetooth
+- WIFI
+- Docking station (dynamic monitor detection)
 
 # Settings
 ## Screen
@@ -17,5 +20,3 @@
 
 ## Mouse
 - Speed https://wiki.archlinux.org/title/Mouse_acceleration#Mouse_acceleration_with_libinput
-- Trackpad touch https://superuser.com/questions/1527648/enable-track-pad-tapping-in-awesome-wm
-- Natural Scrolling https://www.reddit.com/r/awesomewm/comments/hu2ac0/natural_scrolling/

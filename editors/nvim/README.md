@@ -18,7 +18,7 @@ nvim is my main editor and [much more](https://github.com/ofirgall/learn-nvim/bl
 ### Important
 * nvim - solve https://github.com/neovim/neovim/issues/18625 to be able to format async
 * nvim[rust] - require'rust-tools'.move_item.move_item(up) with ctrl+shift+j/k (requires alacritty setup)
-* nvim - custom textobjects, function name, better call (all call, the function that called)
+* nvim - custom textobjects, function name, expression a == b && c == d, better call (all call, the function that called)
 ---
 * nvim - function hydra, copy name to +y or y
 * nvim - lsp signature return value in virtual
