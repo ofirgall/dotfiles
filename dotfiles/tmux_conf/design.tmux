@@ -1,8 +1,3 @@
-### PLUGINS ###
-set -g @plugin 'tmux-plugins/tmux-cpu'
-set -g @plugin 'tmux-plugins/tmux-battery'
-set -g @plugin 'ofirgall/tmux-keyboard-layout'
-
 ### SETTINGS ###
 set -g base-index 1
 setw -g pane-base-index 1
@@ -62,26 +57,11 @@ set -g @nova-segment-session-colors "$sides_color"
 set -g @nova-segment-whoami "#(whoami)@#h"
 set -g @nova-segment-whoami-colors "$sides_color"
 
-set -g @nova-segment-cpu " #(~/.tmux/plugins/tmux-cpu/scripts/cpu_percentage.sh) #(~/.tmux/plugins/tmux-cpu/scripts/ram_percentage.sh)"
-set -g @nova-segment-cpu-colors "$active_tab_color"
-
-set -g @batt_icon_status_charging '↑'
-set -g @batt_icon_status_discharging '↓'
-set -g @batt_icon_status_charged '↑'
-set -g @nova-segment-battery "#(~/.tmux/plugins/tmux-battery/scripts/battery_icon_status.sh) #(~/.tmux/plugins/tmux-battery/scripts/battery_percentage.sh)"
-set -g @nova-segment-battery-colors "$active_tab_color"
-
-set -g @nova-segment-layout "#(~/.tmux/plugins/tmux-keyboard-layout/scripts/get_keyboard_layout.sh)"
-set -g @nova-segment-layout-colors "$sides_color"
-
-set -g @nova-segment-time "%H:%M"
-set -g @nova-segment-time-colors "$sides_color"
-
 set -g @nova-segment-suspended "#{@suspended_mode}"
 set -g @nova-segment-suspended-colors "$sides_color"
 
 set -g @nova-segments-0-left "session"
-set -g @nova-segments-0-right "prefix cpu battery layout time whoami"
+set -g @nova-segments-0-right "prefix whoami"
 
 ### SUSPENDED MODE ###
 set -g @suspend_on_resume_command "tmux \
