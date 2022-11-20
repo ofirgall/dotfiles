@@ -78,9 +78,26 @@ tmux_sessions_with_git_info()
 {
 	sessions=$(tmux ls -F '#S')
 	for session in $sessions; do
+		if echo "$session" | grep -q "\-viewer"; then
+			continue
+		fi
 		echo "$session ($(get_session_git_info $session))"
 	done
 }
+
+clean_viewer_sessions()
+{
+	viewer_session_not_attached=$(tmux ls | grep "\-viewer" | grep -v attached)
+	if [ -z "$viewer_session_not_attached" ]; then
+		return
+	fi
+	while IFS= read -r line; do
+		session=$(echo "$line" | grep -o -E ".+: " | sed -e "s/: //")
+		tmux kill-session -t $session
+	done <<< "$viewer_session_not_attached"
+}
+
+SESSION_MODE_FILE=/tmp/.select_tmux_session_mode
 
 select_tmux_session()
 {
@@ -93,7 +110,10 @@ select_tmux_session()
 		tmux
 	fi
 
-	session=$(tmux_sessions_with_git_info | fzf --reverse --header="Select Tmux Session. Ctrl-f to Create New Session, Ctrl-C to exit." --bind "ctrl-f:abort+execute(echo ___new_session)")
+	clean_viewer_sessions
+
+	echo "attach" > $SESSION_MODE_FILE
+	session=$(tmux_sessions_with_git_info | fzf --reverse --header="Select Tmux Session. Ctrl-f to Create New Session, Ctrl-v to create 'viewer' session, Ctrl-C to exit." --bind "ctrl-f:abort+execute(echo ___new_session)" --bind "ctrl-v:execute(echo viewer > $SESSION_MODE_FILE)+accept")
 
 	# ctrl-c
 	if [ -z "$session" ]; then
@@ -106,8 +126,21 @@ select_tmux_session()
 	if [ "$session" == "___new_session" ]; then
 		tmux new-session -s "new-session-$(uuidgen | cut -c1-8)"
 	else
-		# Attach to session
-		tmux attach -t "$session"
+		mode=$(cat $SESSION_MODE_FILE)
+
+		if [ "$mode" == "attach" ]; then
+			# Attach to session
+			tmux attach -t "$session"
+		elif [ "$mode" == "viewer" ]; then
+			echo "hey"
+			if tmux ls | grep "$session-viewer"; then
+				# If for some reason there is a viewer session attach to it
+				tmux attach -t "$session-viewer"
+			else
+				# Create new viewer session
+				tmux new-session -s "$session-viewer" -t "$session"
+			fi
+		fi
 	fi
 
 	if [[ "$ZSH_TMUX_ALWAYS_SELECT_SESSION" == "true" ]]; then

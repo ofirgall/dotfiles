@@ -10,10 +10,7 @@ tmux split-window -h -l 50% "ssh -t root@$HOST '/usr/bin/watch -n0.2 lsblk -s -o
 
 
 # Rename
-CURR_SESSION=$(tmux display-message -p '#S')
-tmux rename-window "$CURR_SESSION-viewer"
-# Link to `viewer` session
-tmux link-window -t viewer
+tmux rename-window "viewer"
 
 # Panel to run (top)
 tmux select-pane -t 4
