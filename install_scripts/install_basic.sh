@@ -65,6 +65,17 @@ sudo npm cache clean -f
 sudo npm install -g n
 sudo n stable
 
+if ! $IS_REMOTE; then
+	install_bluetuith()
+	{
+		tar -xf *.tar.gz
+		chmod +x bluetuith
+		mv bluetuith $HOME/.local/bin/
+	}
+
+	download_latest_release /tmp/bluetuith/ darkhz/bluetuith Linux_x86_64 install_bluetuith
+fi
+
 # Set npm install prefix to user
 mkdir -p "$HOME/.npm-packages"
 npm config set prefix "$HOME/.npm-packages"
