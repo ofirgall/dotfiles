@@ -395,6 +395,7 @@ retrail.setup {
 			'markdown',
 			'fugitive',
 			'toggleterm',
+			'log',
 		},
 	},
 	trim = {
