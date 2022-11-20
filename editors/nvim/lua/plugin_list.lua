@@ -194,6 +194,7 @@ return require('packer').startup(function()
 		requires = { 's1n7ax/nvim-window-picker', tag = 'v1.*' }
 	}
 	use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }
+	use 'mtdl9/vim-log-highlighting' -- Highlight .log files
 
 	-- Improvement Games
 	use 'ThePrimeagen/vim-be-good'
