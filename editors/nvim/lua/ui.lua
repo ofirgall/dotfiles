@@ -242,6 +242,80 @@ if not vim.g.started_by_firenvim then
 				},
 				opts = { skip = true },
 			},
+			{
+				-- Disable "written" messages
+				filter = {
+					event = "msg_show",
+					kind = "",
+					find = "written",
+				},
+				opts = { skip = true },
+			},
+			-- Disable "redo/undo" messages
+			{
+				filter = {
+					event = "msg_show",
+					kind = "lua_error",
+					find = "more line",
+				},
+				opts = { skip = true },
+			},
+			{
+				filter = {
+					event = "msg_show",
+					kind = "lua_error",
+					find = "fewer line",
+				},
+				opts = { skip = true },
+			},
+			{
+				filter = {
+					event = "msg_show",
+					kind = "lua_error",
+					find = "line less",
+				},
+				opts = { skip = true },
+			},
+			{
+				filter = {
+					event = "msg_show",
+					kind = "lua_error",
+					find = "change;",
+				},
+				opts = { skip = true },
+			},
+			{
+				filter = {
+					event = "msg_show",
+					kind = "",
+					find = "more line",
+				},
+				opts = { skip = true },
+			},
+			{
+				filter = {
+					event = "msg_show",
+					kind = "",
+					find = "fewer line",
+				},
+				opts = { skip = true },
+			},
+			{
+				filter = {
+					event = "msg_show",
+					kind = "",
+					find = "line less",
+				},
+				opts = { skip = true },
+			},
+			{
+				filter = {
+					event = "msg_show",
+					kind = "",
+					find = "change;",
+				},
+				opts = { skip = true },
+			},
 		},
 	}
 end
