@@ -33,7 +33,7 @@ sudo apt install -y fd-find
 ln -f -s $(which fdfind) ~/.local/bin/fd
 
 if ! $IS_REMOTE; then
-	sudo apt install -y xclip gnome-tweaks
+	sudo apt install -y xclip
 fi
 
 # Rustup

@@ -21,8 +21,6 @@
         path: editors/vscode/settings.json
     ~/.config/Code/User/keybindings.json:
         path: editors/vscode/keybindings.json
-    ~/.local/share/gnome-shell/extensions:
-        path: gnome/extensions
     ~/.config/fusuma/config.yml:
         path: dotfiles/fusuma.yml
     ~/.alacritty.yml:
@@ -40,8 +38,6 @@
 
 
 - shell:
-    - [dconf dump / > old_dconf, Backup for gnome settings]
-    - [dconf load / < gnome/config.dconf, Setting gnome settings]
     - [install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
     - [install_scripts/install_vscode.sh, Installing vscode]
     - [editors/vscode/install_extensions.sh, Installing vscode extensions]

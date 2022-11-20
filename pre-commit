@@ -1,10 +1,5 @@
 #!/bin/sh
 
-# Backup dconf
-echo "Backing up gnome/config.dconf"
-dconf dump / | sed "/picture-uri=/d;/org\/gtk\/settings\/color-chooser/d;/selected-color=/d" | cat -s > gnome/config.dconf
-git add gnome/config.dconf
-
 # Backup vscode extension
 code --list-extensions > editors/vscode/extensions
 git add editors/vscode/extensions

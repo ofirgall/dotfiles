@@ -14,11 +14,6 @@ Each workspace usually has 2 windows, terminal with tmux session attached and a 
 The only workspace that uas more 2 windows is the `main` session which runs `slack`, `spotify` and other GUIS I must use. \
 I jump between the workspace fast with [tmux-go](https://github.com/ofirgall/tmux-browser)
 
-How I use nvim for [everything everywhere all at once](editors/nvim/README.md).
-
-Q: Why don't you use i3? \
-A: This way I have only 2 windows per workspace and I can jump between them with ctrl+tab I don't need tiling manager, I do everything from the terminal.
-
 ---
 
 # WARNING
@@ -26,20 +21,15 @@ This repo is mainly for saving my dotfiles, I don't recommend to clone and insta
 Feel free to use it as reference to your own dotfiles/config setup
 
 ## Custom Key Mapping
-Done by dconf (gnome tweaks):
+Done by ~/awesomewm/autorun.sh:
 * Capslock is mapped to Escape - Don't move your hands when escaping insert mode.
-* Both shift changes language - Don't move your hands while typing.
-* Right Alt is mapped to backspace - Same idea.. (done with ~/.xmodmap too)
-* Changing workspaces - Ctrl+Alt+H/J/K/L, Ctrl+Alt+Shift+H/J/K/L
-* Maximizing/Restoring window - Super+J/K
-* Move window to right/left - Super+H/L
-* Move window across monitors - Shift+Super+H/J/K/L
-* [tmux-go](https://github.com/ofirgall/tmux-go) shortcuts, Alt+G, Super+J/K/L/M
+* Super+RightShift - Don't move your hands while typing.
+* Right Alt is mapped to backspace - Same idea.. (done with ~/.xmodmap)
 
 ---
 
 # Install
-### Enable pre-commit hook for saving stuff (like dconf)
+### Enable pre-commit hook for saving stuff
 ```bash
 ln -s ../../pre-commit .git/hooks/pre-commit
 ```
