@@ -10,6 +10,7 @@ require("awesomewm-vim-tmux-navigator") {
 
 -- intrntbrn/smart_borders
 local awful = require("awful")
+local dpi = require("beautiful").xresources.apply_dpi
 require('smart_borders') {
     show_button_tooltips = true,
     button_left_click = function(c)
@@ -22,5 +23,6 @@ require('smart_borders') {
         end
         c:emit_signal("request::activate", "mouse_click", { raise = true })
         awful.mouse.client.move(c)
-    end
+    end,
+    border_width = dpi(3)
 }
