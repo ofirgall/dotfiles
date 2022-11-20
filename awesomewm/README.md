@@ -7,7 +7,6 @@
 - Auto name by tmux (zenity)
 - Screenshot
 - Bluetooth
-- WIFI
 - Docking station (dynamic monitor detection)
 
 # Settings

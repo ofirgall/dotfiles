@@ -12,6 +12,7 @@ git clone --depth=1 https://github.com/echuraev/keyboard_layout $AWESOME_CONFIG/
 git clone --depth=1 https://github.com/Veratil/awesome-retain $AWESOME_CONFIG/retain
 git clone --depth=1 https://github.com/intrntbrn/smart_borders $AWESOME_CONFIG/smart_borders
 git clone --depth=1 https://github.com/streetturtle/awesome-wm-widgets $AWESOME_CONFIG/awesome-wm-widgets
+git clone --depth=1 https://github.com/pltanton/net_widgets.git $AWESOME_CONFIG/net_widgets
 
 # Install `sp` binary for spotify-widget
 git clone https://gist.github.com/fa6258f3ff7b17747ee3.git /tmp/sp

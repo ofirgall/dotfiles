@@ -86,8 +86,8 @@ awful.layout.layouts = {
 }
 -- }}}
 retain.tags.defaults = {
-	names={"1","2","3","4","5","6","7","8","9"},
-	layouts=awful.layout.suit.tile,
+    names = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+    layouts = awful.layout.suit.tile,
 }
 retain.tags.load()
 retain.connect_signals()
@@ -193,7 +193,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 -- echuraev/keyboard_layout
 local keyboard_layout = require("keyboard_layout")
-local kbdcfg = keyboard_layout.kbdcfg({type = "tui"})
+local kbdcfg = keyboard_layout.kbdcfg({ type = "tui" })
 
 kbdcfg.add_primary_layout("English", "US", "us")
 kbdcfg.add_primary_layout("Hebrew", "HE", "il")
@@ -213,6 +213,20 @@ local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 local spotify_widget = require("awesome-wm-widgets.spotify-widget.spotify")
 local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
+local net_widgets = require("net_widgets")
+
+local wifi_adapter = "wlp0s20f3"
+net_wireless = net_widgets.wireless({ interface = wifi_adapter })
+net_wired = net_widgets.indicator({
+    ignore_interfaces = {
+        wifi_adapter,
+        'lo',
+        'docker0'
+    },
+    timeout = 5
+})
+
+local __sep__ = wibox.widget.textbox(" | ")
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -260,17 +274,22 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            spotify_widget(),
             -- mykeyboardlayout,
+            __sep__,
             cpu_widget(),
             ram_widget(),
             batteryarc_widget({
                 show_current_level = true,
                 arc_thickness = 2,
             }),
-            spotify_widget(),
             volume_widget({
                 widget_type = 'arc'
             }),
+            __sep__,
+            net_wireless,
+            net_wired,
+            __sep__,
             kbdcfg.widget,
             -- wibox.widget.systray(),
             mytextclock,
