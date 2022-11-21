@@ -60,7 +60,7 @@ require('nvim-treesitter.configs').setup {
 		select = {
 			enable = true,
 			lookahead = true,
-			include_surrounding_whitespace = true,
+			-- include_surrounding_whitespace = true,
 			keymaps = {
 				['af'] = '@function.outer',
 				['if'] = '@function.inner',
