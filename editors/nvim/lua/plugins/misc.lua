@@ -396,6 +396,8 @@ retrail.setup {
 			'fugitive',
 			'toggleterm',
 			'log',
+			'noice',
+			'nui',
 		},
 	},
 	trim = {
