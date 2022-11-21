@@ -8,7 +8,7 @@ set -g monitor-activity off
 set -g visual-activity off
 set -g status-left-length 1000
 set -g status-right-length 1000
-set -g set-titles-string "tmux-go-session:#S - TMUX"
+set -g set-titles-string "#S - TMUX"
 set -g set-titles on
 
 set -q -g status-utf8 on

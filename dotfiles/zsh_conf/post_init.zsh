@@ -34,10 +34,6 @@ fi
 #		  Auto tmux
 # ---------------------------
 export ZSH_TMUX_ALWAYS_SELECT_SESSION=true
-if ! $IS_REMOTE && ! $WSL; then
-	$HOME/.tmux/tmux-go/src/tmux_go_attach.sh
-fi
-
 if [ ! -z $ATTACH_TO ]; then # Attach on remote (smux)
 	tmux attach -t $ATTACH_TO
 fi
