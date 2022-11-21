@@ -101,8 +101,8 @@ map('', '<Down>', '<C-e>', 'Down to scroll')
 map('', '<Up>', '<C-y>', 'Up to scroll')
 
 -- Move through wrapped lines
-map({ 'n', 'x' }, 'j', 'gj', 'Move down inside wrapped line')
-map({ 'n', 'x' }, 'k', 'gk', 'Move up inside wrapped line')
+map({ 'n', 'x' }, 'j', 'v:count ? "j" : "gj"', 'Move down inside wrapped line', { silent = true, expr = true })
+map({ 'n', 'x' }, 'k', 'v:count ? "k" : "gk"', 'Move down inside wrapped line', { silent = true, expr = true })
 
 -- Toggle spell check
 map('n', '<F1>', ':set spell!<cr>', 'Toggle spell check')
