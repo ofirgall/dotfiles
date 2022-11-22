@@ -48,7 +48,6 @@ end
 -----------------------------------
 --     KEYMAPS FROM PLUGINS      --
 -----------------------------------
--- leap.nvim: Default
 -- gitsigns.nvim: git.lua
 -- treesitter-textobjects: treesitter.lua
 
@@ -178,7 +177,7 @@ map('n', '<leader>a', require("harpoon.ui").toggle_quick_menu, 'Jump to harpoon 
 map({ 'n', 'v' }, '<leader>i', require('nvim-toggler').toggle, 'Invert words')
 
 -- Spell Suggest
-map('n', '<leader>ss', function()
+map('n', 'ss', function()
 	require('telescope.builtin').spell_suggest({
 		prompt_title = '',
 		layout_config = {
@@ -188,7 +187,7 @@ map('n', '<leader>ss', function()
 	})
 end, 'Spell suggest')
 
-map('n', '<leader>sy', function()
+map('n', 'sy', function()
 	require('telescope').extensions.dict.synonyms({
 		prompt_title = '',
 		layout_config = {
@@ -199,8 +198,8 @@ map('n', '<leader>sy', function()
 end, 'Synonyms')
 
 -- AndrewRadev/splitjoin.vim
-map('n', '<leader>sj', '<cmd>SplitjoinJoin<cr>', 'Splitjoin Join line')
-map('n', '<leader>sJ', '<cmd>SplitjoinSplit<cr>', 'Splitjoin Split line')
+map('n', 'sj', '<cmd>SplitjoinJoin<cr>', 'Splitjoin Join line')
+map('n', 'sJ', '<cmd>SplitjoinSplit<cr>', 'Splitjoin Split line')
 
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 -- Add cursor down/up Alt+n/p (like ctrl+down/up in subl)
@@ -213,12 +212,12 @@ let g:VM_maps['Add Cursor Up'] = '<M-p>'
 ]])
 
 -- Surround words
-map('n', '<leader>sw', '<leader>saiw', 'Surround word', { remap = true })
-map('n', '<leader>sW', '<leader>saiW', 'Surround WORD', { remap = true })
+map('n', 'sw', 'saiw', 'Surround word', { remap = true })
+map('n', 'sW', 'saiW', 'Surround WORD', { remap = true })
 -- Replace qoutes
 local qoutes = { "'", '"', '`' }
 for _, char in ipairs(qoutes) do
-	map('n', "<leader>" .. char, '<leader>srq' .. char, 'Replace surround to ' .. char, { remap = true }) -- <leader>{char} to replace sandwich to {char}
+	map('n', "<leader>" .. char, 'srq' .. char, 'Replace surround to ' .. char, { remap = true }) -- <leader>{char} to replace sandwich to {char}
 end
 
 -----------------------------------
@@ -396,6 +395,12 @@ map('n', 'g0', '<cmd>tabnext10<cr>', 'Go to tabpage #10')
 map('n', 'gq', '<cmd>tabclose<cr>', 'Close tabpage')
 map('n', '<M-t>', '<cmd>tabnew %<cr>', 'New tabpage')
 
+-----------------------------------
+--           MOTION              --
+-----------------------------------
+-- ggandor/leap.nvim
+map({'n', 'x'}, '<leader>s', '<Plug>(leap-forward)', 'Leap forward')
+map({'n', 'x'}, '<leader>S', '<Plug>(leap-backward)', 'Leap backard')
 
 -----------------------------------
 --            DIAL               --

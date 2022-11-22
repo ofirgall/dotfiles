@@ -163,7 +163,7 @@ Hydra({
 		end
 	},
 	mode = 'n',
-	body = '<leader>S',
+	body = '<C-s>',
 	heads = {
 		{ 'j', function()
 			api.nvim_input(']s')

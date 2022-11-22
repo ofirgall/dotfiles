@@ -164,16 +164,16 @@ require('iron.core').setup {
 		},
 		repl_open_cmd = 'belowright 15 split',
 	},
-	keymaps = {
-		send_motion = '<space>sc',
-		visual_send = '<space>sc',
-		send_file = '<space>sf',
-		send_line = '<space>sl',
-		cr = '<space>s<cr>',
-		interrupt = '<space>s<space>',
-		exit = '<space>sq',
-		clear = '<space>cl',
-	},
+	-- keymaps = {
+	-- 	send_motion = '<space>sc',
+	-- 	visual_send = '<space>sc',
+	-- 	send_file = '<space>sf',
+	-- 	send_line = '<space>sl',
+	-- 	cr = '<space>s<cr>',
+	-- 	interrupt = '<space>s<space>',
+	-- 	exit = '<space>sq',
+	-- 	clear = '<space>cl',
+	-- },
 	highlight = {
 		italic = false,
 		bold = false
@@ -207,14 +207,13 @@ require('peek').setup {
 vim.api.nvim_create_user_command('MarkdownPreviewOpen', require('peek').open, {})
 vim.api.nvim_create_user_command('MarkdownPreviewClose', require('peek').close, {})
 
--- leap.nvim
-require('leap').set_default_keymaps()
+-- ggandor/leap.nvim
 require('leap').setup {
 	max_aot_targets = nil,
 	highlight_unlabeled = false,
 }
 
--- flit.nvim
+-- ggandor/flit.nvim
 require('flit').setup {
 	labeled_modes = 'nv',
 }
@@ -362,14 +361,14 @@ end
 
 require('nvim-surround').setup {
 	keymaps = {
-		normal = '<leader>sa',
+		normal = 'sa',
 		normal_cur = false,
 		normal_line = false,
 		normal_cur_line = false,
-		visual = '<leader>s',
-		visual_line = '<leader>S',
-		delete = '<leader>sd',
-		change = '<leader>sr',
+		visual = 's',
+		visual_line = 'S',
+		delete = 'sd',
+		change = 'sr',
 	},
 	aliases = {
 		['i'] = '[', -- Index
