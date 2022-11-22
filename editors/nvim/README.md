@@ -13,6 +13,7 @@ nvim is my main editor and [much more](https://github.com/ofirgall/learn-nvim/bl
 * flit - force case sensitivity
 * neodev - takes time with awesome (split awesome repo?)
 * bind - take last yank to the os clipboard
+* githydra - conflict binds, next, prev, Ctrl-j/k to checkout upperlower, checkout both
 ### Takes time
 * nvim[rust] - require'rust-tools'.move_item.move_item(up) with ctrl+shift+j/k (requires alacritty setup)
 * nvim - custom textobjects, function name, expression a == b && c == d, better call (all call, the function that called)

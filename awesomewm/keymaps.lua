@@ -45,18 +45,31 @@ local function rename_tag_by_tmux(tag)
     end
 
     local found = false
-    for _,c in ipairs(tag:clients()) do
-        local client_name = c and c.name or ""
-        if string.find(client_name, " %- TMUX$") then
-            session_name = string.gsub(client_name, " %- TMUX$", "")
-            session_name = string.gsub(session_name, "%-viewer$", "") -- Remove `-viewer` suffix
-            rename_tag_across_screens(tag.index, 't: ' .. session_name)
-            found = true
+    for s in screen do
+        for _, t in ipairs(s.tags) do
+            if t.index == tag.index then
+                for _, c in ipairs(t:clients()) do
+                    local client_name = c and c.name or ''
+                    if string.find(client_name, " %- TMUX$") then
+                        session_name = string.gsub(client_name, " %- TMUX$", "")
+                        session_name = string.gsub(session_name, "%-viewer$", "") -- Remove `-viewer` suffix
+                        rename_tag_across_screens(tag.index, 't: ' .. session_name)
+                        found = true
+                        break
+                    end
+                end
+                if found then
+                    break
+                end
+            end
+        end
+        if found then
+            break
         end
     end
 
     -- Reset tag name if not tmux session not found
-    if not found and not tag_has_tmux_name(tag.index)  then
+    if not found then
         rename_tag_across_screens(tag.index, '')
     end
 end
