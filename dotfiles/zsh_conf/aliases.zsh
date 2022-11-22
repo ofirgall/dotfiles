@@ -20,9 +20,10 @@ alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed
 alias cdd='cd $HOME/dotfiles'
 alias cdn='cd $HOME/dotfiles/editors/nvim/' # cd to neovim config
 alias cdp='cd $HOME/.local/share/nvim/site/pack/packer/start' # cd to packer/plugins
-alias cgp='cg $HOME/.local/share/nvim/site/pack/packer/start' # cd to packer/plugins
+alias cgp='cg $HOME/.local/share/nvim/site/pack/packer/start' # cg to packer/plugins
 alias cdt='cd $HOME/.local/share/nvim/site/pack/packer/start/ofirkai.nvim/' # cd to nvim theme
 alias cda='cd $HOME/.config/awesome/' # cd to awesome config
+alias cgt='cg $HOME/.tmux/plugins/' # cg to tmux plugins
 alias g='fugitive' # git fugitive
 alias ngh='git_tree' # git history with nvim and Flog
 function cg() { cd $(inner_cg.sh $@) } # cd to git repos
