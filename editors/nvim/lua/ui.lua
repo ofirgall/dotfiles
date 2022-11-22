@@ -251,6 +251,40 @@ if not vim.g.started_by_firenvim then
 				},
 				opts = { skip = true },
 			},
+			{
+				-- Disable "file_path" AMOUNT_OF_LINESL, AMOUNT_OF_BYTESB message
+				filter = {
+					event = 'msg_show',
+					kind = '',
+					find = '"[%w%p]+" %d+L, %d+B'
+				},
+				opts = { skip = true },
+			},
+			-- Disable "search messages"
+			{
+				filter = {
+					event = 'msg_show',
+					kind = 'wmsg',
+					find = 'search hit BOTTOM, continuing at TOP'
+				},
+				opts = { skip = true },
+			},
+			{
+				filter = {
+					event = 'msg_show',
+					kind = 'wmsg',
+					find = 'search hit TOP, continuing at BOTTOM'
+				},
+				opts = { skip = true },
+			},
+			{
+				filter = {
+					event = 'msg_show',
+					kind = 'emsg',
+					find = 'Pattern not found:'
+				},
+				opts = { skip = true },
+			},
 			-- Disable "redo/undo" messages
 			{
 				filter = {
