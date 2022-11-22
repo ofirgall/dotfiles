@@ -12,7 +12,16 @@ require("awesomewm-vim-tmux-navigator") {
 local awful = require("awful")
 local dpi = require("beautiful").xresources.apply_dpi
 require('smart_borders') {
+    -- Border
+    color_focus = '#c79452',
+    color_normal = '#8a693e',
+    border_width = dpi(3),
+
+    -- Buttons
+    buttons = { "floating", "minimize", "maximize", "close", "sticky", "top" },
     show_button_tooltips = true,
+
+    -- Buttons actions
     button_left_click = function(c)
         c:emit_signal("request::activate", "mouse_click", { raise = true })
         awful.mouse.client.resize(c)
@@ -24,5 +33,4 @@ require('smart_borders') {
         c:emit_signal("request::activate", "mouse_click", { raise = true })
         awful.mouse.client.move(c)
     end,
-    border_width = dpi(3)
 }
