@@ -1,18 +1,34 @@
 local M = {}
 
 local naughty = require("naughty")
-local function p(txt)
+local gears = require("gears")
+local function p(text, obj)
     naughty.notify({
         preset = naughty.config.presets.critical,
-        text = txt,
+        text = gears.debug.dump_return(obj, text),
         title = "debug",
     })
+end
+
+local function rename_tag_across_screens(tag_index, name)
+    local title = tostring(tag_index)
+    if name ~= '' then
+        title = title .. ' ' .. name
+    end
+
+    for s in screen do
+        for _,t in ipairs(s.tags) do
+            if t.index == tag_index then
+                t.name = title
+            end
+        end
+    end
 end
 
 local function rename_tag_by_tmux(tag)
     -- Don't override custom names
     if tag.name ~= tostring(tag.index) then
-        if not string.find(tag.name, 't: ') then
+        if not string.find(tag.name or '', 't: ') then
             return
         end
     end
@@ -22,19 +38,18 @@ local function rename_tag_by_tmux(tag)
         local client_name = c and c.name or ""
         if string.find(client_name, " %- TMUX$") then
             session_name = string.gsub(client_name, " %- TMUX$", "")
-            tag.name = tag.index .. ' t: ' .. session_name
+            rename_tag_across_screens(tag.index, 't: ' .. session_name)
             found = true
         end
     end
 
     -- Reset tag name if not tmux session not found
     if not found then
-        tag.name = tag.index
+        rename_tag_across_screens(tag.index, '')
     end
 end
 
 function M.setup(kbdcfg, volume_widget, retain)
-    local gears = require("gears")
     local awful = require("awful")
     local menubar = require("menubar")
     local hotkeys_popup = require("awful.hotkeys_popup")
@@ -228,14 +243,12 @@ function M.setup(kbdcfg, volume_widget, retain)
                     prompt       = "rename current tag: ",
                     text         = '',
                     textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = function(text)
+                    exe_callback = function(name)
                         local selected = awful.tag.selected()
-                        if text ~= '' then
-                            text = ' ' .. text
-                        end
-                        selected.name = selected.index .. text
-                        if text == '' then
+                        if name == nil then
                             rename_tag_by_tmux(selected)
+                        else
+                            rename_tag_across_screens(selected.index, name)
                         end
                     end,
                 }
