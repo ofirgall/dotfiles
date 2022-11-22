@@ -51,6 +51,11 @@ end
 -- }}}
 
 require('ui')
+local top_bar_bg_focus = '#5c380b'
+local top_bar_fg_focus = '#d7d7d7'
+local theme = beautiful.get()
+theme.font = 'JetBrainsMono Nerd Font Mono Bold 10'
+beautiful.init(theme)
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -226,7 +231,7 @@ net_wired = net_widgets.indicator({
     timeout = 5
 })
 
-local __sep__ = wibox.widget.textbox(" | ")
+local __sep__ = wibox.widget.textbox("|")
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -249,14 +254,22 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
+        buttons = taglist_buttons,
+        style = {
+            bg_focus = top_bar_bg_focus,
+            fg_focus = top_bar_fg_focus,
+        }
     }
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        buttons = tasklist_buttons,
+        style = {
+            bg_focus = top_bar_bg_focus,
+            fg_focus = top_bar_fg_focus,
+        }
     }
 
     -- Create the wibox
@@ -424,8 +437,6 @@ client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", { raise = false })
 end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
 awful.spawn.with_shell('~/.config/awesome/autorun.sh')
