@@ -2,6 +2,7 @@ local M = {}
 
 local naughty = require("naughty")
 local gears = require("gears")
+local awful = require("awful")
 local function p(text, obj)
     naughty.notify({
         preset = naughty.config.presets.critical,
@@ -17,12 +18,22 @@ local function rename_tag_across_screens(tag_index, name)
     end
 
     for s in screen do
-        for _,t in ipairs(s.tags) do
+        for _, t in ipairs(s.tags) do
             if t.index == tag_index then
                 t.name = title
             end
         end
     end
+end
+
+local function tag_has_tmux_name(tag_index)
+    for s in screen do
+        if string.find(s.tags[tag_index].name, 't: ') then
+            return true
+        end
+    end
+
+    return false
 end
 
 local function rename_tag_by_tmux(tag)
@@ -38,19 +49,30 @@ local function rename_tag_by_tmux(tag)
         local client_name = c and c.name or ""
         if string.find(client_name, " %- TMUX$") then
             session_name = string.gsub(client_name, " %- TMUX$", "")
+            session_name = string.gsub(session_name, "%-viewer$", "") -- Remove `-viewer` suffix
             rename_tag_across_screens(tag.index, 't: ' .. session_name)
             found = true
         end
     end
 
     -- Reset tag name if not tmux session not found
-    if not found then
+    if not found and not tag_has_tmux_name(tag.index)  then
         rename_tag_across_screens(tag.index, '')
     end
 end
 
+local function switch_to_tag(screen, tag)
+    if tag then
+        local current_tag = screen.selected_tag
+        tag:view_only()
+        if current_tag then
+            rename_tag_by_tmux(current_tag)
+        end
+        rename_tag_by_tmux(tag)
+    end
+end
+
 function M.setup(kbdcfg, volume_widget, retain)
-    local awful = require("awful")
     local menubar = require("menubar")
     local hotkeys_popup = require("awful.hotkeys_popup")
 
@@ -269,21 +291,29 @@ function M.setup(kbdcfg, volume_widget, retain)
     -- This should map on the top row of your keyboard, usually 1 to 9.
     for i = 1, 9 do
         globalkeys = gears.table.join(globalkeys,
-            -- View tag only.
+            -- View tag on all screens
             awful.key({ modkey }, "#" .. i + 9,
+                function()
+                    local focused_screen = awful.screen.focused()
+                    for s in screen do
+                        -- First switch all other screens later the focused screen
+                        if s ~= focused_screen then
+                            switch_to_tag(s, s.tags[i])
+                        end
+                    end
+                    switch_to_tag(focused_screen, focused_screen.tags[i])
+                end,
+                { description = "view tag #" .. i, group = "tag" }),
+            -- View tag in current screen.
+            awful.key({ modkey, "Control" }, "#" .. i + 9,
                 function()
                     local screen = awful.screen.focused()
                     local tag = screen.tags[i]
-                    if tag then
-                        local current_tag = awful.tag.selected()
-                        rename_tag_by_tmux(current_tag)
-                        tag:view_only()
-                        rename_tag_by_tmux(tag)
-                    end
+                    switch_to_tag(screen, tag)
                 end,
-                { description = "view tag #" .. i, group = "tag" }),
+                { description = "view tag in current screen #" .. i, group = "tag" }),
             -- Toggle tag display.
-            awful.key({ modkey, "Control" }, "#" .. i + 9,
+            awful.key({ modkey, ALT }, "#" .. i + 9,
                 function()
                     local screen = awful.screen.focused()
                     local tag = screen.tags[i]
