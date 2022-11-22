@@ -397,6 +397,7 @@ retrail.setup {
 			'log',
 			'noice',
 			'nui',
+			'notify',
 		},
 	},
 	trim = {
