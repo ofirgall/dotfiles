@@ -406,6 +406,8 @@ retrail.setup {
 	}
 }
 
+api.nvim_create_user_command('TrimWhiteSpace', function() retrail:trim() end, {})
+
 -- AndrewRadev/splitjoin.vim
 vim.g.splitjoin_split_mapping = ''
 vim.g.splitjoin_join_mapping = ''
