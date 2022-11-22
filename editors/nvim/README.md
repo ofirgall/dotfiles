@@ -12,7 +12,6 @@ nvim is my main editor and [much more](https://github.com/ofirgall/learn-nvim/bl
 * nvim - Install gh.nvim and octo.nvim and write all this todos as issues
 * flit - force case sensitivity
 * neodev - takes time with awesome (split awesome repo?)
-* bind - take last yank to the os clipboard
 * githydra - conflict binds, next, prev, Ctrl-j/k to checkout upperlower, checkout both
 ### Takes time
 * nvim[rust] - require'rust-tools'.move_item.move_item(up) with ctrl+shift+j/k (requires alacritty setup)
