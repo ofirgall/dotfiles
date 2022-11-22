@@ -225,7 +225,7 @@ end
 -----------------------------------
 -- Utils
 map('n', '<leader>t', find_current_file, 'find files with the current file (use to find _test fast)')
-map('n', '<leader>fr', '<cmd>Telescope resume<cr>', 'Find resume')
+map('n', '<leader>fr', function() require('telescope.builtin').resume({initial_mode = 'normal'}) end, 'Find resume')
 
 -- Find files
 map('n', '<leader>ff', find_files, 'Find file')
