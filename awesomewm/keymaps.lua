@@ -140,6 +140,21 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "Save env with retain", group = "client" }
         ),
 
+        -- Fix retain (delete tags after 9)
+        awful.key({ modkey, "Control", "Shift" }, "s",
+            function()
+                for s in screen do
+                    for _, t in ipairs(s.tags) do
+                        if t.index > 9 then
+                            t:delete()
+                        end
+                    end
+                end
+                retain.tags.save_all()
+            end,
+            { description = "Fix retain (delete tags after 9)", group = "client" }
+        ),
+
         awful.key({ modkey, }, "w", function() mymainmenu:show() end,
             { description = "show main menu", group = "awesome" }),
 
