@@ -11,6 +11,8 @@ local function p(text, obj)
     })
 end
 
+local TMUX_PREFIX = 'T:'
+
 local function rename_tag_across_screens(tag_index, name)
     local title = tostring(tag_index)
     if name ~= '' then
@@ -28,7 +30,7 @@ end
 
 local function tag_has_tmux_name(tag_index)
     for s in screen do
-        if string.find(s.tags[tag_index].name, 't: ') then
+        if string.find(s.tags[tag_index].name, TMUX_PREFIX) then
             return true
         end
     end
@@ -39,7 +41,7 @@ end
 local function rename_tag_by_tmux(tag)
     -- Don't override custom names
     if tag.name ~= tostring(tag.index) then
-        if not string.find(tag.name or '', 't: ') then
+        if not string.find(tag.name or '', TMUX_PREFIX) then
             return
         end
     end
@@ -53,7 +55,7 @@ local function rename_tag_by_tmux(tag)
                     if string.find(client_name, " %- TMUX$") then
                         session_name = string.gsub(client_name, " %- TMUX$", "")
                         session_name = string.gsub(session_name, "%-viewer$", "") -- Remove `-viewer` suffix
-                        rename_tag_across_screens(tag.index, 't: ' .. session_name)
+                        rename_tag_across_screens(tag.index, TMUX_PREFIX .. session_name)
                         found = true
                         break
                     end
