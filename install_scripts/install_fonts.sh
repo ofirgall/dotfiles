@@ -9,10 +9,7 @@ download_font()
 {
 	font=$1
 
-	if ls | grep $font; then
-		return
-	fi
-
+	rm -f $font.zip
 	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/$font.zip
 	unzip -o $font.zip
 	# dont remove .zip
@@ -20,5 +17,6 @@ download_font()
 
 download_font CascadiaCode
 download_font UbuntuMono
+download_font JetBrainsMono
 
 fc-cache -f -v

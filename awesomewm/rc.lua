@@ -54,7 +54,7 @@ require('ui')
 local top_bar_bg_focus = '#5c380b'
 local top_bar_fg_focus = '#d7d7d7'
 local theme = beautiful.get()
-theme.font = 'JetBrainsMono Nerd Font Mono Bold 10'
+theme.font = 'JetBrainsMono Nerd Font Bold 10'
 beautiful.init(theme)
 
 -- This is used later as the default terminal and editor to run.
@@ -232,6 +232,7 @@ net_wired = net_widgets.indicator({
 })
 
 local __sep__ = wibox.widget.textbox("|")
+local __space__ = wibox.widget.textbox(" ")
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -296,6 +297,7 @@ awful.screen.connect_for_each_screen(function(s)
                 show_current_level = true,
                 arc_thickness = 2,
             }),
+            __space__,
             volume_widget({
                 widget_type = 'arc'
             }),
@@ -303,6 +305,7 @@ awful.screen.connect_for_each_screen(function(s)
             net_wireless,
             net_wired,
             __sep__,
+            wibox.widget.textbox(''),
             kbdcfg.widget,
             -- wibox.widget.systray(),
             mytextclock,

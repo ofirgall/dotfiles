@@ -64,6 +64,7 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 ## TODO
 ### Important
+* fonts - Figure out what is up with the new mono, CascadiaCode italic is ugly, need to figure out how to use the default italic conversion instead of this.
 * git - script for setting upstream remote in a fork
 * git - script for changing http to ssh + set git user
 * git - change the default git user to personal, and workspace to other
