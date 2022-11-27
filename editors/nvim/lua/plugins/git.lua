@@ -139,7 +139,7 @@ end
 local Hydra = require('hydra')
 local gitsigns = gs
 local hint = [[
- _j_: next hunk   _s_: stage hunk        _r_: reset hunk
+ _j_: next hunk   _<C-s>_: stage hunk        _r_: reset hunk
  _k_: prev hunk   _u_: undo stage hunk   _R_: reset buffer
  ^ ^              _S_: stage buffer
  ^
@@ -193,7 +193,7 @@ diffview_hydra = Hydra({
 			end
 			center_screen()
 		end, { expr = true } },
-		{ 's', function()
+		{ '<C-s>', function()
 			gitsigns.stage_hunk(nil)
 			gitsigns.next_hunk({navigation_message = false})
 			center_screen()
