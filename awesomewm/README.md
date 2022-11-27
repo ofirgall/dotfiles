@@ -7,6 +7,8 @@
 - Screenshot
 - Bluetooth
 - Docking station (dynamic monitor detection) https://github.com/wertarbyte/autorandr
+- Brightness for laptop (xrandr --output eDP-1 --brightness 1.5)
+- xrandr --dpi (70 for laptop)
 
 # Settings
 ## Screen
