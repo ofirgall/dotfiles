@@ -177,7 +177,7 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "go back", group = "client" }),
 
         -- Change Language
-        awful.key({ modkey, }, "Shift_R", kbdcfg.switch_next,
+        awful.key({ modkey, }, "space", kbdcfg.switch_next,
             { description = "Change Language", group = "awesome" }),
 
         -- Standard program
@@ -202,9 +202,9 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "increase the number of columns", group = "layout" }),
         awful.key({ modkey, ALT }, "l", function() awful.tag.incncol(-1, nil, true) end,
             { description = "decrease the number of columns", group = "layout" }),
-        awful.key({ modkey, }, "space", function() awful.layout.inc(1) end,
+        awful.key({ modkey, "Control", }, "space", function() awful.layout.inc(1) end,
             { description = "select next", group = "layout" }),
-        awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc(-1) end,
+        awful.key({ modkey, "Control", "Shift" }, "space", function() awful.layout.inc(-1) end,
             { description = "select previous", group = "layout" }),
 
         awful.key({ modkey, "Control" }, "n",
