@@ -398,6 +398,7 @@ retrail.setup {
 			'noice',
 			'nui',
 			'notify',
+			'floggraph',
 		},
 	},
 	trim = {
