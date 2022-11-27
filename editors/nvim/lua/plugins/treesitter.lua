@@ -24,6 +24,7 @@ require('nvim-treesitter.configs').setup {
 		enable = true
 	},
 	-- yati = { enable = true },
+	-- nvim-treesitter/nvim-treesitter-textobjects
 	textobjects = {
 		move = {
 			enable = true,
@@ -60,6 +61,7 @@ require('nvim-treesitter.configs').setup {
 		select = {
 			enable = true,
 			lookahead = true,
+			lookbehind = true,
 			-- include_surrounding_whitespace = true,
 			keymaps = {
 				['af'] = '@function.outer',
@@ -78,6 +80,9 @@ require('nvim-treesitter.configs').setup {
 				['ik'] = '@call.inner',
 				['ai'] = '@conditional.outer', -- i as if
 				['ii'] = '@conditional.inner',
+
+				-- Custom captures
+				['aF'] = '@function.name',
 			},
 		},
 	},
