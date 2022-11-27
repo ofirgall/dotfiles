@@ -152,6 +152,12 @@ map('n', 'gV', function() split_if_not_exist(true) end, 'Vertical split if not e
 map('n', 'gX', function() split_if_not_exist(false) end, 'Horziontal split if not exist')
 
 -----------------------------------
+--          INSERT MODE          --
+-----------------------------------
+map('i', '<M-]>', '<C-O>]a', 'Jump to next argument in insert mode', {silent = true, remap = true})
+map('i', '<M-[>', '<C-O>[a', 'Jump to prev argument in insert mode', {silent = true, remap = true})
+
+-----------------------------------
 --          MISC PLUGINS         --
 -----------------------------------
 map('n', '<F8>', '<cmd>UndotreeToggle<CR>', 'Toggle undotree')

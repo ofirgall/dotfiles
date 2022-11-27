@@ -179,6 +179,18 @@ function M.setup(kbdcfg, volume_widget, retain)
         -- Change Language
         awful.key({ modkey, }, "space", kbdcfg.switch_next,
             { description = "Change Language", group = "awesome" }),
+        awful.key({ modkey, }, "Shift_R", kbdcfg.switch_next,
+            { description = "Change Language", group = "awesome" }),
+
+        -- Brightness keys
+        awful.key({}, 'XF86MonBrightnessUp',
+            function()
+                awful.util.spawn('~/dotfiles_scripts/settings/control_brightness +0.1')
+            end, { description = 'Increase brightness by 0.1', group = 'hotkeys' }),
+        awful.key({}, 'XF86MonBrightnessDown',
+            function()
+                awful.util.spawn('~/dotfiles_scripts/settings/control_brightness -0.1')
+            end, { description = 'Decrease brightness by 0.1', group = 'hotkeys' }),
 
         -- Standard program
         awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end,
@@ -308,12 +320,18 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "rename tag", group = "awesome" }),
 
         -- Media Keys
-        awful.key({ }, 'XF86AudioPlay', function () awful.util.spawn('playerctl play-pause') end, {description = "Play/Pause", group = "media"}),
-        awful.key({ }, 'XF86AudioNext', function () awful.util.spawn('playerctl next') end, {description = "Next", group = "media"}),
-        awful.key({ }, 'XF86AudioPrev', function () awful.util.spawn('playerctl previous') end, {description = "Prev", group = "media"}),
-        awful.key({ }, 'XF86AudioRaiseVolume', function () volume_widget:inc(5) end, {description = "Raise Vol", group = "media"}),
-        awful.key({ }, 'XF86AudioLowerVolume', function () volume_widget:dec(5) end, {description = "Lower Vol", group = "media"}),
-        awful.key({ }, 'XF86AudioMute', function () volume_widget:toggle() end, {description = "Set Vol 0", group = "media"})
+        awful.key({}, 'XF86AudioPlay', function() awful.util.spawn('playerctl play-pause') end,
+            { description = "Play/Pause", group = "media" }),
+        awful.key({}, 'XF86AudioNext', function() awful.util.spawn('playerctl next') end,
+            { description = "Next", group = "media" }),
+        awful.key({}, 'XF86AudioPrev', function() awful.util.spawn('playerctl previous') end,
+            { description = "Prev", group = "media" }),
+        awful.key({}, 'XF86AudioRaiseVolume', function() volume_widget:inc(5) end,
+            { description = "Raise Vol", group = "media" }),
+        awful.key({}, 'XF86AudioLowerVolume', function() volume_widget:dec(5) end,
+            { description = "Lower Vol", group = "media" }),
+        awful.key({}, 'XF86AudioMute', function() volume_widget:toggle() end,
+            { description = "Set Vol 0", group = "media" })
     )
 
     -- Bind all key numbers to tags.
