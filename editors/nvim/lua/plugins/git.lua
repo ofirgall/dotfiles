@@ -240,7 +240,6 @@ local function flog_commit_range_visual()
 	end_pos = api.nvim_buf_get_mark(0, ">")
 
 	local res = vim.call('flog#get_commit_selection', start_pos[1], end_pos[1])
-	vim.pretty_print(res)
 
 	return {
 		res[1].short_commit_hash,
@@ -254,7 +253,7 @@ end
 
 function flog_diff_current_visual()
 	local commits = flog_commit_range_visual()
-	vim.cmd('DiffviewOpen ' .. commits[2] .. '..' .. commits[1]..'^')
+	vim.cmd('DiffviewOpen ' .. commits[2] .. '^..' .. commits[1])
 end
 
 function flog_show_current()
