@@ -68,8 +68,8 @@ require('nvim-treesitter.configs').setup {
 				['ic'] = '@class.inner',
 				['ab'] = '@block.outer',
 				['ib'] = '@block.inner',
-				['al'] = '@loop.outer',
-				['il'] = '@loop.inner',
+				['aL'] = '@loop.outer', -- `al` is already in used by `a line`
+				['iL'] = '@loop.inner', -- same as `al`
 				['a/'] = '@comment.outer',
 				['i/'] = '@comment.outer', -- no inner for comment
 				['aa'] = '@parameter.outer', -- parameter -> argument
