@@ -70,6 +70,7 @@ require('nvim-treesitter.configs').setup {
 		select = {
 			enable = true,
 			lookahead = true,
+			lookbehind = true,
 			-- include_surrounding_whitespace = true,
 			keymaps = {
 				['af'] = '@function.outer',
@@ -91,6 +92,7 @@ require('nvim-treesitter.configs').setup {
 
 				-- Custom captures
 				['ie'] = '@binary_expression.inner',
+				['aF'] = '@function.name',
 			},
 		},
 	},
