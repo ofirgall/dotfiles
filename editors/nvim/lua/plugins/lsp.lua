@@ -63,8 +63,11 @@ require('rust-tools').setup {
 	server = nil, -- Skip rust-tools lsp setup
 	dap = nil, -- Skip rust-tools dap setup
 	tools = {
+		reload_workspace_from_cargo_toml = false,
 		inlay_hints = {
-			auto = false,
+			auto = true,
+			highlight = 'InlayHints',
+			other_hints_prefix = '   ',
 		},
 		hover_actions = {
 			auto_focus = true,
