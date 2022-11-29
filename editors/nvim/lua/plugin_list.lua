@@ -196,6 +196,7 @@ return require('packer').startup(function()
 	use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }
 	use 'mtdl9/vim-log-highlighting' -- Highlight .log files
 	use 'romainl/vim-cool' -- Disables search highlighting when you are done searching
+	use 'chrisgrieser/nvim-genghis'
 
 	-- Improvement Games
 	use 'ThePrimeagen/vim-be-good'

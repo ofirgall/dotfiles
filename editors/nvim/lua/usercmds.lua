@@ -64,3 +64,10 @@ end, {})
 api.nvim_create_user_command('ClearBreakpoints', require('persistent-breakpoints.api').clear_all_breakpoints, {})
 
 api.nvim_create_user_command('ListKeys', require('telescope.builtin').keymaps, {})
+
+-- File utils, chrisgrieser/nvim-genghis
+local genghis = require('genghis')
+api.nvim_create_user_command('RenameFile', genghis.renameFile, {})
+api.nvim_create_user_command('CreateNewFile', genghis.createNewFile, {})
+api.nvim_create_user_command('DuplicateFile', genghis.duplicateFile, {})
+api.nvim_create_user_command('ChmodX', genghis.chmodx, {})
