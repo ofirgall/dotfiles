@@ -331,7 +331,14 @@ function M.setup(kbdcfg, volume_widget, retain)
         awful.key({}, 'XF86AudioLowerVolume', function() volume_widget:dec(5) end,
             { description = "Lower Vol", group = "media" }),
         awful.key({}, 'XF86AudioMute', function() volume_widget:toggle() end,
-            { description = "Set Vol 0", group = "media" })
+            { description = "Set Vol 0", group = "media" }),
+
+        -- Print screen
+        awful.key({}, 'Print', function() awful.util.spawn("scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") end,
+            { description = "Print Screen", group = "media" }),
+
+        awful.key({'Control'}, 'Print', function() awful.util.spawn("scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") end,
+            { description = "Print Screen", group = "media" })
     )
 
     -- Bind all key numbers to tags.
