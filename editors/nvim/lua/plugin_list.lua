@@ -42,11 +42,11 @@ return require('packer').startup(function()
 			'f3fora/cmp-spell',
 		}
 	}
+	use 'hrsh7th/cmp-nvim-lsp-signature-help' -- Signature hint while typing
 
 	use 'ofirgall/vim-snippets' -- Default snippets
 	use 'glepnir/lspsaga.nvim' -- Sweet ui for rename + code action and hover doc
 	use 'RRethy/vim-illuminate' -- Mark word on cursor (ctrl+n/p to move across refs)
-	use 'ray-x/lsp_signature.nvim' -- Signature hint while typing
 	use 'onsails/lspkind-nvim' -- Adding sweet ui for kind (function/var/method)
 	use 'SmiteshP/nvim-navic' -- Shows context in status line (with lsp)
 	use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' -- show diagnostics as virtual lines

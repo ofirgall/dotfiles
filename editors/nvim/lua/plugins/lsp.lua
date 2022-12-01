@@ -8,18 +8,7 @@ local lspconfig = require('lspconfig')
 -- Update capabilities to autocomplete
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local lsp_signature_cfg = {
-	bind = true,
-	use_lspsaga = false,
-	doc_lines = 0,
-	floating_window = false,
-	hint_scheme = 'LspSignatureHintVirtualText',
-	hint_prefix = ' ',
-}
-
 local lsp_on_attach = function(client, bufnr)
-	-- ray-x/lsp_signature.nvim
-	require('lsp_signature').on_attach(lsp_signature_cfg)
 	-- SmiteshP/nvim-navic
 	require('nvim-navic').attach(client, bufnr)
 end

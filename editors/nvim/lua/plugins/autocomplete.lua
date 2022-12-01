@@ -104,6 +104,7 @@ cmp_setup_dict = {
 	},
 	window = require('ofirkai.plugins.nvim-cmp').window,
 	sources = cmp.config.sources({
+		{ name = 'nvim_lsp_signature_help' },
 		{ name = 'nvim_lsp', priority = 1000 },
 		{ name = 'path', option = { trailing_slash = true }, priority = 500 },
 		all_visible_buffers_source(150),

@@ -227,7 +227,7 @@ if not vim.g.started_by_firenvim then
 		},
 		lsp = {
 			signature = {
-				enabled = false -- I prefer to use ray-x/lsp_signature.nvim with minimal design
+				enabled = false -- I prefer to use cmp-nvim-lsp-signature-help with minimal design
 			},
 			override = {
 				-- Override `vim.lsp.buf.hover` and `nvim-cmp` doc formatter with `noice` doc formatter.
