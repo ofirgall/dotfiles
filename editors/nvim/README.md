@@ -9,6 +9,7 @@ nvim is my main editor and [much more](https://github.com/ofirgall/learn-nvim/bl
 ---
 
 ## TODO
+* nvim - disable ghost text if writing inside comment
 * nvim - Install gh.nvim and octo.nvim and write all this todos as issues
 * flit - force case sensitivity
 * neodev - takes time with awesome (split awesome repo?)
