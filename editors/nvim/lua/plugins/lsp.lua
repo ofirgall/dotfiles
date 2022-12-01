@@ -126,6 +126,9 @@ lspconfig.clangd.setup {
 
 -- folke/neodev.nvim
 require('neodev').setup {
+	library = {
+		plugins = { 'nvim-treesitter', 'plenary.nvim', 'ofirkai.nvim' },
+	}
 }
 
 lspconfig.sumneko_lua.setup {
