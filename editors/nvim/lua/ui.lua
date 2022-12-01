@@ -12,10 +12,10 @@ require('indent_blankline').setup {
 	space_char_blankline = ' ',
 	show_current_context = true,
 	show_current_context_start = false,
-	context_highlight_list = {'InlayHints'},
+	context_highlight_list = { 'InlayHints' },
 }
 vim.opt.list = true
-vim.opt.listchars:append('space:⋅')
+vim.opt.listchars:append('lead:⋅')
 
 -- stevearc/dressing.nvim
 require('dressing').setup {
