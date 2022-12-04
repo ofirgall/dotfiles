@@ -50,53 +50,6 @@ split_if_not_exist = function(is_vsplit)
 	vim.fn.execute(split_command)
 end
 
-local finish_title = function(amount_of_lines)
-	local filler_amount = (selected_len - string.len(selected_title) - 2) / 2
-	local filler = ""
-	for _ = 1, filler_amount, 1 do
-		filler = filler .. selected_filler
-	end
-
-	local output_title = filler .. ' ' .. selected_title .. ' ' .. filler
-	local wrapped_line = ""
-	for _ = 1, selected_len, 1 do
-		wrapped_line = wrapped_line .. selected_filler
-	end
-
-	local lines = {}
-	for _ = 1, amount_of_lines / 2, 1 do
-		table.insert(lines, wrapped_line)
-	end
-	table.insert(lines, output_title)
-	for _ = 1, amount_of_lines / 2, 1 do
-		table.insert(lines, wrapped_line)
-	end
-
-	local pos = api.nvim_win_get_cursor(0)[1] - 1
-	api.nvim_buf_set_lines(0, pos, pos, false, lines)
-end
-
-local select_amount_of_lines = function(input)
-	selected_filler = input
-	vim.ui.input({ prompt = "Amount of lines: ", default = "1" }, finish_title)
-end
-
-local select_filler = function(input)
-	selected_len = input
-	vim.ui.input({ prompt = "Filler", default = "-" }, select_amount_of_lines)
-end
-
-local select_len = function(input)
-	selected_title = input
-	vim.ui.input({ prompt = "Title Length: ", default = "60" }, select_filler)
-end
-
-local select_title = function()
-	vim.ui.input({ prompt = "Title: " }, select_len)
-end
-
-api.nvim_create_user_command('Title', select_title, {})
-
 smart_split = function(direction)
 	local ft = api.nvim_buf_get_option(0, 'filetype')
 	if ft == 'toggleterm' then
