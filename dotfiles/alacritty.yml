@@ -14,8 +14,8 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-env:
-  WINIT_X11_SCALE_FACTOR: '1.15'
+# env:
+#   WINIT_X11_SCALE_FACTOR: '1.15'
 
 window:
   # Window dimensions (changes require restart)
