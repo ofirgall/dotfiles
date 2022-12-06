@@ -1,4 +1,5 @@
 # TODO Important
+- Mouse bug
 - Ctrl+hjkl control only inside current state nvim/tmux, Alt - cross nvim/tmux/awesome
 - Create terminal for tmux session + browser if going to tag `t: ` after startup.
 - Tmux browser: open in other window if available
