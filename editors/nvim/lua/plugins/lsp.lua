@@ -7,6 +7,7 @@ local lspconfig = require('lspconfig')
 
 -- Update capabilities to autocomplete
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = nil -- Overriding with false doesn't work for some reason
 
 local lsp_on_attach = function(client, bufnr)
 	-- SmiteshP/nvim-navic
@@ -34,23 +35,17 @@ else
 	}
 end
 
-lspconfig.rust_analyzer.setup {
-	on_attach = lsp_on_attach,
-	capabilities = capabilities,
-	settings = {
-		['rust-analyzer'] = {
-			-- enable clippy on save
-			checkOnSave = {
-				command = 'clippy'
-			},
-		}
-	},
-}
-
 -- simrat39/rust-tools.nvim
 require('rust-tools').setup {
-	server = nil, -- Skip rust-tools lsp setup
-	dap = nil, -- Skip rust-tools dap setup
+	server = {
+		on_attach = lsp_on_attach,
+		capabilities = capabilities,
+		settings = {
+			['rust-analyzer'] = {
+				completion = { callable = { snippets = "add_parentheses" } }
+			}
+		}
+	},
 	tools = {
 		reload_workspace_from_cargo_toml = false,
 		inlay_hints = {
