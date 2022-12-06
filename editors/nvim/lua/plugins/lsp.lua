@@ -192,7 +192,7 @@ require('go').setup {
 	lsp_on_attach = lsp_on_attach,
 	lsp_diag_hdlr = false, -- Disable go.nvim diagnostics viewer
 	lsp_inlay_hints = {
-		enable = false,
+		enable = true,
 		show_parameter_hints = false,
 		other_hints_prefix = '  ',
 		highlight = 'InlayHints',
