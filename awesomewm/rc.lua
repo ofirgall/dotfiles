@@ -446,3 +446,12 @@ awful.spawn.with_shell('~/.config/awesome/autorun.sh')
 
 awful.screen.set_auto_dpi_enabled(true) -- Auto scaling for awful gui
 require('plugins')
+
+-- Smarter garbage collection? https://www.reddit.com/r/awesomewm/comments/te49nb/comment/i0qu7bi
+collectgarbage("setpause", 160)
+collectgarbage("setstepmul", 400)
+
+gears.timer.start_new(10, function()
+    collectgarbage("step", 20000)
+    return true
+end)
