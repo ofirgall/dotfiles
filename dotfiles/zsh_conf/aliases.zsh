@@ -34,7 +34,10 @@ function ssh() {
 }
 alias cls='tmux clear-history; clear'
 alias pg='cg $HOME/playgrounds && nv' # cd to packer/plugins
+
+# Volumez
 alias capi='./envctl.py state | grep api | grep -o "http.*\"" | sed -s "s/\"//" | toclip' # Copy API url
+alias db='cat envctl_state.json | jq -r ".envs.env.sio.public_dns" | xargs printf "http://%s:8002" | xargs open'
 
 # Git aliases, no git plugin
 alias ga='git add'
