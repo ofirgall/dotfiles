@@ -134,6 +134,32 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "focus left", group = "client" }
         ),
 
+        -- Swap clients with modkey+shift+hjkl
+        awful.key({ modkey, "Shift", }, "j",
+            function()
+                awful.client.swap.global_bydirection('down')
+            end,
+            { description = "swap down", group = "client" }
+        ),
+        awful.key({ modkey, "Shift", }, "k",
+            function()
+                awful.client.swap.global_bydirection('up')
+            end,
+            { description = "swap up", group = "client" }
+        ),
+        awful.key({ modkey, "Shift", }, "l",
+            function()
+                awful.client.swap.global_bydirection('right')
+            end,
+            { description = "swap right", group = "client" }
+        ),
+        awful.key({ modkey, "Shift", }, "h",
+            function()
+                awful.client.swap.global_bydirection('left')
+            end,
+            { description = "swap left", group = "client" }
+        ),
+
         -- Save env with retain
         awful.key({ modkey, "Control" }, "s",
             function()
@@ -161,14 +187,6 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "show main menu", group = "awesome" }),
 
         -- Layout manipulation
-        awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx(1) end,
-            { description = "swap with next client by index", group = "client" }),
-        awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx(-1) end,
-            { description = "swap with previous client by index", group = "client" }),
-        awful.key({ modkey, "Control" }, "j", function() awful.screen.focus_relative(1) end,
-            { description = "focus the next screen", group = "screen" }),
-        awful.key({ modkey, "Control" }, "k", function() awful.screen.focus_relative(-1) end,
-            { description = "focus the previous screen", group = "screen" }),
         awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
             { description = "jump to urgent client", group = "client" }),
         awful.key({ ALT, }, "Tab", ALT_TAB_SWITCH,
@@ -204,16 +222,16 @@ function M.setup(kbdcfg, volume_widget, retain)
 
         awful.key({ modkey, "Control", }, "l", function() awful.tag.incmwfact(0.05) end,
             { description = "increase master width factor", group = "layout" }),
-        awful.key({ modkey, "Control", }, "h", function() awful.tag.incmwfact(-0.05) end,
-            { description = "decrease master width factor", group = "layout" }),
-        awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1, nil, true) end,
-            { description = "increase the number of master clients", group = "layout" }),
-        awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1, nil, true) end,
-            { description = "decrease the number of master clients", group = "layout" }),
-        awful.key({ modkey, ALT }, "h", function() awful.tag.incncol(1, nil, true) end,
-            { description = "increase the number of columns", group = "layout" }),
-        awful.key({ modkey, ALT }, "l", function() awful.tag.incncol(-1, nil, true) end,
-            { description = "decrease the number of columns", group = "layout" }),
+        -- awful.key({ modkey, "Control", }, "h", function() awful.tag.incmwfact(-0.05) end,
+        --     { description = "decrease master width factor", group = "layout" }),
+        -- awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1, nil, true) end,
+        --     { description = "increase the number of master clients", group = "layout" }),
+        -- awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1, nil, true) end,
+        --     { description = "decrease the number of master clients", group = "layout" }),
+        -- awful.key({ modkey, ALT }, "h", function() awful.tag.incncol(1, nil, true) end,
+        --     { description = "increase the number of columns", group = "layout" }),
+        -- awful.key({ modkey, ALT }, "l", function() awful.tag.incncol(-1, nil, true) end,
+        --     { description = "decrease the number of columns", group = "layout" }),
         awful.key({ modkey, "Control", }, "space", function() awful.layout.inc(1) end,
             { description = "select next", group = "layout" }),
         awful.key({ modkey, "Control", "Shift" }, "space", function() awful.layout.inc(-1) end,
@@ -334,10 +352,14 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "Set Vol 0", group = "media" }),
 
         -- Print screen
-        awful.key({}, 'Print', function() awful.util.spawn("scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") end,
+        awful.key({}, 'Print',
+            function() awful.util.spawn("scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") end
+            ,
             { description = "Print Screen", group = "media" }),
 
-        awful.key({'Control'}, 'Print', function() awful.util.spawn("scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") end,
+        awful.key({ 'Control' }, 'Print',
+            function() awful.util.spawn("scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") end
+            ,
             { description = "Print Screen", group = "media" })
     )
 
