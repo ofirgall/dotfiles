@@ -22,6 +22,14 @@ require("awful.hotkeys_popup.keys")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+local function p(text, obj)
+    naughty.notify({
+        preset = naughty.config.presets.critical,
+        text = gears.debug.dump_return(obj, text),
+        title = "debug",
+    })
+end
+
 -- Veratil/awesome-retain
 local retain = require("retain")
 
@@ -256,7 +264,7 @@ awful.screen.connect_for_each_screen(function(s)
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
         buttons = taglist_buttons,
-        style = {
+        style   = {
             bg_focus = top_bar_bg_focus,
             fg_focus = top_bar_fg_focus,
         }
@@ -267,7 +275,7 @@ awful.screen.connect_for_each_screen(function(s)
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons,
-        style = {
+        style   = {
             bg_focus = top_bar_bg_focus,
             fg_focus = top_bar_fg_focus,
         }
@@ -374,9 +382,11 @@ awful.rules.rules = {
     }, properties = { titlebars_enabled = true }
     },
 
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    -- Set GUI applications to always spawn on tag "9"
+    { rule = { class = "Teams" },
+        properties = { screen = 1, tag = "9" } },
+    { rule = { class = "Spotify" },
+        properties = { screen = 1, tag = "9" } },
 }
 -- }}}
 
@@ -455,3 +465,13 @@ gears.timer.start_new(10, function()
     collectgarbage("step", 20000)
     return true
 end)
+
+-- Auto ran applications on startup
+awful.spawn.single_instance('teams', {}, function(c)
+    return awful.rules.match(c, { class = 'Teams' })
+end)
+awful.spawn.single_instance('spotify', {}, function(c)
+    return awful.rules.match(c, { class = 'Spotify' })
+end)
+-- Mail & Calendar
+awful.spawn.single_instance('firefox https://outlook.office365.com/mail/ https://outlook.office.com/calendar/view/week', { tag = "9" })
