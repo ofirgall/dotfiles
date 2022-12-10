@@ -98,8 +98,9 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.se,
 }
 -- }}}
+local GUI_TAG = "9 GUI"
 retain.tags.defaults = {
-    names = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+    names = { "1", "2", "3", "4", "5", "6", "7", "8", GUI_TAG },
     layouts = awful.layout.suit.tile,
 }
 retain.tags.load()
@@ -382,11 +383,11 @@ awful.rules.rules = {
     }, properties = { titlebars_enabled = true }
     },
 
-    -- Set GUI applications to always spawn on tag "9"
+    -- Set GUI applications to always spawn on tag GUI_TAG
     { rule = { class = "Teams" },
-        properties = { screen = 1, tag = "9" } },
+        properties = { screen = 1, tag = GUI_TAG} },
     { rule = { class = "Spotify" },
-        properties = { screen = 1, tag = "9" } },
+        properties = { screen = 1, tag = GUI_TAG} },
 }
 -- }}}
 
@@ -474,4 +475,4 @@ awful.spawn.single_instance('spotify', {}, function(c)
     return awful.rules.match(c, { class = 'Spotify' })
 end)
 -- Mail & Calendar
-awful.spawn.single_instance('firefox https://outlook.office365.com/mail/ https://outlook.office.com/calendar/view/week', { tag = "9" })
+awful.spawn.single_instance('firefox https://outlook.office365.com/mail/ https://outlook.office.com/calendar/view/week', { tag = GUI_TAG})
