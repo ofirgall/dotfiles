@@ -33,6 +33,8 @@
         path: dotfiles/xmodmaprc
     ~/.config/awesome:
         path: awesomewm
+    ~/.config/autorandr:
+        path: dotfiles/autorandr
 
 
 - shell:

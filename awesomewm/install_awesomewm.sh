@@ -31,3 +31,6 @@ wget --directory-prefix=$AWESOME_CONFIG https://raw.githubusercontent.com/rxi/js
 sudo apt-get install xserver-xephyr
 sudo wget -O /usr/bin/awmtt https://raw.githubusercontent.com/mikar/awmtt/master/awmtt.sh
 sudo chmod a+x /usr/bin/awmtt
+
+# autorandr
+python3 -m pip install autorandr

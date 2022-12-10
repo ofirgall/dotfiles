@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+notify-send -i display "Autorandr" "$AUTORANDR_CURRENT_PROFILE"
+
+# Change autorandr_alacritty.yml
+rm -f /tmp/autorandr_alacritty.yml
+PROFILE_ALACRITTY_CONF=~/.config/autorandr/$AUTORANDR_CURRENT_PROFILE/alacritty.yml
+if test -f $PROFILE_ALACRITTY_CONF; then
+    ln -s $PROFILE_ALACRITTY_CONF /tmp/autorandr_alacritty.yml
+fi
