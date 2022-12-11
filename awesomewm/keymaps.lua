@@ -179,6 +179,11 @@ function M.setup(kbdcfg, volume_widget, retain)
         awful.key({ modkey, "Control" }, "s",
             function()
                 retain.tags.save_all()
+                naughty.notify({
+                    preset = naughty.config.presets.low,
+                    text = 'Saved',
+                    title = 'Retain',
+                })
             end,
             { description = "Save env with retain", group = "client" }
         ),
