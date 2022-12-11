@@ -385,9 +385,9 @@ awful.rules.rules = {
 
     -- Set GUI applications to always spawn on tag GUI_TAG
     { rule = { class = "Teams" },
-        properties = { screen = 1, tag = GUI_TAG} },
+        properties = { screen = 1, tag = GUI_TAG } },
     { rule = { class = "Spotify" },
-        properties = { screen = 1, tag = GUI_TAG} },
+        properties = { screen = 1, tag = GUI_TAG } },
 }
 -- }}}
 
@@ -475,4 +475,8 @@ awful.spawn.single_instance('spotify', {}, function(c)
     return awful.rules.match(c, { class = 'Spotify' })
 end)
 -- Mail & Calendar
-awful.spawn.single_instance('firefox https://outlook.office365.com/mail/ https://outlook.office.com/calendar/view/week', { tag = GUI_TAG})
+awful.spawn.single_instance('firefox https://outlook.office365.com/mail/ https://outlook.office.com/calendar/view/week',
+    { tag = GUI_TAG },
+    function (c)
+        return awful.rules.match(c, { class = 'Firefox', tag = GUI_TAG })
+    end)
