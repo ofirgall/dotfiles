@@ -101,7 +101,7 @@ function M.setup(kbdcfg, volume_widget, retain)
     globalkeys = gears.table.join(
         awful.key({ modkey, }, "Escape",
             function()
-                awful.util.spawn('autorandr')
+                awful.util.spawn('autorandr --cycle')
             end,
             { description = "Autorandr", group = "awesome" }
         ),
