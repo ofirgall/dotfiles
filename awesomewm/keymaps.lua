@@ -87,8 +87,6 @@ local function switch_to_tag(screen, tag)
     end
 end
 
--- awful.screen.focus_relative(1)
--- awful.screen.focus_relative(-1)
 function M.setup(kbdcfg, volume_widget, retain)
     local menubar = require("menubar")
     local hotkeys_popup = require("awful.hotkeys_popup")
@@ -105,16 +103,25 @@ function M.setup(kbdcfg, volume_widget, retain)
             function()
                 awful.util.spawn('autorandr')
             end,
-            { description = "Autorandr", group = "client" }
+            { description = "Autorandr", group = "awesome" }
         ),
         awful.key({ modkey, }, "s", hotkeys_popup.show_help,
             { description = "show help", group = "awesome" }),
-        awful.key({ modkey, }, "Left", awful.tag.viewprev,
-            { description = "view previous", group = "tag" }),
-        awful.key({ modkey, }, "Right", awful.tag.viewnext,
-            { description = "view next", group = "tag" }),
+        -- awful.key({ modkey, }, "Left", awful.tag.viewprev,
+        --     { description = "view previous", group = "tag" }),
+        -- awful.key({ modkey, }, "Right", awful.tag.viewnext,
+        --     { description = "view next", group = "tag" }),
         -- awful.key({ modkey, }, "Escape", awful.tag.history.restore,
         --     { description = "go back", group = "tag" }),
+
+        awful.key({ modkey, }, "Left", function()
+            awful.client.focus.byidx(-1)
+        end,
+            { description = "Focus on previous client", group = "client" }),
+        awful.key({ modkey, }, "Right", function()
+            awful.client.focus.byidx(1)
+        end,
+            { description = "Focus on next client", group = "client" }),
 
         -- Change focus with modkey+hjkl
         awful.key({ modkey, }, "j",
