@@ -175,7 +175,6 @@ return require('packer').startup(function()
 	use 'NMAC427/guess-indent.nvim' -- Adjust tabs/spaces settings
 	use 'shivamashtikar/tmuxjump.vim' -- jump to files that printed in another tmux panes
 	use 'szw/vim-maximizer' -- Maximize windows (splits) in vim
-	use { 'nvim-neorg/neorg', requires = 'nvim-lua/plenary.nvim' } -- .norg plugin better orgmode
 	use { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' } -- review todo in the quickfix list with :Todo..
 	use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
 	use 'norcalli/nvim-colorizer.lua' -- colorize hexcolor values in buffer

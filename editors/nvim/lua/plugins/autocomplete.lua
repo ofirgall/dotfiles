@@ -110,7 +110,6 @@ cmp_setup_dict = {
 		all_visible_buffers_source(150),
 		{ name = 'snippy', priority = 100 },
 		{ name = 'spell', priority = 50 }, -- Spell here because we can toggle it easily
-		{ name = 'neorg', priority = 50 },
 	}),
 	performance = {
 		debounce = 30, -- default: 60

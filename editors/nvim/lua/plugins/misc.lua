@@ -308,19 +308,6 @@ require('femaco').setup {
 	end,
 }
 
--- nvim-neorg/neorg
-require('neorg').setup {
-	load = {
-		["core.defaults"] = {},
-		["core.norg.concealer"] = {},
-		["core.norg.completion"] = {
-			config = {
-				engine = 'nvim-cmp'
-			}
-		},
-	}
-}
-
 -- gbprod/yanky.nvim
 require('yanky').setup {
 	system_clipboard = {
