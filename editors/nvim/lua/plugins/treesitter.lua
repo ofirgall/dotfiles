@@ -18,7 +18,7 @@ require('nvim-treesitter.configs').setup {
 	ignore_install = ignore_install_langs,
 	highlight = {
 		enable = true,
-		disable = { 'help', 'git_rebase' }
+		disable = { 'help', 'git_rebase', 'gitcommit' }
 	},
 	indent = {
 		enable = true
