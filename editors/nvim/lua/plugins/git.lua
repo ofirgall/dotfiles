@@ -183,6 +183,7 @@ diffview_hydra = Hydra({
 				gitsigns.next_hunk({navigation_message = false})
 			end
 			center_screen()
+			return '<Ignore>'
 		end, { expr = true } },
 		{ 'k', function()
 			local diff = api.nvim_get_option_value('diff', {})
@@ -192,16 +193,19 @@ diffview_hydra = Hydra({
 				gitsigns.prev_hunk({navigation_message = false})
 			end
 			center_screen()
+			return '<Ignore>'
 		end, { expr = true } },
 		{ '<C-s>', function()
 			gitsigns.stage_hunk(nil)
 			gitsigns.next_hunk({navigation_message = false})
 			center_screen()
+			return '<Ignore>'
 		end, { silent = true } },
 		{ 'r', function()
 			gitsigns.reset_hunk(nil)
 			gitsigns.next_hunk({navigation_message = false})
 			center_screen()
+			return '<Ignore>'
 		end, { silent = true } },
 		{ 'R', ':Gitsigns reset_buffer<CR>', { silent = true } },
 		{ 'u', gitsigns.undo_stage_hunk },
