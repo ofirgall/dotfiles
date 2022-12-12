@@ -26,8 +26,6 @@ require('dressing').setup {
 		max_width = { 140, 0.9 },
 		min_width = { 60, 0.2 },
 
-		winblend = 0,
-
 		mappings = {
 			n = {
 				['q'] = 'Close',
@@ -46,7 +44,10 @@ require('dressing').setup {
 				['<C-n>'] = 'HistoryNext',
 			},
 		},
-		winhighlight = require('ofirkai.plugins.dressing').winhighlight
+		win_options = {
+			winblend = 0,
+			winhighlight = require('ofirkai.plugins.dressing').winhighlight,
+		}
 	},
 }
 
