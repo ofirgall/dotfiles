@@ -76,15 +76,29 @@ local function rename_tag_by_tmux(tag)
     end
 end
 
+LAST_TAG = nil
+
 local function switch_to_tag(screen, tag)
     if tag then
         local current_tag = screen.selected_tag
+        LAST_TAG = current_tag
         tag:view_only()
         if current_tag then
             rename_tag_by_tmux(current_tag)
         end
         rename_tag_by_tmux(tag)
     end
+end
+
+local function switch_tag_all_screens(index)
+    local focused_screen = awful.screen.focused()
+    for s in screen do
+        -- First switch all other screens later the focused screen
+        if s ~= focused_screen then
+            switch_to_tag(s, s.tags[index])
+        end
+    end
+    switch_to_tag(focused_screen, focused_screen.tags[index])
 end
 
 function M.setup(kbdcfg, volume_widget, retain)
@@ -211,8 +225,16 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "jump to urgent client", group = "client" }),
         awful.key({ ALT, }, "Tab", ALT_TAB_SWITCH,
             { description = "go back", group = "client" }),
-        awful.key({ modkey, }, "Tab", ALT_TAB_SWITCH,
-            { description = "go back", group = "client" }),
+
+        -- Go back to previous tag
+        awful.key({ modkey, }, "Tab", function ()
+            if LAST_TAG == nil then
+                return
+            end
+
+            switch_tag_all_screens(LAST_TAG.index)
+        end,
+            { description = "go back", group = "tag" }),
 
         -- Change Language
         awful.key({ modkey, }, "space", kbdcfg.switch_next,
@@ -391,14 +413,7 @@ function M.setup(kbdcfg, volume_widget, retain)
             -- View tag on all screens
             awful.key({ modkey }, "#" .. i + 9,
                 function()
-                    local focused_screen = awful.screen.focused()
-                    for s in screen do
-                        -- First switch all other screens later the focused screen
-                        if s ~= focused_screen then
-                            switch_to_tag(s, s.tags[i])
-                        end
-                    end
-                    switch_to_tag(focused_screen, focused_screen.tags[i])
+                    switch_tag_all_screens(i)
                 end,
                 { description = "view tag #" .. i, group = "tag" }),
             -- View tag in current screen.
