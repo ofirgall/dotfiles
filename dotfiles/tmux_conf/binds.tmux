@@ -117,6 +117,7 @@ bind -n M-6 select-window -t :=6
 bind -n M-7 select-window -t :=7
 bind -n M-8 select-window -t :=8
 bind -n M-9 select-window -t :=9
+bind -n C-Tab last-window
 
 bind -T copy-mode-vi M-0 select-window -t :=10
 bind -T copy-mode-vi M-1 select-window -t :=1
@@ -129,6 +130,7 @@ bind -T copy-mode-vi M-7 select-window -t :=7
 bind -T copy-mode-vi M-8 select-window -t :=8
 bind -T copy-mode-vi M-9 select-window -t :=9
 bind -T copy-mode-vi M-- last-window
+bind -T copy-mode-vi C-Tab last-window
 
 # Swap windows by ALT+SHIFT+N
 bind -n M-) swap-window -d -t :=10
