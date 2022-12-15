@@ -19,7 +19,7 @@ download_font CascadiaCode
 download_font UbuntuMono
 download_font JetBrainsMono
 
-# Remove custom italic fonts
-rm -f *Italic*
+# Remove Caskaydia custom italic fonts
+rm -f Caskaydia*Italic*
 
 fc-cache -f -v

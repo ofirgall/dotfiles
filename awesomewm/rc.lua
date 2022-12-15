@@ -62,7 +62,7 @@ require('ui')
 local top_bar_bg_focus = '#5c380b'
 local top_bar_fg_focus = '#d7d7d7'
 local theme = beautiful.get()
-theme.font = 'JetBrainsMono Nerd Font Bold 8.5'
+theme.font = 'CaskaydiaCove Nerd Font Mono SemiBold 8.0'
 beautiful.init(theme)
 
 -- This is used later as the default terminal and editor to run.
