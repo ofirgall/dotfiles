@@ -59,7 +59,7 @@ vim.g.maplocalleader = ' '
 -----------------------------------
 --           BUILTIN             --
 -----------------------------------
-local add_new_line = 'i\\r\\n<Esc>'
+local add_new_line = 'i\\n<Esc>'
 map('', '<leader><leader>', ':', 'Enter command with double leader')
 map('n', 'n', 'nzz', 'Auto recenter after n')
 map('n', '<M-r>', '<cmd>echo "Current File Reloaded!"<cr><cmd>luafile %<cr>', 'Reload current luafile')
@@ -442,7 +442,15 @@ map('n', '<leader>k', require 'dapui'.eval, 'Debug: evaluate')
 --         File Specific         --
 -----------------------------------
 -- TODO: unload (using keymap layer like in hydra)
+local add_r_new_line = 'i\\r\\n<Esc>'
 local keys_by_ft = {
+	-- c
+	['c'] = function(bufid)
+		map_buffer(bufid, 'n', '<leader>n', add_r_new_line, 'Add newline')
+	end,
+	['cpp'] = function(bufid)
+		map_buffer(bufid, 'n', '<leader>n', add_r_new_line, 'Add newline')
+	end,
 	-- Golang
 	['go'] = function(bufid)
 		map_buffer(bufid, 'n', '<leader>e', '<cmd>GoIfErr<cr>', 'Golang: create if err')
