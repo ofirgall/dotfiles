@@ -8,3 +8,6 @@ PROFILE_ALACRITTY_CONF=~/.config/autorandr/$AUTORANDR_CURRENT_PROFILE/alacritty.
 if test -f $PROFILE_ALACRITTY_CONF; then
     ln -s $PROFILE_ALACRITTY_CONF /tmp/autorandr_alacritty.yml
 fi
+
+# Run autoran
+~/.config/awesome/autorun.sh

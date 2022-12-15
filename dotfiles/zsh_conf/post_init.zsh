@@ -4,10 +4,6 @@
 # ---------------------------
 if ! $IS_REMOTE; then
 	. "$HOME/.cargo/env" # Rust
-
-	if ! $WSL; then
-		xmodmap ~/.xmodmaprc 2> /dev/null # key mapping, xev to see keys
-	fi
 fi
 
 # ---------------------------

@@ -8,3 +8,5 @@ xinput set-prop "DELL0A36:00 0488:101A Touchpad" 348 1 # Tapping enabled
 
 # Mouse speed at home
 xinput --set-prop 'Glorious Model O Wireless' 'libinput Accel Speed' -0.3
+
+xmodmap ~/.xmodmaprc 2> /dev/null # key mapping, xev to see keys
