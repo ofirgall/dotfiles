@@ -98,6 +98,7 @@ require('lspsaga').init_lsp_saga({
 	symbol_in_winbar = {
 		enable = false
 	},
+	code_action_icon = ''
 })
 
 if not vim.g.started_by_firenvim then
