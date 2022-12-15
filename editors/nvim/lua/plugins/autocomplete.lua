@@ -118,7 +118,7 @@ cmp_setup_dict = {
 	preselect = cmp.PreselectMode.None, -- Auto select the first item
 
 	experimental = {
-		ghost_text = true
+		ghost_text = false
 	},
 }
 
