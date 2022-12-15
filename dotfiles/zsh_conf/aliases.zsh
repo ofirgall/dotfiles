@@ -34,7 +34,11 @@ function ssh() {
 }
 alias cls='tmux clear-history; clear'
 alias pg='cg $HOME/playgrounds && nv' # cd to packer/plugins
+
+# System settings
 alias wifi='nmtui'
+alias audio='pavucontrol'
+alias sound='pavucontrol'
 
 # Volumez
 alias capi='./envctl.py state | grep api | grep -o "http.*\"" | sed -s "s/\"//" | toclip' # Copy API url

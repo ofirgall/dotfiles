@@ -34,3 +34,6 @@ sudo chmod a+x /usr/bin/awmtt
 
 # autorandr
 python3 -m pip install autorandr
+
+# audio control (aliased to `audio`|`sound`)
+sudo apt-get install -y pavucontrol
