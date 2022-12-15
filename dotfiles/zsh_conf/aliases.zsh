@@ -34,6 +34,7 @@ function ssh() {
 }
 alias cls='tmux clear-history; clear'
 alias pg='cg $HOME/playgrounds && nv' # cd to packer/plugins
+alias tmp='SCRATCH_FILE=$(mktemp -t scratch.XXXX); nv $SCRATCH_FILE; echo $SCRATCH_FILE'
 
 # System settings
 alias wifi='nmtui'
