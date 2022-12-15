@@ -225,9 +225,11 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "jump to urgent client", group = "client" }),
         awful.key({ ALT, }, "Tab", ALT_TAB_SWITCH,
             { description = "go back", group = "client" }),
+        awful.key({ modkey, }, "Tab", ALT_TAB_SWITCH,
+            { description = "go back", group = "client" }),
 
         -- Go back to previous tag
-        awful.key({ modkey, }, "Tab", function ()
+        awful.key({ modkey, }, "`", function ()
             if LAST_TAG == nil then
                 return
             end
