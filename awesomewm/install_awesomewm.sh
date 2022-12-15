@@ -1,5 +1,6 @@
 #!/bin/bash
 
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 set -e # Exit if fail
 
 sudo apt-get install -y awesome playerctl
@@ -37,3 +38,6 @@ python3 -m pip install autorandr
 
 # audio control (aliased to `audio`|`sound`)
 sudo apt-get install -y pavucontrol
+sudo rm -f /etc/pulse/default.pa
+sudo ln -s $CURRENT_DIR/system/pulseaudio.pa /etc/pulse/default.pa
+pulseaudio -k
