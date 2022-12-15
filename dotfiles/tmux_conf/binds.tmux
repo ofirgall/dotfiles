@@ -205,6 +205,11 @@ bind -n DoubleClick1Pane if-shell "$is_nvim" "" 'copy-mode -M; send-keys -X sele
 unbind -T copy-mode-vi MouseDragEnd1Pane
 
 # -------------------------
+#	    MISC BINDS
+# -------------------------
+bind -n F12 setw synchronize-panes # Toggle type on all panes
+
+# -------------------------
 #	    PLUGINS BINDS
 # -------------------------
 ##### TMUX-THUMBS #####
