@@ -96,7 +96,7 @@ font:
 
   italic:
     family: JetBrainsMono Nerd Font Mono
-    style: SemiBold Italic
+    style: Italic
 
   bold_italic:
     family: JetBrainsMono Nerd Font Mono
