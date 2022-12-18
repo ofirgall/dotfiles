@@ -7,13 +7,32 @@ sudo apt-get install -y awesome playerctl
 
 AWESOME_CONFIG="$HOME/.config/awesome/"
 
+clone()
+{
+    # $1 github repo
+    # $2 dest
+    if [ -d $2 ]; then
+        return
+    fi
+
+    git clone --depth=1 https://github.com/$1 $2
+}
+
+clone_awesome()
+{
+    # $1 github shorthand repo
+    # $2 dest
+    clone $1 $AWESOME_CONFIG/$2
+}
+
+
 # Plugins
-git clone --depth=1 https://github.com/intrntbrn/awesomewm-vim-tmux-navigator $AWESOME_CONFIG/awesomewm-vim-tmux-navigator
-git clone --depth=1 https://github.com/echuraev/keyboard_layout $AWESOME_CONFIG/keyboard_layout
-git clone --depth=1 https://github.com/Veratil/awesome-retain $AWESOME_CONFIG/retain
-git clone --depth=1 https://github.com/intrntbrn/smart_borders $AWESOME_CONFIG/smart_borders
-git clone --depth=1 https://github.com/streetturtle/awesome-wm-widgets $AWESOME_CONFIG/awesome-wm-widgets
-git clone --depth=1 https://github.com/pltanton/net_widgets.git $AWESOME_CONFIG/net_widgets
+clone_awesome intrntbrn/awesomewm-vim-tmux-navigator awesomewm-vim-tmux-navigator
+clone_awesome echuraev/keyboard_layout keyboard_layout
+clone_awesome Veratil/awesome-retain retain
+clone_awesome intrntbrn/smart_borders smart_borders
+clone_awesome streetturtle/awesome-wm-widgets awesome-wm-widgets
+clone_awesome pltanton/net_widgets.git net_widgets
 
 # Install `sp` binary for spotify-widget
 git clone https://gist.github.com/fa6258f3ff7b17747ee3.git /tmp/sp
