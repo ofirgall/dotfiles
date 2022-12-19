@@ -8,10 +8,6 @@ output DP-2
 off
 output HDMI-3
 off
-output DP-1-8
-off
-output DP-1-1
-off
 output eDP-1
 crtc 0
 mode 1920x1080
@@ -26,7 +22,7 @@ x-prop-scaling_mode Full aspect
 output DP-2-8
 crtc 2
 mode 1920x1080
-pos 0x0
+pos 1920x0
 rate 60.00
 x-prop-audio auto
 x-prop-broadcast_rgb Automatic
@@ -35,7 +31,7 @@ x-prop-non_desktop 0
 output DP-2-1
 crtc 1
 mode 1920x1080
-pos 0x0
+pos 3840x0
 rate 60.00
 x-prop-audio auto
 x-prop-broadcast_rgb Automatic
