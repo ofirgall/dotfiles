@@ -10,6 +10,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.labelDetailsSupport = nil -- Overriding with false doesn't work for some reason
 
 local lsp_on_attach = function(client, bufnr)
+	client.server_capabilities.semanticTokensProvider = nil
 	-- SmiteshP/nvim-navic
 	require('nvim-navic').attach(client, bufnr)
 end
