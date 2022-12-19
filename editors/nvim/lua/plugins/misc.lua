@@ -13,7 +13,7 @@ require('nvim-autopairs').setup {
 -- rmagatti/auto-session
 require('auto-session').setup {
 	log_level = 'error',
-	auto_session_suppress_dirs = { '~/', '~/workspace', '~/Downloads', '/' },
+	auto_session_suppress_dirs = { '~/', '~/workspace', '~/Downloads', '/', '~/logs' },
 }
 
 local autosave = require('autosave')
