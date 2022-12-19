@@ -43,6 +43,7 @@ alias sound='pavucontrol'
 
 # Volumez
 alias capi='./envctl.py state | grep api | grep -o "http.*\"" | sed -s "s/\"//" | toclip' # Copy API url
+alias csio='cat envctl_state.json | jq -r ".envs.env.sio.public_dns" | toclip'
 alias db='cat envctl_state.json | jq -r ".envs.env.sio.public_dns" | xargs printf "http://%s:8002" | xargs open'
 
 # Git aliases, no git plugin
