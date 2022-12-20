@@ -73,7 +73,7 @@ hints.setup {
 }
 local lsp_on_attach_with_hints = function(client, bufnr)
 	lsp_on_attach(client, bufnr)
-	hints.set_all()
+	hints.on_attach(client, bufnr)
 end
 
 -- simrat39/rust-tools.nvim
