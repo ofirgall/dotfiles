@@ -55,11 +55,6 @@ bind -r -T prefix x run-shell "$get_ssh_in_tty | xargs tmux split-window -v -d"
 ##### PANE NAVIGATION #####
 navigator="~/.config/awesome/tmux_focus.sh"
 # Move around with alt+arrow/ctrl+hjkl
-bind -n C-Left if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-Left' "run-shell '$navigator left'"
-bind -n C-Down if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-Down' "run-shell '$navigator down'"
-bind -n C-Up if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-Up' "run-shell '$navigator up'"
-bind -n C-Right if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-Right' "run-shell '$navigator right'"
-
 bind -n C-h if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-h' "run-shell '$navigator left'"
 bind -n C-j if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-j' "run-shell '$navigator down'"
 bind -n C-k if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-k' "run-shell '$navigator up'"
