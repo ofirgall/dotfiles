@@ -25,6 +25,24 @@ return {
 		},
 		opts = { skip = true },
 	},
+	-- Disable "job/graph/raid_vertex.go" 695 lines --84%--
+	{
+		filter = {
+			event = 'msg_show',
+			kind = '',
+			find = '"[%w%p]+"%s+%d+ lines --'
+		},
+		opts = { skip = true },
+	},
+	-- Disable "file_path" [New] --No lines in buffer--
+	{
+		filter = {
+			event = 'msg_show',
+			kind = '',
+			find = 'No lines in buffer'
+		},
+		opts = { skip = true },
+	},
 	-- Disable "search messages"
 	{
 		filter = {
