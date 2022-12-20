@@ -228,7 +228,7 @@ end
 --        CODE NAVIGATION        --
 -----------------------------------
 -- Utils
-map('n', '<leader>t', find_current_file, 'find files with the current file (use to find _test fast)')
+map('n', '<leader>T', find_current_file, 'find files with the current file (use to find _test fast)')
 map('n', '<leader>fr', function() require('telescope.builtin').resume({ initial_mode = 'normal' }) end, 'Find resume')
 
 -- Find files
@@ -323,6 +323,7 @@ map('n', '<F4>', '<cmd>Lspsaga code_action<cr>', 'Code action with F4')
 -- map('n', '<leader>i', '<cmd>Neogen<cr>', 'document function')
 map('n', '<leader>l', toggle_lsp_diagnostics, 'Toggle lsp diagnostics')
 map('n', '<leader>L', '<cmd>Lspsaga show_line_diagnostics<CR>', 'show Problem')
+map('n', '<leader>t', toggle_inlay_hints, 'Toggle inlay-hints')
 map('n', ']p', goto_next_diag, 'next Problem')
 map('n', '[p', goto_prev_diag, 'prev Problem')
 map('n', ']g', goto_next_diag, 'next Problem')

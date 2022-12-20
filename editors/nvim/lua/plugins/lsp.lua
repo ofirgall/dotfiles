@@ -41,8 +41,7 @@ local function trim_hint(hint)
 	return string.gsub(hint, ':', '')
 end
 
-local hints = require('inlay-hints')
-hints.setup {
+require('inlay-hints').setup {
 	renderer = 'inlay-hints/render/eol',
 
 	hints = {
@@ -71,15 +70,11 @@ hints.setup {
 		},
 	}
 }
-local lsp_on_attach_with_hints = function(client, bufnr)
-	lsp_on_attach(client, bufnr)
-	hints.on_attach(client, bufnr)
-end
 
 -- simrat39/rust-tools.nvim
 require('rust-tools').setup {
 	server = {
-		on_attach = lsp_on_attach_with_hints,
+		on_attach = lsp_on_attach,
 		capabilities = capabilities,
 		settings = {
 			['rust-analyzer'] = {
@@ -95,9 +90,6 @@ require('rust-tools').setup {
 		hover_actions = {
 			auto_focus = true,
 		},
-		on_initialized = function()
-			hints.set_all()
-		end,
 	}
 }
 
@@ -158,7 +150,7 @@ require('neodev').setup {
 }
 
 lspconfig.sumneko_lua.setup {
-	on_attach = lsp_on_attach_with_hints,
+	on_attach = lsp_on_attach,
 	capabilities = capabilities,
 	settings = {
 		Lua = {
@@ -243,7 +235,7 @@ require('go').setup {
 			}
 		}
 	},
-	lsp_on_attach = lsp_on_attach_with_hints,
+	lsp_on_attach = lsp_on_attach,
 	lsp_diag_hdlr = false, -- Disable go.nvim diagnostics viewer
 	lsp_inlay_hints = {
 		enable = false, -- Using inlay-hints.nvim instead
