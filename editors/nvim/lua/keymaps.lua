@@ -154,8 +154,8 @@ map('n', 'gX', function() split_if_not_exist(false) end, 'Horziontal split if no
 -----------------------------------
 --          INSERT MODE          --
 -----------------------------------
-map('i', '<M-]>', '<C-O>]a', 'Jump to next argument in insert mode', {silent = true, remap = true})
-map('i', '<M-[>', '<C-O>[a', 'Jump to prev argument in insert mode', {silent = true, remap = true})
+map('i', '<M-]>', '<C-O>]a', 'Jump to next argument in insert mode', { silent = true, remap = true })
+map('i', '<M-[>', '<C-O>[a', 'Jump to prev argument in insert mode', { silent = true, remap = true })
 
 -----------------------------------
 --          MISC PLUGINS         --
@@ -204,9 +204,9 @@ map('n', 'sy', function()
 	})
 end, 'Synonyms')
 
--- AndrewRadev/splitjoin.vim
-map('n', 'sj', '<cmd>SplitjoinJoin<cr>', 'Splitjoin Join line')
-map('n', 'sJ', '<cmd>SplitjoinSplit<cr>', 'Splitjoin Split line')
+-- Wansmer/treesj
+map('n', 'sJ', '<cmd>TSJSplit<cr>', 'Splitjoin Split line')
+map('n', 'sj', '<cmd>TSJJoin<cr>', 'Splitjoin Join line')
 
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 -- Add cursor down/up Alt+n/p (like ctrl+down/up in subl)
@@ -232,7 +232,7 @@ end
 -----------------------------------
 -- Utils
 map('n', '<leader>t', find_current_file, 'find files with the current file (use to find _test fast)')
-map('n', '<leader>fr', function() require('telescope.builtin').resume({initial_mode = 'normal'}) end, 'Find resume')
+map('n', '<leader>fr', function() require('telescope.builtin').resume({ initial_mode = 'normal' }) end, 'Find resume')
 
 -- Find files
 map('n', '<leader>ff', find_files, 'Find file')
@@ -406,8 +406,8 @@ map('n', '<M-t>', '<cmd>tabnew %<cr>', 'New tabpage')
 --           MOTION              --
 -----------------------------------
 -- ggandor/leap.nvim
-map({'n', 'x'}, '<leader>s', '<Plug>(leap-forward)', 'Leap forward')
-map({'n', 'x'}, '<leader>S', '<Plug>(leap-backward)', 'Leap backard')
+map({ 'n', 'x' }, '<leader>s', '<Plug>(leap-forward)', 'Leap forward')
+map({ 'n', 'x' }, '<leader>S', '<Plug>(leap-backward)', 'Leap backard')
 
 -----------------------------------
 --            DIAL               --

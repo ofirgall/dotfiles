@@ -396,10 +396,10 @@ retrail.setup {
 
 api.nvim_create_user_command('TrimWhiteSpace', function() retrail:trim() end, {})
 
--- AndrewRadev/splitjoin.vim
-vim.g.splitjoin_split_mapping = ''
-vim.g.splitjoin_join_mapping = ''
-vim.g.splitjoin_quiet = 1
+-- Wansmer/treesj
+require('treesj').setup {
+	use_default_keymaps = false,
+}
 
 -- numToStr/Navigator.nvim
 require('Navigator').setup {
