@@ -30,25 +30,30 @@ autosave.hook_before_actual_saving = function()
 	end
 end
 
-require 'nvim-lastplace'.setup {
+-- ethanholz/nvim-lastplace
+require('nvim-lastplace').setup {
 	lastplace_ignore_buftype = { 'terminal' }
 }
 
+-- michaelb/sniprun
 require 'sniprun'.setup {
 	display = {
-		"Classic"
+		'Classic'
 	}
 }
 
+-- nacro90/numb.nvim
 require('numb').setup {
 	number_only = true,
 }
 
+-- lyokha/vim-xkbswitch
 vim.cmd([[
 let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 let g:XkbSwitchEnabled = 1
 ]])
 
+-- ojroques/vim-oscyank
 if IS_REMOTE then
 	-- Enable osc(remote) yank
 	vim.cmd([[
@@ -56,15 +61,16 @@ if IS_REMOTE then
 	]])
 end
 
+-- mbbill/undotree
 vim.g.undotree_WindowLayout = 3 -- undotree at right
 
--- nvim-peekup
+-- gennaro-tedesco/nvim-peekup
 local peekup_config = require('nvim-peekup.config')
 peekup_config.on_keystroke['delay'] = ''
 peekup_config.on_keystroke['autoclose'] = true
 peekup_config.on_keystroke['paste_reg'] = '"'
 
--- toggleterm.nvim
+-- akinsho/toggleterm.nvim
 -- TODO: fix this annoying bug
 --		reproduce:	1. Open terminal (C-t)
 --					2. Split it (M-e) twice
@@ -99,31 +105,31 @@ end
 
 open_new_terminal = function(direction)
 	-- Flip directions...
-	if direction == "horizontal" then
-		direction = "vertical"
+	if direction == 'horizontal' then
+		direction = 'vertical'
 	else
-		direction = "horizontal"
+		direction = 'horizontal'
 	end
 	local ft = api.nvim_buf_get_option(0, 'filetype')
 	local dir = vim.fn.expand('%:p:h')
 	if ft == 'toggleterm' then
 		-- TODO: this should open in the same dir as the term but it doesn't work
-		dir = string.gsub(string.gsub(vim.fn.expand('%:h:h:h'), "term://", ""), "//.+", "")
+		dir = string.gsub(string.gsub(vim.fn.expand('%:h:h:h'), 'term://', ''), '//.+', '')
 	end
 
 	local term = terms.Terminal:new({ id = #terms.get_all() + 1, dir = dir, direction = direction })
 	term:open(nil, direction, true)
 end
 
--- guess-indent.nvim
+-- NMAC427/guess-indent.nvim
 require('guess-indent').setup {}
 
--- vim-maximizer
+-- szw/vim-maximizer
 vim.g.maximizer_default_mapping_key = '<M-Z>'
 
--- tmuxjump.vim
+-- shivamashtikar/tmuxjump.vim
 vim.g.tmuxjump_telescope = true
-vim.g.tmuxjump_custom_capture = "~/dotfiles_scripts/inner/_tmuxjump_capture.sh"
+vim.g.tmuxjump_custom_capture = '~/dotfiles_scripts/inner/_tmuxjump_capture.sh'
 
 -- folke/todo-comments.nvim
 require('todo-comments').setup {
@@ -134,11 +140,11 @@ require('todo-comments').setup {
 		after = ''
 	},
 	colors = {
-		error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
-		warning = { "@text.danger", "DiagnosticWarning", "WarningMsg", "#FBBF24" },
-		info = { "@text.warning", "DiagnosticInfo", "#2563EB" },
-		hint = { "@text.note", "DiagnosticHint", "#10B981" },
-		default = { "@text.note", "#7C3AED" },
+		error = { 'DiagnosticError', 'ErrorMsg', '#DC2626' },
+		warning = { '@text.danger', 'DiagnosticWarning', 'WarningMsg', '#FBBF24' },
+		info = { '@text.warning', 'DiagnosticInfo', '#2563EB' },
+		hint = { '@text.note', 'DiagnosticHint', '#10B981' },
+		default = { '@text.note', '#7C3AED' },
 	},
 }
 
@@ -186,12 +192,12 @@ api.nvim_create_user_command('Lua', function()
 	api.nvim_feedkeys('i', 'n', false)
 end, {})
 
--- nvim-colorizer.lua
+-- norcalli/nvim-colorizer.lua
 require('colorizer').setup {
 	'*'
 }
 
--- color-picker.nvim
+-- ziontee113/color-picker.nvim
 require('color-picker').setup {
 }
 
@@ -212,7 +218,7 @@ require('flit').setup {
 	labeled_modes = 'nv',
 }
 
--- scope.nvim
+-- tiagovla/scope.nvim
 require('scope').setup {
 }
 
@@ -231,27 +237,29 @@ require('nvim-toggler').setup {
 	remove_default_keybinds = true,
 }
 
--- mind.nvim
+-- phaazon/mind.nvim
 require('mind').setup {
 	keymaps = {
 		normal = {
-			["<cr>"] = "toggle_node",
-			["<Esc>"] = "toggle_parent",
-			["e"] = "open_data",
-			["dd"] = "delete",
-			["<leader>m"] = "quit",
-			["R"] = "change_icon_menu",
+			['<cr>'] = 'toggle_node',
+			['<Esc>'] = 'toggle_parent',
+			['e'] = 'open_data',
+			['dd'] = 'delete',
+			['<leader>m'] = 'quit',
+			['R'] = 'change_icon_menu',
 		},
 		selection = {
-			["<cr>"] = "toggle_node",
-			["e"] = "open_data",
+			['<cr>'] = 'toggle_node',
+			['e'] = 'open_data',
 		}
 	}
 }
 
+-- s1n7ax/nvim-window-picker (required by mind.nvim)
 require('window-picker').setup {
 }
 
+-- ofirgall/title.nvim
 require('title-nvim').setup {
 }
 
@@ -321,7 +329,6 @@ require('open').setup {
 require('open-jira').setup {
 	url = 'https://volumez.atlassian.net/browse/'
 }
-
 
 -- kylechui/nvim-surround
 
