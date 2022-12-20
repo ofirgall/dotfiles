@@ -36,10 +36,50 @@ else
 	}
 end
 
+-- simrat39/inlay-hints.nvim
+local function trim_hint(hint)
+	return string.gsub(hint, ':', '')
+end
+
+local hints = require('inlay-hints')
+hints.setup {
+	renderer = 'inlay-hints/render/eol',
+
+	hints = {
+		parameter = {
+			show = true,
+			highlight = 'InlayHints',
+		},
+		type = {
+			show = true,
+			highlight = 'InlayHints',
+		},
+	},
+
+	eol = {
+		parameter = {
+			separator = ", ",
+			format = function(hint)
+				return string.format("  (%s)", trim_hint(hint))
+			end,
+		},
+		type = {
+			separator = ", ",
+			format = function(hint)
+				return string.format("  %s", trim_hint(hint))
+			end,
+		},
+	}
+}
+local lsp_on_attach_with_hints = function(client, bufnr)
+	lsp_on_attach(client, bufnr)
+	hints.set_all()
+end
+
 -- simrat39/rust-tools.nvim
 require('rust-tools').setup {
 	server = {
-		on_attach = lsp_on_attach,
+		on_attach = lsp_on_attach_with_hints,
 		capabilities = capabilities,
 		settings = {
 			['rust-analyzer'] = {
@@ -50,13 +90,14 @@ require('rust-tools').setup {
 	tools = {
 		reload_workspace_from_cargo_toml = false,
 		inlay_hints = {
-			auto = true,
-			highlight = 'InlayHints',
-			other_hints_prefix = '   ',
+			auto = false, -- Using inlay-hints.nvim instead
 		},
 		hover_actions = {
 			auto_focus = true,
 		},
+		on_initialized = function()
+			hints.set_all()
+		end,
 	}
 }
 
@@ -187,16 +228,22 @@ require('go').setup {
 					QF1008 = false, -- Disable Hints for Omit embedded fields from selector expression
 				},
 				usePlaceholders = false,
+				hints = { -- For inlay hints
+					assignVariableTypes = true,
+					compositeLiteralFields = true,
+					compositeLiteralTypes = true,
+					constantValues = true,
+					functionTypeParameters = true,
+					parameterNames = true,
+					rangeVariableTypes = true,
+				},
 			}
 		}
 	},
-	lsp_on_attach = lsp_on_attach,
+	lsp_on_attach = lsp_on_attach_with_hints,
 	lsp_diag_hdlr = false, -- Disable go.nvim diagnostics viewer
 	lsp_inlay_hints = {
-		enable = true,
-		show_parameter_hints = false,
-		other_hints_prefix = '  ',
-		highlight = 'InlayHints',
+		enable = false, -- Using inlay-hints.nvim instead
 	}
 }
 
