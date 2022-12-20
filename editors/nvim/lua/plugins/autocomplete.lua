@@ -148,7 +148,7 @@ cmp.setup.filetype('gitcommit', {
 	sources = {
 		{ name = 'git' },
 		all_visible_buffers_source(nil),
-		{ name = 'dictionary' },
+		-- { name = 'dictionary' }, -- TODO: get a faster dictionary + better
 	}
 })
 

@@ -1,6 +1,6 @@
 local api = vim.api
 
--- ofirgall/ofirkay.nvim
+-- ofirgall/ofirkai.nvim
 local scheme = require('ofirkai.design').scheme
 require('ofirkai').setup {
 }
