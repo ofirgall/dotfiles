@@ -158,12 +158,15 @@ require('neodev').setup {
 }
 
 lspconfig.sumneko_lua.setup {
-	on_attach = lsp_on_attach,
+	on_attach = lsp_on_attach_with_hints,
 	capabilities = capabilities,
 	settings = {
 		Lua = {
 			telemetry = {
 				enable = false,
+			},
+			hint = {
+				enable = true,
 			},
 		},
 	},
