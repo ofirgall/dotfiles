@@ -130,7 +130,7 @@ lspconfig.sumneko_lua.setup {
 
 -- ofirgall/format-on-leave.nvim
 require('format-on-leave').setup {
-	pattern = { '*.go', '*.rs' }
+	pattern = { '*.go', '*.rs', '*.lua' }
 }
 
 local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
