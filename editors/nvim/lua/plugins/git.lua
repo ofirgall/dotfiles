@@ -12,13 +12,13 @@ gs.setup {
 		-- Navigation
 		map('n', ']c', function()
 			if vim.wo.diff then return ']c' end
-			vim.schedule(function() gs.next_hunk({navigation_message = false}) end)
+			vim.schedule(function() gs.next_hunk({ navigation_message = false }) end)
 			return '<Ignore>'
 		end, { expr = true })
 
 		map('n', '[c', function()
 			if vim.wo.diff then return '[c' end
-			vim.schedule(function() gs.prev_hunk({navigation_message = false}) end)
+			vim.schedule(function() gs.prev_hunk({ navigation_message = false }) end)
 			return '<Ignore>'
 		end, { expr = true })
 		-- Actions
@@ -139,9 +139,12 @@ end
 local Hydra = require('hydra')
 local gitsigns = gs
 local hint = [[
- _j_: next hunk   _<C-s>_: stage hunk        _r_: reset hunk
+ _j_: next hunk   _<C-s>_: stage hunk    _r_: reset hunk
  _k_: prev hunk   _u_: undo stage hunk   _R_: reset buffer
  ^ ^              _S_: stage buffer
+
+ ^ ^                 Conflicts
+ _<C-k>_: take upper _<C-j>_: take lower _<C-a>_: take both
  ^
 		  _<Enter>_: Fugitive  _<Esc>_: exit
 ]]
@@ -180,7 +183,7 @@ diffview_hydra = Hydra({
 			if diff then
 				api.nvim_feedkeys(']c', 'n', false)
 			else
-				gitsigns.next_hunk({navigation_message = false})
+				gitsigns.next_hunk({ navigation_message = false })
 			end
 			center_screen()
 			return '<Ignore>'
@@ -190,26 +193,35 @@ diffview_hydra = Hydra({
 			if diff then
 				api.nvim_feedkeys('[c', 'n', false)
 			else
-				gitsigns.prev_hunk({navigation_message = false})
+				gitsigns.prev_hunk({ navigation_message = false })
 			end
 			center_screen()
 			return '<Ignore>'
 		end, { expr = true } },
 		{ '<C-s>', function()
 			gitsigns.stage_hunk(nil)
-			gitsigns.next_hunk({navigation_message = false})
+			gitsigns.next_hunk({ navigation_message = false })
 			center_screen()
 			return '<Ignore>'
 		end, { silent = true } },
 		{ 'r', function()
 			gitsigns.reset_hunk(nil)
-			gitsigns.next_hunk({navigation_message = false})
+			gitsigns.next_hunk({ navigation_message = false })
 			center_screen()
 			return '<Ignore>'
 		end, { silent = true } },
 		{ 'R', ':Gitsigns reset_buffer<CR>', { silent = true } },
 		{ 'u', gitsigns.undo_stage_hunk },
 		{ 'S', gitsigns.stage_buffer },
+		{ '<C-k>', function()
+			actions.conflict_choose("ours")
+		end },
+		{ '<C-j>', function()
+			actions.conflict_choose("theirs")
+		end },
+		{ '<C-a>', function()
+			actions.conflict_choose("all")
+		end },
 		{ '<Enter>', '<cmd>Git<CR>', { exit = true } },
 		-- { 'q', nil, { exit = true, nowait = true } },
 		{ '<Esc>', nil, { exit = true, nowait = true } },
@@ -221,7 +233,7 @@ api.nvim_create_autocmd('BufEnter', {
 	group = config_autocmds,
 	pattern = '*',
 	callback = function(events)
-		local diff = api.nvim_get_option_value('diff', {buf = events.buf})
+		local diff = api.nvim_get_option_value('diff', { buf = events.buf })
 
 		if diff then
 			diffview_hydra:activate()
