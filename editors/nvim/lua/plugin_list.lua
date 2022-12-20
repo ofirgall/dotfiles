@@ -122,7 +122,6 @@ return require('packer').startup(function()
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
 	use 'tommcdo/vim-exchange' -- Exchange texts operator with `cx`
 	use 'Wansmer/treesj' -- split one liner to multi with sj, sJ to join
-	use { 'AckslD/nvim-revJ.lua', requires = { 'kana/vim-textobj-user', 'sgur/vim-textobj-parameter' } } -- Reverse join (split)
 	use 'monaqa/dial.nvim' -- Enhance C-X/A
 
 	-- Navigation --
