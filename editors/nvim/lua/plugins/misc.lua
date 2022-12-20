@@ -416,3 +416,8 @@ require('sibling-swap').setup {
 		['<space>,'] = 'swap_with_left_with_opp',
 	},
 }
+
+-- trmckay/based.nvim
+require('based').setup {
+	highlight = 'Title'
+}

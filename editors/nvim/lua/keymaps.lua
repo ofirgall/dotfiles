@@ -170,6 +170,7 @@ map('n', '<leader>e', require('femaco.edit').edit_code_block, 'Edit markdown cod
 map('n', '<leader>w', require('typebreak').start, 'typebreak') -- <leader>Wpm
 map('n', '<leader>b', deploy, 'Build & deploy')
 map('n', '<leader>B', function() reset_deploy() deploy() end, 'Reset deploy, build & deploy')
+map({ 'n', 'v' }, '<leader>H', require('based').convert, 'Convert hex <=> decimal')
 
 -- ThePrimeagen/harpoon
 map('n', '<leader>m', require('harpoon.mark').add_file, 'Add file to harpoon')

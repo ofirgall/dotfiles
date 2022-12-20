@@ -150,6 +150,7 @@ return require('packer').startup(function()
 	use 'ofirgall/open-jira.nvim'
 
 	-- Misc --
+	use 'trmckay/based.nvim' -- Convert & preview, hex <=> dec
 	use { 'nagy135/typebreak.nvim', requires = 'nvim-lua/plenary.nvim' } -- Type practice from nvim
 	use 'gbprod/yanky.nvim' -- Improve yank experience
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
