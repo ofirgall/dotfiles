@@ -51,6 +51,9 @@ set-window-option -g mode-style "bg=#27406b,fg=#ffffff"
 set -g @nova-segment-prefix "#{?client_prefix,PREFIX,}"
 set -g @nova-segment-prefix-colors "$active_tab_color"
 
+set -g @nova-segment-prefix "#{?pane_synchronized,SYNCED,}"
+set -g @nova-segment-prefix-colors "$active_tab_color"
+
 set -g @nova-segment-session "#{session_name}"
 set -g @nova-segment-session-colors "$sides_color"
 
