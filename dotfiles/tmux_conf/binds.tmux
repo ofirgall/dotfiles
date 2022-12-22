@@ -113,6 +113,7 @@ bind -n M-7 select-window -t :=7
 bind -n M-8 select-window -t :=8
 bind -n M-9 select-window -t :=9
 bind -n C-Tab last-window
+bind -n M-- last-window
 
 bind -T copy-mode-vi M-0 select-window -t :=10
 bind -T copy-mode-vi M-1 select-window -t :=1
@@ -144,13 +145,13 @@ bind -n M-( swap-window -d -t :=9
 bind -n M-PPage select-window -p
 bind -n M-NPage select-window -n
 
-# Alt+,/. - move tabs in tmux
-# Alt+u/i - move tabs in nested tmux
+# Alt+h/l - move tabs in vim (inner binds)
+# Alt+j/k - move tabs in tmux (outer bind)
 # Add +Shift to "Drag"
-bind -n M-, select-window -p
-bind -n M-. select-window -n
-bind -n M-< swap-window -d -t -1
-bind -n M-> swap-window -d -t +1
+bind -n M-j select-window -p
+bind -n M-k select-window -n
+bind -n M-J swap-window -d -t -1
+bind -n M-K swap-window -d -t +1
 bind -n M-u if-shell "$is_nested_tmux" 'send-keys M-u' 'select-window -p'
 bind -n M-i if-shell "$is_nested_tmux" 'send-keys M-i' 'select-window -n'
 bind -n M-U if-shell "$is_nested_tmux" 'send-keys M-U' 'swap-window -d -t -1'
