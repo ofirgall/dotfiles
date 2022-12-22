@@ -197,6 +197,15 @@ return require('packer').startup(function()
 	use 'romainl/vim-cool' -- Disables search highlighting when you are done searching
 	use 'chrisgrieser/nvim-genghis'
 
+	use {
+		'jackMort/ChatGPT.nvim', -- ChatGPT from nvim
+		requires = {
+			'MunifTanjim/nui.nvim',
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope.nvim'
+		}
+	}
+
 	-- Improvement Games
 	use 'ThePrimeagen/vim-be-good'
 
