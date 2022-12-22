@@ -235,8 +235,9 @@ api.nvim_create_autocmd('BufEnter', {
 	callback = function(events)
 		local diff = api.nvim_get_option_value('diff', { buf = events.buf })
 
-		if diff then
+		if diff and vim.b.git_hydra == nil then
 			diffview_hydra:activate()
+			vim.b.git_hydra = true -- Turn on git hydra once for each buffer
 		end
 	end
 })
