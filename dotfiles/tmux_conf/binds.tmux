@@ -38,10 +38,10 @@ bind -n M-E if-shell "$is_nested_tmux" 'send-keys M-e' 'split-window -h -c "#{pa
 bind -n M-O if-shell "$is_nested_tmux" 'send-keys M-o' 'split-window -v -c "#{pane_current_path}"'
 
 # Kill pane with ALT+w
-bind -n M-w if-shell "$is_nvim" "send-keys M-w" "kill-pane"
+bind -n M-w if-shell "$is_nvim" "send-keys M-w" "run-shell ~/dotfiles_scripts/inner/kill_pane.sh"
 bind -n M-W if-shell "$is_nested_tmux" "send-keys M-w" "kill-window"
 # Kill pane with ALT+q
-bind -n M-q if-shell "$is_nvim" "send-keys M-q" "kill-pane"
+bind -n M-q if-shell "$is_nvim" "send-keys M-q" "run-shell ~/dotfiles_scripts/inner/kill_pane.sh"
 bind -n M-Q if-shell "$is_nested_tmux" "send-keys M-q" "kill-window"
 
 ## Split windows to reconnect with ssh
