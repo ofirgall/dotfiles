@@ -42,7 +42,7 @@ return require('packer').startup(function()
 			'f3fora/cmp-spell',
 		}
 	}
-	use 'hrsh7th/cmp-nvim-lsp-signature-help' -- Signature hint while typing
+	use 'ofirgall/cmp-nvim-lsp-signature-help' -- Signature hint while typing
 
 	use 'ofirgall/vim-snippets' -- Default snippets
 	use 'glepnir/lspsaga.nvim' -- Sweet ui for rename + code action and hover doc
