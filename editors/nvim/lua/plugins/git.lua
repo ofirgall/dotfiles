@@ -55,6 +55,15 @@ require 'diffview'.setup {
 			["<M-m>"]      = actions.toggle_files,
 			["<leader>ck"] = actions.conflict_choose("ours"),
 			["<leader>cj"] = actions.conflict_choose("theirs"),
+			["<tab>"]      = function()
+				actions.select_next_entry()
+				actions.refresh_files()
+			end,
+			["<s-tab>"]    = function()
+				actions.select_prev_entry()
+				actions.refresh_files()
+			end,
+
 		},
 		file_panel = {
 			["s"] = cb("toggle_stage_entry"),
