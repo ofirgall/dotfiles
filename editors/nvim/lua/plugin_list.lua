@@ -53,7 +53,7 @@ return require('packer').startup(function()
 	use 'ofirgall/format-on-leave.nvim' -- Format the code when leaving the buffer.
 	use 'saecki/crates.nvim' -- "LSP" for `Cargo.toml`
 	use 'simrat39/symbols-outline.nvim' -- Tree view for symbols
-	use 'simrat39/inlay-hints.nvim' -- Inlay hints
+	use 'ofirgall/inlay-hints.nvim' -- Inlay hints
 
 	-- Language Specific --
 	use 'simrat39/rust-tools.nvim' -- Rust tools

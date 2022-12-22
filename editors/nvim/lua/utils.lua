@@ -254,21 +254,3 @@ toggle_lsp_diagnostics = function()
 		virtual_text = virtual_text,
 	})
 end
-
-local hints = require('inlay-hints')
-toggle_inlay_hints = function()
-	-- Start inlayhints
-	if vim.b.inlayhints == nil then
-		hints.on_attach(_, api.nvim_get_current_buf())
-		vim.b.inlayhints = true
-		return
-	end
-
-	if vim.b.inlayhints then
-		hints.unset()
-		vim.b.inlayhints = false
-	else
-		hints.set()
-		vim.b.inlayhints = true
-	end
-end
