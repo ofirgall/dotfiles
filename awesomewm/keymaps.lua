@@ -382,11 +382,11 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "rename tag", group = "awesome" }),
 
         -- Media Keys
-        awful.key({}, 'XF86AudioPlay', function() awful.util.spawn('playerctl play-pause') end,
+        awful.key({}, 'XF86AudioPlay', function() awful.util.spawn('sp play') end,
             { description = "Play/Pause", group = "media" }),
-        awful.key({}, 'XF86AudioNext', function() awful.util.spawn('playerctl next') end,
+        awful.key({}, 'XF86AudioNext', function() awful.util.spawn('sp next') end,
             { description = "Next", group = "media" }),
-        awful.key({}, 'XF86AudioPrev', function() awful.util.spawn('playerctl previous') end,
+        awful.key({}, 'XF86AudioPrev', function() awful.util.spawn('sp prev') end,
             { description = "Prev", group = "media" }),
         awful.key({}, 'XF86AudioRaiseVolume', function() volume_widget:inc(5) end,
             { description = "Raise Vol", group = "media" }),
@@ -394,6 +394,14 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "Lower Vol", group = "media" }),
         awful.key({}, 'XF86AudioMute', function() volume_widget:toggle() end,
             { description = "Set Vol 0", group = "media" }),
+
+        -- modkey + F10/11/12 for media keys aswell
+        awful.key({modkey}, 'F10', function() awful.util.spawn('sp prev') end,
+            { description = "Prev", group = "media" }),
+        awful.key({modkey}, 'F11', function() awful.util.spawn('sp play') end,
+            { description = "Play/Pause", group = "media" }),
+        awful.key({modkey}, 'F12', function() awful.util.spawn('sp next') end,
+            { description = "Next", group = "media" }),
 
         -- Print screen
         awful.key({}, 'Print',
