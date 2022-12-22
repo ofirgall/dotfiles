@@ -85,6 +85,7 @@ map('n', '<leader>d', '"_d', 'delete without yanking')
 map('n', '<leader>D', '"_D', 'delete without yanking')
 map('n', '<leader>c', '"_c', 'change without yanking')
 map('n', '<leader>C', '"_C', 'change without yanking')
+map('n', '&', 'i&<Esc>', 'Add ampersand')
 
 map('n', '<leader>qa', close_all_but_current, 'Close all buffers but current')
 map('n', '<leader>qA', '<cmd>wqa!<cr>', 'Write all + close vim')
