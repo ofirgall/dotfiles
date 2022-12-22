@@ -189,6 +189,12 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "swap left", group = "client" }
         ),
 
+        -- Clear notifications
+        awful.key({ modkey, }, "c", function()
+            naughty.destroy_all_notifications(nil, 'Clear notifications bind')
+        end,
+            { description = "Clear notifications", group = "awesome" }),
+
         -- Save env with retain
         awful.key({ modkey, "Control" }, "s",
             function()
