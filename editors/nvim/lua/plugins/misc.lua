@@ -386,6 +386,7 @@ retrail.setup {
 			'nui',
 			'notify',
 			'floggraph',
+			'chatgpt',
 		},
 	},
 	trim = {
