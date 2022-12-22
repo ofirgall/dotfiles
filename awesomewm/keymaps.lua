@@ -229,7 +229,7 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "go back", group = "client" }),
 
         -- Go back to previous tag
-        awful.key({ modkey, }, "`", function ()
+        awful.key({ modkey, }, "`", function()
             if LAST_TAG == nil then
                 return
             end
@@ -396,11 +396,11 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "Set Vol 0", group = "media" }),
 
         -- modkey + F10/11/12 for media keys aswell
-        awful.key({modkey}, 'F10', function() awful.util.spawn('sp prev') end,
+        awful.key({ modkey }, 'F10', function() awful.util.spawn('sp prev') end,
             { description = "Prev", group = "media" }),
-        awful.key({modkey}, 'F11', function() awful.util.spawn('sp play') end,
+        awful.key({ modkey }, 'F11', function() awful.util.spawn('sp play') end,
             { description = "Play/Pause", group = "media" }),
-        awful.key({modkey}, 'F12', function() awful.util.spawn('sp next') end,
+        awful.key({ modkey }, 'F12', function() awful.util.spawn('sp next') end,
             { description = "Next", group = "media" }),
 
         -- Print screen
@@ -422,6 +422,11 @@ function M.setup(kbdcfg, volume_widget, retain)
         globalkeys = gears.table.join(globalkeys,
             -- View tag on all screens
             awful.key({ modkey }, "#" .. i + 9,
+                function()
+                    switch_tag_all_screens(i)
+                end,
+                { description = "view tag #" .. i, group = "tag" }),
+            awful.key({ ALT }, "F" .. i,
                 function()
                     switch_tag_all_screens(i)
                 end,
