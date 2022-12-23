@@ -285,3 +285,7 @@ end
 function flog_show_current()
 	vim.cmd('DiffviewOpen ' .. flog_current_commit() .. '^..' .. flog_current_commit())
 end
+
+-- pwntester/octo.nvim
+require('octo').setup {
+}

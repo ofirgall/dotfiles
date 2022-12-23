@@ -52,6 +52,9 @@ if ! $IS_REMOTE; then
 	sudo apt install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 	cargo install --git=https://github.com/alacritty/alacritty
 	sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $HOME/.cargo/bin/alacritty 100
+
+	# General utils
+	sudo apt install -y gh
 fi
 
 # Install wsl utils

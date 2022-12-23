@@ -94,6 +94,14 @@ return require('packer').startup(function()
 	}
 	use 'rbong/vim-flog' -- Show git history tree with :Flog (read doc for more)
 	use 'rhysd/git-messenger.vim' -- Git blame that allows to explore older commits
+	use {
+		'pwntester/octo.nvim', -- Github client for neovim
+		requires = {
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope.nvim',
+			'kyazdani42/nvim-web-devicons',
+		},
+	}
 
 	-- Debugging --
 	use 'mfussenegger/nvim-dap' -- DAP client for nvim
