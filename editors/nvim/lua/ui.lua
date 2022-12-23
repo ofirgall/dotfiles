@@ -259,3 +259,19 @@ require('colorful-winsep').setup {
 		guifg = scheme.vert_split_fg_active
 	},
 }
+
+-- echasnovski/mini.animate
+require('mini.animate').setup {
+	scroll = {
+		enable = false
+	},
+	resize = {
+		enable = false,
+	},
+	open = {
+		enable = false,
+	},
+	close = {
+		enable = false
+	},
+}
