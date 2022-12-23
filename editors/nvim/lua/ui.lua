@@ -123,38 +123,6 @@ if not vim.g.started_by_firenvim then
 
 	local ofirkai_lualine = require('ofirkai.statuslines.lualine')
 	local json_path = require('jsonpath')
-	local winbar = {
-		lualine_a = {},
-		lualine_b = {
-			{
-				'filename',
-				file_status = false,
-				icon = '',
-				color = ofirkai_lualine.winbar_color,
-				padding = { left = 4 }
-			},
-		},
-		lualine_c = {
-			{
-				navic.get_location,
-				icon = "",
-				cond = navic.is_available,
-				color = ofirkai_lualine.winbar_color,
-			},
-			{
-				json_path.get,
-				icon = "",
-				cond = function()
-					local ft = api.nvim_buf_get_option(0, 'filetype')
-					return ft == 'json' or ft == 'jsonc'
-				end,
-				color = ofirkai_lualine.winbar_color,
-			}
-		},
-		lualine_x = {},
-		lualine_y = {},
-		lualine_z = {}
-	}
 
 	-- nvim-lualine/lualine.nvim
 	require('lualine').setup {
@@ -171,7 +139,18 @@ if not vim.g.started_by_firenvim then
 		sections = {
 			lualine_b = { { 'branch', icon = '' }, 'diff', 'diagnostics' },
 			lualine_c = {
-				{ 'filename', shorting_target = 0 },
+				{ 'filename', shorting_target = 0, icon = '', },
+				{
+					navic.get_location,
+					cond = navic.is_available,
+				},
+				{
+					json_path.get,
+					cond = function()
+						local ft = api.nvim_buf_get_option(0, 'filetype')
+						return ft == 'json' or ft == 'jsonc'
+					end,
+				}
 			},
 			lualine_x = {
 				{
@@ -189,8 +168,6 @@ if not vim.g.started_by_firenvim then
 			lualine_y = y_section,
 			lualine_z = { { 'filetype', separator = '' }, 'progress' },
 		},
-		winbar = winbar,
-		inactive_winbar = winbar,
 	}
 
 	-- Refresh lualine for recording macros
@@ -255,8 +232,8 @@ api.nvim_create_autocmd('FileType', {
 -- nvim-zh/colorful-winsep.nvim
 require('colorful-winsep').setup {
 	highlight = {
-		guibg = scheme.background,
-		guifg = scheme.vert_split_fg_active
+		bg = scheme.background,
+		fg = scheme.vert_split_fg_active
 	},
 }
 
@@ -273,5 +250,65 @@ require('mini.animate').setup {
 	},
 	close = {
 		enable = false
+	},
+}
+
+-- https://github.com/b0o/incline.nvim/discussions/32
+local function get_diagnostic_label(props)
+	local icons = { error = '', warn = '', info = '', hint = '', }
+	local label = {}
+
+	for severity, icon in pairs(icons) do
+		local n = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity[string.upper(severity)] })
+		if n > 0 then
+			table.insert(label, { icon .. ' ' .. n .. ' ', group = 'DiagnosticSign' .. severity })
+		end
+	end
+	if #label > 0 then
+		table.insert(label, { '| ' })
+	end
+	return label
+end
+
+local function get_git_diff(props)
+	local icons = { removed = "", changed = "", added = "" }
+	local labels = {}
+	local signs = vim.api.nvim_buf_get_var(props.buf, "gitsigns_status_dict")
+	-- local signs = vim.b.gitsigns_status_dict
+	for name, icon in pairs(icons) do
+		if tonumber(signs[name]) and signs[name] > 0 then
+			table.insert(labels, { icon .. " " .. signs[name] .. " ",
+				group = "Diff" .. name
+			})
+		end
+	end
+	if #labels > 0 then
+		table.insert(labels, { '| ' })
+	end
+	return labels
+end
+
+-- b0o/incline.nvim
+require('incline').setup {
+	render = function(props)
+		local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
+		local ft_icon, ft_color = require('nvim-web-devicons').get_icon_color(filename)
+		local modified = vim.api.nvim_buf_get_option(props.buf, 'modified') and 'bold,italic' or 'bold'
+
+		return {
+			-- { get_diagnostic_label(props) },
+			{ get_git_diff(props) },
+			{ ft_icon, guifg = ft_color }, { ' ' },
+			{ filename, gui = modified },
+		}
+	end,
+	window = {
+		margin = {
+			horizontal = 0,
+			vertical = 0,
+		},
+	},
+	hide = {
+		focused_win = false,
 	},
 }
