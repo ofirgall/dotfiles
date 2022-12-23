@@ -4,11 +4,8 @@ local api = vim.api
 require('Comment').setup {
 }
 
--- windwp/nvim-autopairs
-require('nvim-autopairs').setup {
-	check_ts = true,
-	disable_filetype = { 'TelescopePrompt', 'guihua', 'guihua_rust', 'clap_input' },
-	-- enable_moveright = false,
+-- m4xshen/autoclose.nvim
+require('autoclose').setup {
 }
 
 -- rmagatti/auto-session

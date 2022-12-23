@@ -153,7 +153,7 @@ return require('packer').startup(function()
 	use { 'nagy135/typebreak.nvim', requires = 'nvim-lua/plenary.nvim' } -- Type practice from nvim
 	use 'gbprod/yanky.nvim' -- Improve yank experience
 	use 'lambdalisue/suda.vim' -- Sudo write/read (SudaWrite/Read)
-	use 'windwp/nvim-autopairs' -- Closes (--' etc.
+	use 'm4xshen/autoclose.nvim' -- Closes (--' etc.
 	use 'ofirgall/nvim-retrail' -- Whitespace trailing
 	use 'ofirgall/AutoSave.nvim' -- Auto save
 	use 'tiagovla/scope.nvim' -- Scopes buffers for tabpages

@@ -163,22 +163,6 @@ cmp.setup.filetype('toml', {
 cmp.setup.filetype('guihua', {})
 cmp.setup.filetype('guihua_rust', {})
 
--- add pair when accepting autocomplete
--- windwp/nvim-autopairs
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-local on_confirm_done_callback = function(evt)
-	entry = evt.entry
-	-- print(entry.source.name)
-	-- if entry.source.name ~= 'snippy' and snippy.can_jump(1) then
-	-- 	snippy.next()
-	-- else
-	-- 	cmp_autopairs.on_confirm_done({ map_char = { tex = '' } })
-	-- end
-	cmp_autopairs.on_confirm_done({ map_char = { tex = '' } })
-end
-
-cmp.event:on('confirm_done', on_confirm_done_callback)
-
 -- petertriho/cmp-git
 require('cmp_git').setup {
 }
