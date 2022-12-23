@@ -1,5 +1,6 @@
 local api = vim.api
 
+-- numToStr/Comment.nvim
 require('Comment').setup {
 }
 
@@ -16,6 +17,7 @@ require('auto-session').setup {
 	auto_session_suppress_dirs = { '~/', '~/workspace', '~/Downloads', '/', '~/logs' },
 }
 
+-- Pocco81/auto-save.nvim
 local autosave = require('autosave')
 autosave.setup {
 	clean_command_line_interval = 1000,
