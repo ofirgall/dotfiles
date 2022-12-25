@@ -223,6 +223,8 @@ require('go').setup {
 					QF1008 = false, -- Disable Hints for Omit embedded fields from selector expression
 				},
 				usePlaceholders = false,
+				matcher = 'CaseInsensitive',
+				symbolMatcher = 'CaseInsensitive',
 				hints = { -- For inlay hints
 					assignVariableTypes = true,
 					compositeLiteralFields = true,
