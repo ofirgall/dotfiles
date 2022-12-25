@@ -18,6 +18,6 @@ if [ "$current_session" == "main" ]; then
 	spotify
 fi
 
-if echo "$current_session" | grep -q "^vol-"; then
-	$HOME/.tmux/plugins/tmux-browser/scripts/open_browser.sh
-fi
+# if echo "$current_session" | grep -q "^vol-"; then
+# 	$HOME/.tmux/plugins/tmux-browser/scripts/open_browser.sh
+# fi
