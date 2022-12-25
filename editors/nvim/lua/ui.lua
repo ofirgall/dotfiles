@@ -309,7 +309,7 @@ require('incline').setup {
 		},
 	},
 	hide = {
-		focused_win = false,
+		focused_win = true,
 		only_win = true,
 	},
 }
