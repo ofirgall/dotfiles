@@ -51,8 +51,8 @@ set-window-option -g mode-style "bg=#27406b,fg=#ffffff"
 set -g @nova-segment-prefix "#{?client_prefix,PREFIX,}"
 set -g @nova-segment-prefix-colors "$active_tab_color"
 
-set -g @nova-segment-prefix "#{?pane_synchronized,SYNCED,}"
-set -g @nova-segment-prefix-colors "$active_tab_color"
+set -g @nova-segment-synced "#{?pane_synchronized,SYNCED,}"
+set -g @nova-segment-synced-colors "$active_tab_color"
 
 set -g @nova-segment-session "#{session_name}"
 set -g @nova-segment-session-colors "$sides_color"
@@ -64,7 +64,7 @@ set -g @nova-segment-suspended "#{@suspended_mode}"
 set -g @nova-segment-suspended-colors "$sides_color"
 
 set -g @nova-segments-0-left "session"
-set -g @nova-segments-0-right "prefix whoami"
+set -g @nova-segments-0-right "synced prefix whoami"
 
 ### SUSPENDED MODE ###
 set -g @suspend_on_resume_command "tmux \
