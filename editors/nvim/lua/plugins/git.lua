@@ -188,22 +188,26 @@ diffview_hydra = Hydra({
 	body = '<leader>gg',
 	heads = {
 		{ 'j', function()
-			local diff = api.nvim_get_option_value('diff', {})
-			if diff then
-				api.nvim_feedkeys(']c', 'n', false)
-			else
-				gitsigns.next_hunk({ navigation_message = false })
-			end
+			-- TODO: make it move by changes only if there are no hunks
+			-- local diff = api.nvim_get_option_value('diff', {})
+			-- if diff then
+			-- 	api.nvim_feedkeys(']c', 'n', false)
+			-- else
+			-- 	gitsigns.next_hunk({ navigation_message = false })
+			-- end
+			gitsigns.next_hunk({ navigation_message = false })
 			center_screen()
 			return '<Ignore>'
 		end, { expr = true } },
 		{ 'k', function()
-			local diff = api.nvim_get_option_value('diff', {})
-			if diff then
-				api.nvim_feedkeys('[c', 'n', false)
-			else
-				gitsigns.prev_hunk({ navigation_message = false })
-			end
+			-- TODO: make it move by changes only if there are no hunks
+			-- local diff = api.nvim_get_option_value('diff', {})
+			-- if diff then
+			-- 	api.nvim_feedkeys('[c', 'n', false)
+			-- else
+			-- 	gitsigns.prev_hunk({ navigation_message = false })
+			-- end
+			gitsigns.prev_hunk({ navigation_message = false })
 			center_screen()
 			return '<Ignore>'
 		end, { expr = true } },
