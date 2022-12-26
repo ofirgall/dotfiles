@@ -55,12 +55,34 @@ local kind_compare = function(entry1, entry2)
 	local kind2 = entry2:get_kind()
 	kind2 = kind2 == types.lsp.CompletionItemKind.Text and 100 or kind2
 	if kind1 ~= kind2 then
-		if kind1 == types.lsp.CompletionItemKind.Snippet or kind1 == types.lsp.CompletionItemKind.Variable then
+		if kind1 == types.lsp.CompletionItemKind.Module then
 			return true
 		end
-		if kind1 == types.lsp.CompletionItemKind.Snippet or kind1 == types.lsp.CompletionItemKind.Variable then
+		if kind2 == types.lsp.CompletionItemKind.Module then
 			return false
 		end
+
+		if kind1 == types.lsp.CompletionItemKind.Variable then
+			return true
+		end
+		if kind2 == types.lsp.CompletionItemKind.Variable then
+			return false
+		end
+
+		if kind1 == types.lsp.CompletionItemKind.Snippet then
+			return true
+		end
+		if kind1 == types.lsp.CompletionItemKind.Snippet then
+			return false
+		end
+
+		if kind1 == types.lsp.CompletionItemKind.Snippet then
+			return true
+		end
+		if kind1 == types.lsp.CompletionItemKind.Snippet then
+			return false
+		end
+
 		local diff = kind1 - kind2
 		if diff < 0 then
 			return true
@@ -141,13 +163,13 @@ cmp_setup_dict = {
 	},
 	sorting = {
 		comparators = {
+			kind_compare, -- compare.kind,
 			compare.offset,
 			compare.exact,
 			-- compare.scopes,
 			compare.score,
 			compare.recently_used,
 			compare.locality,
-			kind_compare, -- compare.kind,
 			compare.sort_text,
 			compare.length,
 			compare.order,
