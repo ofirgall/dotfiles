@@ -47,7 +47,7 @@ local function all_visible_buffers_source(priority)
 end
 
 local types = require('cmp.types')
-local compare = require('cmp.types')
+local compare = require('cmp.config.compare')
 
 local kind_compare = function(entry1, entry2)
 	local kind1 = entry1:get_kind()
@@ -72,14 +72,7 @@ local kind_compare = function(entry1, entry2)
 		if kind1 == types.lsp.CompletionItemKind.Snippet then
 			return true
 		end
-		if kind1 == types.lsp.CompletionItemKind.Snippet then
-			return false
-		end
-
-		if kind1 == types.lsp.CompletionItemKind.Snippet then
-			return true
-		end
-		if kind1 == types.lsp.CompletionItemKind.Snippet then
+		if kind2 == types.lsp.CompletionItemKind.Snippet then
 			return false
 		end
 
