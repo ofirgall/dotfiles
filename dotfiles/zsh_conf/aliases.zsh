@@ -37,6 +37,9 @@ alias pg='cg $HOME/playgrounds && nv' # cd to packer/plugins
 function tmp() {
 	SCRATCH_FILE=$(mktemp -t scratch.XXXX); nv $SCRATCH_FILE +"set ft=$1"; echo $SCRATCH_FILE
 }
+function nvlog() {
+	nv +"set ft=log" $@
+}
 
 # System settings
 alias wifi='nmtui'
