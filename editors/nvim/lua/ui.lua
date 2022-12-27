@@ -237,22 +237,6 @@ require('colorful-winsep').setup {
 	},
 }
 
--- echasnovski/mini.animate
-require('mini.animate').setup {
-	scroll = {
-		enable = false
-	},
-	resize = {
-		enable = false,
-	},
-	open = {
-		enable = false,
-	},
-	close = {
-		enable = false
-	},
-}
-
 -- https://github.com/b0o/incline.nvim/discussions/32
 local function get_diagnostic_label(props)
 	local icons = { error = '', warn = '', info = '', hint = '', }

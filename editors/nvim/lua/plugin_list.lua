@@ -151,7 +151,6 @@ return require('packer').startup(function()
 		}
 	}
 	use 'nvim-zh/colorful-winsep.nvim' -- Highlight current window seperator
-	use 'echasnovski/mini.animate' -- Animate cursor movement, scroll, window resize
 	use 'b0o/incline.nvim' -- Floating statuslines for Neovim
 
 	-- Openers --
