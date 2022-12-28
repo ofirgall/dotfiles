@@ -13,3 +13,6 @@ xinput --set-prop 'Glorious Model O Wireless' 'libinput Accel Speed' -0.3
 xinput --set-prop 'pointer:Logitech MX Master 3' 'libinput Accel Speed' -0.5
 
 xmodmap ~/.xmodmaprc 2> /dev/null # key mapping, xev to see keys
+
+
+echo 'done'
