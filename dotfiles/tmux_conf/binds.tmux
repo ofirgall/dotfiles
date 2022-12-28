@@ -204,7 +204,7 @@ unbind -T copy-mode-vi MouseDragEnd1Pane
 # -------------------------
 #	    MISC BINDS
 # -------------------------
-bind -n F12 setw synchronize-panes # Toggle type on all panes
+bind -n F12 if-shell "$is_nvim" "send-keys F12" 'setw synchronize-panes' # Toggle type on all panes
 
 # -------------------------
 #	    PLUGINS BINDS
