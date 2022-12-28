@@ -41,18 +41,6 @@ api.nvim_create_autocmd('BufEnter', {
 	end
 })
 
--- Auto recenter after TelescopePrompt
-api.nvim_create_autocmd('BufLeave', {
-	group = config_autocmds,
-	pattern = '*',
-	callback = function(events)
-		local ft = api.nvim_buf_get_option(events.buf, 'filetype')
-		if ft == 'TelescopePrompt' then
-			api.nvim_feedkeys('zz', 'n', false)
-		end
-	end
-})
-
 -- Simple color scheme for logs
 -- Small quickfix
 api.nvim_create_autocmd('FileType', {
