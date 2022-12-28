@@ -244,6 +244,16 @@ function M.setup(kbdcfg, volume_widget, retain)
         end,
             { description = "go back", group = "tag" }),
 
+        -- for Hebrew as well
+        awful.key({ modkey, }, ";", function()
+            if LAST_TAG == nil then
+                return
+            end
+
+            switch_tag_all_screens(LAST_TAG.index)
+        end,
+            { description = "go back", group = "tag" }),
+
         -- Change Language
         awful.key({ modkey, }, "space", kbdcfg.switch_next,
             { description = "Change Language", group = "awesome" }),
