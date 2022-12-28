@@ -69,6 +69,13 @@ local kind_compare = function(entry1, entry2)
 			return false
 		end
 
+		if kind1 == types.lsp.CompletionItemKind.Field then
+			return true
+		end
+		if kind2 == types.lsp.CompletionItemKind.Field then
+			return false
+		end
+
 		if kind1 == types.lsp.CompletionItemKind.Snippet then
 			return true
 		end
