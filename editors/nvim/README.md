@@ -9,8 +9,7 @@ nvim is my main editor and [much more](https://github.com/ofirgall/learn-nvim/bl
 ---
 
 ## TODO
-* nvim - disable ghost text if writing inside comment
-* nvim - Install gh.nvim and octo.nvim and write all this todos as issues
+* nvim - repeat pair movement
 * flit - force case sensitivity
 ### Takes time
 * nvim[rust] - require'rust-tools'.move_item.move_item(up) with ctrl+shift+j/k (requires alacritty setup)

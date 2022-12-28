@@ -49,6 +49,7 @@ end
 local types = require('cmp.types')
 local compare = require('cmp.config.compare')
 
+-- Export to a plugin
 local kind_compare = function(entry1, entry2)
 	local kind1 = entry1:get_kind()
 	kind1 = kind1 == types.lsp.CompletionItemKind.Text and 100 or kind1
