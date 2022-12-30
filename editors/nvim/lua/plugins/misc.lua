@@ -425,7 +425,3 @@ require('sibling-swap').setup {
 require('based').setup {
 	highlight = 'Title'
 }
-
--- jackMort/ChatGPT.nvim
-require('chatgpt').setup {
-}

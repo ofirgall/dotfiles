@@ -211,7 +211,12 @@ return require('packer').startup(function()
 			'MunifTanjim/nui.nvim',
 			'nvim-lua/plenary.nvim',
 			'nvim-telescope/telescope.nvim'
-		}
+		},
+		cmd = 'ChatGPT',
+		config = function()
+			require('chatgpt').setup {
+			}
+		end
 	}
 
 	-- Improvement Games
