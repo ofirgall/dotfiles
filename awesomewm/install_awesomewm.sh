@@ -35,13 +35,15 @@ clone_awesome streetturtle/awesome-wm-widgets awesome-wm-widgets
 clone_awesome pltanton/net_widgets.git net_widgets
 
 # Install `sp` binary for spotify-widget
+rm -rf /tmp/sp
 git clone https://gist.github.com/fa6258f3ff7b17747ee3.git /tmp/sp
 chmod +x /tmp/sp/sp
 sudo mv /tmp/sp/sp /usr/local/bin/
 
 # Arc icons
+rm -rf /tmp/icons
 git clone --depth=1 --branch=Arc-ICONS git@github.com:rtlewis88/rtl88-Themes.git /tmp/icons
-sudo mkdir /usr/share/icons/Arc/
+sudo mkdir -p /usr/share/icons/Arc/
 sudo mv /tmp/icons/Arc-ICONS/* /usr/share/icons/Arc/
 
 # Libs
@@ -58,5 +60,5 @@ python3 -m pip install autorandr
 # audio control (aliased to `audio`|`sound`)
 sudo apt-get install -y pavucontrol
 sudo rm -f /etc/pulse/default.pa
-sudo ln -s $CURRENT_DIR/system/pulseaudio.pa /etc/pulse/default.pa
+sudo ln -s $CURRENT_DIR/../system/pulseaudio.pa /etc/pulse/default.pa
 pulseaudio -k
