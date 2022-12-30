@@ -475,12 +475,19 @@ gears.timer.start_new(10, function()
 end)
 
 -- Auto ran applications on startup
-awful.spawn.single_instance('teams', {}, function(c)
-    return awful.rules.match(c, { class = 'Teams' })
-end)
-awful.spawn.single_instance('spotify', {}, function(c)
-    return awful.rules.match(c, { class = 'Spotify' })
-end)
+local function run_once(cmd_arr)
+    for _, cmd in ipairs(cmd_arr) do
+        findme = cmd
+        firstspace = cmd:find(" ")
+        if firstspace then
+            findme = cmd:sub(0, firstspace - 1)
+        end
+        awful.spawn.with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme,
+            cmd))
+    end
+end
+
+run_once({ 'spotify', 'teams' })
 -- Mail & Calendar
 -- awful.spawn.single_instance('firefox https://outlook.office365.com/mail/ https://outlook.office.com/calendar/view/week',
 --     { tag = GUI_TAG },
