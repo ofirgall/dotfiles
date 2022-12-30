@@ -221,8 +221,21 @@ kbdcfg.widget:buttons(
 
 -- END OF echuraev/keyboard_layout
 --
+
+local __sep__ = wibox.widget.textbox("|")
+local __space__ = wibox.widget.textbox(" ")
+
 -- Widgets from streetturtle/awesome-wm-widgets
-local batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
+local has_battery = io.popen('upower -i `upower -e | grep "BAT"`'):read('*all')
+
+local batteryarc_widget = __space__
+if has_battery ~= '' then
+    batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")({
+        show_current_level = true,
+        arc_thickness = 2,
+    })
+end
+
 local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 local spotify_widget = require("awesome-wm-widgets.spotify-widget.spotify")
 local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
@@ -239,9 +252,6 @@ net_wired = net_widgets.indicator({
     },
     timeout = 5
 })
-
-local __sep__ = wibox.widget.textbox("|")
-local __space__ = wibox.widget.textbox(" ")
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -302,10 +312,7 @@ awful.screen.connect_for_each_screen(function(s)
             __sep__,
             cpu_widget(),
             ram_widget(),
-            batteryarc_widget({
-                show_current_level = true,
-                arc_thickness = 2,
-            }),
+            batteryarc_widget,
             __space__,
             volume_widget({
                 widget_type = 'arc'
