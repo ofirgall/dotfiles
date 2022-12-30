@@ -40,6 +40,7 @@ return require('packer').startup(function()
 			'petertriho/cmp-git',
 			'rcarriga/cmp-dap',
 			'f3fora/cmp-spell',
+			'ofirgall/cmp-lspkind-priority'
 		}
 	}
 	use 'ofirgall/cmp-nvim-lsp-signature-help' -- Signature hint while typing
