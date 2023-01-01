@@ -9,3 +9,4 @@ autokey/Sample\ Scripts
 *.spl
 playgrounds/*
 !playgrounds/.templates*
+!playgrounds/generate.sh
