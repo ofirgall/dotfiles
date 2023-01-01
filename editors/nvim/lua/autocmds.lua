@@ -54,3 +54,28 @@ api.nvim_create_autocmd('FileType', {
 		end
 	end
 })
+
+-- TODO: export to plugin
+-- Auto ticket number in git commit
+api.nvim_create_autocmd('BufWinEnter', {
+	group = config_autocmds,
+	callback = function(events)
+		local ft = api.nvim_buf_get_option(events.buf, 'filetype')
+		if ft ~= 'gitcommit' then
+			return
+		end
+		local first_line = api.nvim_buf_get_lines(events.buf, 0, 1, true)[1]
+		if first_line == '' then
+			local on_branch_line_index = vim.fn.search('# On branch', 'n')
+			local on_branch = api.nvim_buf_get_lines(events.buf, on_branch_line_index - 1, on_branch_line_index, true)[1]
+			local branch = string.gsub(on_branch, '# On branch', '')
+			local ticket_num = branch:match('%w+-%d+')
+
+			if ticket_num then
+				api.nvim_buf_set_lines(events.buf, 0, 1, true, { ticket_num .. ' ' })
+			end
+			-- Insert at EOL
+			api.nvim_feedkeys('A', 'n', false)
+		end
+	end
+})
