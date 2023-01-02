@@ -153,6 +153,10 @@ bind -n M-j select-window -p
 bind -n M-k select-window -n
 bind -n M-J swap-window -d -t -1
 bind -n M-K swap-window -d -t +1
+bind -n M-, select-window -p
+bind -n M-. select-window -n
+bind -n M-< swap-window -d -t -1
+bind -n M-> swap-window -d -t +1
 bind -n M-u if-shell "$is_nested_tmux" 'send-keys M-u' 'select-window -p'
 bind -n M-i if-shell "$is_nested_tmux" 'send-keys M-i' 'select-window -n'
 bind -n M-U if-shell "$is_nested_tmux" 'send-keys M-U' 'swap-window -d -t -1'
