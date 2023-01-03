@@ -2,6 +2,11 @@ if vim.g.started_by_firenvim then
 	do return end
 end
 
+local layout = 'horizontal'
+if NVLOG then
+	layout = 'vertical'
+end
+
 require('telescope').setup {
 	defaults = {
 		dynamic_preview_title = true,
@@ -28,13 +33,18 @@ require('telescope').setup {
 		},
 		layout_config = {
 			horizontal = {
-				-- prompt_position = 'top'
 				width = 0.90,
 				preview_width = 0.5,
 				height = 0.90
 			},
+			vertical = {
+				width = 0.95,
+				preview_height = 0.75,
+				height = 0.90
+			},
 		},
 		prompt_prefix = ' ',
+		layout_strategy = layout,
 	},
 	pickers = {
 	},
