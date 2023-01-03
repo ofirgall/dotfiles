@@ -1,21 +1,29 @@
 local api = vim.api
 
--- ofirgall/ofirkai.nvim
 local scheme = require('ofirkai.design').scheme
-require('ofirkai').setup {
-}
 
--- lukas-reineke/indent-blankline.nvim
-require('indent_blankline').setup {
-	use_treesitter = true,
-	show_trailing_blankline_indent = false,
-	space_char_blankline = ' ',
-	show_current_context = true,
-	show_current_context_start = false,
-	context_highlight_list = { 'InlayHints' },
-}
-vim.opt.list = true
-vim.opt.listchars:append('lead:⋅')
+if not NVLOG then
+	-- ofirgall/ofirkai.nvim
+	require('ofirkai').setup {
+	}
+else
+	vim.o.termguicolors = true
+	vim.cmd('colorscheme pablo')
+end
+
+if not NVLOG then
+	-- lukas-reineke/indent-blankline.nvim
+	require('indent_blankline').setup {
+		use_treesitter = true,
+		show_trailing_blankline_indent = false,
+		space_char_blankline = ' ',
+		show_current_context = true,
+		show_current_context_start = false,
+		context_highlight_list = { 'InlayHints' },
+	}
+	vim.opt.list = true
+	vim.opt.listchars:append('lead:⋅')
+end
 
 -- stevearc/dressing.nvim
 require('dressing').setup {
@@ -77,29 +85,31 @@ require('nvim-tree').setup {
 }
 vim.api.nvim_create_user_command('Locate', ':NvimTreeFindFile', {})
 
--- glepnir/lspsaga.nvim
-vim.diagnostic.config {
-	signs = {
-		priority = 8
+if not NVLOG then
+	-- glepnir/lspsaga.nvim
+	vim.diagnostic.config {
+		signs = {
+			priority = 8
+		}
 	}
-}
-require('lspsaga').init_lsp_saga({
-	code_action_keys = {
-		quit = '<Escape>',
-		exec = '<CR>',
-	},
-	code_action_lightbulb = {
-		sign_priority    = 10,
-		sign             = true,
-		virtual_text     = false,
-		enable_in_insert = false
-	},
-	rename_in_select = false,
-	symbol_in_winbar = {
-		enable = false
-	},
-	code_action_icon = ''
-})
+	require('lspsaga').init_lsp_saga({
+		code_action_keys = {
+			quit = '<Escape>',
+			exec = '<CR>',
+		},
+		code_action_lightbulb = {
+			sign_priority    = 10,
+			sign             = true,
+			virtual_text     = false,
+			enable_in_insert = false
+		},
+		rename_in_select = false,
+		symbol_in_winbar = {
+			enable = false
+		},
+		code_action_icon = ''
+	})
+end
 
 if not vim.g.started_by_firenvim then
 	y_section = {}
@@ -189,34 +199,36 @@ if not vim.g.started_by_firenvim then
 		highlights = require('ofirkai.tablines.bufferline').highlights
 	}
 
-	-- rcarriga/nvim-notify
-	require('notify').setup {
-		background_colour = scheme.ui_bg,
-		fps = 60,
-		stages = "slide",
-		timeout = 1000,
-		max_width = 50,
-		max_height = 20,
-	}
+	if not NVLOG then
+		-- rcarriga/nvim-notify
+		require('notify').setup {
+			background_colour = scheme.ui_bg,
+			fps = 60,
+			stages = "slide",
+			timeout = 1000,
+			max_width = 50,
+			max_height = 20,
+		}
 
-	-- folke/noice.nvim
-	require('noice').setup {
-		popupmenu = {
-			enabled = false,
-		},
-		lsp = {
-			signature = {
-				enabled = false -- I prefer to use cmp-nvim-lsp-signature-help with minimal design
+		-- folke/noice.nvim
+		require('noice').setup {
+			popupmenu = {
+				enabled = false,
 			},
-			override = {
-				-- Override `vim.lsp.buf.hover` and `nvim-cmp` doc formatter with `noice` doc formatter.
-				['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-				['vim.lsp.util.stylize_markdown'] = true,
-				['cmp.entry.get_documentation'] = true,
+			lsp = {
+				signature = {
+					enabled = false -- I prefer to use cmp-nvim-lsp-signature-help with minimal design
+				},
+				override = {
+					-- Override `vim.lsp.buf.hover` and `nvim-cmp` doc formatter with `noice` doc formatter.
+					['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+					['vim.lsp.util.stylize_markdown'] = true,
+					['cmp.entry.get_documentation'] = true,
+				},
 			},
-		},
-		routes = require('misc.noice_routes'),
-	}
+			routes = require('misc.noice_routes'),
+		}
+	end
 end
 
 -- andymass/vim-matchup

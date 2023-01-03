@@ -41,20 +41,6 @@ api.nvim_create_autocmd('BufEnter', {
 	end
 })
 
--- Simple color scheme for logs
--- Small quickfix
-api.nvim_create_autocmd('FileType', {
-	group = config_autocmds,
-	pattern = { 'log' },
-	once = true,
-	callback = function()
-		if #api.nvim_list_wins() == 1 then
-			vim.cmd('colorscheme pablo')
-			vim.opt.relativenumber = false
-		end
-	end
-})
-
 -- TODO: export to plugin
 -- Auto ticket number in git commit
 api.nvim_create_autocmd('BufWinEnter', {

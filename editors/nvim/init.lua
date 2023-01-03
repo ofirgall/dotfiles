@@ -1,3 +1,5 @@
+NVLOG = vim.env.NVLOG
+
 require('settings')
 require('before_packer')
 require('plugin_list')
