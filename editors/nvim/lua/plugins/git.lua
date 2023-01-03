@@ -161,7 +161,7 @@ local hint = [[
 ]]
 -- _<Enter>_: Fugitive  _<Esc>_: exit  _q_: exit  _<C-c>_: exit
 diffview_hydra = Hydra({
-	hint = false,
+	hint = hint,
 	config = {
 		color = 'pink',
 		invoke_on_body = true,
