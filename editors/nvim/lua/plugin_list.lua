@@ -60,6 +60,10 @@ return require('packer').startup(function()
 	use 'simrat39/rust-tools.nvim' -- Rust tools
 	use { 'ray-x/go.nvim', requires = 'ray-x/guihua.lua', run = ':GoUpdateBinaries' } -- Golang tools
 	use 'folke/neodev.nvim' -- Adding nvim api signatures and more
+	use {
+		'alopatindev/cargo-limit', -- Jump to rust errors (run `cargo lrun` in terminal)
+		run = 'cargo install cargo-limit nvim-send'
+	}
 
 	-------- END OF LSP --------
 
