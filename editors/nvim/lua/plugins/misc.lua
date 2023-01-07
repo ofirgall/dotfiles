@@ -407,7 +407,7 @@ require('treesj').setup {
 
 -- numToStr/Navigator.nvim
 require('Navigator').setup {
-	disable_on_zoom = true,
+	disable_on_zoom = false,
 }
 
 -- Wansmer/sibling-swap.nvim
