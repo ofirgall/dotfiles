@@ -16,6 +16,8 @@ require('telescope').setup {
 				['<C-k>'] = 'move_selection_previous',
 				['<C-n>'] = 'cycle_history_next',
 				['<C-p>'] = 'cycle_history_prev',
+				['<C-h>'] = require('telescope.actions.layout').cycle_layout_prev,
+				['<C-l>'] = require('telescope.actions.layout').cycle_layout_next,
 				['<CR>'] = require('telescope.actions').select_default + require('telescope.actions').center,
 				['<C-x>'] = require('telescope.actions').select_horizontal + require('telescope.actions').center,
 				['<C-v>'] = require('telescope.actions').select_vertical + require('telescope.actions').center,
@@ -24,6 +26,8 @@ require('telescope').setup {
 			n = {
 				['<C-j>'] = 'move_selection_next',
 				['<C-k>'] = 'move_selection_previous',
+				['<C-h>'] = require('telescope.actions.layout').cycle_layout_prev,
+				['<C-l>'] = require('telescope.actions.layout').cycle_layout_next,
 				['<C-o>'] = 'select_horizontal',
 				['<CR>'] = require('telescope.actions').select_default + require('telescope.actions').center,
 				['<C-x>'] = require('telescope.actions').select_horizontal + require('telescope.actions').center,
