@@ -40,6 +40,13 @@ function tmp() {
 function nvlog() {
 	NVLOG=1 nv $@
 }
+function logs() {
+	ticket=$(get_ticket)
+	if ! test -d ~/logs/$ticket; then
+		mkdir -p ~/logs/$ticket
+	fi
+	cd ~/logs/$ticket
+}
 
 # System settings
 alias wifi='nmtui'
