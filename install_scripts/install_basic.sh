@@ -47,6 +47,7 @@ rustup update
 cargo install difftastic
 cargo install du-dust
 cargo install git-delta
+cargo install jless
 if ! $IS_REMOTE; then
 	# Install latest alacritty
 	sudo apt install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
