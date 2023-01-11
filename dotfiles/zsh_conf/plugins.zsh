@@ -56,7 +56,7 @@ zinit light popstas/zsh-command-time
 zinit ice wait lucid
 zinit light hlissner/zsh-autopair
 
-# if ! $IS_REMOTE; then
-# 	zinit ice wait lucid
-# 	zinit light MichaelAquilina/zsh-auto-notify
-# fi
+if ! $IS_REMOTE; then
+	zinit ice wait lucid
+	zinit light MichaelAquilina/zsh-auto-notify
+fi
