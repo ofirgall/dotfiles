@@ -65,3 +65,15 @@ api.nvim_create_autocmd('BufWinEnter', {
 		end
 	end
 })
+
+-- Simple color scheme for `tmp log`
+api.nvim_create_autocmd('FileType', {
+	group = config_autocmds,
+	pattern = { 'log' },
+	once = true,
+	callback = function()
+		if #api.nvim_list_wins() == 1 then
+			vim.cmd('colorscheme pablo')
+		end
+	end
+})
