@@ -50,7 +50,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # Volumez
-export PATH=$PATH:$HOME/go/volumez/tools
+export PATH=$PATH:$HOME/go/volumez-tools/tools
 
 export MANPATH="$HOME/pkgs/usr/share/man:$HOME/.npm-packages/share/man:$MANPATH"
 
