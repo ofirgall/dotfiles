@@ -58,31 +58,22 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 * on top of each setup have the githublink
 * require standard
 * everything to "
-* change folder structure (make some thinking)
-	* packer.lua -> plugin_list.lua (in main)
 
 ---
 ## TODO
 ### Important
-* fonts - Figure out what is up with the new mono, CascadiaCode italic is ugly, need to figure out how to use the default italic conversion instead of this.
 * git - script for setting upstream remote in a fork
 * git - script for changing http to ssh + set git user
 * git - change the default git user to personal, and workspace to other
 ---
-* tmux - remove notifcation color in nova, to recreate attach to same session from two other windows (tmux link-window) and run stuff on the linked window
-* tmux - get all the command lines that ran in this window and let you choose from fzf pop up
-* tmux - plugin to add relative line numbers in copy mode
-* playgrounds - create them on first install, like `cg` choose a language and open nvim in left side of tmux and right side leave a pane for run/compile
 * tmux - control window size like nvim
 
 ## TODO Takes time
-* tmux - relative numbers in copy mode
 * tmux - Neo-Oli/tmux-text-macros integrate tmux fzf menu
 * tmux - Neo-Oli/tmux-text-macros better syntax for custom-macros
 * zellij
 * git squash - if master/base branch moved forward can't find the ref
 * tuis to try - slack, mail, calander, jira
-* tmux-go
 * when opening link ask to which session (can be in taskopen shortcut for now and later inside tmux-browser (maybe a webbrowser wrapper))
 * backup non-dotfiles - tmux sessions, tasks of taskwarrior, nvim sessions
 * backup firefox extnesions & settings
