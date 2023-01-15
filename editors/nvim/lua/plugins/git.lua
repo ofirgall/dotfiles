@@ -1,4 +1,6 @@
 local api = vim.api
+
+-- lewis6991/gitsigns.nvim
 local gs = require('gitsigns')
 gs.setup {
 	sign_priority = 9,
@@ -37,9 +39,10 @@ gs.setup {
 	end
 }
 
+-- sindrets/diffview.nvim
 local cb = require 'diffview.config'.diffview_callback
-local actions = require("diffview.actions")
-require 'diffview'.setup {
+local actions = require('diffview.actions')
+require('diffview').setup {
 	watch_index = false,
 	file_history_panel = {
 		log_options = {
@@ -52,50 +55,50 @@ require 'diffview'.setup {
 	},
 	key_bindings = {
 		view = {
-			["q"]          = '<cmd>:DiffviewClose<cr>',
-			["<M-n>"]      = actions.focus_files,
-			["<M-m>"]      = actions.toggle_files,
-			["<leader>ck"] = actions.conflict_choose("ours"),
-			["<leader>cj"] = actions.conflict_choose("theirs"),
-			["<tab>"]      = function()
+			['q']          = '<cmd>:DiffviewClose<cr>',
+			['<M-n>']      = actions.focus_files,
+			['<M-m>']      = actions.toggle_files,
+			['<leader>ck'] = actions.conflict_choose('ours'),
+			['<leader>cj'] = actions.conflict_choose('theirs'),
+			['<tab>']      = function()
 				actions.select_next_entry()
 				actions.refresh_files()
 			end,
-			["<s-tab>"]    = function()
+			['<s-tab>']    = function()
 				actions.select_prev_entry()
 				actions.refresh_files()
 			end,
 
 		},
 		file_panel = {
-			["s"] = cb("toggle_stage_entry"),
-			["q"] = cb('close'),
-			["gf"] = cb("goto_file_edit"),
-			["<M-n>"] = cb("focus_files"),
-			["<M-m>"] = actions.toggle_files,
+			['s'] = cb('toggle_stage_entry'),
+			['q'] = cb('close'),
+			['gf'] = cb('goto_file_edit'),
+			['<M-n>'] = cb('focus_files'),
+			['<M-m>'] = actions.toggle_files,
 		},
 		file_history_panel = {
-			["q"] = cb('close'),
-			["gf"] = cb("goto_file_edit"),
-			["<M-n>"] = cb("focus_files"),
-			["<M-m>"] = cb("toggle_files"),
+			['q'] = cb('close'),
+			['gf'] = cb('goto_file_edit'),
+			['<M-n>'] = cb('focus_files'),
+			['<M-m>'] = cb('toggle_files'),
 		},
 	},
 	view = {
 		default = {
-			layout = "diff2_horizontal",
+			layout = 'diff2_horizontal',
 		},
 		merge_tool = {
-			layout = "diff4_mixed",
+			layout = 'diff4_mixed',
 			disable_diagnostics = true,
 		},
 		file_history = {
-			layout = "diff2_horizontal",
+			layout = 'diff2_horizontal',
 		},
 	},
 }
 
--- git-messenger.vim
+-- rhysd/git-messenger.vim
 vim.g.git_messenger_floating_win_opts = { border = 'single' }
 vim.g.git_messenger_popup_content_margins = false
 vim.g.git_messenger_always_into_popup = true
@@ -147,6 +150,7 @@ git_history = function(mode)
 end
 
 -- Git submode
+-- rhysd/git-messenger.vim
 local Hydra = require('hydra')
 local gitsigns = gs
 local hint = [[
