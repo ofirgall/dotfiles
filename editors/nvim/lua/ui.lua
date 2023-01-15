@@ -92,22 +92,28 @@ if not NVLOG then
 			priority = 8
 		}
 	}
-	require('lspsaga').init_lsp_saga({
-		code_action_keys = {
-			quit = '<Escape>',
-			exec = '<CR>',
+	require('lspsaga').setup({
+		code_action = {
+			keys = {
+				quit = '<Escape>',
+				exec = '<CR>',
+			},
 		},
-		code_action_lightbulb = {
+		lightbulb = {
 			sign_priority    = 10,
 			sign             = true,
 			virtual_text     = false,
 			enable_in_insert = false
 		},
-		rename_in_select = false,
+		rename = {
+			in_select = false,
+		},
 		symbol_in_winbar = {
 			enable = false
 		},
-		code_action_icon = ''
+		ui = {
+			code_action = '',
+		}
 	})
 end
 
