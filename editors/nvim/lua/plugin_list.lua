@@ -51,7 +51,7 @@ return require('packer').startup(function()
 	use 'onsails/lspkind.nvim' -- Adding sweet ui for kind (function/var/method)
 	use 'SmiteshP/nvim-navic' -- Shows context in status line (with lsp)
 	use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' -- show diagnostics as virtual lines
-	use 'ofirgall/format-on-leave.nvim' -- Format the code when leaving the buffer.
+	use { 'ofirgall/format-on-leave.nvim', branch = 'exp' } -- Format the code when leaving the buffer.
 	use 'saecki/crates.nvim' -- "LSP" for `Cargo.toml`
 	use 'simrat39/symbols-outline.nvim' -- Tree view for symbols
 	use 'ofirgall/inlay-hints.nvim' -- Inlay hints
