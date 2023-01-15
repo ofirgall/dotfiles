@@ -63,7 +63,6 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ## TODO
 ### Important
 * git - script for setting upstream remote in a fork
-* git - script for changing http to ssh + set git user
 * git - change the default git user to personal, and workspace to other
 ---
 * tmux - control window size like nvim
