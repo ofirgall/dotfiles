@@ -107,6 +107,7 @@ if not NVLOG then
 		},
 		rename = {
 			in_select = false,
+			whole_project = false,
 		},
 		symbol_in_winbar = {
 			enable = false
