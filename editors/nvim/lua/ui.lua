@@ -309,3 +309,8 @@ require('incline').setup {
 		only_win = true,
 	},
 }
+
+-- luukvbaal/statuscol.nvim
+require('statuscol').setup {
+	setopt = true
+}
