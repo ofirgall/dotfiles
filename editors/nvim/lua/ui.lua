@@ -113,6 +113,10 @@ if not NVLOG then
 		},
 		ui = {
 			code_action = '',
+			colors = {
+				normal_bg = scheme.ui_bg,
+				title_bg = scheme.mid_orange,
+			}
 		}
 	})
 end
