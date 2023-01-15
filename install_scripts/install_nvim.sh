@@ -22,8 +22,3 @@ if -d ~/.local/share/nvim; then
 else
 	~/dotfiles_scripts/misc/upgrade_nvim.sh stable
 fi
-
-# nvim-telescope/telescope-frecency.nvim
-# sudo apt-get install luarocks
-sudo apt install -y sqlite3
-

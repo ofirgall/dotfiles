@@ -199,12 +199,8 @@ local function telescope_default_text(mode)
 end
 
 find_files = function(mode)
-	require("telescope").extensions.frecency.frecency({
-		hidden = true,
-		follow = true,
-		default_text = telescope_default_text(mode),
-		layout_strategy = 'horizontal',
-	})
+	require("telescope.builtin").find_files({ hidden = true, follow = true, default_text = telescope_default_text(mode),
+		layout_strategy = 'horizontal' })
 end
 
 live_grep = function(opts, mode)
