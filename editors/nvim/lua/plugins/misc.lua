@@ -426,3 +426,10 @@ require('sibling-swap').setup {
 require('based').setup {
 	highlight = 'Title'
 }
+
+-- cloudysake/swap-split.nvim
+require("swap-split").setup({
+	ignore_filetypes = {
+		'NvimTree'
+	}
+})

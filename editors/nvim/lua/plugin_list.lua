@@ -163,6 +163,10 @@ return require('packer').startup(function()
 	use 'ofirgall/open.nvim'
 	use 'ofirgall/open-jira.nvim'
 
+	-- Splits manipulation --
+	use 'szw/vim-maximizer' -- Maximize windows (splits) in vim
+	use 'cloudysake/swap-split.nvim' -- Swap splits
+
 	-- Misc --
 	use 'trmckay/based.nvim' -- Convert & preview, hex <=> dec
 	use { 'nagy135/typebreak.nvim', requires = 'nvim-lua/plenary.nvim' } -- Type practice from nvim
@@ -190,7 +194,6 @@ return require('packer').startup(function()
 	use 'akinsho/toggleterm.nvim' -- Terminal toggle for nvim <C-t>
 	use 'NMAC427/guess-indent.nvim' -- Adjust tabs/spaces settings
 	use 'shivamashtikar/tmuxjump.vim' -- jump to files that printed in another tmux panes
-	use 'szw/vim-maximizer' -- Maximize windows (splits) in vim
 	use { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' } -- review todo in the quickfix list with :Todo..
 	use 'hkupty/iron.nvim' -- lua/python interactive shell (repl) inside nvim
 	use 'norcalli/nvim-colorizer.lua' -- colorize hexcolor values in buffer
