@@ -77,3 +77,12 @@ api.nvim_create_autocmd('FileType', {
 		end
 	end
 })
+
+-- Vertical help/man
+api.nvim_create_autocmd('FileType', {
+	group = config_autocmds,
+	pattern = { 'help', 'man' },
+	callback = function()
+		vim.cmd('wincmd L')
+	end
+})
