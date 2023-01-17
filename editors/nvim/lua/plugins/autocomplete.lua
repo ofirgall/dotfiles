@@ -142,8 +142,10 @@ cmp_setup_dict = {
 		{ name = 'nvim_lsp', priority = 1000 },
 		{ name = 'path', option = { trailing_slash = true }, priority = 500 },
 		{ name = 'snippy', priority = 200 },
-		all_visible_buffers_source(150),
 		{ name = 'spell', priority = 50 }, -- Spell here because we can toggle it easily
+	}, {
+		all_visible_buffers_source(150),
+		{ name = 'spell', priority = 50 },
 	}),
 	performance = {
 		debounce = 30, -- default: 60
