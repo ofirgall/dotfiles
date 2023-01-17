@@ -221,7 +221,7 @@ return require('packer').startup(function()
 			'nvim-lua/plenary.nvim',
 			'nvim-telescope/telescope.nvim'
 		},
-		cmd = 'ChatGPT',
+		cmd = { 'ChatGPT', 'ChatGPTActAs', 'ChatGPTRunCustomCodeAction', 'ChatGPTEditWithInstructions' },
 		config = function()
 			require('chatgpt').setup {
 			}
