@@ -3,8 +3,10 @@ if vim.g.started_by_firenvim then
 end
 
 local layout = 'horizontal'
+local cycle_layout_list = { 'vertical', 'horizontal' }
 if NVLOG then
 	layout = 'vertical'
+	cycle_layout_list = { 'horizontal', 'vertical' }
 end
 
 require('telescope').setup {
@@ -49,6 +51,7 @@ require('telescope').setup {
 		},
 		prompt_prefix = ' ',
 		layout_strategy = layout,
+		cycle_layout_list = cycle_layout_list,
 	},
 	pickers = {
 	},
