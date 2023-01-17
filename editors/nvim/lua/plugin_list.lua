@@ -227,6 +227,7 @@ return require('packer').startup(function()
 			}
 		end
 	}
+	use 'aduros/ai.vim' -- Quick ChatGPT from nvim, <C-a> in insert mode or :AI in selection
 
 	-- Improvement Games
 	use 'ThePrimeagen/vim-be-good'
