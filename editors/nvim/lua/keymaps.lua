@@ -158,7 +158,6 @@ map('i', '<M-[>', '<C-O>[a', 'Jump to prev argument in insert mode', { silent = 
 --          MISC PLUGINS         --
 -----------------------------------
 map('n', '<F8>', '<cmd>UndotreeToggle<CR>', 'Toggle undotree')
-map('n', '<C-b>', '<cmd>Telescope buffers<CR>', 'Browse open buffers')
 map('n', '<leader>gx', require('open').open_cword, 'Open current word')
 map('n', '<leader>rgb', '<cmd>PickColor<CR>', 'Pick color')
 map({ 'n', 't', 'v' }, '<C-t>', function() toggle_or_open_terminal() end, 'toggle all terminals')
@@ -236,6 +235,9 @@ map('n', '<leader>fr', function() require('telescope.builtin').resume({ initial_
 map('n', '<leader>ff', find_files, 'Find file')
 map('x', '<leader>ff', '<Esc><cmd>lua find_files("v")<cr>', 'find file, text from visual')
 map('n', '<leader>fcf', function() find_files('cword') end, 'Find files with current word')
+
+-- Find buffer
+map('n', '<leader>fb', '<cmd>Telescope buffers<CR>', 'Browse open buffers')
 
 -- Find word
 map('n', '<leader>fw', live_grep, 'search in all files (fuzzy finder)')
