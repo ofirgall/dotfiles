@@ -302,7 +302,11 @@ map('n', 'got', function() split_if_not_exist(false) require 'telescope.builtin'
 local lsp_references = function()
 	require 'telescope.builtin'.lsp_references({
 		include_declaration = false,
-		show_line = false
+		show_line = false,
+		layout_config = {
+			width = 0.75,
+			preview_width = 0.6
+		},
 	})
 end
 map('n', 'gs', function()
