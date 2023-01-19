@@ -30,7 +30,7 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
-local function all_visible_buffers_source(priority)
+local function all_visible_buffers_source(priority, max_item_count)
 	return {
 		name = 'buffer',
 		priority = priority,
@@ -42,7 +42,8 @@ local function all_visible_buffers_source(priority)
 				end
 				return vim.tbl_keys(bufs)
 			end
-		}
+		},
+		max_item_count = max_item_count
 	}
 end
 
@@ -138,14 +139,15 @@ cmp_setup_dict = {
 	},
 	window = require('ofirkai.plugins.nvim-cmp').window,
 	sources = cmp.config.sources({
-		{ name = 'nvim_lsp_signature_help' },
+		{ name = 'nvim_lsp_signature_help', priority = 1500 },
 		{ name = 'nvim_lsp', priority = 1000 },
 		{ name = 'path', option = { trailing_slash = true }, priority = 500 },
 		{ name = 'snippy', priority = 200 },
-		{ name = 'spell', priority = 50 }, -- Spell here because we can toggle it easily
+		{ name = 'buffer', priority = 100, max_item_count = 5 }, -- local buffer if lsp is valid
+		{ name = 'spell', priority = 50, max_item_count = 5 }, -- Spell here because we can toggle it easily
 	}, {
-		all_visible_buffers_source(150),
-		{ name = 'spell', priority = 50 },
+		all_visible_buffers_source(150, 15),
+		{ name = 'spell', priority = 50, max_item_count = 10 },
 	}),
 	performance = {
 		debounce = 30, -- default: 60
@@ -177,7 +179,7 @@ cmp.setup(cmp_setup_dict)
 
 cmp.setup.cmdline('/', {
 	sources = {
-		all_visible_buffers_source(nil),
+		all_visible_buffers_source(nil, 15),
 	}
 })
 
@@ -198,7 +200,8 @@ cmp.setup.filetype({ 'dap-repl', 'dapui_watches' }, {
 cmp.setup.filetype('gitcommit', {
 	sources = {
 		{ name = 'git' },
-		all_visible_buffers_source(nil),
+		all_visible_buffers_source(nil, 15),
+		{ name = 'spell', max_item_count = 5 }
 		-- { name = 'dictionary' }, -- TODO: get a faster dictionary + better
 	}
 })
@@ -206,7 +209,7 @@ cmp.setup.filetype('gitcommit', {
 cmp.setup.filetype('toml', {
 	sources = {
 		{ name = 'crates', priority = 500 },
-		all_visible_buffers_source(nil),
+		all_visible_buffers_source(nil, 15),
 	}
 })
 
