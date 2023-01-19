@@ -166,9 +166,9 @@ lspconfig.sumneko_lua.setup {
 }
 
 -- ofirgall/format-on-leave.nvim
-require('format-on-leave').setup {
-	pattern = { '*.go', '*.rs', '*.lua' }
-}
+-- require('format-on-leave').setup {
+-- 	pattern = { '*.go', '*.rs', '*.lua' }
+-- }
 
 local path = vim.fn.stdpath('config') .. '/spell/en.utf-8.add'
 local words = {}
@@ -279,5 +279,13 @@ require('symbols-outline').setup {
 		Event = { hl = '@type' },
 		Operator = { hl = '@operator' },
 		TypeParameter = { hl = '@parameter' },
+	},
+}
+
+
+require('copilot').setup {
+	suggestion = {
+		enabled = true,
+		auto_trigger = true,
 	},
 }
