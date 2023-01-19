@@ -189,6 +189,7 @@ map('n', 'ss', function()
 			width = 0.25
 		},
 		layout_strategy = 'cursor',
+		sorting_strategy = 'ascending', -- From top
 	})
 end, 'Spell suggest')
 
@@ -200,6 +201,7 @@ map('n', 'sy', function()
 			width = 0.60,
 		},
 		layout_strategy = 'cursor',
+		sorting_strategy = 'ascending', -- From top
 	})
 end, 'Synonyms')
 
@@ -311,14 +313,15 @@ local lsp_references = function()
 end
 map('n', 'gs', function()
 	require 'telescope.builtin'.lsp_document_symbols({
-		symbol_width = 40,
+		symbol_width = 65,
 		symbol_type_width = 8,
 		fname_width = 0,
 		layout_config = {
 			height = 15,
-			width = 40 + 8 + 8,
+			width = 65 + 8 + 8,
 		},
 		layout_strategy = 'cursor',
+		sorting_strategy = 'ascending', -- From top
 		preview = { hide_on_startup = true },
 	})
 end, 'Go Symbols')
