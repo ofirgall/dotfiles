@@ -187,7 +187,7 @@ return require('packer').startup(function()
 	use 'nacro90/numb.nvim' -- Peek at line number before jump
 	use { 'danymat/neogen', requires = 'nvim-treesitter/nvim-treesitter' } -- Doc generator
 	use 'jbyuki/venn.nvim' -- Draw ascii boxes and arrows, start the mode with :Draw, exit with escape, HJKL for arrows, f for box (inside <C-v>)
-	use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end } -- NVIM in firefox
+	use { 'glacambre/firenvim', run = function() vim.fn 'firenvim#install' (0) end } -- NVIM in firefox
 	use 'ojroques/vim-oscyank' -- Yank from remote
 	use 'mbbill/undotree' -- visualize undo/redo tree (F5)
 	use 'gennaro-tedesco/nvim-peekup' -- visualize copy registers
@@ -214,6 +214,7 @@ return require('packer').startup(function()
 	use 'mtdl9/vim-log-highlighting' -- Highlight .log files
 	use 'chrisgrieser/nvim-genghis'
 
+	-- AI --
 	use {
 		'jackMort/ChatGPT.nvim', -- ChatGPT from nvim
 		requires = {
@@ -228,6 +229,30 @@ return require('packer').startup(function()
 		end
 	}
 	use 'aduros/ai.vim' -- Quick ChatGPT from nvim, <C-a> in insert mode or :AI in selection
+	use {
+		'zbirenbaum/copilot.lua', -- Github copilot
+		cmd = 'Copilot',
+		event = 'VimEnter',
+		config = function()
+			vim.schedule(function()
+				require('copilot').setup {
+					suggestion = { enabled = false },
+					panel = { enabled = false },
+				}
+			end)
+		end,
+	}
+	use {
+		'zbirenbaum/copilot-cmp', -- Github copilot cmp source
+		after = { 'copilot.lua' },
+		config = function()
+			require('copilot_cmp').setup {
+				-- formatters = {
+				-- 	insert_text = require("copilot_cmp.format").remove_existing
+				-- },
+			}
+		end
+	}
 
 	-- Improvement Games
 	use 'ThePrimeagen/vim-be-good'

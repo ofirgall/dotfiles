@@ -24,6 +24,12 @@ neogen.setup {
 local cmp = require('cmp')
 -- onsails/lspkind-nvim
 local lspkind = require('lspkind')
+lspkind.init {
+	symbol_map = {
+		Copilot = "",
+	},
+}
+vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { fg = '#6CC644' })
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -140,6 +146,7 @@ cmp_setup_dict = {
 	window = require('ofirkai.plugins.nvim-cmp').window,
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp_signature_help', priority = 1500 },
+		{ name = 'copilit', priority = 1100 },
 		{ name = 'nvim_lsp', priority = 1000 },
 		{ name = 'path', option = { trailing_slash = true }, priority = 500 },
 		{ name = 'snippy', priority = 200 },
@@ -155,6 +162,9 @@ cmp_setup_dict = {
 	},
 	sorting = {
 		comparators = {
+			-- require('copilot_cmp.comparators').prioritize,
+			-- require('copilot_cmp.comparators').score,
+
 			lspkind_priority.compare, -- compare.kind,
 			compare.offset,
 			compare.exact,
