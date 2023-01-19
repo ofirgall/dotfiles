@@ -187,7 +187,8 @@ map('n', 'ss', function()
 		layout_config = {
 			height = 0.25,
 			width = 0.25
-		}
+		},
+		layout_strategy = 'cursor',
 	})
 end, 'Spell suggest')
 
@@ -197,7 +198,8 @@ map('n', 'sy', function()
 		layout_config = {
 			height = 0.4,
 			width = 0.60,
-		}
+		},
+		layout_strategy = 'cursor',
 	})
 end, 'Synonyms')
 
@@ -303,7 +305,19 @@ local lsp_references = function()
 		show_line = false
 	})
 end
-map('n', 'gs', function() require 'telescope.builtin'.lsp_document_symbols({ fname_width = 100 }) end, 'Go Symbols')
+map('n', 'gs', function()
+	require 'telescope.builtin'.lsp_document_symbols({
+		symbol_width = 40,
+		symbol_type_width = 8,
+		fname_width = 0,
+		layout_config = {
+			height = 15,
+			width = 40 + 8 + 8,
+		},
+		layout_strategy = 'cursor',
+		preview = { hide_on_startup = true },
+	})
+end, 'Go Symbols')
 map('n', 'gS', require 'telescope.builtin'.lsp_dynamic_workspace_symbols, 'Go workspace Symbols')
 map('n', 'gr', lsp_references, 'Go to References')
 map('n', 'gvr', function() split_if_not_exist(true) lsp_references() end, 'Go to References in Vsplit')

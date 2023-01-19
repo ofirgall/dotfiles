@@ -24,6 +24,7 @@ require('telescope').setup {
 				['<C-x>'] = require('telescope.actions').select_horizontal + require('telescope.actions').center,
 				['<C-v>'] = require('telescope.actions').select_vertical + require('telescope.actions').center,
 				['<C-t>'] = require('telescope.actions').select_tab + require('telescope.actions').center,
+				['<C-s>'] = require('telescope.actions.layout').toggle_preview,
 			},
 			n = {
 				['<C-j>'] = 'move_selection_next',
@@ -35,6 +36,7 @@ require('telescope').setup {
 				['<C-x>'] = require('telescope.actions').select_horizontal + require('telescope.actions').center,
 				['<C-v>'] = require('telescope.actions').select_vertical + require('telescope.actions').center,
 				['<C-t>'] = require('telescope.actions').select_tab + require('telescope.actions').center,
+				['<C-s>'] = require('telescope.actions.layout').toggle_preview,
 			}
 		},
 		layout_config = {
