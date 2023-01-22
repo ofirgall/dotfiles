@@ -124,6 +124,11 @@ open_new_terminal = function(direction)
 	term:open(nil, direction, true)
 end
 
+-- chomosuke/term-edit.nvim
+require('term-edit').setup {
+	prompt_end = '%$ ',
+}
+
 -- NMAC427/guess-indent.nvim
 require('guess-indent').setup {}
 

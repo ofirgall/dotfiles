@@ -192,6 +192,7 @@ return require('packer').startup(function()
 	use 'mbbill/undotree' -- visualize undo/redo tree (F5)
 	use 'gennaro-tedesco/nvim-peekup' -- visualize copy registers
 	use 'akinsho/toggleterm.nvim' -- Terminal toggle for nvim <C-t>
+	use { 'chomosuke/term-edit.nvim', tag = 'v1.*' } -- vim mode in terminal
 	use 'NMAC427/guess-indent.nvim' -- Adjust tabs/spaces settings
 	use 'shivamashtikar/tmuxjump.vim' -- jump to files that printed in another tmux panes
 	use { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' } -- review todo in the quickfix list with :Todo..
