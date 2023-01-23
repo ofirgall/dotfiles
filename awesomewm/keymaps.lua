@@ -254,6 +254,31 @@ function M.setup(kbdcfg, volume_widget, retain)
         end,
             { description = "go back", group = "tag" }),
 
+        -- Go to next prev tags with </>
+        awful.key({ modkey, }, ".", function()
+            local focused_screen = awful.screen.focused()
+            local current_tag = focused_screen.selected_tag.index
+            local next_tag = current_tag + 1
+            if next_tag == 10 then
+                next_tag = 1
+            end
+
+            switch_tag_all_screens(next_tag)
+        end,
+            { description = "go to next tag", group = "tag" }),
+
+        awful.key({ modkey, }, ",", function()
+            local focused_screen = awful.screen.focused()
+            local current_tag = focused_screen.selected_tag.index
+            local next_tag = (current_tag - 1)
+            if next_tag == 0 then
+                next_tag = 9
+            end
+
+            switch_tag_all_screens(next_tag)
+        end,
+            { description = "go to prev tag", group = "tag" }),
+
         -- Change Language
         awful.key({ modkey, }, "space", kbdcfg.switch_next,
             { description = "Change Language", group = "awesome" }),
