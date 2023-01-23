@@ -1,6 +1,7 @@
 # TODO Important
 - Modkey+shift+m to spotify on current screen and hide it back
 - Notifications
+- Spotify Like ICON + keymap/button
 
 # TODO Hard
 - Create terminal for tmux session + browser if going to tag `t: ` after startup.
