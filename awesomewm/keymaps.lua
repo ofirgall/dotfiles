@@ -140,25 +140,25 @@ function M.setup(kbdcfg, volume_widget, retain)
         -- Change focus with modkey+hjkl
         awful.key({ modkey, }, "j",
             function()
-                awful.client.focus.global_bydirection('down')
+                awful.client.focus.global_bydirection('down', nil, true)
             end,
             { description = "focus down", group = "client" }
         ),
         awful.key({ modkey, }, "k",
             function()
-                awful.client.focus.global_bydirection('up')
+                awful.client.focus.global_bydirection('up', nil, true)
             end,
             { description = "focus up", group = "client" }
         ),
         awful.key({ modkey, }, "l",
             function()
-                awful.client.focus.global_bydirection('right')
+                awful.client.focus.global_bydirection('right', nil, true)
             end,
             { description = "focus right", group = "client" }
         ),
         awful.key({ modkey, }, "h",
             function()
-                awful.client.focus.global_bydirection('left')
+                awful.client.focus.global_bydirection('left', nil, true)
             end,
             { description = "focus left", group = "client" }
         ),
