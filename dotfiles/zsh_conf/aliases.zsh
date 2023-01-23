@@ -13,8 +13,8 @@ alias notify='notify-send -u critical done'
 function get_ticket() {
 	local branch=$(git rev-parse --abbrev-ref HEAD 2>&1 | tr -d "\n")
 	if echo $branch | grep -q "fatal"; then
-		# non git folder, try to get from folder name
-		echo $(basename "$PWD") | grep -oP "([A-Z]+-[0-9]+)"
+		# non git folder, try to from pwd
+		echo "$PWD" | grep -oP "([A-Z]+-[0-9]+)"
 	else
 		echo $branch | grep -oP ".+/\K([A-Z]+-[0-9]+)"
 	fi
