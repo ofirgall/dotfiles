@@ -67,7 +67,7 @@ dapui.setup {
 	expand_lines = false,
 	layouts = {
 		{
-			size = 0.25,
+			size = 0.1,
 			position = 'bottom',
 			elements = {
 				'scopes' -- local vars
@@ -75,7 +75,7 @@ dapui.setup {
 		},
 		{
 			size = 0.20,
-			position = 'left',
+			position = 'right',
 			elements = {
 				'breakpoints',
 				'watches',
