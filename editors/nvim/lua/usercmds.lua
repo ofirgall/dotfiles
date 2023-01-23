@@ -82,3 +82,7 @@ api.nvim_create_user_command('ConvertToTabs', function ()
 	vim.bo.expandtab = false
 	vim.cmd('retab')
 end, {})
+
+api.nvim_create_user_command('BreakLines', function()
+	vim.cmd('%!fmt -s -w 300')
+end, {})
