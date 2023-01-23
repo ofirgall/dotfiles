@@ -73,12 +73,12 @@ api.nvim_create_user_command('DuplicateFile', genghis.duplicateFile, {})
 api.nvim_create_user_command('ChmodX', genghis.chmodx, {})
 
 
-api.nvim_create_user_command('ConvertToSpaces', function ()
+api.nvim_create_user_command('ConvertToSpaces', function()
 	vim.bo.expandtab = true
 	vim.cmd('retab')
 end, {})
 
-api.nvim_create_user_command('ConvertToTabs', function ()
+api.nvim_create_user_command('ConvertToTabs', function()
 	vim.bo.expandtab = false
 	vim.cmd('retab')
 end, {})
