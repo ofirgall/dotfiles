@@ -267,19 +267,24 @@ vim.g.flog_default_opts = {
 	date = 'short',
 }
 
+local function get_flog_commit(line)
+	return vim.call('flog#floggraph#commit#GetAtLine', line)['hash']
+end
+
 local function flog_current_commit()
-	return vim.call('flog#get_commit_at_line')['short_commit_hash']
+	return get_flog_commit('.')
 end
 
 local function flog_commit_range_visual()
-	start_pos = api.nvim_buf_get_mark(0, "<")
-	end_pos = api.nvim_buf_get_mark(0, ">")
+	local start_pos = api.nvim_buf_get_mark(0, "<")
+	local end_pos = api.nvim_buf_get_mark(0, ">")
 
-	local res = vim.call('flog#get_commit_selection', start_pos[1], end_pos[1])
+	local start_commit = get_flog_commit(start_pos[1])
+	local end_commit = get_flog_commit(end_pos[1])
 
 	return {
-		res[1].short_commit_hash,
-		res[2].short_commit_hash,
+		start_commit,
+		end_commit
 	}
 end
 
