@@ -301,7 +301,10 @@ map('n', 'gxt', function() split_if_not_exist(false) require 'telescope.builtin'
 map('n', 'got', function() split_if_not_exist(false) require 'telescope.builtin'.lsp_type_definitions {} end,
 	'Go to Type in Xsplit')
 
+local trailblazer = require('trailblazer')
 local lsp_references = function()
+	trailblazer.new_trail_mark()
+
 	require 'telescope.builtin'.lsp_references({
 		include_declaration = false,
 		show_line = false,

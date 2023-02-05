@@ -152,13 +152,8 @@ bind -n M-( swap-window -d -t :=9
 bind -n M-PPage select-window -p
 bind -n M-NPage select-window -n
 
-# Alt+h/l - move tabs in vim (inner binds)
-# Alt+j/k - move tabs in tmux (outer bind)
+# Alt+</> - move tabs in tmux
 # Add +Shift to "Drag"
-bind -n M-j select-window -p
-bind -n M-k select-window -n
-bind -n M-J swap-window -d -t -1
-bind -n M-K swap-window -d -t +1
 bind -n M-, select-window -p
 bind -n M-. select-window -n
 bind -n M-< swap-window -d -t -1

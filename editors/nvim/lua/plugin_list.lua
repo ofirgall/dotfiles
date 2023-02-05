@@ -138,6 +138,7 @@ return require('packer').startup(function()
 	use 'monaqa/dial.nvim' -- Enhance C-X/A
 
 	-- Navigation --
+	use { 'LeonHeidelbach/trailblazer.nvim' } -- Global marking (used automatically in goto definition)
 	use { 'ThePrimeagen/harpoon', requires = 'nvim-lua/plenary.nvim' } -- Mark frequent files and get to there quickly
 
 	-- Design & UI --

@@ -442,3 +442,27 @@ require("swap-split").setup({
 -- RaafatTurki/hex.nvim
 require('hex').setup {
 }
+
+-- LeonHeidelbach/trailblazer.nvim
+require('trailblazer').setup {
+	mappings = {
+		nv = {
+			motions = {
+				new_trail_mark = '<M-l>',
+				track_back = '<M-b>',
+				peek_move_next_down = '<M-j>',
+				peek_move_previous_up = '<M-k>',
+				toggle_trail_mark_list = '<M-M>',
+			},
+			actions = {
+				delete_all_trail_marks = '<M-L>',
+				paste_at_last_trail_mark = '',
+				paste_at_all_trail_marks = '',
+				set_trail_mark_select_mode = '',
+				switch_to_next_trail_mark_stack = '<M-Left>',
+				switch_to_previous_trail_mark_stack = '<M-Right>',
+				set_trail_mark_stack_sort_mode = '<M-s>',
+			},
+		},
+	}
+}
