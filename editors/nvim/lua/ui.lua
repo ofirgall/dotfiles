@@ -6,7 +6,8 @@ if not NVLOG then
 	-- ofirgall/ofirkai.nvim
 	require('ofirkai').setup {
 		scheme = {
-			background = '#232323', -- Gray -5
+			-- background = '#232323', -- Gray -5
+			background = '#1e1e1e', -- Gray -10
 			-- background = '#282923', -- Original
 			-- background = '#252520', -- Original -5
 			-- background = '#262620', -- Original -5, +1 for RG
