@@ -262,7 +262,7 @@ api.nvim_create_autocmd('BufEnter', {
 })
 
 -- Flog
-vim.g.flog_default_arguments = {
+vim.g.flog_default_opts = {
 	max_count = 512,
 	date = 'short',
 }
