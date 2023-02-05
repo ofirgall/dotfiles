@@ -97,5 +97,24 @@ require('nvim-treesitter.configs').setup {
 	-- andymass/vim-matchup
 	matchup = {
 		enable = true
+	},
+	-- mrjones2014/nvim-ts-rainbow
+	rainbow = {
+		enable = true,
+		-- disable = { "jsx", "cpp" },
+		extended_mode = true,
+		max_file_lines = nil,
+		colors = {
+			-- '#ff3429',
+			'#ff647e',
+			'#ff57d5',
+			'#ffd121',
+			'#68dd6a',
+			'#ff880e',
+			'#45c8c1',
+			'#41c3ac',
+		},
+		-- colors = {}, -- table of hex strings
+		-- termcolors = {} -- table of colour name strings
 	}
 }
