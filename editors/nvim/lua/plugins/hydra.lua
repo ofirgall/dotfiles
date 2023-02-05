@@ -46,7 +46,7 @@ Box (select box with visual block first): _<C-f>_
 ^ ^				_<Esc>_: exit
 ]]
 
-Hydra({
+local draw_hydra = Hydra({
 	name = 'Draw',
 	hint = hint,
 	config = {
@@ -70,7 +70,9 @@ Hydra({
 		{ '<Esc>', nil, { exit = true, nowait = true } },
 	}
 })
--- TOOD: usercommand for that hydra
+vim.api.nvim_create_user_command('Draw', function()
+	draw_hydra:activate()
+end, {})
 
 
 local ts_move = require 'nvim-treesitter.textobjects.move'
