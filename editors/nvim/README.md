@@ -11,6 +11,7 @@ nvim is my main editor and [much more](https://github.com/ofirgall/learn-nvim/bl
 ## TODO
 * nvim - repeat pair movement
 * flit - force case sensitivity
+* nvim-hex - dont auto save those files
 ### Takes time
 * nvim[rust] - require'rust-tools'.move_item.move_item(up) with ctrl+shift+j/k (requires alacritty setup)
 * nvim - custom textobjects, function name

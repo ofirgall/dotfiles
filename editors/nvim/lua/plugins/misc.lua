@@ -438,3 +438,7 @@ require("swap-split").setup({
 		'NvimTree'
 	}
 })
+
+-- RaafatTurki/hex.nvim
+require('hex').setup {
+}
