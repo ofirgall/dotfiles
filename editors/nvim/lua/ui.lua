@@ -5,6 +5,13 @@ local scheme = require('ofirkai.design').scheme
 if not NVLOG then
 	-- ofirgall/ofirkai.nvim
 	require('ofirkai').setup {
+		scheme = {
+			background = '#232323', -- Gray -5
+			-- background = '#282923', -- Original
+			-- background = '#252520', -- Original -5
+			-- background = '#262620', -- Original -5, +1 for RG
+			-- background = '#25251f', -- Original -6, +1 for RG
+		}
 	}
 else
 	vim.o.termguicolors = true
