@@ -452,7 +452,7 @@ require('trailblazer').setup {
 				track_back = '<M-b>',
 				peek_move_next_down = '<M-j>',
 				peek_move_previous_up = '<M-k>',
-				toggle_trail_mark_list = '<M-M>',
+				toggle_trail_mark_list = '<M-B>',
 			},
 			actions = {
 				delete_all_trail_marks = '<M-L>',
