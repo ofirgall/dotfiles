@@ -16,6 +16,18 @@ require('auto-session').setup {
 	log_level = 'error',
 	auto_session_suppress_dirs = { '~/', '~/workspace', '~/Downloads', '/', '~/logs' },
 	auto_session_use_git_branch = true,
+
+	-- trailblazer
+	post_save_cmds = {
+		function()
+			require('trailblazer').save_trailblazer_state_to_file()
+		end
+	},
+	post_restore_cmds = {
+		function()
+			require('trailblazer').load_trailblazer_state_from_file()
+		end
+	},
 }
 
 -- Pocco81/auto-save.nvim
