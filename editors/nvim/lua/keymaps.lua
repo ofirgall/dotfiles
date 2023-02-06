@@ -265,16 +265,16 @@ map('n', 'gD', vim.lsp.buf.declaration, 'Go to Declaration')
 map('n', '<leader>F', function() vim.lsp.buf.format({ async = true }) end, 'Format')
 
 -- Telescope LSP Binds
-map('n', 'gd', goto_def, 'Go to Definition')
+map('n', 'gd', function() goto_def(true) end, 'Go to Definition')
 map('n', '<C-LeftMouse>', function()
 	vim.api.nvim_input('<LeftMouse>')
 	vim.api.nvim_input('<cmd>vsplit<cr>')
-	goto_def()
+	goto_def(false)
 end, 'Go to Definition in split')
 
 map('n', '<MiddleMouse>', function()
 	vim.api.nvim_input('<LeftMouse>')
-	goto_def()
+	goto_def(true)
 end, 'Go to Definition')
 
 local lsp_implementations = function()
@@ -283,9 +283,9 @@ local lsp_implementations = function()
 	}
 end
 
-map('n', 'gvd', function() split_if_not_exist(true) goto_def() end, 'Go to Definition in Vsplit')
-map('n', 'gxd', function() split_if_not_exist(false) goto_def() end, 'Go to Definition in Xsplit')
-map('n', 'god', function() split_if_not_exist(false) goto_def() end, 'Go to Definition in Xsplit')
+map('n', 'gvd', function() split_if_not_exist(true) goto_def(false) end, 'Go to Definition in Vsplit')
+map('n', 'gxd', function() split_if_not_exist(false) goto_def(false) end, 'Go to Definition in Xsplit')
+map('n', 'god', function() split_if_not_exist(false) goto_def(false) end, 'Go to Definition in Xsplit')
 map('n', 'gKD',
 	function() require("telescope.builtin").lsp_dynamic_workspace_symbols({ default_text = vim.fn.expand("<cword>") }) end,
 	'Go to definition under current word')
@@ -302,8 +302,10 @@ map('n', 'got', function() split_if_not_exist(false) require 'telescope.builtin'
 	'Go to Type in Xsplit')
 
 local trailblazer = require('trailblazer')
-local lsp_references = function()
-	trailblazer.new_trail_mark()
+local lsp_references = function(trail)
+	if trail then
+		trailblazer.new_trail_mark()
+	end
 
 	require 'telescope.builtin'.lsp_references({
 		include_declaration = false,
@@ -329,10 +331,10 @@ map('n', 'gs', function()
 	})
 end, 'Go Symbols')
 map('n', 'gS', require 'telescope.builtin'.lsp_dynamic_workspace_symbols, 'Go workspace Symbols')
-map('n', 'gr', lsp_references, 'Go to References')
-map('n', 'gvr', function() split_if_not_exist(true) lsp_references() end, 'Go to References in Vsplit')
-map('n', 'gxr', function() split_if_not_exist(false) lsp_references() end, 'Go to References in Xsplit')
-map('n', 'gor', function() split_if_not_exist(false) lsp_references() end, 'Go to References xsplit')
+map('n', 'gr', function() lsp_references(true) end, 'Go to References')
+map('n', 'gvr', function() split_if_not_exist(true) lsp_references(false) end, 'Go to References in Vsplit')
+map('n', 'gxr', function() split_if_not_exist(false) lsp_references(false) end, 'Go to References in Xsplit')
+map('n', 'gor', function() split_if_not_exist(false) lsp_references(false) end, 'Go to References xsplit')
 map('n', 'gp', function() require 'telescope.builtin'.diagnostics { bufnr = 0 } end, 'Go to Problems')
 map('n', 'gP', require 'telescope.builtin'.diagnostics, 'Go to workspace Problems')
 

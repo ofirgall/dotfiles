@@ -105,8 +105,10 @@ end
 
 local trailblazer = require('trailblazer')
 
-goto_def = function()
-	trailblazer.new_trail_mark()
+goto_def = function(trail)
+	if trail then
+		trailblazer.new_trail_mark()
+	end
 
 	local ft = api.nvim_buf_get_option(0, 'filetype')
 	if ft == 'man' then
