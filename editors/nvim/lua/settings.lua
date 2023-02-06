@@ -27,6 +27,8 @@ opt.cmdheight = 0
 opt.report = 2147483647 -- Don't report yanked/deleted lines
 opt.diffopt:append('linematch:60')
 
+vim.g.c_syntax_for_h = 1 -- `.h` files are `c` instead of `cpp`
+
 if vim.fn.has('wsl') == 1 then
 	vim.g.clipboard = {
 		name = "win32yank-wsl",
