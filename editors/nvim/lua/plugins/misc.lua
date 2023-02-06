@@ -457,6 +457,11 @@ require('hex').setup {
 
 -- LeonHeidelbach/trailblazer.nvim
 require('trailblazer').setup {
+	trail_options = {
+		trail_mark_in_text_highlights_enabled = false,
+		trail_mark_symbol_line_indicators_enabled = false,
+		symbol_line_enabled = false,
+	},
 	mappings = {
 		nv = {
 			motions = {
