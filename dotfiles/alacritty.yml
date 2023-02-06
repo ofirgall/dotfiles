@@ -680,6 +680,8 @@ key_bindings:
   - {key: Tab, mods: Control|Shift, chars: "\x1b[27;6;9~"}
   - {key: Comma, mods: Control, chars: "\x1b[27;5;44~"}
   - {key: Period, mods: Control, chars: "\x1b[27;5;46~"}
+  - {key: 51, mods: Control|Shift, chars: "\x1b[27;5;60~"} # <
+  - {key: 52, mods: Control|Shift, chars: "\x1b[27;5;62~"} # >
   - { key: Return,   mods: Shift,   chars: "\x1b[13;2u" }
   - { key: Return,   mods: Control, chars: "\x1b[13;5u" }
   # - { key: Paste,                                       action: Paste          }

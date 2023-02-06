@@ -75,8 +75,8 @@ map('', '<leader>Y', '"+y$', 'Copy rest of the line to os clipboard like "Y" but
 map('', '<C-c>', '<cmd>let @+=@"<CR>', 'Copy to os clipboard from default register')
 map('n', '<leader>p', '"+p', 'paste from os clipboard')
 map('n', '<leader>P', '"+P', 'paste from os clipboard')
-map({ 'n', 'v', 't' }, '<M-,>', '<cmd>tabprev<cr>', 'Previous tabpage with Alt+, (<). NOT FILE TABS')
-map({ 'n', 'v', 't' }, '<M-.>', '<cmd>tabnext<cr>', 'Next tabpage with Alt+. (>). NOT FILE TABS')
+map({ 'n', 'v', 't' }, '<leader>,', '<cmd>tabprev<cr>', 'Previous tabpage with Alt+, (<). NOT FILE TABS')
+map({ 'n', 'v', 't' }, '<leader>.', '<cmd>tabnext<cr>', 'Next tabpage with Alt+. (>). NOT FILE TABS')
 map('i', '<M-,>', '<C-O><cmd>tabprev<cr>', 'Previous tabpage with Alt+, (<). NOT FILE TABS')
 map('i', '<M-.>', '<C-O><cmd>tabnext<cr>', 'Next tabpage with Alt+. (>). NOT FILE TABS')
 map('n', '<leader>n', add_new_line, 'Add newline')
@@ -408,11 +408,11 @@ map('n', '<leader>8', function() require('bufferline').go_to_buffer(8, true) end
 map('n', '<leader>9', function() require('bufferline').go_to_buffer(9, true) end, 'Go to tab #9')
 map('n', '<leader>0', function() require('bufferline').go_to_buffer(10, true) end, 'Go to tab #10')
 map('n', '<leader><Tab>', '<cmd>b#<cr>', 'Go to last active tab')
--- Tab control, tmux binds are "outer" Alt+j/k and vim is "inner" Alt+h/l
-map('n', '<M-h>', '<cmd>BufferLineCyclePrev<CR>', 'Move to left')
-map('n', '<M-l>', '<cmd>BufferLineCycleNext<CR>', 'Move to right')
-map('n', '<M-H>', '<cmd>BufferLineMovePrev<CR>', 'Move + grab to with you to left')
-map('n', '<M-L>', '<cmd>BufferLineMoveNext<CR>', 'Move + grab to with you to right')
+
+map('n', '<C-,>', '<cmd>BufferLineCyclePrev<CR>', 'Move to left')
+map('n', '<C-.>', '<cmd>BufferLineCycleNext<CR>', 'Move to right')
+map('n', '<C-<>', '<cmd>BufferLineMovePrev<CR>', 'Move + grab to with you to left')
+map('n', '<C->>', '<cmd>BufferLineMoveNext<CR>', 'Move + grab to with you to right')
 
 -- Tabpage binds
 map('n', 'g1', '<cmd>tabnext1<cr>', 'Go to tabpage #1')

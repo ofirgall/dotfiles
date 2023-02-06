@@ -420,10 +420,10 @@ require('Navigator').setup {
 require('sibling-swap').setup {
 	use_default_keymaps = true,
 	keymaps = {
-		['<C-.>'] = 'swap_with_right',
-		['<C-,>'] = 'swap_with_left',
-		['<space>.'] = 'swap_with_right_with_opp',
-		['<space>,'] = 'swap_with_left_with_opp',
+		['<C-Right>'] = 'swap_with_right',
+		['<C-Left>'] = 'swap_with_left',
+		['<space><Right>'] = 'swap_with_right_with_opp',
+		['<space><Left>'] = 'swap_with_left_with_opp',
 	},
 }
 
