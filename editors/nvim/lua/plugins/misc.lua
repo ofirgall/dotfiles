@@ -39,9 +39,16 @@ autosave.setup {
 }
 
 autosave.hook_before_actual_saving = function()
+	-- Ignore RaafatTurki/hex.nvim
+	if vim.b.hex then
+		vim.g.auto_save_abort = true
+		return
+	end
+
 	mode = vim.api.nvim_get_mode()
 	if mode.mode ~= 'n' then -- Don't save while we in insert/select mode (triggered with autopair and such)
 		vim.g.auto_save_abort = true
+		return
 	end
 end
 
