@@ -10,7 +10,7 @@ xinput set-prop "DELL0A36:00 0488:101A Touchpad" "libinput Scrolling Pixel Dista
 xinput set-prop "DELL0A36:00 0488:101A Touchpad" "libinput High Resolution Wheel Scroll Enabled" 0
 
 # Mouse speed at home
-xinput --set-prop 'Glorious Model O Wireless' 'libinput Accel Speed' -0.3
+xinput --set-prop 'Glorious Model O Wireless' 'libinput Accel Speed' -0.45
 
 # Mouse speed at work
 xinput --set-prop 'pointer:Logitech MX Master 3' 'libinput Accel Speed' -0.6
