@@ -7,14 +7,14 @@ if not NVLOG then
 	require('ofirkai').setup {
 		scheme = {
 			-- background = '#232323', -- Gray -5
-			-- background = '#1e1e1e', -- Gray -10
+			background = '#1e1e1e', -- Gray -10
 			-- background = '#282923', -- Original
 			-- background = '#252520', -- Original -5
 			-- background = '#262620', -- Original -5, +1 for RG
 			-- background = '#25251f', -- Original -6, +1 for RG
 			-- background = '#23231d', -- Original -8, +1 for RG
 			-- background = '#22221c', -- Original -9, +1 for RG
-			background = '#21211b', -- Original -10, +1 for RG
+			-- background = '#21211b', -- Original -10, +1 for RG
 			-- background = '#20201a', -- Original -11, +1 for RG
 
 			winbar_bg = '#1d1d14', -- Original -5
