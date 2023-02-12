@@ -103,13 +103,7 @@ local get_range = function(mode)
 	return start_pos, end_pos
 end
 
-local trailblazer = require('trailblazer')
-
-goto_def = function(trail)
-	if trail then
-		trailblazer.new_trail_mark()
-	end
-
+goto_def = function()
 	local ft = api.nvim_buf_get_option(0, 'filetype')
 	if ft == 'man' then
 		api.nvim_command(':Man ' .. vim.fn.expand('<cWORD>'))
