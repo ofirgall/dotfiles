@@ -111,8 +111,8 @@ require('nvim-treesitter.configs').setup {
 			'#ffd121',
 			'#68dd6a',
 			'#ff880e',
-			'#45c8c1',
-			'#41c3ac',
+			'#41a2ac',
+			'#26cca0'
 		},
 		-- colors = {}, -- table of hex strings
 		-- termcolors = {} -- table of colour name strings
