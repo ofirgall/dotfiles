@@ -102,7 +102,7 @@ require('nvim-treesitter.configs').setup {
 	rainbow = {
 		enable = true,
 		-- disable = { "jsx", "cpp" },
-		extended_mode = true,
+		extended_mode = false,
 		max_file_lines = nil,
 		colors = {
 			-- '#ff3429',
