@@ -490,3 +490,6 @@ require('trailblazer').setup {
 		},
 	}
 }
+
+-- aduros/ai.vim
+vim.g.ai_no_mappings = true
