@@ -172,6 +172,16 @@ map('n', '<leader>b', deploy, 'Build & deploy')
 map('n', '<leader>B', function() reset_deploy() deploy() end, 'Reset deploy, build & deploy')
 map({ 'n', 'v' }, '<leader>H', require('based').convert, 'Convert hex <=> decimal')
 
+-- numToStr/Comment.nvim
+local ctrl_slash = '<C-_>' -- For some reason this is <C-/>
+local comment = require('Comment.api')
+local esc = api.nvim_replace_termcodes('<ESC>', true, false, true)
+map('n', ctrl_slash, comment.toggle.linewise.current, 'Comment current line')
+map('x', ctrl_slash, function()
+	api.nvim_feedkeys(esc, 'nx', false)
+	comment.toggle.blockwise(vim.fn.visualmode())
+end, 'Comment visual selection')
+
 -- ThePrimeagen/harpoon
 map('n', '<leader>m', require('harpoon.mark').add_file, 'Add file to harpoon')
 map('n', '<leader>A', require('telescope').extensions.harpoon.marks, 'Jump to harpoon file')
