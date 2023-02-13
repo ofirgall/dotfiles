@@ -38,6 +38,7 @@ alias g='fugitive' # git fugitive
 alias ngh='git_tree' # git history with nvim and Flog
 function cg() { cd $(inner_cg.sh $@) } # cd to git repos
 alias cgg='cg ~/go' # cg to go
+alias cgk='cg ~/workspace/kernels/' # cg to kernels
 function p() { python -c "print($@)"} # run python easily
 function ssh() {
 	TERM=xterm-256color /usr/bin/ssh $@ # Adjust TERM for ssh
