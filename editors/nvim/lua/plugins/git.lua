@@ -304,3 +304,7 @@ end
 -- pwntester/octo.nvim
 require('octo').setup {
 }
+
+-- ofirgall/commit-prefix.nvim
+require('commit-prefix').setup {
+}

@@ -107,6 +107,7 @@ return require('packer').startup(function()
 			'kyazdani42/nvim-web-devicons',
 		},
 	}
+	use 'ofirgall/commit-prefix.nvim' -- Insert prefix to commit message by branch name
 
 	-- Debugging --
 	use 'mfussenegger/nvim-dap' -- DAP client for nvim
