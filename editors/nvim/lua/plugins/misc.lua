@@ -437,13 +437,7 @@ require('Navigator').setup {
 
 -- Wansmer/sibling-swap.nvim
 require('sibling-swap').setup {
-	use_default_keymaps = true,
-	keymaps = {
-		['<C-Right>'] = 'swap_with_right',
-		['<C-Left>'] = 'swap_with_left',
-		['<space><Right>'] = 'swap_with_right_with_opp',
-		['<space><Left>'] = 'swap_with_left_with_opp',
-	},
+	use_default_keymaps = false,
 }
 
 -- trmckay/based.nvim

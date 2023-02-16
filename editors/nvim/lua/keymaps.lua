@@ -242,6 +242,13 @@ for _, char in ipairs(qoutes) do
 	map('n', "<leader>" .. char, 'srq' .. char, 'Replace surround to ' .. char, { remap = true }) -- <leader>{char} to replace sandwich to {char}
 end
 
+-- Wansmer/sibling-swap.nvim
+local sibling_swap = require('sibling-swap')
+map('n', '<C-Right>', sibling_swap.swap_with_right)
+map('n', '<C-Left>', sibling_swap.swap_with_left)
+map('n', '<space><Right>', sibling_swap.swap_with_right_with_opp)
+map('n', '<space><Left>', sibling_swap.swap_with_left_with_opp)
+
 -----------------------------------
 --        CODE NAVIGATION        --
 -----------------------------------
