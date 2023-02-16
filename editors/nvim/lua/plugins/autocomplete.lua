@@ -114,8 +114,6 @@ cmp_setup_dict = {
 				cmp.select_next_item()
 			elseif snippy.can_jump(1) then
 				snippy.next()
-			elseif has_words_before() then
-				cmp.complete()
 			else
 				fallback()
 			end
