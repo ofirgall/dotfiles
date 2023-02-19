@@ -466,10 +466,10 @@ require('trailblazer').setup {
 	mappings = {
 		nv = {
 			motions = {
-				new_trail_mark = '<M-l>',
+				new_trail_mark = '<M-space>',
 				track_back = '<M-b>',
-				peek_move_next_down = '<M-j>',
-				peek_move_previous_up = '<M-k>',
+				peek_move_next_down = '<M-n>',
+				peek_move_previous_up = '<M-p>',
 				toggle_trail_mark_list = '<M-B>',
 			},
 			actions = {

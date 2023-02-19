@@ -229,8 +229,8 @@ cmd([[
 let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<M-d>'
 let g:VM_maps['Find Subword Under'] = '<M-d>'
-let g:VM_maps['Add Cursor Down'] = '<M-n>'
-let g:VM_maps['Add Cursor Up'] = '<M-p>'
+let g:VM_maps['Add Cursor Down'] = '<M-J>'
+let g:VM_maps['Add Cursor Up'] = '<M-K>'
 ]])
 
 -- Surround words
