@@ -135,16 +135,38 @@ local lua_query = [[
 			("string_content" @cap)
 			((true) @cap)
 			((false) @cap)
-			]]
+]]
 local python_query = [[
 			;; query
 			((identifier) @cap)
 			((string) @cap)
-			]]
+]]
+local go_query = [[
+			;; query
+			((selector_expression) @cap) ; Method call
+			((field_identifier) @cap) ; Method names in interface
+
+			; Identifiers
+			((identifier) @cap)
+			((expression_list) @cap) ; pseudo Identifier
+			((int_literal) @cap)
+			((interpreted_string_literal) @cap)
+
+			; Types
+			((type_identifier) @cap)
+			((pointer_type) @cap)
+			((slice_type) @cap)
+
+			; Keywords
+			((true) @cap)
+			((false) @cap)
+			((nil) @cap)
+]]
 
 local queries = {
 	lua = lua_query,
 	python = python_query,
+	go = go_query
 }
 
 map({ 'n', 's', 'i' }, '<M-k>', function()
