@@ -85,12 +85,6 @@ dapui.setup {
 	}
 }
 
-local function map(mode, l, r, desc, opts)
-	opts = opts or { silent = true }
-	opts.desc = desc
-	vim.keymap.set(mode, l, r, opts)
-end
-
 -- TODO: fix tabs for dap
 local dap_closed = function()
 	dapui.close({})

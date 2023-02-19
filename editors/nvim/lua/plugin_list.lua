@@ -74,6 +74,7 @@ return require('packer').startup(function()
 	use 'andymass/vim-matchup' -- Enhance `%` actions
 	use 'phelipetls/jsonpath.nvim' -- Added json path winbar component
 	use 'Wansmer/sibling-swap.nvim' -- Swap treesitter siblings with C+,/C+.
+	use 'ziontee113/SelectEase' -- Select text using Treesitter Queries and start typing right away.
 
 	-- Textobjects --
 	use 'nvim-treesitter/nvim-treesitter-textobjects' -- Textobjects base on treesitter

@@ -3,20 +3,6 @@
 local cmd = vim.cmd
 local api = vim.api
 
-local default_opts = { silent = true }
-local function map(mode, l, r, desc, opts)
-	opts = opts or default_opts
-	opts.desc = desc
-	vim.keymap.set(mode, l, r, opts)
-end
-
-local function map_buffer(bufid, mode, l, r, desc, opts)
-	opts = opts or default_opts
-	opts.buffer = bufid
-	opts.desc = desc
-	vim.keymap.set(mode, l, r, opts)
-end
-
 ----------------------------------------------------------------------------------
 --
 -- This file contains the custom keymaps.
@@ -229,8 +215,8 @@ cmd([[
 let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<M-d>'
 let g:VM_maps['Find Subword Under'] = '<M-d>'
-let g:VM_maps['Add Cursor Down'] = '<M-J>'
-let g:VM_maps['Add Cursor Up'] = '<M-K>'
+let g:VM_maps['Add Cursor Down'] = '<C-M-j>'
+let g:VM_maps['Add Cursor Up'] = '<C-M-k>'
 ]])
 
 -- Surround words

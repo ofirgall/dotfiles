@@ -118,3 +118,60 @@ require('nvim-treesitter.configs').setup {
 		-- termcolors = {} -- table of colour name strings
 	}
 }
+
+-- ziontee113/SelectEase
+local select_ease = require("SelectEase")
+local lua_query = [[
+			;; query
+			((identifier) @cap)
+			("string_content" @cap)
+			((true) @cap)
+			((false) @cap)
+			]]
+local python_query = [[
+			;; query
+			((identifier) @cap)
+			((string) @cap)
+			]]
+
+local queries = {
+	lua = lua_query,
+	python = python_query,
+}
+
+map({ 'n', 's', 'i' }, '<M-k>', function()
+	select_ease.select_node({
+		queries = queries,
+		direction = 'previous',
+		vertical_drill_jump = true,
+	})
+end, {})
+map({ 'n', 's', 'i' }, '<M-j>', function()
+	select_ease.select_node({
+		queries = queries,
+		direction = 'next',
+		vertical_drill_jump = true,
+	})
+end, {})
+map({ 'n', 's', 'i' }, '<M-h>', function()
+	select_ease.select_node({
+		queries = queries,
+		direction = 'previous',
+		current_line_only = true,
+	})
+end, {})
+map({ 'n', 's', 'i' }, '<M-l>', function()
+	select_ease.select_node({
+		queries = queries,
+		direction = 'next',
+		current_line_only = true,
+	})
+end, {})
+
+-- previous / next node that matches query
+map({ 'n', 's', 'i' }, '<M-K>', function()
+	select_ease.select_node({ queries = queries, direction = 'previous' })
+end, {})
+map({ 'n', 's', 'i' }, '<M-J>', function()
+	select_ease.select_node({ queries = queries, direction = 'next' })
+end, {})
