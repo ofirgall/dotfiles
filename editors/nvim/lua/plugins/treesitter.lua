@@ -246,14 +246,14 @@ map({ 'n', 's', 'i' }, '<M-h>', function()
 	select_ease.select_node({
 		queries = queries,
 		direction = 'previous',
-		current_line_only = true,
+		current_line_only = false,
 	})
 end, {})
 map({ 'n', 's', 'i' }, '<M-l>', function()
 	select_ease.select_node({
 		queries = queries,
 		direction = 'next',
-		current_line_only = true,
+		current_line_only = false,
 	})
 end, {})
 
