@@ -186,6 +186,9 @@ local rust_query = [[
 local c_query = [[
 	;; query
 
+	((string_literal) @cap)
+	((system_lib_string) @cap)
+
 	; Identifiers
 	((identifier) @cap)
 	((struct_specifier) @cap)
@@ -202,6 +205,12 @@ local c_query = [[
 	(assignment_expression
 		right: (_) @cap)
 ]]
+local cpp_query = [[
+	;; query
+
+	; Identifiers
+	((namespace_identifier) @cap)
+]] .. c_query
 
 local queries = {
 	lua = lua_query,
@@ -209,6 +218,7 @@ local queries = {
 	go = go_query,
 	rust = rust_query,
 	c = c_query,
+	cpp = cpp_query,
 }
 
 map({ 'n', 's', 'i' }, '<M-k>', function()
