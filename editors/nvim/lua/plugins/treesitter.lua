@@ -161,28 +161,34 @@ local go_query = [[
 	((true) @cap)
 	((false) @cap)
 	((nil) @cap)
+]]
+local rust_query = [[
+	;; query
+	((boolean_literal) @cap)
+	((string_literal) @cap)
 
-			; Identifiers
-			((identifier) @cap)
-			((expression_list) @cap) ; pseudo Identifier
-			((int_literal) @cap)
-			((interpreted_string_literal) @cap)
+	; Identifiers
+	((identifier) @cap)
+	((field_identifier) @cap)
+	((field_expression) @cap)
+	((scoped_identifier) @cap)
+	((unit_expression) @cap)
 
-			; Types
-			((type_identifier) @cap)
-			((pointer_type) @cap)
-			((slice_type) @cap)
+	; Types
+	((reference_type) @cap)
+	((primitive_type) @cap)
+	((type_identifier) @cap)
+	((generic_type) @cap)
 
-			; Keywords
-			((true) @cap)
-			((false) @cap)
-			((nil) @cap)
+	; Calls
+	((call_expression) @cap)
 ]]
 
 local queries = {
 	lua = lua_query,
 	python = python_query,
-	go = go_query
+	go = go_query,
+	rust = rust_query,
 }
 
 map({ 'n', 's', 'i' }, '<M-k>', function()
