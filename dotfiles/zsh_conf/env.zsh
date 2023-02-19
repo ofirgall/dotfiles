@@ -34,6 +34,9 @@ if $NO_SUDO; then
 	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fi
 
+# fzf settings
+export FZF_DEFAULT_OPTS="--bind 'ctrl-n:toggle+down' --bind 'ctrl-p:toggle+up' --bind 'ctrl-a:toggle-all'"
+
 # ---------------------------
 # Env vars
 # ---------------------------
