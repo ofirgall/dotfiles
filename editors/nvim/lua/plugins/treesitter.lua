@@ -116,6 +116,11 @@ require('nvim-treesitter.configs').setup {
 		},
 		-- colors = {}, -- table of hex strings
 		-- termcolors = {} -- table of colour name strings
+	},
+	-- JoosepAlviste/nvim-ts-context-commentstring
+	context_commentstring = {
+		enable = true,
+		enable_autocmd = false,
 	}
 }
 
