@@ -18,7 +18,7 @@ require('nvim-treesitter.configs').setup {
 	ignore_install = ignore_install_langs,
 	highlight = {
 		enable = true,
-		disable = { 'help', 'git_rebase', 'gitcommit' }
+		disable = { 'help', 'git_rebase', 'gitcommit', 'comment' }
 	},
 	indent = {
 		enable = true
@@ -183,12 +183,32 @@ local rust_query = [[
 	; Calls
 	((call_expression) @cap)
 ]]
+local c_query = [[
+	;; query
+
+	; Identifiers
+	((identifier) @cap)
+	((struct_specifier) @cap)
+	((type_identifier) @cap)
+	((field_identifier) @cap)
+	((number_literal) @cap)
+	((unary_expression) @cap)
+	((pointer_declarator) @cap)
+
+	; Types
+	((primitive_type) @cap)
+
+	; Expressions
+	(assignment_expression
+		right: (_) @cap)
+]]
 
 local queries = {
 	lua = lua_query,
 	python = python_query,
 	go = go_query,
 	rust = rust_query,
+	c = c_query,
 }
 
 map({ 'n', 's', 'i' }, '<M-k>', function()
@@ -196,13 +216,20 @@ map({ 'n', 's', 'i' }, '<M-k>', function()
 		queries = queries,
 		direction = 'previous',
 		vertical_drill_jump = true,
+		fallback = function()
+			select_ease.select_node({ queries = queries, direction = 'previous' })
+		end,
 	})
 end, {})
+
 map({ 'n', 's', 'i' }, '<M-j>', function()
 	select_ease.select_node({
 		queries = queries,
 		direction = 'next',
 		vertical_drill_jump = true,
+		fallback = function()
+			select_ease.select_node({ queries = queries, direction = 'next' })
+		end,
 	})
 end, {})
 map({ 'n', 's', 'i' }, '<M-h>', function()
