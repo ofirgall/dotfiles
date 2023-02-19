@@ -116,10 +116,10 @@ map('n', '<M-]>', '<Plug>(YankyCycleBackward)', 'Cycle yank history backward')
 --             TMUX              --
 -----------------------------------
 -- Navigate in panes + splits (requires numToStr/Navigator.nvim)
-map({ 'n', 't' }, '<C-h>', '<cmd>NavigatorLeft<cr>')
-map({ 'n', 't' }, '<C-j>', '<cmd>NavigatorDown<cr>')
-map({ 'n', 't' }, '<C-k>', '<cmd>NavigatorUp<cr>')
-map({ 'n', 't' }, '<C-l>', '<cmd>NavigatorRight<cr>')
+map({ 'n', 'x', 't' }, '<C-h>', '<cmd>NavigatorLeft<cr>')
+map({ 'n', 'x', 't' }, '<C-j>', '<cmd>NavigatorDown<cr>')
+map({ 'n', 'x', 't' }, '<C-k>', '<cmd>NavigatorUp<cr>')
+map({ 'n', 'x', 't' }, '<C-l>', '<cmd>NavigatorRight<cr>')
 map({ 'n', 't' }, '<leader>o', '<cmd>TmuxJumpFile<cr>', 'Open file pathes from sibiling tmux pane')
 -- Splits like tmux
 map('n', '<M-e>', function() smart_split('vertical') end, 'Vsplit')
