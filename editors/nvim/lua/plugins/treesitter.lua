@@ -130,21 +130,37 @@ require('nvim-treesitter.configs').setup {
 -- ziontee113/SelectEase
 local select_ease = require("SelectEase")
 local lua_query = [[
-			;; query
-			((identifier) @cap)
-			("string_content" @cap)
-			((true) @cap)
-			((false) @cap)
+	;; query
+	((identifier) @cap)
+	("string_content" @cap)
+	((true) @cap)
+	((false) @cap)
 ]]
 local python_query = [[
-			;; query
-			((identifier) @cap)
-			((string) @cap)
+	;; query
+	((identifier) @cap)
+	((string) @cap)
 ]]
 local go_query = [[
-			;; query
-			((selector_expression) @cap) ; Method call
-			((field_identifier) @cap) ; Method names in interface
+	;; query
+	((selector_expression) @cap) ; Method call
+	((field_identifier) @cap) ; Method names in interface
+
+	; Identifiers
+	((identifier) @cap)
+	((expression_list) @cap) ; pseudo Identifier
+	((int_literal) @cap)
+	((interpreted_string_literal) @cap)
+
+	; Types
+	((type_identifier) @cap)
+	((pointer_type) @cap)
+	((slice_type) @cap)
+
+	; Keywords
+	((true) @cap)
+	((false) @cap)
+	((nil) @cap)
 
 			; Identifiers
 			((identifier) @cap)
