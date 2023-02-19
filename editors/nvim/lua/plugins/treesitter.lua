@@ -221,46 +221,50 @@ local queries = {
 	cpp = cpp_query,
 }
 
-map({ 'n', 's', 'i' }, '<M-k>', function()
+map({ 'n', 'x', 'i' }, '<M-k>', function()
 	select_ease.select_node({
 		queries = queries,
 		direction = 'previous',
 		vertical_drill_jump = true,
+		visual_mode = true,
 		fallback = function()
-			select_ease.select_node({ queries = queries, direction = 'previous' })
+			select_ease.select_node({ queries = queries, direction = 'previous', visual_mode = true })
 		end,
 	})
 end, {})
 
-map({ 'n', 's', 'i' }, '<M-j>', function()
+map({ 'n', 'x', 'i' }, '<M-j>', function()
 	select_ease.select_node({
 		queries = queries,
 		direction = 'next',
 		vertical_drill_jump = true,
+		visual_mode = true,
 		fallback = function()
-			select_ease.select_node({ queries = queries, direction = 'next' })
+			select_ease.select_node({ queries = queries, direction = 'next', visual_mode = true })
 		end,
 	})
 end, {})
-map({ 'n', 's', 'i' }, '<M-h>', function()
+map({ 'n', 'x', 'i' }, '<M-h>', function()
 	select_ease.select_node({
 		queries = queries,
 		direction = 'previous',
 		current_line_only = false,
+		visual_mode = true,
 	})
 end, {})
-map({ 'n', 's', 'i' }, '<M-l>', function()
+map({ 'n', 'x', 'i' }, '<M-l>', function()
 	select_ease.select_node({
 		queries = queries,
 		direction = 'next',
 		current_line_only = false,
+		visual_mode = true,
 	})
 end, {})
 
 -- previous / next node that matches query
-map({ 'n', 's', 'i' }, '<M-K>', function()
-	select_ease.select_node({ queries = queries, direction = 'previous' })
+map({ 'n', 'x', 'i' }, '<M-K>', function()
+	select_ease.select_node({ queries = queries, direction = 'previous', visual_mode = true })
 end, {})
-map({ 'n', 's', 'i' }, '<M-J>', function()
-	select_ease.select_node({ queries = queries, direction = 'next' })
+map({ 'n', 'x', 'i' }, '<M-J>', function()
+	select_ease.select_node({ queries = queries, direction = 'next', visual_mode = true })
 end, {})
