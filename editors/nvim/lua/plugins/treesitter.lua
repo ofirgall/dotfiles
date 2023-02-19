@@ -140,6 +140,9 @@ local python_query = [[
 	;; query
 	((identifier) @cap)
 	((string) @cap)
+	((true) @cap)
+	((false) @cap)
+	((attribute) @cap)
 ]]
 local go_query = [[
 	;; query
