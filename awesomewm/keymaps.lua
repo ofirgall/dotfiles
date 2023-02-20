@@ -166,25 +166,25 @@ function M.setup(kbdcfg, volume_widget, retain)
         -- Swap clients with modkey+shift+hjkl
         awful.key({ modkey, "Shift", }, "j",
             function()
-                awful.client.swap.global_bydirection('down')
+                awful.client.swap.global_bydirection('down', nil, true)
             end,
             { description = "swap down", group = "client" }
         ),
         awful.key({ modkey, "Shift", }, "k",
             function()
-                awful.client.swap.global_bydirection('up')
+                awful.client.swap.global_bydirection('up', nil, true)
             end,
             { description = "swap up", group = "client" }
         ),
         awful.key({ modkey, "Shift", }, "l",
             function()
-                awful.client.swap.global_bydirection('right')
+                awful.client.swap.global_bydirection('right', nil, true)
             end,
             { description = "swap right", group = "client" }
         ),
         awful.key({ modkey, "Shift", }, "h",
             function()
-                awful.client.swap.global_bydirection('left')
+                awful.client.swap.global_bydirection('left', nil, true)
             end,
             { description = "swap left", group = "client" }
         ),
