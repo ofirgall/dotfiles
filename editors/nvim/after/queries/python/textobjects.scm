@@ -7,3 +7,7 @@
   right: (_) @binary_expression.inner)
 (if_statement
   condition: (_) @binary_expression.inner)
+
+;; Function name
+(function_definition
+  name: (_)? @function.name)
