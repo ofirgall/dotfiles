@@ -32,14 +32,12 @@ cd $git_root
 LF_ARGS=""
 DEST=`cat .stage`
 
+DEST=$1
+shift
+
 for arg in $@
 do
-	if [[ $arg =~ ^[0-9a-z]{40}$ || $arg = "HEAD" ]]
-	then
-		LF_ARGS="$LF_ARGS $arg"
-	else
-		DEST=$arg
-	fi
+	LF_ARGS="$LF_ARGS $arg"
 done
 echo Destination: $DEST
 echo

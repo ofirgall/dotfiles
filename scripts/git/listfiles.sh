@@ -14,7 +14,7 @@ then
     COMMIT_TO="$1"
 elif [ $# -eq 2 ]
 then
-    COMMIT_FROM="$1~"
+    COMMIT_FROM="$1"
     COMMIT_TO="$2";
 else
     echo 'Usage: [<first commit id> [<last commit id>]]'
