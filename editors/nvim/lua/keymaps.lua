@@ -81,7 +81,7 @@ map('n', '<M-y>', function()
 end)
 
 map('n', '<M-Y>', function()
-	yank_line(-vim.v.count)
+	yank_line( -vim.v.count)
 end)
 
 map('', '<Down>', '<C-e>', 'Down to scroll')
@@ -159,7 +159,10 @@ map('n', '<leader>M', require('mind').open_main, 'Open mind.nvim')
 map('n', '<leader>e', require('femaco.edit').edit_code_block, 'Edit markdown codeblocks')
 map('n', '<leader>w', require('typebreak').start, 'typebreak') -- <leader>Wpm
 map('n', '<leader>b', deploy, 'Build & deploy')
-map('n', '<leader>B', function() reset_deploy() deploy() end, 'Reset deploy, build & deploy')
+map('n', '<leader>B', function()
+	reset_deploy()
+	deploy()
+end, 'Reset deploy, build & deploy')
 map({ 'n', 'v' }, '<leader>H', require('based').convert, 'Convert hex <=> decimal')
 
 -- numToStr/Comment.nvim
@@ -290,22 +293,49 @@ local lsp_implementations = function()
 	}
 end
 
-map('n', 'gvd', function() split_if_not_exist(true) goto_def() end, 'Go to Definition in Vsplit')
-map('n', 'gxd', function() split_if_not_exist(false) goto_def() end, 'Go to Definition in Xsplit')
-map('n', 'god', function() split_if_not_exist(false) goto_def() end, 'Go to Definition in Xsplit')
+map('n', 'gvd', function()
+	split_if_not_exist(true)
+	goto_def()
+end, 'Go to Definition in Vsplit')
+map('n', 'gxd', function()
+	split_if_not_exist(false)
+	goto_def()
+end, 'Go to Definition in Xsplit')
+map('n', 'god', function()
+	split_if_not_exist(false)
+	goto_def()
+end, 'Go to Definition in Xsplit')
 map('n', 'gKD',
 	function() require("telescope.builtin").lsp_dynamic_workspace_symbols({ default_text = vim.fn.expand("<cword>") }) end,
 	'Go to definition under current word')
 map('n', 'gi', lsp_implementations, 'Go to Implementation')
-map('n', 'gvi', function() split_if_not_exist(true) lsp_implementations() end, 'Go to Implementation in Vsplit')
-map('n', 'gxi', function() split_if_not_exist(false) lsp_implementations() end, 'Go to Implementation in Xsplit')
-map('n', 'goi', function() split_if_not_exist(false) lsp_implementations() end, 'Go to Implementation in Xsplit')
+map('n', 'gvi', function()
+	split_if_not_exist(true)
+	lsp_implementations()
+end, 'Go to Implementation in Vsplit')
+map('n', 'gxi', function()
+	split_if_not_exist(false)
+	lsp_implementations()
+end, 'Go to Implementation in Xsplit')
+map('n', 'goi', function()
+	split_if_not_exist(false)
+	lsp_implementations()
+end, 'Go to Implementation in Xsplit')
 map('n', 'gt', require 'telescope.builtin'.lsp_type_definitions, 'Go to Type')
-map('n', 'gvt', function() split_if_not_exist(true) require 'telescope.builtin'.lsp_type_definitions {} end,
+map('n', 'gvt', function()
+	split_if_not_exist(true)
+	require 'telescope.builtin'.lsp_type_definitions {}
+end,
 	'Go to Type in Vsplit')
-map('n', 'gxt', function() split_if_not_exist(false) require 'telescope.builtin'.lsp_type_definitions {} end,
+map('n', 'gxt', function()
+	split_if_not_exist(false)
+	require 'telescope.builtin'.lsp_type_definitions {}
+end,
 	'Go to Type in Xsplit')
-map('n', 'got', function() split_if_not_exist(false) require 'telescope.builtin'.lsp_type_definitions {} end,
+map('n', 'got', function()
+	split_if_not_exist(false)
+	require 'telescope.builtin'.lsp_type_definitions {}
+end,
 	'Go to Type in Xsplit')
 
 local lsp_references = function()
@@ -330,9 +360,18 @@ map('n', 'gs', function()
 end, 'Go Symbols')
 map('n', 'gS', require 'telescope.builtin'.lsp_dynamic_workspace_symbols, 'Go workspace Symbols')
 map('n', 'gr', lsp_references, 'Go to References')
-map('n', 'gvr', function() split_if_not_exist(true) lsp_references() end, 'Go to References in Vsplit')
-map('n', 'gxr', function() split_if_not_exist(false) lsp_references() end, 'Go to References in Xsplit')
-map('n', 'gor', function() split_if_not_exist(false) lsp_references() end, 'Go to References xsplit')
+map('n', 'gvr', function()
+	split_if_not_exist(true)
+	lsp_references()
+end, 'Go to References in Vsplit')
+map('n', 'gxr', function()
+	split_if_not_exist(false)
+	lsp_references()
+end, 'Go to References in Xsplit')
+map('n', 'gor', function()
+	split_if_not_exist(false)
+	lsp_references()
+end, 'Go to References xsplit')
 map('n', 'gp', function() require 'telescope.builtin'.diagnostics { bufnr = 0 } end, 'Go to Problems')
 map('n', 'gP', require 'telescope.builtin'.diagnostics, 'Go to workspace Problems')
 
@@ -359,7 +398,7 @@ map('n', 'K', vim.lsp.buf.hover, 'Trigger hover')
 map('n', '<RightMouse>', '<LeftMouse><cmd>sleep 100m<cr><cmd>lua vim.lsp.buf.hover()<cr>', 'Trigger hover')
 map('n', '<M-s>', '<cmd>SymbolsOutline<CR>')
 map('n', '<c-u>', function()
-	if not require('noice.lsp').scroll(-4) then
+	if not require('noice.lsp').scroll( -4) then
 		return '<c-u>zz'
 	end
 end, 'Scroll up in hover', { silent = true, expr = true })
@@ -455,9 +494,18 @@ map('n', '<F9>', require('persistent-breakpoints.api').toggle_breakpoint, 'Debug
 map('n', '<leader><F9>', require('persistent-breakpoints.api').set_conditional_breakpoint,
 	'Debug: toggle conditional breakpoint')
 
-map('n', '<F10>', function() require 'dap'.step_over() center_screen() end, 'Debug: step over')
-map('n', '<F11>', function() require 'dap'.step_into() center_screen() end, 'Debug: step into')
-map('n', '<F12>', function() require 'dap'.step_out() center_screen() end, 'Debug: set out')
+map('n', '<F10>', function()
+	require 'dap'.step_over()
+	center_screen()
+end, 'Debug: step over')
+map('n', '<F11>', function()
+	require 'dap'.step_into()
+	center_screen()
+end, 'Debug: step into')
+map('n', '<F12>', function()
+	require 'dap'.step_out()
+	center_screen()
+end, 'Debug: set out')
 
 map('n', '<leader>rp', require 'dap'.repl.open, 'Debug: open repl')
 map('n', '<leader>rc', require 'dap'.run_to_cursor, 'Debug: Run to cursor')
@@ -492,8 +540,10 @@ local keys_by_ft = {
 	-- Floggraph
 	['floggraph'] = function(bufid)
 		map_buffer(bufid, 'n', '<C-d>', flog_diff_current, 'Floggraph: show diff from head to current')
-		map_buffer(bufid, 'x', '<C-d>', '<Esc><cmd>lua flog_diff_current_visual()<cr>', 'Floggraph: show diff of selection')
-		map_buffer(bufid, 'x', '<C-s>', '<Esc><cmd>lua flog_diff_current_visual()<cr>', 'Floggraph: show diff of selection')
+		map_buffer(bufid, 'x', '<C-d>', '<Esc><cmd>lua flog_diff_current_visual()<cr>',
+			'Floggraph: show diff of selection')
+		map_buffer(bufid, 'x', '<C-s>', '<Esc><cmd>lua flog_diff_current_visual()<cr>',
+			'Floggraph: show diff of selection')
 		map_buffer(bufid, 'n', '<C-s>', flog_show_current, 'Floggraph: show current in diffview')
 	end
 }
