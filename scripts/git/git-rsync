@@ -47,7 +47,7 @@ echo
 if [[ ${#LF_ARGS} -gt 0 ]]
 then
 	echo "syncing commited changes ($LF_ARGS)"
-	FLIST=`listfiles $LF_ARGS`
+	FLIST=`listfiles.sh $LF_ARGS`
 else
 	echo "syncing uncomited changes (staged and unstaged)"
 	FLIST=`git status -s | awk '{print $2}' | grep -v "^db\/"`
