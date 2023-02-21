@@ -37,9 +37,11 @@ local retain = require("retain")
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
+    naughty.notify({
+        preset = naughty.config.presets.critical,
         title = "Oops, there were errors during startup!",
-        text = awesome.startup_errors })
+        text = awesome.startup_errors
+    })
 end
 
 -- Handle runtime errors after startup
@@ -50,9 +52,11 @@ do
         if in_error then return end
         in_error = true
 
-        naughty.notify({ preset = naughty.config.presets.critical,
+        naughty.notify({
+            preset = naughty.config.presets.critical,
             title = "Oops, an error happened!",
-            text = tostring(err) })
+            text = tostring(err)
+        })
         in_error = false
     end)
 end
@@ -109,11 +113,11 @@ retain.connect_signals()
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 myawesomemenu = {
-    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-    { "manual", terminal .. " -e man awesome" },
+    { "hotkeys",     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+    { "manual",      terminal .. " -e man awesome" },
     { "edit config", editor_cmd .. " " .. awesome.conffile },
-    { "restart", awesome.restart },
-    { "quit", function() awesome.quit() end },
+    { "restart",     awesome.restart },
+    { "quit",        function() awesome.quit() end },
 }
 
 local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
@@ -135,8 +139,10 @@ else
 end
 
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-    menu = mymainmenu })
+mylauncher = awful.widget.launcher({
+    image = beautiful.awesome_icon,
+    menu = mymainmenu
+})
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -186,7 +192,7 @@ local tasklist_buttons = gears.table.join(
         awful.client.focus.byidx(1)
     end),
     awful.button({}, 5, function()
-        awful.client.focus.byidx(-1)
+        awful.client.focus.byidx( -1)
     end))
 
 local function set_wallpaper(s)
@@ -267,9 +273,9 @@ awful.screen.connect_for_each_screen(function(s)
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(gears.table.join(
         awful.button({}, 1, function() awful.layout.inc(1) end),
-        awful.button({}, 3, function() awful.layout.inc(-1) end),
+        awful.button({}, 3, function() awful.layout.inc( -1) end),
         awful.button({}, 4, function() awful.layout.inc(1) end),
-        awful.button({}, 5, function() awful.layout.inc(-1) end)))
+        awful.button({}, 5, function() awful.layout.inc( -1) end)))
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,

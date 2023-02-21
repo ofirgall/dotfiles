@@ -130,7 +130,7 @@ function M.setup(kbdcfg, volume_widget, retain)
         --     { description = "go back", group = "tag" }),
 
         awful.key({ modkey, }, "Left", function()
-            awful.client.focus.byidx(-1)
+            awful.client.focus.byidx( -1)
         end,
             { description = "Focus on previous client", group = "client" }),
         awful.key({ modkey, }, "Right", function()
@@ -305,10 +305,9 @@ function M.setup(kbdcfg, volume_widget, retain)
             { description = "reload awesome", group = "awesome" }),
         awful.key({ modkey, "Shift" }, "q", awesome.quit,
             { description = "quit awesome", group = "awesome" }),
-
         awful.key({ modkey, "Control", }, "l", function() awful.tag.incmwfact(0.01) end,
             { description = "increase master width factor", group = "layout" }),
-        awful.key({ modkey, "Control", }, "h", function() awful.tag.incmwfact(-0.01) end,
+        awful.key({ modkey, "Control", }, "h", function() awful.tag.incmwfact( -0.01) end,
             { description = "decrease master width factor", group = "layout" }),
         -- awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1, nil, true) end,
         --     { description = "increase the number of master clients", group = "layout" }),
@@ -320,7 +319,7 @@ function M.setup(kbdcfg, volume_widget, retain)
         --     { description = "decrease the number of columns", group = "layout" }),
         awful.key({ modkey, "Control", }, "space", function() awful.layout.inc(1) end,
             { description = "select next", group = "layout" }),
-        awful.key({ modkey, "Control", "Shift" }, "space", function() awful.layout.inc(-1) end,
+        awful.key({ modkey, "Control", "Shift" }, "space", function() awful.layout.inc( -1) end,
             { description = "select previous", group = "layout" }),
 
         awful.key({ modkey, "Control" }, "n",
@@ -447,12 +446,14 @@ function M.setup(kbdcfg, volume_widget, retain)
 
         -- Print screen
         awful.key({}, 'Print',
-            function() awful.util.spawn("scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") end
+            function() awful.util.spawn(
+                    "scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") end
             ,
             { description = "Print Screen", group = "media" }),
 
         awful.key({ 'Control' }, 'Print',
-            function() awful.util.spawn("scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") end
+            function() awful.util.spawn(
+                    "scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") end
             ,
             { description = "Print Screen", group = "media" })
     )
