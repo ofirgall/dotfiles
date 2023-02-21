@@ -54,10 +54,11 @@ local function rename_tag_by_tmux(tag)
                     local client_name = c and c.name or ''
                     if string.find(client_name, " %- TMUX$") then
                         session_name = string.gsub(client_name, " %- TMUX$", "")
-                        session_name = string.gsub(session_name, "%-viewer$", "") -- Remove `-viewer` suffix
-                        rename_tag_across_screens(tag.index, TMUX_PREFIX .. session_name)
-                        found = true
-                        break
+                        if not string.find(session_name, "%-viewer$") then -- Ignore `-viewer` suffix
+                            rename_tag_across_screens(tag.index, TMUX_PREFIX .. session_name)
+                            found = true
+                            break
+                        end
                     end
                 end
                 if found then
