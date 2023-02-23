@@ -104,8 +104,8 @@ font:
 
   # size: 9.0
   # size: 15.0 # Im blind
-  size: 13.5 # Im blind
-  # size: 11.5 # Im blind
+  # size: 13.5 # Im blind
+  size: 11.5 # Im blind
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
