@@ -172,7 +172,8 @@ if not vim.g.started_by_firenvim then
 			globalstatus = true,
 		},
 		sections = {
-			lualine_b = { { 'branch', icon = '' }, 'diff', 'diagnostics' },
+			-- lualine_b = { { 'branch', icon = '' }, 'diff', 'diagnostics' },
+			lualine_b = {},
 			lualine_c = {
 				{ 'filename', shorting_target = 0, icon = '', },
 				{
