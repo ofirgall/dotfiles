@@ -76,6 +76,14 @@ return require('packer').startup(function()
 	use 'Wansmer/sibling-swap.nvim' -- Swap treesitter siblings with C+,/C+.
 	use 'ziontee113/SelectEase' -- Select text using Treesitter Queries and start typing right away.
 	use 'JoosepAlviste/nvim-ts-context-commentstring' -- Setting the commentstring based on the cursor location in a file.
+	use {
+		'cshuaimin/ssr.nvim', -- Structural search and replace
+		config = function()
+			require('ssr').setup {
+			}
+		end,
+		cmd = { 'SSR' },
+	}
 
 	-- Textobjects --
 	use 'nvim-treesitter/nvim-treesitter-textobjects' -- Textobjects base on treesitter

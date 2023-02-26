@@ -86,3 +86,5 @@ end, {})
 api.nvim_create_user_command('BreakLines', function()
 	vim.cmd('%!fmt -s -w 300')
 end, {})
+
+api.nvim_create_user_command('SSR', function() require('ssr').open() end, {})
