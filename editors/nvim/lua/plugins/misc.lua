@@ -84,9 +84,6 @@ if IS_REMOTE then
 	]])
 end
 
--- mbbill/undotree
-vim.g.undotree_WindowLayout = 3 -- undotree at right
-
 -- gennaro-tedesco/nvim-peekup
 local peekup_config = require('nvim-peekup.config')
 peekup_config.on_keystroke['delay'] = ''

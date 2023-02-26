@@ -89,6 +89,7 @@ return require('packer').startup(function()
 	use 'nvim-telescope/telescope-ui-select.nvim' -- native nvim ui select with telescope
 	use 'axkirillov/easypick.nvim' -- Create telescope from cmd line output, dirty git files for example
 	use 'https://code.sitosis.com/rudism/telescope-dict.nvim'
+	use 'debugloop/telescope-undo.nvim' -- Undotree
 
 	-- Git --
 	use 'lewis6991/gitsigns.nvim' -- Show git diff in the sidebar, hunk actions and more
@@ -195,7 +196,6 @@ return require('packer').startup(function()
 	use 'jbyuki/venn.nvim' -- Draw ascii boxes and arrows, start the mode with :Draw, exit with escape, HJKL for arrows, f for box (inside <C-v>)
 	use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end } -- NVIM in firefox
 	use 'ojroques/vim-oscyank' -- Yank from remote
-	use 'mbbill/undotree' -- visualize undo/redo tree (F5)
 	use 'gennaro-tedesco/nvim-peekup' -- visualize copy registers
 	use 'akinsho/toggleterm.nvim' -- Terminal toggle for nvim <C-t>
 	use { 'chomosuke/term-edit.nvim', tag = 'v1.*' } -- vim mode in terminal

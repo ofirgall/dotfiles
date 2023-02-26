@@ -147,7 +147,6 @@ map('i', '<M-[>', '<C-O>[a', 'Jump to prev argument in insert mode', { silent = 
 -----------------------------------
 --          MISC PLUGINS         --
 -----------------------------------
-map('n', '<F8>', '<cmd>UndotreeToggle<CR>', 'Toggle undotree')
 map('n', '<leader>gx', require('open').open_cword, 'Open current word')
 map('n', '<leader>rgb', '<cmd>PickColor<CR>', 'Pick color')
 map({ 'n', 't', 'v' }, '<C-t>', function() toggle_or_open_terminal() end, 'toggle all terminals')
