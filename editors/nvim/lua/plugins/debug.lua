@@ -3,7 +3,7 @@ if vim.g.started_by_firenvim then
 end
 
 -- mfussenegger/nvim-dap
-local dap                                  = require('dap')
+local dap = require('dap')
 dap.defaults.fallback.stepping_granularity = 'line'
 --- Signs ---
 -- Sign priority = 11
@@ -37,7 +37,7 @@ dap.adapters.codelldb = {
 	executable = {
 		command = 'codelldb',
 		args = { '--port', '${port}' },
-	}
+	},
 }
 
 -- Golang
@@ -71,7 +71,7 @@ dapui.setup {
 			position = 'bottom',
 			elements = {
 				'scopes' -- local vars
-			}
+			},
 		},
 		{
 			size = 0.20,
@@ -80,9 +80,9 @@ dapui.setup {
 				'breakpoints',
 				'watches',
 				'stacks',
-			}
+			},
 		},
-	}
+	},
 }
 
 -- TODO: fix tabs for dap
@@ -111,5 +111,5 @@ end
 require('persistent-breakpoints').setup {}
 vim.api.nvim_create_autocmd('BufReadPost', {
 	pattern = '*',
-	callback = require('persistent-breakpoints.api').load_breakpoints
+	callback = require('persistent-breakpoints.api').load_breakpoints,
 })

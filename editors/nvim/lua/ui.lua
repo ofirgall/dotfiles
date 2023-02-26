@@ -18,7 +18,7 @@ if not NVLOG then
 			-- background = '#20201a', -- Original -11, +1 for RG
 
 			winbar_bg = '#1d1d14', -- Original -5
-		}
+		},
 	}
 else
 	vim.o.termguicolors = true
@@ -69,7 +69,7 @@ require('dressing').setup {
 		win_options = {
 			winblend = 0,
 			winhighlight = require('ofirkai.plugins.dressing').winhighlight,
-		}
+		},
 	},
 }
 
@@ -84,19 +84,19 @@ require('nvim-tree').setup {
 		mappings = {
 			list = {
 				{ key = '<Escape>', action = 'close_node' },
-				{ key = 's',        action = 'search in path',      action_cb = search_in_path },
-				{ key = 'f',        action = 'find file in path',   action_cb = find_in_path },
-				{ key = 'gh',       action = 'git history in path', action_cb = git_hist_path },
-				{ key = '<C-o>',    action = 'split' },
-			}
+				{ key = 's', action = 'search in path', action_cb = search_in_path },
+				{ key = 'f', action = 'find file in path', action_cb = find_in_path },
+				{ key = 'gh', action = 'git history in path', action_cb = git_hist_path },
+				{ key = '<C-o>', action = 'split' },
+			},
 		},
 		relativenumber = true,
 		number = false,
 		signcolumn = 'no'
 	},
 	renderer = {
-		symlink_destination = false
-	}
+		symlink_destination = false,
+	},
 }
 vim.api.nvim_create_user_command('Locate', ':NvimTreeFindFile', {})
 
@@ -104,8 +104,8 @@ if not NVLOG then
 	-- glepnir/lspsaga.nvim
 	vim.diagnostic.config {
 		signs = {
-			priority = 8
-		}
+			priority = 8,
+		},
 	}
 	require('lspsaga').setup({
 		code_action = {
@@ -115,25 +115,25 @@ if not NVLOG then
 			},
 		},
 		lightbulb = {
-			sign_priority    = 10,
-			sign             = true,
-			virtual_text     = false,
-			enable_in_insert = false
+			sign_priority = 10,
+			sign = true,
+			virtual_text = false,
+			enable_in_insert = false,
 		},
 		rename = {
 			in_select = false,
 			whole_project = false,
 		},
 		symbol_in_winbar = {
-			enable = false
+			enable = false,
 		},
 		ui = {
 			code_action = '',
 			colors = {
 				normal_bg = scheme.ui_bg,
 				title_bg = scheme.mid_orange,
-			}
-		}
+			},
+		},
 	})
 end
 
@@ -154,7 +154,7 @@ if not vim.g.started_by_firenvim then
 	-- SmiteshP/nvim-navic
 	local navic = require('nvim-navic')
 	navic.setup {
-		separator = "  "
+		separator = '  '
 	}
 
 	local ofirkai_lualine = require('ofirkai.statuslines.lualine')
@@ -176,7 +176,7 @@ if not vim.g.started_by_firenvim then
 			-- lualine_b = { { 'branch', icon = '' }, 'diff', 'diagnostics' },
 			lualine_b = {},
 			lualine_c = {
-				{ 'filename', shorting_target = 0, icon = '', },
+				{ 'filename', shorting_target = 0, icon = '' },
 				{
 					navic.get_location,
 					cond = navic.is_available,
@@ -187,7 +187,7 @@ if not vim.g.started_by_firenvim then
 						local ft = api.nvim_buf_get_option(0, 'filetype')
 						return ft == 'json' or ft == 'jsonc'
 					end,
-				}
+				},
 			},
 			lualine_x = {
 				{
@@ -200,7 +200,7 @@ if not vim.g.started_by_firenvim then
 					separator = '|',
 					icon = '',
 				},
-				{ get_current_lsp_server_name, icon = ' LSP:' }
+				{ get_current_lsp_server_name, icon = ' LSP:' },
 			},
 			lualine_y = y_section,
 			lualine_z = { { 'filetype', separator = '' }, 'progress' },
@@ -210,7 +210,7 @@ if not vim.g.started_by_firenvim then
 	-- Refresh lualine for recording macros
 	api.nvim_create_autocmd({ 'RecordingEnter', 'RecordingLeave' }, {
 		group = config_autocmds,
-		callback = require('lualine').refresh
+		callback = require('lualine').refresh,
 	})
 
 	-- akinsho/bufferline.nvim must be loaded after color scheme
@@ -223,7 +223,7 @@ if not vim.g.started_by_firenvim then
 			numbers = 'ordinal',
 			max_name_length = 40,
 		},
-		highlights = require('ofirkai.tablines.bufferline').highlights
+		highlights = require('ofirkai.tablines.bufferline').highlights,
 	}
 
 	if not NVLOG then
@@ -231,7 +231,7 @@ if not vim.g.started_by_firenvim then
 		require('notify').setup {
 			background_colour = scheme.ui_bg,
 			fps = 60,
-			stages = "slide",
+			stages = 'slide',
 			timeout = 1000,
 			max_width = 50,
 			max_height = 20,
@@ -244,7 +244,7 @@ if not vim.g.started_by_firenvim then
 			},
 			lsp = {
 				signature = {
-					enabled = false -- I prefer to use cmp-nvim-lsp-signature-help with minimal design
+					enabled = false, -- I prefer to use cmp-nvim-lsp-signature-help with minimal design
 				},
 				override = {
 					-- Override `vim.lsp.buf.hover` and `nvim-cmp` doc formatter with `noice` doc formatter.
@@ -262,23 +262,23 @@ end
 -- Disable matchup higlights, use the default of vim
 api.nvim_create_autocmd('FileType', {
 	group = config_autocmds,
-	pattern = "*",
+	pattern = '*',
 	callback = function()
 		vim.b.matchup_matchparen_enabled = 0
-	end
+	end,
 })
 
 -- nvim-zh/colorful-winsep.nvim
 require('colorful-winsep').setup {
 	highlight = {
 		bg = scheme.background,
-		fg = scheme.vert_split_fg_active
+		fg = scheme.vert_split_fg_active,
 	},
 }
 
 -- https://github.com/b0o/incline.nvim/discussions/32
 local function get_diagnostic_label(props)
-	local icons = { error = '', warn = '', info = '', hint = '', }
+	local icons = { error = '', warn = '', info = '', hint = '' }
 	local label = {}
 
 	for severity, icon in pairs(icons) do
@@ -294,15 +294,15 @@ local function get_diagnostic_label(props)
 end
 
 local function get_git_diff(props)
-	local icons = { removed = "", changed = "", added = "" }
+	local icons = { removed = '', changed = '', added = '' }
 	local labels = {}
-	local signs = vim.api.nvim_buf_get_var(props.buf, "gitsigns_status_dict")
+	local signs = vim.api.nvim_buf_get_var(props.buf, 'gitsigns_status_dict')
 	-- local signs = vim.b.gitsigns_status_dict
 	for name, icon in pairs(icons) do
 		if tonumber(signs[name]) and signs[name] > 0 then
 			table.insert(labels, {
-				icon .. " " .. signs[name] .. " ",
-				group = "Diff" .. name
+				icon .. ' ' .. signs[name] .. ' ',
+				group = 'Diff' .. name,
 			})
 		end
 	end
@@ -322,7 +322,7 @@ require('incline').setup {
 		return {
 			-- { get_diagnostic_label(props) },
 			{ get_git_diff(props) },
-			{ ft_icon,            guifg = ft_color }, { ' ' },
+			{ ft_icon, guifg = ft_color }, { ' ' },
 			{ filename, gui = modified },
 		}
 	end,
@@ -340,5 +340,5 @@ require('incline').setup {
 
 -- luukvbaal/statuscol.nvim
 require('statuscol').setup {
-	setopt = true
+	setopt = true,
 }

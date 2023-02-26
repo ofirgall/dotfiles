@@ -11,7 +11,7 @@ local api = vim.api
 Hydra({
 	hint = [[
  ^^^^    Size
- ^^^^------------- 
+ ^^^^-------------
  _+_ _-_: height
  _>_ _<_: width
  ^ _=_ ^: equalize
@@ -21,7 +21,7 @@ Hydra({
 		timeout = 4000,
 		hint = {
 			border = 'rounded'
-		}
+		},
 	},
 	mode = 'n',
 	body = '<C-w>',
@@ -33,8 +33,8 @@ Hydra({
 		{ '<', '2<C-w><', { desc = 'decrease width' } },
 		{ '=', '<C-w>=', { exit = true, desc = 'equalize' } },
 		--
-		{ '<Esc>', nil, { exit = true } }
-	}
+		{ '<Esc>', nil, { exit = true } },
+	},
 })
 
 -- Draw boxes and arrows (venn.nvim)
@@ -68,7 +68,7 @@ local draw_hydra = Hydra({
 		{ '<C-l>', '<C-v>l:VBox<CR>' },
 		{ '<C-f>', ':VBox<CR>', { mode = 'v' } },
 		{ '<Esc>', nil, { exit = true, nowait = true } },
-	}
+	},
 })
 vim.api.nvim_create_user_command('Draw', function()
 	draw_hydra:activate()
@@ -87,29 +87,29 @@ local move_funcs = Hydra({
 		timeout = 4000,
 		hint = {
 			border = 'rounded'
-		}
+		},
 	},
 	mode = { 'n', 'x' },
 	heads = {
 		{ 'j', function()
 			ts_move.goto_next_start('@function.outer')
 			center_screen()
-		end },
+		end, },
 		{ 'J', function()
 			ts_move.goto_next_end('@function.outer')
 			center_screen()
-		end },
+		end, },
 		{ 'k', function()
 			ts_move.goto_previous_start('@function.outer')
 			center_screen()
-		end },
+		end, },
 		{ 'K', function()
 			ts_move.goto_previous_end('@function.outer')
 			center_screen()
-		end },
+		end, },
 		--
-		{ '<Esc>', nil, { exit = true } }
-	}
+		{ '<Esc>', nil, { exit = true } },
+	},
 })
 map({ 'n', 'x' }, 'gj', function()
 	ts_move.goto_next_start('@function.outer')
@@ -162,7 +162,7 @@ Hydra({
 		end,
 		on_exit = function()
 			vim.opt.spell = spell_status_before
-		end
+		end,
 	},
 	mode = 'n',
 	body = '<C-s>',
@@ -170,16 +170,16 @@ Hydra({
 		{ 'j', function()
 			api.nvim_input(']s')
 			center_screen()
-		end },
+		end, },
 		{ 'k', function()
 			api.nvim_input('[s')
 			center_screen()
-		end },
+		end, },
 		{ '<Enter>', function()
 			telescope_builtin.spell_suggest()
-		end },
+		end, },
 		--
 		{ '<Esc>', nil, { exit = true, nowait = true } },
 		{ 'q', nil, { exit = true, nowait = true } },
-	}
+	},
 })

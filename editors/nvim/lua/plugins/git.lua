@@ -35,7 +35,7 @@ gs.setup {
 		map('n', '<leader>hd', '<cmd>Gitsigns toggle_deleted<CR>')
 		-- Text object
 		map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-	end
+	end,
 }
 
 -- sindrets/diffview.nvim
@@ -48,22 +48,22 @@ require('diffview').setup {
 			git = {
 				single_file = {
 					follow = true,
-				}
-			}
+				},
+			},
 		},
 	},
 	key_bindings = {
 		view = {
-			['q']          = '<cmd>:DiffviewClose<cr>',
-			['<M-n>']      = actions.focus_files,
-			['<M-m>']      = actions.toggle_files,
+			['q'] = '<cmd>:DiffviewClose<cr>',
+			['<M-n>'] = actions.focus_files,
+			['<M-m>'] = actions.toggle_files,
 			['<leader>ck'] = actions.conflict_choose('ours'),
 			['<leader>cj'] = actions.conflict_choose('theirs'),
-			['<tab>']      = function()
+			['<tab>'] = function()
 				actions.select_next_entry()
 				actions.refresh_files()
 			end,
-			['<s-tab>']    = function()
+			['<s-tab>'] = function()
 				actions.select_prev_entry()
 				actions.refresh_files()
 			end,
@@ -129,17 +129,17 @@ api.nvim_create_autocmd('FileType', {
 		-- add overridden maps
 		vim.keymap.set('n', 'o', '<cmd>call b:__gitmessenger_popup.opts.mappings["o"][0]()<CR>', { buffer = 0 })
 		vim.keymap.set('n', 'i', '<cmd>call b:__gitmessenger_popup.opts.mappings["O"][0]()<CR>', { buffer = 0 })
-	end
+	end,
 })
 
 git_history = function(mode)
 	current_line = api.nvim_get_current_line()
 	if mode == 'v' then
-		start_pos = api.nvim_buf_get_mark(0, "<")
-		end_pos = api.nvim_buf_get_mark(0, ">")
+		start_pos = api.nvim_buf_get_mark(0, '<')
+		end_pos = api.nvim_buf_get_mark(0, '>')
 	elseif mode == 'n' then
-		start_pos = api.nvim_buf_get_mark(0, "[")
-		end_pos = api.nvim_buf_get_mark(0, "]")
+		start_pos = api.nvim_buf_get_mark(0, '[')
+		end_pos = api.nvim_buf_get_mark(0, ']')
 	end
 
 	start_line = start_pos[1]
@@ -203,7 +203,7 @@ diffview_hydra = Hydra({
 			gitsigns.next_hunk({ navigation_message = false })
 			center_screen()
 			return '<Ignore>'
-		end, { expr = true } },
+		end, { expr = true }, },
 		{ 'k', function()
 			-- TODO: make it move by changes only if there are no hunks
 			-- local diff = api.nvim_get_option_value('diff', {})
@@ -215,35 +215,35 @@ diffview_hydra = Hydra({
 			gitsigns.prev_hunk({ navigation_message = false })
 			center_screen()
 			return '<Ignore>'
-		end, { expr = true } },
+		end, { expr = true }, },
 		{ '<C-s>', function()
 			gitsigns.stage_hunk(nil)
 			gitsigns.next_hunk({ navigation_message = false })
 			center_screen()
 			return '<Ignore>'
-		end, { silent = true } },
+		end, { silent = true }, },
 		{ 'r', function()
 			gitsigns.reset_hunk(nil)
 			gitsigns.next_hunk({ navigation_message = false })
 			center_screen()
 			return '<Ignore>'
-		end, { silent = true } },
+		end, { silent = true }, },
 		{ 'R', ':Gitsigns reset_buffer<CR>', { silent = true } },
 		{ 'u', gitsigns.undo_stage_hunk },
 		{ 'S', gitsigns.stage_buffer },
 		{ '<C-k>', function()
-			actions.conflict_choose("ours")
-		end },
+			actions.conflict_choose('ours')
+		end, },
 		{ '<C-j>', function()
-			actions.conflict_choose("theirs")
-		end },
+			actions.conflict_choose('theirs')
+		end, },
 		{ '<C-a>', function()
-			actions.conflict_choose("all")
-		end },
+			actions.conflict_choose('all')
+		end, },
 		{ '<Enter>', '<cmd>Git<CR>', { exit = true } },
 		-- { 'q', nil, { exit = true, nowait = true } },
-		{ '<Esc>',   nil,            { exit = true, nowait = true } },
-	}
+		{ '<Esc>', nil, { exit = true, nowait = true } },
+	},
 })
 
 -- Auto git mode in diff files
@@ -257,7 +257,7 @@ api.nvim_create_autocmd('BufEnter', {
 			diffview_hydra:activate()
 			vim.b.git_hydra = true -- Turn on git hydra once for each buffer
 		end
-	end
+	end,
 })
 
 -- Flog
@@ -275,15 +275,15 @@ local function flog_current_commit()
 end
 
 local function flog_commit_range_visual()
-	local start_pos = api.nvim_buf_get_mark(0, "<")
-	local end_pos = api.nvim_buf_get_mark(0, ">")
+	local start_pos = api.nvim_buf_get_mark(0, '<')
+	local end_pos = api.nvim_buf_get_mark(0, '>')
 
 	local start_commit = get_flog_commit(start_pos[1])
 	local end_commit = get_flog_commit(end_pos[1])
 
 	return {
 		start_commit,
-		end_commit
+		end_commit,
 	}
 end
 

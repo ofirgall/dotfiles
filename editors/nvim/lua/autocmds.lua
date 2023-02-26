@@ -10,7 +10,7 @@ api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
 	callback = function()
 		vim.highlight.on_yank({ timeout = 350, higroup = 'Visual' })
-	end
+	end,
 })
 
 -- Auto spell files
@@ -19,7 +19,7 @@ api.nvim_create_autocmd('FileType', {
 	pattern = { 'gitcommit', 'markdown' },
 	callback = function()
 		vim.opt_local.spell = true
-	end
+	end,
 })
 
 -- Small quickfix
@@ -29,7 +29,7 @@ api.nvim_create_autocmd('FileType', {
 	pattern = { 'qf' },
 	callback = function()
 		api.nvim_win_set_height(0, QUICKFIX_HEIGHT)
-	end
+	end,
 })
 
 -- Auto set .tmux filetype
@@ -38,7 +38,7 @@ api.nvim_create_autocmd('BufEnter', {
 	pattern = '*.tmux',
 	callback = function(events)
 		api.nvim_buf_set_option(events.buf, 'filetype', 'tmux')
-	end
+	end,
 })
 
 -- Vertical help/man
@@ -47,5 +47,5 @@ api.nvim_create_autocmd('FileType', {
 	pattern = { 'help', 'man' },
 	callback = function()
 		vim.cmd('wincmd L')
-	end
+	end,
 })

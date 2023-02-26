@@ -25,8 +25,8 @@ close_all_but_current = function()
 				catch {
 					function()
 						-- print('Failed to delete buffer: ' .. bufnr)
-					end
-				}
+					end,
+				},
 			}
 		end
 	end

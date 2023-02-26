@@ -10,7 +10,7 @@ easypick.setup {
 		{
 			name = 'dirtyfiles',
 			command = 'git status -s | cut -c 4-',
-			previewer = easypick.previewers.default()
+			previewer = easypick.previewers.default(),
 		},
-	}
+	},
 }

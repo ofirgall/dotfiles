@@ -178,7 +178,7 @@ end, 'Comment visual selection')
 -- ThePrimeagen/harpoon
 map('n', '<leader>m', require('harpoon.mark').add_file, 'Add file to harpoon')
 map('n', '<leader>A', require('telescope').extensions.harpoon.marks, 'Jump to harpoon file')
-map('n', '<leader>a', require("harpoon.ui").toggle_quick_menu, 'Jump to harpoon file')
+map('n', '<leader>a', require('harpoon.ui').toggle_quick_menu, 'Jump to harpoon file')
 
 -- nguyenvukhang/nvim-toggler
 map({ 'n', 'v' }, '<leader>i', require('nvim-toggler').toggle, 'Invert words')
@@ -189,7 +189,7 @@ map('n', 'ss', function()
 		prompt_title = '',
 		layout_config = {
 			height = 0.25,
-			width = 0.25
+			width = 0.25,
 		},
 		layout_strategy = 'cursor',
 		sorting_strategy = 'ascending', -- From top
@@ -228,7 +228,7 @@ map('n', 'sW', 'saiW', 'Surround WORD', { remap = true })
 -- Replace qoutes
 local qoutes = { "'", '"', '`' }
 for _, char in ipairs(qoutes) do
-	map('n', "<leader>" .. char, 'srq' .. char, 'Replace surround to ' .. char, { remap = true }) -- <leader>{char} to replace sandwich to {char}
+	map('n', '<leader>' .. char, 'srq' .. char, 'Replace surround to ' .. char, { remap = true }) -- <leader>{char} to replace sandwich to {char}
 end
 
 -- Wansmer/sibling-swap.nvim
@@ -256,14 +256,14 @@ map('n', '<leader>fb', '<cmd>Telescope buffers<CR>', 'Browse open buffers')
 -- Find word
 map('n', '<leader>fw', live_grep, 'search in all files (fuzzy finder)')
 map('v', '<leader>fw', '<Esc><cmd>lua live_grep({}, "v")<cr>', 'search in all files (default text is from visual)')
-map('n', '<leader>fcw', function() live_grep({}, "cword") end, 'Find current word')
-map('n', '<leader>fcW', function() live_grep({}, "cWORD") end, 'Find current word')
+map('n', '<leader>fcw', function() live_grep({}, 'cword') end, 'Find current word')
+map('n', '<leader>fcW', function() live_grep({}, 'cWORD') end, 'Find current word')
 map('n', '<leader>fm', ':set opfunc=LiveGrepRawOperator<CR>g@', 'Find with movement')
 vim.cmd("function! LiveGrepRawOperator(...) \n lua live_grep({}, 'n') \n endfunction") -- used by `<leader>fm`
 
 -- Find in current dir
 map('n', '<leader>fcd', live_grep_current_dir, 'Find in current dir')
-map('n', '<leader>fcdw', function() live_grep_current_dir(vim.fn.expand("<cword>")) end,
+map('n', '<leader>fcdw', function() live_grep_current_dir(vim.fn.expand('<cword>')) end,
 	'Find in current dir current word')
 
 
@@ -289,7 +289,7 @@ end, 'Go to Definition')
 
 local lsp_implementations = function()
 	require 'telescope.builtin'.lsp_implementations {
-		show_line = false
+		show_line = false,
 	}
 end
 
@@ -306,7 +306,7 @@ map('n', 'god', function()
 	goto_def()
 end, 'Go to Definition in Xsplit')
 map('n', 'gKD',
-	function() require("telescope.builtin").lsp_dynamic_workspace_symbols({ default_text = vim.fn.expand("<cword>") }) end,
+	function() require('telescope.builtin').lsp_dynamic_workspace_symbols({ default_text = vim.fn.expand('<cword>') }) end,
 	'Go to definition under current word')
 map('n', 'gi', lsp_implementations, 'Go to Implementation')
 map('n', 'gvi', function()
@@ -376,9 +376,9 @@ map('n', 'gp', function() require 'telescope.builtin'.diagnostics { bufnr = 0 } 
 map('n', 'gP', require 'telescope.builtin'.diagnostics, 'Go to workspace Problems')
 
 -- RRethy/vim-illuminate
-map('n', '<C-n>', function() require "illuminate".goto_next_reference({ wrap = true }) end,
+map('n', '<C-n>', function() require 'illuminate'.goto_next_reference({ wrap = true }) end,
 	'jump to Next occurrence of var on cursor')
-map('n', '<C-p>', function() require "illuminate".goto_prev_reference({ reverse = true, wrap = true }) end,
+map('n', '<C-p>', function() require 'illuminate'.goto_prev_reference({ reverse = true, wrap = true }) end,
 	'jump to Previous occurrence of var on cursor')
 
 -- Lsp UI
@@ -545,13 +545,13 @@ local keys_by_ft = {
 		map_buffer(bufid, 'x', '<C-s>', '<Esc><cmd>lua flog_diff_current_visual()<cr>',
 			'Floggraph: show diff of selection')
 		map_buffer(bufid, 'n', '<C-s>', flog_show_current, 'Floggraph: show current in diffview')
-	end
+	end,
 }
 keymaps_autocmd_group = api.nvim_create_augroup('KeyMaps', {})
 
 api.nvim_create_autocmd('FileType', {
 	group = keymaps_autocmd_group,
-	pattern = "*",
+	pattern = '*',
 	callback = function(events)
 		local buf_ft = events.match
 		for ft, set_keys_func in pairs(keys_by_ft) do
@@ -559,5 +559,5 @@ api.nvim_create_autocmd('FileType', {
 				set_keys_func(events.buf)
 			end
 		end
-	end
+	end,
 })

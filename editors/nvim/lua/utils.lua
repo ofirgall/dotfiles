@@ -24,7 +24,7 @@ local function termcodes(s)
 end
 
 local file_exists = function(name)
-	local f = io.open(name, "r")
+	local f = io.open(name, 'r')
 	if f ~= nil then
 		io.close(f)
 		return true
@@ -33,8 +33,8 @@ local file_exists = function(name)
 	end
 end
 
-NO_SUDO = file_exists(os.getenv("HOME") .. "/.no_sudo_indicator")
-IS_REMOTE = file_exists(os.getenv("HOME") .. "/.remote_indicator")
+NO_SUDO = file_exists(os.getenv('HOME') .. '/.no_sudo_indicator')
+IS_REMOTE = file_exists(os.getenv('HOME') .. '/.remote_indicator')
 
 split_if_not_exist = function(is_vsplit)
 	if is_vsplit then
@@ -113,11 +113,11 @@ local get_range = function(mode)
 	local start_pos = { 0, 0 }
 	local end_pos = { 0, 0 }
 	if mode == 'v' then
-		start_pos = api.nvim_buf_get_mark(0, "<")
-		end_pos = api.nvim_buf_get_mark(0, ">")
+		start_pos = api.nvim_buf_get_mark(0, '<')
+		end_pos = api.nvim_buf_get_mark(0, '>')
 	elseif mode == 'n' then
-		start_pos = api.nvim_buf_get_mark(0, "[")
-		end_pos = api.nvim_buf_get_mark(0, "]")
+		start_pos = api.nvim_buf_get_mark(0, '[')
+		end_pos = api.nvim_buf_get_mark(0, ']')
 	end
 
 	return start_pos, end_pos
@@ -131,7 +131,7 @@ goto_def = function()
 		api.nvim_command(':help ' .. vim.fn.expand('<cword>'))
 	else
 		require 'telescope.builtin'.lsp_definitions({
-			show_line = false
+			show_line = false,
 		})
 	end
 end
@@ -175,7 +175,7 @@ get_current_lsp_server_name = function()
 end
 
 node_relative_path = function(node)
-	return vim.fn.fnamemodify(node.absolute_path, ":~:.")
+	return vim.fn.fnamemodify(node.absolute_path, ':~:.')
 end
 
 search_in_path = function(node)
@@ -222,8 +222,8 @@ local function telescope_default_text(mode)
 	end
 end
 
-find_files            = function(mode, cwd)
-	require("telescope.builtin").find_files({
+find_files = function(mode, cwd)
+	require('telescope.builtin').find_files({
 		cwd = cwd,
 		hidden = true,
 		follow = true,
@@ -232,7 +232,7 @@ find_files            = function(mode, cwd)
 	})
 end
 
-live_grep             = function(opts, mode)
+live_grep = function(opts, mode)
 	opts = opts or {}
 	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob]")'
 	if not opts.default_text then
@@ -245,20 +245,20 @@ end
 live_grep_current_dir = function(default_text)
 	default_text = default_text or ''
 	live_grep({
-		default_text = '-g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*"' .. ' -F "' .. default_text })
+		default_text = '-g"' .. vim.fn.fnamemodify(vim.fn.expand('%'), ':.:h') .. '/*"' .. ' -F "' .. default_text })
 end
 
-find_current_file     = function()
+find_current_file = function()
 	local current_file = vim.fn.expand('%:t:r')
-	require("telescope.builtin").find_files({
+	require('telescope.builtin').find_files({
 		default_text = current_file,
 		hidden = true,
 		follow = true,
 	})
 end
 
-local Terminal        = require('toggleterm.terminal').Terminal
-local deployTerminal  = nil
+local Terminal = require('toggleterm.terminal').Terminal
+local deployTerminal = nil
 function reset_deploy()
 	deployTerminal = Terminal:new({ cmd = 'deploy', dir = '%:p:h' })
 end

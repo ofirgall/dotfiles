@@ -18,10 +18,10 @@ require('nvim-treesitter.configs').setup {
 	ignore_install = ignore_install_langs,
 	highlight = {
 		enable = true,
-		disable = { 'help', 'git_rebase', 'gitcommit', 'comment' }
+		disable = { 'help', 'git_rebase', 'gitcommit', 'comment' },
 	},
 	indent = {
-		enable = true
+		enable = true,
 	},
 	incremental_selection = {
 		enable = true,
@@ -98,7 +98,7 @@ require('nvim-treesitter.configs').setup {
 	},
 	-- andymass/vim-matchup
 	matchup = {
-		enable = true
+		enable = true,
 	},
 	-- mrjones2014/nvim-ts-rainbow
 	rainbow = {
@@ -125,12 +125,12 @@ require('nvim-treesitter.configs').setup {
 		enable_autocmd = false,
 		config = {
 			query = '; %s'
-		}
-	}
+		},
+	},
 }
 
 -- ziontee113/SelectEase
-local select_ease = require("SelectEase")
+local select_ease = require('SelectEase')
 local lua_query = [[
 	;; query
 	((identifier) @cap)

@@ -22,12 +22,12 @@ require('auto-session').setup {
 	post_save_cmds = {
 		function()
 			require('trailblazer').save_trailblazer_state_to_file()
-		end
+		end,
 	},
 	post_restore_cmds = {
 		function()
 			require('trailblazer').load_trailblazer_state_from_file()
-		end
+		end,
 	},
 }
 
@@ -55,14 +55,14 @@ end
 
 -- ethanholz/nvim-lastplace
 require('nvim-lastplace').setup {
-	lastplace_ignore_buftype = { 'terminal' }
+	lastplace_ignore_buftype = { 'terminal' },
 }
 
 -- michaelb/sniprun
 require 'sniprun'.setup {
 	display = {
 		'Classic'
-	}
+	},
 }
 
 -- nacro90/numb.nvim
@@ -108,8 +108,8 @@ toggle_term.setup {
 		Normal = {
 			guibg = '#000000',
 			guifg = '#ffffff',
-		}
-	}
+		},
+	},
 }
 
 local terms = require('toggleterm.terminal')
@@ -157,8 +157,8 @@ require('neo-zoom').setup {
 	callbacks = {
 		function()
 			api.nvim_set_hl_ns(floating_code_ns)
-		end
-	}
+		end,
+	},
 }
 
 -- shivamashtikar/tmuxjump.vim
@@ -190,11 +190,11 @@ require('iron.core').setup {
 		close_window_on_exit = true,
 		repl_definition = {
 			sh = {
-				command = { 'zsh' }
+				command = { 'zsh' },
 			},
 			python = {
-				command = { 'ipython3' }
-			}
+				command = { 'ipython3' },
+			},
 		},
 		repl_open_cmd = 'belowright 15 split',
 	},
@@ -210,8 +210,8 @@ require('iron.core').setup {
 	-- },
 	highlight = {
 		italic = false,
-		bold = false
-	}
+		bold = false,
+	},
 }
 
 api.nvim_create_user_command('IPython', function()
@@ -285,8 +285,8 @@ require('mind').setup {
 		selection = {
 			['<cr>'] = 'toggle_node',
 			['e'] = 'open_data',
-		}
-	}
+		},
+	},
 }
 
 -- s1n7ax/nvim-window-picker (required by mind.nvim)
@@ -318,7 +318,7 @@ api.nvim_create_user_command('PhraseCase', function() textcase.current_word('to_
 local femaco_margin = {
 	width = 10,
 	height = 6,
-	top = 2
+	top = 2,
 }
 require('femaco').setup {
 	post_open_float = function(winnr)
@@ -427,7 +427,7 @@ retrail.setup {
 		auto = false,
 		whitespace = true, -- Trailing whitespace as highlighted.
 		blanklines = true, -- Final blank (i.e. whitespace only) lines.
-	}
+	},
 }
 
 api.nvim_create_user_command('TrimWhiteSpace', function() retrail:trim() end, {})
@@ -453,10 +453,10 @@ require('based').setup {
 }
 
 -- cloudysake/swap-split.nvim
-require("swap-split").setup({
+require('swap-split').setup({
 	ignore_filetypes = {
 		'NvimTree'
-	}
+	},
 })
 
 -- RaafatTurki/hex.nvim
@@ -489,7 +489,7 @@ require('trailblazer').setup {
 				set_trail_mark_stack_sort_mode = '<M-s>',
 			},
 		},
-	}
+	},
 }
 
 -- aduros/ai.vim

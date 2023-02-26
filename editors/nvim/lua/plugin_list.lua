@@ -41,7 +41,7 @@ return require('packer').startup(function()
 			'rcarriga/cmp-dap',
 			'f3fora/cmp-spell',
 			'ofirgall/cmp-lspkind-priority'
-		}
+		},
 	}
 	use 'ofirgall/cmp-nvim-lsp-signature-help' -- Signature hint while typing
 
@@ -131,7 +131,7 @@ return require('packer').startup(function()
 		requires = { -- plugins
 			'ggandor/leap-ast.nvim', -- Use leap.nvim to jump around to treesitter contexts
 			'ggandor/flit.nvim', -- Highlight results from f/F/t/T and let you go back forward with the same keys
-		}
+		},
 	}
 
 	-- Operators --
@@ -149,8 +149,8 @@ return require('packer').startup(function()
 	use { 'ofirgall/ofirkai.nvim', branch = 'exp' } -- my colorscheme
 	use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' } -- Status line
 	use 'lukas-reineke/indent-blankline.nvim' -- Indent line helper
-	use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' } -- Tabline
-	use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', } -- File Tree
+	use { 'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons' } -- Tabline
+	use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons' } -- File Tree
 	use 'stevearc/dressing.nvim' -- Add ui for default vim.ui.input
 	use 'nvim-treesitter/nvim-treesitter-context' -- Add code context to top of the line
 	use { 'folke/noice.nvim', -- Nice ui for notify, :messages, and better cmdline
@@ -158,7 +158,7 @@ return require('packer').startup(function()
 			'MunifTanjim/nui.nvim',
 			'rcarriga/nvim-notify',
 			'hrsh7th/nvim-cmp',
-		}
+		},
 	}
 	use 'nvim-zh/colorful-winsep.nvim' -- Highlight current window seperator
 	use 'b0o/incline.nvim' -- Floating statuslines for Neovim
@@ -214,8 +214,8 @@ return require('packer').startup(function()
 	use 'AckslD/nvim-FeMaco.lua' -- edit code blocks in markdown
 	use {
 		'phaazon/mind.nvim', -- notetaking with tree
-		tag = "v2.*",
-		requires = { 's1n7ax/nvim-window-picker', tag = 'v1.*' }
+		tag = 'v2.*',
+		requires = { 's1n7ax/nvim-window-picker', tag = 'v1.*' },
 	}
 	use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }
 	use 'ofirgall/vim-log-highlighting' -- Highlight .log files
@@ -232,7 +232,7 @@ return require('packer').startup(function()
 		config = function()
 			require('chatgpt').setup {
 			}
-		end
+		end,
 	}
 	use 'aduros/ai.vim' -- Quick ChatGPT from nvim, <C-a> in insert mode or :AI in selection
 

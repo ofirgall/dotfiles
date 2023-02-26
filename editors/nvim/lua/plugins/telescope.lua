@@ -37,18 +37,18 @@ require('telescope').setup {
 				['<C-v>'] = require('telescope.actions').select_vertical + require('telescope.actions').center,
 				['<C-t>'] = require('telescope.actions').select_tab + require('telescope.actions').center,
 				['<C-s>'] = require('telescope.actions.layout').toggle_preview,
-			}
+			},
 		},
 		layout_config = {
 			horizontal = {
 				width = 0.90,
 				preview_width = 0.5,
-				height = 0.90
+				height = 0.90,
 			},
 			vertical = {
 				width = 0.95,
 				preview_height = 0.75,
-				height = 0.90
+				height = 0.90,
 			},
 		},
 		prompt_prefix = ' ',
@@ -60,7 +60,7 @@ require('telescope').setup {
 	extensions = {
 		['ui-select'] = {
 			require('telescope.themes').get_dropdown {
-			}
+			},
 		},
 		undo = {
 			side_by_side = true,
@@ -70,18 +70,18 @@ require('telescope').setup {
 			},
 			mappings = {
 				n = {
-					["<cr>"] = require("telescope-undo.actions").yank_additions,
-					["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
-					["<C-cr>"] = require("telescope-undo.actions").restore,
+					['<cr>'] = require('telescope-undo.actions').yank_additions,
+					['<S-cr>'] = require('telescope-undo.actions').yank_deletions,
+					['<C-cr>'] = require('telescope-undo.actions').restore,
 				},
 				i = {
-					["<cr>"] = require("telescope-undo.actions").yank_additions,
-					["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
-					["<C-cr>"] = require("telescope-undo.actions").restore,
+					['<cr>'] = require('telescope-undo.actions').yank_additions,
+					['<S-cr>'] = require('telescope-undo.actions').yank_deletions,
+					['<C-cr>'] = require('telescope-undo.actions').restore,
 				},
-			}
-		}
-	}
+			},
+		},
+	},
 }
 
 require('telescope').load_extension('fzf')

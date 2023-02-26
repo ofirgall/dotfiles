@@ -17,7 +17,7 @@ snippy.setup({
 -- danymat/neogen
 local neogen = require('neogen')
 neogen.setup {
-	enabled = true
+	enabled = true,
 }
 
 -- hrsh7th/nvim-cmp
@@ -41,9 +41,9 @@ local function all_visible_buffers_source(priority, max_item_count)
 					bufs[vim.api.nvim_win_get_buf(win)] = true
 				end
 				return vim.tbl_keys(bufs)
-			end
+			end,
 		},
-		max_item_count = max_item_count
+		max_item_count = max_item_count,
 	}
 end
 
@@ -78,7 +78,7 @@ lspkind_priority.setup {
 		'Operator',
 		'TypeParameter',
 		'Text',
-	}
+	},
 }
 
 cmp_setup_dict = {
@@ -88,9 +88,9 @@ cmp_setup_dict = {
 		end,
 	},
 	mapping = {
-		['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-8), { 'i', 'c' }),
+		['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs( -8), { 'i', 'c' }),
 		['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(8), { 'i', 'c' }),
-		['<C-y>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
+		['<C-y>'] = cmp.mapping(cmp.mapping.scroll_docs( -1), { 'i', 'c' }),
 		['<C-e>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
 		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
 		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
@@ -121,7 +121,7 @@ cmp_setup_dict = {
 		['<S-Tab>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif snippy.can_jump(-1) then
+			elseif snippy.can_jump( -1) then
 				snippy.previous()
 			else
 				fallback()
@@ -133,7 +133,7 @@ cmp_setup_dict = {
 			symbol_map = require('ofirkai.plugins.nvim-cmp').kind_icons,
 			maxwidth = 50,
 			mode = 'symbol'
-		})
+		}),
 	},
 	window = require('ofirkai.plugins.nvim-cmp').window,
 	sources = cmp.config.sources({
@@ -167,9 +167,8 @@ cmp_setup_dict = {
 
 	},
 	preselect = cmp.PreselectMode.None, -- Auto select the first item
-
 	experimental = {
-		ghost_text = false
+		ghost_text = false,
 	},
 }
 
@@ -178,20 +177,20 @@ cmp.setup(cmp_setup_dict)
 cmp.setup.cmdline('/', {
 	sources = {
 		all_visible_buffers_source(nil, 15),
-	}
+	},
 })
 
 cmp.setup.cmdline(':', {
 	sources = cmp.config.sources({
-		{ name = 'path', option = { trailing_slash = true } }
+		{ name = 'path', option = { trailing_slash = true } },
 	}, {
 		{
 			name = 'cmdline',
 			option = {
-				ignore_cmds = { 'Man', '!' }
-			}
-		}
-	})
+				ignore_cmds = { 'Man', '!' },
+			},
+		},
+	}),
 })
 
 cmp.setup.filetype({ 'dap-repl', 'dapui_watches' }, {
@@ -204,16 +203,16 @@ cmp.setup.filetype('gitcommit', {
 	sources = {
 		{ name = 'git' },
 		all_visible_buffers_source(nil, 15),
-		{ name = 'spell', max_item_count = 5 }
+		{ name = 'spell', max_item_count = 5 },
 		-- { name = 'dictionary' }, -- TODO: get a faster dictionary + better
-	}
+	},
 })
 
 cmp.setup.filetype('toml', {
 	sources = {
 		{ name = 'crates', priority = 500 },
 		all_visible_buffers_source(nil, 15),
-	}
+	},
 })
 
 -- ray-x/navigator.lua, No filetypes for guihua
@@ -243,7 +242,7 @@ require('cmp_git').setup {
 -- uga-rosa/cmp-dictionary
 require('cmp_dictionary').setup {
 	dic = {
-		["*"] = { "/usr/share/dict/words" },
+		['*'] = { '/usr/share/dict/words' },
 	},
 	first_case_insensitive = true,
 }

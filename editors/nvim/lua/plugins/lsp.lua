@@ -29,10 +29,10 @@ else
 			pylsp = {
 				plugins = {
 					pycodestyle = {
-						enabled = false
-					}
-				}
-			}
+						enabled = false,
+					},
+				},
+			},
 		},
 	}
 end
@@ -69,7 +69,7 @@ require('inlay-hints').setup {
 				return string.format('  %s', trim_hint(hint))
 			end,
 		},
-	}
+	},
 }
 
 -- simrat39/rust-tools.nvim
@@ -79,9 +79,9 @@ require('rust-tools').setup {
 		capabilities = capabilities,
 		settings = {
 			['rust-analyzer'] = {
-				completion = { callable = { snippets = 'add_parentheses' } }
-			}
-		}
+				completion = { callable = { snippets = 'add_parentheses' } },
+			},
+		},
 	},
 	tools = {
 		reload_workspace_from_cargo_toml = false,
@@ -91,7 +91,7 @@ require('rust-tools').setup {
 		hover_actions = {
 			auto_focus = true,
 		},
-	}
+	},
 }
 
 -- Saecki/crates.nvim
@@ -136,7 +136,7 @@ end
 
 lspconfig.clangd.setup {
 	init_options = {
-		clangdFileStatus = true
+		clangdFileStatus = true,
 	},
 	on_attach = lsp_on_attach,
 	capabilities = capabilities,
@@ -147,7 +147,7 @@ lspconfig.clangd.setup {
 require('neodev').setup {
 	library = {
 		plugins = { 'nvim-treesitter', 'plenary.nvim', 'ofirkai.nvim' },
-	}
+	},
 }
 
 lspconfig.lua_ls.setup {
@@ -167,7 +167,7 @@ lspconfig.lua_ls.setup {
 
 -- ofirgall/format-on-leave.nvim
 require('format-on-leave').setup {
-	pattern = { '*.go', '*.rs', '*.lua' }
+	pattern = { '*.go', '*.rs', '*.lua' },
 }
 
 local path = vim.fn.stdpath('config') .. '/spell/en.utf-8.add'
@@ -200,7 +200,6 @@ require('lsp_lines').setup {
 -- Disable update diagnostic while inserting
 vim.diagnostic.config({
 	update_in_insert = false,
-
 	-- Start virtual text and lines disabled
 	virtual_lines = false,
 	virtual_text = { severity = vim.diagnostic.severity.ERROR },
@@ -233,14 +232,14 @@ require('go').setup {
 					parameterNames = true,
 					rangeVariableTypes = true,
 				},
-			}
-		}
+			},
+		},
 	},
 	lsp_on_attach = lsp_on_attach,
 	lsp_diag_hdlr = false, -- Disable go.nvim diagnostics viewer
 	lsp_inlay_hints = {
 		enable = false, -- Using inlay-hints.nvim instead
-	}
+	},
 }
 
 -- simrat39/symbols-outline.nvim

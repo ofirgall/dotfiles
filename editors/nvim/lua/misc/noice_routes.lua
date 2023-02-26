@@ -10,9 +10,9 @@ return {
 	-- Disable "written" messages
 	{
 		filter = {
-			event = "msg_show",
-			kind = "",
-			find = "written",
+			event = 'msg_show',
+			kind = '',
+			find = 'written',
 		},
 		opts = { skip = true },
 	},
@@ -71,65 +71,65 @@ return {
 	-- Disable "redo/undo" messages
 	{
 		filter = {
-			event = "msg_show",
-			kind = "lua_error",
-			find = "more line",
+			event = 'msg_show',
+			kind = 'lua_error',
+			find = 'more line',
 		},
 		opts = { skip = true },
 	},
 	{
 		filter = {
-			event = "msg_show",
-			kind = "lua_error",
-			find = "fewer line",
+			event = 'msg_show',
+			kind = 'lua_error',
+			find = 'fewer line',
 		},
 		opts = { skip = true },
 	},
 	{
 		filter = {
-			event = "msg_show",
-			kind = "lua_error",
-			find = "line less",
+			event = 'msg_show',
+			kind = 'lua_error',
+			find = 'line less',
 		},
 		opts = { skip = true },
 	},
 	{
 		filter = {
-			event = "msg_show",
-			kind = "lua_error",
-			find = "change;",
+			event = 'msg_show',
+			kind = 'lua_error',
+			find = 'change;',
 		},
 		opts = { skip = true },
 	},
 	{
 		filter = {
-			event = "msg_show",
-			kind = "",
-			find = "more line",
+			event = 'msg_show',
+			kind = '',
+			find = 'more line',
 		},
 		opts = { skip = true },
 	},
 	{
 		filter = {
-			event = "msg_show",
-			kind = "",
-			find = "fewer line",
+			event = 'msg_show',
+			kind = '',
+			find = 'fewer line',
 		},
 		opts = { skip = true },
 	},
 	{
 		filter = {
-			event = "msg_show",
-			kind = "",
-			find = "line less",
+			event = 'msg_show',
+			kind = '',
+			find = 'line less',
 		},
 		opts = { skip = true },
 	},
 	{
 		filter = {
-			event = "msg_show",
-			kind = "",
-			find = "change;",
+			event = 'msg_show',
+			kind = '',
+			find = 'change;',
 		},
 		opts = { skip = true },
 	},
