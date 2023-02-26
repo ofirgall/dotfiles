@@ -20,7 +20,7 @@ sudo add-apt-repository ppa:git-core/ppa -y # newer git, requires update and upg
 echo 'Installing Basic Libs'
 sudo apt install -y wget moreutils ipython3 pcregrep python3-pip build-essential fzf daemon curl cmake btop toilet
 
-python3 -m pip install brotab ranger-fm
+python3 -m pip install brotab ranger-fm sgpt
 $HOME/.local/bin/bt install
 
 # Install bat & rg
