@@ -169,8 +169,8 @@ return require('packer').startup(function()
 	use 'ofirgall/open-jira.nvim'
 
 	-- Splits manipulation --
-	use 'szw/vim-maximizer' -- Maximize windows (splits) in vim
 	use 'cloudysake/swap-split.nvim' -- Swap splits
+	use 'nyngwang/NeoZoom.lua' -- Zoom split
 
 	-- Misc --
 	use 'RaafatTurki/hex.nvim' -- Edit binary flies from nvim

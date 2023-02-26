@@ -242,7 +242,7 @@ diffview_hydra = Hydra({
 		end },
 		{ '<Enter>', '<cmd>Git<CR>', { exit = true } },
 		-- { 'q', nil, { exit = true, nowait = true } },
-		{ '<Esc>', nil, { exit = true, nowait = true } },
+		{ '<Esc>',   nil,            { exit = true, nowait = true } },
 	}
 })
 

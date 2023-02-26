@@ -152,8 +152,17 @@ require('term-edit').setup {
 -- NMAC427/guess-indent.nvim
 require('guess-indent').setup {}
 
--- szw/vim-maximizer
-vim.g.maximizer_default_mapping_key = '<M-Z>'
+local floating_code_ns = api.nvim_create_namespace('Floating Window for Code')
+api.nvim_set_hl(floating_code_ns, 'NormalFloat', { link = 'Normal' })
+
+-- nyngwang/NeoZoom.lua
+require('neo-zoom').setup {
+	callbacks = {
+		function()
+			api.nvim_set_hl_ns(floating_code_ns)
+		end
+	}
+}
 
 -- shivamashtikar/tmuxjump.vim
 vim.g.tmuxjump_telescope = true

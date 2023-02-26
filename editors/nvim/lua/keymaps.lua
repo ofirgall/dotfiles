@@ -164,6 +164,7 @@ map('n', '<leader>B', function()
 	deploy()
 end, 'Reset deploy, build & deploy')
 map({ 'n', 'v' }, '<leader>H', require('based').convert, 'Convert hex <=> decimal')
+map({ 'n', 'v' }, '<M-Z>', function() vim.cmd('NeoZoomToggle') end, 'Zoom split', { nowait = true })
 
 -- numToStr/Comment.nvim
 local ctrl_slash = '<C-_>' -- For some reason this is <C-/>
