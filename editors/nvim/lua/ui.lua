@@ -84,9 +84,9 @@ require('nvim-tree').setup {
 		mappings = {
 			list = {
 				{ key = '<Escape>', action = 'close_node' },
-				{ key = 'f', action = 'find in path', action_cb = find_in_path },
-				{ key = 'gh', action = 'git history in path', action_cb = git_hist_path },
-				{ key = '<C-o>', action = 'split' },
+				{ key = 'f',        action = 'find in path',        action_cb = find_in_path },
+				{ key = 'gh',       action = 'git history in path', action_cb = git_hist_path },
+				{ key = '<C-o>',    action = 'split' },
 			}
 		},
 		relativenumber = true,
@@ -299,7 +299,8 @@ local function get_git_diff(props)
 	-- local signs = vim.b.gitsigns_status_dict
 	for name, icon in pairs(icons) do
 		if tonumber(signs[name]) and signs[name] > 0 then
-			table.insert(labels, { icon .. " " .. signs[name] .. " ",
+			table.insert(labels, {
+				icon .. " " .. signs[name] .. " ",
 				group = "Diff" .. name
 			})
 		end
@@ -320,7 +321,7 @@ require('incline').setup {
 		return {
 			-- { get_diagnostic_label(props) },
 			{ get_git_diff(props) },
-			{ ft_icon, guifg = ft_color }, { ' ' },
+			{ ft_icon,            guifg = ft_color }, { ' ' },
 			{ filename, gui = modified },
 		}
 	end,
