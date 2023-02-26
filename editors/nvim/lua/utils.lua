@@ -184,6 +184,10 @@ search_in_path = function(node)
 	require('telescope').extensions.live_grep_args.live_grep_args(opts)
 end
 
+find_in_path = function(node)
+	find_files(nil, node_relative_path(node))
+end
+
 git_hist_path = function(node)
 	vim.fn.execute('DiffviewFileHistory ' .. node_relative_path(node))
 end
@@ -218,8 +222,9 @@ local function telescope_default_text(mode)
 	end
 end
 
-find_files            = function(mode)
+find_files            = function(mode, cwd)
 	require("telescope.builtin").find_files({
+		cwd = cwd,
 		hidden = true,
 		follow = true,
 		default_text = telescope_default_text(mode),
