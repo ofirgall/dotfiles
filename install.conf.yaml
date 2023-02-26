@@ -9,14 +9,14 @@
       create: true
 
 - link:
-    ~/.config/sublime-text/Packages/User:
-        path: editors/sublime/User
-    ~/.config/sublime-text/Packages/C++:
-        path: editors/sublime/C++
-    ~/.config/sublime-text/Packages/Python:
-        path: editors/sublime/Python
-    ~/.config/sublime-text/Packages/CustomStatusBar:
-        path: editors/sublime/CustomStatusBar
+    # ~/.config/sublime-text/Packages/User:
+    #     path: editors/sublime/User
+    # ~/.config/sublime-text/Packages/C++:
+    #     path: editors/sublime/C++
+    # ~/.config/sublime-text/Packages/Python:
+    #     path: editors/sublime/Python
+    # ~/.config/sublime-text/Packages/CustomStatusBar:
+    #     path: editors/sublime/CustomStatusBar
     ~/.config/Code/User/settings.json:
         path: editors/vscode/settings.json
     ~/.config/Code/User/keybindings.json:
@@ -38,7 +38,7 @@
 
 
 - shell:
-    - [install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
+    # - [install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
     - [install_scripts/install_vscode.sh, Installing vscode]
     - [editors/vscode/install_extensions.sh, Installing vscode extensions]
     - [install_scripts/install_fusuma.sh, Installing Fusuma]
