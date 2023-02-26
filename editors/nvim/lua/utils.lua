@@ -25,7 +25,12 @@ end
 
 local file_exists = function(name)
 	local f = io.open(name, "r")
-	if f ~= nil then io.close(f) return true else return false end
+	if f ~= nil then
+		io.close(f)
+		return true
+	else
+		return false
+	end
 end
 
 NO_SUDO = file_exists(os.getenv("HOME") .. "/.no_sudo_indicator")
@@ -173,7 +178,7 @@ node_relative_path = function(node)
 	return vim.fn.fnamemodify(node.absolute_path, ":~:.")
 end
 
-find_in_path = function(node)
+search_in_path = function(node)
 	opts = {}
 	opts.default_text = '-g"' .. node_relative_path(node) .. '/**" "'
 	require('telescope').extensions.live_grep_args.live_grep_args(opts)
@@ -213,12 +218,16 @@ local function telescope_default_text(mode)
 	end
 end
 
-find_files = function(mode)
-	require("telescope.builtin").find_files({ hidden = true, follow = true, default_text = telescope_default_text(mode),
-		layout_strategy = 'horizontal' })
+find_files            = function(mode)
+	require("telescope.builtin").find_files({
+		hidden = true,
+		follow = true,
+		default_text = telescope_default_text(mode),
+		layout_strategy = 'horizontal'
+	})
 end
 
-live_grep = function(opts, mode)
+live_grep             = function(opts, mode)
 	opts = opts or {}
 	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob]")'
 	if not opts.default_text then
@@ -230,10 +239,11 @@ end
 
 live_grep_current_dir = function(default_text)
 	default_text = default_text or ''
-	live_grep({ default_text = '-g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*"' .. ' -F "' .. default_text })
+	live_grep({
+		default_text = '-g"' .. vim.fn.fnamemodify(vim.fn.expand("%"), ":.:h") .. '/*"' .. ' -F "' .. default_text })
 end
 
-find_current_file = function()
+find_current_file     = function()
 	local current_file = vim.fn.expand('%:t:r')
 	require("telescope.builtin").find_files({
 		default_text = current_file,
@@ -242,8 +252,8 @@ find_current_file = function()
 	})
 end
 
-local Terminal       = require('toggleterm.terminal').Terminal
-local deployTerminal = nil
+local Terminal        = require('toggleterm.terminal').Terminal
+local deployTerminal  = nil
 function reset_deploy()
 	deployTerminal = Terminal:new({ cmd = 'deploy', dir = '%:p:h' })
 end
