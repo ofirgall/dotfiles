@@ -67,6 +67,7 @@ local top_bar_bg_focus = '#5c380b'
 local top_bar_fg_focus = '#d7d7d7'
 local theme = beautiful.get()
 theme.font = 'CaskaydiaCove Nerd Font Mono SemiBold 8.0'
+theme.wallpaper = awful.util.get_configuration_dir() .. "wallpaper.jpg"
 beautiful.init(theme)
 
 -- This is used later as the default terminal and editor to run.
