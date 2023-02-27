@@ -5,16 +5,20 @@ if [ "$#" -lt 1 ]; then
 	exit 1
 fi
 
+retries=0
 while ( true ); do
 	ssh $1 -o ConnectTimeout=3 "exit" 2>&1;
 
 	res="$?";
 	if [[ $res == "0" || $res == "1" ]]; then
-		# notify-send -u critical -t 3000 "ssh to $1 done!"
-		toilet "DONE" --gay
+		if [[ "$retries" -gt 5 ]]; then
+			notify-send -u critical -t 3000 "ssh to $1 done!"
+			toilet "DONE" --gay
+		fi
 		ssh $1 -o ConnectTimeout=3 $params 2>&1;
 		exit;
 	else
+		retries=$((retries+1))
 		echo 'Ctrl-C to exit';
 		sleep 1;
 	fi;
