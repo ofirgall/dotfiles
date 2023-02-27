@@ -55,10 +55,10 @@ bind -r -T prefix x run-shell "$get_ssh_in_tty | xargs tmux split-window -v -d"
 ##### PANE NAVIGATION #####
 navigator="~/.config/awesome/tmux_focus.sh"
 # Move around with alt+arrow/ctrl+hjkl
-bind -n C-h if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-h'  'select-pane -L'
-bind -n C-j if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-j'  'select-pane -D'
-bind -n C-k if-shell "$is_nvim || $is_nested_tmux || $is_fzf" 'send-keys C-k'  'select-pane -U'
-bind -n C-l if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-l'  'select-pane -R'
+bind -n C-h if-shell "$is_nvim" 'send-keys C-h'  'select-pane -L'
+bind -n C-j if-shell "$is_nvim || $is_fzf" 'send-keys C-j'  'select-pane -D'
+bind -n C-k if-shell "$is_nvim || $is_fzf" 'send-keys C-k'  'select-pane -U'
+bind -n C-l if-shell "$is_nvim" 'send-keys C-l'  'select-pane -R'
 
 # For awesomewm-tmux-navigator (disables tmux zoom feature)
 # bind -n C-h if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-h' "run-shell '$navigator left'"
