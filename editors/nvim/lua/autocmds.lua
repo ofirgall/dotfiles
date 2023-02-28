@@ -49,3 +49,46 @@ api.nvim_create_autocmd('FileType', {
 		vim.cmd('wincmd L')
 	end,
 })
+
+-- Switch layout when half screen
+local ui = require('ui')
+local function set_half_layout()
+	ui.setup_lualine(true)
+end
+
+local function set_full_layout()
+	ui.setup_lualine(false)
+end
+
+local FULL_SCREEN_WIDTH = 212 -- echo $COLUMNS, TODO: figure out how to check is half without it
+local function is_half()
+	return api.nvim_get_option_value('columns', {}) <= FULL_SCREEN_WIDTH / 2
+end
+
+local function set_layout()
+	if is_half() then
+		set_half_layout()
+	else
+		set_full_layout()
+	end
+end
+
+local LAST_STATE = false
+api.nvim_create_autocmd('VimEnter', {
+	group = config_autocmds,
+	callback = function()
+		LAST_STATE = is_half()
+		set_layout()
+	end,
+})
+api.nvim_create_autocmd('VimResized', {
+	group = config_autocmds,
+	callback = function()
+		local new_state = is_half()
+		if LAST_STATE == new_state then
+			return -- No need to do anything
+		end
+		set_layout()
+		LAST_STATE = new_state
+	end,
+})

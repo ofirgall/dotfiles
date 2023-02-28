@@ -1,3 +1,5 @@
+local M = {}
+
 local api = vim.api
 
 local scheme = require('ofirkai.design').scheme
@@ -137,30 +139,20 @@ if not NVLOG then
 	})
 end
 
-if not vim.g.started_by_firenvim then
-	y_section = {}
+local ofirkai_lualine = require('ofirkai.statuslines.lualine')
+local json_path = require('jsonpath')
+local navic = require('nvim-navic')
+local y_section = {}
 
-	-- f-person/git-blame.nvim
-	if vim.fn.has('wsl') == 1 then -- don't use git blame in wsl because of performance
-		vim.g.gitblame_enabled = 0
-	else
-		local git_blame = require('gitblame')
-		table.insert(y_section, { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available })
-		vim.g.gitblame_display_virtual_text = 0
-		vim.g.gitblame_message_template = '<author> • <date>'
-		vim.g.gitblame_date_format = '%d/%m/%Y'
-	end
-
-	-- SmiteshP/nvim-navic
-	local navic = require('nvim-navic')
-	navic.setup {
-		separator = '  '
-	}
-
-	local ofirkai_lualine = require('ofirkai.statuslines.lualine')
-	local json_path = require('jsonpath')
-
+function M.setup_lualine(is_half)
 	-- nvim-lualine/lualine.nvim
+	if is_half then
+		lualine_b = {}
+		lualine_y = {}
+	else
+		lualine_b = { { 'branch', icon = '' }, 'diff', 'diagnostics' }
+		lualine_y = y_section
+	end
 	require('lualine').setup {
 		options = {
 			theme = ofirkai_lualine.theme,
@@ -173,8 +165,7 @@ if not vim.g.started_by_firenvim then
 			globalstatus = true,
 		},
 		sections = {
-			-- lualine_b = { { 'branch', icon = '' }, 'diff', 'diagnostics' },
-			lualine_b = {},
+			lualine_b = lualine_b,
 			lualine_c = {
 				{ 'filename', shorting_target = 0, icon = '' },
 				{
@@ -202,9 +193,27 @@ if not vim.g.started_by_firenvim then
 				},
 				{ get_current_lsp_server_name, icon = ' LSP:' },
 			},
-			lualine_y = y_section,
+			lualine_y = lualine_y,
 			lualine_z = { { 'filetype', separator = '' }, 'progress' },
 		},
+	}
+end
+
+if not vim.g.started_by_firenvim then
+	-- f-person/git-blame.nvim
+	if vim.fn.has('wsl') == 1 then -- don't use git blame in wsl because of performance
+		vim.g.gitblame_enabled = 0
+	else
+		local git_blame = require('gitblame')
+		table.insert(y_section, { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available })
+		vim.g.gitblame_display_virtual_text = 0
+		vim.g.gitblame_message_template = '<author> • <date>'
+		vim.g.gitblame_date_format = '%d/%m/%Y'
+	end
+
+	-- SmiteshP/nvim-navic
+	navic.setup {
+		separator = '  '
 	}
 
 	-- Refresh lualine for recording macros
@@ -342,3 +351,5 @@ require('incline').setup {
 require('statuscol').setup {
 	setopt = true,
 }
+
+return M
