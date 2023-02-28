@@ -340,6 +340,7 @@ require('incline').setup {
 			horizontal = 0,
 			vertical = 0,
 		},
+		zindex = 4, -- Below NeoZoom.lua (5)
 	},
 	hide = {
 		focused_win = true,
