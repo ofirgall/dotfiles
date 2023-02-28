@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+# Chat gpt from neovim
+# its a "program" to make `tmux-window-name` to support it as a program
+
+cd ~/
+nvim -c "ChatGPT"
