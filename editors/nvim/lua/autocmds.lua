@@ -52,12 +52,81 @@ api.nvim_create_autocmd('FileType', {
 
 -- Switch layout when half screen
 local ui = require('ui')
+local function is_valid_win(winid)
+	local floating = api.nvim_win_get_config(winid).relative ~= ''
+	local ft = api.nvim_buf_get_option(api.nvim_win_get_buf(winid), 'filetype')
+
+	-- TODO: More ignores
+	return ft ~= 'NvimTree' and not floating
+end
+
+-- Change split layout from 2 vertical to 2 horizontals, or otherwise
+local function change_split_layout(vertical_to_horizontal)
+	local anchor_index = 0
+	local distance_index = 0
+	local wincmd_dir = ''
+	if vertical_to_horizontal then
+		anchor_index = 1
+		distance_index = 2
+		wincmd_dir = 'J'
+	else
+		anchor_index = 2
+		distance_index = 1
+		wincmd_dir = 'L'
+	end
+
+	local win_ids = api.nvim_tabpage_list_wins(api.nvim_get_current_tabpage())
+	local last_anchor = -1
+	local counter = 0
+	local farthest_win = -1
+	local farthest_distance = -1
+
+	for _, winid in ipairs(win_ids) do
+		if is_valid_win(winid) then
+			local pos = api.nvim_win_get_position(winid)
+			local anchor = pos[anchor_index]
+			if last_anchor ~= -1 and anchor ~= last_anchor then
+				return -- Not in the same anchor (row/col), not a a valid layout
+			end
+
+			local distance = pos[distance_index]
+			if distance > farthest_distance then
+				farthest_win = winid
+				farthest_distance = distance
+			end
+
+			last_anchor = anchor
+			counter = counter + 1
+			if counter > 2 then
+				return -- More than two windows, not a valid layout
+			end
+		end
+	end
+
+	-- Didn't found windows
+	if farthest_distance == -1 then
+		return
+	end
+
+	local current_win = api.nvim_get_current_win()
+
+	-- Move to the right/below window (farthest_win)
+	api.nvim_set_current_win(farthest_win)
+	vim.cmd('wincmd ' .. wincmd_dir)
+	-- -- Move back to original window
+	api.nvim_set_current_win(current_win)
+end
+
 local function set_half_layout()
 	ui.setup_lualine(true)
+
+	change_split_layout(true)
 end
 
 local function set_full_layout()
 	ui.setup_lualine(false)
+
+	change_split_layout(false)
 end
 
 local FULL_SCREEN_WIDTH = 212 -- echo $COLUMNS, TODO: figure out how to check is half without it
