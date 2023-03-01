@@ -92,7 +92,7 @@ local move_funcs = Hydra({
 	mode = { 'n', 'x' },
 	heads = {
 		{ 'j', function()
-			ts_move.goto_next_start('@function.outer')
+			ts_move.goto_next_start('@function.name')
 			center_screen()
 		end, },
 		{ 'J', function()
@@ -100,7 +100,7 @@ local move_funcs = Hydra({
 			center_screen()
 		end, },
 		{ 'k', function()
-			ts_move.goto_previous_start('@function.outer')
+			ts_move.goto_previous_start('@function.name')
 			center_screen()
 		end, },
 		{ 'K', function()
