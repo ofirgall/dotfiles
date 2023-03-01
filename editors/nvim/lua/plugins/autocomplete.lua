@@ -7,7 +7,6 @@ snippy.setup({
 			['<S-Tab>'] = 'previous',
 		},
 		nx = {
-			['<leader>x'] = 'cut_text',
 			['<Tab>'] = 'next',
 			['<S-Tab>'] = 'previous',
 		},
