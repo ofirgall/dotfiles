@@ -112,18 +112,18 @@ local move_funcs = Hydra({
 	},
 })
 map({ 'n', 'x' }, 'gj', function()
-	ts_move.goto_next_start('@function.outer')
+	ts_move.goto_next_start('@function.name')
 	center_screen()
 	move_funcs:activate()
 end)
-map('o', 'gj', function() ts_move.goto_next_start('@function.outer') end)
+map('o', 'gj', function() ts_move.goto_next_start('@function.name') end)
 
 map({ 'n', 'x' }, 'gk', function()
-	ts_move.goto_previous_start('@function.outer')
+	ts_move.goto_previous_start('@function.name')
 	center_screen()
 	move_funcs:activate()
 end)
-map('o', 'gk', function() ts_move.goto_previous_start('@function.outer') end)
+map('o', 'gk', function() ts_move.goto_previous_start('@function.name') end)
 
 map({ 'n', 'x' }, 'gJ', function()
 	ts_move.goto_next_end('@function.outer')
