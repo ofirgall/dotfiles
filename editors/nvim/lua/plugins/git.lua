@@ -307,3 +307,21 @@ require('octo').setup {
 -- ofirgall/commit-prefix.nvim
 require('commit-prefix').setup {
 }
+
+-- tpope/vim-fugitive
+
+-- Jump to first group of files
+api.nvim_create_autocmd('BufWinEnter', {
+	group = config_autocmds,
+	callback = function(events)
+		local ft = api.nvim_buf_get_option(events.buf, 'filetype')
+		if ft ~= 'fugitive' then
+			return
+		end
+
+		local first_line = api.nvim_buf_get_lines(events.buf, 0, 1, true)[1]
+		if first_line:match('Head: ') then
+			api.nvim_feedkeys('}j', 'n', false)
+		end
+	end,
+})
