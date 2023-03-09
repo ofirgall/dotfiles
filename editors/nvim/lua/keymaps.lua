@@ -438,10 +438,6 @@ vim.cmd("function! GitHistoryOperator(...) \n lua git_history('n') \n endfunctio
 -----------------------------------
 --             UI                --
 -----------------------------------
--- File Sidebar
-map('n', '<M-m>', '<cmd>NvimTreeToggle<cr>', 'Toggle file tree')
-map('n', '<M-M>', '<cmd>NvimTreeFindFile<cr>', 'Locate file')
-
 -- Tabline binds
 map('n', '<C-q>', function() require('bufdelete').bufdelete(0, true) end, 'Close current tab')
 map('n', '<leader>1', function() require('bufferline').go_to_buffer(1, true) end, 'Go to tab #1')
