@@ -285,3 +285,8 @@ toggle_lsp_diagnostics = function()
 		virtual_text = virtual_text,
 	})
 end
+
+function restart_nvim()
+	vim.fn.system('touch /tmp/restart_nvim')
+	api.nvim_feedkeys(':wqa\n', 'n', false)
+end

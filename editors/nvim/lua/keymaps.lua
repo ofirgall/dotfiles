@@ -104,6 +104,9 @@ map('i', '<F1>', '<C-O>:set spell!<cr>', 'Toggle spell check')
 -- Search current word without jump
 map('n', '*', "<cmd>let @/= '\\<' . expand('<cword>') . '\\>'<cr>zz", 'Search current word without jump')
 
+-- Restart nvim
+map('n', '<F8>', restart_nvim, 'Restart nvim')
+
 -----------------------------------
 --            Yanky              --
 -----------------------------------

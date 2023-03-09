@@ -1,7 +1,19 @@
 # ---------------------------
 #		   Aliases
 # ---------------------------
-alias nv='nvim'
+function nv() {
+	while true
+	do
+		nvim
+		if ! test -f /tmp/restart_nvim; then
+			break
+		fi
+		rm /tmp/restart_nvim
+	done
+
+}
+alias lz='XDG_CONFIG_HOME=~/dotfiles_wip/editors/lazynvim/ XDG_DATA_HOME=~/.local/share/wip_nvim XDG_STATE_HOME=~/.local/state/wip_nvim nvim'
+alias lzlog='XDG_CONFIG_HOME=~/dotfiles_wip/editors/lazynvim/ XDG_DATA_HOME=~/.local/share/wip_nvim XDG_STATE_HOME=~/.local/state/wip_nvim NVLOG=1 nvim'
 alias cat='bat'
 alias pwdc='echo \"$(pwd)\" | tr -d "\n" | toclip'
 alias pwdcd='echo "cd \"$(pwd)\"" | toclip'
