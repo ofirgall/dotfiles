@@ -32,7 +32,7 @@ ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='--height=10 --reverse'
 #		zsh-auto-notify
 # ---------------------------
 export AUTO_NOTIFY_THRESHOLD=600 # 10 minutes
-export AUTO_NOTIFY_IGNORE=("docker" "man" "sleep" "nvim" "nvlog" "./envctl.py" "pg" "python" "python3" "python2" "viewer" "lsj" "ssh" "rssh" "assh" "gshow")
+export AUTO_NOTIFY_IGNORE=("docker" "man" "sleep" "nvim" "nvlog" "./envctl.py" "pg" "python" "python3" "python2" "viewer" "lsj" "ssh" "rssh" "assh" "gshow" "nv")
 
 # ---------------------------
 #	histdb integ for zsh-autosuggestions
