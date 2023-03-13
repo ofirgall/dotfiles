@@ -34,3 +34,6 @@ compinit # Build completions
 # Source post_init.zsh at the end
 # ---------------------------
 source $HOME/.zsh_conf/post_init.zsh
+
+### Added by broot
+source /home/ofirg/.config/broot/launcher/bash/br
