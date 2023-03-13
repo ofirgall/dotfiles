@@ -171,7 +171,6 @@ return require('packer').startup(function()
 	use 'nvim-zh/colorful-winsep.nvim' -- Highlight current window seperator
 	use 'b0o/incline.nvim' -- Floating statuslines for Neovim
 	use 'luukvbaal/statuscol.nvim' -- Status column line
-	use 'mrjones2014/nvim-ts-rainbow' -- Rainbow bracets
 
 	-- Openers --
 	use 'ofirgall/open.nvim'

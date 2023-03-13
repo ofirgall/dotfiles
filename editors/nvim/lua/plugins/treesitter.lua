@@ -100,25 +100,6 @@ require('nvim-treesitter.configs').setup {
 	matchup = {
 		enable = true,
 	},
-	-- mrjones2014/nvim-ts-rainbow
-	rainbow = {
-		enable = true,
-		-- disable = { "jsx", "cpp" },
-		extended_mode = false,
-		max_file_lines = nil,
-		colors = {
-			-- '#ff3429',
-			'#ff647e',
-			'#ff57d5',
-			'#ffd121',
-			'#68dd6a',
-			'#ff880e',
-			'#41a2ac',
-			'#26cca0'
-		},
-		-- colors = {}, -- table of hex strings
-		-- termcolors = {} -- table of colour name strings
-	},
 	-- JoosepAlviste/nvim-ts-context-commentstring
 	context_commentstring = {
 		enable = true,
