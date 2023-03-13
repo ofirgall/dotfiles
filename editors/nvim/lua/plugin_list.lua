@@ -230,6 +230,7 @@ return require('packer').startup(function()
 	use 'ofirgall/vim-log-highlighting' -- Highlight .log files
 	use 'chrisgrieser/nvim-genghis'
 
+	-- AI
 	use {
 		'jackMort/ChatGPT.nvim', -- ChatGPT from nvim
 		requires = {
@@ -243,7 +244,13 @@ return require('packer').startup(function()
 			}
 		end,
 	}
-	use 'aduros/ai.vim' -- Quick ChatGPT from nvim, <C-a> in insert mode or :AI in selection
+	use {
+		'dpayne/CodeGPT.nvim', -- Make ChatGPT interact with the code
+		requires = {
+			'nvim-lua/plenary.nvim',
+			'MunifTanjim/nui.nvim',
+		},
+	}
 
 	-- Improvement Games
 	use 'ThePrimeagen/vim-be-good'
