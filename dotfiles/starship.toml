@@ -1,0 +1,48 @@
+# ---------------------------
+#          GENERAL
+# ---------------------------
+
+format = '$all'
+
+palette = 'ofir'
+[palettes.ofir]
+cyan = '#66d9ef'
+purple = '#ae81ff'
+light_red = '#f92672'
+pink = '#e878d2'
+teal = '#3ae0b4'
+# green = '#a6e22e'
+green = '#07b516'
+
+
+
+# ---------------------------
+#          MODULES
+# ---------------------------
+[character]
+success_symbol = ' [](bold green)'
+error_symbol = ' [](bold red)'
+
+
+[directory]
+truncate_to_repo = false
+# style = 'pink'
+style = 'purple'
+
+[git_branch]
+# style = 'cyan'
+style = 'teal'
+symbol = ''
+format = '[\($symbol$branch(:$remote_branch)\)]($style) '
+
+[git_status]
+disabled = true
+
+[git_metrics]
+disabled = true
+
+[aws]
+disabled = true
+
+[golang]
+style='bold yellow'

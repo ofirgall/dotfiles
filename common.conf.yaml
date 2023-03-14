@@ -14,6 +14,8 @@
         path: dotfiles/zsh_conf/env.zsh
     ~/.zsh_conf:
         path: dotfiles/zsh_conf
+    ~/.config/starship.toml:
+        path: dotfiles/starship.toml
     ~/.profile:
         path: dotfiles/profile
     ~/.gitconfig:
