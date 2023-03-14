@@ -159,6 +159,7 @@ map('t', '<M-e>', function() open_new_terminal('vertical') end, 'Split terminal'
 map('t', '<M-q>', '<cmd>bd!<CR>', 'Close terminal')
 map('n', ']d', require('goto-breakpoints').next, 'Goto next breakpoint')
 map('n', '[d', require('goto-breakpoints').prev, 'Goto prev breakpoint')
+map('n', ']S', require('goto-breakpoints').stopped, 'Goto DAP stopped location')
 map('n', '<leader>M', require('mind').open_main, 'Open mind.nvim')
 map('n', '<leader>e', require('femaco.edit').edit_code_block, 'Edit markdown codeblocks')
 map('n', '<leader>w', require('typebreak').start, 'typebreak') -- <leader>Wpm
