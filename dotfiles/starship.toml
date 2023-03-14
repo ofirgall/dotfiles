@@ -2,7 +2,7 @@
 #          GENERAL
 # ---------------------------
 
-format = '$all'
+format = ' $all'
 
 palette = 'ofir'
 [palettes.ofir]
