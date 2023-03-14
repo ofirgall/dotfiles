@@ -7,10 +7,6 @@ zinit snippet OMZL::functions.zsh
 # Can't be turbo for history plugins (autosuggestions)
 zinit snippet OMZL::history.zsh
 
-# Can't turbo git and theme for prompt
-zinit snippet OMZL::git.zsh
-zinit snippet OMZL::theme-and-appearance.zsh
-
 # Can't turbo key-bindings, conflicting with vim-mode
 zinit snippet OMZL::key-bindings.zsh
 
