@@ -21,12 +21,6 @@ if not NVLOG then
 
 			winbar_bg = '#1d1d14', -- Original -5
 		},
-		custom_hlgroups = {
-			['@punctuation.bracket'] = {
-				fg = '#ffd121',
-				-- fg = '#26cca0'
-			},
-		},
 	}
 else
 	vim.o.termguicolors = true
