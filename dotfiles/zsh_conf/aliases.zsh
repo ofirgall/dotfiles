@@ -4,7 +4,7 @@
 function nv() {
 	while true
 	do
-		nvim
+		nvim $@
 		if ! test -f /tmp/restart_nvim; then
 			break
 		fi
