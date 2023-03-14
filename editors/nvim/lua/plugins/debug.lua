@@ -85,17 +85,16 @@ dapui.setup {
 	},
 }
 
--- TODO: fix tabs for dap
 local dap_closed = function()
 	dapui.close({})
-	-- vim.api.nvim_command('tabclose $') -- $(last) is the debug page
+	vim.api.nvim_command('tabclose $') -- $(last) is the debug page
 	map('n', '<RightMouse>', '<LeftMouse><cmd>sleep 100m<cr><cmd>lua vim.lsp.buf.hover()<cr>', 'Trigger hover')
 	require('format-on-leave').enable()
 end
 
 -- Hooks to dap, opens/cloes dap-ui binds rightlick to evaluate
 dap.listeners.after.event_initialized['dapui_config'] = function()
-	-- vim.api.nvim_command('$tabnew') -- $(last) is the debug page
+	vim.api.nvim_command('$tabnew') -- $(last) is the debug page
 	dapui.open({})
 	map('n', '<RightMouse>', '<LeftMouse><cmd>lua require"dapui".eval()<cr>') -- Trigger hover
 	require('format-on-leave').disable()
