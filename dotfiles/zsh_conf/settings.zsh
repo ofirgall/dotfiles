@@ -11,6 +11,9 @@ zinit snippet OMZL::history.zsh
 zinit snippet OMZL::key-bindings.zsh
 
 zinit ice wait lucid
+zinit snippet OMZL::theme-and-appearance.zsh
+
+zinit ice wait lucid
 zinit snippet OMZL::completion.zsh
 
 zinit ice wait lucid
