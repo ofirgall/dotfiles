@@ -1,3 +1,4 @@
+# https://starship.rs/config/
 # ---------------------------
 #          GENERAL
 # ---------------------------
@@ -34,6 +35,9 @@ style = 'purple'
 style = 'teal'
 symbol = ''
 format = '[\($symbol$branch(:$remote_branch)\)]($style) '
+
+[git_commit]
+style = 'teal'
 
 [git_status]
 disabled = true
