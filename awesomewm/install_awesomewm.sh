@@ -43,6 +43,7 @@ sudo mv /tmp/sp/sp /usr/local/bin/
 # Arc icons
 rm -rf /tmp/icons
 git clone --depth=1 --branch=Arc-ICONS git@github.com:rtlewis88/rtl88-Themes.git /tmp/icons
+rm -rf /usr/share/icons/Arc/
 sudo mkdir -p /usr/share/icons/Arc/
 sudo mv /tmp/icons/Arc-ICONS/* /usr/share/icons/Arc/
 
