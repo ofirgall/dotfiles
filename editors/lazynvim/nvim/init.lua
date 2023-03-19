@@ -10,6 +10,6 @@ require('lazy_config')
 vim.api.nvim_create_autocmd('User', {
     pattern = 'LazyVimStarted',
     callback = function()
-        rdir.require('config/lazy')
+        rdir.recursive_require('config/lazy')
     end,
 })
