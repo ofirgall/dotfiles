@@ -3,14 +3,15 @@
 #          GENERAL
 # ---------------------------
 
-format = ' $all'
+# format = ' $all'
+format = '$all'
 
 palette = 'ofir'
 [palettes.ofir]
 cyan = '#66d9ef'
 purple = '#ae81ff'
 light_red = '#f92672'
-pink = '#e878d2'
+pink = '#fc68e1'
 teal = '#3ae0b4'
 # green = '#a6e22e'
 green = '#07b516'
@@ -21,9 +22,15 @@ green = '#07b516'
 #          MODULES
 # ---------------------------
 [character]
-success_symbol = ' [](bold green)'
-error_symbol = ' [](bold red)'
+# success_symbol = ' [](bold green)'
+# error_symbol = ' [](bold red)'
+success_symbol = '[](bold green)'
+error_symbol = '[](bold red)'
 
+[username]
+format = '[$user]($style):'
+style_user = 'pink'
+show_always = true
 
 [directory]
 truncate_to_repo = false
