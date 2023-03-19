@@ -156,6 +156,11 @@ return {
 			show_current_context_start = false,
 			context_highlight_list = { 'InlayHints' },
 		},
+		init = function()
+			-- dots to indicate spaces
+			vim.opt.list = true
+			vim.opt.listchars:append('lead:⋅')
+		end,
 	},
 
 	-- Add ui for default vim.ui.input
