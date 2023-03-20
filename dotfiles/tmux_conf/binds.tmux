@@ -192,6 +192,8 @@ bind -T copy-mode-vi c send-keys -X clear-selection
 bind -T copy-mode-vi Escape send-keys -X cancel
 # Finish copy with Enter
 bind -T copy-mode-vi Enter send-keys -X copy-selection-and-cancel
+# Copy with C-c
+bind -T copy-mode-vi C-c send-keys -X copy-selection
 
 # Yank (without closing copy-mode) with y
 bind -T copy-mode-vi y run-shell "tmux send-keys -X copy-pipe \"xclip -i -selection clipboard > /dev/null 2>&1\"; true"

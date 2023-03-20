@@ -74,6 +74,7 @@ map('n', '<leader>C', '"_C', 'change without yanking')
 map('n', '<leader>x', '"_x', 'x without yanking')
 map('n', '<leader>X', '"_X', 'x without yanking')
 map('n', '&', 'i&<Esc>', 'Add ampersand')
+map({ 'v' }, '<C-c>', '"+y', 'Copy text in visual')
 
 map('n', '<leader>qa', close_all_but_current, 'Close all buffers but current')
 map('n', '<leader>qA', '<cmd>wqa!<cr>', 'Write all + close vim')
