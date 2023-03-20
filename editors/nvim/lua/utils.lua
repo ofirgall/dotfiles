@@ -83,18 +83,6 @@ smart_split = function(direction)
 	end
 end
 
-buf_is_visible = function(bufnr)
-	return api.nvim_buf_is_loaded(bufnr) and vim.fn.bufwinnr(bufnr) > 0
-end
-
-buf_is_valid = function(buf_num)
-	if not buf_num or buf_num < 1 then
-		return false
-	end
-	local exists = vim.api.nvim_buf_is_valid(buf_num)
-	return vim.bo[buf_num].buflisted and exists
-end
-
 close_pane = function()
 	local bufnr = api.nvim_get_current_buf()
 	if #api.nvim_list_wins() == 1 then -- Sometimes its reports 2 instead of 1
