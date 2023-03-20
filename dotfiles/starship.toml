@@ -44,7 +44,9 @@ symbol = ''
 format = '[\($symbol$branch(:$remote_branch)\)]($style) '
 
 [git_commit]
-style = 'teal'
+style = 'cyan'
+tag_disabled = false
+tag_symbol = ' | '
 
 [git_status]
 disabled = true
