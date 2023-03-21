@@ -4,12 +4,13 @@ local rdir = require('utils.require_dir')
 rdir.setup()
 
 rdir.require('config')
-require('lazy_config')
 
 -- Lazy load config files
 vim.api.nvim_create_autocmd('User', {
-    pattern = 'LazyVimStarted',
-    callback = function()
-        rdir.recursive_require('config/lazy')
-    end,
+	pattern = 'LazyVimStarted',
+	callback = function()
+		rdir.recursive_require('config/lazy')
+	end,
 })
+
+require('lazy_config')
