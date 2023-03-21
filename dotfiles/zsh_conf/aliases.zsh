@@ -60,7 +60,11 @@ function ssh() {
 alias cls='tmux clear-history; clear'
 alias pg='cg $HOME/playgrounds && nv' # cd to packer/plugins
 function tmp() {
-	SCRATCH_FILE=$(mktemp -t scratch.XXXX); nv $SCRATCH_FILE +"set ft=$1"; echo $SCRATCH_FILE
+	neovim=nv
+	if [ "$1" = "log" ]; then
+		neovim=nvlog
+	fi
+	SCRATCH_FILE=$(mktemp -t scratch.XXXX); $neovim $SCRATCH_FILE +"set ft=$1"; echo $SCRATCH_FILE
 }
 function nvlog() {
 	NVLOG=1 nv $@
