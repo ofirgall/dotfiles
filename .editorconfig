@@ -2,6 +2,8 @@
 [*.lua]
 # [basic]
 
+indent_style = tab
+
 # none/single/double
 quote_style = single
 
