@@ -333,20 +333,6 @@ return {
 		},
 	},
 
-	{
-		'andymass/vim-matchup',
-		event = 'VeryLazy',
-		init = function()
-			-- Disable matchup higlights, use the default of vim
-			api.nvim_create_autocmd('FileType', {
-				pattern = '*',
-				callback = function()
-					vim.b.matchup_matchparen_enabled = 0
-				end,
-			})
-		end,
-	},
-
 	-- icons
 	{ 'kyazdani42/nvim-web-devicons', lazy = true },
 
