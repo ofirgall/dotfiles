@@ -9,7 +9,7 @@ end
 if IS_REMOTE then
 	ignore_install_langs = { 'norg', 'foam', 'haskell' }
 else
-	ignore_install_langs = {}
+	ignore_install_langs = { 'help', 'git_rebase', 'gitcommit', 'comment' }
 end
 
 require('nvim-treesitter.configs').setup {
@@ -18,7 +18,6 @@ require('nvim-treesitter.configs').setup {
 	ignore_install = ignore_install_langs,
 	highlight = {
 		enable = true,
-		disable = { 'help', 'git_rebase', 'gitcommit', 'comment' },
 	},
 	indent = {
 		enable = true,
