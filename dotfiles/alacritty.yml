@@ -678,7 +678,7 @@ mouse:
 # in the order they were defined in.
 key_bindings:
   # https://en.wikipedia.org/wiki/List_of_Unicode_characters
-  - { key: R,         mods: Super,                    action: ResetFontSize }
+  - { key: F5, mods: Super, action: ResetFontSize }
   - {key: Tab, mods: Control, chars: "\x1b[27;5;9~"}
   - {key: Tab, mods: Control|Shift, chars: "\x1b[27;6;9~"}
   - {key: Comma, mods: Control, chars: "\x1b[27;5;44~"}
