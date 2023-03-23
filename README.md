@@ -50,9 +50,25 @@ Set your `global` git user at ~/.git_user
 git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ```
 
-### Install TamperMonkey scripts
+---
+
+### Firefox Extensions
+#### [Tridactyl](https://addons.mozilla.org/en-US/firefox/addon/tridactyl-vim)
+Config: `dotfiles/tridactylrc`
+Install native (reads the config file) with `:installnative`
+
+#### [Dark Reader](https://addons.mozilla.org/en-US/firefox/addon/darkreader/)
+Brightness: +5
+Contrast: -10
+
+##### [BroTab](https://addons.mozilla.org/en-US/firefox/addon/brotab/)
+No config
+
+#### TamperMonkey scripts
 * Install [TamperMonkey](https://www.tampermonkey.net/)
 * View the the [tampermonkey scripts](tampermonkey) as raw
+
+---
 
 ## TODO Clean
 * on top of each setup have the githublink

@@ -8,6 +8,11 @@ nvim is my main editor and [much more](https://github.com/ofirgall/learn-nvim/bl
 
 ---
 
+## TODO Treesitter
+### golang
+* return {1}, {2}, {3} as params
+* go to kalls
+
 ## TODO
 * nvim - repeat pair movement
 * flit - force case sensitivity

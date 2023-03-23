@@ -1,0 +1,8 @@
+" Search mode like vim
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext --reverse 1
+bind <F3> nohlsearch
+
+unbind <C-f> " Normal C-f behavior
