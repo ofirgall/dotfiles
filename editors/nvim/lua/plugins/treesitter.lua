@@ -84,10 +84,10 @@ require('nvim-treesitter.configs').setup {
 				['i/'] = '@comment.outer', -- no inner for comment
 				['aa'] = '@parameter.outer', -- parameter -> argument
 				['ia'] = '@parameter.inner',
-				['ak'] = '@call.outer',
-				['ik'] = '@call.inner',
-				['ai'] = '@conditional.outer', -- i as if
-				['ii'] = '@conditional.inner',
+				['aK'] = '@call.outer',
+				['iK'] = '@call.inner',
+				['aE'] = '@conditional.outer', -- i as if
+				['iE'] = '@conditional.inner',
 
 				-- Custom captures
 				['ie'] = '@binary_expression.inner',

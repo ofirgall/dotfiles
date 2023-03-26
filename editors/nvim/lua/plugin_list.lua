@@ -87,7 +87,7 @@ return require('packer').startup(function()
 
 	-- Textobjects --
 	use 'nvim-treesitter/nvim-treesitter-textobjects' -- Textobjects base on treesitter
-	use { 'Julian/vim-textobj-variable-segment', requires = 'kana/vim-textobj-user' } -- iv/av: foo_bar_baz = foo, bar, baz text objects
+	use 'chrisgrieser/nvim-various-textobjs' -- Bundle of more than a dozen new text objects for Neovim.
 	use { 'D4KU/vim-textobj-chainmember', requires = 'kana/vim-textobj-user' } -- im/am: foo.bar().baz() = foo, bar(), baz()
 
 	-- Telescope --
