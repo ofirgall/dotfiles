@@ -251,3 +251,10 @@ require('symbols-outline').setup {
 		focus_location = '<Cr>',
 	},
 }
+
+-- SmiteshP/nvim-navbuddy
+require('nvim-navbuddy').setup {
+	lsp = {
+		auto_attach = true,
+	},
+}

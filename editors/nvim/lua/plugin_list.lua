@@ -55,6 +55,14 @@ return require('packer').startup(function()
 	use 'saecki/crates.nvim' -- "LSP" for `Cargo.toml`
 	use 'simrat39/symbols-outline.nvim' -- Tree view for symbols
 	use 'ofirgall/inlay-hints.nvim' -- Inlay hints
+	use {
+		'SmiteshP/nvim-navbuddy',
+		requires = {
+			'neovim/nvim-lspconfig',
+			'SmiteshP/nvim-navic',
+			'MunifTanjim/nui.nvim'
+		},
+	}
 
 	-- Language Specific --
 	use 'simrat39/rust-tools.nvim' -- Rust tools
