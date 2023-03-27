@@ -51,9 +51,6 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions
 
 zinit ice wait lucid
-zinit light popstas/zsh-command-time
-
-zinit ice wait lucid
 zinit light hlissner/zsh-autopair
 
 if ! $IS_REMOTE; then
