@@ -19,6 +19,7 @@ def main():
     parser.add_argument('--amount', help='Amount of sparsed block to write, if not mentioned all block device is filled', type=int)
     parser.add_argument('--threads', help='Amount of threads to write with', type=int, default=8)
     parser.add_argument('--chunk_size', help='Chunk size to write sparsed, default is the lower LVM chunk size', type=int, default=128 * 1024)
+    parser.add_argument('--skip_first', help='Skip first sparse iteration (skipping even blocks)', action='store_true')
 
     args = parser.parse_args()
 
@@ -40,15 +41,16 @@ def main():
 
     amount_per_thread = amount // args.threads
 
-    print('Writing to all even blocks')
-    write_sparsed_deffered(0, args.output_block_file, args.threads, amount_per_thread, args.chunk_size)
+    if not args.skip_first:
+        print('Writing to all even blocks')
+        write_sparsed_deffered(0, args.output_block_file, args.threads, amount_per_thread, args.chunk_size)
 
-    subprocess.check_call(['sync'])
+        subprocess.check_call(['sync'])
 
-    if args.single_sparse:
-        return
+        if args.single_sparse:
+            return
 
-    time.sleep(5) # Wait 5 secs for good measure
+        time.sleep(5) # Wait 5 secs for good measure
 
     print('Writing to all odd blocks')
     write_sparsed_deffered(1, args.output_block_file, args.threads, amount_per_thread, args.chunk_size)
