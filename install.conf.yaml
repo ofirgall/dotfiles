@@ -37,6 +37,8 @@
         path: dotfiles/autorandr
     ~/.tridactylrc:
         path: dotfiles/tridactylrc
+    ~/.config/systemd/user:
+        path: services
 
 - shell:
     # - [install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
