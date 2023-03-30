@@ -122,6 +122,11 @@ function M.setup(kbdcfg, volume_widget, retain)
         ),
         awful.key({}, 'Scroll_Lock',
             function()
+                naughty.notify({
+                    preset = naughty.config.presets.low,
+                    text = 'Locking',
+                    title = 'System',
+                })
                 awful.util.spawn('i3lock-fancy')
             end,
             { description = 'Lock', group = 'awesome' }
