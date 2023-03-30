@@ -97,19 +97,6 @@ close_pane = function()
 	end
 end
 
-local get_range = function(mode)
-	local start_pos = { 0, 0 }
-	local end_pos = { 0, 0 }
-	if mode == 'v' then
-		start_pos = api.nvim_buf_get_mark(0, '<')
-		end_pos = api.nvim_buf_get_mark(0, '>')
-	elseif mode == 'n' then
-		start_pos = api.nvim_buf_get_mark(0, '[')
-		end_pos = api.nvim_buf_get_mark(0, ']')
-	end
-
-	return start_pos, end_pos
-end
 
 goto_def = function()
 	local ft = api.nvim_buf_get_option(0, 'filetype')
@@ -191,59 +178,6 @@ end
 ------------------------------
 --------- Telescope ---------
 ------------------------------
-local function get_current_line_text(mode)
-	local current_line = api.nvim_get_current_line()
-	local start_pos, end_pos = get_range(mode)
-
-	return string.sub(current_line, start_pos[2] + 1, end_pos[2] + 1)
-end
-
-local function telescope_default_text(mode)
-	if mode == nil then
-		return ''
-	elseif mode == 'cword' then
-		return vim.fn.expand('<cword>')
-	elseif mode == 'cWORD' then
-		return vim.fn.expand('<cWORD>')
-	else
-		return get_current_line_text(mode)
-	end
-end
-
-find_files = function(mode, cwd)
-	require('telescope.builtin').find_files({
-		cwd = cwd,
-		hidden = true,
-		follow = true,
-		default_text = telescope_default_text(mode),
-		layout_strategy = 'horizontal'
-	})
-end
-
-live_grep = function(opts, mode)
-	opts = opts or {}
-	opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob]")'
-	if not opts.default_text then
-		opts.default_text = '-F "' .. telescope_default_text(mode)
-	end
-
-	require('telescope').extensions.live_grep_args.live_grep_args(opts)
-end
-
-live_grep_current_dir = function(default_text)
-	default_text = default_text or ''
-	live_grep({
-		default_text = '-g"' .. vim.fn.fnamemodify(vim.fn.expand('%'), ':.:h') .. '/*"' .. ' -F "' .. default_text })
-end
-
-find_current_file = function()
-	local current_file = vim.fn.expand('%:t:r')
-	require('telescope.builtin').find_files({
-		default_text = current_file,
-		hidden = true,
-		follow = true,
-	})
-end
 
 local Terminal = require('toggleterm.terminal').Terminal
 local deployTerminal = nil

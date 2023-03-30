@@ -190,31 +190,6 @@ map('n', '<leader>a', require('harpoon.ui').toggle_quick_menu, 'Jump to harpoon 
 -- nguyenvukhang/nvim-toggler
 map({ 'n', 'v' }, '<leader>i', require('nvim-toggler').toggle, 'Invert words')
 
--- Spell Suggest
-map('n', 'ss', function()
-	require('telescope.builtin').spell_suggest({
-		prompt_title = '',
-		layout_config = {
-			height = 0.25,
-			width = 0.25,
-		},
-		layout_strategy = 'cursor',
-		sorting_strategy = 'ascending', -- From top
-	})
-end, 'Spell suggest')
-
-map('n', 'sy', function()
-	require('telescope').extensions.dict.synonyms({
-		prompt_title = '',
-		layout_config = {
-			height = 0.4,
-			width = 0.60,
-		},
-		layout_strategy = 'cursor',
-		sorting_strategy = 'ascending', -- From top
-	})
-end, 'Synonyms')
-
 -- Wansmer/treesj
 map('n', 'sJ', '<cmd>TSJSplit<cr>', 'Splitjoin Split line')
 map('n', 'sj', '<cmd>TSJJoin<cr>', 'Splitjoin Join line')
@@ -248,31 +223,6 @@ map('n', '<space><Left>', sibling_swap.swap_with_left_with_opp)
 -----------------------------------
 --        CODE NAVIGATION        --
 -----------------------------------
--- Utils
-map('n', '<leader>T', find_current_file, 'find files with the current file (use to find _test fast)')
-map('n', '<leader>fr', function() require('telescope.builtin').resume({ initial_mode = 'normal' }) end, 'Find resume')
-
--- Find files
-map('n', '<leader>ff', find_files, 'Find file')
-map('x', '<leader>ff', '<Esc><cmd>lua find_files("v")<cr>', 'find file, text from visual')
-map('n', '<leader>fcf', function() find_files('cword') end, 'Find files with current word')
-
--- Find buffer
-map('n', '<leader>fb', '<cmd>Telescope buffers<CR>', 'Browse open buffers')
-
--- Find word
-map('n', '<leader>fw', live_grep, 'search in all files (fuzzy finder)')
-map('v', '<leader>fw', '<Esc><cmd>lua live_grep({}, "v")<cr>', 'search in all files (default text is from visual)')
-map('n', '<leader>fcw', function() live_grep({}, 'cword') end, 'Find current word')
-map('n', '<leader>fcW', function() live_grep({}, 'cWORD') end, 'Find current word')
-map('n', '<leader>fm', ':set opfunc=LiveGrepRawOperator<CR>g@', 'Find with movement')
-vim.cmd("function! LiveGrepRawOperator(...) \n lua live_grep({}, 'n') \n endfunction") -- used by `<leader>fm`
-
--- Find in current dir
-map('n', '<leader>fcd', live_grep_current_dir, 'Find in current dir')
-map('n', '<leader>fcdw', function() live_grep_current_dir(vim.fn.expand('<cword>')) end,
-	'Find in current dir current word')
-
 
 -----------------------------------
 --             LSP               --
