@@ -283,13 +283,13 @@ map('n', '<leader>F', function() vim.lsp.buf.format({ async = true }) end, 'Form
 
 -- Telescope LSP Binds
 map('n', 'gd', goto_def, 'Go to Definition')
-map('n', '<C-LeftMouse>', function()
+map('n', '<MiddleMouse>', function()
 	vim.api.nvim_input('<LeftMouse>')
 	vim.api.nvim_input('<cmd>vsplit<cr>')
 	goto_def()
 end, 'Go to Definition in split')
 
-map('n', '<MiddleMouse>', function()
+map('n', '<C-LeftMouse>', function()
 	vim.api.nvim_input('<LeftMouse>')
 	goto_def()
 end, 'Go to Definition')
