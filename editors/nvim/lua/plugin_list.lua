@@ -127,6 +127,7 @@ return require('packer').startup(function()
 		},
 	}
 	use 'ofirgall/commit-prefix.nvim' -- Insert prefix to commit message by branch name
+	use 'ofirgall/conflict-viewer.nvim'
 
 	-- Debugging --
 	use 'mfussenegger/nvim-dap' -- DAP client for nvim
