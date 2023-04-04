@@ -58,6 +58,7 @@ function ssh() {
 	TERM=xterm-256color /usr/bin/ssh $@ # Adjust TERM for ssh
 }
 alias cls='tmux clear-history; clear'
+alias drop_cache='sync; echo 1 | sudo tee /proc/sys/vm/drop_caches'
 alias pg='cg $HOME/playgrounds && nv' # cd to packer/plugins
 function tmp() {
 	neovim=nv
