@@ -192,8 +192,15 @@ cmp.setup.cmdline(':', {
 	}),
 })
 
-cmp.setup.filetype({ 'dap-repl', 'dapui_watches' }, {
+cmp.setup.filetype('dap-repl', {
 	sources = {
+		{ name = 'dap' },
+	},
+})
+
+cmp.setup.filetype('dapui_watches', {
+	sources = {
+		all_visible_buffers_source(150, 15),
 		{ name = 'dap' },
 	},
 })
