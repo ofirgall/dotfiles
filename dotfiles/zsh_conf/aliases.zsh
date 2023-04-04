@@ -41,10 +41,11 @@ alias todo='nvim ~/todo.norg'
 alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed "s/.*-- \([0-9]*\)/\1/" | sponge | { IFS= read -r x; { printf "%s\n" "$x"; cat; } | xargs taskopen }'
 alias cdl='cd "$_"' # cd to last arg (usefull after mkdir)
 alias cdd='cd $HOME/dotfiles'
+alias cgp='cg $HOME/workspace/personal/' # cg to packer/plugins
 alias cdn='cd $HOME/dotfiles/editors/nvim/' # cd to neovim config
 alias cdz='cd $HOME/dotfiles/dotfiles/zsh_conf/' # cd to zhs config
 alias cdp='cd $HOME/.local/share/nvim/site/pack/packer/start' # cd to packer/plugins
-alias cgp='cg $HOME/.local/share/nvim/site/pack/packer/start' # cg to packer/plugins
+alias cgnp='cg $HOME/.local/share/nvim/site/pack/packer/start' # cg to packer/plugins
 alias cdt='cd $HOME/.local/share/nvim/site/pack/packer/start/ofirkai.nvim/' # cd to nvim theme
 alias cda='cd $HOME/.config/awesome/' # cd to awesome config
 alias cgt='cg $HOME/.tmux/plugins/' # cg to tmux plugins
