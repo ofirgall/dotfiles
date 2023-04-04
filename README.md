@@ -58,8 +58,8 @@ Config: `dotfiles/tridactylrc`
 Install native (reads the config file) with `:installnative`
 
 #### [Dark Reader](https://addons.mozilla.org/en-US/firefox/addon/darkreader/)
-Brightness: +5
-Contrast: -10
+Brightness: +20
+Contrast: +5
 
 ##### [BroTab](https://addons.mozilla.org/en-US/firefox/addon/brotab/)
 No config
