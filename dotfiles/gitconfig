@@ -44,3 +44,5 @@
 	difftool = true
 [rerere]
 	enabled = false
+[url "git@bitbucket.org:"]
+	insteadOf = https://bitbucket.org/
