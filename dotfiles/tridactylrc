@@ -1,8 +1,13 @@
+ vim:ft=vim:
+
 " Search mode like vim
-bind / fillcmdline find
-bind ? fillcmdline find -?
-bind n findnext 1
-bind N findnext --reverse 1
-bind <F3> nohlsearch
+bind --mode=normal <C-r> source ~/.tridactylrc
+bind --mode=normal / fillcmdline find
+bind --mode=normal ? fillcmdline find -?
+bind --mode=normal n findnext 1
+bind --mode=normal N findnext --reverse 1
+bind --mode=normal <F3> nohlsearch
 
 unbind <C-f> " Normal C-f behavior
+
+set smoothscroll true
