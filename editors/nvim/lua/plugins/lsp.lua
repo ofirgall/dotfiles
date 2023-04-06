@@ -6,28 +6,6 @@ end
 local lspconfig = require('lspconfig')
 
 
--- folke/neodev.nvim
-require('neodev').setup {
-	library = {
-		plugins = { 'nvim-treesitter', 'plenary.nvim', 'ofirkai.nvim' },
-	},
-}
-
-lspconfig.lua_ls.setup {
-	on_attach = lsp_on_attach,
-	capabilities = capabilities,
-	settings = {
-		Lua = {
-			telemetry = {
-				enable = false,
-			},
-			hint = {
-				enable = true,
-			},
-		},
-	},
-}
-
 -- ofirgall/format-on-leave.nvim
 require('format-on-leave').setup {
 	pattern = { '*.go', '*.rs', '*.lua' },

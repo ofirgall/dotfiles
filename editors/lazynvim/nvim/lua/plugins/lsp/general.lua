@@ -23,6 +23,7 @@ table.insert(M, {
 	event = { 'BufReadPre', 'BufNewFile' },
 	dependencies = {
 		'hrsh7th/cmp-nvim-lsp',
+		'folke/neodev.nvim', -- Must be loaded before setting up lua_ls
 	},
 	config = function(_, _)
 		-- Config diagnostics behavior
