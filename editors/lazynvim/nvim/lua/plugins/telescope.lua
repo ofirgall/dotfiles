@@ -86,10 +86,11 @@ end
 table.insert(M, {
 	'nvim-telescope/telescope.nvim',
 	cmd = 'Telescope',
-	event = 'VeryLazy',
 	version = false,
-	dependecies = {
-		'nvim-lua/plenary.nvim'
+	dependencies = {
+		'nvim-lua/plenary.nvim',
+		'nvim-telescope/telescope-fzf-native.nvim',
+		'nvim-telescope/telescope-ui-select.nvim',
 	},
 	opts = {
 		defaults = {
@@ -102,22 +103,6 @@ table.insert(M, {
 					['<C-p>'] = 'cycle_history_prev',
 					['<C-h>'] = function() require('telescope.actions.layout').cycle_layout_prev() end,
 					['<C-l>'] = function() require('telescope.actions.layout').cycle_layout_next() end,
-					['<CR>'] = function()
-						require('telescope.actions').select_default()
-						require('telescope.actions').center()
-					end,
-					['<C-x>'] = function()
-						require('telescope.actions').select_horizontal()
-						require('telescope.actions').center()
-					end,
-					['<C-v>'] = function()
-						require('telescope.actions').select_vertical()
-						require('telescope.actions').center()
-					end,
-					['<C-t>'] = function()
-						require('telescope.actions').select_tab()
-						require('telescope.actions').center()
-					end,
 					['<C-s>'] = function() require('telescope.actions.layout').toggle_preview() end,
 				},
 				n = {
@@ -126,22 +111,6 @@ table.insert(M, {
 					['<C-h>'] = function() require('telescope.actions.layout').cycle_layout_prev() end,
 					['<C-l>'] = function() require('telescope.actions.layout').cycle_layout_next() end,
 					['<C-o>'] = 'select_horizontal',
-					['<CR>'] = function()
-						require('telescope.actions').select_default()
-						require('telescope.actions').center()
-					end,
-					['<C-x>'] = function()
-						require('telescope.actions').select_horizontal()
-						require('telescope.actions').center()
-					end,
-					['<C-v>'] = function()
-						require('telescope.actions').select_vertical()
-						require('telescope.actions').center()
-					end,
-					['<C-t>'] = function()
-						require('telescope.actions').select_tab()
-						require('telescope.actions').center()
-					end,
 					['<C-s>'] = function() require('telescope.actions.layout').toggle_preview() end,
 				},
 			},
@@ -160,8 +129,6 @@ table.insert(M, {
 			prompt_prefix = ' ',
 			layout_strategy = layout,
 			cycle_layout_list = cycle_layout_list,
-		},
-		pickers = {
 		},
 		extensions = {
 			['ui-select'] = {
@@ -201,6 +168,34 @@ table.insert(M, {
 		{ mode = 'v', '<leader>ff', '<Esc><cmd>lua find_files("v")<cr>', desc = 'find file, text from visual' },
 		{ '<leader>fcf', function() find_files('cword') end, desc = 'Find files with current word' },
 		{ '<leader>T', find_current_file, desc = 'find files with the current file (use to find _test fast)' },
+		-- Find buffer
+		{ '<leader>fb', '<cmd>Telescope buffers<CR>', desc = 'Browse open buffers' },
+	},
+})
+
+table.insert(M, {
+	-- fzf integration for telescope
+	'nvim-telescope/telescope-fzf-native.nvim',
+	lazy = true,
+	build = 'make',
+	config = function()
+		require('telescope').load_extension('fzf')
+	end,
+})
+
+table.insert(M, {
+	-- native nvim ui select with telescope
+	'nvim-telescope/telescope-ui-select.nvim',
+	lazy = true,
+	config = function()
+		require('telescope').load_extension('ui-select')
+	end,
+})
+
+table.insert(M, {
+	-- Better live grep
+	'nvim-telescope/telescope-live-grep-args.nvim',
+	keys = {
 		-- Find word
 		{ '<leader>fw', live_grep, desc = 'search in all files (fuzzy finder)' },
 		{ mode = 'v', '<leader>fw', '<Esc><cmd>lua live_grep({}, "v")<cr>', desc = 'search in all files (default text is from visual)' },
@@ -211,43 +206,14 @@ table.insert(M, {
 		{ '<leader>fcd', live_grep_current_dir, desc = 'Find in current dir' },
 		{ '<leader>fcdw', function() live_grep_current_dir(vim.fn.expand('<cword>')) end,
 			desc = 'Find in current dir current word' },
-		-- Find buffer
-		{ '<leader>fb', '<cmd>Telescope buffers<CR>', desc = 'Browse open buffers' },
 	},
-})
-
-table.insert(M, {
-	-- fzf integration for telescope
-	'nvim-telescope/telescope-fzf-native.nvim',
-	dependecies = 'nvim-telescope/telescope.nvim',
-	build = 'make',
-	event = 'VeryLazy',
-	config = function()
-		require('telescope').load_extension('fzf')
-	end,
-})
-
-table.insert(M, {
-	-- Better live grep
-	'nvim-telescope/telescope-live-grep-args.nvim',
-	dependecies = 'nvim-telescope/telescope.nvim',
-	event = 'VeryLazy',
-})
-
-table.insert(M, {
-	-- native nvim ui select with telescope
-	'nvim-telescope/telescope-ui-select.nvim',
-	dependecies = 'nvim-telescope/telescope.nvim',
-	event = 'VeryLazy',
-	config = function()
-		require('telescope').load_extension('ui-select')
-	end,
+	dependencies = 'nvim-telescope/telescope.nvim',
 })
 
 table.insert(M, {
 	-- Dictionary with telescope
 	'https://code.sitosis.com/rudism/telescope-dict.nvim',
-	dependecies = 'nvim-telescope/telescope.nvim',
+	dependencies = 'nvim-telescope/telescope.nvim',
 	keys = {
 		{
 			'ss',
@@ -285,10 +251,13 @@ table.insert(M, {
 table.insert(M, {
 	-- Undotree
 	'debugloop/telescope-undo.nvim',
-	dependecies = 'nvim-telescope/telescope.nvim',
-	cmd = 'VeryLazy',
+	dependencies = 'nvim-telescope/telescope.nvim',
+	cmd = 'UndoTree',
 	config = function()
 		require('telescope').load_extension('undo')
+		vim.api.nvim_create_user_command('UndoTree', function()
+			vim.cmd('Telescope undo') -- TODO: convert to lua api
+		end, {})
 	end,
 })
 
