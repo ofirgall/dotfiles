@@ -5,27 +5,6 @@ end
 -- neovim/nvim-lspconfig
 local lspconfig = require('lspconfig')
 
--- simrat39/rust-tools.nvim
-require('rust-tools').setup {
-	server = {
-		on_attach = lsp_on_attach,
-		capabilities = capabilities,
-		settings = {
-			['rust-analyzer'] = {
-				completion = { callable = { snippets = 'add_parentheses' } },
-			},
-		},
-	},
-	tools = {
-		reload_workspace_from_cargo_toml = false,
-		inlay_hints = {
-			auto = false, -- Using inlay-hints.nvim instead
-		},
-		hover_actions = {
-			auto_focus = true,
-		},
-	},
-}
 
 -- folke/neodev.nvim
 require('neodev').setup {
