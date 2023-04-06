@@ -5,41 +5,6 @@ end
 -- neovim/nvim-lspconfig
 local lspconfig = require('lspconfig')
 
--- simrat39/inlay-hints.nvim
-local function trim_hint(hint)
-	return string.gsub(hint, ':', '')
-end
-
-require('inlay-hints').setup {
-	renderer = 'inlay-hints/render/eol',
-
-	hints = {
-		parameter = {
-			show = true,
-			highlight = 'InlayHints',
-		},
-		type = {
-			show = true,
-			highlight = 'InlayHints',
-		},
-	},
-
-	eol = {
-		parameter = {
-			separator = ', ',
-			format = function(hint)
-				return string.format('  (%s)', trim_hint(hint))
-			end,
-		},
-		type = {
-			separator = ', ',
-			format = function(hint)
-				return string.format('  %s', trim_hint(hint))
-			end,
-		},
-	},
-}
-
 -- simrat39/rust-tools.nvim
 require('rust-tools').setup {
 	server = {
@@ -100,39 +65,6 @@ require('lsp_lines').setup {
 
 -- ray-x/go.nvim
 require('go').setup {
-	-- No keymaps
-	lsp_keymaps = false,
-	lsp_codelens = false,
-	dap_debug_keymap = false,
-	textobjects = false,
-
-	lsp_cfg = {
-		capabilities = capabilities,
-		settings = {
-			gopls = {
-				analyses = {
-					ST1003 = false, -- Disable variables format https://staticcheck.io/docs/checks#ST1003
-					ST1005 = false, -- Disable error string format https://staticcheck.io/docs/checks#ST1005
-					QF1008 = false, -- Disable Hints for Omit embedded fields from selector expression
-				},
-				usePlaceholders = false,
-				hints = { -- For inlay hints
-					assignVariableTypes = true,
-					compositeLiteralFields = true,
-					compositeLiteralTypes = true,
-					constantValues = true,
-					functionTypeParameters = true,
-					parameterNames = true,
-					rangeVariableTypes = true,
-				},
-			},
-		},
-	},
-	lsp_on_attach = lsp_on_attach,
-	lsp_diag_hdlr = false, -- Disable go.nvim diagnostics viewer
-	lsp_inlay_hints = {
-		enable = false, -- Using inlay-hints.nvim instead
-	},
 }
 
 -- simrat39/symbols-outline.nvim

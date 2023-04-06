@@ -194,6 +194,9 @@ return {
 		end,
 	},
 
+	-- Lazy load cmp_nvim_lsp for capabilities
+	{ 'hrsh7th/cmp-nvim-lsp', lazy = true },
+
 	-- Github cmp source
 	{
 		'petertriho/cmp-git',
