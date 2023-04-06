@@ -2,6 +2,8 @@ NVLOG = vim.env.NVLOG
 
 vim.g.mapleader = ' ' -- Make sure to set `mapleader` before lazy so your mappings are correct
 
+require('globals')
+
 local rdir = require('utils.require_dir')
 rdir.setup()
 

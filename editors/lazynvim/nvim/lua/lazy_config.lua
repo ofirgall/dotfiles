@@ -9,6 +9,8 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require('lazy').setup {
 	spec = {
 		{ import = 'plugins' },
+		{ import = 'plugins/lsp/servers' },
+		{ import = 'plugins/lsp' },
 	},
 	defaults = {
 		-- TODO: try to make lazy=true

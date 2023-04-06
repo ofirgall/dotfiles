@@ -5,38 +5,6 @@ end
 -- neovim/nvim-lspconfig
 local lspconfig = require('lspconfig')
 
--- hrsh7th/cmp-nvim-lsp
--- Update capabilities to autocomplete
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-capabilities.textDocument.completion.completionItem.labelDetailsSupport = nil -- Overriding with false doesn't work for some reason
-
-local lsp_on_attach = function(client, bufnr)
-	client.server_capabilities.semanticTokensProvider = nil
-	-- SmiteshP/nvim-navic
-	require('nvim-navic').attach(client, bufnr)
-end
-
-if not NO_SUDO then
-	lspconfig.pyright.setup {
-		on_attach = lsp_on_attach,
-		capabilities = capabilities,
-	}
-else
-	lspconfig.pylsp.setup {
-		on_attach = lsp_on_attach,
-		capabilities = capabilities,
-		settings = {
-			pylsp = {
-				plugins = {
-					pycodestyle = {
-						enabled = false,
-					},
-				},
-			},
-		},
-	}
-end
-
 -- simrat39/inlay-hints.nvim
 local function trim_hint(hint)
 	return string.gsub(hint, ':', '')
@@ -94,51 +62,6 @@ require('rust-tools').setup {
 	},
 }
 
-lspconfig.bashls.setup {
-	on_attach = lsp_on_attach,
-	capabilities = capabilities,
-}
-lspconfig.vimls.setup {
-	on_attach = lsp_on_attach,
-	capabilities = capabilities,
-}
-lspconfig.cmake.setup {
-	on_attach = lsp_on_attach,
-	capabilities = capabilities,
-}
-lspconfig.cucumber_language_server.setup {
-	on_attach = lsp_on_attach,
-	capabilities = capabilities,
-}
-lspconfig.tsserver.setup {
-	on_attach = lsp_on_attach,
-	capabilities = capabilities,
-}
-lspconfig.marksman.setup {
-	on_attach = lsp_on_attach,
-	capabilities = capabilities,
-}
-
-local clang_cmd = { 'clangd', '--background-index', '--fallback-style=none', '--header-insertion=never',
-	'--all-scopes-completion', '--cross-file-rename' }
-
-if vim.fn.has('wsl') == 1 then
-	table.insert(clang_cmd, '-j=4') -- Limit resources on wsl
-end
-
-if NO_SUDO then
-	clang_cmd = { 'clangd', '-completion-style=bundled' }
-end
-
-lspconfig.clangd.setup {
-	init_options = {
-		clangdFileStatus = true,
-	},
-	on_attach = lsp_on_attach,
-	capabilities = capabilities,
-	cmd = clang_cmd,
-}
-
 -- folke/neodev.nvim
 require('neodev').setup {
 	library = {
@@ -166,24 +89,6 @@ require('format-on-leave').setup {
 	pattern = { '*.go', '*.rs', '*.lua' },
 }
 
-local path = vim.fn.stdpath('config') .. '/spell/en.utf-8.add'
-local words = {}
-
-for word in io.open(path, 'r'):lines() do
-	table.insert(words, word)
-end
-
-lspconfig.ltex.setup {
-	filetypes = { 'bib', 'markdown', 'org', 'plaintex', 'rst', 'rnoweb', 'tex' },
-	autostart = false,
-	settings = {
-		ltex = {
-			dictionary = {
-				['en-US'] = words,
-			},
-		},
-	},
-}
 
 -- RRethy/vim-illuminate
 require('illuminate').configure {
@@ -192,14 +97,6 @@ require('illuminate').configure {
 
 require('lsp_lines').setup {
 }
-
--- Disable update diagnostic while inserting
-vim.diagnostic.config({
-	update_in_insert = false,
-	-- Start virtual text and lines disabled
-	virtual_lines = false,
-	virtual_text = { severity = vim.diagnostic.severity.ERROR },
-})
 
 -- ray-x/go.nvim
 require('go').setup {

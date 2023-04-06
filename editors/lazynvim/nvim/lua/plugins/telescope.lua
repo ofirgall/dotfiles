@@ -73,6 +73,38 @@ end
 
 vim.cmd("function! LiveGrepRawOperator(...) \n lua live_grep({}, 'n') \n endfunction") -- used by `<leader>fm`
 
+--------------------------------------------------------------------
+-- LSP
+
+local function goto_def()
+	local ft = api.nvim_buf_get_option(0, 'filetype')
+	if ft == 'man' then
+		api.nvim_command(':Man ' .. vim.fn.expand('<cWORD>'))
+	elseif ft == 'help' then
+		api.nvim_command(':help ' .. vim.fn.expand('<cword>'))
+	else
+		require 'telescope.builtin'.lsp_definitions({
+			show_line = false,
+		})
+	end
+end
+
+local function lsp_references()
+	require('telescope.builtin').lsp_references({
+		include_declaration = false,
+		show_line = false,
+	})
+end
+
+
+local function lsp_implementations()
+	require('telescope.builtin').lsp_implementations {
+		show_line = false,
+	}
+end
+
+local split_if_not_exist = require('utils.splits').split_if_not_exist
+
 ---------------------------------------------------------------------
 
 local M = {}
@@ -170,6 +202,140 @@ table.insert(M, {
 		{ '<leader>T', find_current_file, desc = 'find files with the current file (use to find _test fast)' },
 		-- Find buffer
 		{ '<leader>fb', '<cmd>Telescope buffers<CR>', desc = 'Browse open buffers' },
+
+		----- LSP Bindings -----
+
+		-- Goto definition
+		{ 'gd', goto_def, desc = 'Go to Definition' },
+		{
+			'<MiddleMouse>',
+			function()
+				vim.api.nvim_input('<LeftMouse>')
+				vim.api.nvim_input('<cmd>vsplit<cr>')
+				goto_def()
+			end,
+			desc = 'Go to Definition in split'
+		},
+		{
+			'<C-LeftMouse>',
+			function()
+				vim.api.nvim_input('<LeftMouse>')
+				goto_def()
+			end,
+			desc = 'Go to Definition'
+		},
+		{
+			'gvd',
+			function()
+				split_if_not_exist(true)
+				goto_def()
+			end,
+			desc = 'Go to Definition in Vsplit'
+		},
+		{
+			'gxd',
+			function()
+				split_if_not_exist(false)
+				goto_def()
+			end,
+			desc = 'Go to Definition in Xsplit'
+		},
+
+		-- Goto references
+		{ 'gr', lsp_references, desc = 'Go to References' },
+		{ 'gvr',
+			function()
+				split_if_not_exist(true)
+				lsp_references()
+			end,
+			desc = 'Go to References in Vsplit'
+		},
+		{ 'gxr',
+			function()
+				split_if_not_exist(false)
+				lsp_references()
+			end,
+			desc = 'Go to References in Xsplit'
+		},
+
+		-- Goto implementations
+		{ 'gi', lsp_implementations, desc = 'Go to Implementation' },
+		{
+			'gvi',
+			function()
+				split_if_not_exist(true)
+				lsp_implementations()
+			end,
+			desc = 'Go to Implementation in Vsplit'
+		},
+		{
+			'gxi',
+			function()
+				split_if_not_exist(false)
+				lsp_implementations()
+			end,
+			desc = 'Go to Implementation in Xsplit',
+		},
+
+		-- Goto type
+		{
+			'gt',
+			function() require 'telescope.builtin'.lsp_type_definitions() end,
+			desc = 'Go to Type',
+		},
+		{
+			'gvt',
+			function()
+				split_if_not_exist(true)
+				require 'telescope.builtin'.lsp_type_definitions {}
+			end,
+			desc = 'Go to Type in Vsplit'
+		},
+		{
+			'gxt',
+			function()
+				split_if_not_exist(false)
+				require 'telescope.builtin'.lsp_type_definitions {}
+			end,
+			desc = 'Go to Type in Xsplit'
+		},
+
+		-- Goto symbol
+		{ 'gs',
+			function()
+				require 'telescope.builtin'.lsp_document_symbols({
+					symbol_width = 65,
+					symbol_type_width = 8,
+					fname_width = 0,
+					layout_config = {
+						height = 15,
+						width = 65 + 8 + 8,
+					},
+					layout_strategy = 'cursor',
+					sorting_strategy = 'ascending', -- From top
+					preview = { hide_on_startup = true },
+				})
+			end,
+			desc = 'Go Symbols'
+		},
+		{
+			'gS',
+			function() require 'telescope.builtin'.lsp_dynamic_workspace_symbols() end,
+			'Go workspace Symbols',
+		},
+
+		-- Go to problem
+		{
+			'gp',
+			function() require 'telescope.builtin'.diagnostics { bufnr = 0 } end,
+			desc = 'Go to Problems'
+		},
+		{
+			'gP',
+			function() require 'telescope.builtin'.diagnostics() end,
+			desc = 'Go to workspace Problems',
+		},
+
 	},
 })
 
