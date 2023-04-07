@@ -253,5 +253,43 @@ table.insert(M, {
 	},
 })
 
+-- TODO: might be able to lazy load with the keys
+table.insert(M, {
+	'chrisgrieser/nvim-various-textobjs',
+	keys = {
+		-- Default mappings
+		{ 'ii', mode = { 'o', 'x' } },
+		{ 'ai', mode = { 'o', 'x' } },
+		{ 'aI', mode = { 'o', 'x' } },
+		{ 'iI', mode = { 'o', 'x' } },
+		{ 'R', mode = { 'o', 'x' } },
+		{ '%', mode = { 'o', 'x' } },
+		{ 'r', mode = { 'o', 'x' } },
+		{ 'gG', mode = { 'o', 'x' } },
+		{ 'n', mode = { 'o', 'x' } },
+		{ '_', mode = { 'o', 'x' } },
+		{ 'iv', mode = { 'o', 'x' } },
+		{ 'av', mode = { 'o', 'x' } },
+		{ 'ik', mode = { 'o', 'x' } },
+		{ 'ak', mode = { 'o', 'x' } },
+		{ 'L', mode = { 'o', 'x' } },
+		{ '!', mode = { 'o', 'x' } },
+		{ 'il', mode = { 'o', 'x' } },
+		{ 'al', mode = { 'o', 'x' } },
+
+		-- Override "sentence" textobj in favor of subword
+		{ 'is', function() require('various-textobjs').subword(true) end, mode = { 'o', 'x' } },
+		{ 'as', function() require('various-textobjs').subword(false) end, mode = { 'o', 'x' } },
+
+		{ 'i|', function() require('various-textobjs').shellPipe(true) end, mode = { 'o', 'x' } },
+		{ 'a|', function() require('various-textobjs').shellPipe(false) end, mode = { 'o', 'x' } },
+	},
+	config = function()
+		require('various-textobjs').setup {
+			useDefaultKeymaps = true,
+		}
+	end,
+})
+
 
 return M
