@@ -24,6 +24,7 @@
   "debugprint.nvim": { "branch": "main", "commit": "0460f4d58d91f06c327afa0adfa5267f2c0edd01" },
   "diffview.nvim": { "branch": "main", "commit": "6bebefbc4c90e6d2b8c65e65b055d284475d89f8" },
   "dressing.nvim": { "branch": "master", "commit": "c705b3890779ea05bd910e9d06af8a209bfb6ad8" },
+  "easypick.nvim": { "branch": "main", "commit": "3f6af7b34eca30b81a8090ea6e5aa56212f8e746" },
   "flit.nvim": { "branch": "main", "commit": "f60e4b3d49bb5a5e97cfffe66f2e671eb422078e" },
   "format-on-leave.nvim": { "branch": "master", "commit": "297c7b0e1ecf949f3c5b95a4c0b4c8b0d61aba2b" },
   "git-blame.nvim": { "branch": "master", "commit": "06c20ea71a4519fc60caba9ac688f2f6404f03d5" },
@@ -99,6 +100,7 @@
   "vim-matchup": { "branch": "master", "commit": "156367e4cbd123bc9a70eeabeaa16f7cf9239e12" },
   "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
   "vim-snippets": { "branch": "master", "commit": "9ffe6dccaed68a0f86a1b16700c7926de891cdb6" },
+  "vim-spellsync": { "branch": "master", "commit": "27e103f2d283a1f6e24cc99dbdcd624713aff277" },
   "vim-visual-multi": { "branch": "master", "commit": "724bd53adfbaf32e129b001658b45d4c5c29ca1a" },
   "yanky.nvim": { "branch": "main", "commit": "c4c794afd762a00ca543972e5b9e34ce9aa14a87" }
 }

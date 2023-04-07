@@ -184,7 +184,6 @@ end, 'Scroll down in hover', { silent = true, expr = true })
 -----------------------------------
 --             GIT               --
 -----------------------------------
-map('n', '<leader>gD', '<cmd>Easypick dirtyfiles<CR>', 'Git dirtyfiles')
 map('n', '<leader>gc', '<cmd>Telescope git_branches<CR>', 'Git checkout')
 map('n', 'gh', ':set opfunc=GitHistoryOperator<CR>g@',
 	'show Git History with operator, e.g: gh3<cr> shows the history of the 3 lines below')

@@ -427,4 +427,26 @@ table.insert(M, {
 	end,
 })
 
+table.insert(M, {
+	'axkirillov/easypick.nvim',
+	dependencies = {
+		'nvim-telescope/telescope.nvim',
+	},
+	keys = {
+		{ '<leader>gD', '<cmd>Easypick dirtyfiles<CR>', desc = 'Git dirtyfiles' },
+	},
+	config = function()
+		local easypick = require('easypick')
+		easypick.setup {
+			pickers = {
+				{
+					name = 'dirtyfiles',
+					command = 'git status -s | cut -c 4-',
+					previewer = easypick.previewers.default(),
+				},
+			},
+		}
+	end,
+})
+
 return M
