@@ -153,16 +153,6 @@ map('n', '<leader>m', require('harpoon.mark').add_file, 'Add file to harpoon')
 map('n', '<leader>A', require('telescope').extensions.harpoon.marks, 'Jump to harpoon file')
 map('n', '<leader>a', require('harpoon.ui').toggle_quick_menu, 'Jump to harpoon file')
 
--- Mutli Cursors Binds alt+d (like ctrl+d in subl)
--- Add cursor down/up Alt+n/p (like ctrl+down/up in subl)
-cmd([[
-let g:VM_maps = {}
-let g:VM_maps['Find Under']         = '<M-d>'
-let g:VM_maps['Find Subword Under'] = '<M-d>'
-let g:VM_maps['Add Cursor Down'] = '<C-M-j>'
-let g:VM_maps['Add Cursor Up'] = '<C-M-k>'
-]])
-
 -----------------------------------
 --        CODE NAVIGATION        --
 -----------------------------------

@@ -291,5 +291,29 @@ table.insert(M, {
 	end,
 })
 
+table.insert(M, {
+	'mg979/vim-visual-multi',
+	keys = {
+		'<M-d>',
+		'<C-M-j>',
+		'<C-M-k>'
+	},
+	init = function()
+		vim.cmd([[
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<M-d>'
+let g:VM_maps['Find Subword Under'] = '<M-d>'
+let g:VM_maps['Add Cursor Down'] = '<C-M-j>'
+let g:VM_maps['Add Cursor Up'] = '<C-M-k>'
+]])
+
+		vim.g.VM_highlight_matches = 'hi! link Search LspReferenceWrite' -- Non selected matches
+		vim.g.VM_Mono_hl = 'TabLine' -- Cursor while in normal
+		vim.g.VM_Extend_hl = 'TabLineSel' -- In Selection (NotUsed)
+		vim.g.VM_Cursor_hl = 'TabLineSel' -- Cursor while in alt+d
+		vim.g.VM_Insert_hl = 'TabLineSel' -- Cursor in insert
+	end,
+})
+
 
 return M
