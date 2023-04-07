@@ -134,17 +134,34 @@ table.insert(M, {
 
 table.insert(M, {
 	'nvim-treesitter/nvim-treesitter-textobjects',
-	event = 'VeryLazy',
+	event = { 'BufReadPre', 'BufNewFile' },
+	dependencies = {
+		'nvim-treesitter/nvim-treesitter',
+	},
+})
+
+table.insert(M, {
+	'nvim-treesitter/nvim-treesitter-context',
+	event = { 'BufReadPre', 'BufNewFile' },
+	dependencies = {
+		'nvim-treesitter/nvim-treesitter',
+	},
 })
 
 table.insert(M, {
 	'JoosepAlviste/nvim-ts-context-commentstring',
-	event = 'VeryLazy',
+	event = { 'BufReadPre', 'BufNewFile' },
+	dependencies = {
+		'nvim-treesitter/nvim-treesitter',
+	},
 })
 
 table.insert(M, {
 	'andymass/vim-matchup',
-	event = 'VeryLazy',
+	event = { 'BufReadPre', 'BufNewFile' },
+	dependencies = {
+		'nvim-treesitter/nvim-treesitter',
+	},
 	init = function()
 		-- Disable matchup higlights, use the default of vim
 		vim.api.nvim_create_autocmd('FileType', {
