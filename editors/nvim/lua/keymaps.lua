@@ -194,18 +194,8 @@ end, 'Scroll down in hover', { silent = true, expr = true })
 -----------------------------------
 --             GIT               --
 -----------------------------------
-map('n', '<leader>gs', '<cmd>:G<CR>', 'Open fugitive.vim (git status)')
 map('n', '<leader>gD', '<cmd>Easypick dirtyfiles<CR>', 'Git dirtyfiles')
-map('n', '<leader>gd', '<cmd>DiffviewOpen<CR>', 'Git show diff')
-map('n', '<leader>gS', '<cmd>DiffviewOpen HEAD^..HEAD<CR>', 'Git Show')
 map('n', '<leader>gc', '<cmd>Telescope git_branches<CR>', 'Git checkout')
-map('n', '<leader>gh', '<cmd>DiffviewFileHistory %<CR>', 'Git History')
-map('n', '<leader>gH', '<cmd>DiffviewFileHistory .<CR>', 'Git workspace History')
-map('n', '<leader>gp', '<cmd>Git push<CR>', 'Git push')
-map('n', '<leader>gP', '<cmd>Git push --force<CR>', 'Git push force')
-map('n', '<leader>gt', '<cmd>vert Flogsplit<CR>', 'Git Tree')
-map('n', '<leader>got', '<cmd>Flogsplit<CR>', 'Git Tree (split)')
-map('n', '<leader>hh', '<cmd>GitMessenger<CR>', 'Hunk history')
 map('n', 'gh', ':set opfunc=GitHistoryOperator<CR>g@',
 	'show Git History with operator, e.g: gh3<cr> shows the history of the 3 lines below')
 map('v', 'gh', '<Esc><cmd>lua git_history("v")<cr>', 'show Git History with visual mode')
@@ -290,15 +280,6 @@ local keys_by_ft = {
 		map_buffer(bufid, 'n', 'J', require('rust-tools').join_lines.join_lines, 'Rust: join line')
 		map_buffer(bufid, 'n', '<leader>rr', require('rust-tools').runnables.runnables, 'Rust: run')
 		map_buffer(bufid, 'n', '<leader>rt', require('rust-tools').hover_actions.hover_actions, 'Rust: run test') -- run test
-	end,
-	-- Floggraph
-	['floggraph'] = function(bufid)
-		map_buffer(bufid, 'n', '<C-d>', flog_diff_current, 'Floggraph: show diff from head to current')
-		map_buffer(bufid, 'x', '<C-d>', '<Esc><cmd>lua flog_diff_current_visual()<cr>',
-			'Floggraph: show diff of selection')
-		map_buffer(bufid, 'x', '<C-s>', '<Esc><cmd>lua flog_diff_current_visual()<cr>',
-			'Floggraph: show diff of selection')
-		map_buffer(bufid, 'n', '<C-s>', flog_show_current, 'Floggraph: show current in diffview')
 	end,
 }
 keymaps_autocmd_group = api.nvim_create_augroup('KeyMaps', {})
