@@ -1,1 +1,2 @@
 LSP_SERVERS = {}
+HYDRAS = {}
