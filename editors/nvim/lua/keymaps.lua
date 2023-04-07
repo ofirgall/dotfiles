@@ -228,12 +228,9 @@ map('n', '<space><Left>', sibling_swap.swap_with_left_with_opp)
 --             LSP               --
 -----------------------------------
 -- Lsp UI
-map('n', '<F2>', '<cmd>Lspsaga rename<cr>', 'Rename symbos with F2')
 map('n', '<leader><F2>', '*:%s///g<left><left>', 'Rename current word with <leader>F2')
 map('x', '<F2>', '"hy:%s/<C-r>h//g<left><left>', 'Rename visual')
-map('n', '<F4>', '<cmd>Lspsaga code_action<cr>', 'Code action with F4')
 -- map('n', '<leader>i', '<cmd>Neogen<cr>', 'document function')
-map('n', '<leader>L', '<cmd>Lspsaga show_line_diagnostics<CR>', 'show Problem')
 map('n', ']p', goto_next_diag, 'next Problem')
 map('n', '[p', goto_prev_diag, 'prev Problem')
 map('n', ']g', goto_next_diag, 'next Problem')

@@ -32,6 +32,9 @@ table.insert(M, {
 			-- Start virtual text and lines disabled
 			virtual_lines = false,
 			virtual_text = { severity = vim.diagnostic.severity.ERROR },
+			signs = {
+				priority = 8,
+			},
 		})
 
 		local function setup_server(server, server_opts)
@@ -53,6 +56,51 @@ table.insert(M, {
 	},
 })
 
+-- TODO: if I want code action to be always active I need to add event = 'LspAttach'
+table.insert(M, {
+	'glepnir/lspsaga.nvim',
+	dependencies = {
+		'kyazdani42/nvim-web-devicons',
+		'nvim-treesitter/nvim-treesitter',
+	},
+	config = function()
+		local scheme = require('ofirkai.design').scheme
+
+		require('lspsaga').setup({
+			code_action = {
+				keys = {
+					quit = '<Escape>',
+					exec = '<CR>',
+				},
+			},
+			lightbulb = {
+				sign_priority = 10,
+				sign = true,
+				virtual_text = false,
+				enable_in_insert = false,
+			},
+			rename = {
+				in_select = false,
+				whole_project = false,
+			},
+			symbol_in_winbar = {
+				enable = false,
+			},
+			ui = {
+				code_action = '',
+				colors = {
+					normal_bg = scheme.ui_bg,
+					title_bg = scheme.mid_orange,
+				},
+			},
+		})
+	end,
+	keys = {
+		{ '<F2>', '<cmd>Lspsaga rename<cr>', desc = 'Rename symbos with F2' },
+		{ '<F4>', '<cmd>Lspsaga code_action<cr>', desc = 'Code action with F4' },
+		{ '<leader>L', '<cmd>Lspsaga show_line_diagnostics<CR>', desc = 'show Problem' },
+	},
+})
 
 table.insert(M, {
 	'ofirgall/inlay-hints.nvim', -- fork
@@ -108,7 +156,7 @@ table.insert(M, {
 
 table.insert(M, {
 	'RRethy/vim-illuminate',
-	event = { 'BufReadPre', 'BufNewFile' },
+	event = 'LspAttach',
 	config = function()
 		require('illuminate').configure {
 			modes_denylist = { 'i' },
