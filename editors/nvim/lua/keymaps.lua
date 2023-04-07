@@ -111,10 +111,6 @@ map('n', '<F8>', restart_nvim, 'Restart nvim')
 --             TMUX              --
 -----------------------------------
 -- Navigate in panes + splits (requires numToStr/Navigator.nvim)
-map({ 'n', 'x', 't' }, '<C-h>', '<cmd>NavigatorLeft<cr>')
-map({ 'n', 'x', 't' }, '<C-j>', '<cmd>NavigatorDown<cr>')
-map({ 'n', 'x', 't' }, '<C-k>', '<cmd>NavigatorUp<cr>')
-map({ 'n', 'x', 't' }, '<C-l>', '<cmd>NavigatorRight<cr>')
 map({ 'n' }, '<leader>o', '<cmd>TmuxJumpFile<cr>', 'Open file pathes from sibiling tmux pane')
 -- Splits like tmux
 map('n', '<M-e>', function() smart_split('vertical') end, 'Vsplit')
@@ -142,8 +138,6 @@ map('i', '<M-[>', '<C-O>[a', 'Jump to prev argument in insert mode', { silent = 
 -----------------------------------
 --          MISC PLUGINS         --
 -----------------------------------
-map('n', '<leader>gx', require('open').open_cword, 'Open current word')
-map('n', '<leader>rgb', '<cmd>PickColor<CR>', 'Pick color')
 map({ 'n', 't', 'v' }, '<C-t>', function() toggle_or_open_terminal() end, 'toggle all terminals')
 map('t', '<M-e>', function() open_new_terminal('vertical') end, 'Split terminal')
 map('t', '<M-q>', '<cmd>bd!<CR>', 'Close terminal')
@@ -158,8 +152,6 @@ map('n', '<leader>B', function()
 	reset_deploy()
 	deploy()
 end, 'Reset deploy, build & deploy')
-map({ 'n', 'v' }, '<leader>H', require('based').convert, 'Convert hex <=> decimal')
-map({ 'n', 'v' }, '<M-Z>', function() vim.cmd('NeoZoomToggle') end, 'Zoom split', { nowait = true })
 
 -- ThePrimeagen/harpoon
 map('n', '<leader>m', require('harpoon.mark').add_file, 'Add file to harpoon')

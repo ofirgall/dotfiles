@@ -1,3 +1,5 @@
+local M = {}
+
 LSP_SERVERS['marksman'] = {
 }
 
@@ -25,4 +27,16 @@ LSP_SERVERS['ltex'] = {
 	},
 }
 
-return {}
+table.insert(M, {
+	'toppair/peek.nvim',
+	cmd = 'MarkdownPreviewOpen',
+	build = 'deno task --quiet build:fast',
+	config = function()
+		require('peek').setup {
+		}
+		vim.api.nvim_create_user_command('MarkdownPreviewOpen', require('peek').open, {})
+		vim.api.nvim_create_user_command('MarkdownPreviewClose', require('peek').close, {})
+	end
+})
+
+return M
