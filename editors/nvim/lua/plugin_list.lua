@@ -213,19 +213,6 @@ return require('packer').startup(function()
 
 	-- AI
 	use {
-		'jackMort/ChatGPT.nvim', -- ChatGPT from nvim
-		requires = {
-			'MunifTanjim/nui.nvim',
-			'nvim-lua/plenary.nvim',
-			'nvim-telescope/telescope.nvim'
-		},
-		cmd = { 'ChatGPT', 'ChatGPTActAs', 'ChatGPTRunCustomCodeAction', 'ChatGPTEditWithInstructions' },
-		config = function()
-			require('chatgpt').setup {
-			}
-		end,
-	}
-	use {
 		'dpayne/CodeGPT.nvim', -- Make ChatGPT interact with the code
 		requires = {
 			'nvim-lua/plenary.nvim',
