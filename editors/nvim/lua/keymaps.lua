@@ -138,8 +138,6 @@ map('i', '<M-[>', '<C-O>[a', 'Jump to prev argument in insert mode', { silent = 
 -----------------------------------
 --          MISC PLUGINS         --
 -----------------------------------
-map({ 'n', 't', 'v' }, '<C-t>', function() toggle_or_open_terminal() end, 'toggle all terminals')
-map('t', '<M-e>', function() open_new_terminal('vertical') end, 'Split terminal')
 map('t', '<M-q>', '<cmd>bd!<CR>', 'Close terminal')
 map('n', ']d', require('goto-breakpoints').next, 'Goto next breakpoint')
 map('n', '[d', require('goto-breakpoints').prev, 'Goto prev breakpoint')
