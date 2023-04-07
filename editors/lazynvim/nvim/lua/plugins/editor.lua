@@ -341,5 +341,13 @@ table.insert(M, {
 	end,
 })
 
+table.insert(M, {
+	'micarmst/vim-spellsync',
+	event = 'VeryLazy',
+	init = function()
+		vim.g.spellsync_enable_git_union_merge = 0
+		vim.g.spellsync_enable_git_ignore = 0
+	end,
+})
 
 return M
