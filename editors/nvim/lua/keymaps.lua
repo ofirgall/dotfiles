@@ -148,11 +148,6 @@ map('n', '<leader>B', function()
 	deploy()
 end, 'Reset deploy, build & deploy')
 
--- ThePrimeagen/harpoon
-map('n', '<leader>m', require('harpoon.mark').add_file, 'Add file to harpoon')
-map('n', '<leader>A', require('telescope').extensions.harpoon.marks, 'Jump to harpoon file')
-map('n', '<leader>a', require('harpoon.ui').toggle_quick_menu, 'Jump to harpoon file')
-
 -----------------------------------
 --        CODE NAVIGATION        --
 -----------------------------------

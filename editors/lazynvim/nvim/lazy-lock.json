@@ -34,6 +34,7 @@
   "goto-breakpoints.nvim": { "branch": "master", "commit": "e57cf63d152534db3a9177ae53abbff43fcab6c2" },
   "guess-indent.nvim": { "branch": "main", "commit": "b8ae749fce17aa4c267eec80a6984130b94f80b2" },
   "guihua.lua": { "branch": "master", "commit": "d331b1526a87edbe13679298c3547d49f8a14ffc" },
+  "harpoon": { "branch": "master", "commit": "f7040fd0c44e7a4010369136547de5604b9c22a1" },
   "hex.nvim": { "branch": "master", "commit": "317915ffcb160a2039be5250825f658002435c39" },
   "incline.nvim": { "branch": "main", "commit": "71a03756a5f750c79a2889a80fcd8bbff7083690" },
   "indent-blankline.nvim": { "branch": "master", "commit": "018bd04d80c9a73d399c1061fa0c3b14a7614399" },

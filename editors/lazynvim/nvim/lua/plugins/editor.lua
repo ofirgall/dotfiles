@@ -350,4 +350,20 @@ table.insert(M, {
 	end,
 })
 
+table.insert(M, {
+	'ThePrimeagen/harpoon',
+	dependencies = {
+		'nvim-lua/plenary.nvim'
+	},
+	keys = {
+		{ '<leader>m', function() require('harpoon.mark').add_file() end, desc = 'Add file to harpoon' },
+		{ '<leader>A', function() require('telescope').extensions.harpoon.marks() end, desc = 'Jump to harpoon file' },
+		{ '<leader>a', function() require('harpoon.ui').toggle_quick_menu() end, desc = 'Jump to harpoon file' },
+
+	},
+	config = function()
+		require('telescope').load_extension('harpoon')
+	end,
+})
+
 return M
