@@ -66,7 +66,6 @@ map({ 'n', 'v' }, '<leader>.', '<cmd>tabnext<cr>', 'Next tabpage with Alt+. (>).
 map('i', '<M-,>', '<C-O><cmd>tabprev<cr>', 'Previous tabpage with Alt+, (<). NOT FILE TABS')
 map('i', '<M-.>', '<C-O><cmd>tabnext<cr>', 'Next tabpage with Alt+. (>). NOT FILE TABS')
 map('n', '<leader>n', add_new_line, 'Add newline')
-map('x', '<leader>p', '"_d<Plug>(YankyPutBefore)', 'replace text without changing the copy register')
 map('n', '<leader>d', '"_d', 'delete without yanking')
 map('n', '<leader>D', '"_D', 'delete without yanking')
 map('n', '<leader>c', '"_c', 'change without yanking')
@@ -107,16 +106,6 @@ map('n', '*', "<cmd>let @/= '\\<' . expand('<cword>') . '\\>'<cr>zz", 'Search cu
 
 -- Restart nvim
 map('n', '<F8>', restart_nvim, 'Restart nvim')
-
------------------------------------
---            Yanky              --
------------------------------------
-map({ 'n', 'x' }, 'y', '<Plug>(YankyYank)', 'Yank with yanky.nvim')
-map({ 'n', 'x' }, 'p', '<Plug>(YankyPutAfter)', 'Paste with yanky.nvim')
-map({ 'n', 'x' }, 'P', '<Plug>(YankyPutBefore)', 'Paste with yank.nvim')
-
-map('n', '<M-[>', '<Plug>(YankyCycleForward)', 'Cycle yank history forward')
-map('n', '<M-]>', '<Plug>(YankyCycleBackward)', 'Cycle yank history backward')
 
 -----------------------------------
 --             TMUX              --
@@ -172,27 +161,10 @@ end, 'Reset deploy, build & deploy')
 map({ 'n', 'v' }, '<leader>H', require('based').convert, 'Convert hex <=> decimal')
 map({ 'n', 'v' }, '<M-Z>', function() vim.cmd('NeoZoomToggle') end, 'Zoom split', { nowait = true })
 
--- numToStr/Comment.nvim
-local ctrl_slash = '<C-_>' -- For some reason this is <C-/>
-local comment = require('Comment.api')
-local esc = api.nvim_replace_termcodes('<ESC>', true, false, true)
-map('n', ctrl_slash, comment.toggle.linewise.current, 'Comment current line')
-map('x', ctrl_slash, function()
-	api.nvim_feedkeys(esc, 'nx', false)
-	comment.toggle.blockwise(vim.fn.visualmode())
-end, 'Comment visual selection')
-
 -- ThePrimeagen/harpoon
 map('n', '<leader>m', require('harpoon.mark').add_file, 'Add file to harpoon')
 map('n', '<leader>A', require('telescope').extensions.harpoon.marks, 'Jump to harpoon file')
 map('n', '<leader>a', require('harpoon.ui').toggle_quick_menu, 'Jump to harpoon file')
-
--- nguyenvukhang/nvim-toggler
-map({ 'n', 'v' }, '<leader>i', require('nvim-toggler').toggle, 'Invert words')
-
--- Wansmer/treesj
-map('n', 'sJ', '<cmd>TSJSplit<cr>', 'Splitjoin Split line')
-map('n', 'sj', '<cmd>TSJJoin<cr>', 'Splitjoin Join line')
 
 -- Mutli Cursors Binds alt+d (like ctrl+d in subl)
 -- Add cursor down/up Alt+n/p (like ctrl+down/up in subl)
@@ -203,22 +175,6 @@ let g:VM_maps['Find Subword Under'] = '<M-d>'
 let g:VM_maps['Add Cursor Down'] = '<C-M-j>'
 let g:VM_maps['Add Cursor Up'] = '<C-M-k>'
 ]])
-
--- Surround words
-map('n', 'sw', 'saiw', 'Surround word', { remap = true })
-map('n', 'sW', 'saiW', 'Surround WORD', { remap = true })
--- Replace qoutes
-local qoutes = { "'", '"', '`' }
-for _, char in ipairs(qoutes) do
-	map('n', '<leader>' .. char, 'srq' .. char, 'Replace surround to ' .. char, { remap = true }) -- <leader>{char} to replace sandwich to {char}
-end
-
--- Wansmer/sibling-swap.nvim
-local sibling_swap = require('sibling-swap')
-map('n', '<C-Right>', sibling_swap.swap_with_right)
-map('n', '<C-Left>', sibling_swap.swap_with_left)
-map('n', '<space><Right>', sibling_swap.swap_with_right_with_opp)
-map('n', '<space><Left>', sibling_swap.swap_with_left_with_opp)
 
 -----------------------------------
 --        CODE NAVIGATION        --
@@ -307,9 +263,6 @@ map('n', '<M-t>', '<cmd>tabnew %<cr>', 'New tabpage')
 -----------------------------------
 --           MOTION              --
 -----------------------------------
--- ggandor/leap.nvim
-map({ 'n', 'x' }, '<leader>s', '<Plug>(leap-forward)', 'Leap forward')
-map({ 'n', 'x' }, '<leader>S', '<Plug>(leap-backward)', 'Leap backard')
 
 -----------------------------------
 --            DIAL               --

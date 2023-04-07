@@ -1,16 +1,5 @@
 local api = vim.api
 
--- numToStr/Comment.nvim
-require('Comment').setup {
-	pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-}
-
--- windwp/nvim-autopairs
-require('nvim-autopairs').setup {
-	check_ts = true,
-	disable_filetype = { 'TelescopePrompt', 'guihua', 'guihua_rust', 'clap_input' },
-	-- enable_moveright = false,
-}
 
 -- rmagatti/auto-session
 require('auto-session').setup {
@@ -58,31 +47,12 @@ require('nvim-lastplace').setup {
 	lastplace_ignore_buftype = { 'terminal' },
 }
 
--- michaelb/sniprun
-require 'sniprun'.setup {
-	display = {
-		'Classic'
-	},
-}
-
--- nacro90/numb.nvim
-require('numb').setup {
-	number_only = true,
-}
 
 -- lyokha/vim-xkbswitch
 vim.cmd([[
 let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 let g:XkbSwitchEnabled = 1
 ]])
-
--- ojroques/vim-oscyank
-if IS_REMOTE then
-	-- Enable osc(remote) yank
-	vim.cmd([[
-	autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
-	]])
-end
 
 -- gennaro-tedesco/nvim-peekup
 local peekup_config = require('nvim-peekup.config')
@@ -198,16 +168,6 @@ require('iron.core').setup {
 		},
 		repl_open_cmd = 'belowright 15 split',
 	},
-	-- keymaps = {
-	-- 	send_motion = '<space>sc',
-	-- 	visual_send = '<space>sc',
-	-- 	send_file = '<space>sf',
-	-- 	send_line = '<space>sl',
-	-- 	cr = '<space>s<cr>',
-	-- 	interrupt = '<space>s<space>',
-	-- 	exit = '<space>sq',
-	-- 	clear = '<space>cl',
-	-- },
 	highlight = {
 		italic = false,
 		bold = false,
@@ -241,78 +201,14 @@ require('peek').setup {
 vim.api.nvim_create_user_command('MarkdownPreviewOpen', require('peek').open, {})
 vim.api.nvim_create_user_command('MarkdownPreviewClose', require('peek').close, {})
 
--- ggandor/leap.nvim
-require('leap').setup {
-	max_aot_targets = nil,
-	highlight_unlabeled = false,
-}
-
--- ggandor/flit.nvim
-require('flit').setup {
-	labeled_modes = 'nv',
-}
 
 -- tiagovla/scope.nvim
 require('scope').setup {
 }
 
--- andrewferrier/debugprint.nvim
-require('debugprint').setup {
-	print_tag = '--- DEBUG PRINT ---'
-}
-
--- nguyenvukhang/nvim-toggler
-require('nvim-toggler').setup {
-	inverses = {
-		['to'] = 'from',
-		['failed'] = 'succeeded',
-		['before'] = 'after',
-	},
-	remove_default_keybinds = true,
-}
-
--- phaazon/mind.nvim
-require('mind').setup {
-	keymaps = {
-		normal = {
-			['<cr>'] = 'toggle_node',
-			['<Esc>'] = 'toggle_parent',
-			['e'] = 'open_data',
-			['dd'] = 'delete',
-			['<leader>m'] = 'quit',
-			['R'] = 'change_icon_menu',
-		},
-		selection = {
-			['<cr>'] = 'toggle_node',
-			['e'] = 'open_data',
-		},
-	},
-}
-
--- s1n7ax/nvim-window-picker (required by mind.nvim)
-require('window-picker').setup {
-}
-
 -- ofirgall/title.nvim
 require('title-nvim').setup {
 }
-
--- johmsalas/text-case.nvim
-local textcase = require('textcase')
-textcase.setup {
-}
-
-api.nvim_create_user_command('UpperCase', function() textcase.current_word('to_upper_case') end, {})
-api.nvim_create_user_command('LowerCase', function() textcase.current_word('to_lower_case') end, {})
-api.nvim_create_user_command('SnakeCase', function() textcase.current_word('to_snake_case') end, {})
-api.nvim_create_user_command('ConstantCase', function() textcase.current_word('to_dash_case') end, {})
-api.nvim_create_user_command('DashCase', function() textcase.current_word('to_constant_case') end, {})
-api.nvim_create_user_command('DotCase', function() textcase.current_word('to_dot_case') end, {})
-api.nvim_create_user_command('CamelCase', function() textcase.current_word('to_camel_case') end, {})
-api.nvim_create_user_command('PascalCase', function() textcase.current_word('to_pascal_case') end, {})
-api.nvim_create_user_command('TitleCase', function() textcase.current_word('to_title_case') end, {})
-api.nvim_create_user_command('PathCase', function() textcase.current_word('to_path_case') end, {})
-api.nvim_create_user_command('PhraseCase', function() textcase.current_word('to_phrase_case') end, {})
 
 -- AckslD/nvim-FeMaco.lua
 local femaco_margin = {
@@ -344,16 +240,6 @@ require('femaco').setup {
 	end,
 }
 
--- gbprod/yanky.nvim
-require('yanky').setup {
-	system_clipboard = {
-		sync_with_ring = false,
-	},
-	highlight = {
-		on_put = false,
-		on_yank = false,
-	},
-}
 
 -- ofirgall/open.nvim
 require('open').setup {
@@ -364,41 +250,7 @@ require('open-jira').setup {
 	url = 'https://volumez.atlassian.net/browse/'
 }
 
--- kylechui/nvim-surround
 
--- switch the surround direction behavior
-local surrounds = require('nvim-surround.config').default_opts.surrounds
-local switched_surrounds = {
-	{ '{', '}' },
-	{ '(', ')' },
-	{ '[', ']' },
-	{ '<', '>' },
-}
-for _, pair in ipairs(switched_surrounds) do
-	local tmp = surrounds[pair[1]]
-	surrounds[pair[1]] = surrounds[pair[2]]
-	surrounds[pair[2]] = tmp
-end
-
-require('nvim-surround').setup {
-	keymaps = {
-		normal = 'sa',
-		normal_cur = false,
-		normal_line = false,
-		normal_cur_line = false,
-		visual = 's',
-		visual_line = 'S',
-		delete = 'sd',
-		change = 'sr',
-	},
-	aliases = {
-		['i'] = '[', -- Index
-		['r'] = '(', -- Round
-		['b'] = '{', -- Brackets
-	},
-	surrounds = surrounds,
-	move_cursor = false,
-}
 
 -- zakharykaplan/nvim-retrail
 retrail = require('retrail')
@@ -432,19 +284,9 @@ retrail.setup {
 
 api.nvim_create_user_command('TrimWhiteSpace', function() retrail:trim() end, {})
 
--- Wansmer/treesj
-require('treesj').setup {
-	use_default_keymaps = false,
-}
-
 -- numToStr/Navigator.nvim
 require('Navigator').setup {
 	disable_on_zoom = false,
-}
-
--- Wansmer/sibling-swap.nvim
-require('sibling-swap').setup {
-	use_default_keymaps = false,
 }
 
 -- trmckay/based.nvim
