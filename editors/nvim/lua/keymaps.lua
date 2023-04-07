@@ -139,9 +139,6 @@ map('i', '<M-[>', '<C-O>[a', 'Jump to prev argument in insert mode', { silent = 
 --          MISC PLUGINS         --
 -----------------------------------
 map('t', '<M-q>', '<cmd>bd!<CR>', 'Close terminal')
-map('n', ']d', require('goto-breakpoints').next, 'Goto next breakpoint')
-map('n', '[d', require('goto-breakpoints').prev, 'Goto prev breakpoint')
-map('n', ']S', require('goto-breakpoints').stopped, 'Goto DAP stopped location')
 map('n', '<leader>M', require('mind').open_main, 'Open mind.nvim')
 map('n', '<leader>e', require('femaco.edit').edit_code_block, 'Edit markdown codeblocks')
 map('n', '<leader>w', require('typebreak').start, 'typebreak') -- <leader>Wpm
@@ -268,29 +265,6 @@ map('v', 'g<C-x>', require('dial.map').dec_gvisual())
 --          DEBUGGING            --
 -----------------------------------
 -- TODO: create hydra for it
-map('n', '<F5>', require 'dap'.continue, 'Debug: continue')
-map('n', '<F6>', require 'dap'.terminate, 'Debug: terminate')
-map('n', '<F9>', require('persistent-breakpoints.api').toggle_breakpoint, 'Debug: Toggle breakpoint')
-map('n', '<leader><F9>', require('persistent-breakpoints.api').set_conditional_breakpoint,
-	'Debug: toggle conditional breakpoint')
-
-map('n', '<F10>', function()
-	require 'dap'.step_over()
-	center_screen()
-end, 'Debug: step over')
-map('n', '<F11>', function()
-	require 'dap'.step_into()
-	center_screen()
-end, 'Debug: step into')
-map('n', '<F12>', function()
-	require 'dap'.step_out()
-	center_screen()
-end, 'Debug: set out')
-
-map('n', '<leader>rp', require 'dap'.repl.open, 'Debug: open repl')
-map('n', '<leader>rc', require 'dap'.run_to_cursor, 'Debug: Run to cursor')
-
-map('n', '<leader>k', require 'dapui'.eval, 'Debug: evaluate')
 
 -----------------------------------
 --         File Specific         --

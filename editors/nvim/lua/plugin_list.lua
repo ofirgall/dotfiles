@@ -106,7 +106,6 @@ return require('packer').startup(function()
 	use 'mfussenegger/nvim-dap' -- DAP client for nvim
 	use { 'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap' } -- UI for debugging
 	use 'Weissle/persistent-breakpoints.nvim' -- Keep breakpoints after nvim restart
-	use 'ofirgall/goto-breakpoints.nvim' -- Cycle breakpoints with ]d/[d
 	use 'andrewferrier/debugprint.nvim' -- make debug prints fast
 
 	-- Startup Time --

@@ -65,10 +65,6 @@ close_pane = function()
 end
 
 
-center_screen = function()
-	api.nvim_feedkeys('zz', 'n', false)
-end
-
 goto_next_diag = function()
 	local next = vim.diagnostic.get_next()
 	if next == nil then
