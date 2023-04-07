@@ -273,7 +273,6 @@ return {
 	-- Highlight current window seperator
 	{
 		'nvim-zh/colorful-winsep.nvim',
-		event = 'VeryLazy',
 		config = function()
 			local scheme = require('ofirkai.design').scheme
 			require('colorful-winsep').setup {
