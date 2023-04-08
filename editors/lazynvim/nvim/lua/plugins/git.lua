@@ -6,6 +6,7 @@ local api = vim.api
 table.insert(M, {
 	'lewis6991/gitsigns.nvim',
 	event = { 'BufReadPost', 'BufNewFile' },
+	cmd = 'Gitsigns',
 	config = function()
 		local gs = require('gitsigns')
 		gs.setup {
@@ -109,7 +110,6 @@ table.insert(M, {
 						actions.select_prev_entry()
 						actions.refresh_files()
 					end,
-
 				},
 				file_panel = {
 					['s'] = cb('toggle_stage_entry'),
