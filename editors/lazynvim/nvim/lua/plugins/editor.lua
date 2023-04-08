@@ -369,4 +369,9 @@ table.insert(M, {
 	end,
 })
 
+table.insert(M, {
+	'famiu/bufdelete.nvim',
+	lazy = true,
+})
+
 return M

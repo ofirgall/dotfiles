@@ -23,18 +23,6 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim' -- packer can manage itself
 
-	-------- LSP --------
-	use 'onsails/lspkind.nvim' -- Adding sweet ui for kind (function/var/method)
-
-	use {
-		'alopatindev/cargo-limit', -- Jump to rust errors (run `cargo lrun` in terminal)
-		run = 'cargo install cargo-limit nvim-send'
-	}
-
-	-- TreeSitter --
-	use 'nvim-treesitter/playground' -- TreeSitter helper to customize
-	use 'phelipetls/jsonpath.nvim' -- Added json path winbar component
-
 	-- Textobjects --
 	use { 'D4KU/vim-textobj-chainmember', requires = 'kana/vim-textobj-user' } -- im/am: foo.bar().baz() = foo, bar(), baz()
 

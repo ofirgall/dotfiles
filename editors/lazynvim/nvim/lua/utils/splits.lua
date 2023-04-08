@@ -2,6 +2,18 @@ local M = {}
 
 local api = vim.api
 
+local function catch(what)
+	return what[1]
+end
+
+local function try(what)
+	status, result = pcall(what[1])
+	if not status then
+		what[2](result)
+	end
+	return result
+end
+
 function M.close_all_but_current()
 	local buf_utils = require('utils.buf')
 	for _, bufnr in pairs(api.nvim_list_bufs()) do

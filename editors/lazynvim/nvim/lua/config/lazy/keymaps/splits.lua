@@ -1,7 +1,7 @@
 local map = require('utils.misc').map
 
 -- Splits
-map('n', '<leader>qa', function() require('utils.buf').close_all_but_current() end, 'Close all buffers but current')
+map('n', '<leader>qa', function() require('utils.splits').close_all_but_current() end, 'Close all buffers but current')
 map('n', '<leader>qA', '<cmd>wqa!<cr>', 'Write all + close vim')
 
 map('n', '<M-e>', function() require('utils.splits').smart_split('vertical') end, 'Vsplit')

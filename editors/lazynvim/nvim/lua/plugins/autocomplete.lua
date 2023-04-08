@@ -32,7 +32,7 @@ table.insert(M, {
 		'f3fora/cmp-spell',
 		'ofirgall/cmp-lspkind-priority',
 		'ofirgall/cmp-nvim-lsp-signature-help',
-		'onsails/lspkind-nvim',
+		'onsails/lspkind.nvim',
 		'windwp/nvim-autopairs',
 	},
 	config = function()

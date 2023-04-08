@@ -64,13 +64,13 @@ function M.setup_lualine(is_half)
 				},
 				{
 					function()
-						require('jsonpath').get()
+						return require('jsonpath').get()
 					end,
 					cond = function()
 						if not package.loaded['jsonpath'] then
 							return false
 						end
-						local ft = api.nvim_buf_get_option(0, 'filetype')
+						local ft = vim.api.nvim_buf_get_option(0, 'filetype')
 						return ft == 'json' or ft == 'jsonc'
 					end,
 				},

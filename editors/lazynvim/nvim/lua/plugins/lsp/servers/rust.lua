@@ -39,4 +39,11 @@ table.insert(M, {
 	end,
 })
 
+table.insert(M, {
+	-- Jump to rust errors (run `cargo lrun` in terminal)
+	'alopatindev/cargo-limit',
+	run = 'cargo install cargo-limit nvim-send',
+	ft = 'rust',
+})
+
 return M
