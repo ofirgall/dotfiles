@@ -243,14 +243,16 @@ table.insert(M, {
 
 		-- Goto references
 		{ 'gr', lsp_references, desc = 'Go to References' },
-		{ 'gvr',
+		{
+			'gvr',
 			function()
 				split_if_not_exist(true)
 				lsp_references()
 			end,
 			desc = 'Go to References in Vsplit'
 		},
-		{ 'gxr',
+		{
+			'gxr',
 			function()
 				split_if_not_exist(false)
 				lsp_references()
@@ -301,7 +303,8 @@ table.insert(M, {
 		},
 
 		-- Goto symbol
-		{ 'gs',
+		{
+			'gs',
 			function()
 				require 'telescope.builtin'.lsp_document_symbols({
 					symbol_width = 65,
@@ -364,14 +367,22 @@ table.insert(M, {
 	keys = {
 		-- Find word
 		{ '<leader>fw', live_grep, desc = 'search in all files (fuzzy finder)' },
-		{ mode = 'v', '<leader>fw', '<Esc><cmd>lua live_grep({}, "v")<cr>', desc = 'search in all files (default text is from visual)' },
+		{
+			mode = 'v',
+			'<leader>fw',
+			'<Esc><cmd>lua live_grep({}, "v")<cr>',
+			desc = 'search in all files (default text is from visual)'
+		},
 		{ '<leader>fcw', function() live_grep({}, 'cword') end, desc = 'Find current word' },
 		{ '<leader>fcW', function() live_grep({}, 'cWORD') end, desc = 'Find current word' },
 		{ '<leader>fm', ':set opfunc=LiveGrepRawOperator<CR>g@', desc = 'Find with movement' },
 		-- Find in current dir
 		{ '<leader>fcd', live_grep_current_dir, desc = 'Find in current dir' },
-		{ '<leader>fcdw', function() live_grep_current_dir(vim.fn.expand('<cword>')) end,
-			desc = 'Find in current dir current word' },
+		{
+			'<leader>fcdw',
+			function() live_grep_current_dir(vim.fn.expand('<cword>')) end,
+			desc = 'Find in current dir current word'
+		},
 	},
 	dependencies = 'nvim-telescope/telescope.nvim',
 })

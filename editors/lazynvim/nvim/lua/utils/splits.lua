@@ -2,6 +2,51 @@ local M = {}
 
 local api = vim.api
 
+function M.close_all_but_current()
+	local buf_utils = require('utils.buf')
+	for _, bufnr in pairs(api.nvim_list_bufs()) do
+		if not buf_utils.is_visible(bufnr) and buf_utils.is_valid(bufnr) then
+			try {
+				function()
+					require('bufdelete').bufwipeout(bufnr, true)
+				end,
+				catch {
+					function()
+						-- print('Failed to delete buffer: ' .. bufnr)
+					end,
+				},
+			}
+		end
+	end
+end
+
+function M.close()
+	local bufnr = api.nvim_get_current_buf()
+	if #api.nvim_list_wins() == 1 then -- Sometimes its reports 2 instead of 1
+		api.nvim_feedkeys(':q\n', 'n', false)
+		return
+	end
+	api.nvim_win_close(0, true)
+	if not require('utils.buf').is_visible(bufnr) then
+		if api.nvim_buf_is_loaded(bufnr) then
+			require('bufdelete').bufdelete(bufnr, true)
+		end
+	end
+end
+
+function M.smart_split(direction)
+	local ft = api.nvim_buf_get_option(0, 'filetype')
+	if ft == 'toggleterm' then
+		open_new_terminal(direction)
+	else
+		if direction == 'vertical' then
+			api.nvim_input('<cmd>vsplit<cr>')
+		else
+			api.nvim_input('<cmd>split<cr>')
+		end
+	end
+end
+
 function M.split_if_not_exist(is_vsplit)
 	if is_vsplit then
 		pos_index = 1

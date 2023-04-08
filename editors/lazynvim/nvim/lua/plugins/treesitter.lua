@@ -86,7 +86,6 @@ table.insert(M, {
 					['ik'] = '@call.inner',
 					['ai'] = '@conditional.outer', -- i as if
 					['ii'] = '@conditional.inner',
-
 					-- Custom captures
 					['ie'] = '@binary_expression.inner',
 					['aF'] = '@function.name',
@@ -124,7 +123,6 @@ table.insert(M, {
 				query = '; %s'
 			},
 		},
-
 	},
 	---@param opts TSConfig
 	config = function(_, opts)

@@ -128,7 +128,6 @@ return require('packer').startup(function()
 	use 'tpope/vim-repeat' -- Extending repeat (.) action
 	use 'tommcdo/vim-exchange' -- Exchange texts operator with `cx`
 	use 'Wansmer/treesj' -- split one liner to multi with sj, sJ to join
-	use 'monaqa/dial.nvim' -- Enhance C-X/A
 
 	-- Navigation --
 	use { 'LeonHeidelbach/trailblazer.nvim' } -- Global marking (used automatically in goto definition)

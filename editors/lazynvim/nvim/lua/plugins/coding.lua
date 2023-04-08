@@ -280,7 +280,6 @@ table.insert(M, {
 		-- Override "sentence" textobj in favor of subword
 		{ 'is', function() require('various-textobjs').subword(true) end, mode = { 'o', 'x' } },
 		{ 'as', function() require('various-textobjs').subword(false) end, mode = { 'o', 'x' } },
-
 		{ 'i|', function() require('various-textobjs').shellPipe(true) end, mode = { 'o', 'x' } },
 		{ 'a|', function() require('various-textobjs').shellPipe(false) end, mode = { 'o', 'x' } },
 	},
@@ -315,5 +314,30 @@ let g:VM_maps['Add Cursor Up'] = '<C-M-k>'
 	end,
 })
 
+-- TODO: dial.nvim doesn't work for some reason
+-- table.insert(M, {
+-- 	-- Enhance C-X/A
+-- 	'monaqa/dial.nvim',
+-- 	keys = {
+-- 		{ '<C-a>', function() require('dial.map').inc_normal() end, expr = true },
+-- 		{ '<C-x>', function() require('dial.map').dec_normal() end },
+-- 		{ '<C-a>', function() require('dial.map').inc_visual() end, mode = 'v' },
+-- 		{ '<C-x>', function() require('dial.map').dec_visual() end, mode = 'v' },
+-- 		{ 'g<C-a>', function() require('dial.map').inc_gvisual() end, mode = 'v' },
+-- 		{ 'g<C-x>', function() require('dial.map').dec_gvisual() end, mode = 'v' },
+-- 	},
+-- 	config = function()
+-- 		local augend = require('dial.augend')
+-- 		require('dial.config').augends:register_group({
+-- 			default = {
+-- 				augend.integer.alias.decimal,
+-- 				augend.integer.alias.hex,
+-- 				augend.date.alias['%Y/%m/%d'],
+-- 				augend.constant.alias.bool,
+-- 				augend.semver.alias.semver,
+-- 			},
+-- 		})
+-- 	end,
+-- })
 
 return M

@@ -203,6 +203,9 @@ table.insert(M, {
 table.insert(M, {
 	'AckslD/nvim-FeMaco.lua',
 	cmd = 'FeMaco',
+	keys = {
+		{ '<leader>e', function() require('femaco.edit').edit_code_block() end, 'Edit markdown codeblocks' },
+	},
 	config = function()
 		local femaco_margin = {
 			width = 10,

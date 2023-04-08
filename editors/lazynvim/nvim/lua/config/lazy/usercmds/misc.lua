@@ -14,25 +14,7 @@ local try = function(what)
 	return result
 end
 
-local function close_all_but_current()
-	local buf_utils = require('utils.buf')
-	for _, bufnr in pairs(api.nvim_list_bufs()) do
-		if not buf_utils.is_visible(bufnr) and buf_utils.is_valid(bufnr) then
-			try {
-				function()
-					require('bufdelete').bufwipeout(bufnr, true)
-				end,
-				catch {
-					function()
-						-- print('Failed to delete buffer: ' .. bufnr)
-					end,
-				},
-			}
-		end
-	end
-end
-
-api.nvim_create_user_command('CloseAllButCurrent', close_all_but_current, {})
+api.nvim_create_user_command('CloseAllButCurrent', function() require('utils.splits').close_all_but_current() end, {})
 
 api.nvim_create_user_command('CloseBuffersLeft', function()
 	api.nvim_command('BufferLineCloseLeft')

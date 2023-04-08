@@ -53,6 +53,7 @@ table.insert(M, {
 		{ 'gD', vim.lsp.buf.declaration, desc = 'Go to Declaration' },
 		{ '<leader>F', function() vim.lsp.buf.format({ async = true }) end, desc = 'Format' },
 		{ 'K', vim.lsp.buf.hover, desc = 'Trigger hover' },
+		{ '<RightMouse>', '<LeftMouse><cmd>sleep 100m<cr><cmd>lua vim.lsp.buf.hover()<cr>', desc = 'Trigger hover' },
 	},
 })
 

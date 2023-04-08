@@ -1,5 +1,8 @@
 local api = vim.api
 
+-- TODO: move to neotree
+-- TODO: change to table.insert method
+
 local function node_relative_path(node)
 	return vim.fn.fnamemodify(node.absolute_path, ':~:.')
 end
@@ -90,10 +93,8 @@ return {
 				input = {
 					insert_only = false,
 					start_in_insert = false,
-
 					max_width = { 140, 0.9 },
 					min_width = { 60, 0.2 },
-
 					mappings = {
 						n = {
 							['q'] = 'Close',
@@ -163,7 +164,6 @@ return {
 			renderer = {
 				symlink_destination = false,
 			},
-
 		},
 	},
 
@@ -268,6 +268,30 @@ return {
 				routes = require('misc.noice_routes'),
 			}
 		end,
+		keys = {
+			{
+				'<c-u>',
+				function()
+					if not require('noice.lsp').scroll(-4) then
+						return '<c-u>zz'
+					end
+				end,
+				'Scroll up in hover',
+				silent = true,
+				expr = true,
+			},
+			{
+				'<c-d>',
+				function()
+					if not require('noice.lsp').scroll(4) then
+						return '<c-d>zz'
+					end
+				end,
+				'Scroll down in hover',
+				silent = true,
+				expr = true,
+			},
+		},
 	},
 
 	-- Highlight current window seperator

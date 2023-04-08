@@ -22,4 +22,16 @@ LSP_SERVERS['clangd'] = {
 	cmd = clangd_cmd,
 }
 
+
+local add_r_new_line = 'i\\r\\n<Esc>'
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'c', 'cpp' },
+	callback = function(events)
+		local map_buffer = require('utils.misc').map_buffer
+		map_buffer(events.buf, 'n', '<leader>e', '<cmd>GoIfErr<cr>', 'Golang: create if err')
+		map_buffer(events.buf, 'n', '<leader>fln', '<cmd>s/Println/Printf/<cr>$F"' .. add_new_line,
+			'Golang: change println to printf')
+	end,
+})
+
 return {}

@@ -30,7 +30,8 @@ table.insert(M, {
 							QF1008 = false, -- Disable Hints for Omit embedded fields from selector expression
 						},
 						usePlaceholders = false,
-						hints = { -- For inlay hints
+						hints = {
+							-- For inlay hints
 							assignVariableTypes = true,
 							compositeLiteralFields = true,
 							compositeLiteralTypes = true,
@@ -43,6 +44,18 @@ table.insert(M, {
 				},
 			},
 		}
+
+		local map_buffer = require('utils.misc').map_buffer
+		local add_new_line = 'i\\n<Esc>'
+
+		vim.api.nvim_create_autocmd('FileType', {
+			pattern = 'go',
+			callback = function(events)
+				map_buffer(events.buf, 'n', '<leader>e', '<cmd>GoIfErr<cr>', 'Golang: create if err')
+				map_buffer(events.buf, 'n', '<leader>fln', '<cmd>s/Println/Printf/<cr>$F"' .. add_new_line,
+					'Golang: change println to printf')
+			end,
+		})
 	end,
 })
 

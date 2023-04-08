@@ -52,8 +52,22 @@ table.insert(M, {
 		{ '<leader>gs', '<cmd>:G<CR>', desc = 'Open fugitive.vim (git status)' },
 		{ '<leader>gp', '<cmd>Git push<CR>', desc = 'Git push' },
 		{ '<leader>gP', '<cmd>Git push --force<CR>', desc = 'Git push force' },
+		{
+			'gh',
+			':set opfunc=GitHistoryOperator<CR>g@',
+			desc = 'show Git History with operator, e.g: gh3<cr> shows the history of the 3 lines below'
+		},
+		{
+			'gh',
+			'<Esc><cmd>lua require("utils.git").show_history("n")<cr>',
+			mode = 'v',
+			desc = 'show Git History with visual mode'
+		},
 	},
 	config = function()
+		-- callback for `gh`
+		vim.cmd("function! GitHistoryOperator(...) \n lua require('utils.git').show_history('n') \n endfunction")
+
 		-- Jump to first group of files
 		api.nvim_create_autocmd('BufWinEnter', {
 			callback = function(events)
@@ -250,13 +264,12 @@ table.insert(M, {
 		api.nvim_create_autocmd('FileType', {
 			pattern = 'floggraph',
 			callback = function(events)
-				local bufid = events.buf
-				map_buffer(bufid, 'n', '<C-d>', flog_diff_current, 'Floggraph: show diff from head to current')
-				map_buffer(bufid, 'x', '<C-d>', '<Esc><cmd>lua flog_diff_current_visual()<cr>',
+				map_buffer(events.buf, 'n', '<C-d>', flog_diff_current, 'Floggraph: show diff from head to current')
+				map_buffer(events.buf, 'x', '<C-d>', '<Esc><cmd>lua flog_diff_current_visual()<cr>',
 					'Floggraph: show diff of selection')
-				map_buffer(bufid, 'x', '<C-s>', '<Esc><cmd>lua flog_diff_current_visual()<cr>',
+				map_buffer(events.buf, 'x', '<C-s>', '<Esc><cmd>lua flog_diff_current_visual()<cr>',
 					'Floggraph: show diff of selection')
-				map_buffer(bufid, 'n', '<C-s>', flog_show_current, 'Floggraph: show current in diffview')
+				map_buffer(events.buf, 'n', '<C-s>', flog_show_current, 'Floggraph: show current in diffview')
 			end,
 		})
 	end,
