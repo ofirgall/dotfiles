@@ -19,7 +19,13 @@ require('lazy').setup {
 		version = false, -- always use the latest git commit
 	},
 	install = { colorscheme = { 'ofirkai' } },
-	checker = { enabled = false }, -- automatically check for plugin updates
+	checker = {
+		-- automatically check for plugin updates
+		enabled = false,
+	},
+	change_detection = {
+		enabled = false,
+	},
 	performance = {
 		rtp = {
 			-- TODO: go over that
