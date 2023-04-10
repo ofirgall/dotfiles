@@ -36,6 +36,7 @@ show_always = true
 truncate_to_repo = false
 # style = 'pink'
 style = 'purple'
+truncation_length = 999
 
 [git_branch]
 # style = 'cyan'
