@@ -5,6 +5,7 @@
 	co = checkout
 	st = status
 	hist = log --pretty=format:\"%C(bold yellow)%h %C(reset)%C(cyan)%ad%C(reset)%C(red) | %C(bold blue)%s%C(reset)%C(red)%d %C(green)[%an]\" --graph --date=short
+	reset-all = "!bash -c \"git stash --include-untracked && git stash drop\""
 	update = !"f() { (git diff --exit-code > /dev/null && git fetch origin $(git rev-parse --abbrev-ref HEAD) && git reset --hard @{u} && echo \"\\033[32mBranch Updated\\033[0m\") || (echo \"\\033[31mRepo is Dirty, Update canceled!\\033[0m\"); }; f"
 	find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
 	show-merge = "!f() { git log \"$1^..$1\" --patch; }; f"
@@ -20,6 +21,7 @@
 	ff = only
 [push]
 	default = current
+	autoSetupRemote = true
 [merge]
 	ff = false
 [oh-my-zsh]
