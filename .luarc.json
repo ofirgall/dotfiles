@@ -5,7 +5,9 @@
     ],
     "Lua.diagnostics.globals": [
         "vim",
-        "use"
+        "use",
+        "LSP_SERVERS",
+        "NO_SUDO"
     ],
     "Lua.workspace.checkThirdParty": false
 }
