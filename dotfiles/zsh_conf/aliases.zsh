@@ -11,7 +11,9 @@ function nv() {
 		rm /tmp/restart_nvim
 	done
 }
-alias nv='v'
+function v() {
+	nv
+}
 alias br='broot --conf ~/.brootrc.toml'
 alias lz='XDG_CONFIG_HOME=~/dotfiles_wip/editors/lazynvim/ XDG_DATA_HOME=~/.local/share/wip_nvim XDG_STATE_HOME=~/.local/state/wip_nvim nvim'
 alias lzlog='XDG_CONFIG_HOME=~/dotfiles_wip/editors/lazynvim/ XDG_DATA_HOME=~/.local/share/wip_nvim XDG_STATE_HOME=~/.local/state/wip_nvim NVLOG=1 nvim'
@@ -44,9 +46,8 @@ alias cdd='cd $HOME/dotfiles'
 alias cgp='cg $HOME/workspace/personal/' # cg to packer/plugins
 alias cdn='cd $HOME/dotfiles/editors/nvim/' # cd to neovim config
 alias cdz='cd $HOME/dotfiles/dotfiles/zsh_conf/' # cd to zhs config
-alias cdp='cd $HOME/.local/share/nvim/site/pack/packer/start' # cd to packer/plugins
-alias cgnp='cg $HOME/.local/share/nvim/site/pack/packer/start' # cg to packer/plugins
-alias cdt='cd $HOME/.local/share/nvim/site/pack/packer/start/ofirkai.nvim/' # cd to nvim theme
+alias cgnp='cg $HOME/.local/share/nvim/lazy' # cg to packer/plugins
+alias cdt='cd $HOME/.local/share/nvim/lazy/ofirkai.nvim/' # cd to nvim theme
 alias cda='cd $HOME/.config/awesome/' # cd to awesome config
 alias cgt='cg $HOME/.tmux/plugins/' # cg to tmux plugins
 alias g='fugitive' # git fugitive
