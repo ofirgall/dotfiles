@@ -38,10 +38,5 @@ api.nvim_create_user_command('ClearBreakpoints',
 
 api.nvim_create_user_command('ListKeys', function() require('telescope.builtin').keymaps() end, {})
 
--- File utils, chrisgrieser/nvim-genghis
-api.nvim_create_user_command('RenameFile', function() require('genghis').renameFile() end, {})
-api.nvim_create_user_command('CreateNewFile', function() require('genghis').createNewFile() end, {})
-api.nvim_create_user_command('DuplicateFile', function() require('genghis').duplicateFile() end, {})
-api.nvim_create_user_command('ChmodX', function() require('genghis').chmodx() end, {})
-
+-- TODO: install SSR
 api.nvim_create_user_command('SSR', function() require('ssr').open() end, {})

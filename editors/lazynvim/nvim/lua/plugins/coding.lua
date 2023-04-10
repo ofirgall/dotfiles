@@ -18,6 +18,11 @@ table.insert(M, {
 })
 
 table.insert(M, {
+	'tommcdo/vim-exchange',
+	keys = { 'cx' },
+})
+
+table.insert(M, {
 	'windwp/nvim-autopairs',
 	event = { 'InsertEnter' },
 	config = function()
@@ -89,6 +94,7 @@ table.insert(M, {
 				['to'] = 'from',
 				['failed'] = 'succeeded',
 				['before'] = 'after',
+				['prev'] = 'next',
 			},
 			remove_default_keybinds = true,
 		}
@@ -276,6 +282,8 @@ table.insert(M, {
 		{ '!', mode = { 'o', 'x' } },
 		{ 'il', mode = { 'o', 'x' } },
 		{ 'al', mode = { 'o', 'x' } },
+		{ 'im', mode = { 'o', 'x' } },
+		{ 'am', mode = { 'o', 'x' } },
 
 		-- Override "sentence" textobj in favor of subword
 		{ 'is', function() require('various-textobjs').subword(true) end, mode = { 'o', 'x' } },
@@ -339,5 +347,11 @@ let g:VM_maps['Add Cursor Up'] = '<C-M-k>'
 -- 		})
 -- 	end,
 -- })
+
+-- TODO: replace with lua?
+table.insert(M, {
+	'tpope/vim-unimpaired',
+	event = { 'BufReadPre', 'BufNewFile' },
+})
 
 return M

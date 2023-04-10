@@ -24,4 +24,12 @@ table.insert(M, {
 	end,
 })
 
+table.insert(M, {
+	'dpayne/CodeGPT.nvim',
+	dependencies = {
+		'nvim-lua/plenary.nvim',
+		'MunifTanjim/nui.nvim',
+	},
+})
+
 return M

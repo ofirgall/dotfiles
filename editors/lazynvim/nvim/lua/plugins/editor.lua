@@ -374,4 +374,53 @@ table.insert(M, {
 	lazy = true,
 })
 
+table.insert(M, {
+	'lambdalisue/suda.vim',
+	cmd = { 'SudaRead', 'SudaWrite' },
+})
+
+table.insert(M, {
+	'mizlan/iswap.nvim',
+	cmd = 'ISwap'
+})
+
+table.insert(M, {
+	'rbong/vim-buffest',
+	cmd = {
+		'Regsplit',
+		'Regvsplit',
+		'Regtabedit',
+		'Regedit',
+		'Regpedit',
+		'Qflistsplit',
+		'Qflistvsplit',
+		'Qflisttabedit',
+		'Qflistedit',
+		'Loclistsplit',
+		'Loclistvsplit',
+		'Loclisttabedit',
+		'Loclistedit',
+	},
+})
+
+table.insert(M, {
+	'ofirgall/vim-log-highlighting',
+	ft = 'log'
+})
+
+table.insert(M, {
+	'chrisgrieser/nvim-genghis',
+	cmd = {
+		'NewFromSelection',
+		'Duplicate',
+		'Rename',
+		'Trash',
+		'Move',
+		'CopyFilename',
+		'CopyFilepath',
+		'Chmodx',
+		'New',
+	},
+})
+
 return M

@@ -1,5 +1,6 @@
 local cmd = vim.cmd
 local opt = vim.opt
+-- use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end } -- NVIM in firefox
 
 opt.laststatus = 0
 cmd([[
