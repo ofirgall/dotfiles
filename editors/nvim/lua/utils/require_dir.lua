@@ -8,7 +8,7 @@ local function scandir(directory, recursive)
 	local pfile = nil
 
 	if recursive then
-		pfile = popen('find "' .. directory .. '" -printf "%P\n"')
+		pfile = popen('fd . --base-directory="' .. directory .. '"')
 	else
 		pfile = popen('ls -a "' .. directory .. '"')
 	end
