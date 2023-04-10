@@ -1,6 +1,7 @@
 {
   "AutoSave.nvim": { "branch": "main", "commit": "7d4ffcd8ff41e46099a405c9833ca8ab93a03659" },
   "ChatGPT.nvim": { "branch": "main", "commit": "a18b19cbb3e20b91d7bf9b662bf29dd66158112c" },
+  "CodeGPT.nvim": { "branch": "master", "commit": "f4d90214b437ca74708df4c771b05e2d47df4c04" },
   "Comment.nvim": { "branch": "master", "commit": "8d3aa5c22c2d45e788c7a5fe13ad77368b783c20" },
   "Navigator.nvim": { "branch": "master", "commit": "91d86506ac2a039504d5205d32a1d4bc7aa57072" },
   "NeoZoom.lua": { "branch": "main", "commit": "33a45965f99b24a8e7da98f9c976285f946689fe" },
@@ -104,6 +105,7 @@
   "toggleterm.nvim": { "branch": "main", "commit": "2e477f7ee8ee8229ff3158e3018a067797b9cd38" },
   "treesj": { "branch": "main", "commit": "12fc4074a7dee23faabeb1f5dfd3af41d2aa04f1" },
   "venn.nvim": { "branch": "main", "commit": "c114563960b8fb1197695d42798d1f3e7190b798" },
+  "vim-be-good": { "branch": "master", "commit": "c290810728a4f75e334b07dc0f3a4cdea908d351" },
   "vim-buffest": { "branch": "master", "commit": "900b1aadb6bc3e33e7cb1fd230c47f0134a28b4f" },
   "vim-exchange": { "branch": "master", "commit": "784d63083ad7d613aa96f00021cd0dfb126a781a" },
   "vim-flog": { "branch": "master", "commit": "c58f04c82174fc887bbd626e871c89bc393ba585" },
