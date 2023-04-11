@@ -124,70 +124,81 @@ table.insert(M, {
 		'nvim-telescope/telescope-fzf-native.nvim',
 		'nvim-telescope/telescope-ui-select.nvim',
 	},
-	opts = {
-		defaults = {
-			dynamic_preview_title = true,
-			mappings = {
-				i = {
-					['<C-j>'] = 'move_selection_next',
-					['<C-k>'] = 'move_selection_previous',
-					['<C-n>'] = 'cycle_history_next',
-					['<C-p>'] = 'cycle_history_prev',
-					['<C-h>'] = function() require('telescope.actions.layout').cycle_layout_prev() end,
-					['<C-l>'] = function() require('telescope.actions.layout').cycle_layout_next() end,
-					['<C-s>'] = function() require('telescope.actions.layout').toggle_preview() end,
-				},
-				n = {
-					['<C-j>'] = 'move_selection_next',
-					['<C-k>'] = 'move_selection_previous',
-					['<C-h>'] = function() require('telescope.actions.layout').cycle_layout_prev() end,
-					['<C-l>'] = function() require('telescope.actions.layout').cycle_layout_next() end,
-					['<C-o>'] = 'select_horizontal',
-					['<C-s>'] = function() require('telescope.actions.layout').toggle_preview() end,
-				},
-			},
-			layout_config = {
-				horizontal = {
-					width = 0.90,
-					preview_width = 0.5,
-					height = 0.90,
-				},
-				vertical = {
-					width = 0.95,
-					preview_height = 0.75,
-					height = 0.90,
-				},
-			},
-			prompt_prefix = ' ',
-			layout_strategy = layout,
-			cycle_layout_list = cycle_layout_list,
-		},
-		extensions = {
-			['ui-select'] = {
-				-- require('telescope.themes').get_dropdown {
-				-- },
-			},
-			undo = {
-				side_by_side = true,
-				layout_strategy = 'vertical',
-				layout_config = {
-					preview_height = 0.5,
-				},
+	config = function()
+		require('telescope').setup {
+			defaults = {
+				dynamic_preview_title = true,
 				mappings = {
-					n = {
-						['<cr>'] = function() require('telescope-undo.actions').yank_additions() end,
-						['<S-cr>'] = function() require('telescope-undo.actions').yank_deletions() end,
-						['<C-cr>'] = function() require('telescope-undo.actions').restore() end,
-					},
 					i = {
-						['<cr>'] = function() require('telescope-undo.actions').yank_additions() end,
-						['<S-cr>'] = function() require('telescope-undo.actions').yank_deletions() end,
-						['<C-cr>'] = function() require('telescope-undo.actions').restore() end,
+						['<C-j>'] = 'move_selection_next',
+						['<C-k>'] = 'move_selection_previous',
+						['<C-n>'] = 'cycle_history_next',
+						['<C-p>'] = 'cycle_history_prev',
+						['<C-h>'] = require('telescope.actions.layout').cycle_layout_prev,
+						['<C-l>'] = require('telescope.actions.layout').cycle_layout_next,
+						['<CR>'] = require('telescope.actions').select_default + require('telescope.actions').center,
+						['<C-x>'] = require('telescope.actions').select_horizontal + require('telescope.actions').center,
+						['<C-v>'] = require('telescope.actions').select_vertical + require('telescope.actions').center,
+						['<C-t>'] = require('telescope.actions').select_tab + require('telescope.actions').center,
+						['<C-s>'] = require('telescope.actions.layout').toggle_preview,
+					},
+					n = {
+						['<C-j>'] = 'move_selection_next',
+						['<C-k>'] = 'move_selection_previous',
+						['<C-h>'] = require('telescope.actions.layout').cycle_layout_prev,
+						['<C-l>'] = require('telescope.actions.layout').cycle_layout_next,
+						['<C-o>'] = 'select_horizontal',
+						['<CR>'] = require('telescope.actions').select_default + require('telescope.actions').center,
+						['<C-x>'] = require('telescope.actions').select_horizontal + require('telescope.actions').center,
+						['<C-v>'] = require('telescope.actions').select_vertical + require('telescope.actions').center,
+						['<C-t>'] = require('telescope.actions').select_tab + require('telescope.actions').center,
+						['<C-s>'] = require('telescope.actions.layout').toggle_preview,
+					},
+				},
+				layout_config = {
+					horizontal = {
+						width = 0.90,
+						preview_width = 0.5,
+						height = 0.90,
+					},
+					vertical = {
+						width = 0.95,
+						preview_height = 0.75,
+						height = 0.90,
+					},
+				},
+				prompt_prefix = ' ',
+				layout_strategy = layout,
+				cycle_layout_list = cycle_layout_list,
+			},
+			extensions = {
+				['ui-select'] = {
+					-- require('telescope.themes').get_dropdown {
+					-- },
+				},
+				undo = {
+					side_by_side = true,
+					layout_strategy = 'vertical',
+					layout_config = {
+						preview_height = 0.5,
+						preview_cutoff = 30,
+					},
+					mappings = {
+						n = {
+							['<cr>'] = require('telescope-undo.actions').yank_additions,
+							['<S-cr>'] = require('telescope-undo.actions').yank_deletions,
+							['<C-cr>'] = require('telescope-undo.actions').restore,
+						},
+						i = {
+							['<cr>'] = require('telescope-undo.actions').yank_additions,
+							['<S-cr>'] = require('telescope-undo.actions').yank_deletions,
+							['<C-cr>'] = require('telescope-undo.actions').restore,
+						},
 					},
 				},
 			},
-		},
-	},
+		}
+	end,
 	keys = {
 		-- General telescope utils
 		{
@@ -433,7 +444,7 @@ table.insert(M, {
 	config = function()
 		require('telescope').load_extension('undo')
 		vim.api.nvim_create_user_command('UndoTree', function()
-			vim.cmd('Telescope undo') -- TODO: convert to lua api
+			require('telescope').extensions.undo.undo()
 		end, {})
 	end,
 })
