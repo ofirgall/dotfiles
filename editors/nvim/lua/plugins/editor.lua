@@ -10,6 +10,26 @@ table.insert(M, {
 			auto_session_suppress_dirs = { '~/', '~/workspace', '~/Downloads', '/', '~/logs' },
 			auto_session_use_git_branch = true,
 
+			-- Close nvim-tree before saving session
+			pre_save_cmds = {
+				-- nvim-tree
+				function()
+					if package.loaded['nvim-tree'] then
+						require('nvim-tree.api').tree.close()
+					end
+				end,
+
+				-- fugitive
+				function()
+					for _, bufnr in pairs(api.nvim_list_bufs()) do
+						local ft = api.nvim_get_option_value('filetype', { buf = bufnr })
+						if ft == 'fugitive' then
+							api.nvim_buf_delete(bufnr, {})
+						end
+					end
+				end,
+			},
+
 			-- Close Lazy window before restoring session
 			pre_restore_cmds = { function()
 				local buf = api.nvim_get_current_buf()
@@ -17,8 +37,7 @@ table.insert(M, {
 				if ft == 'lazy' then
 					api.nvim_buf_delete(buf, {})
 				end
-			end,
-			},
+			end, },
 		}
 	end,
 })
