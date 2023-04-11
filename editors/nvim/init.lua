@@ -16,6 +16,7 @@ local rdir = require('utils.require_dir')
 rdir.setup()
 
 rdir.require('config')
+rdir.require('config/keymaps')
 
 -- Lazy load config files
 vim.api.nvim_create_autocmd('User', {

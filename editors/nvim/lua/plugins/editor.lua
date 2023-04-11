@@ -14,7 +14,6 @@ table.insert(M, {
 			pre_restore_cmds = { function()
 				local buf = api.nvim_get_current_buf()
 				local ft = api.nvim_get_option_value('filetype', { buf = buf })
-				print('filetype' .. ft)
 				if ft == 'lazy' then
 					api.nvim_buf_delete(buf, {})
 				end
