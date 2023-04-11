@@ -17,6 +17,7 @@ table.insert(M, {
 	},
 })
 
+-- TODO: replace with gbprod/substitute.nvim
 table.insert(M, {
 	'tommcdo/vim-exchange',
 	keys = { 'cx' },
@@ -347,11 +348,5 @@ let g:VM_maps['Add Cursor Up'] = '<C-M-k>'
 -- 		})
 -- 	end,
 -- })
-
--- TODO: replace with lua?
-table.insert(M, {
-	'tpope/vim-unimpaired',
-	event = { 'BufReadPre', 'BufNewFile' },
-})
 
 return M

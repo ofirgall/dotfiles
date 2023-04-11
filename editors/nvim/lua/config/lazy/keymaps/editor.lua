@@ -14,8 +14,12 @@ map('n', '<M-r>', '<cmd>echo "Current File Reloaded!"<cr><cmd>luafile %<cr>', 'R
 
 map('t', '<Esc>', '<C-\\><C-n>', 'Escape from terminal with escape key')
 
+-- deploy
 map('n', '<leader>b', function() require('utils.misc').deploy() end, 'Build & deploy')
 map('n', '<leader>B', function()
 	require('utils.misc').reset_deploy()
 	require('utils.misc').deploy()
 end, 'Reset deploy, build & deploy')
+
+map('n', ']q', '<cmd>cnext<CR>', 'Quickfix next')
+map('n', '[q', '<cmd>cprev<CR>', 'Quickfix prev')
