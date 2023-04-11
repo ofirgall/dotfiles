@@ -146,7 +146,7 @@ table.insert(M, {
 			dapui.close({})
 			vim.api.nvim_command('tabclose $') -- $(last) is the debug page
 
-			require('utils.misc').map('n', '<RightMouse>',
+			require('utils.map').map('n', '<RightMouse>',
 				'<LeftMouse><cmd>sleep 100m<cr><cmd>lua vim.lsp.buf.hover()<cr>', 'Trigger hover')
 
 			require('format-on-leave').enable()
@@ -158,7 +158,7 @@ table.insert(M, {
 			vim.api.nvim_command('$tabnew') -- $(last) is the debug page
 			dapui.open({})
 
-			require('utils.misc').map('n', '<RightMouse>', '<LeftMouse><cmd>lua require"dapui".eval()<cr>') -- Trigger hover
+			require('utils.map').map('n', '<RightMouse>', '<LeftMouse><cmd>lua require"dapui".eval()<cr>') -- Trigger hover
 
 			require('format-on-leave').disable()
 		end

@@ -1,4 +1,4 @@
-local map = require('utils.misc').map
+local map = require('utils.map').map
 
 -- Tabline binds
 map('n', '<C-q>', function() require('bufdelete').bufdelete(0, true) end, 'Close current tab')

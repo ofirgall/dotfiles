@@ -1,4 +1,4 @@
-local map = require('utils.misc').map
+local map = require('utils.map').map
 
 -- Add text
 local add_new_line = 'i\\n<Esc>'

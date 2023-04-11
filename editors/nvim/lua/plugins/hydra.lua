@@ -38,7 +38,7 @@ table.insert(M, {
 			-- Setup custom bodies if needed
 			if conf.custom_bodies then
 				for _, body in ipairs(conf.custom_bodies) do
-					require('utils.misc').map(body.mode, body[1], function() body.callback(curr_hydra) end, body.desc)
+					require('utils.map').map(body.mode, body[1], function() body.callback(curr_hydra) end, body.desc)
 				end
 			end
 		end

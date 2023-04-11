@@ -1,4 +1,4 @@
-local map = require('utils.misc').map
+local map = require('utils.map').map
 
 -- Yanking and pasting
 map('', '<leader>y', '"+y', 'Start copy to os clipboard E.g: <leader>yy will copy current line to os')

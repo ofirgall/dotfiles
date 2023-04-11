@@ -1,4 +1,4 @@
-local map = require('utils.misc').map
+local map = require('utils.map').map
 
 -- Splits
 map('n', '<leader>qa', function() require('utils.splits').close_all_but_current() end, 'Close all buffers but current')

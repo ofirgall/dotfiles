@@ -1,4 +1,4 @@
-local map = require('utils.misc').map
+local map = require('utils.map').map
 
 map('n', '<F8>', function() require('utils.misc').restart_nvim() end, 'Restart nvim')
 

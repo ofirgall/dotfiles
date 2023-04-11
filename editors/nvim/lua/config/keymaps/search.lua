@@ -1,4 +1,4 @@
-local map = require('utils.misc').map
+local map = require('utils.map').map
 
 -- Search
 map('n', 'n', 'nzz', 'Auto recenter after n')
