@@ -260,7 +260,6 @@ table.insert(M, {
 	},
 })
 
--- TODO: might be able to lazy load with the keys
 table.insert(M, {
 	'chrisgrieser/nvim-various-textobjs',
 	keys = {

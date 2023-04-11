@@ -14,7 +14,6 @@ require('lazy').setup {
 		{ import = 'plugins/lsp' },
 	},
 	defaults = {
-		-- TODO: try to make lazy=true
 		lazy = false,
 		version = false, -- always use the latest git commit
 	},
@@ -28,13 +27,12 @@ require('lazy').setup {
 	},
 	performance = {
 		rtp = {
-			-- TODO: go over that
 			-- disable some rtp plugins
 			disabled_plugins = {
 				'gzip',
-				-- "matchit",
-				-- "matchparen",
-				-- "netrwPlugin",
+				'matchit',
+				'matchparen',
+				'netrwPlugin',
 				'tarPlugin',
 				'tohtml',
 				'tutor',

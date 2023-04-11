@@ -1,6 +1,5 @@
 NVLOG = vim.env.NVLOG
 
--- TODO: check that nothing that shouldnt be loaded is loaded (rust-tools is loaded)
 -- TODO: nvlog
 -- TODO: fire-nvim
 

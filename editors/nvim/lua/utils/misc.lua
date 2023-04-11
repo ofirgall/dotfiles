@@ -6,7 +6,6 @@ function M.center_screen()
 	api.nvim_feedkeys('zz', 'n', false)
 end
 
--- TODO: move map functions to utils/map.lua
 function M.restart_nvim()
 	vim.fn.system('touch /tmp/restart_nvim')
 	api.nvim_feedkeys(':wqa\n', 'n', false)

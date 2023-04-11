@@ -272,7 +272,7 @@ return {
 			{
 				'<c-u>',
 				function()
-					if not require('noice.lsp').scroll(-4) then
+					if not require('noice.lsp').scroll( -4) then
 						return '<c-u>zz'
 					end
 				end,
