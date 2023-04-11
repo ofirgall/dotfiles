@@ -47,10 +47,7 @@ end
 local function find_files(mode, cwd)
 	require('telescope.builtin').find_files({
 		cwd = cwd,
-		hidden = true,
-		follow = true,
 		default_text = telescope_default_text(mode),
-		layout_strategy = 'horizontal'
 	})
 end
 
@@ -195,6 +192,13 @@ table.insert(M, {
 							['<C-cr>'] = require('telescope-undo.actions').restore,
 						},
 					},
+				},
+			},
+			pickers = {
+				find_files = {
+					hidden = true,
+					follow = true,
+					layout_strategy = 'horizontal'
 				},
 			},
 		}

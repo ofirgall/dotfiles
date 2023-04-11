@@ -12,8 +12,7 @@ local function search_in_path(node)
 end
 
 local function find_in_path(node)
-	-- TODO: XXX find_files call
-	-- find_files(nil, node_relative_path(node))
+	vim.api.nvim_exec2('Telescope find_files cwd=' .. node_relative_path(node), {})
 end
 
 local function git_hist_path(node)
