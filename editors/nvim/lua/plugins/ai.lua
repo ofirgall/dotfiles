@@ -26,6 +26,7 @@ table.insert(M, {
 
 table.insert(M, {
 	'dpayne/CodeGPT.nvim',
+	cmd = 'Chat',
 	dependencies = {
 		'nvim-lua/plenary.nvim',
 		'MunifTanjim/nui.nvim',
