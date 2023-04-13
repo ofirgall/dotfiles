@@ -259,7 +259,7 @@ table.insert(M, {
 			vim.cmd('DiffviewOpen ' .. flog_current_commit() .. '^..' .. flog_current_commit())
 		end
 
-		local map_buffer = require('utils.misc').map_buffer
+		local map_buffer = require('utils.map').map_buffer
 
 		api.nvim_create_autocmd('FileType', {
 			pattern = 'floggraph',

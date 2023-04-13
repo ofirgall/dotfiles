@@ -26,7 +26,7 @@ table.insert(M, {
 			},
 		}
 
-		local map_buffer = require('utils.misc').map_buffer
+		local map_buffer = require('utils.map').map_buffer
 		vim.api.nvim_create_autocmd('FileType', {
 			pattern = 'rust',
 			callback = function(events)

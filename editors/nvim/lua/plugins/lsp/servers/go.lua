@@ -45,7 +45,7 @@ table.insert(M, {
 			},
 		}
 
-		local map_buffer = require('utils.misc').map_buffer
+		local map_buffer = require('utils.map').map_buffer
 		local add_new_line = 'i\\n<Esc>'
 
 		vim.api.nvim_create_autocmd('FileType', {
