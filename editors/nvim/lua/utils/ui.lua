@@ -20,7 +20,7 @@ function M.setup_lualine(is_half)
 	local ofirkai_lualine = require('ofirkai.statuslines.lualine')
 	local y_section = {
 		{
-			function() require('gitblame').get_current_blame_text() end,
+			function() return require('gitblame').get_current_blame_text() end,
 			cond = function() return package.loaded['gitblame'] and require('gitblame').is_blame_text_available() end,
 		},
 	}
