@@ -33,6 +33,9 @@ if [[ ${ZSH_VERSION:0:3} -ge 5.8 ]]; then
 fi
 
 zinit ice wait lucid
+zinit light ofirgall/cd-to-git
+
+zinit ice wait lucid
 zinit light paulirish/git-open
 
 zinit ice wait lucid

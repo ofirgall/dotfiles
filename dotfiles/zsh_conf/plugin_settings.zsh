@@ -8,6 +8,11 @@ ZSH_TMUX_AUTOQUIT=false
 ZSH_TMUX_FIXTERM=false
 
 # ---------------------------
+#		  ofirgall/cd-to-git
+# ---------------------------
+export CD_TO_GIT_DEFAULT_DIR=~/workspace/work/
+
+# ---------------------------
 #		  FZF Tab
 # ---------------------------
 if [[ ${ZSH_VERSION:0:3} -ge 5.8 ]]; then
