@@ -1,8 +1,10 @@
 " vim:ft=vim:
 
+set leavegithubalone true " Make `/` behave like normal browser
+
 " Search mode like vim
 bind --mode=normal <C-r> source ~/.tridactylrc
-bind --mode=normal / fillcmdline find
+bind --mode=normal <C-/> fillcmdline find
 bind --mode=normal ? fillcmdline find -?
 bind --mode=normal n findnext 1
 bind --mode=normal N findnext --reverse 1
