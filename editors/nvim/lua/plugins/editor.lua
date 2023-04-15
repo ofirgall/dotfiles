@@ -12,18 +12,11 @@ table.insert(M, {
 
 			-- Close nvim-tree before saving session
 			pre_save_cmds = {
-				-- nvim-tree
-				function()
-					if package.loaded['nvim-tree'] then
-						require('nvim-tree.api').tree.close()
-					end
-				end,
-
-				-- fugitive
+				-- ghost files
 				function()
 					for _, bufnr in pairs(api.nvim_list_bufs()) do
 						local ft = api.nvim_get_option_value('filetype', { buf = bufnr })
-						if ft == 'fugitive' then
+						if vim.tbl_contains(GHOST_FILETYPES, ft) then
 							api.nvim_buf_delete(bufnr, {})
 						end
 					end
