@@ -10,7 +10,7 @@ download_font()
 	font=$1
 
 	rm -f $font.zip
-	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/$font.zip
+	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/$font.zip
 	unzip -o $font.zip
 	# dont remove .zip
 }
