@@ -50,12 +50,12 @@ alias cdd='cd $HOME/dotfiles' # cd to dotfiles
 alias cdn='cd $HOME/dotfiles/editors/nvim/' # cd to neovim config
 alias cdz='cd $HOME/dotfiles/dotfiles/zsh_conf/' # cd to zhs config
 alias cdt='cd $HOME/.local/share/nvim/lazy/ofirkai.nvim/' # cd to nvim theme
+alias cda='cd $HOME/.config/awesome/' # cd to awesome config
 
 # cg aliases
 alias cgp='cg $HOME/workspace/personal/' # cg to personal
 alias cgnp='cg $HOME/.local/share/nvim/lazy' # cg to nvim plugins
 alias cgzp='cg $HOME/.local/share/zinit/plugins/' # cg to zsh plugins
-alias cda='cd $HOME/.config/awesome/' # cd to awesome config
 alias cgt='cg $HOME/.tmux/plugins/' # cg to tmux plugins
 alias cgg='cg $HOME/go' # cg to go
 alias cgk='cg $HOME/workspace/kernels/' # cg to kernels
