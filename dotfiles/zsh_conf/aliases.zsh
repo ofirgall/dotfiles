@@ -55,6 +55,7 @@ alias cda='cd $HOME/.config/awesome/' # cd to awesome config
 
 # cg aliases
 alias cgp='cg $HOME/workspace/personal/' # cg to personal
+alias cgw='cg $HOME/worktrees/'
 alias cgnp='cg $HOME/.local/share/nvim/lazy' # cg to nvim plugins
 alias cgzp='cg $HOME/.local/share/zinit/plugins/' # cg to zsh plugins
 alias cgt='cg $HOME/.tmux/plugins/' # cg to tmux plugins
@@ -97,7 +98,7 @@ alias audio='pavucontrol'
 alias sound='pavucontrol'
 
 # Tools
-alias demo='kazam'
+alias demo='simplescreenrecorder'
 
 # Volumez
 alias capi='./envctl.py state | grep api | grep -o "http.*\"" | sed -s "s/\"//" | toclip' # Copy API url
