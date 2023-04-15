@@ -28,5 +28,10 @@ WORKTREE_PATH="$WORKTREES_ROOT/$PROJ_NAME/$1"
 mkdir -p "$WORKTREES_ROOT/$PROJ_NAME/"
 git worktree add "$WORKTREE_PATH"
 
-cd $WORKTREE_PATH
-tmux new-session -s "$PROJ_NAME-$1" -c "$WORKTREE_PATH"
+if [ -z $TMUX ]; then
+	tmux new-session -s "$PROJ_NAME-$1" -c "$WORKTREE_PATH"
+else
+	unset TMUX
+	attach=false # dont attach to nested tmux just create the session
+	tmux new-session -d -s "$PROJ_NAME-$1" -c "$WORKTREE_PATH"
+fi
