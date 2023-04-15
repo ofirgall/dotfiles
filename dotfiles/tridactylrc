@@ -1,4 +1,4 @@
- vim:ft=vim:
+" vim:ft=vim:
 
 " Search mode like vim
 bind --mode=normal <C-r> source ~/.tridactylrc
