@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+WORKTREES_ROOT="$HOME/worktrees"
+
+print_usage()
+{
+	echo "usage: git rem-branch <branch name>"
+	exit 0
+}
+
+if [[ $@ == *'-h'* ]]; then
+	print_usage
+fi
+
+if [ "$#" -lt 1 ]; then
+	print_usage
+fi
+
+git_root=$(git rev-parse --show-toplevel)
+if [[ $? != 0 ]]; then
+	exit 1
+fi
+PROJ_NAME=$(basename "$git_root")
+WORKTREE_PATH="$WORKTREES_ROOT/$PROJ_NAME/$1"
+
+if ! ls $WORKTREES_ROOT/$PROJ_NAME | grep -o $1; then
+    echo "Didnt find $WORKTREES_ROOT/$PROJ_NAME/$1"
+    exit 1
+fi
+
+git worktree remove "$WORKTREE_PATH"
+tmux kill-session -t "$PROJ_NAME-$1"

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -e
+
+WORKTREES_ROOT="$HOME/worktrees"
+
+print_usage()
+{
+	echo "usage: git new-branch <branch name>"
+	exit 0
+}
+
+if [[ $@ == *'-h'* ]]; then
+	print_usage
+fi
+
+if [ "$#" -lt 1 ]; then
+	print_usage
+fi
+
+git_root=$(git rev-parse --show-toplevel)
+if [[ $? != 0 ]]; then
+	exit 1
+fi
+PROJ_NAME=$(basename "$git_root")
+WORKTREE_PATH="$WORKTREES_ROOT/$PROJ_NAME/$1"
+
+mkdir -p "$WORKTREES_ROOT/$PROJ_NAME/"
+git worktree add "$WORKTREE_PATH"
+
+cd $WORKTREE_PATH
+tmux new-session -s "$PROJ_NAME-$1" -c "$WORKTREE_PATH"
