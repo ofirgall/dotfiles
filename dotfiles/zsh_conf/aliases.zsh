@@ -48,8 +48,9 @@ alias trename='tmux rename-session'
 alias cdl='cd "$_"' # cd to last arg (usefull after mkdir)
 alias cdd='cd $HOME/dotfiles' # cd to dotfiles
 alias cdn='cd $HOME/dotfiles/editors/nvim/' # cd to neovim config
-alias cdz='cd $HOME/dotfiles/dotfiles/zsh_conf/' # cd to zhs config
-alias cdt='cd $HOME/.local/share/nvim/lazy/ofirkai.nvim/' # cd to nvim theme
+alias cdz='cd $HOME/dotfiles/dotfiles/zsh_conf/' # cd to zsh config
+alias cdt='cd $HOME/dotfiles/dotfiles/tmux_conf/' # cd to tmux config
+alias cdnt='cd $HOME/.local/share/nvim/lazy/ofirkai.nvim/' # cd to nvim theme
 alias cda='cd $HOME/.config/awesome/' # cd to awesome config
 
 # cg aliases
