@@ -34,27 +34,37 @@ function get_ticket() {
 		echo $branch | grep -oP ".+/\K([A-Z]+-[0-9]+)"
 	fi
 }
+
+# Tickets & Branches
 alias cticket='get_ticket | toclip'
 alias ticket='xdg-open https://volumez.atlassian.net/browse/$(get_ticket)'
 alias cbranch='git rev-parse --abbrev-ref HEAD | tr -d "\n" | toclip'
+
+# Tmux
 alias tkill='tmux kill-session'
 alias trename='tmux rename-session'
-alias todo='nvim ~/todo.norg'
-alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed "s/.*-- \([0-9]*\)/\1/" | sponge | { IFS= read -r x; { printf "%s\n" "$x"; cat; } | xargs taskopen }'
+
+# cd alises
 alias cdl='cd "$_"' # cd to last arg (usefull after mkdir)
-alias cdd='cd $HOME/dotfiles'
-alias cgp='cg $HOME/workspace/personal/' # cg to packer/plugins
+alias cdd='cd $HOME/dotfiles' # cd to dotfiles
 alias cdn='cd $HOME/dotfiles/editors/nvim/' # cd to neovim config
 alias cdz='cd $HOME/dotfiles/dotfiles/zsh_conf/' # cd to zhs config
-alias cgnp='cg $HOME/.local/share/nvim/lazy' # cg to packer/plugins
 alias cdt='cd $HOME/.local/share/nvim/lazy/ofirkai.nvim/' # cd to nvim theme
+
+# cg aliases
+alias cgp='cg $HOME/workspace/personal/' # cg to personal
+alias cgnp='cg $HOME/.local/share/nvim/lazy' # cg to nvim plugins
+alias cgzp='cg $HOME/.local/share/zinit/plugins/' # cg to zsh plugins
 alias cda='cd $HOME/.config/awesome/' # cd to awesome config
 alias cgt='cg $HOME/.tmux/plugins/' # cg to tmux plugins
+alias cgg='cg $HOME/go' # cg to go
+alias cgk='cg $HOME/workspace/kernels/' # cg to kernels
+
+# Misc
+alias todo='nvim ~/todo.norg'
+alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed "s/.*-- \([0-9]*\)/\1/" | sponge | { IFS= read -r x; { printf "%s\n" "$x"; cat; } | xargs taskopen }'
 alias g='fugitive' # git fugitive
 alias ngh='git_tree' # git history with nvim and Flog
-function cg() { cd $(inner_cg.sh $@) } # cd to git repos
-alias cgg='cg ~/go' # cg to go
-alias cgk='cg ~/workspace/kernels/' # cg to kernels
 function p() { python -c "print($@)"} # run python easily
 function ssh() {
 	TERM=xterm-256color /usr/bin/ssh $@ # Adjust TERM for ssh
@@ -84,6 +94,9 @@ function logs() {
 alias wifi='nmtui'
 alias audio='pavucontrol'
 alias sound='pavucontrol'
+
+# Tools
+alias demo='kazam'
 
 # Volumez
 alias capi='./envctl.py state | grep api | grep -o "http.*\"" | sed -s "s/\"//" | toclip' # Copy API url
