@@ -34,3 +34,6 @@ if [ ! -z $ATTACH_TO ]; then # Attach on remote (smux)
 	tmux attach -t $ATTACH_TO
 fi
 select_tmux_session.sh
+if [ -z $TMUX ]; then
+	cg
+fi

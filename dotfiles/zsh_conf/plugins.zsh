@@ -32,7 +32,6 @@ if [[ ${ZSH_VERSION:0:3} -ge 5.8 ]]; then
 	zinit light Aloxaf/fzf-tab
 fi
 
-zinit ice wait lucid
 zinit light ofirgall/cd-to-git
 
 zinit ice wait lucid
