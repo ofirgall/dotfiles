@@ -28,9 +28,7 @@ vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'c', 'cpp' },
 	callback = function(events)
 		local map_buffer = require('utils.map').map_buffer
-		map_buffer(events.buf, 'n', '<leader>e', '<cmd>GoIfErr<cr>', 'Golang: create if err')
-		map_buffer(events.buf, 'n', '<leader>fln', '<cmd>s/Println/Printf/<cr>$F"' .. add_new_line,
-			'Golang: change println to printf')
+		map_buffer(events.buf, 'n', '<leader>n', add_r_new_line, 'Add newline')
 	end,
 })
 
