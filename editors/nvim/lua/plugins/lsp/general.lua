@@ -4,9 +4,11 @@ local M = {}
 -- 'mason.nvim',
 -- 'williamboman/mason-lspconfig.nvim',
 
--- Disable semantic tokens (affects on highlights)
 LSP_ON_ATTACH = function(client, buffer)
+	-- Disable semantic tokens (affects on highlights)
 	client.server_capabilities.semanticTokensProvider = nil
+
+	-- Attach navic
 	if client.server_capabilities.documentSymbolProvider then
 		require('nvim-navic').attach(client, buffer)
 	end
@@ -203,6 +205,36 @@ table.insert(M, {
 	end,
 	keys = {
 		{ '<leader>l', toggle_lsp_diagnostics, desc = 'Toggle lsp diagnostics' },
+	},
+})
+
+table.insert(M, {
+	'SmiteshP/nvim-navbuddy',
+	cmd = 'Navbuddy',
+	dependencies = {
+		'SmiteshP/nvim-navic',
+		'MunifTanjim/nui.nvim'
+	},
+	config = function()
+		require('nvim-navbuddy').setup {
+			lsp = {
+				auto_attach = true,
+			},
+		}
+
+		require('utils.lsp').late_attach(function(client, bufnr)
+			require('nvim-navbuddy').attach(client, bufnr)
+		end)
+
+		-- For some reason the usercmd doesn't get called after setup perhaps its mapped to the buffer
+		vim.api.nvim_create_user_command('Navbuddy', function()
+			require('nvim-navbuddy').open()
+		end, {})
+	end,
+	keys = {
+		{ '<C-g>s', function()
+			require('nvim-navbuddy').open()
+		end, desc = 'Open Navbuddy' },
 	},
 })
 
