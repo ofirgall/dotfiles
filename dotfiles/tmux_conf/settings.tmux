@@ -30,6 +30,3 @@ set -g set-clipboard on
 
 # Scroll with Mouse
 set -g mouse on
-# Disable/Enable mouse when focus out/in to make the first click just focus instead of copy/select
-set-hook -g 'pane-focus-in[2121]' 'run-shell -b "sleep 0.05; tmux set -g mouse on"'
-set-hook -g 'pane-focus-out[2121]' 'set -g mouse off'
