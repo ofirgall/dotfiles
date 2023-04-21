@@ -217,6 +217,15 @@ table.insert(M, {
 	},
 	config = function()
 		require('nvim-navbuddy').setup {
+			window = {
+				size = '80%',
+				left = {
+					size = '20%',
+				},
+				mid = {
+					size = '20%',
+				},
+			},
 			lsp = {
 				auto_attach = true,
 			},
