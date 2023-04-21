@@ -27,7 +27,7 @@ clone_awesome()
 
 
 # Plugins
-clone_awesome intrntbrn/awesomewm-vim-tmux-navigator awesomewm-vim-tmux-navigator
+clone_awesome ofirgall/awesomewm-vim-tmux-navigator awesomewm-vim-tmux-navigator # fork
 clone_awesome echuraev/keyboard_layout keyboard_layout
 clone_awesome Veratil/awesome-retain retain
 clone_awesome intrntbrn/smart_borders smart_borders

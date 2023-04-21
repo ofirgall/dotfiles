@@ -308,7 +308,8 @@ table.insert(M, {
 })
 
 table.insert(M, {
-	'numToStr/Navigator.nvim',
+	-- TODO: VimAnavim change to mainline
+	'ofirgall/Navigator.nvim', -- To support awesomewm-vim-tmux-navigator
 	config = function()
 		require('Navigator').setup {
 			disable_on_zoom = false,

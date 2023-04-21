@@ -1,4 +1,4 @@
--- intrntbrn/awesomewm-vim-tmux-navigator
+-- ofirgall/awesomewm-vim-tmux-navigator
 require('awesomewm-vim-tmux-navigator') {
 	up = { 'Up', 'k' },
 	down = { 'Down', 'j' },
