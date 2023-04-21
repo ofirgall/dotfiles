@@ -14,6 +14,10 @@ set -g set-titles on
 set -q -g status-utf8 on
 setw -q -g utf8 on
 
+### PANE COLORS ###
+set -g window-style 'bg=#00121f'
+set -g window-active-style 'bg=#000000'
+
 ### THEME ###
 set -g @nova-nerdfonts true
 set -g @nova-nerdfonts-left 
