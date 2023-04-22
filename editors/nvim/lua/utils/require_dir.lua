@@ -33,20 +33,23 @@ local function get_config_files(dir, recursive)
 end
 
 local function _require(relative_dir, recursive)
+	local ret_vals = {}
 	local full_dir = M.config_dir .. '/lua/' .. relative_dir .. '/'
 
 	for _, filename in ipairs(get_config_files(full_dir, recursive)) do
 		local config_module = string.match(filename, '(.+).lua$')
-		require(relative_dir .. '.' .. config_module)
+		table.insert(ret_vals, require(relative_dir .. '.' .. config_module))
 	end
+
+	return ret_vals
 end
 
 function M.require(relative_dir)
-	_require(relative_dir, false)
+	return _require(relative_dir, false)
 end
 
 function M.recursive_require(relative_dir)
-	_require(relative_dir, true)
+	return _require(relative_dir, true)
 end
 
 -- Must be called from init.lua

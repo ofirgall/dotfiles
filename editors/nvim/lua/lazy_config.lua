@@ -8,10 +8,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require('lazy').setup {
 	spec = {
-		{ import = 'plugins/hydras' },
-		{ import = 'plugins' },
-		{ import = 'plugins/lsp/servers' },
-		{ import = 'plugins/lsp' },
+		{ import = 'lazy_spec_wrapper' },
 	},
 	defaults = {
 		lazy = false,

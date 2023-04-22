@@ -14,11 +14,6 @@ LSP_ON_ATTACH = function(client, buffer)
 	end
 end
 
--- hrsh7th/cmp-nvim-lsp
-LSP_CAPS = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-LSP_CAPS.textDocument.completion.completionItem.labelDetailsSupport = nil -- Overriding with false doesn't work for some reason
-
-
 -- Setup actual servers + generic lsp stuff
 table.insert(M, {
 	'neovim/nvim-lspconfig',
@@ -45,6 +40,11 @@ table.insert(M, {
 				priority = 8,
 			},
 		})
+
+		-- hrsh7th/cmp-nvim-lsp
+		-- TODO: [VimAnavim] config LspCaps
+		LSP_CAPS = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+		LSP_CAPS.textDocument.completion.completionItem.labelDetailsSupport = nil -- Overriding with false doesn't work for some reason
 
 		local function setup_server(server, server_opts)
 			local server_opts_merged = vim.tbl_deep_extend('force', {
@@ -248,9 +248,13 @@ table.insert(M, {
 		end, {})
 	end,
 	keys = {
-		{ '<C-g>s', function()
-			require('nvim-navbuddy').open()
-		end, desc = 'Open Navbuddy' },
+		{
+			'<C-g>s',
+			function()
+				require('nvim-navbuddy').open()
+			end,
+			desc = 'Open Navbuddy'
+		},
 	},
 })
 
