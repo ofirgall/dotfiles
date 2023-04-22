@@ -26,6 +26,13 @@ table.insert(M, {
 	dependencies = {
 		'hrsh7th/cmp-nvim-lsp',
 		'folke/neodev.nvim', -- Must be loaded before setting up lua_ls
+		{
+			'mhanberg/output-panel.nvim',
+			config = function()
+				require('output_panel').setup()
+				vim.api.nvim_create_user_command('LspOutput', ':OutputPanel', {})
+			end,
+		},
 	},
 	config = function(_, _)
 		-- Config diagnostics behavior
