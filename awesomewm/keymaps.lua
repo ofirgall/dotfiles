@@ -141,12 +141,12 @@ function M.setup(kbdcfg, volume_widget, retain)
 		--     { description = "go back", group = "tag" }),
 
 		awful.key({ modkey }, 'Left', function()
-			awful.client.focus.byidx( -1)
-		end,
+				awful.client.focus.byidx(-1)
+			end,
 			{ description = 'Focus on previous client', group = 'client' }),
 		awful.key({ modkey }, 'Right', function()
-			awful.client.focus.byidx(1)
-		end,
+				awful.client.focus.byidx(1)
+			end,
 			{ description = 'Focus on next client', group = 'client' }),
 
 		-- Change focus with modkey+hjkl
@@ -201,10 +201,36 @@ function M.setup(kbdcfg, volume_widget, retain)
 			{ description = 'swap left', group = 'client' }
 		),
 
+		-- Swap clients with modkey+shift+arrows
+		awful.key({ modkey, 'Shift' }, 'Left',
+			function()
+				awful.client.swap.global_bydirection('down', nil, true)
+			end,
+			{ description = 'swap down', group = 'client' }
+		),
+		awful.key({ modkey, 'Shift' }, 'Up',
+			function()
+				awful.client.swap.global_bydirection('up', nil, true)
+			end,
+			{ description = 'swap up', group = 'client' }
+		),
+		awful.key({ modkey, 'Shift' }, 'Right',
+			function()
+				awful.client.swap.global_bydirection('right', nil, true)
+			end,
+			{ description = 'swap right', group = 'client' }
+		),
+		awful.key({ modkey, 'Shift' }, 'Left',
+			function()
+				awful.client.swap.global_bydirection('left', nil, true)
+			end,
+			{ description = 'swap left', group = 'client' }
+		),
+
 		-- Clear notifications
 		awful.key({ modkey }, 'c', function()
-			naughty.destroy_all_notifications(nil, 'Clear notifications bind')
-		end,
+				naughty.destroy_all_notifications(nil, 'Clear notifications bind')
+			end,
 			{ description = 'Clear notifications', group = 'awesome' }),
 
 		-- Save env with retain
@@ -248,47 +274,47 @@ function M.setup(kbdcfg, volume_widget, retain)
 
 		-- Go back to previous tag
 		awful.key({ modkey }, '`', function()
-			if LAST_TAG == nil then
-				return
-			end
+				if LAST_TAG == nil then
+					return
+				end
 
-			switch_tag_all_screens(LAST_TAG.index)
-		end,
+				switch_tag_all_screens(LAST_TAG.index)
+			end,
 			{ description = 'go back', group = 'tag' }),
 
 		-- for Hebrew as well
 		awful.key({ modkey }, ';', function()
-			if LAST_TAG == nil then
-				return
-			end
+				if LAST_TAG == nil then
+					return
+				end
 
-			switch_tag_all_screens(LAST_TAG.index)
-		end,
+				switch_tag_all_screens(LAST_TAG.index)
+			end,
 			{ description = 'go back', group = 'tag' }),
 
 		-- Go to next prev tags with </>
 		awful.key({ modkey }, '.', function()
-			local focused_screen = awful.screen.focused()
-			local current_tag = focused_screen.selected_tag.index
-			local next_tag = current_tag + 1
-			if next_tag == 10 then
-				next_tag = 1
-			end
+				local focused_screen = awful.screen.focused()
+				local current_tag = focused_screen.selected_tag.index
+				local next_tag = current_tag + 1
+				if next_tag == 10 then
+					next_tag = 1
+				end
 
-			switch_tag_all_screens(next_tag)
-		end,
+				switch_tag_all_screens(next_tag)
+			end,
 			{ description = 'go to next tag', group = 'tag' }),
 
 		awful.key({ modkey }, ',', function()
-			local focused_screen = awful.screen.focused()
-			local current_tag = focused_screen.selected_tag.index
-			local next_tag = (current_tag - 1)
-			if next_tag == 0 then
-				next_tag = 9
-			end
+				local focused_screen = awful.screen.focused()
+				local current_tag = focused_screen.selected_tag.index
+				local next_tag = (current_tag - 1)
+				if next_tag == 0 then
+					next_tag = 9
+				end
 
-			switch_tag_all_screens(next_tag)
-		end,
+				switch_tag_all_screens(next_tag)
+			end,
 			{ description = 'go to prev tag', group = 'tag' }),
 
 		-- Change Language
@@ -318,7 +344,7 @@ function M.setup(kbdcfg, volume_widget, retain)
 			{ description = 'quit awesome', group = 'awesome' }),
 		awful.key({ modkey, 'Control' }, 'l', function() awful.tag.incmwfact(0.01) end,
 			{ description = 'increase master width factor', group = 'layout' }),
-		awful.key({ modkey, 'Control' }, 'h', function() awful.tag.incmwfact( -0.01) end,
+		awful.key({ modkey, 'Control' }, 'h', function() awful.tag.incmwfact(-0.01) end,
 			{ description = 'decrease master width factor', group = 'layout' }),
 		-- awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1, nil, true) end,
 		--     { description = "increase the number of master clients", group = "layout" }),
@@ -330,7 +356,7 @@ function M.setup(kbdcfg, volume_widget, retain)
 		--     { description = "decrease the number of columns", group = "layout" }),
 		awful.key({ modkey, 'Control' }, 'space', function() awful.layout.inc(1) end,
 			{ description = 'select next', group = 'layout' }),
-		awful.key({ modkey, 'Control', 'Shift' }, 'space', function() awful.layout.inc( -1) end,
+		awful.key({ modkey, 'Control', 'Shift' }, 'space', function() awful.layout.inc(-1) end,
 			{ description = 'select previous', group = 'layout' }),
 
 		awful.key({ modkey, 'Control' }, 'n',
