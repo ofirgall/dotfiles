@@ -2,13 +2,7 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "editors/KoalaVim"]
-	path = editors/KoalaVim
-	url = git@github.com:ofirgall/KoalaVim.git
-	ignore = all
-[submodule "editors/nvim"]
-	path = editors/nvim
-	url = git@github.com:ofirgall/KoalaVim.git
 [submodule "editors/KoalaConfig"]
 	path = editors/KoalaConfig
 	url = git@github.com:ofirgall/KoalaConfig.git
+	ignore = all
