@@ -11,7 +11,7 @@ while ( true ); do
 
 	res="$?";
 	if [[ $res == "0" || $res == "1" ]]; then
-		if [[ "$retries" -gt 5 ]]; then
+		if [[ "$retries" -gt 15 ]]; then
 			notify-send -u critical -t 3000 "ssh to $1 done!"
 			toilet "DONE" --gay
 		fi
