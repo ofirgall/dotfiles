@@ -4,7 +4,7 @@ WORKTREES_ROOT="$HOME/worktrees"
 
 print_usage()
 {
-	echo "usage: git rem-branch <branch name>"
+	echo "usage: git delete-session <branch name>"
 	exit 0
 }
 

@@ -6,7 +6,7 @@ WORKTREES_ROOT="$HOME/worktrees"
 
 print_usage()
 {
-	echo "usage: git new-branch <branch name>"
+	echo "usage: git new-session <branch name>"
 	exit 0
 }
 
