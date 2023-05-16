@@ -4,7 +4,6 @@
         "lowercase-global"
     ],
     "Lua.diagnostics.globals": [
-        "vim",
         "use",
         "LSP_SERVERS",
         "NO_SUDO"
