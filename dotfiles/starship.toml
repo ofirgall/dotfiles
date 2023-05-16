@@ -16,7 +16,16 @@ teal = '#3ae0b4'
 # green = '#a6e22e'
 green = '#07b516'
 
-
+# ---------------------------
+#          CUSTOMS
+# ---------------------------
+[custom.git_repo]
+command = "git remote -v | head -n 1 | sed -e 's/origin\t//' | sed -e 's/ (fetch)//' | sed -s 's,.*:.*/,,'"
+detect_files = ['.git']
+when = '''  cat .git | grep "\.git" | grep "/modules/" '''
+symbol = ''
+style = 'light_red'
+format = '[$symbol $output]($style) '
 
 # ---------------------------
 #          MODULES
