@@ -47,7 +47,7 @@ alias trename='tmux rename-session'
 # cd alises
 alias cdl='cd "$_"' # cd to last arg (usefull after mkdir)
 alias cdd='cd $HOME/dotfiles' # cd to dotfiles
-alias cdn='cd $HOME/dotfiles/editors/nvim/' # cd to neovim config
+alias cdn='cd $HOME/dotfiles/editors/KoalaConfig/' # cd to neovim config
 alias cdz='cd $HOME/dotfiles/dotfiles/zsh_conf/' # cd to zsh config
 alias cdt='cd $HOME/dotfiles/dotfiles/tmux_conf/' # cd to tmux config
 alias cdnt='cd $HOME/.local/share/nvim/lazy/ofirkai.nvim/' # cd to nvim theme
@@ -105,6 +105,7 @@ alias capi='./envctl.py state | grep api | grep -o "http.*\"" | sed -s "s/\"//" 
 alias csio='cat envctl_state.json | jq -r ".envs.env.sio.public_dns" | toclip'
 alias db='cat envctl_state.json | jq -r ".envs.env.sio.public_dns" | xargs printf "http://%s:8002" | xargs open'
 alias lsj='lsjobs'
+alias ectl='cd ~/go/volumez/automation/envctl/'
 
 # Git aliases, no git plugin
 alias ga='git add'
@@ -125,3 +126,4 @@ alias gh='git hist'
 alias gdiff='git diff'
 alias gshow='git show'
 alias grim='git rebase -i origin/master'
+alias groot='cd $(git rev-parse --show-toplevel)'
