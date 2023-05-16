@@ -84,22 +84,39 @@ bind -T copy-mode-vi C-k select-pane -U
 bind -T copy-mode-vi C-j select-pane -D
 
 ##### PANE MANAGEMENT #####
-# Resize pane with ctrl+arrow in prefix
+# Resize pane with ctrl+arrow/hjkl in prefix
 bind -r -T prefix C-Left resize-pane -L 1
 bind -r -T prefix C-Down resize-pane -D 1
 bind -r -T prefix C-Up resize-pane -U 1
 bind -r -T prefix C-Right resize-pane -R 1
+
+bind -r -T prefix C-h resize-pane -L 1
+bind -r -T prefix C-j resize-pane -D 1
+bind -r -T prefix C-k resize-pane -U 1
+bind -r -T prefix C-l resize-pane -R 1
+
+# Swap panes with shift+arrow/hjkl in prefix
+bind -r -T prefix S-Left swap-pane -s \{left-of\}
+bind -r -T prefix S-Down swap-pane -s \{down-of\}
+bind -r -T prefix S-Up swap-pane -s \{up-of\}
+bind -r -T prefix S-Right swap-pane -s \{right-of\}
+
+bind -r -T prefix H swap-pane -s \{left-of\}
+bind -r -T prefix J swap-pane -s \{down-of\}
+bind -r -T prefix K swap-pane -s \{up-of\}
+bind -r -T prefix L swap-pane -s \{right-of\}
+
+# Move panes with alt+shift/hjkl in prefix
+bind -r -T prefix M-H move-pane -t '.{left-of}'
+bind -r -T prefix M-J move-pane -h -t '.{down-of}'
+bind -r -T prefix M-K move-pane -h -t '.{up-of}'
+bind -r -T prefix M-L move-pane -t '.{right-of}'
+
 bind -n M-z resize-pane -Z # Zoom/Unzoom pane
 # Zoom/Unzoom remote pane with ALT+SHIFT+z
 bind -n M-Z if-shell "$is_nvim" 'send-keys M-Z' 'send-keys M-z'
 bind -T prefix = select-layout even-horizontal # Equally sized panes (like vim)
 bind -T prefix + select-layout even-vertical # Equally sized panes (like vim)
-
-# Swap panes with alt+arrow in prefix (ctrl+a/ctrl+b)
-bind -r -T prefix M-Left swap-pane -s \{left-of\}
-bind -r -T prefix M-Down swap-pane -s \{down-of\}
-bind -r -T prefix M-Up swap-pane -s \{up-of\}
-bind -r -T prefix M-Right swap-pane -s \{right-of\}
 
 ##### WINDOWS #####
 # new window ALT+t
