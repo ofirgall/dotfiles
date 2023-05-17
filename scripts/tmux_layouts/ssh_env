@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+hosts=$(grep -P "^Host ([^*]+)$" $HOME/.ssh/config | sed 's/Host //' | grep host)
+
+for host in $hosts; do
+    tmux split-window "toilet --font=pagga --gay '$host'; assh $host"
+done
+
+tmux select-layout tiled
+
+tmux select-pane -t 1
+tmux kill-pane
