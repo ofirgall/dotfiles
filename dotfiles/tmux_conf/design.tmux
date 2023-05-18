@@ -61,17 +61,21 @@ set -g @nova-segment-synced-colors "$active_tab_color"
 set -g @nova-segment-zoomed "#{?window_zoomed_flag,ZOOMED,}"
 set -g @nova-segment-zoomed-colors "$active_tab_color"
 
+set -g @nova-segment-current-ssh "#(cat /tmp/tmux_ssh_hosts_#S)"
+set -g @nova-segment-current-ssh-colors "$active_tab_color"
+
+set -g @nova-segment-suspended "#{@suspended_mode}"
+
 set -g @nova-segment-session "#{session_name}"
 set -g @nova-segment-session-colors "$sides_color"
 
 set -g @nova-segment-whoami "#(whoami)@#h"
 set -g @nova-segment-whoami-colors "$sides_color"
 
-set -g @nova-segment-suspended "#{@suspended_mode}"
 set -g @nova-segment-suspended-colors "$sides_color"
 
 set -g @nova-segments-0-left "session"
-set -g @nova-segments-0-right "zoomed synced prefix whoami"
+set -g @nova-segments-0-right "zoomed synced prefix current-ssh whoami"
 
 ### SUSPENDED MODE ###
 set -g @suspend_on_resume_command "tmux \
