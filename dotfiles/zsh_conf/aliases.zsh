@@ -52,6 +52,7 @@ alias cdz='cd $HOME/dotfiles/dotfiles/zsh_conf/' # cd to zsh config
 alias cdt='cd $HOME/dotfiles/dotfiles/tmux_conf/' # cd to tmux config
 alias cdnt='cd $HOME/.local/share/nvim/lazy/ofirkai.nvim/' # cd to nvim theme
 alias cda='cd $HOME/.config/awesome/' # cd to awesome config
+alias cdw='cd $HOME/worktrees/$(tmux display-message -p "#S" | sed "s,-,/,g")' # cd to my worktree tmux standard
 
 # cg aliases
 alias cgp='cg $HOME/workspace/personal/' # cg to personal
