@@ -4,5 +4,5 @@ custom=(
 'rm -rf -y /var/log/volumez; mdadm -S /dev/md/*; dmsetup remove_all; modprobe -r brd; docker stop dynamock; docker rm dynamock; : cleantest'
 'dmsetup ls --tree -oblkdevname: lsdm'
 'watch -n0.5 cat /proc/mdstat: mdstat'
-'echo 80000 > /sys/block/md_*/md/sync_speed_max: fastsync'
+'echo 9999999 > /sys/block/md_*/md/sync_speed_max: fastsync'
 )
