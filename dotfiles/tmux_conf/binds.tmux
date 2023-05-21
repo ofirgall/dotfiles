@@ -1,7 +1,9 @@
 #################
 ##### UTILS #####
 #################
-get_ssh_in_tty="ps -f -t '#{pane_tty}' | tail -n 1 | grep -o 'ssh.*'"
+current_tty="#{pane_tty}"
+get_ssh_in_tty="ps -f -t $current_tty | tail -n 1 | grep -o 'ssh.*'"
+get_current_ssh_host="ps -f -t $current_tty | tail -n 1 | grep -o 'ssh .*' | cut -d' ' -f2"
 is_fzf="ps -o state= -o comm= -t '#{pane_tty}' | grep -q 'S fzf'"
 is_nvim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|nvim?x?)(diff)?$'"
 is_less="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '^:$'"
@@ -48,6 +50,9 @@ bind -n M-Q if-shell "$is_nested_tmux" "send-keys M-q" "kill-window"
 # Split windows and ssh to the remote that was connected
 bind -r -T prefix e run-shell "$get_ssh_in_tty | xargs tmux split-window -h"
 bind -r -T prefix o run-shell "$get_ssh_in_tty | xargs tmux split-window -v"
+
+# Copy current ssh host
+bind -r -T prefix c run-shell -b "$get_current_ssh_host | toclip"
 
 # Split window without activate it (I usually use it to swap hanging ssh)
 bind -r -T prefix x run-shell "$get_ssh_in_tty | xargs tmux split-window -v -d"
