@@ -44,7 +44,6 @@
 - shell:
     - [install_scripts/install_zsh.sh, Installing ZSH]
     - [install_scripts/install_basic.sh, Running basic libs installation]
-    - [install_scripts/install_lsp.sh, Installing LSP bins]
     - [install_scripts/install_dap.sh, Installing DAP bins]
     - [install_scripts/install_nvim.sh, Installing Neovim]
     - [install_scripts/install_tmux.sh, Installing tmux]

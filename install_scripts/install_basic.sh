@@ -5,6 +5,12 @@ set -e # Exit if fail
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 
+# Add 3rd party repos
+sudo add-apt-repository ppa:git-core/ppa -y # newer git, requires update and upgrade git package
+
+echo 'Installing Basic Libs'
+sudo apt install -y wget moreutils ipython3 pcregrep python3-pip build-essential fzf daemon curl cmake btop toilet python3.10-venv
+
 if $NO_SUDO; then
 	# Install fzf
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -14,11 +20,6 @@ if $NO_SUDO; then
 	exit 0
 fi
 
-# Add 3rd party repos
-sudo add-apt-repository ppa:git-core/ppa -y # newer git, requires update and upgrade git package
-
-echo 'Installing Basic Libs'
-sudo apt install -y wget moreutils ipython3 pcregrep python3-pip build-essential fzf daemon curl cmake btop toilet
 
 python3 -m pip install brotab ranger-fm shell-gpt mkdocs mkdocs-material
 $HOME/.local/bin/bt install

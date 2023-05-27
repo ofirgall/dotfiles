@@ -52,6 +52,9 @@ export PATH=~/.local/bin:~/dotfiles_scripts/notify:~/dotfiles_scripts/misc:~/dot
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# Mason
+export PATH=$HOME/.local/share/nvim/mason/bin:$PATH
+
 # Volumez
 export PATH=$PATH:$HOME/go/volumez-tools/tools
 
