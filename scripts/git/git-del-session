@@ -12,21 +12,37 @@ if [[ $@ == *'-h'* ]]; then
 	print_usage
 fi
 
-if [ "$#" -lt 1 ]; then
-	print_usage
-fi
-
 git_root=$(git rev-parse --show-toplevel)
 if [[ $? != 0 ]]; then
+	echo "not in a git dir"
 	exit 1
 fi
-PROJ_NAME=$(basename "$git_root")
-WORKTREE_PATH="$WORKTREES_ROOT/$PROJ_NAME/$1"
 
-if ! ls $WORKTREES_ROOT/$PROJ_NAME | grep -o $1; then
-    echo "Didnt find $WORKTREES_ROOT/$PROJ_NAME/$1"
+
+PROJ_NAME=$(basename "$git_root")
+
+if [ "$#" -lt 1 ]; then
+	if [ ! -z $TMUX ]; then # Attach on remote (smux)
+		source ~/dotfiles_scripts/helpers/prompt.sh
+		tmux_session=$(tmux display-message -p '#S')
+		if yes_no "Delete current tmux session ($tmux_session)"; then
+			branch_name=$(echo "$tmux_session" | sed "s/$PROJ_NAME-//")
+		else
+			exit
+		fi
+	else
+		print_usage
+	fi
+else
+	branch_name=$1
+fi
+
+WORKTREE_PATH="$WORKTREES_ROOT/$PROJ_NAME/$branch_name"
+
+if ! ls $WORKTREES_ROOT/$PROJ_NAME | grep -o $branch_name; then
+    echo "Didnt find $WORKTREES_ROOT/$PROJ_NAME/$branch_name"
     exit 1
 fi
 
 git worktree remove "$WORKTREE_PATH"
-tmux kill-session -t "$PROJ_NAME-$1"
+tmux kill-session -t "$PROJ_NAME-$branch_name"
