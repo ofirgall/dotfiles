@@ -2,6 +2,7 @@
 
 gen_template()
 {
+    mkdir -p $1
     rm -v -rf $1/*
     cp -v -r .templates/$1/* $1/
     cat > $1/reset.sh << EOF
