@@ -2,13 +2,14 @@
 #		   Aliases
 # ---------------------------
 function nv() {
+	nvim $@
 	while true
 	do
-		nvim $@
 		if ! test -f /tmp/restart_nvim; then
 			break
 		fi
 		rm /tmp/restart_nvim
+		KOALA_RESTART=1 nvim $@
 	done
 }
 function v() {
