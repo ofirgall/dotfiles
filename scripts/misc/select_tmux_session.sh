@@ -74,6 +74,9 @@ get_session_git_info()
 	echo $(get_branch $git_root)
 }
 
+BRANCH_COLOR="\033[1;36m"
+RESET_COLOR="\033[0m"
+
 tmux_sessions_with_git_info()
 {
 	sessions=$(tmux ls -F '#S')
@@ -81,7 +84,7 @@ tmux_sessions_with_git_info()
 		if echo "$session" | grep -q "\-viewer"; then
 			continue
 		fi
-		echo "$session ($(get_session_git_info $session))"
+		echo -e "$session $BRANCH_COLOR($(get_session_git_info $session))$RESET_COLOR"
 	done
 }
 
@@ -113,7 +116,7 @@ select_tmux_session()
 	clean_viewer_sessions
 
 	echo "attach" > $SESSION_MODE_FILE
-	session=$(tmux_sessions_with_git_info | fzf --reverse --header="Select Tmux Session. Ctrl-f to Create New Session, Ctrl-v to create 'viewer' session, Ctrl-C to exit." --bind "ctrl-f:abort+execute(echo ___new_session)" --bind "ctrl-v:execute(echo viewer > $SESSION_MODE_FILE)+accept")
+	session=$(tmux_sessions_with_git_info | fzf --reverse --header="Select Tmux Session. Ctrl-f to Create New Session, Ctrl-v to create 'viewer' session, Ctrl-C to exit." --ansi --bind "ctrl-f:abort+execute(echo ___new_session)" --bind "ctrl-v:execute(echo viewer > $SESSION_MODE_FILE)+accept")
 
 	# ctrl-c
 	if [ -z "$session" ]; then
