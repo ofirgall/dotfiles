@@ -17,7 +17,7 @@
     ~/.my-zsh-conf:
         path: dotfiles/my-zsh-conf
     ~/.config/starship.toml:
-        path: dotfiles/starship.toml
+        path: dotfiles/zsh-conf/starship.toml
     ~/.profile:
         path: dotfiles/profile
     ~/.gitconfig:
