@@ -9,11 +9,13 @@
 
 - link:
     ~/.zshrc:
-        path: dotfiles/zsh_conf/entrypoint.zsh
+        path: dotfiles/zsh-conf/entrypoint.zsh
     ~/.zshenv:
-        path: dotfiles/zsh_conf/env.zsh
-    ~/.zsh_conf:
-        path: dotfiles/zsh_conf
+        path: dotfiles/zsh-conf/env.zsh
+    ~/.zsh-conf:
+        path: dotfiles/zsh-conf
+    ~/.my-zsh-conf:
+        path: dotfiles/my-zsh-conf
     ~/.config/starship.toml:
         path: dotfiles/starship.toml
     ~/.profile:

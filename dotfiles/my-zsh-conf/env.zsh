@@ -1,11 +1,4 @@
 
-# ---------------------------
-#		 ENV VARS
-# ---------------------------
-
-# Skip global compinit before addons
-skip_global_compinit=1
-
 # Check if remote
 export IS_REMOTE=false
 if test -f "$HOME/.remote_indicator"; then
@@ -34,23 +27,15 @@ if $NO_SUDO; then
 	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fi
 
-# fzf settings
-export FZF_DEFAULT_OPTS="--bind 'ctrl-n:toggle+down' --bind 'ctrl-p:toggle+up' --bind 'ctrl-a:toggle-all'"
-
-# ---------------------------
-# Env vars
-# ---------------------------
 # GOLANG
 export GOROOT=/usr/local/go
 export GOPATH=~/go/
 export CGO_ENABLED=0
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
 # Rust
 export CARGO_NET_GIT_FETCH_WITH_CLI=true # fetch git dependecies
-
-export PATH=~/.local/bin:~/dotfiles_scripts/notify:~/dotfiles_scripts/misc:~/dotfiles_scripts/inner:~/dotfiles_scripts/git:~/dotfiles_scripts/tmux_layouts/:~/dotfiles_scripts/settings/:$GOPATH/bin:$GOROOT/bin:$HOME/.npm-packages/bin/:$PATH:$HOME/.spicetify
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
 
 # Mason
 export PATH=$HOME/.local/share/nvim/mason/bin:$PATH
@@ -58,8 +43,7 @@ export PATH=$HOME/.local/share/nvim/mason/bin:$PATH
 # Volumez
 export PATH=$PATH:$HOME/go/volumez-tools/tools
 
-export MANPATH="$HOME/pkgs/usr/share/man:$HOME/.npm-packages/share/man:$MANPATH"
-
+# Editor settings
 export EDITOR='vim'
 if type nvim &> /dev/null; then
 	alias vi='vim'
@@ -69,3 +53,12 @@ if type nvim &> /dev/null; then
 	export MANPAGER='nvim +Man!'
 	export MANWIDTH=999
 fi
+
+# Path
+export PATH=$PATH:~/dotfiles_scripts/notify
+export PATH=$PATH:~/dotfiles_scripts/misc
+export PATH=$PATH:~/dotfiles_scripts/inner
+export PATH=$PATH:~/dotfiles_scripts/git
+export PATH=$PATH:~/dotfiles_scripts/tmux_layouts/
+export PATH=$PATH:~/dotfiles_scripts/settings/
+export PATH=$PATH:$HOME/.spicetify

@@ -6,3 +6,7 @@
 	path = editors/KoalaConfig
 	url = git@github.com:ofirgall/KoalaConfig.git
 	ignore = all
+[submodule "dotfiles/zsh-conf"]
+	path = dotfiles/zsh-conf
+	url = git@github.com:ofirgall/zsh-conf.git
+	ignore = all

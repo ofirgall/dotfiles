@@ -1,11 +1,3 @@
-
-# ---------------------------
-#	Settings that takes time
-# ---------------------------
-if ! $IS_REMOTE; then
-	. "$HOME/.cargo/env" # Rust
-fi
-
 # ---------------------------
 #			Misc
 # ---------------------------
@@ -26,6 +18,7 @@ if ! $IS_REMOTE; then
 	fi
 fi
 
+# TODO: export to a plugin
 # ---------------------------
 #		  Auto tmux
 # ---------------------------
