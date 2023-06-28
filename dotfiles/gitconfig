@@ -50,5 +50,8 @@
 	insteadOf = https://bitbucket.org/
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[sendemail]
+	confirm = always
+	suppresscc = self
 
 # vim:ft=gitconfig:
