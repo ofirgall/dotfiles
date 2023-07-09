@@ -64,6 +64,10 @@ Contrast: +5
 ##### [BroTab](https://addons.mozilla.org/en-US/firefox/addon/brotab/)
 No config
 
+#### [Firefox Settings](about:config)
+Browse `about:config`:
+* `browser.ctrlTab.sortByRecentlyUsed = true` - Switch last used tab with ctrl+tab
+
 #### TamperMonkey scripts
 * Install [TamperMonkey](https://www.tampermonkey.net/)
 * View the the [tampermonkey scripts](tampermonkey) as raw
