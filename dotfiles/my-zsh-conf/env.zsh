@@ -55,7 +55,7 @@ if type nvim &> /dev/null; then
 fi
 
 # Path
-export PATH=$PATH:~/dotfiles_scripts/notify
+export PATH=~/dotfiles_scripts/notify:$PATH
 export PATH=$PATH:~/dotfiles_scripts/misc
 export PATH=$PATH:~/dotfiles_scripts/inner
 export PATH=$PATH:~/dotfiles_scripts/git
