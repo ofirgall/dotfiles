@@ -467,7 +467,7 @@ end)
 
 -- }}}
 
-awful.spawn.with_shell('~/.config/awesome/autorun.sh')
+awful.spawn.with_shell('~/.config/awesome/autorun.sh &> /tmp/autorun_output')
 
 -- awful.screen.set_auto_dpi_enabled(true) -- Auto scaling for awful gui
 require('plugins')
@@ -494,7 +494,8 @@ local function run_once(cmd_arr)
     end
 end
 
-run_once({ 'spotify', 'teams' })
+-- run_once({ 'spotify', 'teams' })
+run_once({ 'teams' })
 -- Mail & Calendar
 -- awful.spawn.single_instance('firefox https://outlook.office365.com/mail/ https://outlook.office.com/calendar/view/week',
 --     { tag = GUI_TAG },
