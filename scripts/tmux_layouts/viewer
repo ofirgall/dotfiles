@@ -9,7 +9,7 @@ tmux split-window -v -l 20% "ssh -t $HOST '/usr/bin/watch -n0.2 free -m'"
 
 tmux select-pane -t 1
 # Bottom panel for logs
-tmux split-window -v -l 50% "ssh -t $HOST 'cd /var/log/volumez/; zsh'"
+tmux split-window -v -l 25% "ssh -t $HOST 'cd /var/log/volumez/; zsh'"
 
 # Rename
 tmux rename-window "viewer"
