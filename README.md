@@ -64,6 +64,9 @@ Contrast: +5
 ##### [BroTab](https://addons.mozilla.org/en-US/firefox/addon/brotab/)
 No config
 
+##### [GhostText](https://addons.mozilla.org/en-US/firefox/addon/ghosttext/)
+No config
+
 #### [Firefox Settings](about:config)
 Browse `about:config`:
 * `browser.ctrlTab.sortByRecentlyUsed = true` - Switch last used tab with ctrl+tab
