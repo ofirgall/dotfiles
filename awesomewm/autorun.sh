@@ -17,5 +17,7 @@ xinput --set-prop 'pointer:Logitech MX Master 3' 'libinput Accel Speed' -0.6
 
 xmodmap ~/.xmodmaprc 2> /dev/null # key mapping, xev to see keys
 
+# Start user services at ~/.config/systemd/user
+systemctl --user start $(ls ~/.config/systemd/user/* | xargs basename)
 
 echo 'done'
