@@ -6,8 +6,11 @@ if [ "$#" -lt 1 ]; then
 fi
 
 retries=0
+host=$1
+shift
+params=$@
 while ( true ); do
-	ssh $1 -o ConnectTimeout=3 "exit" 2>&1;
+	ssh $host -o ConnectTimeout=3 "exit" 2>&1;
 
 	res="$?";
 	if [[ $res == "0" || $res == "1" ]]; then
@@ -15,7 +18,7 @@ while ( true ); do
 			notify-send -u critical -t 3000 "ssh to $1 done!"
 			toilet "DONE" --gay
 		fi
-		ssh $1 -o ConnectTimeout=3 $params 2>&1;
+		ssh $host -o ConnectTimeout=3 $params 2>&1;
 		exit;
 	else
 		retries=$((retries+1))
