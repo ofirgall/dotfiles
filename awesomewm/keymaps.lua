@@ -75,6 +75,15 @@ local function rename_tag_by_tmux(tag)
 	end
 end
 
+local function create_tmux_viewer(tag)
+	local session_name = find_tmux_session_in_tag(tag)
+	if session_name == nil then
+		return -- No session in current tag
+	end
+
+	awful.spawn("x-terminal-emulator -e /bin/zsh -c 'export VIEW_TMUX_SESSION=" .. session_name .. "; zsh -i'")
+end
+
 LAST_TAG = nil
 
 local function switch_to_tag(screen, tag)
@@ -328,7 +337,14 @@ function M.setup(kbdcfg, volume_widget, retain)
 		-- Menubar
 		awful.key({ modkey }, "p", function()
 			menubar.show()
-		end, { description = "show the menubar", group = "launcher" })
+		end, { description = "show the menubar", group = "launcher" }),
+
+		-- Custom actions
+		awful.key({ modkey }, "v", function()
+			local screen = awful.screen.focused()
+
+			create_tmux_viewer(screen.selected_tag)
+		end, { description = "open a tmux viewer", group = "launcher" })
 	)
 
 	clientkeys = gears.table.join(
