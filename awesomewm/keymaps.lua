@@ -38,6 +38,26 @@ local function tag_has_tmux_name(tag_index)
 	return false
 end
 
+local function find_tmux_session_in_tag(tag)
+	for s in screen do
+		for _, t in ipairs(s.tags) do
+			if t.index == tag.index then
+				for _, c in ipairs(t:clients()) do
+					local client_name = c and c.name or ""
+
+					if string.find(client_name, " %- TMUX$") then
+						session_name = string.gsub(client_name, " %- TMUX$", "")
+						if not string.find(session_name, "%-viewer$") then -- Ignore `-viewer` suffix
+							return session_name
+						end
+					end
+				end
+			end
+		end
+	end
+	return nil
+end
+
 local function rename_tag_by_tmux(tag)
 	-- Don't override custom names
 	if tag.name ~= tostring(tag.index) then
@@ -46,34 +66,12 @@ local function rename_tag_by_tmux(tag)
 		end
 	end
 
-	local found = false
-	for s in screen do
-		for _, t in ipairs(s.tags) do
-			if t.index == tag.index then
-				for _, c in ipairs(t:clients()) do
-					local client_name = c and c.name or ""
-					if string.find(client_name, " %- TMUX$") then
-						session_name = string.gsub(client_name, " %- TMUX$", "")
-						if not string.find(session_name, "%-viewer$") then -- Ignore `-viewer` suffix
-							rename_tag_across_screens(tag.index, TMUX_PREFIX .. session_name)
-							found = true
-							break
-						end
-					end
-				end
-				if found then
-					break
-				end
-			end
-		end
-		if found then
-			break
-		end
-	end
-
-	-- Reset tag name if not tmux session not found
-	if not found then
+	local session_name = find_tmux_session_in_tag(tag)
+	if session_name == nil then
+		-- Reset tag name if not tmux session not found
 		rename_tag_across_screens(tag.index, "")
+	else
+		rename_tag_across_screens(tag.index, TMUX_PREFIX .. session_name)
 	end
 end
 
