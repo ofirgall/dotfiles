@@ -446,7 +446,7 @@ client.connect_signal("manage", function(c)
 	end
 
 	-- Maximize tmux viewer on the other screen
-	if string.find(c.name, "TMUX VIEWER") ~= nil then
+	if c.name ~= nil and string.find(c.name, "TMUX VIEWER") ~= nil then
 		c.maximized = true
 
 		-- Move to other screen safely
