@@ -444,6 +444,20 @@ client.connect_signal("manage", function(c)
 		-- Prevent clients from being unreachable after screen count changes.
 		awful.placement.no_offscreen(c)
 	end
+
+	-- Maximize tmux viewer on the other screen
+	if string.find(c.name, "TMUX VIEWER") ~= nil then
+		c.maximized = true
+
+		-- Move to other screen safely
+		local new_screen_index = (c.screen.index + 1) % screen:count()
+		if new_screen_index == 0 then
+			new_screen_index = 1
+		end
+		-- p(c.screen.index, "current")
+		-- p(new_screen_index, "current")
+		c.screen = new_screen_index
+	end
 end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.

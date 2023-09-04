@@ -81,7 +81,13 @@ local function create_tmux_viewer(tag)
 		return -- No session in current tag
 	end
 
-	awful.spawn("x-terminal-emulator -e /bin/zsh -c 'export VIEW_TMUX_SESSION=" .. session_name .. "; zsh -i'")
+	awful.spawn(
+		"x-terminal-emulator -t 'TMUX VIEWER - "
+			.. session_name
+			.. "' -e /bin/zsh -c 'export VIEW_TMUX_SESSION="
+			.. session_name
+			.. "; zsh -i'"
+	)
 end
 
 LAST_TAG = nil
