@@ -2,6 +2,8 @@
 
 HOST="${1:-rhel8-5.local}"
 
+wait_for_ssh $HOST || exit
+
 # Sidebar
 tmux split-window -h -l 35% "ssh -t $HOST '/usr/bin/watch -n0.2 cat /proc/mdstat'"
 tmux split-window -v -l 66% "ssh -t $HOST '/usr/bin/watch -n0.2 lsblk -s -o NAME'"

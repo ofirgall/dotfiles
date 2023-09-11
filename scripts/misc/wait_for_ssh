@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+host=$1
+
+while (true); do
+	ssh $host -o ConnectTimeout=3 "exit" 2>&1
+
+	res="$?"
+	if [[ $res == "0" || $res == "1" ]]; then
+		exit 0
+	else
+		echo 'Ctrl-C to exit'
+		sleep 1
+	fi
+done
