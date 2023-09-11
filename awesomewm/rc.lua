@@ -463,6 +463,10 @@ client.connect_signal("manage", function(c)
 		if new_screen_index then
 			c.screen = new_screen_index
 		end
+
+		-- Focus viewer client
+		client.focus = c
+		c:raise()
 	end
 end)
 
