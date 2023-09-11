@@ -9,21 +9,21 @@ retries=0
 host=$1
 shift
 params=$@
-while ( true ); do
-	ssh $host -o ConnectTimeout=3 "exit" 2>&1;
+while (true); do
+	ssh $host -o ConnectTimeout=3 "exit" 2>&1
 
-	res="$?";
+	res="$?"
 	if [[ $res == "0" || $res == "1" ]]; then
 		if [[ "$retries" -gt 15 ]]; then
 			notify-send -u critical -t 3000 "ssh to $1 done!"
 			toilet "DONE" --gay
 		fi
-		ssh $host -o ConnectTimeout=3 $params 2>&1;
-		exit;
+		ssh $host -o ConnectTimeout=3 $params 2>&1
+		exit
 	else
-		retries=$((retries+1))
-		echo 'Ctrl-C to exit';
-		sleep 1;
-	fi;
+		retries=$((retries + 1))
+		echo 'Ctrl-C to exit'
+		sleep 1
+	fi
 
-done;
+done
