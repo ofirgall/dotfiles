@@ -48,7 +48,7 @@ local function find_tmux_session_in_tag(tag)
 					if string.find(client_name, " %- TMUX$") then
 						session_name = string.gsub(client_name, " %- TMUX$", "")
 						if not string.find(session_name, "%-viewer$") then -- Ignore `-viewer` suffix
-							return session_name
+							return { name = session_name, screen_index = s.index }
 						end
 					end
 				end
@@ -66,26 +66,36 @@ local function rename_tag_by_tmux(tag)
 		end
 	end
 
-	local session_name = find_tmux_session_in_tag(tag)
-	if session_name == nil then
+	local session = find_tmux_session_in_tag(tag)
+	if session == nil then
 		-- Reset tag name if not tmux session not found
 		rename_tag_across_screens(tag.index, "")
 	else
-		rename_tag_across_screens(tag.index, TMUX_PREFIX .. session_name)
+		rename_tag_across_screens(tag.index, TMUX_PREFIX .. session.name)
 	end
 end
 
 local function create_tmux_viewer(tag)
-	local session_name = find_tmux_session_in_tag(tag)
-	if session_name == nil then
+	local session = find_tmux_session_in_tag(tag)
+	if session == nil then
 		return -- No session in current tag
+	end
+
+	-- Move to other screen safely
+	-- p(session.screen_index, "session.screen_index")
+	-- p(screen:count(), "screen count")
+	local new_screen_index = (session.screen_index + 1) % (screen:count() + 1)
+	if new_screen_index == 0 then
+		new_screen_index = 1
 	end
 
 	awful.spawn(
 		"x-terminal-emulator -t 'TMUX VIEWER - "
-			.. session_name
+			.. session.name
+			.. " SCREEN="
+			.. new_screen_index
 			.. "' -e /bin/zsh -c 'export VIEW_TMUX_SESSION="
-			.. session_name
+			.. session.name
 			.. "; zsh -i'"
 	)
 end

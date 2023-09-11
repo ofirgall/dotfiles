@@ -431,6 +431,14 @@ awful.rules.rules = {
 }
 -- }}}
 
+local function p(text, obj)
+	naughty.notify({
+		preset = naughty.config.presets.critical,
+		text = gears.debug.dump_return(obj, text),
+		title = "debug",
+	})
+end
+
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function(c)
@@ -449,14 +457,12 @@ client.connect_signal("manage", function(c)
 	if c.name ~= nil and string.find(c.name, "TMUX VIEWER") ~= nil then
 		c.maximized = true
 
-		-- Move to other screen safely
-		local new_screen_index = (c.screen.index + 1) % screen:count()
-		if new_screen_index == 0 then
-			new_screen_index = 1
+		local new_screen_index = nil
+		_, _, new_screen_index = string.find(c.name, "SCREEN=(%d)")
+		-- p(new_screen_index, "new index")
+		if new_screen_index then
+			c.screen = new_screen_index
 		end
-		-- p(c.screen.index, "current")
-		-- p(new_screen_index, "current")
-		c.screen = new_screen_index
 	end
 end)
 
