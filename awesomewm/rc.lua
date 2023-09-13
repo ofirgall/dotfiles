@@ -262,6 +262,11 @@ end
 
 local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 local spotify_widget = require("awesome-wm-widgets.spotify-widget.spotify")
+local spotify_widget_func = spotify_widget({
+	-- Swap play and pause icon
+	play_icon = "/usr/share/icons/Arc/actions/24/player_pause.png",
+	pause_icon = "/usr/share/icons/Arc/actions/24/player_play.png",
+})
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
 local net_widgets = require("net_widgets")
@@ -340,7 +345,7 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-			spotify_widget(),
+			spotify_widget_func,
 			-- mykeyboardlayout,
 			__sep__,
 			cpu_widget(),
