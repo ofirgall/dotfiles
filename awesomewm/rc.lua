@@ -106,8 +106,9 @@ awful.layout.layouts = {
 }
 -- }}}
 local GUI_TAG = "9 GUI"
+local MUSIC_TAG = "8 MUSIC"
 retain.tags.defaults = {
-	names = { "1", "2", "3", "4", "5", "6", "7", "8", GUI_TAG },
+	names = { "1", "2", "3", "4", "5", "6", "7", MUSIC_TAG, GUI_TAG },
 	layouts = awful.layout.suit.tile,
 }
 retain.tags.load()
@@ -432,7 +433,7 @@ awful.rules.rules = {
 
 	-- Set GUI applications to always spawn on tag GUI_TAG
 	{ rule = { class = "Teams" }, properties = { screen = 1, tag = GUI_TAG } },
-	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = GUI_TAG } },
+	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = MUSIC_TAG } },
 }
 -- }}}
 
