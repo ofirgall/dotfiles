@@ -77,3 +77,12 @@ alias csio='cat envctl_state.json | jq -r ".envs.env.sio.public_dns" | toclip'
 alias db='cat envctl_state.json | jq -r ".envs.env.sio.public_dns" | xargs printf "http://%s:8002" | xargs open'
 alias lsj='lsjobs'
 alias ectl='cd ~/go/volumez/automation/envctl/'
+
+# Create notes dir & cd for the current tmux session
+function notes() {
+	local session=$(tmux display-message -p "#S" | sed "s,-,/,g")
+	if ! test -d ~/notes/$session; then
+		mkdir -p ~/notes/$session
+	fi
+	cd ~/notes/$session
+}
