@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
 HOST="${1:-rhel8-5.local}"
+WIN=$(tmux display-message -p '#S:#I')
 
 wait_for_ssh $HOST || exit
 
 # Sidebar
-tmux split-window -h -l 35% "ssh -t $HOST '/usr/bin/watch -n0.2 cat /proc/mdstat'"
-tmux split-window -v -l 66% "ssh -t $HOST '/usr/bin/watch -n0.2 lsblk -s -o NAME'"
-tmux split-window -v -l 20% "ssh -t $HOST '/usr/bin/watch -n0.2 free -m'"
+tmux split-window -t$WIN.1 -h -l 35% "ssh -t $HOST '/usr/bin/watch -n0.2 cat /proc/mdstat'"
+tmux split-window -t$WIN.2 -v -l 66% "ssh -t $HOST '/usr/bin/watch -n0.2 lsblk -s -o NAME'"
+tmux split-window -t$WIN.3 -v -l 20% "ssh -t $HOST '/usr/bin/watch -n0.2 free -m'"
 
-tmux select-pane -t 1
 # Bottom panel for logs
-tmux split-window -v -l 25% "ssh -t $HOST 'cd /var/log/volumez/; zsh'"
+tmux split-window -t$WIN.1 -v -l 25% "ssh -t $HOST 'cd /var/log/volumez/; zsh'"
 
 # Rename
-tmux rename-window "viewer"
+tmux rename-window -t$WIN "viewer"
 
 # Panel to run (top)
-tmux select-pane -t 1
+tmux select-pane -t $WIN.1
 ssh $HOST
