@@ -1,0 +1,2 @@
+event=button/lid LID open
+action=/etc/acpi/actions/lid_changed.sh %e
