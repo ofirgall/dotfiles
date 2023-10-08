@@ -3,7 +3,7 @@
 hosts=$(grep -P "^Host ([^*]+)$" $HOME/.ssh/config | sed 's/Host //' | grep host)
 
 for host in $hosts; do
-    tmux split-window "toilet --font=pagga --gay '$host'; assh $host"
+    tmux split-window -l 99% "toilet --font=pagga --gay '$host'; assh $host"
 done
 
 tmux select-layout tiled
