@@ -78,6 +78,12 @@ if-shell -b '[ "$XDG_SESSION_DESKTOP" != "awesome" ]' {
     bind -n M-l if-shell "$is_nvim || $is_nested_tmux" 'send-keys C-l' 'select-pane -R'
 }
 
+# Bind force navigation for alt+shift+hjkl
+bind -n M-H run-shell "$navigator left"
+bind -n M-J run-shell "$navigator down"
+bind -n M-K run-shell "$navigator up"
+bind -n M-L run-shell "$navigator right"
+
 # Override alt+up/down for copy-mode
 bind -T copy-mode-vi M-Up select-pane -U
 bind -T copy-mode-vi M-Down select-pane -D
