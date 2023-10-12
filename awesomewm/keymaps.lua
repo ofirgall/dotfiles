@@ -464,8 +464,10 @@ function M.setup(kbdcfg, volume_widget, retain)
 		end, { description = "Print Screen", group = "media" }),
 
 		awful.key({ "Control" }, "Print", function()
-			awful.util.spawn("scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'")
-		end, { description = "Print Screen", group = "media" })
+			awful.util.spawn(
+				"scrot --focused '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'"
+			)
+		end, { description = "Print Screen Focuesd Window", group = "media" })
 	)
 
 	-- Bind all key numbers to tags.
