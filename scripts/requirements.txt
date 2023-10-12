@@ -3,3 +3,4 @@ argcomplete
 argparse
 libtmux
 typer
+sshconf

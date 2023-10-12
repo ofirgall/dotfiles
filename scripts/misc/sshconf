@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+
+import typer
+from sshconf import read_ssh_config, empty_ssh_config_file
+from os.path import expanduser
+
+app = typer.Typer()
+
+@app.command()
+def set_ip(alias: str, ip: str):
+
+    conf = read_ssh_config(expanduser("~/.ssh/config"))
+    if alias not in conf.hosts():
+        print(f'{alias=} doesnt exists, available aliases: {conf.hosts()}')
+        raise typer.Abort()
+
+    print(f'Previous settings: {conf.host(alias)}')
+    conf.set(alias, Hostname=ip)
+
+    conf.save()
+
+@app.command(hidden=True)
+def _():
+    # 1 sub command is not enough (to show help when no args)
+    # TODO: delete this function after adding another subcommand
+    pass
+
+if __name__ == '__main__':
+    app()
