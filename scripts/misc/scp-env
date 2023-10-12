@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+hosts=$(grep -P "^Host ([^*]+)$" $HOME/.ssh/config | sed 's/Host //' | grep host)
+
+for host in $hosts; do
+    scp $@ $host:~/ &
+done
+
+wait
