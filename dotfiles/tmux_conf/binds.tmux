@@ -128,6 +128,7 @@ bind -n M-z resize-pane -Z # Zoom/Unzoom pane
 bind -n M-Z if-shell "$is_nvim" 'send-keys M-Z' 'send-keys M-z'
 bind -T prefix = select-layout even-horizontal # Equally sized panes (like vim)
 bind -T prefix + select-layout even-vertical # Equally sized panes (like vim)
+bind -T prefix - select-layout tiled  # Equally sized panes (like vim)
 
 ##### WINDOWS #####
 # new window ALT+t
