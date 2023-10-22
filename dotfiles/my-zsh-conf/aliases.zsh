@@ -72,9 +72,10 @@ alias sound='pavucontrol'
 alias demo='simplescreenrecorder'
 
 # Volumez
+export VREC_ENV_NAME=ofir
 alias capi='./envctl.py state | grep api | grep -o "http.*\"" | sed -s "s/\"//" | toclip' # Copy API url
-alias csio='cat envctl_state.json | jq -r ".envs.ofir.sio.public_dns" | toclip'
-alias db='cat envctl_state.json | jq -r ".envs.ofir.sio.public_dns" | xargs printf "http://%s:8002" | xargs open'
+alias csio='cat envctl_state.json | jq -r ".envs.$VREC_ENV_NAME.sio.public_dns" | toclip'
+alias db='cat envctl_state.json | jq -r ".envs.$VREC_ENV_NAME.sio.public_dns" | xargs printf "http://%s:8002" | xargs open'
 alias lsj='lsjobs'
 alias ectl='cd ~/go/volumez/automation/envctl/'
 
