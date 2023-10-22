@@ -9,5 +9,10 @@ if test -f $PROFILE_ALACRITTY_CONF; then
     ln -s $PROFILE_ALACRITTY_CONF /tmp/autorandr_alacritty.yml
 fi
 
+LOAD_SCRIPT=~/.config/autorandr/$AUTORANDR_CURRENT_PROFILE/load.sh
+if test -f $LOAD_SCRIPT; then
+    $LOAD_SCRIPT
+fi
+
 # Run autoran
 ~/.config/awesome/autorun.sh
