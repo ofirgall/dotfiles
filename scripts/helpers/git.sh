@@ -1,5 +1,7 @@
 #!/bin/bash
 
+WORKTREES_ROOT="$HOME/worktrees"
+
 get_branch()
 {
 	# $1: dir
@@ -20,4 +22,12 @@ get_git_root()
 	# $1: dir
 	cd $1
 	(git rev-parse --show-toplevel 2> /dev/null || pwd)
+}
+
+get_worktree_from_tmux() {
+	if [ -z $TMUX ]; then
+		exit 1
+	fi
+	tmux_session=$(tmux display-message -p '#S')
+	echo "$WORKTREES_ROOT/$(echo "$tmux_session" | sed 's,-,/,g')"
 }
