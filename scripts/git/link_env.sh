@@ -34,3 +34,6 @@ for file in $root_tracked_files; do
 	rm -rf $file
 	ln -s $worktree_path/$file $file
 done
+
+# Save the basename of the worktree to make starship display it
+echo $(basename "$worktree_path") > .linked_env
