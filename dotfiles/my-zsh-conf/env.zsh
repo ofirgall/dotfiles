@@ -61,4 +61,5 @@ export PATH=$PATH:~/dotfiles_scripts/inner
 export PATH=$PATH:~/dotfiles_scripts/git
 export PATH=$PATH:~/dotfiles_scripts/tmux_layouts/
 export PATH=$PATH:~/dotfiles_scripts/settings/
+export PATH=$PATH:~/dotfiles_scripts/tmux/
 export PATH=$PATH:$HOME/.spicetify
