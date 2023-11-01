@@ -51,6 +51,7 @@ bind -n M-Q if-shell "$is_nested_tmux" "send-keys M-q" "kill-window"
 # Split windows and ssh to the remote that was connected
 bind -r -T prefix e run-shell "$get_ssh_in_tty | xargs tmux split-window -h"
 bind -r -T prefix o run-shell "$get_ssh_in_tty | xargs tmux split-window -v"
+bind -r -T prefix t run-shell "$get_ssh_in_tty | xargs tmux new-window"
 
 # Copy current ssh host
 bind -r -T prefix c run-shell -b "$get_current_ssh_host | toclip"
