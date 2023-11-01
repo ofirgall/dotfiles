@@ -270,18 +270,18 @@ local spotify_widget_func = spotify_widget({
 })
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
-local net_widgets = require("net_widgets")
-
-local wifi_adapter = "wlp0s20f3"
-net_wireless = net_widgets.wireless({ interface = wifi_adapter })
-net_wired = net_widgets.indicator({
-	ignore_interfaces = {
-		wifi_adapter,
-		"lo",
-		"docker0",
-	},
-	timeout = 5,
-})
+-- local net_widgets = require("net_widgets")
+--
+-- local wifi_adapter = "wlp0s20f3"
+-- net_wireless = net_widgets.wireless({ interface = wifi_adapter })
+-- net_wired = net_widgets.indicator({
+-- 	ignore_interfaces = {
+-- 		wifi_adapter,
+-- 		"lo",
+-- 		"docker0",
+-- 	},
+-- 	timeout = 5,
+-- })
 
 awful.screen.connect_for_each_screen(function(s)
 	-- Wallpaper
@@ -357,12 +357,12 @@ awful.screen.connect_for_each_screen(function(s)
 				widget_type = "arc",
 			}),
 			__sep__,
-			net_wireless,
-			net_wired,
+			-- net_wireless,
+			-- net_wired,
 			__sep__,
 			wibox.widget.textbox(""),
 			kbdcfg.widget,
-			-- wibox.widget.systray(),
+			wibox.widget.systray(),
 			mytextclock,
 			s.mylayoutbox,
 		},
@@ -551,6 +551,10 @@ end
 
 -- run_once({ 'spotify', 'teams' })
 run_once({ "teams" })
+run_once({ "blueman-applet" }) -- bluetooth
+run_once({ "pasystray" }) -- audio
+run_once({ "nm-applet" }) -- network
+run_once({ "flameshot" }) -- screenshots
 -- Mail & Calendar
 -- awful.spawn.single_instance('firefox https://outlook.office365.com/mail/ https://outlook.office.com/calendar/view/week',
 --     { tag = GUI_TAG },

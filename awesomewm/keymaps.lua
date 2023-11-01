@@ -3,6 +3,7 @@ local M = {}
 local naughty = require("naughty")
 local gears = require("gears")
 local awful = require("awful")
+local wibox = require("wibox")
 local function p(text, obj)
 	naughty.notify({
 		preset = naughty.config.presets.critical,
@@ -386,7 +387,7 @@ function M.setup(kbdcfg, volume_widget, retain)
 		awful.key({ modkey }, "o", function(c)
 			c:move_to_screen()
 		end, { description = "move to screen", group = "client" }),
-		awful.key({ modkey }, "t", function(c)
+		awful.key({ modkey, "Shift" }, "t", function(c)
 			c.ontop = not c.ontop
 		end, { description = "toggle keep on top", group = "client" }),
 		awful.key({ modkey }, "n", function(c)
@@ -426,6 +427,11 @@ function M.setup(kbdcfg, volume_widget, retain)
 				end,
 			})
 		end, { description = "rename tag", group = "awesome" }),
+
+		awful.key({ modkey }, "t", function()
+			local traywidget = wibox.widget.systray()
+			traywidget:set_screen(awful.screen.focused())
+		end, { description = "move systray to screen", group = "awesome" }),
 
 		-- Media Keys
 		awful.key({}, "XF86AudioPlay", function()

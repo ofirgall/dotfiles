@@ -1,30 +1,27 @@
 #!/bin/bash
 
-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 set -e # Exit if fail
 
 sudo apt-get install -y awesome playerctl i3lock-fancy xautolock
 
 AWESOME_CONFIG="$HOME/.config/awesome/"
 
-clone()
-{
-    # $1 github repo
-    # $2 dest
-    if [ -d $2 ]; then
-        return
-    fi
+clone() {
+	# $1 github repo
+	# $2 dest
+	if [ -d $2 ]; then
+		return
+	fi
 
-    git clone --depth=1 https://github.com/$1 $2
+	git clone --depth=1 https://github.com/$1 $2
 }
 
-clone_awesome()
-{
-    # $1 github shorthand repo
-    # $2 dest
-    clone $1 $AWESOME_CONFIG/$2
+clone_awesome() {
+	# $1 github shorthand repo
+	# $2 dest
+	clone $1 $AWESOME_CONFIG/$2
 }
-
 
 # Plugins
 clone_awesome ofirgall/awesomewm-vim-tmux-navigator awesomewm-vim-tmux-navigator # fork
@@ -63,3 +60,6 @@ sudo apt-get install -y pavucontrol
 sudo rm -f /etc/pulse/default.pa
 sudo ln -s $CURRENT_DIR/../system/pulseaudio.pa /etc/pulse/default.pa
 pulseaudio -k
+
+# install systray apps for bluetooth and such
+sudo apt-get install -y pavucontrol blueman flameshot
