@@ -356,8 +356,13 @@ function M.setup(kbdcfg, volume_widget, retain)
 			menubar.show()
 		end, { description = "show the menubar", group = "launcher" }),
 
-		-- Custom actions
+		-- clipboard history
 		awful.key({ modkey }, "v", function()
+			awful.util.spawn("copyq toggle")
+		end, { description = "open copyq clipboard history", group = "launcher" }),
+
+		-- Custom actions
+		awful.key({ modkey, "Shift" }, "v", function()
 			local screen = awful.screen.focused()
 
 			create_tmux_viewer(screen.selected_tag)

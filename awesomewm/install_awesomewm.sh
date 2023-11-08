@@ -63,3 +63,6 @@ pulseaudio -k
 
 # install systray apps for bluetooth and such
 sudo apt-get install -y pavucontrol blueman flameshot
+
+# copyq for clipboard history
+sudo apt-get -y install copyq copyq-plugins

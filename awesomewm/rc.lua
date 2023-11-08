@@ -372,6 +372,14 @@ end)
 
 require("keymaps").setup(kbdcfg, volume_widget, retain)
 
+local function p(text, obj)
+	naughty.notify({
+		preset = naughty.config.presets.critical,
+		text = gears.debug.dump_return(obj, text),
+		title = "debug",
+	})
+end
+
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
@@ -398,7 +406,7 @@ awful.rules.rules = {
 		rule_any = {
 			instance = {
 				"DTA", -- Firefox addon DownThemAll.
-				"copyq", -- Includes session name in class.
+				-- "copyq", -- Includes session name in class.
 				"pinentry",
 			},
 			class = {
@@ -434,16 +442,25 @@ awful.rules.rules = {
 	-- Set GUI applications to always spawn on tag GUI_TAG
 	{ rule = { class = "Teams" }, properties = { screen = 1, tag = GUI_TAG } },
 	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = MUSIC_TAG } },
+
+	-- clipboard at focuesd screen floating
+	{
+		rule = {
+			instance = "copyq",
+		},
+		properties = {
+			floating = true,
+			placement = awful.placement.centered,
+			focus = true,
+			-- screen = function(c)
+			-- 	p("focused_screen", awful.screen.focused().index)
+			-- 	p("preferred", awful.screen.preferred(c).index)
+			-- 	return awful.screen.focused().index
+			-- end,
+		},
+	},
 }
 -- }}}
-
-local function p(text, obj)
-	naughty.notify({
-		preset = naughty.config.presets.critical,
-		text = gears.debug.dump_return(obj, text),
-		title = "debug",
-	})
-end
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
@@ -555,6 +572,7 @@ run_once({ "blueman-applet" }) -- bluetooth
 run_once({ "pasystray" }) -- audio
 run_once({ "nm-applet" }) -- network
 run_once({ "flameshot" }) -- screenshots
+run_once({ "copyq" }) -- clipboard manager
 -- Mail & Calendar
 -- awful.spawn.single_instance('firefox https://outlook.office365.com/mail/ https://outlook.office.com/calendar/view/week',
 --     { tag = GUI_TAG },
