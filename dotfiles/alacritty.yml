@@ -673,7 +673,7 @@ mouse:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 key_bindings:
-  # https://en.wikipedia.org/wiki/List_of_Unicode_characters
+  # https:en.wikipedia.org/wiki/List_of_Unicode_characters
   - { key: F5, mods: Super, action: ResetFontSize }
   - {key: Tab, mods: Control, chars: "\x1b[27;5;9~"}
   - {key: Tab, mods: Control|Shift, chars: "\x1b[27;6;9~"}
@@ -687,6 +687,7 @@ key_bindings:
   - {key: 52, mods: Control|Shift, chars: "\x1b[27;5;62~"} # >
   - { key: Return,   mods: Shift,   chars: "\x1b[13;2u" }
   - { key: Return,   mods: Control, chars: "\x1b[13;5u" }
+  - { key: Semicolon,   mods: Control,   chars: "\x1b\x3B" }
   # - { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
