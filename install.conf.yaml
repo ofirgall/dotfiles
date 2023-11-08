@@ -35,6 +35,8 @@
         path: awesomewm
     ~/.config/autorandr:
         path: dotfiles/autorandr
+    ~/.config/copyq/copyq.conf:
+        path: dotfiles/copyq.conf
     ~/.tridactylrc:
         path: dotfiles/tridactylrc
     ~/.config/systemd/user:
