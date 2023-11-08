@@ -31,6 +31,9 @@ WORKTREE_PATH="$WORKTREES_ROOT/$PROJ_NAME/$1"
 mkdir -p "$WORKTREES_ROOT/$PROJ_NAME/"
 git worktree add "$WORKTREE_PATH" -b $BRANCH_PREFIX/$jira_proj-$1
 
+cd "$WORKTREE_PATH"
+git reset --hard origin/master
+
 if [ -z $TMUX ]; then
 	tmux new-session -s "$PROJ_NAME-$1" -c "$WORKTREE_PATH"
 else
