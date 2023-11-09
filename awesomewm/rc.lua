@@ -452,11 +452,17 @@ awful.rules.rules = {
 			floating = true,
 			placement = awful.placement.centered,
 			focus = true,
-			-- screen = function(c)
-			-- 	p("focused_screen", awful.screen.focused().index)
-			-- 	p("preferred", awful.screen.preferred(c).index)
-			-- 	return awful.screen.focused().index
-			-- end,
+			screen = function(c)
+				local target_screen = awful.screen.focused()
+				-- For some reason returning an index of the focused screen doesn't work here
+				-- Moving the client in a delayed call after rules has been applied
+				-- gears.timer.start_new(0.1, function()
+				gears.timer.delayed_call(function()
+					c:move_to_screen(target_screen.index)
+				end)
+
+				return target_screen.index
+			end,
 		},
 	},
 }
