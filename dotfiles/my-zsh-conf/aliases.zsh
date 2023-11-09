@@ -25,7 +25,8 @@ alias notify='notify-send -u critical done'
 # cd aliases
 alias cdd='cd $HOME/dotfiles' # cd to dotfiles
 alias cdn='cd $HOME/dotfiles/editors/KoalaConfig/' # cd to neovim config
-alias cdz='cd $HOME/dotfiles/dotfiles/zsh_conf/' # cd to zsh config
+alias cdz='cd $HOME/.my-zsh-conf/' # cd to personal zsh config
+alias cdZ='cd $HOME/.zsh-conf/' # cd to zsh config
 alias cdt='cd $HOME/dotfiles/dotfiles/tmux_conf/' # cd to tmux config
 alias cdnt='cd $HOME/.local/share/nvim/lazy/ofirkai.nvim/' # cd to nvim theme
 alias cda='cd $HOME/.config/awesome/' # cd to awesome config
@@ -67,6 +68,8 @@ function nvlog() {
 alias wifi='nmtui'
 alias audio='pavucontrol'
 alias sound='pavucontrol'
+alias lock='systemctl --user start autolock'
+alias unlock='systemctl --user stop autolock'
 
 # Tools
 alias demo='simplescreenrecorder'
