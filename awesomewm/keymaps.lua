@@ -395,6 +395,9 @@ function M.setup(kbdcfg, volume_widget, retain)
 		awful.key({ modkey, "Shift" }, "t", function(c)
 			c.ontop = not c.ontop
 		end, { description = "toggle keep on top", group = "client" }),
+		awful.key({ modkey, "Shift" }, "s", function(c)
+			c.sticky = not c.sticky
+		end, { description = "toggle sticky", group = "client" }),
 		awful.key({ modkey }, "n", function(c)
 			-- The client currently has the input focus, so it cannot be
 			-- minimized, since minimized clients can't have the focus.
