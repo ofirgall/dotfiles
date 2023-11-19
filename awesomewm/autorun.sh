@@ -4,8 +4,8 @@ xset r rate 200 35 # Faster repeat rate
 setxkbmap -option caps:escape # Capslock to escape
 
 # Touchpad
-xinput set-prop "DELL0A36:00 0488:101A Touchpad" 325 1 # Natural scrolling
-xinput set-prop "DELL0A36:00 0488:101A Touchpad" 348 1 # Tapping enabled
+xinput set-prop "DELL0A36:00 0488:101A Touchpad" 324 1 # Natural scrolling
+xinput set-prop "DELL0A36:00 0488:101A Touchpad" 347 1 # Tapping enabled
 xinput set-prop "DELL0A36:00 0488:101A Touchpad" "libinput Scrolling Pixel Distance" 40
 xinput set-prop "DELL0A36:00 0488:101A Touchpad" "libinput High Resolution Wheel Scroll Enabled" 0
 
