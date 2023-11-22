@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-HOST="${1:-rhel8-5.local}"
+HOST="${1:-ut}"
 WIN=$(tmux display-message -p '#S:#I')
 
 wait_for_ssh $HOST || exit
