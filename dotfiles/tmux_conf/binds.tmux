@@ -2,13 +2,12 @@
 ##### UTILS #####
 #################
 current_tty="#{pane_tty}"
-get_ssh_in_tty="ps -f -t $current_tty | tail -n 1 | grep -o 'ssh.*'"
-get_current_ssh_host="ps -f -t $current_tty | tail -n 1 | grep -o 'ssh .*' | cut -d' ' -f2"
 is_fzf="ps -o state= -o comm= -t '#{pane_tty}' | grep -q 'S fzf'"
 is_nvim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|nvim?x?)(diff)?$'"
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|vim?x?)(diff)?$'"
 is_less="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '^:$'"
 is_nested_tmux="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '' | grep ''" # Matching my status line
+helpers="$HOME/.tmux_conf/helpers.sh"
 
 ##### MISC #####
 # force Vi mode
@@ -49,15 +48,15 @@ bind -n M-Q if-shell "$is_nested_tmux" "send-keys M-q" "kill-window"
 
 ## Split windows to reconnect with ssh
 # Split windows and ssh to the remote that was connected
-bind -r -T prefix e run-shell "$get_ssh_in_tty | xargs tmux split-window -h"
-bind -r -T prefix o run-shell "$get_ssh_in_tty | xargs tmux split-window -v"
-bind -r -T prefix t run-shell "$get_ssh_in_tty | xargs tmux new-window"
+bind -r -T prefix e run-shell "tmux split-window -h \"$($helpers get_ssh_cmd_in_pane #{pane_tty})\""
+bind -r -T prefix o run-shell "tmux split-window -v \"$($helpers get_ssh_cmd_in_pane #{pane_tty})\""
+bind -r -T prefix t run-shell "tmux new-window \"$($helpers get_ssh_cmd_in_pane #{pane_tty})\""
 
 # Copy current ssh host
-bind -r -T prefix c run-shell -b "$get_current_ssh_host | toclip"
+bind -r -T prefix c run-shell -b "echo \"$($helpers get_ssh_host_in_pane #{pane_tty})\" | toclip"
 
 # Split window without activate it (I usually use it to swap hanging ssh)
-bind -r -T prefix x run-shell "$get_ssh_in_tty | xargs tmux split-window -v -d"
+bind -r -T prefix x run-shell "tmux split-window -v -d \"$($helpers get_ssh_cmd_in_pane #{pane_tty})\""
 
 ##### PANE NAVIGATION #####
 navigator="~/.config/awesome/tmux_focus.sh"
