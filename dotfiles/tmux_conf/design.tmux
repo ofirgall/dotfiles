@@ -27,14 +27,14 @@ set -g @nova-pane "#I #W"
 set -g @nova-rows 0
 
 ### COLORS ###
-sides_color="#a89984 #282828"
-active_tab_bg="#504945"
-active_tab_color="$active_tab_bg #ddc7a1"
+sides_color="#00448c #d9ecff" # bg fg
+active_tab_bg="#02264d"
+active_tab_color="$active_tab_bg #a8c4e0"
 
-inactive_bg="#282923" # Same as nvim background
-inactive_fg="#ddc7a1"
+inactive_bg="#051829" # Same as nvim background
+inactive_fg="#909ef5"
 active_bg=$active_tab_bg
-active_fg="#ddc7a1"
+active_fg="#a3b0ff"
 
 suspended_inactive_bg="#1f1c1b"
 suspended_inactive_fg="#000000"
