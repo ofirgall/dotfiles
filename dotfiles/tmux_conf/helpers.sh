@@ -20,7 +20,7 @@ function get_ssh_host_in_pane() {
     local pid=$(get_pid_in_pane $tty)
 
     local ssh_cmd=$(cat /proc/$pid/cmdline | sed -e "s/\x00/ /g")
-    if [[ "$(echo "$ssh_cmd" | cut -d ' ' -f1)" != "ssh" ]]; then
+    if ! echo "$ssh_cmd" | cut -d ' ' -f1 | grep "ssh" &> /dev/null; then
         # Not a ssh command
         return
     fi
