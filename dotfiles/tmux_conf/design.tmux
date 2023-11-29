@@ -27,7 +27,7 @@ set -g @nova-pane "#I #W"
 set -g @nova-rows 0
 
 ### COLORS ###
-sides_color="#00448c #d9ecff" # bg fg
+sides_color="#153a61 #96a6ff" # bg fg
 active_tab_bg="#02264d"
 active_tab_color="$active_tab_bg #a8c4e0"
 
@@ -42,6 +42,9 @@ suspended_active_bg="#2b2726"
 suspended_active_fg="#000000"
 
 set -gw window-status-current-style bold
+set -gw status-left-style bold
+set -gw status-right-style bold
+
 set -g "@nova-status-style-bg" "$inactive_bg"
 set -g "@nova-status-style-fg" "$inactive_fg"
 set -g "@nova-status-style-active-bg" "$active_bg"

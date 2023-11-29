@@ -14,7 +14,7 @@ local dpi = require("beautiful").xresources.apply_dpi
 require("smart_borders")({
 	-- Border
 	color_focus = "#00699a",
-	color_normal = "#253f59",
+	color_normal = "#1c3145",
 	border_width = dpi(2),
 
 	-- Buttons
