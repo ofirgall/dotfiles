@@ -31,6 +31,7 @@ fi
 export GOROOT=/usr/local/go
 export GOPATH=~/go/
 export CGO_ENABLED=0
+export GOPRIVATE="bitbucket.org/volumez/*"
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
