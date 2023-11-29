@@ -65,8 +65,8 @@ end
 -- }}}
 
 require("ui")
-local top_bar_bg_focus = "#5c380b"
-local top_bar_fg_focus = "#d7d7d7"
+local top_bar_bg_focus = "#0f3554"
+local top_bar_fg_focus = "#ebebeb"
 local theme = beautiful.get()
 theme.font = "CaskaydiaCove Nerd Font Mono SemiBold 8.0"
 theme.wallpaper = awful.util.get_configuration_dir() .. "wallpaper.jpg"

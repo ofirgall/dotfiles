@@ -13,8 +13,8 @@ local awful = require("awful")
 local dpi = require("beautiful").xresources.apply_dpi
 require("smart_borders")({
 	-- Border
-	color_focus = "#c79452",
-	color_normal = "#57452e",
+	color_focus = "#00699a",
+	color_normal = "#253f59",
 	border_width = dpi(2),
 
 	-- Buttons
