@@ -34,14 +34,15 @@ bind -T suspended End send-key C-e
 #	Else: the action will be sent to tmux.
 
 # Splits windows with ALT+e/o
-bind -n M-e if-shell "$is_nvim" "send-keys M-e" 'split-window -h -c "#{pane_current_path}"'
-bind -n M-o if-shell "$is_nvim" "send-keys M-o" 'split-window -v -c "#{pane_current_path}"'
-bind -n M-E if-shell "$is_nested_tmux" 'send-keys M-e' 'split-window -h -c "#{pane_current_path}"'
-bind -n M-O if-shell "$is_nested_tmux" 'send-keys M-o' 'split-window -v -c "#{pane_current_path}"'
+bind -n M-e if-shell "$is_nvim || $is_nested_tmux" "send-keys M-e" 'split-window -h -c "#{pane_current_path}"'
+bind -n M-o if-shell "$is_nvim || $is_nested_tmux" "send-keys M-o" 'split-window -v -c "#{pane_current_path}"'
+
+bind -n M-E if-shell "$is_nvim || $is_nested_tmux" 'split-window -h -c "#{pane_current_path}"' 'send-keys M-E'
+bind -n M-O if-shell "$is_nvim || $is_nested_tmux" 'split-window -v -c "#{pane_current_path}"' 'send-keys M-o'
 
 # Kill pane with ALT+w
-bind -n M-w if-shell "$is_nvim" "send-keys M-w" "run-shell ~/dotfiles_scripts/inner/kill_pane.sh"
-bind -n M-W if-shell "$is_nested_tmux" "send-keys M-w" "kill-window"
+bind -n M-w if-shell "$is_nvim || $is_nested_tmux" "send-keys M-w" "run-shell ~/dotfiles_scripts/inner/kill_pane.sh"
+bind -n M-W if-shell "$is_nvim || $is_nested_tmux" "kill-window" "send-keys M-W"
 # Kill pane with ALT+q
 bind -n M-q if-shell "$is_nvim" "send-keys M-q" "run-shell ~/dotfiles_scripts/inner/kill_pane.sh"
 bind -n M-Q if-shell "$is_nested_tmux" "send-keys M-q" "kill-window"
@@ -136,9 +137,9 @@ bind -T prefix - select-layout tiled  # Equally sized panes (like vim)
 
 ##### WINDOWS #####
 # new window ALT+t
-bind -n M-t new-window -c "#{pane_current_path}"
-# new window in nested session ALT+SHIFT+t
-bind -n M-T send-keys M-t
+bind -n M-t if-shell "$is_nested_tmux" 'send-keys M-t' 'new-window -c "#{pane_current_path}"'
+# new window while in nested session ALT+SHIFT+t
+bind -n M-T if-shell "$is_nested_tmux" 'new-window -c "#{pane_current_path}"' 'send-keys M-T'
 
 # Select windows by ALT+N
 bind -n M-0 select-window -t :=10
