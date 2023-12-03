@@ -19,7 +19,7 @@ alias lzlog='XDG_CONFIG_HOME=~/dotfiles_wip/editors/lazynvim/ XDG_DATA_HOME=~/.l
 alias cat='bat'
 
 alias open='xdg-open'
-alias venv='. ~/venv3/bin/activate'
+alias venv='. ./bin/activate'
 alias notify='notify-send -u critical done'
 
 # cd aliases
