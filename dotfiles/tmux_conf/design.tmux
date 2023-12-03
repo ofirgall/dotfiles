@@ -51,7 +51,7 @@ set -g "@nova-status-style-active-bg" "$active_bg"
 set -g "@nova-status-style-active-fg" "$active_fg"
 
 set -g "@nova-pane-active-border-style" "#44475a"
-set -g "@nova-pane-border-style" "#fad7ab"
+set -g "@nova-pane-border-style" "#1865b5"
 set-window-option -g mode-style "bg=#27406b,fg=#ffffff"
 
 ### STATUS BAR ###
