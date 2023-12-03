@@ -55,6 +55,9 @@ bind -r -T prefix t run-shell "tmux new-window \"$($helpers get_ssh_cmd_in_pane 
 # Copy current ssh host
 bind -r -T prefix c run-shell -b "echo \"$($helpers get_ssh_host_in_pane #{pane_tty})\" | toclip"
 
+# Debug tty helpers
+bind -r -T prefix D run-shell "tmux display-message #{pane_tty}"
+
 # Split window without activate it (I usually use it to swap hanging ssh)
 bind -r -T prefix x run-shell "tmux split-window -v -d \"$($helpers get_ssh_cmd_in_pane #{pane_tty})\""
 
