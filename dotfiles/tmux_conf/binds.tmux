@@ -139,7 +139,8 @@ bind -T prefix - select-layout tiled  # Equally sized panes (like vim)
 # new window ALT+t
 bind -n M-t if-shell "$is_nested_tmux" 'send-keys M-t' 'new-window -c "#{pane_current_path}"'
 # new window while in nested session ALT+SHIFT+t
-bind -n M-T if-shell "$is_nested_tmux" 'new-window -c "#{pane_current_path}"' 'send-keys M-T'
+bind -n M-T if-shell "$is_nested_tmux" 'new-window -c "#{pane_current_path}"' "if-shell \"$is_nvim\" 'send-keys M-t' 'send-keys M-T'"
+
 
 # Select windows by ALT+N
 bind -n M-0 select-window -t :=10
