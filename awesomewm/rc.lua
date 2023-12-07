@@ -350,7 +350,10 @@ awful.screen.connect_for_each_screen(function(s)
 			-- mykeyboardlayout,
 			__sep__,
 			cpu_widget(),
-			ram_widget(),
+			ram_widget({
+				widget_show_buf = true,
+				color_buf = "#fbcd1d",
+			}),
 			batteryarc_widget,
 			__space__,
 			volume_widget({
