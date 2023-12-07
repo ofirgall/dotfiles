@@ -42,7 +42,7 @@ bind -n M-O if-shell "$is_nvim || $is_nested_tmux" 'split-window -v -c "#{pane_c
 
 # Kill pane with ALT+w
 bind -n M-w if-shell "$is_nvim || $is_nested_tmux" "send-keys M-w" "run-shell ~/dotfiles_scripts/inner/kill_pane.sh"
-bind -n M-W if-shell "$is_nvim || $is_nested_tmux" "kill-window" "send-keys M-W"
+bind -n M-W "kill-window"
 # Kill pane with ALT+q
 bind -n M-q if-shell "$is_nvim" "send-keys M-q" "run-shell ~/dotfiles_scripts/inner/kill_pane.sh"
 bind -n M-Q if-shell "$is_nested_tmux" "send-keys M-q" "kill-window"
