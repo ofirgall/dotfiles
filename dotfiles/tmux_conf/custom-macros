@@ -6,4 +6,5 @@ custom=(
 'watch -n0.5 cat /proc/mdstat: mdstat'
 'for md in $(ls -d /sys/block/md*); do echo "$md" && echo 99999999 > $md/md/sync_speed_max; done: fastsync'
 'blktrace -o - -d /dev/ | blkparse -i -: blktrace'
+'tmux capture-pane -p -S -50000 > /tmp/tmux_out: capture tmux'
 )
