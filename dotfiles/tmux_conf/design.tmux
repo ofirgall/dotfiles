@@ -20,8 +20,8 @@ set -g window-active-style 'bg=#000000'
 
 ### THEME ###
 set -g @nova-nerdfonts true
-set -g @nova-nerdfonts-left 
-set -g @nova-nerdfonts-right 
+set -g @nova-nerdfonts-left 
+set -g @nova-nerdfonts-right 
 
 set -g @nova-pane "#I #W"
 set -g @nova-rows 0
