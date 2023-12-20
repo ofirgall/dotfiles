@@ -38,6 +38,8 @@
         path: dotfiles/vimrc
     ~/playgrounds:
         path: playgrounds
+    ~/.kvim.conf:
+        path: dotfiles/.kvim.conf
 
 - create:
     - ~/projects
