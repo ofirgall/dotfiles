@@ -6,3 +6,5 @@
 .clangd/
 _ofir*
 .kvim.conf
+*/__pycache__
+*/.ropeproject
