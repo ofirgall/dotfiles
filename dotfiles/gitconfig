@@ -1,5 +1,12 @@
-[include]
-    path = ~/.git_user # Set the git user there
+[user]
+	email = "ofirgal753@gmail.com"
+	name = "Ofir Gal"
+
+# include work email and settings
+[includeIf "gitdir:~/workspace/work/"]
+	path = ~/.git_work
+[includeIf "gitdir:~/go/"]
+	path = ~/.git_work
 
 [alias]
 	co = checkout

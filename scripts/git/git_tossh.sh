@@ -12,7 +12,3 @@ ssh_url=$(git remote -v | grep "$origin" | grep fetch | sed -e "s/$origin\t//" |
 
 echo "# New remote: $ssh_url"
 git remote set-url $origin $ssh_url
-
-echo
-echo "# Setting git user"
-set_git_user.sh
