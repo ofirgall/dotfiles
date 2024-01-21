@@ -34,8 +34,18 @@ if ! [ -z "$VIEW_TMUX_SESSION" ]; then # tmux-go
 	fi
 
 fi
+
 export ZSH_TMUX_ALWAYS_SELECT_SESSION=true
+
 if [ ! -z $ATTACH_TO ]; then # Attach on remote (smux)
+	if ! tmux ls 2> /dev/null; then
+		echo "Waiting for tmux tmux-ressurct"
+		timeout 10 tmux &> /dev/null
+	fi
+
+	# Wait for tmux-ressurct to restore
+	until [ -f /tmp/tmux_ressurect_done ]; do sleep 0.05; done
+
 	tmux attach -t $ATTACH_TO
 fi
 select_tmux_session.sh

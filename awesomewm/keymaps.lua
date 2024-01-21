@@ -107,6 +107,21 @@ local function create_tmux_viewer(tag)
 	)
 end
 
+local function open_last_attached_tmux_sessions()
+	-- TODO: save by tags as well
+
+	for session_name in io.lines(os.getenv("HOME") .. "/.tmux/attached_clients") do
+		awful.spawn(
+			"x-terminal-emulator -t '"
+				.. session_name
+				.. " - TMUX"
+				.. "' -e /bin/zsh -c 'export ATTACH_TO="
+				.. session_name
+				.. "; zsh -i'"
+		)
+	end
+end
+
 local function spread_tmux_windows()
 	tag_index = 1
 	for s in screen do
@@ -413,6 +428,16 @@ function M.setup(kbdcfg, volume_widget, retain)
 
 			create_tmux_viewer(screen.selected_tag)
 		end, { description = "open a tmux viewer", group = "tmux_workspaces" }),
+
+		awful.key({ modkey }, "t", function()
+			awful.util.spawn("autorandr --cycle")
+			gears.timer.start_new(1, function()
+				open_last_attached_tmux_sessions()
+				gears.timer.start_new(0.2, function()
+					spread_tmux_windows()
+				end)
+			end)
+		end, { description = "open last at attached tmux sessions", group = "launcher" }),
 
 		awful.key({ modkey }, "o", function()
 			spread_tmux_windows()
