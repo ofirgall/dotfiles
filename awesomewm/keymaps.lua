@@ -12,7 +12,7 @@ local function p(text, obj)
 	})
 end
 
-local TMUX_PREFIX = "T:"
+local TMUX_TAG_PREFIX = "T:"
 
 local function rename_tag_across_screens(tag_index, name)
 	local title = tostring(tag_index)
@@ -31,7 +31,7 @@ end
 
 local function tag_has_tmux_name(tag_index)
 	for s in screen do
-		if string.find(s.tags[tag_index].name, TMUX_PREFIX) then
+		if string.find(s.tags[tag_index].name, TMUX_TAG_PREFIX) then
 			return true
 		end
 	end
@@ -62,7 +62,7 @@ end
 local function rename_tag_by_tmux(tag)
 	-- Don't override custom names
 	if tag.name ~= tostring(tag.index) then
-		if not string.find(tag.name or "", TMUX_PREFIX) then
+		if not string.find(tag.name or "", TMUX_TAG_PREFIX) then
 			return
 		end
 	end
@@ -72,7 +72,13 @@ local function rename_tag_by_tmux(tag)
 		-- Reset tag name if not tmux session not found
 		rename_tag_across_screens(tag.index, "")
 	else
-		rename_tag_across_screens(tag.index, TMUX_PREFIX .. session.name)
+		rename_tag_across_screens(tag.index, TMUX_TAG_PREFIX .. session.name)
+	end
+end
+
+local function rename_alls_tag_by_tmux()
+	for i, t in ipairs(screen[1].tags) do
+		rename_tag_by_tmux(t)
 	end
 end
 
@@ -99,6 +105,40 @@ local function create_tmux_viewer(tag)
 			.. session.name
 			.. "; zsh -i'"
 	)
+end
+
+local function spread_tmux_windows()
+	tag_index = 1
+	for s in screen do
+		for _, t in ipairs(s.tags) do
+			local clients = t:clients()
+			for _, c in ipairs(clients) do
+				local session_name = nil
+				if string.find(c.name, " %- TMUX") then
+					session_name = string.gsub(c.name, " %- TMUX$", "")
+					-- p('regualr', session_name)
+				elseif string.find(c.name, "TMUX VIEWER %- ") then
+					session_name = string.gsub(c.name, "TMUX VIEWER %- ", "")
+					session_name = string.gsub(session_name, " SCREEN=[0-9]+", "")
+					-- TODO: order viewer windows
+					c:kill()
+					return
+				end
+
+				if session_name then
+					local target_t = c.screen.tags[tag_index]
+					gears.timer.delayed_call(function(c_arg, t_arg)
+						c_arg:move_to_tag(t_arg)
+					end, c, target_t)
+					tag_index = tag_index + 1
+				end
+			end
+		end
+	end
+
+	gears.timer.delayed_call(function()
+		rename_alls_tag_by_tmux()
+	end)
 end
 
 LAST_TAG = nil
@@ -209,6 +249,12 @@ function M.setup(kbdcfg, volume_widget, retain)
 		-- Clear notifications
 		awful.key({ modkey }, "c", function()
 			naughty.destroy_all_notifications(nil, "Clear notifications bind")
+		end, { description = "Clear notifications", group = "awesome" }),
+
+		-- Copy with hebrew
+		awful.key({}, "נ", function()
+			p("bdika", "bdika")
+			-- awful.util.spawn("copyq copy")
 		end, { description = "Clear notifications", group = "awesome" }),
 
 		-- Save env with retain
@@ -366,7 +412,11 @@ function M.setup(kbdcfg, volume_widget, retain)
 			local screen = awful.screen.focused()
 
 			create_tmux_viewer(screen.selected_tag)
-		end, { description = "open a tmux viewer", group = "launcher" })
+		end, { description = "open a tmux viewer", group = "tmux_workspaces" }),
+
+		awful.key({ modkey }, "o", function()
+			spread_tmux_windows()
+		end, { description = "spread tmux windows to workspaces", group = "tmux_workspaces" })
 	)
 
 	clientkeys = gears.table.join(
