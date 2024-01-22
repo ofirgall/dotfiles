@@ -204,7 +204,7 @@ function M.setup(kbdcfg, volume_widget, retain)
 			})
 			awful.util.spawn("i3lock-fancy")
 		end, { description = "Lock", group = "awesome" }),
-		awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
+		awful.key({ modkey }, "F1", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 		-- awful.key({ modkey, }, "Left", awful.tag.viewprev,
 		--     { description = "view previous", group = "tag" }),
 		-- awful.key({ modkey, }, "Right", awful.tag.viewnext,
@@ -439,7 +439,7 @@ function M.setup(kbdcfg, volume_widget, retain)
 			end)
 		end, { description = "open last at attached tmux sessions", group = "launcher" }),
 
-		awful.key({ modkey }, "o", function()
+		awful.key({ modkey }, "s", function()
 			spread_tmux_windows()
 		end, { description = "spread tmux windows to workspaces", group = "tmux_workspaces" })
 	)
