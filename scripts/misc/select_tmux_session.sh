@@ -110,7 +110,17 @@ select_tmux_session()
 			echo "No tmux server, lets choose the resseruct file first."
 			fix_reserruct
 		fi
-		tmux
+		echo "Waiting for tmux tmux-ressurct"
+		timeout 10 tmux &> /dev/null
+
+		# Wait for tmux-ressurct to restore
+		until [ -f /tmp/tmux_ressurect_done ]; do sleep 0.05; done
+	fi
+
+	if [ ! -z $ATTACH_TO ]; then
+		_ATTACH_TO=$ATTACH_TO
+		unset $ATTACH_TO
+		tmux attach -t $_ATTACH_TO
 	fi
 
 	clean_viewer_sessions
