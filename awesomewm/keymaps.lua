@@ -429,7 +429,7 @@ function M.setup(kbdcfg, volume_widget, retain)
 			create_tmux_viewer(screen.selected_tag)
 		end, { description = "open a tmux viewer", group = "tmux_workspaces" }),
 
-		awful.key({ modkey }, "t", function()
+		awful.key({ modkey }, "a", function()
 			awful.util.spawn("autorandr --cycle")
 			gears.timer.start_new(1, function()
 				open_last_attached_tmux_sessions()
