@@ -228,7 +228,10 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 -- echuraev/keyboard_layout
 local keyboard_layout = require("keyboard_layout")
-local kbdcfg = keyboard_layout.kbdcfg({ type = "tui" })
+local kbdcfg = keyboard_layout.kbdcfg({
+	type = "tui",
+	remember_layout = true,
+})
 
 kbdcfg.add_primary_layout("English", "US", "us")
 kbdcfg.add_primary_layout("Hebrew", "HE", "il")
