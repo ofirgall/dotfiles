@@ -365,9 +365,12 @@ function M.setup(kbdcfg, volume_widget, retain)
 		awful.key({ modkey }, "Return", function()
 			awful.spawn(terminal)
 		end, { description = "open a terminal", group = "launcher" }),
+		-- awful.key({ modkey }, "b", function()
+		-- 	awful.spawn("firefox")
+		-- end, { description = "open firefox", group = "launcher" }),
 		awful.key({ modkey }, "b", function()
-			awful.spawn("firefox")
-		end, { description = "open firefox", group = "launcher" }),
+			awful.spawn("vivaldi")
+		end, { description = "open vivaldi", group = "launcher" }),
 		awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 		awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 		awful.key({ modkey, "Control" }, "l", function()
