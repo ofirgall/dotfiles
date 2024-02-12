@@ -88,7 +88,7 @@ window:
 font:
   normal:
     family: JetBrainsMono Nerd Font Mono
-    style: SemiBold
+    style: Regular
 
   bold:
     family: JetBrainsMono Nerd Font Mono
