@@ -92,7 +92,7 @@ font:
 
   bold:
     family: JetBrainsMono Nerd Font Mono
-    style: Bold
+    style: SemiBold
 
   italic:
     family: JetBrainsMono Nerd Font Mono
@@ -100,7 +100,7 @@ font:
 
   bold_italic:
     family: JetBrainsMono Nerd Font Mono
-    style: Bold Italic
+    style: SemiBold Italic
 
   size: 9.0
 
