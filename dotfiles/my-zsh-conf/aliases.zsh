@@ -1,18 +1,6 @@
 
-function nv() {
-	nvim $@
-	while true
-	do
-		if ! test -f /tmp/restart_nvim; then
-			break
-		fi
-		rm /tmp/restart_nvim
-		KOALA_RESTART=1 nvim $@
-	done
-}
-function v() {
-	nv
-}
+alias nv=kv
+alias v=kv
 alias br='broot --conf ~/.brootrc.toml'
 alias lz='XDG_CONFIG_HOME=~/dotfiles_wip/editors/lazynvim/ XDG_DATA_HOME=~/.local/share/wip_nvim XDG_STATE_HOME=~/.local/state/wip_nvim nvim'
 alias lzlog='XDG_CONFIG_HOME=~/dotfiles_wip/editors/lazynvim/ XDG_DATA_HOME=~/.local/share/wip_nvim XDG_STATE_HOME=~/.local/state/wip_nvim NVLOG=1 nvim'
