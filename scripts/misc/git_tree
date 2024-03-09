@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-# git history with nvim and Flog
-# its a "program" to make `tmux-window-name` to support it as a program
-
-nvim -c ":Flog -- $@" ./dontsavethis
