@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-setxkbmap -option caps:swapcaps
+setxkbmap -option -option caps:swapcaps
