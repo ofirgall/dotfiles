@@ -33,7 +33,7 @@ download_latest_release()
 	rm -rf $1
 	mkdir -p $1
 
-	local res=$(curl -s https://api.github.com/repos/$2/releases/latest)
+	local res=$(curl -L -s https://api.github.com/repos/$2/releases/latest)
 	local url=$(echo "$res"| grep "browser_download_url.*$3" | cut -d : -f 2,3 | tr -d \")
 	wget -P $1 -q $url
 

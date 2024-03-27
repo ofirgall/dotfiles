@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e # Exit if fail
+set -x
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
@@ -48,7 +49,10 @@ rustup update
 cargo install difftastic
 cargo install du-dust
 cargo install git-delta
+
+sudo apt install -y libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
 cargo install jless
+
 cargo install igrep
 cargo install --locked broot
 if ! $IS_REMOTE; then

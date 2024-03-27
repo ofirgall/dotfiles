@@ -16,7 +16,7 @@ build_tmux()
 }
 
 # For compile
-sudo apt-get install -y libevent-dev libncurses-dev
+sudo apt-get install -y libevent-dev libncurses-dev bison byacc
 
 # For plugins
 sudo apt-get install -y ruby
