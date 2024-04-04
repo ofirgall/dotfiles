@@ -3,7 +3,7 @@
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 set -e # Exit if fail
 
-sudo apt-get install -y awesome playerctl i3lock-fancy xautolock
+sudo apt-get install -y awesome playerctl i3lock-fancy xautolock pasystray
 
 AWESOME_CONFIG="$HOME/.config/awesome/"
 
