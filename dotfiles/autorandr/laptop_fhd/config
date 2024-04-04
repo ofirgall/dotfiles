@@ -12,11 +12,22 @@ output DisplayPort-5
 off
 output DisplayPort-6
 off
+output DisplayPort-7
+off
+output DisplayPort-8
+off
+output DisplayPort-9
+off
+output DisplayPort-10
+off
+output DisplayPort-11
+off
+output DisplayPort-12
+off
 output eDP
-crtc 0
-mode 3840x2400
+crtc 1
+mode 1920x1200
 pos 0x0
-primary
 rate 60.00
 x-prop-colorspace Default
 x-prop-max_bpc 16

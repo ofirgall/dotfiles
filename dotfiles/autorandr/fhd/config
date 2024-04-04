@@ -1,0 +1,52 @@
+output DisplayPort-0
+off
+output DisplayPort-1
+off
+output DisplayPort-2
+off
+output DisplayPort-3
+off
+output DisplayPort-4
+off
+output DisplayPort-5
+off
+output DisplayPort-6
+off
+output eDP
+crtc 0
+mode 1920x1080
+pos 0x0
+primary
+rate 60.00
+x-prop-colorspace Default
+x-prop-max_bpc 16
+x-prop-non_desktop 0
+x-prop-scaling_mode None
+x-prop-tearfree auto
+x-prop-underscan off
+x-prop-underscan_hborder 0
+x-prop-underscan_vborder 0
+output DisplayPort-7
+crtc 1
+mode 1920x1080
+pos 1920x0
+rate 60.00
+x-prop-max_bpc 8
+x-prop-non_desktop 0
+x-prop-scaling_mode None
+x-prop-tearfree auto
+x-prop-underscan off
+x-prop-underscan_hborder 0
+x-prop-underscan_vborder 0
+output DisplayPort-8
+crtc 2
+mode 1920x1080
+pos 3840x0
+rate 60.00
+x-prop-max_bpc 8
+x-prop-non_desktop 0
+x-prop-scaling_mode None
+x-prop-tearfree auto
+x-prop-underscan off
+x-prop-underscan_hborder 0
+x-prop-underscan_vborder 0
