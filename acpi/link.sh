@@ -22,6 +22,7 @@ for f in $(ls "events_$hardware"); do
 done
 
 echo "Linking actions to /etc/acpi/actions/"
+sudo mkdir -p /etc/acpi/actions/
 for f in $(ls "actions"); do
     sudo ln -s -v "$CURRENT_DIR/actions/$f" "/etc/acpi/actions/$f"
 done
