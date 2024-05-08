@@ -1,0 +1,6 @@
+[custom.linked_env]
+command = "cat .linked_env"
+detect_files = ['.linked_env']
+symbol = ''
+style = 'pink'
+format = '[$symbol $output]($style) '
