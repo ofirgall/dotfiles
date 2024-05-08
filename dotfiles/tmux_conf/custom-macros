@@ -8,4 +8,7 @@ custom=(
 'while true; do for md in $(ls -d /sys/block/md*); do echo "$md" && echo 99999999 > $md/md/sync_speed_max; done; sleep 1; done: fastsyncloop'
 'blktrace -o - -d /dev/ | blkparse -i -: blktrace'
 'tmux capture-pane -p -S -50000 > /tmp/tmux_out: capture tmux'
+'vi /opt/volumez/config.json: conf'
+'echo 128 > /proc/sys/kernel/sysrq && echo b > /proc/sysrq-trigger: forcereboot'
+'lsblk -s -o +MIN-IO,OPT-IO,PHY-SEC,LOG-SEC,RQ-SIZE: lsblk-io-size'
 )
