@@ -21,6 +21,7 @@ set -g @ttm-load-default-macros off # no default macros
 set -g @ttm-window-mode 'vertical'
 if-shell "$is_wsl" "set -g @browser_brotab_timeout '15.0'"
 if-shell "$is_wsl" "set -g @browser_wait_timeout '15.0'"
+set -g @new_browser_window 'vivaldi --new-window'
 set -g @extrakto_split_direction 'p'
 set -g @extrakto_clip_tool 'toclip'
 set -g @extrakto_popup_size '50%'
