@@ -26,8 +26,12 @@ set -g @extrakto_split_direction 'p'
 set -g @extrakto_clip_tool 'toclip'
 set -g @extrakto_popup_size '50%'
 set -g @extrakto_grab_area 'window full'
-set -g @extrakto_copy_key 'y'
+set -g @extrakto_copy_key 'tab'
 set -g @extrakto_insert_key 'enter'
+
+# New settings
+set -g @fuzzback-popup 1
+set -g @fuzzback-popup-size '70%'
 
 # -------------------------
 #	    PLUGINS BINDS
