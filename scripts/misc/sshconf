@@ -19,11 +19,15 @@ def set_ip(alias: str, ip: str):
 
     conf.save()
 
-@app.command(hidden=True)
-def _():
-    # 1 sub command is not enough (to show help when no args)
-    # TODO: delete this function after adding another subcommand
-    pass
+@app.command()
+def get_ip(alias: str):
+
+    conf = read_ssh_config(expanduser("~/.ssh/config"))
+    if alias not in conf.hosts():
+        print(f'{alias=} doesnt exists, available aliases: {conf.hosts()}')
+        raise typer.Abort()
+
+    print(conf.host(alias)['hostname'])
 
 if __name__ == '__main__':
     app()
