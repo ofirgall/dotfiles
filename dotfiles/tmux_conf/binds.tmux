@@ -60,7 +60,8 @@ bind -r -T prefix c run-shell -b "echo \"$($helpers get_ssh_host_in_pane #{pane_
 bind -r -T prefix D run-shell "tmux display-message #{pane_tty}"
 
 # Split window without activate it (I usually use it to swap hanging ssh)
-bind -r -T prefix x run-shell "tmux split-window -v -d \"$($helpers get_ssh_cmd_in_pane #{pane_tty})\""
+bind -r -T prefix x run-shell "tmux new-window \"$($helpers swap_hanging_ssh_session #{pane_tty})\""
+
 
 ##### PANE NAVIGATION #####
 navigator="~/.config/awesome/tmux_focus.sh"

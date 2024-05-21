@@ -38,6 +38,17 @@ function get_ssh_host_in_pane() {
     done
 }
 
+function swap_hanging_ssh_session() {
+    local tty=$1
+    local ssh_cmd="$(get_ssh_cmd_in_pane $tty)"
+
+    # create a new window but don't move
+    tmux split-window -v -d "$ssh_cmd"
+
+    # kill current pane
+    tmux kill-pane
+}
+
 if [ "$#" -ge 1 ]; then
     func=$1
     shift
