@@ -31,8 +31,18 @@ alias cgk='cg $HOME/workspace/kernels/' # cg to kernels
 
 # Misc
 alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed "s/.*-- \([0-9]*\)/\1/" | sponge | { IFS= read -r x; { printf "%s\n" "$x"; cat; } | xargs taskopen }'
-alias g='kv --git' # git fugitive
-alias ngh='kv --tree' # git history with nvim and Flog
+
+# Git
+function g() {
+	# git fugitive
+	kv --git -- $@
+}
+function gh() {
+	kv --tree -- $@
+}
+
+unalias gh
+alias ghist="git hist"
 
 function ssh() {
 	TERM=xterm-256color /usr/bin/ssh $@ # Adjust TERM for ssh
