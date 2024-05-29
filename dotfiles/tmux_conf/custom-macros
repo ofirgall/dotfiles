@@ -11,4 +11,8 @@ custom=(
 'vi /opt/volumez/config.json: conf'
 'echo 128 > /proc/sys/kernel/sysrq && echo b > /proc/sysrq-trigger: forcereboot'
 'lsblk -s -o +MIN-IO,OPT-IO,PHY-SEC,LOG-SEC,RQ-SIZE: lsblk-io-size'
+'for i in /sys/block/[nvme\|dm]*/queue/max_sectors_kb; do echo "4 > $i" && echo 4 > $i; done: echofor'
+'grubby --default-kernel: grub2 - curr kernel'
+'grubby --set-default /boot/vmlinuz-: grub2 - set boot kernel'
+'grubby --info=ALL: grub2 - list'
 )
