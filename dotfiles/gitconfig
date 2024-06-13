@@ -5,6 +5,8 @@
 # include work email and settings
 [includeIf "gitdir:~/workspace/work/"]
 	path = ~/.git_work
+[includeIf "gitdir:~/workspace/kernels/"]
+	path = ~/.git_work
 [includeIf "gitdir:~/go/"]
 	path = ~/.git_work
 
