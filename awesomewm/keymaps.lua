@@ -181,6 +181,14 @@ local function switch_tag_all_screens(index)
 	switch_to_tag(focused_screen, focused_screen.tags[index])
 end
 
+local function switch_to_last_tag()
+	if LAST_TAG == nil then
+		return
+	end
+
+	switch_tag_all_screens(LAST_TAG.index)
+end
+
 function M.setup(kbdcfg, volume_widget, retain)
 	local menubar = require("menubar")
 	local hotkeys_popup = require("awful.hotkeys_popup")
@@ -309,22 +317,13 @@ function M.setup(kbdcfg, volume_widget, retain)
 		awful.key({ modkey }, "Tab", ALT_TAB_SWITCH, { description = "go back", group = "client" }),
 
 		-- Go back to previous tag
-		awful.key({ modkey }, "`", function()
-			if LAST_TAG == nil then
-				return
-			end
-
-			switch_tag_all_screens(LAST_TAG.index)
-		end, { description = "go back", group = "tag" }),
+		awful.key({ modkey }, "`", switch_to_last_tag, { description = "go back", group = "tag" }),
 
 		-- for Hebrew as well
-		awful.key({ modkey }, ";", function()
-			if LAST_TAG == nil then
-				return
-			end
+		awful.key({ modkey }, ";", switch_to_last_tag, { description = "go back", group = "tag" }),
 
-			switch_tag_all_screens(LAST_TAG.index)
-		end, { description = "go back", group = "tag" }),
+		-- For voyager
+		awful.key({ modkey }, "=", switch_to_last_tag, { description = "go back", group = "tag" }),
 
 		-- Go to next prev tags with </>
 		awful.key({ modkey }, ".", function()
@@ -369,7 +368,8 @@ function M.setup(kbdcfg, volume_widget, retain)
 		-- 	awful.spawn("firefox")
 		-- end, { description = "open firefox", group = "launcher" }),
 		awful.key({ modkey }, "b", function()
-			awful.spawn("vivaldi")
+			-- awful.spawn("vivaldi")
+			awful.spawn("firefox")
 		end, { description = "open vivaldi", group = "launcher" }),
 		awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 		awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),

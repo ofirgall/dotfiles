@@ -157,6 +157,7 @@ bind -n M-9 select-window -t :=9
 bind -n C-Tab last-window
 bind -n M-- last-window
 bind -n M-` last-window
+bind -n M-= last-window # for voyager
 
 bind -T copy-mode-vi M-0 select-window -t :=10
 bind -T copy-mode-vi M-1 select-window -t :=1
