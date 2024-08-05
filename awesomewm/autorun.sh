@@ -11,7 +11,7 @@ xinput set-prop "ELAN06A1:00 04F3:3232 Touchpad" "libinput High Resolution Wheel
 xinput --set-prop 'ELAN06A1:00 04F3:3232 Touchpad' 'libinput Accel Speed' 0.34
 
 # Mouse speed at home
-xinput --set-prop 'Glorious Model O Wireless' 'libinput Accel Speed' -0.5
+xinput --set-prop 'Glorious Model O Wireless' 'libinput Accel Speed' -0.35
 
 # Mouse speed at work
 xinput --set-prop 'pointer:Logitech MX Master 3' 'libinput Accel Speed' -0.6
