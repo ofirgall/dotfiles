@@ -18,4 +18,5 @@ custom=(
 'grep submenu /boot/grub/grub.cfg: grub1 - curr kernel'
 'grep gnulinux /boot/grub/grub.cfg: grub1 - list'
 'sed -ri "s/GRUB_DEFAULT=.*/GRUB_DEFAULT=\"Advanced options for Ubuntu>Ubuntu, with Linux 5.15.0-1052-azure\"/" /etc/default/grub && update-grub: grub1 - set boot kernel'
+'tar -czf archive.tar.gz stuff: compress tar.gz'
 )
