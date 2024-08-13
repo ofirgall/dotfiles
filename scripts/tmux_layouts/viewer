@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 HOST="${1:-ut}"
-WIN=$(tmux display-message -p '#S:#I')
+WIN=$(tmux display-message -p '#S:#{window_id}')
 
 wait_for_ssh $HOST || exit
 
@@ -11,7 +11,7 @@ tmux split-window -t$WIN.2 -v -l 66% "ssh -t $HOST '/usr/bin/watch -n0.2 lsblk -
 tmux split-window -t$WIN.3 -v -l 20% "ssh -t $HOST '/usr/bin/watch -n0.2 free -m'"
 
 # Bottom panel for logs
-tmux split-window -t$WIN.1 -v -l 25% "ssh -t $HOST 'cd /var/log/volumez/; zsh'"
+tmux split-window -t$WIN.1 -v -l 25% "ssh -t $HOST 'cd /var/log/volumez/; zsh || bash'"
 
 # Rename
 tmux rename-window -t$WIN "viewer"
