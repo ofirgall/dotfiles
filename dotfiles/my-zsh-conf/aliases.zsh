@@ -52,10 +52,7 @@ alias cls='tmux clear-history; clear'
 alias pg='cg $HOME/playgrounds && nv' # cd to packer/plugins
 
 function tmp() {
-	neovim=nv
-	if [ "$1" = "log" ]; then
-		neovim=nvlog
-	fi
+	neovim=kv
 	SCRATCH_FILE=$(mktemp -t scratch.XXXX); $neovim $SCRATCH_FILE +"set ft=$1"; echo $SCRATCH_FILE
 }
 function nvlog() {
