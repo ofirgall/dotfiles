@@ -17,8 +17,11 @@ sudo dpkg -i ~/Downloads/dict-moby-thesaurus_1.0-6.4_all.deb
 curl -fsSL https://deno.land/install.sh | sh
 ln -s -f $HOME/.deno/bin/deno $HOME/.local/bin/deno
 
+# weirongxu/plantuml-previewer.vim
+ sudo apt-get install -y plantuml graphviz
+
 # https://gitlab.com/itaranto/plantuml.nvim
- sudo apt-get install -y plantuml imv feh
+ # sudo apt-get install -y plantuml imv feh
 
 if -d ~/.local/share/nvim; then
 	echo "Skipping nvim install"
