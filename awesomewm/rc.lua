@@ -230,7 +230,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 local keyboard_layout = require("keyboard_layout")
 local kbdcfg = keyboard_layout.kbdcfg({
 	type = "tui",
-	remember_layout = true,
+	remember_layout = false,
 })
 
 kbdcfg.add_primary_layout("English", "US", "us")
