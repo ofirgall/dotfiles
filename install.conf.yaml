@@ -17,10 +17,12 @@
     #     path: editors/sublime/Python
     # ~/.config/sublime-text/Packages/CustomStatusBar:
     #     path: editors/sublime/CustomStatusBar
+    ~/.vscode-settings:
+        path: editors/vscode-settings
     ~/.config/Code/User/settings.json:
-        path: editors/vscode/settings.json
+        path: ~/.vscode-settings/settings.json
     ~/.config/Code/User/keybindings.json:
-        path: editors/vscode/keybindings.json
+        path: ~/.vscode-settings/keybindings.json
     ~/.config/fusuma/config.yml:
         path: dotfiles/fusuma.yml
     ~/.alacritty.yml:
@@ -45,7 +47,7 @@
 - shell:
     # - [install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
     - [install_scripts/install_vscode.sh, Installing vscode]
-    - [editors/vscode/install_extensions.sh, Installing vscode extensions]
+    - [editors/vscode-settings/install_extensions.sh, Installing vscode extensions]
     - [install_scripts/install_fusuma.sh, Installing Fusuma]
     - [install_scripts/install_taskwarrior.sh, Installing Task Warrior]
     - [install_scripts/install_fonts.sh, Installing nerd fonts]
