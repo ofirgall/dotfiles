@@ -10,3 +10,6 @@
 	path = dotfiles/zsh-conf
 	url = git@github.com:ofirgall/zsh-conf.git
 	ignore = dirty
+[submodule "editors/vscode-settings"]
+	path = editors/vscode-settings
+	url = git@github.com:ofirgall/vscode-settings.git
