@@ -53,6 +53,9 @@ git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ---
 
 ### Firefox Extensions
+#### [Better History NG](https://addons.mozilla.org/en-US/firefox/addon/better-history-ng)
+No config
+
 #### [Tridactyl](https://addons.mozilla.org/en-US/firefox/addon/tridactyl-vim)
 Config: `dotfiles/tridactylrc`
 Install native (reads the config file) with `:installnative`
