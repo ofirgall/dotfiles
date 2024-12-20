@@ -12,14 +12,16 @@ echo ""
 
 DEPLOYER=""
 
-if echo "$PWD" | grep -q "volumez"; then
+if test -f ./deploy; then
+    DEPLOY_DIR=.
+elif test -f ./go.mod; then
+    DEPLOYER=go
+elif echo "$PWD" | grep -q "volumez"; then
     DEPLOYER=volumez
 elif echo "$PWD" | grep -q "$HOME/playgrounds/"; then
     DEPLOYER=playground
 elif echo "$FILES_IN_GIT_ROOT" | grep -q "Cargo\.toml"; then
     DEPLOYER=rust
-elif test -f ./deploy; then
-    DEPLOY_DIR=.
     DEPLOYER=deploy
 else
     echo "Deploy script for this folder not found"
