@@ -16,6 +16,8 @@ if test -f ./deploy; then
     DEPLOY_DIR=.
 elif test -f ./go.mod; then
     DEPLOYER=go
+elif test -f ./main.go; then
+    DEPLOYER=go
 elif echo "$PWD" | grep -q "volumez"; then
     DEPLOYER=volumez
 elif echo "$PWD" | grep -q "$HOME/playgrounds/"; then
@@ -35,6 +37,6 @@ fi
 $DEPLOY_DIR/$DEPLOYER $@
 
 echo ""
-# toilet --gay "DONE" --font=$FONT
-echo "Press any key to continue..."
+toilet --metal "DONE" --font=$FONT
+# echo "Press any key to continue..."
 read -n 1
