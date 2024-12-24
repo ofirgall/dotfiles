@@ -1,5 +1,6 @@
 
 alias nv=kv
+alias nv-10='kv --override-state --profile 010 --nvim-bin-path ~/.local/nvim-010/bin/bin/nvim --lua-cfg ~/dotfiles/editors/KoalaConfig-10/'
 alias v=kv
 alias br='broot --conf ~/.brootrc.toml'
 alias lz='XDG_CONFIG_HOME=~/dotfiles_wip/editors/lazynvim/ XDG_DATA_HOME=~/.local/share/wip_nvim XDG_STATE_HOME=~/.local/state/wip_nvim nvim'
