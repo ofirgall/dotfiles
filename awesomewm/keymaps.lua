@@ -416,9 +416,9 @@ function M.setup(kbdcfg, volume_widget, retain)
 			})
 		end, { description = "lua execute prompt", group = "awesome" }),
 		-- Menubar
-		awful.key({ modkey }, "p", function()
-			menubar.show()
-		end, { description = "show the menubar", group = "launcher" }),
+		-- awful.key({ modkey }, "p", function()
+		-- 	menubar.show()
+		-- end, { description = "show the menubar", group = "launcher" }),
 
 		-- clipboard history
 		awful.key({ modkey }, "v", function()
@@ -551,14 +551,12 @@ function M.setup(kbdcfg, volume_widget, retain)
 		end, { description = "Next", group = "media" }),
 
 		-- Print screen
-		awful.key({}, "Print", function()
-			awful.util.spawn("scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'")
+		awful.key({ modkey }, "p", function()
+			awful.util.spawn("flameshot gui -c")
 		end, { description = "Print Screen", group = "media" }),
 
-		awful.key({ "Control" }, "Print", function()
-			awful.util.spawn(
-				"scrot --focused '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'"
-			)
+		awful.key({ modkey, "Shift" }, "p", function()
+			awful.util.spawn("flameshot screen -c")
 		end, { description = "Print Screen Focuesd Window", group = "media" })
 	)
 
