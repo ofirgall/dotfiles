@@ -45,6 +45,7 @@ function gh() {
 
 unalias gh
 alias ghist="git hist"
+alias gshowp='git show-patch'
 
 function ssh() {
 	TERM=xterm-256color /usr/bin/ssh $@ # Adjust TERM for ssh
