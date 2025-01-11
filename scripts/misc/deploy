@@ -35,8 +35,14 @@ fi
 # toilet --gay "${DEPLOYER^^}" --font=$FONT
 
 $DEPLOY_DIR/$DEPLOYER $@
+exitcode=$?
 
 echo ""
-toilet --metal "DONE" --font=$FONT
+if [ $exitcode -eq 0 ]; then
+    toilet --metal "DONE" --font=$FONT
+else
+    printf "\e[91m"
+    toilet "FAILED" --font=$FONT
+fi
 # echo "Press any key to continue..."
 read -n 1
