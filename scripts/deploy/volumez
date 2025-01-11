@@ -3,6 +3,8 @@
 HOST="${1:-ut}"
 echo "Host: $HOST"
 rm *\.test
+
+set -e
 echo "Building..."
 go test -c -gcflags "all=-N -l"
 echo "Delivering..."
