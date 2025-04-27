@@ -40,7 +40,7 @@ sudo mv /tmp/sp/sp /usr/local/bin/
 # Arc icons
 rm -rf /tmp/icons
 git clone --depth=1 --branch=Arc-ICONS git@github.com:rtlewis88/rtl88-Themes.git /tmp/icons
-rm -rf /usr/share/icons/Arc/
+sudo rm -rf /usr/share/icons/Arc/
 sudo mkdir -p /usr/share/icons/Arc/
 sudo mv /tmp/icons/Arc-ICONS/* /usr/share/icons/Arc/
 
@@ -53,13 +53,13 @@ sudo wget -O /usr/bin/awmtt https://raw.githubusercontent.com/mikar/awmtt/master
 sudo chmod a+x /usr/bin/awmtt
 
 # autorandr
-python3 -m pip install autorandr
+python3 -m pip install --break-system-packages autorandr
 
 # audio control (aliased to `audio`|`sound`)
-sudo apt-get install -y pavucontrol
+sudo apt-get install -y pavucontrol pulseaudio
 sudo rm -f /etc/pulse/default.pa
 sudo ln -s $CURRENT_DIR/../system/pulseaudio.pa /etc/pulse/default.pa
-pulseaudio -k
+pulseaudio -k || true
 
 # install systray apps for bluetooth and such
 sudo apt-get install -y pavucontrol blueman flameshot
