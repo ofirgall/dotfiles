@@ -10,7 +10,7 @@ source "$CURRENT_DIR/helpers.sh"
 sudo add-apt-repository ppa:git-core/ppa -y # newer git, requires update and upgrade git package
 
 echo 'Installing Basic Libs'
-sudo apt install -y wget moreutils ipython3 pcregrep python3-pip build-essential fzf daemon curl cmake btop toilet python3.10-venv
+sudo apt install -y wget moreutils ipython3 pcregrep python3-pip build-essential fzf daemon curl cmake btop toilet python3-venv
 
 if $NO_SUDO; then
 	# Install fzf
@@ -22,7 +22,7 @@ if $NO_SUDO; then
 fi
 
 
-python3 -m pip install brotab ranger-fm shell-gpt mkdocs mkdocs-material
+python3 -m pip install --break-system-packages brotab ranger-fm shell-gpt mkdocs mkdocs-material
 $HOME/.local/bin/bt install
 
 # Install bat & rg
