@@ -14,7 +14,7 @@ wget http://archive.ubuntu.com/ubuntu/pool/main/d/dict-moby-thesaurus/dict-moby-
 sudo dpkg -i ~/Downloads/dict-moby-thesaurus_1.0-6.4_all.deb
 
 # toppair/peek.nvim
-curl -fsSL https://deno.land/install.sh | sh
+curl -fsSL https://deno.land/install.sh | sh -s -- --no-modify-path --yes
 ln -s -f $HOME/.deno/bin/deno $HOME/.local/bin/deno
 
 # weirongxu/plantuml-previewer.vim
