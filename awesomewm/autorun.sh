@@ -10,6 +10,13 @@ xinput set-prop "ELAN06A1:00 04F3:3232 Touchpad" "libinput Scrolling Pixel Dista
 xinput set-prop "ELAN06A1:00 04F3:3232 Touchpad" "libinput High Resolution Wheel Scroll Enabled" 0
 xinput --set-prop 'ELAN06A1:00 04F3:3232 Touchpad' 'libinput Accel Speed' 0.34
 
+# Home ThinkPad
+xinput set-prop "Synaptics TM3276-022" "libinput Natural Scrolling Enabled" 1
+xinput set-prop "Synaptics TM3276-022" "libinput Tapping Enabled" 1
+xinput set-prop "Synaptics TM3276-022" "libinput Scrolling Pixel Distance" 30
+xinput set-prop "Synaptics TM3276-022" "libinput High Resolution Wheel Scroll Enabled" 0
+xinput set-prop "Synaptics TM3276-022" 'libinput Accel Speed' 0.25
+
 # Mouse speed at home
 xinput --set-prop 'Glorious Model O Wireless' 'libinput Accel Speed' -0.35
 
