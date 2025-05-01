@@ -20,6 +20,7 @@ sudo apt-get install -y libevent-dev libncurses-dev bison byacc
 
 # For plugins
 sudo apt-get install -y ruby
+python3 -m pip install --user libtmux
 
 download_latest_release /tmp/tmux tmux/tmux *\.tar\.gz build_tmux
 
