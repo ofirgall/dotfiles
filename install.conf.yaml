@@ -35,6 +35,8 @@
         path: dotfiles/xmodmaprc
     ~/.config/awesome:
         path: awesomewm
+    ~/.config/hypr:
+        path: hypr
     ~/.config/autorandr:
         path: dotfiles/autorandr
     ~/.config/copyq/copyq.conf:
