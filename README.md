@@ -50,6 +50,9 @@ Set your `global` git user at ~/.git_user
 git clone https://github.com/ofirgall/dotfiles.git && cd dotfiles && ./install
 ```
 
+### Hyprland
+[Ubuntu Installer](https://www.github.com/JaKooLit/Ubuntu-Hyprland/)
+
 ---
 
 ### Firefox Extensions
