@@ -42,6 +42,7 @@ function g() {
 function gh() {
 	kv --tree -- $@
 }
+alias github="/usr/bin/gh"
 
 unalias gh
 alias ghist="git hist"
