@@ -1,0 +1,8 @@
+[ ] windows rules
+    1. browser to not open on 2
+[ ] screen share workspace?
+[ ] change tmux workspace name by tmux session
+[ ] create tmux viewer (win+shift+v)
+[ ] open last attached tmux sessions (win+a)
+[ ] win+o move to other screen
+[ ] alacritty icon in workspaces
