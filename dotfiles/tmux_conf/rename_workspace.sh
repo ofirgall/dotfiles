@@ -14,4 +14,5 @@ if [[ "$current_session" == *"-viewer" ]]; then
 fi
 
 current_workspace=$(hyprctl activeworkspace -j | jq -r '.id')
-hyprctl dispatch renameworkspace "$current_workspace $current_workspace T:$current_session"
+icon=""
+hyprctl dispatch renameworkspace "$current_workspace $current_workspace $icon $current_session"
