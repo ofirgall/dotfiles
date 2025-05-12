@@ -25,29 +25,22 @@
 "modules-left": [
 	"hyprland/workspaces#rw",
 	// "custom/cava_mviz",
-	"custom/separator#dot-line",
 	"hyprland/window",
 	],
 
 "modules-center": [
 	// "group/app_drawer",
 	// "idle_inhibitor",	
-	"group/notify",
 	"custom/playerctl",
-	"clock",
-	"custom/separator#dot-line", 
-	"group/laptop",
 	],
 
 "modules-right": [
-	"group/audio",
-	"custom/separator#line",  
 	"group/mobo_drawer",
-	"custom/separator#line",  
+	"group/laptop",
 	"tray",
-	"custom/separator#dot-line", 
-	"network#speed",
-	"custom/separator#line",  
+	"group/audio",
+	"custom/swaync",
+	"clock#5",
 	"group/status",
 	],
 }
