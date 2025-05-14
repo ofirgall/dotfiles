@@ -234,6 +234,8 @@
 		"title<virtualbox>": "💽 ",
 		"class<remmina>": "🖥️ ",
 
+		"class<com.transmissionbt.transmission_64512_16290407>": " ",
+
 		"class<VSCode|code-url-handler|code-oss|codium|codium-url-handler|VSCodium>": "󰨞 ",
     "class<dev.zed.Zed>": "󰵁",
 		"class<codeblocks>": "󰅩 ",
