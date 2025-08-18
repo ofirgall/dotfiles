@@ -126,7 +126,7 @@ select_tmux_session()
 	clean_viewer_sessions
 
 	echo "attach" > $SESSION_MODE_FILE
-	session=$(tmux_sessions_with_git_info | fzf --reverse --header="Select Tmux Session. Ctrl-f to Create New Session, Ctrl-v to create 'viewer' session, Ctrl-C to exit." --ansi --bind "ctrl-f:abort+execute(echo ___new_session)" --bind "ctrl-v:execute(echo viewer > $SESSION_MODE_FILE)+accept")
+	session=$(tmux_sessions_with_git_info | fzf --reverse --header="Select Tmux Session. Ctrl-f to Create New Session, Ctrl-v to create 'viewer' session, Ctrl-C to exit." --ansi --bind "ctrl-f:become(echo ___new_session)+abort" --bind "ctrl-v:execute(echo viewer > $SESSION_MODE_FILE)+accept")
 
 	# ctrl-c
 	if [ -z "$session" ]; then
