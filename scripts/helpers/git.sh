@@ -20,6 +20,11 @@ get_branch()
 get_git_root()
 {
 	# $1: dir
+
+	if [ ! -d "$1" ]; then
+		# not a directory
+		return
+	fi
 	cd $1
 	(git rev-parse --show-toplevel 2> /dev/null || pwd)
 }
