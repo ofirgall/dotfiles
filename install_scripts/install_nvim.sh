@@ -26,7 +26,7 @@ ln -s -f $HOME/.deno/bin/deno $HOME/.local/bin/deno
 if -d ~/.local/share/nvim; then
 	echo "Skipping nvim install"
 else
-	~/dotfiles_scripts/misc/upgrade_nvim.sh v0.9.2
+	~/dotfiles_scripts/misc/upgrade_nvim.sh v0.11.5
 fi
 
 CARGO_NET_GIT_FETCH_WITH_CLI=true cargo install --git=https://github.com/KoalaVim/kv.git
