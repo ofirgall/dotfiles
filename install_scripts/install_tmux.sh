@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e # Exit if fail
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -20,8 +19,7 @@ sudo apt-get install -y libevent-dev libncurses-dev bison byacc
 
 # For plugins
 sudo apt-get install -y ruby
-python3 -m pip install --user libtmux
-
+python3 -m pip install  --break-system-packages --user libtmux
 download_latest_release /tmp/tmux tmux/tmux *\.tar\.gz build_tmux
 
 # Install tpm
