@@ -11,10 +11,10 @@ fi
 # ---------------------------
 if ! $IS_REMOTE; then
 	if ! $WSL; then
-		if ! pgrep fusuma > /dev/null;
-		then
-			fusuma --daemon
-		fi
+		# if ! pgrep fusuma > /dev/null;
+		# then
+			# fusuma --daemon
+		# fi
 	fi
 fi
 
