@@ -33,7 +33,7 @@ export GOPATH=~/go/
 export CGO_ENABLED=0
 export GOPRIVATE="bitbucket.org/volumez/*"
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
+export PATH=$GOROOT/bin:$PATH
 
 # Rust
 export CARGO_NET_GIT_FETCH_WITH_CLI=true # fetch git dependecies
