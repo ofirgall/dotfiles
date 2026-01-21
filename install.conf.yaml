@@ -36,9 +36,9 @@
     ~/.config/awesome:
         path: awesomewm
     ~/.config/hypr:
-        path: hypr
+        path: hypr-dots/hypr
     ~/.config/waybar:
-        path: waybar
+        path: hypr-dots/waybar
     ~/.config/autorandr:
         path: dotfiles/autorandr
     ~/.config/copyq/copyq.conf:
