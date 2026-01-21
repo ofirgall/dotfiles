@@ -64,3 +64,16 @@ export PATH=$PATH:~/dotfiles_scripts/tmux_layouts/
 export PATH=$PATH:~/dotfiles_scripts/settings/
 export PATH=$PATH:~/dotfiles_scripts/tmux/
 export PATH=$PATH:$HOME/.spicetify
+
+# Fix WAYLAND_DISPLAY pointing to wayland-0 when only wayland-1 exist
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+	if [ -S "/run/user/$UID/wayland-0" ]; then
+		export WAYLAND_DISPLAY=wayland-0
+	else
+		for sock in /run/user/$UID/wayland-*; do
+			[ -S "$sock" ] || continue
+			export WAYLAND_DISPLAY=$(basename "$sock")
+			break
+		done
+	fi
+fi
