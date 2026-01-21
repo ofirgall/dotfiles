@@ -16,3 +16,4 @@
 [submodule "hypr-dots"]
 	path = hypr-dots
 	url = git@github.com:ofirgall/hypr-dots.git
+	ignore = dirty
