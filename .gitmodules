@@ -13,3 +13,6 @@
 [submodule "editors/vscode-settings"]
 	path = editors/vscode-settings
 	url = git@github.com:ofirgall/vscode-settings.git
+[submodule "hypr-dots"]
+	path = hypr-dots
+	url = git@github.com:ofirgall/hypr-dots.git
