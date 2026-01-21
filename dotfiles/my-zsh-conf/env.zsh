@@ -77,3 +77,11 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
 		done
 	fi
 fi
+
+# pnpm
+export PNPM_HOME="/home/ofirg/.local/share/pnpm"
+case ":$PATH:" in
+	*":$PNPM_HOME:"*) ;;
+	*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
