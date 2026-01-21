@@ -27,3 +27,15 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 . "$HOME/.cargo/env"
 
+# Fix WAYLAND_DISPLAY pointing to wayland-0 when only wayland-1 exist
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    if [ -S "/run/user/$UID/wayland-0" ]; then
+        export WAYLAND_DISPLAY=wayland-0
+    else
+        for sock in /run/user/$UID/wayland-*; do
+            [ -S "$sock" ] || continue
+            export WAYLAND_DISPLAY=$(basename "$sock")
+            break
+        done
+    fi
+fi
