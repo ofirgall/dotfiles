@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Wrapper for docker compose as alias
+
+docker compose $@
