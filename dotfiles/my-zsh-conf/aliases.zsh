@@ -40,12 +40,10 @@ function g() {
 	# git fugitive
 	kv --git -- $@
 }
-function gh() {
+function ghs() {
 	kv --tree -- $@
 }
-alias github="/usr/bin/gh"
 
-unalias gh
 alias ghist="git hist"
 alias gshowp='git show-patch'
 
