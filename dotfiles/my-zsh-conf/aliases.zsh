@@ -41,10 +41,11 @@ function g() {
 	# git fugitive
 	kv --git -- $@
 }
-function ghs() {
+function gt() {
 	kv --tree -- $@
 }
 unalias ghs # Remove ofir zsh framework ghs
+alias ghs='gt'
 
 alias gshowp='git show-patch'
 
