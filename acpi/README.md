@@ -2,6 +2,11 @@ Hooks for docking/undocking and closing/opening the laptop lid.
 
 NOTE: there are dependencies for the user (ofirg) at `actions` script
 
+## Perquisite
+```sh
+sudo apt -y install acpid
+```
+
 ## Usage
 ```sh
 ./link.sh dell # Links events_dell to /etc/acpi/events/ and links actions to /etc/acpi/actions/
