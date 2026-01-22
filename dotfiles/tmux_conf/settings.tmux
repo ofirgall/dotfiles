@@ -19,6 +19,9 @@ set -sa terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{25
 # Faster status bar
 set-option -g status-interval 10
 
+# Update hyrpland env vars
+set-option -g update-environment "DISPLAY WAYLAND_DISPLAY XDG_RUNTIME_DIR HYPRLAND_INSTANCE_SIGNATURE"
+
 # Hook _on_tmux_attach.sh
 set-hook -g 'client-attached[10]' "run-shell $HOME/dotfiles_scripts/inner/_on_tmux_attach.sh"
 
