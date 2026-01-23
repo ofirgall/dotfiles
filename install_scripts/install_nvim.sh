@@ -5,6 +5,7 @@ set -e # Exit if fail
 # To build neovim
 sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
 
+sudo apt-get install -y clang
 cargo install --locked tree-sitter-cli
 
 # numToStr/lemmy-help
