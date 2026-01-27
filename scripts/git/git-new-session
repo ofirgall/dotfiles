@@ -3,15 +3,13 @@
 set -e
 
 WORKTREES_ROOT="$HOME/worktrees"
-BRANCH_PREFIX=ogal
+BRANCH_PREFIX=""
 
 print_usage()
 {
 	echo "usage: git new-session <branch name> [jira proj name]"
 	exit 0
 }
-
-jira_proj=${2:-VLZ}
 
 if [[ $@ == *'-h'* ]]; then
 	print_usage
@@ -28,11 +26,22 @@ fi
 PROJ_NAME=$(basename "$git_root")
 WORKTREE_PATH="$WORKTREES_ROOT/$PROJ_NAME/$1"
 
+read -p "Confirm worktree path '$WORKTREE_PATH'? [y/N] " answer
+[[ "$answer" =~ ^[Yy]$ ]] || exit 1
+
+BRANCH_NAME=$BRANCH_PREFIX$1
+read -p "Confirm branch name '$BRANCH_NAME'? [y/N] " answer
+[[ "$answer" =~ ^[Yy]$ ]] || exit 1
+
+TMUX_SESSION_NAME="$PROJ_NAME-$1"
+read -p "Confirm tmux session name '$TMUX_SESSION_NAME'? [y/N] " answer
+[[ "$answer" =~ ^[Yy]$ ]] || exit 1
+
 mkdir -p "$WORKTREES_ROOT/$PROJ_NAME/"
-git worktree add "$WORKTREE_PATH" -b $BRANCH_PREFIX/$jira_proj-$1
+git worktree add "$WORKTREE_PATH" -b $BRANCH_NAME
 
 cd "$WORKTREE_PATH"
-git reset --hard origin/master
+git reset --hard origin/main
 
 if [ -z $TMUX ]; then
 	tmux new-session -s "$PROJ_NAME-$1" -c "$WORKTREE_PATH"
