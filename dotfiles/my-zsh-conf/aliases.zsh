@@ -22,6 +22,7 @@ alias cda='cd $HOME/.config/awesome/' # cd to awesome config
 alias cdw='cd $HOME/worktrees/$(tmux display-message -p "#S" | sed "s,-,/,g")' # cd to my worktree tmux standard
 alias cdh='cd $HOME/dotfiles/hypr-dots/' # cd to hypr-dots
 alias cdr='groot'
+alias gr='groot'
 
 # cg aliases
 alias cgp='cg $HOME/workspace/personal/' # cg to personal
