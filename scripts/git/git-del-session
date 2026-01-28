@@ -48,5 +48,6 @@ if ! yes_no "Delete $WORKTREE_PATH worktree and kill $PROJ_NAME-$branch_name ses
 	exit
 fi
 
+cd $WORKTREE_PATH
 git worktree remove "$WORKTREE_PATH"
 tmux kill-session -t "$PROJ_NAME-$branch_name"
