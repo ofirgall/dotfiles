@@ -35,6 +35,11 @@ download_latest_release()
 
 	local res=$(curl -L -s https://api.github.com/repos/$2/releases/latest)
 	local url=$(echo "$res"| grep "browser_download_url.*$3" | cut -d : -f 2,3 | tr -d \")
+	echo "Downloading $1 from '$url'"
+	if [ -z "$url" ]; then
+		echo "URL is empty, res: '$(echo "$res" | grep browser_download_url)'"
+		return 1
+	fi
 	wget -P $1 -q $url
 
 	cd $1
