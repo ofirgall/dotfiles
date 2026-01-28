@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 source ~/dotfiles_scripts/helpers/prompt.sh
 WORKTREES_ROOT="$HOME/worktrees"
 
