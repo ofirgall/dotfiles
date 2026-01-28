@@ -36,4 +36,9 @@ fi
 
 current_workspace=$(hyprctl printdesk -j | jq -r '.virtualdesk.id')
 icon=""
-rename_workspace $current_workspace "$current_workspace $icon $current_session"
+
+# Trim projname-chore- prefix e.g drift-chore-DR-XXX..
+set +e
+jira_workspace_name=$(echo "$current_session" | grep -o '[A-Z]\+-[0-9].*')
+workspace_name=${jira_workspace_name:-$current_session}
+rename_workspace $current_workspace "$current_workspace $icon $workspace_name"
