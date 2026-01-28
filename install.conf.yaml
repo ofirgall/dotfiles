@@ -25,8 +25,8 @@
         path: ~/.vscode-settings/keybindings.json
     ~/.config/fusuma/config.yml:
         path: dotfiles/fusuma.yml
-    ~/.alacritty.yml:
-        path: dotfiles/alacritty.yml
+    ~/.alacritty.toml:
+        path: dotfiles/alacritty.toml
     ~/.taskrc:
         path: dotfiles/taskrc
     ~/.taskwarrior_shortcuts:
