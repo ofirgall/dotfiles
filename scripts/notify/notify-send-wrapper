@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# DISABLED: used to wrap notify-send
+
 if command -v powershell.exe &> /dev/null; then
 	powershell.exe $(wslpath -m ~/dotfiles_scripts/notify/windows_notify.ps1) $@
 else
