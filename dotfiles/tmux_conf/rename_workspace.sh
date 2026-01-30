@@ -10,19 +10,20 @@ function rename_workspace() {
 
     local ws_names=$(cat $CONFIG_LOC | sed -n 's/^[[:space:]]*names[[:space:]]*=[[:space:]]*\([^#]*\).*/\1/p')
 
-    ws_names=$(sed -E "s/(^|, )[[:space:]]*$id:[^,]*/\1$id:$name/" <<< "$ws_names")
+    new_ws_names=$(sed -E "s/(^|, )[[:space:]]*$id:[^,]*/\1$id:$name/" <<< "$ws_names")
 
-    cat <<EOF > $CONFIG_LOC
+    if [ ! "$new_ws_names" = "$ws_names" ]; then
+        cat <<EOF > $CONFIG_LOC
 plugin {
     virtual-desktops {
-        names = $ws_names
+        names = $new_ws_names
     }
 }
 EOF
-
+    fi
 }
 
-if [[ -n "$1" && "$1" == "empty" ]]; then
+if [[ -z "$TMUX" || ( -n "$1" && "$1" == "empty" ) ]]; then
     current_workspace=$(hyprctl printdesk -j | jq -r '.virtualdesk.id')
     rename_workspace $current_workspace $current_workspace
     exit
