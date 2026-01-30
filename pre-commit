@@ -1,12 +1,15 @@
 #!/bin/sh
 
-# Backup vscode extension
-code --list-extensions > editors/vscode/extensions
-git add editors/vscode/extensions
+# # Backup vscode extension
+# code --list-extensions > editors/vscode/extensions
+# git add editors/vscode/extensions
+#
+# ### Filter editors/vscode/settings.json
+# # backup first
+# cp editors/vscode/settings.json /tmp/vscode-settings.json
+# sed -i "/email/d" editors/vscode/settings.json
+# git add editors/vscode/settings.json
+# cp /tmp/vscode-settings.json editors/vscode/settings.json
 
-### Filter editors/vscode/settings.json
-# backup first
-cp editors/vscode/settings.json /tmp/vscode-settings.json
-sed -i "/email/d" editors/vscode/settings.json
-git add editors/vscode/settings.json
-cp /tmp/vscode-settings.json editors/vscode/settings.json
+# Add submodules
+git add editors/KoalaConfig dotfiles/zsh-conf hypr-dots editors/vscode-settings
