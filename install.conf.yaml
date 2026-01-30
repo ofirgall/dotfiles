@@ -39,6 +39,8 @@
         path: hypr-dots/hypr
     ~/.config/waybar:
         path: hypr-dots/waybar
+    ~/.config/swaync:
+        path: hypr-dots/swaync
     ~/.config/autorandr:
         path: dotfiles/autorandr
     ~/.config/copyq/copyq.conf:
