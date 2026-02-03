@@ -9,7 +9,7 @@ set -g @continuum-save-interval '1'
 set -g @emulate-scroll-for-no-mouse-alternate-buffer "on"
 set -g @tnotify-verbose 'on'
 set -g @tnotify-verbose-msg '#S: #I #W is done!'
-set -g @fzf-url-fzf-options '--reverse'
+set -g @fzf-url-fzf-options '--tmux center,50%,50% --multi --exit-0 --no-preview'
 set -g @fuzzback-fzf-layout 'default'
 set -g @command-capture-prompt-pattern ' $ '
 set -g @thumbs-command 'echo -n {} | $HOME/dotfiles_scripts/misc/toclip; tmux display-message "Copied {}"'
