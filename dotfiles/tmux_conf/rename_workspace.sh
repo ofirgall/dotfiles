@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# OLD SCRIPT TO rename_workspace by tmux events
+
+# rename workspace in hyprland
+# set-hook -g 'client-focus-in[1212]' "run-shell '$HOME/.tmux_conf/rename_workspace.sh'"
+# set-hook -g 'client-attached[1212]' "run-shell '$HOME/.tmux_conf/rename_workspace.sh'"
+# set-hook -g 'client-detached[1212]' "run-shell '$HOME/.tmux_conf/rename_workspace.sh empty'"
+
 set -e
 
 CONFIG_LOC="$HOME/.config/hypr/UserConfigs/VirtualDesktopsNames.conf"
