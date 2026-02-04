@@ -45,10 +45,15 @@ function g() {
 function gt() {
 	kv --tree -- $@
 }
+unalias gd # Remove ofir zsh framework ghs
+function gd() {
+	kv --git-diff -- $@
+}
 unalias ghs # Remove ofir zsh framework ghs
 alias ghs='gt'
 
 alias gshowp='git show-patch'
+alias cb='cbranch'
 
 # GitHub
 alias gpc="gh pr create"
