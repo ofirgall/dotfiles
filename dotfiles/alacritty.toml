@@ -112,6 +112,11 @@ chars = "\u001B;"
 key = "Semicolon"
 mods = "Control"
 
+[[keyboard.bindings]]
+key = "Space"
+mods = "Control|Shift"
+chars = "\u001B[27;6;32~"
+
 [mouse]
 hide_when_typing = true
 
