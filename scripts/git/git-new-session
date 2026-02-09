@@ -23,6 +23,15 @@ git_root=$(git rev-parse --show-toplevel)
 if [[ $? != 0 ]]; then
 	exit 1
 fi
+
+# If inside a worktree, cd to the original (main) git repository
+git_common_dir=$(git rev-parse --git-common-dir)
+if [[ $? == 0 && "$git_common_dir" != ".git" ]]; then
+	# git-common-dir points to <main-repo>/.git when inside a worktree
+	git_root=$(dirname "$git_common_dir")
+	cd "$git_root"
+fi
+
 PROJ_NAME=$(basename "$git_root")
 WORKTREE_PATH="$WORKTREES_ROOT/$PROJ_NAME/$1"
 
