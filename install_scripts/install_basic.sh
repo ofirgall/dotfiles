@@ -30,6 +30,9 @@ sudo apt install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
 mkdir -p ~/.local/bin
 ln -f -s /usr/bin/batcat ~/.local/bin/bat
 
+# Install fx
+curl https://fx.wtf/install.sh | sh
+
 # Install fd-find
 sudo apt install -y fd-find
 ln -f -s $(which fdfind) ~/.local/bin/fd
