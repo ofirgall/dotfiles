@@ -1,0 +1,22 @@
+# Cursor CLI Wrapper — Notification Config
+#
+# Place this file at:
+#   ~/.config/cursor-cli-wrapper/config.toml
+#
+# All fields are optional. Defaults are shown below.
+#
+# Supported placeholders (resolved at notification time):
+#   {cwd}           — current working directory
+#   {git_branch}    — current git branch name
+#   {tmux-session}  — current tmux session name
+
+[general]
+notification-title = "Cursor Agent"
+notification-body = "{tmux-session}\n{git_repo}/{git_branch}"
+notification-urgency = "critical"
+notification-app-name = "Cursor"
+notification-icon = "stock_help-agent"
+
+[hooks]
+status-change = "~/.config/hypr/UserScripts/RenameWorkspaces.py"
+

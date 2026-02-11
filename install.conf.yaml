@@ -49,6 +49,8 @@
         path: dotfiles/tridactylrc
     ~/.config/systemd/user:
         path: services
+    ~/.config/cursor-cli-wrapper/config.toml:
+        path: dotfiles/cursor-cli-wrapper.toml
 
 - shell:
     # - [install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
