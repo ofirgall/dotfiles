@@ -7,6 +7,12 @@ function get_pid_in_pane() {
     echo "$(ps -f -t $tty | tail -n 1 | tr -s ' ' | cut -f2 -d ' ')"
 }
 
+function get_github_user_name() {
+    local uname="$(gh auth status | grep -B1 "Active account: true" | head -n 1 |awk '{for(i=1;i<=NF;i++) if($i=="account") print $(i+1)}')"
+
+    echo $uname
+}
+
 function get_ssh_cmd_in_pane() {
     local tty=$1
     local pid=$(get_pid_in_pane $tty)

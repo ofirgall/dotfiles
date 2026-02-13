@@ -55,6 +55,8 @@ set -g "@nova-pane-border-style" "#1865b5"
 set-window-option -g mode-style "bg=#27406b,fg=#ffffff"
 
 ### STATUS BAR ###
+helpers="$HOME/.tmux_conf/helpers.sh"
+
 set -g @nova-segment-prefix "#{?client_prefix,PREFIX,}"
 set -g @nova-segment-prefix-colors "$active_tab_color"
 
@@ -75,10 +77,13 @@ set -g @nova-segment-session-colors "$sides_color"
 set -g @nova-segment-whoami "#(whoami)@#h"
 set -g @nova-segment-whoami-colors "$sides_color"
 
+set -g @nova-segment-github " #($helpers get_github_user_name)"
+set -g @nova-segment-github-colors "$active_tab_color"
+
 set -g @nova-segment-suspended-colors "$sides_color"
 
 set -g @nova-segments-0-left "session"
-set -g @nova-segments-0-right "zoomed synced prefix current-ssh whoami"
+set -g @nova-segments-0-right "zoomed synced prefix github current-ssh whoami"
 
 ### SUSPENDED MODE ###
 set -g @suspend_on_resume_command "tmux \
