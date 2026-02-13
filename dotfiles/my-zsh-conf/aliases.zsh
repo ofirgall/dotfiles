@@ -61,6 +61,11 @@ alias gpv="gh pr view --web"
 alias gpvc="gh pr view | egrep \"url:\" | head -n 1 | sed \"s/url://g\" | xargs echo -n | toclip"
 alias gpar="gh pr edit --add-reviewer"
 
+function gfork() {
+	git remote rename origin upstream
+	gh repo fork --remote --remote-name origin
+}
+
 function ssh() {
 	TERM=xterm-256color /usr/bin/ssh $@ # Adjust TERM for ssh
 }
