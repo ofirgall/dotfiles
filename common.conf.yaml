@@ -50,3 +50,4 @@
     - [install_scripts/install_nvim.sh, Installing Neovim]
     - [install_scripts/install_tmux.sh, Installing tmux]
     - [install_scripts/install_go.sh, Installing Go]
+    - [install_scripts/install_wrappers.sh, Installing Wrappers]

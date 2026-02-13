@@ -11,12 +11,14 @@
 #   {tmux-session}  — current tmux session name
 
 [general]
-notification-title = "Cursor Agent"
-notification-body = "{tmux-session}\n{git_repo}/{git_branch}"
-notification-urgency = "critical"
+notification-title = "=== Cursor CLI Done ==="
+notification-body = "TMUX: {tmux-session}\nREPO: {git_repo}"
+notification-urgency = "normal"
 notification-app-name = "Cursor"
-notification-icon = "stock_help-agent"
+notification-icon = ""
 
 [hooks]
 status-change = "~/.config/hypr/UserScripts/RenameWorkspaces.py"
-
+esc-in-normal = "tmux send-key M-Escape"
+# esc-in-normal = "echo esc >> /tmp/b.log"
+# vim-mode-change = "echo mode is now {vim_mode} >> /tmp/vim_mode.log"

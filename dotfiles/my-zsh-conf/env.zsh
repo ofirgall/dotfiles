@@ -90,3 +90,5 @@ esac
 export AWS_PROFILE=dev
 
 source $HOME/secrets.zsh
+
+export PATH=~/dotfiles_scripts/wrappers:$PATH
