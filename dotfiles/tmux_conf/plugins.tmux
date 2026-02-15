@@ -17,6 +17,8 @@ set -g @resurrect-processes 'false' # Dont restore programs
 set -g @tnotify-sleep-duration '2'
 set -g @tmux_window_name_ignored_programs "['sqlite3']"
 set -g @tmux_window_name_dir_programs "['nvim', 'git', 'fugitive', 'git_tree', 'kv']"
+set -g @tmux_window_name_icon_style "'dir_and_icon'"
+set -g @tmux_window_name_custom_icons '{"python": "🐍", "kv": ""}'
 set -g @ttm-load-default-macros off # no default macros
 set -g @ttm-window-mode 'vertical'
 if-shell "$is_wsl" "set -g @browser_brotab_timeout '15.0'"
