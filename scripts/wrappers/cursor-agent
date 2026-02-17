@@ -1,3 +1,4 @@
 #!/usr/bin/env sh
 
-cursor-cli-wrapper $@
+BIN="${CURSOR_CLI_WRAPPER_BIN:-cursor-cli-wrapper}"
+"$BIN" "$@"
