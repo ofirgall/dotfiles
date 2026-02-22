@@ -69,8 +69,14 @@ alias gpar="gh pr edit --add-reviewer"
 function gfork() {
 	git remote rename origin upstream
 	gh repo fork --remote --remote-name origin
-	git branch --set-upstream-to="origin/$(git branch --show-current)"
+
+	# Set default to new origin
+	local branch="$(git branch --show-current)"
 	git config remote.pushDefault origin
+	git push --set-upstream origin $branch
+	git branch --set-upstream-to="origin/$branch"
+	git config branch.$branch.pushremote origin
+
 }
 
 function ssh() {
