@@ -6,6 +6,7 @@ editors/nvim/.*
 autokey/My\ Phrases
 autokey/Sample\ Scripts
 */__pycache__
+**/__pycache__
 */.ropeproject
 *.spl
 playgrounds/*
