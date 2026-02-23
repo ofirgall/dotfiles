@@ -77,8 +77,10 @@ function geocode(addr, idx) {{
       if (data.length > 0) {{
         const lat = parseFloat(data[0].lat);
         const lon = parseFloat(data[0].lon);
+        const gmapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(lat + ',' + lon);
         const marker = L.marker([lat, lon]).addTo(map);
-        marker.bindPopup('<b>' + (idx + 1) + '.</b> ' + addr);
+        marker.bindPopup('<b>' + (idx + 1) + '.</b> ' + addr + '<br><a href="' + gmapsUrl + '" target="_blank">Open in Google Maps</a>');
+        marker.on('click', () => window.open(gmapsUrl, '_blank'));
         bounds.push([lat, lon]);
       }} else {{
         console.warn('Could not geocode:', addr);
