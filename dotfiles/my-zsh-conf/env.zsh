@@ -92,3 +92,8 @@ export AWS_PROFILE=dev
 source $HOME/secrets.zsh
 
 export PATH=~/dotfiles_scripts/wrappers:$PATH
+
+# Koala
+export NEOGIT=true
+export KOALA_CODE_DIFF=true
+
