@@ -8,3 +8,5 @@ _ofir*
 .kvim.conf
 */__pycache__
 */.ropeproject
+.cursor/plans/
+.cursor/.gitignore
