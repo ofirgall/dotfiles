@@ -11,10 +11,17 @@ case "$direction" in
 esac
 
 if [ -n "$TMUX" ]; then
-    current_pane=$(tmux display-message -p '#D')
-    tmux select-pane $tmux_flag
-    new_pane=$(tmux display-message -p '#D')
-    [ "$current_pane" != "$new_pane" ] && exit 0
+    case "$direction" in
+        left)  at_edge=$(tmux display-message -p '#{pane_at_left}') ;;
+        right) at_edge=$(tmux display-message -p '#{pane_at_right}') ;;
+        up)    at_edge=$(tmux display-message -p '#{pane_at_top}') ;;
+        down)  at_edge=$(tmux display-message -p '#{pane_at_bottom}') ;;
+    esac
+
+    if [ "$at_edge" != "1" ]; then
+        tmux select-pane $tmux_flag
+        exit 0
+    fi
 fi
 
 if [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]; then
