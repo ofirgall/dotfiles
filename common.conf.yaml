@@ -38,6 +38,8 @@
         path: playgrounds
     ~/.kvim.conf:
         path: dotfiles/.kvim.conf
+    ~/.config/yazi:
+        path: dotfiles/yazi
 
 - create:
     - ~/projects

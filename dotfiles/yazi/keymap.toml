@@ -1,0 +1,8 @@
+"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
+
+[mgr]
+prepend_keymap = [
+    # Override enter behavior to enter dir instead of open
+    { on = "<Enter>",   run = "enter", desc = "Enter the child directory" },
+	{ on = "<S-Enter>", run = "enter", desc = "Enter the child directory" },
+]
