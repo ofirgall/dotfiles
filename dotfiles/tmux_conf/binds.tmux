@@ -70,11 +70,11 @@ bind -n C-j if-shell "$is_nvim || $is_fzf" 'send-keys C-j'  'select-pane -D'
 bind -n C-k if-shell "$is_nvim || $is_fzf" 'send-keys C-k'  'select-pane -U'
 bind -n C-l if-shell "$is_nvim" 'send-keys C-l'  'select-pane -R'
 
-# Bind force navigation for alt+shift+hjkl
-bind -n M-H run-shell 'select-pane -L'
-bind -n M-J run-shell 'select-pane -D'
-bind -n M-K run-shell 'select-pane -U'
-bind -n M-L run-shell 'select-pane -R'
+# Bind force navigation for alt+shift+hjkl (override vim detection)
+bind -n M-H select-pane -L
+bind -n M-J select-pane -D
+bind -n M-K select-pane -U
+bind -n M-L select-pane -R
 
 # Override alt+up/down for copy-mode
 bind -T copy-mode-vi M-Up select-pane -U
