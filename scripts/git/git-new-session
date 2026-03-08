@@ -11,9 +11,9 @@ print_usage()
 	exit 0
 }
 
-if [[ $@ == *'-h'* ]]; then
-	print_usage
-fi
+# if [[ $@ == *'-h'* ]]; then
+# 	print_usage
+# fi
 
 if [ "$#" -lt 1 ]; then
 	print_usage
@@ -47,7 +47,16 @@ read -p "Confirm tmux session name '$TMUX_SESSION_NAME'? [y/N] " answer
 [[ "$answer" =~ ^[Yy]$ ]] || exit 1
 
 mkdir -p "$WORKTREES_ROOT/$PROJ_NAME/"
-git worktree add "$WORKTREE_PATH" -b $BRANCH_NAME
+worktree_output=$(git worktree add "$WORKTREE_PATH" -b "$BRANCH_NAME" 2>&1) || {
+	if echo "$worktree_output" | grep -q "already exists"; then
+		read -p "Branch '$BRANCH_NAME' already exists. Force checkout existing branch? [y/N] " answer
+		[[ "$answer" =~ ^[Yy]$ ]] || exit 1
+		git worktree add "$WORKTREE_PATH" "$BRANCH_NAME"
+	else
+		echo "$worktree_output" >&2
+		exit 1
+	fi
+}
 
 cd "$WORKTREE_PATH"
 git reset --hard origin/main
