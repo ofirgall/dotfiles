@@ -64,27 +64,29 @@ bind -r -T prefix x run-shell "tmux new-window \"$($helpers swap_hanging_ssh_ses
 
 
 ##### PANE NAVIGATION #####
+navigate="$HOME/.tmux_conf/navigate_pane.sh"
+
 # Move around with alt+arrow/ctrl+hjkl
-bind -n C-h if-shell "$is_nvim" 'send-keys C-h'  'select-pane -L'
-bind -n C-j if-shell "$is_nvim || $is_fzf" 'send-keys C-j'  'select-pane -D'
-bind -n C-k if-shell "$is_nvim || $is_fzf" 'send-keys C-k'  'select-pane -U'
-bind -n C-l if-shell "$is_nvim" 'send-keys C-l'  'select-pane -R'
+bind -n C-h if-shell "$is_nvim" 'send-keys C-h'  "run-shell '$navigate left'"
+bind -n C-j if-shell "$is_nvim || $is_fzf" 'send-keys C-j'  "run-shell '$navigate down'"
+bind -n C-k if-shell "$is_nvim || $is_fzf" 'send-keys C-k'  "run-shell '$navigate up'"
+bind -n C-l if-shell "$is_nvim" 'send-keys C-l'  "run-shell '$navigate right'"
 
 # Bind force navigation for alt+shift+hjkl (override vim detection)
-bind -n M-H select-pane -L
-bind -n M-J select-pane -D
-bind -n M-K select-pane -U
-bind -n M-L select-pane -R
+bind -n M-H run-shell "$navigate left"
+bind -n M-J run-shell "$navigate down"
+bind -n M-K run-shell "$navigate up"
+bind -n M-L run-shell "$navigate right"
 
 # Override alt+up/down for copy-mode
-bind -T copy-mode-vi M-Up select-pane -U
-bind -T copy-mode-vi M-Down select-pane -D
-bind -T copy-mode-vi M-Right select-pane -R
-bind -T copy-mode-vi M-Left select-pane -L
-bind -T copy-mode-vi C-h select-pane -L
-bind -T copy-mode-vi C-l select-pane -R
-bind -T copy-mode-vi C-k select-pane -U
-bind -T copy-mode-vi C-j select-pane -D
+bind -T copy-mode-vi M-Up run-shell "$navigate up"
+bind -T copy-mode-vi M-Down run-shell "$navigate down"
+bind -T copy-mode-vi M-Right run-shell "$navigate right"
+bind -T copy-mode-vi M-Left run-shell "$navigate left"
+bind -T copy-mode-vi C-h run-shell "$navigate left"
+bind -T copy-mode-vi C-l run-shell "$navigate right"
+bind -T copy-mode-vi C-k run-shell "$navigate up"
+bind -T copy-mode-vi C-j run-shell "$navigate down"
 
 ##### PANE MANAGEMENT #####
 # Resize pane with ctrl+arrow/hjkl in prefix
