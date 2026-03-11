@@ -41,6 +41,8 @@
         path: hypr-dots/waybar
     ~/.config/swaync:
         path: hypr-dots/swaync
+    ~/.config/rofi:
+        path: hypr-dots/rofi
     ~/.config/autorandr:
         path: dotfiles/autorandr
     ~/.config/copyq/copyq.conf:
