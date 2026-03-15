@@ -1,0 +1,85 @@
+[
+  {
+    "action": "clonetab",
+    "label": "",
+    "key": "alt+t",
+    "id": "cc5c0a32-8d4e-4f7f-be5a-6ea55a90b8ed",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "alt+,",
+    "action": "prevtab",
+    "id": "d11eb727-a31b-49e5-8f5b-3bf4611744e5",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "alt+.",
+    "action": "nexttab",
+    "id": "e4006acf-33b4-4486-82c0-fd770e7043bb",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "alt+q",
+    "action": "lastusedtab",
+    "id": "9ba326e9-6e35-49ed-904b-cefdc72ae433",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "alt+shift+,",
+    "action": "movetableft",
+    "id": "057b5b13-0ab9-4989-a53e-67391dd11354",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "alt+shift+.",
+    "action": "movetabright",
+    "id": "92ee26fd-d391-43d7-b28a-13af3635a46c",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "alt+`",
+    "action": "lastusedtab",
+    "id": "0b81d336-28ac-4f66-b6c2-198695162f83",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "alt+w",
+    "action": "closetab",
+    "id": "0f9c754d-7ee8-4c26-ab67-6a06451d6542",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "action": "copyurl",
+    "key": "alt+c",
+    "id": "a2880b7b-9a54-428c-99ea-13dd3432c92e",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  }
+]
+
