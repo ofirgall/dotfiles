@@ -1,0 +1,38 @@
+  ┌─────────────────────────────────┬────────────────────────────┐
+  │              Event              │            When            │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ SessionStart                    │ New/resumed session        │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ SessionEnd                      │ Session ends               │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ InstructionsLoaded              │ CLAUDE.md loaded           │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ UserPromptSubmit                │ User submits a prompt      │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ PreToolUse                      │ Before a tool runs         │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ PostToolUse                     │ After a tool succeeds      │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ PostToolUseFailure              │ After a tool fails         │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ PermissionRequest               │ Permission dialog shown    │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ Stop                            │ Claude finishes responding │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ SubagentStart / SubagentStop    │ Subagent spawned/done      │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ TeammateIdle                    │ Team agent going idle      │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ TaskCompleted                   │ Task marked complete       │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ ConfigChange                    │ Settings file changes      │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ WorktreeCreate / WorktreeRemove │ Worktree lifecycle         │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ PreCompact / PostCompact        │ Context compaction         │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ Notification                    │ System notification sent   │
+  ├─────────────────────────────────┼────────────────────────────┤
+  │ Elicitation / ElicitationResult │ MCP server input requests  │
+  └─────────────────────────────────┴────────────────────────────┘
+

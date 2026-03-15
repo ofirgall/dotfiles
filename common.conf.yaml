@@ -40,6 +40,10 @@
         path: dotfiles/.kvim.conf
     ~/.config/yazi:
         path: dotfiles/yazi
+    ~/.claude/settings.json:
+        path: dotfiles/claude/settings.json
+    ~/.claude_scripts:
+        path: dotfiles/claude/scripts
 
 - create:
     - ~/projects

@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+notify-send 'Claude done ❇️'
+
+tmux set-option -q @cursor-cli-wrapper-status "WAITING"
+~/.config/hypr/UserScripts/RenameWorkspaces.py

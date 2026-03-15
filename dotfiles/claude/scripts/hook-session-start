@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+tmux set-option -q @cursor-cli-wrapper-status "IDLE"
+~/.config/hypr/UserScripts/RenameWorkspaces.py

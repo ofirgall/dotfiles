@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+tmux set-option -qu @cursor-cli-wrapper-status
+~/.config/hypr/UserScripts/RenameWorkspaces.py
