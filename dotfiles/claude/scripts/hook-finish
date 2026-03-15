@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
-notify-send 'Claude done ❇️'
+. "$(dirname "$0")/helpers.sh"
+
+notify 'Done'
 
 tmux set-option -q @cursor-cli-wrapper-status "WAITING"
 ~/.config/hypr/UserScripts/RenameWorkspaces.py
