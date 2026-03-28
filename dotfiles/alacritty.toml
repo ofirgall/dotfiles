@@ -27,19 +27,19 @@ foreground = "0xffffff"
 size = 9.5
 
 [font.bold]
-family = "JetBrainsMono Nerd Font Mono"
-style = "SemiBold"
+family = "CaskaydiaCove NFM"
+style = "Bold"
 
 [font.bold_italic]
-family = "JetBrainsMono Nerd Font Mono"
-style = "SemiBold Italic"
+family = "CaskaydiaCove NFM"
+style = "Bold Italic"
 
 [font.italic]
-family = "JetBrainsMono Nerd Font Mono"
+family = "CaskaydiaCove NFM"
 style = "Italic"
 
 [font.normal]
-family = "JetBrainsMono Nerd Font Mono"
+family = "CaskaydiaCove NFM"
 style = "Regular"
 
 [[keyboard.bindings]]
