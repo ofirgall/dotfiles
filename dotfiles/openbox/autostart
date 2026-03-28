@@ -1,0 +1,28 @@
+# Openbox autostart — gaming session
+
+# Disable screen blanking / DPMS
+xset s off
+xset -dpms
+xset s noblank
+
+# Set performance CPU governor (requires cpufrequtils)
+if command -v cpufreq-set &>/dev/null; then
+    for cpu in /sys/devices/system/cpu/cpu[0-9]*; do
+        sudo cpufreq-set -g performance -c "${cpu##*cpu}" 2>/dev/null || true
+    done
+fi
+
+# Compositor (picom) — lightweight, no fancy effects in gaming session
+if command -v picom &>/dev/null; then
+    picom --backend glx --vsync --no-fading-openclose &
+fi
+
+# System tray / notifications (optional, comment out if not needed)
+# dunst &
+
+# Launch Steam in the background
+if command -v steam &>/dev/null; then
+    steam &
+elif flatpak list 2>/dev/null | grep -q "com.valvesoftware.Steam"; then
+    flatpak run com.valvesoftware.Steam &
+fi

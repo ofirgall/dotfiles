@@ -1,0 +1,1 @@
+gamescope -f -w 1920 -h 1080 -r 144 --force-grab-cursor -- %command%
