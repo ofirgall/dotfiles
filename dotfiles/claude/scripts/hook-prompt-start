@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
 
-tmux set-option -q @cursor-cli-wrapper-status "INPROGRESS"
-~/.config/hypr/UserScripts/RenameWorkspaces.py
+. "$(dirname "$0")/helpers.sh"
+
+tmux_set set-option -q @cursor-cli-wrapper-status "INPROGRESS"
+hypr_rename

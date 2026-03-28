@@ -4,5 +4,5 @@
 
 notify 'Requires Permission'
 
-tmux set-option -q @cursor-cli-wrapper-status "WAITING"
-~/.config/hypr/UserScripts/RenameWorkspaces.py
+tmux_set set-option -q @cursor-cli-wrapper-status "WAITING"
+hypr_rename

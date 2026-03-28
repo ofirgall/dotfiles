@@ -18,5 +18,14 @@ get_tmux_session() {
 
 notify() {
     local msg="TMUX: $(get_tmux_session)\nREPO: $(get_git_repo)"
-    notify-send "❇️ Claude $1 ❇️" "$msg"
+    command -v notify-send >/dev/null 2>&1 && notify-send "❇️ Claude $1 ❇️" "$msg"
+}
+
+tmux_set() {
+    command -v tmux >/dev/null 2>&1 && tmux display-message -p "" >/dev/null 2>&1 && tmux "$@"
+}
+
+hypr_rename() {
+    local script="$HOME/.config/hypr/UserScripts/RenameWorkspaces.py"
+    [ -x "$script" ] && "$script"
 }
