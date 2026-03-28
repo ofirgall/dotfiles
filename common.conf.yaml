@@ -40,6 +40,10 @@
         path: dotfiles/.kvim.conf
     ~/.config/yazi:
         path: dotfiles/yazi
+    ~/.config/hunk:
+        path: dotfiles/hunk
+    ~/.config/lumen:
+        path: dotfiles/lumen
     ~/.claude/settings.json:
         path: dotfiles/claude/settings.json
     ~/.claude_scripts:
