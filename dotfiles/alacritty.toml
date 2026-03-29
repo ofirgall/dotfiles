@@ -23,24 +23,15 @@ yellow = "0xc4a000"
 background = "0x000000"
 foreground = "0xffffff"
 
-[font]
-size = 9.5
-
-[font.bold]
-family = "CaskaydiaCove NFM"
-style = "Bold"
-
-[font.bold_italic]
-family = "CaskaydiaCove NFM"
-style = "Bold Italic"
-
-[font.italic]
-family = "CaskaydiaCove NFM"
-style = "Italic"
-
-[font.normal]
-family = "CaskaydiaCove NFM"
-style = "Regular"
+[general]
+import = ["~/alacritty-fonts/CaskaydiaCove.toml"]
+# import = ["~/alacritty-fonts/CascadiaCode.toml"]
+# import = ["~/alacritty-fonts/0xProto.toml"]
+# import = ["~/alacritty-fonts/CommitMono.toml"]
+# import = ["~/alacritty-fonts/IosevkaTerm.toml"]
+# import = ["~/alacritty-fonts/JetBrainsMono.toml"]
+# import = ["~/alacritty-fonts/MapleMono.toml"]
+# import = ["~/alacritty-fonts/UbuntuMono.toml"]
 
 [[keyboard.bindings]]
 action = "ResetFontSize"

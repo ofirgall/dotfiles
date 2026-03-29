@@ -1,0 +1,18 @@
+[font]
+size = 11
+
+[font.bold]
+family = "Maple Mono Normal NL"
+style = "Bold"
+
+[font.bold_italic]
+family = "Maple Mono Normal NL"
+style = "Bold Italic"
+
+[font.italic]
+family = "Maple Mono Normal NL"
+style = "Italic"
+
+[font.normal]
+family = "Maple Mono Normal NL"
+style = "Regular"

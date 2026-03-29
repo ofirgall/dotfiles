@@ -27,6 +27,8 @@
         path: dotfiles/fusuma.yml
     ~/.alacritty.toml:
         path: dotfiles/alacritty.toml
+    ~/alacritty-fonts:
+        path: dotfiles/alacritty-fonts
     ~/.taskrc:
         path: dotfiles/taskrc
     ~/.taskwarrior_shortcuts:

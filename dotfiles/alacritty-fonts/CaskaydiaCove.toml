@@ -1,0 +1,18 @@
+[font]
+size = 11
+
+[font.bold]
+family = "CaskaydiaCove NFM"
+style = "Bold"
+
+[font.bold_italic]
+family = "CaskaydiaCove NFM"
+style = "Bold Italic"
+
+[font.italic]
+family = "CaskaydiaCove NFM"
+style = "Italic"
+
+[font.normal]
+family = "CaskaydiaCove NFM"
+style = "Regular"
