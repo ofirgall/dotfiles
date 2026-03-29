@@ -1,5 +1,5 @@
 {
-  "syntaxHighlightingDisabled": false,
+  "model": "opus",
   "hooks": {
     "Stop": [
       {
@@ -51,5 +51,9 @@
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "lua-lsp@claude-plugins-official": true
+  },
+  "syntaxHighlightingDisabled": false
 }
