@@ -79,6 +79,9 @@ sudo npm cache clean -f
 sudo npm install -g n
 sudo n stable
 
+# Install bun
+curl -fsSL https://bun.sh/install | bash
+
 if ! $IS_REMOTE; then
 	install_bluetuith()
 	{
