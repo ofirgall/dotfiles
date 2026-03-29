@@ -1,5 +1,8 @@
 # Openbox autostart — gaming session
 
+# Remap CapsLock to Escape
+setxkbmap -option caps:escape &
+
 # Disable screen blanking / DPMS
 xset s off
 xset -dpms
