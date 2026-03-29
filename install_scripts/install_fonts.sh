@@ -7,18 +7,32 @@ cd ~/.local/share/fonts
 
 download_font()
 {
-	font=$1
+	if [[ "$1" == http* ]]; then
+		url="$1"
+		archive="${url##*/}"
+	else
+		archive="$1.tar.xz"
+		url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/$archive"
+	fi
 
-	rm -f $font.zip
-	# wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/$font.zip
-	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/$font.zip
-	unzip -o $font.zip
-	# dont remove .zip
+	wget -O "$archive" "$url"
+
+	case "$archive" in
+		*.tar.xz) tar xf "$archive" ;;
+		*.zip)    unzip -o "$archive" ;;
+	esac
+
+	rm -f "$archive"
 }
 
 download_font CascadiaCode
 download_font UbuntuMono
 download_font JetBrainsMono
+download_font IosevkaTerm
+download_font CommitMono
+download_font 0xProto
+download_font Recursive
+download_font https://github.com/subframe7536/maple-font/releases/download/v7.9/MapleMonoNormalNL-TTF.zip
 
 # Remove Caskaydia custom italic fonts
 rm -f Caskaydia*Italic*
