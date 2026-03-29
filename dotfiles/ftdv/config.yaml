@@ -1,0 +1,30 @@
+git:
+  paging:
+    pager: "delta --dark --paging=never --line-numbers --side-by-side -w={{diffAreaWidth}}"
+    colorArg: "always"
+    # useConfig: false
+
+theme:
+  name: dark
+  colors:
+    tree_line: dark_gray
+    tree_selected_bg: "#323264"
+    tree_selected_fg: yellow
+    tree_directory: blue
+    tree_file: white
+
+    status_added: green
+    status_removed: red
+    status_modified: yellow
+
+    border: dark_gray
+    border_focused: cyan
+    title: cyan
+    status_bar_bg: dark_gray
+    status_bar_fg: white
+
+    text_primary: white
+    text_secondary: gray
+    text_dim: dark_gray
+
+    background: black

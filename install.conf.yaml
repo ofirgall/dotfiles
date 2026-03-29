@@ -59,6 +59,8 @@
         path: dotfiles/openbox/autostart
     ~/.config/openbox/rc.xml:
         path: dotfiles/openbox/rc.xml
+    ~/.config/ftdv/config.yaml:
+        path: dotfiles/ftdv/config.yaml
 
 - shell:
     # - [install_scripts/install_sublime.sh, Installing Sublime Text/Merge]

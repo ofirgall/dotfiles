@@ -16,3 +16,6 @@ npm i -g hunkdiff
 
 # https://github.com/jnsahaj/lumen
 cargo install lumen
+
+# https://github.com/wtnqk/ftdv
+cargo install ftdv
