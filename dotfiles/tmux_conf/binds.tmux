@@ -226,8 +226,8 @@ bind -T copy-mode-vi C-c send-keys -X copy-selection
 # Yank (without closing copy-mode) with y
 bind -T copy-mode-vi y run-shell "tmux send-keys -X copy-pipe \"xclip -i -selection clipboard > /dev/null 2>&1\"; true"
 
-# Enter copy mode + scroll from root mode, Ignored when in nvim/less
-bind -n C-u if-shell "$is_nvim || $is_vim || $is_nested_tmux || $is_less" "send-keys C-u" 'copy-mode; send-keys -X halfpage-up'
+# Enter copy mode + scroll from root mode, Ignored when in nvim/less/fzf
+bind -n C-u if-shell "$is_nvim || $is_vim || $is_nested_tmux || $is_less || $is_fzf" "send-keys C-u" 'copy-mode; send-keys -X halfpage-up'
 
 ##### MOUSE COPY MODE #####
 # Copy word with double click
