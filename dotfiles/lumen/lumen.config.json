@@ -1,0 +1,19 @@
+{
+  "provider": "claude",
+  "model": "claude-sonnet-4-6",
+  "theme": "catppuccin-mocha",
+  "draft": {
+    "commit_types": {
+      "feat": "A new feature",
+      "fix": "A bug fix",
+      "docs": "Documentation only changes",
+      "style": "Changes that do not affect code meaning",
+      "refactor": "Code changes with no functional impact",
+      "perf": "Performance improvements",
+      "test": "Testing changes",
+      "build": "Build system or dependency changes",
+      "ci": "CI configuration changes",
+      "chore": "Other changes not affecting src/test"
+    }
+  }
+}
