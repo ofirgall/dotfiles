@@ -72,6 +72,9 @@ bind -n C-j if-shell "$is_nvim || $is_fzf" 'send-keys C-j'  "run-shell '$navigat
 bind -n C-k if-shell "$is_nvim || $is_fzf" 'send-keys C-k'  "run-shell '$navigate up'"
 bind -n C-l if-shell "$is_nvim" 'send-keys C-l'  "run-shell '$navigate right'"
 
+# For killing k9s pods
+bind -T prefix M-k send-keys C-k
+
 # Bind force navigation for alt+shift+hjkl (override vim detection)
 bind -n M-H run-shell "$navigate left"
 bind -n M-J run-shell "$navigate down"
