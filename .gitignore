@@ -12,3 +12,4 @@ autokey/Sample\ Scripts
 playgrounds/*
 !playgrounds/.templates*
 !playgrounds/generate.sh
+.claude/
