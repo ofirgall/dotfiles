@@ -38,6 +38,7 @@ palette = 14=#34e2e2
 palette = 15=#eeeeec
 
 keybind = super+f5=reset_font_size
+keybind = super+f6=reload_config
 keybind = ctrl+tab=text:\x1b[27;5;9~
 keybind = ctrl+shift+tab=text:\x1b[27;6;9~
 keybind = ctrl+comma=text:\x1b[27;5;44~
