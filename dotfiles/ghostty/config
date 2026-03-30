@@ -60,3 +60,5 @@ keybind = ctrl+enter=text:\x1b[13;5u
 keybind = ctrl+semicolon=text:\x1b;
 keybind = shift+space=text:\x1b[27;2;32~
 keybind = ctrl+shift+space=text:\x1b[27;6;32~
+
+app-notifications = no-clipboard-copy
