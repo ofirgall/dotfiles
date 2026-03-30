@@ -52,6 +52,8 @@ keybind = ctrl+shift+k=text:\x1bK
 keybind = ctrl+shift+l=text:\x1bL
 keybind = ctrl+shift+comma=text:\x1b[27;5;60~
 keybind = ctrl+shift+period=text:\x1b[27;5;62~
+keybind = alt+shift+comma=text:\x1b[27;3;60~
+keybind = alt+shift+period=text:\x1b[27;3;62~
 keybind = shift+enter=text:\x1b[13;2u
 keybind = ctrl+enter=text:\x1b[13;5u
 keybind = ctrl+semicolon=text:\x1b;
