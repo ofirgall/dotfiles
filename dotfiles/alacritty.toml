@@ -31,6 +31,7 @@ import = ["~/alacritty-fonts/CaskaydiaCove.toml"]
 # import = ["~/alacritty-fonts/IosevkaTerm.toml"]
 # import = ["~/alacritty-fonts/JetBrainsMono.toml"]
 # import = ["~/alacritty-fonts/MapleMono.toml"]
+# import = ["~/alacritty-fonts/Recursive.toml"]
 # import = ["~/alacritty-fonts/UbuntuMono.toml"]
 
 [[keyboard.bindings]]
