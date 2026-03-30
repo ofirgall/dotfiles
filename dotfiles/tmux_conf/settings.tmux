@@ -16,6 +16,10 @@ set -ga terminal-overrides ',*:RGB' # Enable 24 bit true colors
 set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm' # Enable undercurl
 set -sa terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m' # Enable undercurl colors
 
+# Enable ghostty features
+set -s extended-keys on
+set -as terminal-features 'xterm-ghostty:RGB:usstyle:extkeys'
+
 # Faster status bar
 set-option -g status-interval 10
 
