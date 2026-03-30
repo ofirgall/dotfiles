@@ -1,6 +1,18 @@
 font-family = CaskaydiaCove NFM
 font-size = 11
+# Remove Ligatures
+font-feature = -liga
+font-feature = -calt
+font-feature = -rlig
+
+# Remove bottom blackbar
 window-padding-balance = true
+
+adjust-cursor-thickness = 2
+mouse-scroll-multiplier = 1
+mouse-hide-while-typing = true
+window-decoration = false
+confirm-close-surface = false
 
 background = #000000
 foreground = #ffffff
@@ -25,9 +37,6 @@ palette = 13=#ad7fa8
 palette = 14=#34e2e2
 palette = 15=#eeeeec
 
-mouse-hide-while-typing = true
-window-decoration = false
-
 keybind = super+f5=reset_font_size
 keybind = ctrl+tab=text:\x1b[27;5;9~
 keybind = ctrl+shift+tab=text:\x1b[27;6;9~
@@ -44,4 +53,3 @@ keybind = ctrl+enter=text:\x1b[13;5u
 keybind = ctrl+semicolon=text:\x1b;
 keybind = shift+space=text:\x1b[27;2;32~
 keybind = ctrl+shift+space=text:\x1b[27;6;32~
-confirm-close-surface = false
