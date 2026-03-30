@@ -6,6 +6,8 @@ font-feature = -calt
 font-feature = -rlig
 
 # Remove bottom blackbar (for tmux)
+window-padding-x = 0
+window-padding-y = 0
 window-padding-balance = true
 window-padding-color = extend
 window-decoration = none
