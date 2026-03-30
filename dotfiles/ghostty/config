@@ -5,13 +5,14 @@ font-feature = -liga
 font-feature = -calt
 font-feature = -rlig
 
-# Remove bottom blackbar
+# Remove bottom blackbar (for tmux)
 window-padding-balance = true
+window-padding-color = extend
+window-decoration = none
 
 adjust-cursor-thickness = 2
 mouse-scroll-multiplier = 1
 mouse-hide-while-typing = true
-window-decoration = false
 confirm-close-surface = false
 
 background = #000000
