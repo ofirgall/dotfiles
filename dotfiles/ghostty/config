@@ -1,0 +1,44 @@
+font-family = CaskaydiaCove Nerd Font
+background = #000000
+foreground = #ffffff
+
+# Normal colors
+palette = 0=#2e3436
+palette = 1=#cc0000
+palette = 2=#4e9a06
+palette = 3=#c4a000
+palette = 4=#3465a4
+palette = 5=#75507b
+palette = 6=#06989a
+palette = 7=#d3d7cf
+
+# Bright colors
+palette = 8=#555753
+palette = 9=#ef2929
+palette = 10=#8ae234
+palette = 11=#fce94f
+palette = 12=#729fcf
+palette = 13=#ad7fa8
+palette = 14=#34e2e2
+palette = 15=#eeeeec
+
+mouse-hide-while-typing = true
+window-decoration = false
+
+keybind = super+f5=reset_font_size
+keybind = ctrl+tab=text:\x1b[27;5;9~
+keybind = ctrl+shift+tab=text:\x1b[27;6;9~
+keybind = ctrl+comma=text:\x1b[27;5;44~
+keybind = ctrl+period=text:\x1b[27;5;46~
+keybind = ctrl+shift+j=text:\x1bJ
+keybind = ctrl+shift+h=text:\x1bH
+keybind = ctrl+shift+k=text:\x1bK
+keybind = ctrl+shift+l=text:\x1bL
+keybind = ctrl+shift+comma=text:\x1b[27;5;60~
+keybind = ctrl+shift+period=text:\x1b[27;5;62~
+keybind = shift+enter=text:\x1b[13;2u
+keybind = ctrl+enter=text:\x1b[13;5u
+keybind = ctrl+semicolon=text:\x1b;
+keybind = shift+space=text:\x1b[27;2;32~
+keybind = ctrl+shift+space=text:\x1b[27;6;32~
+confirm-close-surface = false

@@ -61,6 +61,8 @@
         path: dotfiles/openbox/rc.xml
     ~/.config/ftdv/config.yaml:
         path: dotfiles/ftdv/config.yaml
+    ~/.config/ghostty:
+        path: dotfiles/ghostty
 
 - shell:
     # - [install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
