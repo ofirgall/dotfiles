@@ -7,6 +7,7 @@ is_nvim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|vim?x?)(diff)?$'"
 is_less="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '^:$'"
 is_nested_tmux="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '' | grep ''" # Matching my status line
+is_hunk="ps -o state= -o comm= -t '#{pane_tty}' | grep -q 'S hunk'"
 helpers="$HOME/.tmux_conf/helpers.sh"
 
 ##### MISC #####
@@ -255,7 +256,7 @@ bind -n M-S run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
 ##### tmux-text-macros #####
 open_macros="tmux split-window -v  \"PANE='#{pane_id}' $HOME/.tmux/plugins/tmux-text-macros/tmux-text-macros.tmux -r\""
 # open macros menu with Alt+m except in nvim
-bind -n M-m if-shell "$is_nvim" "send-keys M-m" 'run-shell $open_macros'
+bind -n M-m if-shell "$is_nvim || $is_hunk" "send-keys M-m" 'run-shell $open_macros'
 
 # open macros menu with Alt+shift+m anywhere
 bind -n M-N run-shell $open_macros
