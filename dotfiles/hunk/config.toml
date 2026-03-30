@@ -13,3 +13,11 @@ prev_hunk = ["["]
 next_hunk = ["]"]
 prev_comment = "{"
 next_comment = "}"
+
+[colors]
+addedContentBg = "#2a5a2a"
+removedContentBg = "#5a2a2a"
+
+# stage hunk
+# discard hunk
+# unstage hunk
