@@ -4,3 +4,12 @@ exclude_untracked = false
 line_numbers = true
 wrap_lines = true
 agent_notes = true
+
+[keys]
+toggle_sidebar = "alt+m"
+scroll_top = "g"
+scroll_bottom = "shift+g"
+prev_hunk = ["["]
+next_hunk = ["]"]
+prev_comment = "{"
+next_comment = "}"
