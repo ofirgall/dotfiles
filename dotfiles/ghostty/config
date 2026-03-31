@@ -14,7 +14,7 @@ window-decoration = none
 
 adjust-cursor-thickness = 2
 # precision=touchpad | discrete=mouse
-mouse-scroll-multiplier = precision:0.15,discrete:1
+mouse-scroll-multiplier = precision:0.15,discrete:0.5
 mouse-hide-while-typing = true
 confirm-close-surface = false
 
