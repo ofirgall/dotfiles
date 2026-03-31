@@ -63,6 +63,16 @@ if ! $IS_REMOTE; then
 	sudo apt install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 	cargo install --git=https://github.com/alacritty/alacritty --locked
 	sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $HOME/.cargo/bin/alacritty 100
+	sudo ln -sf $HOME/.cargo/bin/alacritty /usr/local/bin/alacritty
+
+	# Install .desktop file so app launchers (rofi, etc.) can discover alacritty
+	ALACRITTY_REPO_DIR=$(mktemp -d)
+	git clone --depth 1 https://github.com/alacritty/alacritty "$ALACRITTY_REPO_DIR"
+	sudo cp "$ALACRITTY_REPO_DIR/extra/linux/Alacritty.desktop" /usr/share/applications/
+	sudo cp "$ALACRITTY_REPO_DIR/extra/logo/alacritty-term.svg" /usr/share/pixmaps/Alacritty.svg
+	sudo desktop-file-install /usr/share/applications/Alacritty.desktop
+	sudo update-desktop-database
+	rm -rf "$ALACRITTY_REPO_DIR"
 
 	# General utils
 	sudo apt install -y gh
