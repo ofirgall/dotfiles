@@ -28,7 +28,11 @@ alias gr='groot'
 alias cgp='cg $HOME/workspace/personal/' # cg to personal
 alias cgw='cg $HOME/worktrees/'
 alias cgnp='cg $HOME/.local/share/kvim-envs/main/lazy/' # cg to nvim plugins
-alias cgkv='cg $HOME/.local/share/kvim-envs/' # cg to kvim envs
+cgkv() {
+  local dir
+  dir=$(ls -d "$HOME/.local/share/kvim-envs"/*/ 2>/dev/null | xargs -n1 basename | fzf --reverse --height=30) || return
+  cg "$HOME/.local/share/kvim-envs/$dir/lazy/"
+}
 alias cgzp='cg $HOME/.local/share/zinit/plugins/' # cg to zsh plugins
 alias cgt='cg $HOME/.tmux/plugins/' # cg to tmux plugins
 alias cgg='cg $HOME/go' # cg to go
