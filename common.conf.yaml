@@ -32,6 +32,8 @@
         path: scripts
     ~/.config/nvim:
         path: editors/KoalaConfig
+    ~/.config/kvim-envs/main:
+        path: editors/KoalaConfig
     ~/.vimrc:
         path: dotfiles/vimrc
     ~/playgrounds:
