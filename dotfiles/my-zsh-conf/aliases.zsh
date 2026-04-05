@@ -27,8 +27,8 @@ alias gr='groot'
 # cg aliases
 alias cgp='cg $HOME/workspace/personal/' # cg to personal
 alias cgw='cg $HOME/worktrees/'
-alias cgnp='cg $HOME/.local/share/nvim/lazy' # cg to nvim plugins
-alias cgkv='cg $HOME/.local/share/kvim' # cg to kvim profiles
+alias cgnp='cg $HOME/.local/share/kvim-envs/main/lazy/' # cg to nvim plugins
+alias cgkv='cg $HOME/.local/share/kvim-envs/' # cg to kvim envs
 alias cgzp='cg $HOME/.local/share/zinit/plugins/' # cg to zsh plugins
 alias cgt='cg $HOME/.tmux/plugins/' # cg to tmux plugins
 alias cgg='cg $HOME/go' # cg to go
