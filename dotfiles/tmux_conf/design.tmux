@@ -71,7 +71,7 @@ set -g @nova-segment-current-ssh-colors "$active_tab_color"
 
 set -g @nova-segment-suspended "#{@suspended_mode}"
 
-set -g @nova-segment-session "#{session_name}"
+set -g @nova-segment-session "#{=35:#{s/^drift-chore-//:session_name}}"
 set -g @nova-segment-session-colors "$sides_color"
 
 set -g @nova-segment-whoami "#(whoami)@#h"
