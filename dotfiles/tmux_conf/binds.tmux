@@ -121,9 +121,9 @@ bind -r -T prefix M-J move-pane -h -t '.{down-of}'
 bind -r -T prefix M-K move-pane -h -t '.{up-of}'
 bind -r -T prefix M-L move-pane -t '.{right-of}'
 
-bind -n M-z resize-pane -Z # Zoom/Unzoom pane
-# Zoom/Unzoom remote pane with ALT+SHIFT+z
-bind -n M-Z if-shell "$is_nvim" 'send-keys M-Z' 'send-keys M-z'
+bind -n M-z if-shell "$is_nvim" 'send-keys M-z' 'resize-pane -Z' # Zoom/Unzoom pane
+bind -n M-Z resize-pane -Z # Zoom/Unzoom even in nvim
+
 bind -T prefix = select-layout even-horizontal # Equally sized panes (like vim)
 bind -T prefix + select-layout even-vertical # Equally sized panes (like vim)
 bind -T prefix - select-layout tiled  # Equally sized panes (like vim)
