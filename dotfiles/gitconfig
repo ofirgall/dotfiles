@@ -26,7 +26,7 @@
 	show-patch = "!f() { git format-patch -k -1 --stdout $1; }; f"
 	showp = "show-patch"
 [core]
-	editor = nvim
+	editor = kv
 	pager = delta
 	excludesfile = ~/.gitignore_global
 [pull]

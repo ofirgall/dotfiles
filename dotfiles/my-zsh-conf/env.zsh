@@ -48,10 +48,10 @@ export PATH=$PATH:$HOME/go/volumez-tools/tools
 export EDITOR='vim'
 if type nvim &> /dev/null; then
 	alias vi='vim'
-	export EDITOR='nvim'
+	export EDITOR='kv'
 
 	# nvim as man viewer
-	export MANPAGER='nvim +Man!'
+	export MANPAGER='kv +Man!'
 	export MANWIDTH=999
 fi
 
