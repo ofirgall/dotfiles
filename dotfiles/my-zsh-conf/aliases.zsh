@@ -28,7 +28,7 @@ alias gr='groot'
 alias cgp='cg $HOME/workspace/personal/' # cg to personal
 alias cgw='cg $HOME/worktrees/'
 alias cgnp='cg $HOME/.local/share/kvim-envs/main/lazy/' # cg to nvim plugins
-cgkv() {
+cgk() {
   local dir
   dir=$(ls -d "$HOME/.local/share/kvim-envs"/*/ 2>/dev/null | xargs -n1 basename | fzf --reverse --height=30) || return
   cg "$HOME/.local/share/kvim-envs/$dir/lazy/"
@@ -36,7 +36,7 @@ cgkv() {
 alias cgzp='cg $HOME/.local/share/zinit/plugins/' # cg to zsh plugins
 alias cgt='cg $HOME/.tmux/plugins/' # cg to tmux plugins
 alias cgg='cg $HOME/go' # cg to go
-alias cgk='cg $HOME/workspace/kernels/' # cg to kernels
+alias cgK='cg $HOME/workspace/kernels/' # cg to kernels
 
 # Misc
 alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed "s/.*-- \([0-9]*\)/\1/" | sponge | { IFS= read -r x; { printf "%s\n" "$x"; cat; } | xargs taskopen }'
