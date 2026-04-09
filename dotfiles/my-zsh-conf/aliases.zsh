@@ -133,4 +133,15 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+ez() {
+    local tmp=$(mktemp)
+    command ez "$@" --cd-file="$tmp"
+    local ret=$?
+    if [ -s "$tmp" ]; then
+        cd "$(cat "$tmp")"
+    fi
+    rm -f "$tmp"
+    return $ret
+}
+
 alias c=y
