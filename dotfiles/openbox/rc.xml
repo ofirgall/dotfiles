@@ -106,6 +106,13 @@
       </action>
     </keybind>
 
+    <!-- Browser -->
+    <keybind key="super-b">
+      <action name="Execute">
+        <command>x-www-browser</command>
+      </action>
+    </keybind>
+
     <!-- Kill focused window -->
     <keybind key="super-q">
       <action name="Close"/>
@@ -125,7 +132,7 @@
     </keybind>
 
     <!-- Exit openbox -->
-    <keybind key="super-shift-e">
+    <keybind key="super-S-q">
       <action name="Exit"/>
     </keybind>
 
