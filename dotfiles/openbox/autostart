@@ -3,6 +3,9 @@
 # Remap CapsLock to Escape
 setxkbmap -option caps:escape &
 
+# Enable tap-to-click
+xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Tapping Enabled" 1
+
 # Disable screen blanking / DPMS
 xset s off
 xset -dpms

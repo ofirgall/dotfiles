@@ -113,6 +113,13 @@
       </action>
     </keybind>
 
+    <!-- Bluetooth manager -->
+    <keybind key="super-S-b">
+      <action name="Execute">
+        <command>blueman-manager</command>
+      </action>
+    </keybind>
+
     <!-- Kill focused window -->
     <keybind key="super-q">
       <action name="Close"/>
