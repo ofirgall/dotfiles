@@ -38,6 +38,10 @@ alias cgt='cg $HOME/.tmux/plugins/' # cg to tmux plugins
 alias cgg='cg $HOME/go' # cg to go
 alias cgK='cg $HOME/workspace/kernels/' # cg to kernels
 
+# ez aliases
+alias ezp='ez --workspace $HOME/workspace/personal/'
+alias ezw='ez --workspace $HOME/workspace/work/'
+
 # Misc
 alias taskopen-fzf='taskopen -l | sed "s/ *[0-9]*) //" | sed "/^$/d" | fzf | sed "s/.*-- \([0-9]*\)/\1/" | sponge | { IFS= read -r x; { printf "%s\n" "$x"; cat; } | xargs taskopen }'
 
