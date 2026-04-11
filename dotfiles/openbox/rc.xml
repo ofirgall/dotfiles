@@ -136,6 +136,13 @@
       <action name="Exit"/>
     </keybind>
 
+    <!-- Switch to Hyprland -->
+    <keybind key="super-S-h">
+      <action name="Execute">
+        <command>sh -c 'dbus-send --system --print-reply --dest=org.freedesktop.Accounts /org/freedesktop/Accounts/User$(id -u) org.freedesktop.Accounts.User.SetSession string:hyprland &amp;&amp; openbox --exit'</command>
+      </action>
+    </keybind>
+
     <!-- Volume control -->
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
