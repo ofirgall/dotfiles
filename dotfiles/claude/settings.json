@@ -1,4 +1,7 @@
 {
+  "permissions": {
+    "defaultMode": "auto"
+  },
   "model": "opus",
   "hooks": {
     "Stop": [
@@ -54,10 +57,9 @@
   },
   "enabledPlugins": {
     "lua-lsp@claude-plugins-official": true,
-    "clangd-lsp@claude-plugins-official": true
+    "clangd-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
   },
   "syntaxHighlightingDisabled": false,
-  "permissions": {
-    "defaultMode": "auto"
-  }
+  "skipAutoPermissionPrompt": true
 }
