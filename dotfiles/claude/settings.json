@@ -56,5 +56,8 @@
     "lua-lsp@claude-plugins-official": true,
     "clangd-lsp@claude-plugins-official": true
   },
-  "syntaxHighlightingDisabled": false
+  "syntaxHighlightingDisabled": false,
+  "permissions": {
+    "defaultMode": "auto"
+  }
 }
