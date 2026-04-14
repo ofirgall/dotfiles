@@ -149,3 +149,29 @@ ez() {
 }
 
 alias c=y
+
+drift-mcp-auth() {
+  local src_slug="home-ofirg-workspace-work-drift"
+  local projects_dir="$HOME/.cursor/projects"
+  local src="$projects_dir/$src_slug/mcp-auth.json"
+
+  if [[ ! -f "$src" ]]; then
+    echo "Source mcp-auth.json not found: $src" >&2
+    return 1
+  fi
+
+  local slug=$(pwd | sed 's/[^a-zA-Z0-9]/-/g; s/-\+/-/g; s/^-\+\|-\+$//g')
+  local full_path="$projects_dir/$slug"
+
+  if (( ${#full_path} > 92 )); then
+    local hash=$(echo -n "$full_path" | sha256sum | head -c 7)
+    full_path="${full_path:0:84}-$hash"
+  fi
+
+  local dest_dir="$full_path"
+  local dest="$dest_dir/mcp-auth.json"
+
+  mkdir -p "$dest_dir"
+  ln -sf "$src" "$dest"
+  echo "Linked mcp-auth.json -> $dest"
+}
