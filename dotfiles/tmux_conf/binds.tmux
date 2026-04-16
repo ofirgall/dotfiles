@@ -232,10 +232,10 @@ bind -n C-u if-shell "$is_nvim || $is_vim || $is_nested_tmux || $is_less || $is_
 
 ##### MOUSE COPY MODE #####
 # Copy word with double click
-bind -n DoubleClick1Pane if-shell "$is_nvim" "" 'copy-mode -M; send-keys -X select-word; run-shell "sleep 0.2"; send-keys -X copy-pipe-and-cancel'
+# bind -n DoubleClick1Pane if-shell "$is_nvim" "" 'copy-mode -M; send-keys -X select-word; run-shell "sleep 0.5"; send-keys -X copy-pipe-and-cancel'
 
 # Dont finish copy when mouse drag end
-unbind -T copy-mode-vi MouseDragEnd1Pane
+# unbind -T copy-mode-vi MouseDragEnd1Pane
 
 # -------------------------
 #	    MISC BINDS

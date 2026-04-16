@@ -74,6 +74,7 @@ set -g @plugin 'schasse/tmux-jump'
 set -g @plugin 'Neo-Oli/tmux-text-macros'
 set -g @plugin 'sainnhe/tmux-fzf'
 set -g @plugin 'laktak/extrakto'
+set -g @plugin 'aless3/tmux-click-copy'
 
 ###########
 # RUN TPM #
