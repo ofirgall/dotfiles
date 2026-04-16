@@ -161,14 +161,7 @@ drift-mcp-auth() {
   fi
 
   local slug=$(pwd | sed 's/[^a-zA-Z0-9]/-/g; s/-\+/-/g; s/^-\+\|-\+$//g')
-  local full_path="$projects_dir/$slug"
-
-  if (( ${#full_path} > 92 )); then
-    local hash=$(echo -n "$full_path" | sha256sum | head -c 7)
-    full_path="${full_path:0:84}-$hash"
-  fi
-
-  local dest_dir="$full_path"
+  local dest_dir="$projects_dir/$slug"
   local dest="$dest_dir/mcp-auth.json"
 
   mkdir -p "$dest_dir"
