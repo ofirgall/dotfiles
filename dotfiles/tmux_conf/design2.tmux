@@ -39,17 +39,15 @@ set -g @oasis_module_whoami "\
 #[bg=#{@thm_surface},fg=#{@thm_fg}] #(whoami)@#h \
 #[fg=#{@thm_surface},bg=#{@thm_mantle}]"
 
-# current ssh - reads /tmp/tmux_ssh_hosts_<session>, hides when empty
-set -g @oasis_module_current_ssh "\
-#{?#{!=:#(cat /tmp/tmux_ssh_hosts_#S 2>/dev/null),},\
-#[fg=#{@thm_primary},bg=#{@thm_mantle}]#[bg=#{@thm_primary},fg=#{@thm_core},bold] #(cat /tmp/tmux_ssh_hosts_#S) #[fg=#{@thm_primary},bg=#{@thm_mantle}]\
-,}"
+# current ssh - reads /tmp/tmux_ssh_hosts_<session>, hides when empty.
+# Styled content is stored in its own option so commas in #[bg=X,fg=Y]
+# aren't consumed by the #{?cond,then,else} parser.
+set -g @_oasis_ssh_body "#[fg=#{@thm_primary},bg=#{@thm_mantle}]#[bg=#{@thm_primary},fg=#{@thm_core},bold] #(cat /tmp/tmux_ssh_hosts_#S) #[fg=#{@thm_primary},bg=#{@thm_mantle}]"
+set -g @oasis_module_current_ssh "#{?#{!=:#(cat /tmp/tmux_ssh_hosts_#S 2>/dev/null),},#{E:@_oasis_ssh_body},}"
 
-# github - hidden when helper outputs nothing
-set -g @oasis_module_github "\
-#{?#{!=:#(bash $helpers get_github_user_name),},\
-#[fg=#{@thm_primary},bg=#{@thm_mantle}]#[bg=#{@thm_primary},fg=#{@thm_core},bold]  #(bash $helpers get_github_user_name) #[fg=#{@thm_primary},bg=#{@thm_mantle}]\
-,}"
+# github - hidden when helper outputs nothing.
+set -g @_oasis_github_body "#[fg=#{@thm_primary},bg=#{@thm_mantle}]#[bg=#{@thm_primary},fg=#{@thm_core},bold]  #(bash $helpers get_github_user_name) #[fg=#{@thm_primary},bg=#{@thm_mantle}]"
+set -g @oasis_module_github "#{?#{!=:#(bash $helpers get_github_user_name),},#{E:@_oasis_github_body},}"
 
 ### STATUS BAR ###
 set -g @oasis_status_left "#{E:@oasis_module_session}"
