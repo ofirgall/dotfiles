@@ -4,5 +4,6 @@
 
 notify 'Requires Permission'
 
-tmux_set set-option -q @cursor-cli-wrapper-status "WAITING"
+tmux_set set-option -wq @ai-agent "claude"
+tmux_set set-option -wq @ai-agent-status "WAITING"
 hypr_rename

@@ -2,5 +2,6 @@
 
 . "$(dirname "$0")/helpers.sh"
 
-tmux_set set-option -q @cursor-cli-wrapper-status "IDLE"
+tmux_set set-option -wq @ai-agent "claude"
+tmux_set set-option -wq @ai-agent-status "IDLE"
 hypr_rename
