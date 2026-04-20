@@ -9,7 +9,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude_scripts/hook-finish"
+            "command": "sh -c '~/.claude_scripts/hook-finish >/dev/null 2>&1 &'"
           }
         ]
       }
@@ -19,7 +19,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude_scripts/hook-perm-req"
+            "command": "sh -c '~/.claude_scripts/hook-perm-req >/dev/null 2>&1 &'"
           }
         ]
       }
@@ -29,7 +29,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude_scripts/hook-session-start"
+            "command": "sh -c '~/.claude_scripts/hook-session-start >/dev/null 2>&1 &'"
           }
         ]
       }
@@ -39,7 +39,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude_scripts/hook-session-stop"
+            "command": "sh -c '~/.claude_scripts/hook-session-stop >/dev/null 2>&1 &'"
           }
         ]
       }
@@ -49,7 +49,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude_scripts/hook-prompt-start"
+            "command": "sh -c '~/.claude_scripts/hook-prompt-start >/dev/null 2>&1 &'"
           }
         ]
       }
@@ -61,5 +61,6 @@
     "rust-analyzer-lsp@claude-plugins-official": true
   },
   "syntaxHighlightingDisabled": false,
+  "effortLevel": "medium",
   "skipAutoPermissionPrompt": true
 }
