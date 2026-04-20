@@ -25,6 +25,7 @@
 	stash-staged = "!bash -c \"git stash --keep-index; git stash push -m \"staged\" --keep-index; git stash pop stash@{1}\""
 	show-patch = "!f() { git format-patch -k -1 --stdout $1; }; f"
 	showp = "show-patch"
+	gen = "!f() { echo \"Affected files:\"; git status --porcelain -- ':(attr:linguist-generated=true)' | cut -c4-; echo; git \"$@\" -- ':(attr:linguist-generated=true)'; }; f"
 [core]
 	editor = kv
 	pager = delta
