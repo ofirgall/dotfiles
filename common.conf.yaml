@@ -64,3 +64,4 @@
     - [install_scripts/install_tmux.sh, Installing tmux]
     - [install_scripts/install_go.sh, Installing Go]
     - [install_scripts/install_wrappers.sh, Installing Wrappers]
+    - [install_scripts/install_git_utils.sh, Installing Git utilities]
