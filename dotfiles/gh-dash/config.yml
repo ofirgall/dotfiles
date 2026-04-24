@@ -16,10 +16,14 @@ prSections:
         hidden: true
 
 issuesSections:
-  - title: My Issues
-    filters: is:open author:@me sort:updated-desc
+  - title: Open Issues
+    filters: is:open sort:updated-desc
+  - title: Open Bugs
+    filters: is:open sort:updated-desc label:bug
   - title: Assigned
     filters: is:open assignee:@me sort:updated-desc
+  - title: My Issues
+    filters: is:open author:@me sort:updated-desc
   - title: Involved
     filters: is:open involves:@me -author:@me -assignee:@me sort:updated-desc
 
@@ -61,6 +65,8 @@ defaults:
 
 keybindings:
   universal:
+    - key: i
+      builtin: search
     - key: y
       name: copy url
       command: >-
