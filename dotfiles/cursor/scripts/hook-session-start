@@ -1,9 +1,8 @@
 #!/usr/bin/env sh
 
-. "$(dirname "$0")/helpers.sh"
+. "$HOME/dotfiles_scripts/agents-status/helpers.sh"
 
 (
-    tmux_set set-option -wq @ai-agent "cursor"
-    tmux_set set-option -wq @ai-agent-status "IDLE"
-    hypr_rename
+    ensure_server
+    send_event cursor IDLE
 ) </dev/null >/dev/null 2>&1 &

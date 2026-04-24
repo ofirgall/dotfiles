@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-. "$(dirname "$0")/helpers.sh"
+. "$HOME/dotfiles_scripts/agents-status/helpers.sh"
 
-tmux_set set-option -wqu @ai-agent-status
-tmux_set set-option -wqu @ai-agent
-hypr_rename
+(
+    send_event claude "" "" clear
+) </dev/null >/dev/null 2>&1 &

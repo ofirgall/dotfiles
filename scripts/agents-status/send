@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+# Send a JSON event to the agents-status server via its Unix datagram socket.
+# Usage: send '{"agent":"cursor","instance_id":"...","status":"IDLE"}'
+
+SOCK="/tmp/agent-status-$(id -u).sock"
+
+[ -S "$SOCK" ] || exit 0
+
+python3 - "$SOCK" "$1" <<'PY'
+import socket, sys
+sock_path, payload = sys.argv[1], sys.argv[2]
+s = socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM)
+try:
+    s.sendto(payload.encode("utf-8"), sock_path)
+except OSError:
+    pass
+PY

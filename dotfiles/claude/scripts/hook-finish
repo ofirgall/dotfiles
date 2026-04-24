@@ -1,9 +1,7 @@
 #!/usr/bin/env sh
 
-. "$(dirname "$0")/helpers.sh"
+. "$HOME/dotfiles_scripts/agents-status/helpers.sh"
 
-notify 'Done'
-
-tmux_set set-option -wq @ai-agent "claude"
-tmux_set set-option -wq @ai-agent-status "WAITING"
-hypr_rename
+(
+    send_event claude WAITING Done
+) </dev/null >/dev/null 2>&1 &
