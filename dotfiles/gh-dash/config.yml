@@ -1,0 +1,112 @@
+# yaml-language-server: $schema=https://gh-dash.dev/schema.json
+prSections:
+  - title: Mine
+    filters: is:open author:@me sort:updated-desc
+    layout:
+      author:
+        hidden: true
+  - title: Needs My Review
+    filters: is:open review-requested:@me sort:updated-desc
+  - title: Involved
+    filters: is:open involves:@me -author:@me -review-requested:@me sort:updated-desc
+  - title: Recently Merged
+    filters: is:merged author:@me sort:updated-desc
+    layout:
+      author:
+        hidden: true
+
+issuesSections:
+  - title: My Issues
+    filters: is:open author:@me sort:updated-desc
+  - title: Assigned
+    filters: is:open assignee:@me sort:updated-desc
+  - title: Involved
+    filters: is:open involves:@me -author:@me -assignee:@me sort:updated-desc
+
+defaults:
+  view: prs
+  refetchIntervalMinutes: 30
+  preview:
+    open: true
+    width: 60
+  prsLimit: 30
+  issuesLimit: 20
+  layout:
+    prs:
+      updatedAt:
+        width: 7
+      repo:
+        width: 18
+      author:
+        width: 15
+      assignees:
+        width: 20
+        hidden: true
+      base:
+        width: 15
+        hidden: true
+      lines:
+        width: 16
+    issues:
+      updatedAt:
+        width: 7
+      repo:
+        width: 18
+      creator:
+        width: 15
+      assignees:
+        width: 20
+        hidden: true
+  dateFormat: "2006-01-02"
+
+keybindings:
+  universal:
+    - key: y
+      name: copy url
+      command: >-
+        echo -n "{{.Url}}" | toclip
+    - key: c
+      name: checkout
+      command: >-
+        tmux popup -d {{.RepoPath}} -w 80% -h 80% -E "gh pr checkout {{.PrNumber}} && echo 'Press any key to close' && read -n 1"
+  prs:
+    - key: O
+      builtin: checkout
+    - key: v
+      name: view in browser
+      command: gh pr view --web --repo {{.RepoName}} {{.PrNumber}}
+    - key: M
+      name: merge
+      command: >-
+        tmux popup -d {{.RepoPath}} -w 80% -h 80% -E "gh pr merge --repo {{.RepoName}} {{.PrNumber}}"
+  issues:
+    - key: v
+      name: view in browser
+      command: gh issue view --web --repo {{.RepoName}} {{.IssueNumber}}
+
+repoPaths:
+  "*/*": ~/projects/*
+
+theme:
+  ui:
+    sectionsShowCount: true
+    table:
+      showSeparator: true
+  colors:
+    text:
+      primary: "#cdd6f4"
+      secondary: "#cba6f7"
+      inverted: "#11111b"
+      faint: "#bac2de"
+      warning: "#f9e2af"
+      success: "#a6e3a1"
+      error: "#f38ba8"
+    background:
+      selected: "#313244"
+    border:
+      primary: "#cba6f7"
+      secondary: "#45475a"
+      faint: "#313244"
+
+confirmQuit: false
+smartFilteringAtLaunch: true

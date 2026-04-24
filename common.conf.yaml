@@ -50,6 +50,8 @@
         path: dotfiles/claude/settings.json
     ~/.claude_scripts:
         path: dotfiles/claude/scripts
+    ~/.config/gh-dash/config.yml:
+        path: dotfiles/gh-dash/config.yml
 
 - create:
     - ~/projects
