@@ -74,7 +74,20 @@ alias gpv="gh pr view --web"
 alias gpvc="gh pr view | egrep \"url:\" | head -n 1 | sed \"s/url://g\" | xargs echo -n | toclip"
 alias gpar="gh pr edit --add-reviewer"
 
+function gh_select_account() {
+	local users=("${(@f)$(gh auth status 2>/dev/null | awk '/Logged in/ {for(i=1;i<=NF;i++) if($i=="account") print $(i+1)}')}")
+	(( ${#users[@]} <= 1 )) && return 0
+	local selected
+	selected="$(printf '%s\n' "${users[@]}" | fzf --prompt='GitHub account> ' --height=40% --reverse)"
+	[[ -z "$selected" ]] && { echo "No selection"; return 1 }
+	gh auth switch -u "$selected"
+}
+
 function gfork() {
+	local prev_user="$(gh api user --jq .login 2>/dev/null)"
+
+	gh_select_account || return 1
+
 	git remote rename origin upstream
 	gh repo fork --remote --remote-name origin
 
@@ -85,6 +98,7 @@ function gfork() {
 	git branch --set-upstream-to="origin/$branch"
 	git config branch.$branch.pushremote origin
 
+	[[ -n "$prev_user" ]] && gh auth switch -u "$prev_user"
 }
 
 function ssh() {
