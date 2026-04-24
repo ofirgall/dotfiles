@@ -28,7 +28,7 @@ issuesSections:
     filters: is:open involves:@me -author:@me -assignee:@me sort:updated-desc
 
 defaults:
-  view: prs
+  view: issues
   refetchIntervalMinutes: 30
   preview:
     open: true
