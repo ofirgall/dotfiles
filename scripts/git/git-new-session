@@ -35,16 +35,13 @@ fi
 PROJ_NAME=$(basename "$git_root")
 WORKTREE_PATH="$WORKTREES_ROOT/$PROJ_NAME/$1"
 
-read -p "Confirm worktree path '$WORKTREE_PATH'? [y/N] " answer
-[[ "$answer" =~ ^[Yy]$ ]] || exit 1
+echo "Worktree path:      $WORKTREE_PATH"
 
 BRANCH_NAME=$BRANCH_PREFIX$1
-read -p "Confirm branch name '$BRANCH_NAME'? [y/N] " answer
-[[ "$answer" =~ ^[Yy]$ ]] || exit 1
+echo "Branch name:        $BRANCH_NAME"
 
 TMUX_SESSION_NAME="$PROJ_NAME-$1"
-read -p "Confirm tmux session name '$TMUX_SESSION_NAME'? [y/N] " answer
-[[ "$answer" =~ ^[Yy]$ ]] || exit 1
+echo "Tmux session name:  $TMUX_SESSION_NAME"
 
 mkdir -p "$WORKTREES_ROOT/$PROJ_NAME/"
 worktree_output=$(git worktree add "$WORKTREE_PATH" -b "$BRANCH_NAME" 2>&1) || {
