@@ -47,7 +47,22 @@ def apply_state(instance_id, state):
 
     if notify_msg:
         title = f"❇️ {agent.capitalize() or 'Agent'} {notify_msg} ❇️"
-        _run(["notify-send", title, f"INSTANCE: {instance_id}"])
+        lines = []
+        tmux_sess = state.get("tmux_session")
+        tmux_win = state.get("tmux_window")
+        if tmux_sess and tmux_win:
+            lines.append(f"TMUX: {tmux_sess}#{tmux_win}")
+        elif tmux_sess:
+            lines.append(f"TMUX: {tmux_sess}")
+        repo = state.get("repo")
+        if repo:
+            lines.append(f"Repo: {repo}")
+        branch = state.get("branch")
+        if branch:
+            lines.append(f"Branch: {branch}")
+        if not lines:
+            lines.append(f"INSTANCE: {instance_id}")
+        _run(["notify-send", title, "\n".join(lines)])
 
     if instance_id.startswith("tmux:"):
         target = instance_id[len("tmux:"):]
@@ -82,7 +97,8 @@ def handle_event(event):
     with _lock:
         prev = _pending.get(instance_id, {})
         merged = dict(prev)
-        for k in ("agent", "status", "notify", "clear"):
+        for k in ("agent", "status", "notify", "clear",
+                  "tmux_session", "tmux_window", "repo", "branch"):
             if k in event:
                 merged[k] = event[k]
         _pending[instance_id] = merged

@@ -22,19 +22,58 @@ get_instance_id() {
     printf 'pid:%s' "$PPID"
 }
 
+_get_tmux_session() {
+    [ -n "$TMUX" ] && tmux display-message -p '#{session_name}' 2>/dev/null
+}
+
+_get_tmux_window_index() {
+    [ -n "$TMUX" ] && tmux display-message -p '#{window_index}' 2>/dev/null
+}
+
+_project_dir() {
+    # Prefer env vars set by agents; fall back to cwd.
+    if [ -n "$CURSOR_PROJECT_DIR" ]; then
+        printf '%s' "$CURSOR_PROJECT_DIR"
+    elif [ -n "$CLAUDE_PROJECT_DIR" ]; then
+        printf '%s' "$CLAUDE_PROJECT_DIR"
+    else
+        pwd
+    fi
+}
+
+_get_repo() {
+    local top
+    top="$(git -C "$(_project_dir)" rev-parse --show-toplevel 2>/dev/null)"
+    [ -n "$top" ] && basename "$top"
+}
+
+_get_branch() {
+    git -C "$(_project_dir)" rev-parse --abbrev-ref HEAD 2>/dev/null
+}
+
 # send_event AGENT STATUS [NOTIFY] [CLEAR]
 send_event() {
     local agent="$1" status="$2" notify="$3" clear="$4"
-    local iid payload
+    local iid tmux_sess tmux_win repo branch payload
     iid="$(get_instance_id)"
+    tmux_sess="$(_get_tmux_session)"
+    tmux_win="$(_get_tmux_window_index)"
+    repo="$(_get_repo)"
+    branch="$(_get_branch)"
 
-    payload="$(python3 - "$agent" "$iid" "$status" "$notify" "$clear" <<'PY'
+    payload="$(python3 - "$agent" "$iid" "$status" "$notify" "$clear" \
+        "$tmux_sess" "$tmux_win" "$repo" "$branch" <<'PY'
 import json, sys
-agent, iid, status, notify, clear = sys.argv[1:6]
+(agent, iid, status, notify, clear,
+ tmux_sess, tmux_win, repo, branch) = sys.argv[1:10]
 ev = {"agent": agent, "instance_id": iid}
-if status:  ev["status"] = status
-if notify:  ev["notify"] = notify
-if clear:   ev["clear"] = True
+if status:     ev["status"] = status
+if notify:     ev["notify"] = notify
+if clear:      ev["clear"] = True
+if tmux_sess:  ev["tmux_session"] = tmux_sess
+if tmux_win:   ev["tmux_window"] = tmux_win
+if repo:       ev["repo"] = repo
+if branch:     ev["branch"] = branch
 print(json.dumps(ev))
 PY
 )"
