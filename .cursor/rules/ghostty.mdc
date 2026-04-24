@@ -1,0 +1,14 @@
+---
+description: Ghostty configuration file editing standards
+globs: **/*ghostty/config
+alwaysApply: false
+---
+
+# Ghostty Config Editing
+
+Before suggesting any edits to a Ghostty config file, you MUST:
+
+1. Fetch the Ghostty Configuration Manual: https://ghostty.org/docs/config/reference
+2. Fetch the Ghostty Changelog: https://ghostty.org/docs/install/release-notes
+
+Only suggest keys and values that are valid per the latest documentation. Do not use deprecated or removed keys. If a key's syntax has changed in a recent release, use the new syntax.
