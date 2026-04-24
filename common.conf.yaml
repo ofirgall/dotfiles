@@ -50,6 +50,10 @@
         path: dotfiles/claude/settings.json
     ~/.claude_scripts:
         path: dotfiles/claude/scripts
+    ~/.cursor/hooks.json:
+        path: dotfiles/cursor/hooks.json
+    ~/.cursor_scripts:
+        path: dotfiles/cursor/scripts
     ~/.config/gh-dash/config.yml:
         path: dotfiles/gh-dash/config.yml
 

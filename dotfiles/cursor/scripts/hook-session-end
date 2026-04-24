@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+. "$(dirname "$0")/helpers.sh"
+
+(
+    tmux_set set-option -wqu @ai-agent-status
+    tmux_set set-option -wqu @ai-agent
+    hypr_rename
+) </dev/null >/dev/null 2>&1 &

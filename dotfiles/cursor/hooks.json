@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      { "command": "~/.cursor_scripts/hook-session-start" }
+    ],
+    "sessionEnd": [
+      { "command": "~/.cursor_scripts/hook-session-end" }
+    ],
+    "beforeSubmitPrompt": [
+      { "command": "~/.cursor_scripts/hook-prompt-start" }
+    ],
+    "stop": [
+      { "command": "~/.cursor_scripts/hook-finish" }
+    ],
+    "beforeShellExecution": [
+      { "command": "~/.cursor_scripts/hook-perm-req" }
+    ],
+    "afterShellExecution": [
+      { "command": "~/.cursor_scripts/hook-after-shell" }
+    ]
+  }
+}

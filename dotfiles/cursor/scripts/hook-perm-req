@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+. "$(dirname "$0")/helpers.sh"
+
+(
+    notify 'Requires Permission'
+    tmux_set set-option -wq @ai-agent "cursor"
+    tmux_set set-option -wq @ai-agent-status "WAITING"
+    hypr_rename
+) </dev/null >/dev/null 2>&1 &
+
+printf '{"permission":"ask"}\n'
