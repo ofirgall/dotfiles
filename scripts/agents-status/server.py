@@ -77,11 +77,17 @@ def apply_state(instance_id, state):
 
     script = os.path.expanduser("~/.config/hypr/UserScripts/RenameWorkspaces.py")
     if os.access(script, os.X_OK):
-        try:
-            subprocess.Popen([script], stdout=subprocess.DEVNULL,
-                             stderr=subprocess.DEVNULL, start_new_session=True)
-        except Exception:
-            pass
+        def _spawn_rename():
+            try:
+                subprocess.Popen([script], stdout=subprocess.DEVNULL,
+                                 stderr=subprocess.DEVNULL, start_new_session=True)
+            except Exception:
+                pass
+        # Small delay so the tmux option write above is visible to the script's
+        # `tmux list-windows` reads (avoids races where rename sees stale state).
+        t = threading.Timer(0.05, _spawn_rename)
+        t.daemon = True
+        t.start()
 
 
 def flush(instance_id):
