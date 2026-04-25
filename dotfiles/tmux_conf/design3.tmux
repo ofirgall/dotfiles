@@ -72,7 +72,7 @@ set -g status-left "#[fg=#{@pill_bg},bg=#{@bar_bg}]#[fg=#{@pill_text},bg=#{@p
 set -g status-right ""
 
 # ─── WINDOW TABS: one bubble, two color sections, sharp seam ───────
-set -g window-status-current-format "#[fg=#{@win_active_number_bg},bg=#{@bar_bg}]#[fg=#{@win_active_number_text},bg=#{@win_active_number_bg},bold]#I #[fg=#{@win_active_number_bg},bg=#{@win_active_name_bg}]▏#[fg=#{@win_active_name_text},bg=#{@win_active_name_bg}] #W #[fg=#{@win_active_name_bg},bg=#{@bar_bg}]"
-set -g window-status-format         "#[fg=#{@win_inactive_number_bg},bg=#{@bar_bg}]#[fg=#{@win_inactive_number_text},bg=#{@win_inactive_number_bg}]#I #[fg=#{@win_inactive_number_bg},bg=#{@win_inactive_name_bg}]▏#[fg=#{@win_inactive_name_text},bg=#{@win_inactive_name_bg}] #W #[fg=#{@win_inactive_name_bg},bg=#{@bar_bg}]"
+set -g window-status-current-format "#[fg=#{@win_active_number_bg},bg=#{@bar_bg}]#[fg=#{@win_active_number_text},bg=#{@win_active_number_bg},bold]#I #[fg=#{@win_active_number_bg},bg=#{@win_active_name_bg}]▏#[fg=#{@win_active_name_text},bg=#{@win_active_name_bg}]#W #[fg=#{@win_active_name_bg},bg=#{@bar_bg}]"
+set -g window-status-format         "#[fg=#{@win_inactive_number_bg},bg=#{@bar_bg}]#[fg=#{@win_inactive_number_text},bg=#{@win_inactive_number_bg}]#I #[fg=#{@win_inactive_number_bg},bg=#{@win_inactive_name_bg}]▏#[fg=#{@win_inactive_name_text},bg=#{@win_inactive_name_bg}]#W #[fg=#{@win_inactive_name_bg},bg=#{@bar_bg}]"
 
 set -g window-status-separator " "
