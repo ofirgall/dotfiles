@@ -53,26 +53,16 @@ Reverted changes:
 To resume later: re-introduce `@_d3_active_color` / `@_d3_inactive_color`
 helper options and the `prefix W` keybind from earlier commit.
 
-## Step 4.5 — Window tab: one bubble, two color sections, sharp seam  [~]
+## Step 4.5 — Window tab: bubble with thin ▏ seam  [~]
 
-Final design (after a few iterations):
-- ONE outer bubble (rounded both ends).
-- Inside: two color zones — number on accent, name on surface_0.
-- Seam is a sharp vertical bg color change with NO glyph between them
-  (rejected the curved `` seam earlier as "an edge").
-
-Format: `<L> #I [bg shift] #W <R>` — 2 cap glyphs.
-- `<L>` outer left cap   — number_bg → bar_bg
-- ` #I ` number cell      — number_text on number_bg, bold (active only)
-- ` #W ` name cell        — name_text on name_bg (bg shifts sharply)
-- `<R>` outer right cap  — name_bg → bar_bg
-
-User answers captured:
-- Different bg per section (number=accent, name=surface_0)
-- Sharp vertical color change between sections
-- Both ends rounded (current  )
-
-- [ ] **User verifies** the new look.
+- [x] One outer bubble, rounded both ends, two bg color zones inside.
+- [x] Number got a leading space restored so it's centered in its
+  section (`<L> 1 ` instead of `<L>1 `).
+- [x] Seam is now the **▏** (U+258F left one-eighth block) glyph drawn
+  fg=number_bg on bg=name_bg — a thin vertical line at the boundary,
+  marking where the bg color changes.
+- [x] Format: `<L> #I ▏ #W <R>` — 2 caps + 1 thin seam.
+- [ ] **User verifies** centering and the thin seam look.
 
 ## Step 5 — Status bar modules (one at a time)
 
