@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
-. "$HOME/dotfiles_scripts/agents-status/helpers.sh"
-
 (
+    . "$HOME/dotfiles_scripts/agents-status/helpers.sh"
     send_event claude WAITING Done
 ) </dev/null >/dev/null 2>&1 &

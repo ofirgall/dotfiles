@@ -1,8 +1,7 @@
 #!/usr/bin/env sh
 
-. "$HOME/dotfiles_scripts/agents-status/helpers.sh"
-
 (
+    . "$HOME/dotfiles_scripts/agents-status/helpers.sh"
     ensure_server
     send_event claude IDLE
 ) </dev/null >/dev/null 2>&1 &

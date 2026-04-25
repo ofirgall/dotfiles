@@ -9,7 +9,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh -c '~/.claude_scripts/hook-finish >/dev/null 2>&1 &'"
+            "command": "~/.claude_scripts/hook-finish"
           }
         ]
       }
@@ -19,7 +19,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh -c '~/.claude_scripts/hook-perm-req >/dev/null 2>&1 &'"
+            "command": "~/.claude_scripts/hook-perm-req"
           }
         ]
       }
@@ -29,7 +29,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh -c '~/.claude_scripts/hook-session-start >/dev/null 2>&1 &'"
+            "command": "~/.claude_scripts/hook-session-start"
           }
         ]
       }
@@ -39,7 +39,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh -c '~/.claude_scripts/hook-session-stop >/dev/null 2>&1 &'"
+            "command": "~/.claude_scripts/hook-session-stop"
           }
         ]
       }
@@ -49,7 +49,27 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh -c '~/.claude_scripts/hook-prompt-start >/dev/null 2>&1 &'"
+            "command": "~/.claude_scripts/hook-prompt-start"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude_scripts/hook-tool-done"
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude_scripts/hook-tool-done"
           }
         ]
       }
