@@ -39,33 +39,33 @@ can iterate on **style and components** first, then theme later.
 
 Confirmed working. Both active and inactive tabs render as bubbles.
 
-## Step 4 — Per-window color override  [~]
+## Step 4 — Per-window color override  [x]
 
-### v2: dim is auto-derived from @window_color (not stored manually)
-
-User feedback after v1: "the bind shouldn't be the flow for the dim".
-Restructured so:
-- `binds.tmux` `prefix W` only sets `@window_color`. Empty input clears it.
-- `hooks.tmux` adds `after-select-window` (+ window-linked,
-  session-created, client-attached) hooks that call
-  `refresh_dim_colors.sh`. The script iterates ALL windows and:
-    - if `@window_color` is set: derive dim via `dim_color.sh`, write
-      to `@window_color_active`.
-    - if `@window_color` is unset: unset `@window_color_active`.
-- The bind also calls `refresh_dim_colors.sh` after setting
-  `@window_color` so the dim is visible immediately (not only after
-  the next window switch).
-- Result: `tmux setw @window_color X` from any caller (bind, manual,
-  external script) auto-syncs the dim on the next event.
-
-Helpers in `design3.tmux`:
-- `@_d3_active_number_bg`   = `@window_color_active` ?? default
-- `@_d3_inactive_number_bg` = `@window_color` ?? default
+Final design:
+- `prefix W` (in `binds.tmux`) prompts for a color (hex or name).
+  Sets `@window_color` to the user input. Empty input clears it.
+- A hook (`after-select-window` + `window-linked` +
+  `session-created` + `client-attached` in `hooks.tmux`) and an
+  immediate refresh from the bind both call `refresh_dim_colors.sh`,
+  which iterates every window and:
+    - if `@window_color` is set: resolves it to bright hex (`factor=1.0`),
+      writes it back to `@window_color`, AND writes the 50%-dim hex
+      (`factor=0.5`) to `@window_color_dim`. Both options end up in the
+      same palette so they read as bright/dim of the same hue.
+    - if `@window_color` is unset: unsets `@window_color_dim`.
+- `design3.tmux` helpers:
+    - `@_d3_active_number_bg`   = `@window_color`     ?? default mauve
+    - `@_d3_inactive_number_bg` = `@window_color_dim` ?? `@window_color` ?? default surface_1
+- Result: tagged window's number circle is bright when focused, dim
+  when in the background. Other (untagged) windows keep the theme
+  defaults. External callers writing `tmux setw @window_color X`
+  also work — the hook normalizes and computes the dim.
 
 Files:
-- `~/.tmux_conf/dim_color.sh` — color → hex resolution + brightness
-  factor (e.g. `dim_color.sh red 0.5` → `#794554`).
+- `~/.tmux_conf/dim_color.sh` — color → hex resolution + brightness factor.
 - `~/.tmux_conf/refresh_dim_colors.sh` — for-each-window sync.
+- `~/.tmux_conf/tag_window_color.sh` — (legacy from v1, no longer used
+  by the bind; safe to delete later).
 
 
 
@@ -115,28 +115,34 @@ Verified:
 For each: define the bubble, add to `status-left` or `status-right`,
 reload, user confirms.
 
-- [ ] **session** — left, with drift-chore- prefix strip + 35-char trunc.
-- [ ] **whoami** — right, ` user@host`.
-- [ ] **github** — right, hidden when helper outputs nothing.
-- [ ] **current-ssh** — right, reads `/tmp/tmux_ssh_hosts_<session>`,
-  hidden when empty.
-- [ ] **prefix** — right, only when `client_prefix`.
-- [ ] **zoomed** — right, only when `window_zoomed_flag`.
-- [ ] **synced** — right, only when `pane_synchronized`.
+- [x] **session** — left, with drift-chore- prefix strip + 35-char trunc.
+      `@mod_session_bg=surface_0`, `@mod_session_text=fg`, bold.
+- [x] **whoami** — right, ` user@host`. surface_0 bg + fg text.
+- [x] **github** — right, hidden when helper outputs nothing.
+      Mauve bg + crust text. Body in `@_mod_github_body` to dodge the
+      ternary-comma collision; helper called via `#(bash $HOME/...)`.
+- [x] **current-ssh** — right, reads `/tmp/tmux_ssh_hosts_<session>`,
+  hidden when empty. Sapphire bg + crust text.
+- [x] **prefix** — right, only when `client_prefix`. Red bg + crust text.
+- [x] **zoomed** — right, only when `window_zoomed_flag`. Peach bg + crust text.
+- [x] **synced** — right, only when `pane_synchronized`. Yellow bg + crust text.
 
-## Step 6 — Color theme (deferred from Step 1)
+## Step 6 — Color theme  (REVERTED)
 
-- [ ] Extract all hard-coded colors into named variables (palette block at
-  top of `design3.tmux`).
-- [ ] Pick a final palette (catppuccin mocha as the working candidate, but
-  open).
-- [ ] Re-render and confirm.
+Tried a centralized `@thm_*` palette + `@bar_bg/@win_*` role
+indirection layer. User decided it wasn't worth the extra layer —
+reverted to inline hex per role/module. Each `@mod_*_bg` and
+`@win_*_bg` keeps its own literal hex value.
 
 ## Step 7 — Polish
 
 - [ ] Pane border styling.
 - [ ] Message / mode-style.
 - [ ] Suspended-mode handling (port from old design.tmux if still used).
+- [ ] **session** module — refine the look (bg/text colors, bold,
+  optional icon, padding, possibly a leading glyph). Currently using
+  surface_0 bg + fg text + bold; revisit once the full status bar is
+  in place.
 
 ---
 
