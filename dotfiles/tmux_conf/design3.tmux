@@ -63,6 +63,16 @@ set -g @win_inactive_number_text "#cdd6f4"
 set -g @win_inactive_name_bg     "#313244"
 set -g @win_inactive_name_text   "#bac2de"
 
+
+# Resolved number-circle bg — per-window @window_color wins, theme
+# default otherwise. Active uses @window_color_active (defaults to
+# @window_color) so the user can optionally pick a dimmer shade for
+# active windows; same lookup pattern for inactive.
+set -g @window_color ""
+set -g @window_color_active ""
+set -g @_d3_active_number_bg   "#{?#{!=:#{@window_color_active},},#{@window_color_active},#{?#{!=:#{@window_color},},#{@window_color},#{@win_active_number_bg}}}"
+set -g @_d3_inactive_number_bg "#{?#{!=:#{@window_color},},#{@window_color},#{@win_inactive_number_bg}}"
+
 ### STATUS BAR ###
 set -g status-style "bg=#{@bar_bg},fg=#cdd6f4"
 set -g status-justify "left"
@@ -72,7 +82,7 @@ set -g status-left "#[fg=#{@pill_bg},bg=#{@bar_bg}]#[fg=#{@pill_text},bg=#{@p
 set -g status-right ""
 
 # ─── WINDOW TABS: one bubble, two color sections, sharp seam ───────
-set -g window-status-current-format "#[fg=#{@win_active_number_bg},bg=#{@bar_bg}]#[fg=#{@win_active_number_text},bg=#{@win_active_number_bg},bold]#I #[fg=#{@win_active_number_bg},bg=#{@win_active_name_bg}]▏#[fg=#{@win_active_name_text},bg=#{@win_active_name_bg}]#W #[fg=#{@win_active_name_bg},bg=#{@bar_bg}]"
-set -g window-status-format         "#[fg=#{@win_inactive_number_bg},bg=#{@bar_bg}]#[fg=#{@win_inactive_number_text},bg=#{@win_inactive_number_bg}]#I #[fg=#{@win_inactive_number_bg},bg=#{@win_inactive_name_bg}]▏#[fg=#{@win_inactive_name_text},bg=#{@win_inactive_name_bg}]#W #[fg=#{@win_inactive_name_bg},bg=#{@bar_bg}]"
+set -g window-status-current-format "#[fg=#{E:@_d3_active_number_bg},bg=#{@bar_bg}]#[fg=#{@win_active_number_text},bg=#{E:@_d3_active_number_bg},bold]#I #[fg=#{E:@_d3_active_number_bg},bg=#{@win_active_name_bg}]▏#[fg=#{@win_active_name_text},bg=#{@win_active_name_bg}]#W #[fg=#{@win_active_name_bg},bg=#{@bar_bg}]"
+set -g window-status-format         "#[fg=#{E:@_d3_inactive_number_bg},bg=#{@bar_bg}]#[fg=#{@win_inactive_number_text},bg=#{E:@_d3_inactive_number_bg}]#I #[fg=#{E:@_d3_inactive_number_bg},bg=#{@win_inactive_name_bg}]▏#[fg=#{@win_inactive_name_text},bg=#{@win_inactive_name_bg}]#W #[fg=#{@win_inactive_name_bg},bg=#{@bar_bg}]"
 
 set -g window-status-separator " "

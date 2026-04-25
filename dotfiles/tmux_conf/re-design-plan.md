@@ -39,19 +39,37 @@ can iterate on **style and components** first, then theme later.
 
 Confirmed working. Both active and inactive tabs render as bubbles.
 
-## Step 4 — Per-window color override  (DEFERRED)
+## Step 4 — Per-window color override  [~]
 
-Reverted on user request. Visual style of the window bubbles came out
-wrong when the conditional logic was added; deferring this until the
-window styling is fully sorted out.
+Resumed after Step 4.5 stabilized the window style.
 
-Reverted changes:
-- `design3.tmux` back to Step 3 state (no `@_d3_*` helper options, no
-  `@window_color` ternary in the formats).
-- `binds.tmux` `prefix W` keybind removed.
+Scope (user-decided):
+- Override applies to the **number section bg only** (left circle).
+- Both active and inactive states pick up the override.
+- For "dimmed active": added a SECOND option `@window_color_active`. If
+  set, it overrides only the active number bg (the user picks a darker
+  shade manually). If unset, falls back to `@window_color` so basic
+  usage stays one-option.
 
-To resume later: re-introduce `@_d3_active_color` / `@_d3_inactive_color`
-helper options and the `prefix W` keybind from earlier commit.
+Implementation:
+- Two helper options computed once:
+    - `@_d3_active_number_bg` —
+      `@window_color_active` ?? `@window_color` ?? `@win_active_number_bg`
+    - `@_d3_inactive_number_bg` —
+      `@window_color` ?? `@win_inactive_number_bg`
+- Window-status formats reference `#{E:@_d3_*_number_bg}` instead of
+  the raw `@win_*_number_bg`.
+- Keybind `prefix W` re-added in `binds.tmux`. Empty input clears both
+  `@window_color` and `@window_color_active`. Hex/name/256-color all
+  accepted.
+
+Verified:
+- default → active=mauve, inactive=surface_1
+- `setw @window_color "#ff0000"` → both states red
+- `+ setw @window_color_active "#660000"` → active dark red, inactive bright red
+
+- [ ] **User verifies** in their session: tag with `prefix W` → name a
+  color, switch windows, observe behavior.
 
 ## Step 4.5 — Window tab: bubble with thin ▏ seam  [~]
 

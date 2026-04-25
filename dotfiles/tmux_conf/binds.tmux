@@ -245,6 +245,15 @@ bind -n F12 if-shell "$is_nvim" "send-keys F12" 'setw synchronize-panes' # Toggl
 # Toggle the current window's AI agent IDLE status
 bind -n M-i run-shell -b "$helpers toggle_ai_agent_idle"
 
+# Tag the current window with a custom number-circle color (or clear).
+# Accepts any tmux color: hex (#ff0000), name (red), 256-color number (196).
+# Empty input clears both @window_color and @window_color_active.
+bind W command-prompt -p "window color (hex/name/number, empty=clear):" {
+  if -F "#{==:%1,}" \
+    "setw -u @window_color ; setw -u @window_color_active" \
+    "setw @window_color '%1'"
+}
+
 # -------------------------
 #	    PLUGINS BINDS
 # -------------------------
