@@ -64,14 +64,14 @@ set -g @win_inactive_name_bg     "#313244"
 set -g @win_inactive_name_text   "#bac2de"
 
 
-# Resolved number-circle bg — per-window @window_color wins, theme
-# default otherwise. Active uses @window_color_active (defaults to
-# @window_color) so the user can optionally pick a dimmer shade for
-# active windows; same lookup pattern for inactive.
+# Resolved number-circle bg per state.
+#   @window_color      = bright accent (used when window is ACTIVE)
+#   @window_color_dim  = 50%-dim variant (used when window is INACTIVE)
+# @window_color_dim is auto-derived from @window_color by hooks.tmux.
 set -g @window_color ""
-set -g @window_color_active ""
-set -g @_d3_active_number_bg   "#{?#{!=:#{@window_color_active},},#{@window_color_active},#{?#{!=:#{@window_color},},#{@window_color},#{@win_active_number_bg}}}"
-set -g @_d3_inactive_number_bg "#{?#{!=:#{@window_color},},#{@window_color},#{@win_inactive_number_bg}}"
+set -g @window_color_dim ""
+set -g @_d3_active_number_bg   "#{?#{!=:#{@window_color},},#{@window_color},#{@win_active_number_bg}}"
+set -g @_d3_inactive_number_bg "#{?#{!=:#{@window_color_dim},},#{@window_color_dim},#{?#{!=:#{@window_color},},#{@window_color},#{@win_inactive_number_bg}}}"
 
 ### STATUS BAR ###
 set -g status-style "bg=#{@bar_bg},fg=#cdd6f4"
