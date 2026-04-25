@@ -41,6 +41,34 @@ Confirmed working. Both active and inactive tabs render as bubbles.
 
 ## Step 4 — Per-window color override  [~]
 
+### v2: dim is auto-derived from @window_color (not stored manually)
+
+User feedback after v1: "the bind shouldn't be the flow for the dim".
+Restructured so:
+- `binds.tmux` `prefix W` only sets `@window_color`. Empty input clears it.
+- `hooks.tmux` adds `after-select-window` (+ window-linked,
+  session-created, client-attached) hooks that call
+  `refresh_dim_colors.sh`. The script iterates ALL windows and:
+    - if `@window_color` is set: derive dim via `dim_color.sh`, write
+      to `@window_color_active`.
+    - if `@window_color` is unset: unset `@window_color_active`.
+- The bind also calls `refresh_dim_colors.sh` after setting
+  `@window_color` so the dim is visible immediately (not only after
+  the next window switch).
+- Result: `tmux setw @window_color X` from any caller (bind, manual,
+  external script) auto-syncs the dim on the next event.
+
+Helpers in `design3.tmux`:
+- `@_d3_active_number_bg`   = `@window_color_active` ?? default
+- `@_d3_inactive_number_bg` = `@window_color` ?? default
+
+Files:
+- `~/.tmux_conf/dim_color.sh` — color → hex resolution + brightness
+  factor (e.g. `dim_color.sh red 0.5` → `#794554`).
+- `~/.tmux_conf/refresh_dim_colors.sh` — for-each-window sync.
+
+
+
 Resumed after Step 4.5 stabilized the window style.
 
 Scope (user-decided):

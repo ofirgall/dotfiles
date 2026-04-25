@@ -246,12 +246,17 @@ bind -n F12 if-shell "$is_nvim" "send-keys F12" 'setw synchronize-panes' # Toggl
 bind -n M-i run-shell -b "$helpers toggle_ai_agent_idle"
 
 # Tag the current window with a custom number-circle color (or clear).
-# Accepts any tmux color: hex (#ff0000), name (red), 256-color number (196).
-# Empty input clears both @window_color and @window_color_active.
-bind W command-prompt -p "window color (hex/name/number, empty=clear):" {
+# Accepts hex (#ff0000) or a known color name (red/green/mauve/peach/...).
+# The bind only sets @window_color. @window_color_active (the dim) is
+# derived by hooks.tmux's after-select-window hook + a same-tick refresh
+# call here so the dim is visible immediately, not only after the next
+# window switch.
+# Empty input clears the tag.
+refresh_dim_colors="$HOME/.tmux_conf/refresh_dim_colors.sh"
+bind W command-prompt -p "window color (hex/name, empty=clear):" {
   if -F "#{==:%1,}" \
-    "setw -u @window_color ; setw -u @window_color_active" \
-    "setw @window_color '%1'"
+    "setw -u @window_color ; run-shell -b $refresh_dim_colors" \
+    "setw @window_color '%1' ; run-shell -b $refresh_dim_colors"
 }
 
 # -------------------------
