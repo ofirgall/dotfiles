@@ -242,8 +242,8 @@ bind -n C-u if-shell "$is_nvim || $is_vim || $is_nested_tmux || $is_less || $is_
 # -------------------------
 bind -n F12 if-shell "$is_nvim" "send-keys F12" 'setw synchronize-panes' # Toggle type on all panes
 
-# Manually mark the current window's AI agent status as IDLE
-bind -n M-i run-shell -b 'tmux set-option -wq @ai-agent-status "IDLE"; [ -x "$HOME/.config/hypr/UserScripts/RenameWorkspaces.py" ] && "$HOME/.config/hypr/UserScripts/RenameWorkspaces.py"'
+# Toggle the current window's AI agent IDLE status
+bind -n M-i run-shell -b "$helpers toggle_ai_agent_idle"
 
 # -------------------------
 #	    PLUGINS BINDS

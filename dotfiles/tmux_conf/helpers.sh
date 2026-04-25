@@ -44,6 +44,16 @@ function get_ssh_host_in_pane() {
     done
 }
 
+function toggle_ai_agent_idle() {
+    local current="$(tmux show-option -wqv @ai-agent-status)"
+    if [ "$current" = "IDLE" ]; then
+        tmux set-option -wqu @ai-agent-status
+    else
+        tmux set-option -wq @ai-agent-status "IDLE"
+    fi
+    [ -x "$HOME/.config/hypr/UserScripts/RenameWorkspaces.py" ] && "$HOME/.config/hypr/UserScripts/RenameWorkspaces.py"
+}
+
 function swap_hanging_ssh_session() {
     local tty=$1
     local ssh_cmd="$(get_ssh_cmd_in_pane $tty)"
