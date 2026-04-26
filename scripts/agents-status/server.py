@@ -96,19 +96,28 @@ def apply_state(instance_id, state):
                 else:
                     _run(["tmux", "setw", "-u", "-t", target, "@window_color"])
 
-    script = os.path.expanduser("~/.config/hypr/UserScripts/RenameWorkspaces.py")
-    if os.access(script, os.X_OK):
-        def _spawn_rename():
+    refresh = os.path.expanduser("~/.tmux_conf/refresh_dim_colors.sh")
+    rename = os.path.expanduser("~/.config/hypr/UserScripts/RenameWorkspaces.py")
+
+    def _spawn_followups():
+        if os.access(refresh, os.X_OK):
             try:
-                subprocess.Popen([script], stdout=subprocess.DEVNULL,
+                subprocess.run([refresh], timeout=5,
+                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except Exception:
+                pass
+        if os.access(rename, os.X_OK):
+            try:
+                subprocess.Popen([rename], stdout=subprocess.DEVNULL,
                                  stderr=subprocess.DEVNULL, start_new_session=True)
             except Exception:
                 pass
-        # Small delay so the tmux option write above is visible to the script's
-        # `tmux list-windows` reads (avoids races where rename sees stale state).
-        t = threading.Timer(0.05, _spawn_rename)
-        t.daemon = True
-        t.start()
+
+    # Small delay so the tmux option writes above are visible to scripts that
+    # read tmux state (avoids races where they see stale state).
+    t = threading.Timer(0.05, _spawn_followups)
+    t.daemon = True
+    t.start()
 
 
 def flush_notify(instance_id):
