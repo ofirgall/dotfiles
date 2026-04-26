@@ -98,7 +98,7 @@ set -g status-justify "left"
 # session — drift-chore- prefix strip + 35-char truncation
 set -gF @mod_session_bg   "#{@c_surface}"
 set -gF @mod_session_text "#{@c_text_light}"
-set -g @mod_session "#[fg=#{@mod_session_text},bg=#{@mod_session_bg},bold] #{=35:#{s/^drift-chore-//:session_name}} #[fg=#{@mod_session_bg},bg=#{@bar_bg}]#{@cap_r}"
+set -g @mod_session "#[fg=#{@mod_session_text},bg=#{@mod_session_bg},bold] #{=35:#{s/^drift-chore-//:session_name}}#[fg=#{@mod_session_bg},bg=#{@bar_bg}]#{@cap_r}"
 
 # whoami — user@host
 set -gF @mod_whoami_bg   "#{@c_surface}"
