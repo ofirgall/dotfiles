@@ -60,7 +60,7 @@ set -g @c_yellow       "#f0e68c"  ;# synced bubble bg
 
 # Inactive window tab — darker bg + dim text, distinct from the bright
 # `@c_surface` used by active tabs / modules.
-set -g @c_inactive_bg     "#102842"  ;# inactive window name pill bg
+set -g @c_inactive_bg     "#0f253e"  ;# inactive window name pill bg
 set -g @c_inactive_bg_dim "#1b3858"  ;# inactive window number circle bg
 set -g @c_inactive_text   "#c4c6cc"  ;# inactive window text (both number and name)
 
