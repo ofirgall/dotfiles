@@ -154,14 +154,19 @@ function y() {
 
 ez() {
     local tmp=$(mktemp)
-    command ez "$@" --cd-file="$tmp"
+    local post_cmd=$(mktemp)
+    command ez "$@" --cd-file="$tmp" --post-cmd-file="$post_cmd"
     local ret=$?
     if [ -s "$tmp" ]; then
         cd "$(cat "$tmp")"
     fi
-    rm -f "$tmp"
+    if [ -s "$post_cmd" ]; then
+        source "$post_cmd"
+    fi
+    rm -f "$tmp" "$post_cmd"
     return $ret
 }
+
 
 alias c=y
 
