@@ -38,20 +38,39 @@ set -g @seam "▏"
 set -u window-style
 set -u window-active-style
 
-### COLORS ###
-set -g @bar_bg    "#051829"
-set -g @pill_bg   "#cba6f7"
-set -g @pill_text "#11111b"
+# ─────────────────────────────────────────────────────────────────────
+# PALETTE — single source of truth for every color used below.
+# ─────────────────────────────────────────────────────────────────────
+# To recolor design3 (or swap themes): change values in this block.
+# Every role/module assignment downstream is `set -gF "#{@c_X}"` so
+# the palette references resolve at set time and downstream lookups
+# return literal hex.
+set -g @c_bar_bg       "#051829"
+set -g @c_text_dark    "#11111b"
+set -g @c_text_light   "#d9e6fa"
+set -g @c_text_dim     "#94d0fe"
+set -g @c_surface      "#22385c"
+set -g @c_surface_dim  "#2c4a73"
+set -g @c_blue_strong  "#1ca0fd"
+set -g @c_blue_mid     "#58b8fd"
+set -g @c_blue_light   "#94d0fe"
+set -g @c_red          "#ff7979"
+set -g @c_peach        "#f8b471"
+set -g @c_yellow       "#f0e68c"
 
-# Window tab colors — number on accent, name on surface_0.
-set -g @win_active_number_bg   "#94d0fe"
-set -g @win_active_number_text "#11111b"
-set -g @win_active_name_bg     "#22385c"
-set -g @win_active_name_text   "#d9e6fa"
-set -g @win_inactive_number_bg   "#2c4a73"
-set -g @win_inactive_number_text "#d9e6fa"
-set -g @win_inactive_name_bg     "#22385c"
-set -g @win_inactive_name_text   "#94d0fe"
+### ROLES ###
+# Bar.
+set -gF @bar_bg "#{@c_bar_bg}"
+
+# Window tabs.
+set -gF @win_active_number_bg     "#{@c_blue_light}"
+set -gF @win_active_number_text   "#{@c_text_dark}"
+set -gF @win_active_name_bg       "#{@c_surface}"
+set -gF @win_active_name_text     "#{@c_text_light}"
+set -gF @win_inactive_number_bg   "#{@c_surface_dim}"
+set -gF @win_inactive_number_text "#{@c_text_light}"
+set -gF @win_inactive_name_bg     "#{@c_surface}"
+set -gF @win_inactive_name_text   "#{@c_text_dim}"
 
 
 # Resolved number-circle bg per state.
@@ -64,7 +83,7 @@ set -g @_d3_active_number_bg   "#{?#{!=:#{@window_color},},#{@window_color},#{@w
 set -g @_d3_inactive_number_bg "#{?#{!=:#{@window_color_dim},},#{@window_color_dim},#{?#{!=:#{@window_color},},#{@window_color},#{@win_inactive_number_bg}}}"
 
 ### STATUS BAR ###
-set -g status-style "bg=#{@bar_bg},fg=#d9e6fa"
+set -gF status-style "bg=#{@c_bar_bg},fg=#{@c_text_light}"
 set -g status-justify "left"
 
 ### MODULES ###
@@ -77,51 +96,51 @@ set -g status-justify "left"
 # pulled in via #{E:...}.
 
 # session — drift-chore- prefix strip + 35-char truncation
-set -g @mod_session_bg   "#22385c"
-set -g @mod_session_text "#cdd6f4"
+set -gF @mod_session_bg   "#{@c_surface}"
+set -gF @mod_session_text "#{@c_text_light}"
 set -g @mod_session "#[fg=#{@mod_session_text},bg=#{@mod_session_bg},bold] #{=35:#{s/^drift-chore-//:session_name}} #[fg=#{@mod_session_bg},bg=#{@bar_bg}]#{@cap_r}"
 
 # whoami — user@host
-set -g @mod_whoami_bg   "#22385c"
-set -g @mod_whoami_text "#cdd6f4"
+set -gF @mod_whoami_bg   "#{@c_surface}"
+set -gF @mod_whoami_text "#{@c_text_light}"
 set -g @mod_whoami "#[fg=#{@mod_whoami_bg}]#{@cap_l}#[fg=#{@mod_whoami_text},bg=#{@mod_whoami_bg}]#(whoami)@#h "
 
 # github — current authenticated github account, hidden when empty.
 # Body is in @_mod_github_body so the comma-laden #[bg=X,fg=Y]
 # directives don't collide with the #{?cond,then,else} parser.
-set -g @mod_github_bg   "#1ca0fd"
-set -g @mod_github_text "#11111b"
+set -gF @mod_github_bg   "#{@c_blue_strong}"
+set -gF @mod_github_text "#{@c_text_dark}"
 set -g @_mod_github_body "#[fg=#{@mod_github_bg}]#{@cap_l}#[fg=#{@mod_github_text},bg=#{@mod_github_bg},bold] #(bash $HOME/.tmux_conf/helpers.sh get_github_user_name) "
 set -g @mod_github "#{?#{!=:#(bash $HOME/.tmux_conf/helpers.sh get_github_user_name),},#{E:@_mod_github_body},}"
 
 # current-ssh — reads /tmp/tmux_ssh_hosts_<session>, hidden when empty.
-set -g @mod_ssh_bg   "#58b8fd"
-set -g @mod_ssh_text "#11111b"
+set -gF @mod_ssh_bg   "#{@c_blue_mid}"
+set -gF @mod_ssh_text "#{@c_text_dark}"
 set -g @_mod_ssh_body "#[fg=#{@mod_ssh_bg}]#{@cap_l}#[fg=#{@mod_ssh_text},bg=#{@mod_ssh_bg},bold]#(cat /tmp/tmux_ssh_hosts_#S 2>/dev/null) "
 set -g @mod_ssh "#{?#{!=:#(cat /tmp/tmux_ssh_hosts_#S 2>/dev/null),},#{E:@_mod_ssh_body},}"
 
 # prefix — visible only while #{client_prefix} is true.
-set -g @mod_prefix_bg   "#ff7979"
-set -g @mod_prefix_text "#11111b"
+set -gF @mod_prefix_bg   "#{@c_red}"
+set -gF @mod_prefix_text "#{@c_text_dark}"
 set -g @_mod_prefix_body "#[fg=#{@mod_prefix_bg}]#{@cap_l}#[fg=#{@mod_prefix_text},bg=#{@mod_prefix_bg},bold]PREFIX "
 set -g @mod_prefix "#{?client_prefix,#{E:@_mod_prefix_body},}"
 
 # zoomed — visible only while #{window_zoomed_flag} is true.
-set -g @mod_zoomed_bg   "#f8b471"
-set -g @mod_zoomed_text "#11111b"
+set -gF @mod_zoomed_bg   "#{@c_peach}"
+set -gF @mod_zoomed_text "#{@c_text_dark}"
 set -g @_mod_zoomed_body "#[fg=#{@mod_zoomed_bg}]#{@cap_l}#[fg=#{@mod_zoomed_text},bg=#{@mod_zoomed_bg},bold]ZOOMED "
 set -g @mod_zoomed "#{?window_zoomed_flag,#{E:@_mod_zoomed_body},}"
 
 # synced — visible only while #{pane_synchronized} is true.
-set -g @mod_synced_bg   "#f0e68c"
-set -g @mod_synced_text "#11111b"
+set -gF @mod_synced_bg   "#{@c_yellow}"
+set -gF @mod_synced_text "#{@c_text_dark}"
 set -g @_mod_synced_body "#[fg=#{@mod_synced_bg}]#{@cap_l}#[fg=#{@mod_synced_text},bg=#{@mod_synced_bg},bold]SYNCED "
 set -g @mod_synced "#{?pane_synchronized,#{E:@_mod_synced_body},}"
 
 # suspended — visible only while #{@suspended_mode} is set (by
 # tmux-suspend's @suspend_on_suspend_command).
-set -g @mod_suspended_bg   "#ff7979"
-set -g @mod_suspended_text "#11111b"
+set -gF @mod_suspended_bg   "#{@c_red}"
+set -gF @mod_suspended_text "#{@c_text_dark}"
 set -g @_mod_suspended_body "#[fg=#{@mod_suspended_bg}]#{@cap_l}#[fg=#{@mod_suspended_text},bg=#{@mod_suspended_bg},bold]SUSPENDED "
 set -g @mod_suspended "#{?#{@suspended_mode},#{E:@_mod_suspended_body},}"
 

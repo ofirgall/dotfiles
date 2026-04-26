@@ -199,6 +199,18 @@ conditionals required to flip between a cap and a seam glyph.
 - [x] `status-style fg` set to `#d9e6fa` (light blue-white, harmonizes
   with the dark teal-blue `@bar_bg #051829`).
 
+## Step 16 — De-hardcode colors  [x]
+
+- [x] Added a PALETTE block (`@c_*` options) at the top of `design3.tmux`
+  with all hex values defined once.
+- [x] Every role/module bg+text now uses `set -gF "#{@c_X}"` so the
+  palette ref resolves at set time. Modules / window-tab formats use
+  plain `#{@role_or_module_X}` and get back literal hex.
+- [x] Glyphs were already centralized in `@cap_l`/`@cap_r`/`@seam`
+  (Step 15).
+- [x] Swapping the entire theme = change values in the PALETTE block
+  and reload.
+
 ## Step 14 — Finalize: bubbles background color  [x]
 
 Blue-leaning palette to match `@bar_bg #051829`:
