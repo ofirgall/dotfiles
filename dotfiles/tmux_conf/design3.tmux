@@ -106,7 +106,7 @@ set -g @mod_session "#[fg=#{@mod_session_text},bg=#{@mod_session_bg},bold] #{=35
 # directives don't collide with the #{?cond,then,else} parser.
 set -gF @mod_github_bg   "#{@c_surface}"
 set -gF @mod_github_text "#{@c_text_light}"
-set -g @_mod_github_body "#[fg=#{@mod_github_bg}]#{@cap_l}#[fg=#{@mod_github_text},bg=#{@mod_github_bg},bold] #(bash $HOME/.tmux_conf/helpers.sh get_github_user_name) "
+set -g @_mod_github_body "#[fg=#{@mod_github_bg}]#{@cap_l}#[fg=#{@mod_github_text},bg=#{@mod_github_bg},bold] #(bash $HOME/.tmux_conf/helpers.sh get_github_user_name) "
 set -g @mod_github "#{?#{!=:#(bash $HOME/.tmux_conf/helpers.sh get_github_user_name),},#{E:@_mod_github_body},}"
 
 # current-ssh — reads /tmp/tmux_ssh_hosts_<session>, hidden when empty.
