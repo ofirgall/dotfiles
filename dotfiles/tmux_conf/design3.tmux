@@ -58,6 +58,12 @@ set -g @c_red          "#ff7979"
 set -g @c_peach        "#f8b471"
 set -g @c_yellow       "#f0e68c"
 
+# Inactive window tab — darker blue bg + gray-blue text, distinct
+# from the bright `@c_surface` used by active tabs and modules.
+set -g @c_inactive_bg     "#102842"
+set -g @c_inactive_bg_dim "#1b3858"
+set -g @c_inactive_text   "#c4c6cc"
+
 ### ROLES ###
 # Bar.
 set -gF @bar_bg "#{@c_bar_bg}"
@@ -67,10 +73,10 @@ set -gF @win_active_number_bg     "#{@c_blue_light}"
 set -gF @win_active_number_text   "#{@c_text_dark}"
 set -gF @win_active_name_bg       "#{@c_surface}"
 set -gF @win_active_name_text     "#{@c_text_light}"
-set -gF @win_inactive_number_bg   "#{@c_surface_dim}"
-set -gF @win_inactive_number_text "#{@c_text_light}"
-set -gF @win_inactive_name_bg     "#{@c_surface}"
-set -gF @win_inactive_name_text   "#{@c_text_dim}"
+set -gF @win_inactive_number_bg   "#{@c_inactive_bg_dim}"
+set -gF @win_inactive_number_text "#{@c_inactive_text}"
+set -gF @win_inactive_name_bg     "#{@c_inactive_bg}"
+set -gF @win_inactive_name_text   "#{@c_inactive_text}"
 
 
 # Resolved number-circle bg per state.
