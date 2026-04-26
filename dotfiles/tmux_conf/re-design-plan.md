@@ -184,10 +184,11 @@ conditionals required to flip between a cap and a seam glyph.
   for `#{@seam}` in each non-leftmost slot — but that re-introduces
   the "is-first-visible" problem.
 
-## Step 11 — Github icon  [ ]
+## Step 11 — Github icon  [~]
 
-- [ ] Prepend the GitHub nerdfont icon `` (U+F09B) before the username
-  in `@_mod_github_body`.
+- [x] Prepended `` (U+F09B nerdfont GitHub icon) before the username
+  in `@_mod_github_body`. Body now reads `<cap> #(...)`.
+- [ ] **User verifies** the icon renders.
 
 ## Step 12 — Finalize: status bar background  [ ]
 

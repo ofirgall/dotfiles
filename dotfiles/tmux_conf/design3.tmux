@@ -91,7 +91,7 @@ set -g @mod_whoami "#[fg=#{@mod_whoami_bg}]#{@cap_l}#[fg=#{@mod_whoami_text},bg=
 # directives don't collide with the #{?cond,then,else} parser.
 set -g @mod_github_bg   "#cba6f7"
 set -g @mod_github_text "#11111b"
-set -g @_mod_github_body "#[fg=#{@mod_github_bg}]#{@cap_l}#[fg=#{@mod_github_text},bg=#{@mod_github_bg},bold]#(bash $HOME/.tmux_conf/helpers.sh get_github_user_name) "
+set -g @_mod_github_body "#[fg=#{@mod_github_bg}]#{@cap_l}#[fg=#{@mod_github_text},bg=#{@mod_github_bg},bold] #(bash $HOME/.tmux_conf/helpers.sh get_github_user_name) "
 set -g @mod_github "#{?#{!=:#(bash $HOME/.tmux_conf/helpers.sh get_github_user_name),},#{E:@_mod_github_body},}"
 
 # current-ssh — reads /tmp/tmux_ssh_hosts_<session>, hidden when empty.
