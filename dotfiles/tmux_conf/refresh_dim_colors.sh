@@ -11,7 +11,7 @@ dir="$(dirname "$0")"
 while IFS=$'\t' read -r wid color; do
   if [[ -n "$color" ]]; then
     bright=$("$dir/dim_color.sh" "$color" 1.0)
-    dim=$("$dir/dim_color.sh" "$color" 0.5)
+    dim=$("$dir/dim_color.sh" "$color" 0.58)
     # Only rewrite @window_color if it changed (avoid hook loops).
     if [[ "$color" != "$bright" ]]; then
       tmux setw -t "$wid" @window_color        "$bright"

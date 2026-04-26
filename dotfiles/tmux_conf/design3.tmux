@@ -87,6 +87,10 @@ set -g @window_color ""
 set -g @window_color_dim ""
 set -g @_d3_active_number_bg   "#{?#{!=:#{@window_color},},#{@window_color},#{@win_active_number_bg}}"
 set -g @_d3_inactive_number_bg "#{?#{!=:#{@window_color_dim},},#{@window_color_dim},#{?#{!=:#{@window_color},},#{@window_color},#{@win_inactive_number_bg}}}"
+# When tagged via @window_color, an inactive window's number text
+# switches to crust for legibility on the colored circle. Otherwise
+# it stays the regular inactive text color.
+set -g @_d3_inactive_number_text "#{?#{!=:#{@window_color},},#{@c_text_dark},#{@win_inactive_number_text}}"
 
 ### STATUS BAR ###
 set -gF status-style "bg=#{@c_bar_bg},fg=#{@c_text_light}"
@@ -151,7 +155,7 @@ set -g status-right "#{E:@mod_suspended}#{E:@mod_synced}#{E:@mod_zoomed}#{E:@mod
 
 # ─── WINDOW TABS ────────────────────────────────────────────────────
 set -g window-status-current-format "#[fg=#{E:@_d3_active_number_bg},bg=#{@bar_bg}]#{@cap_l}#[fg=#{@win_active_number_text},bg=#{E:@_d3_active_number_bg},bold]#I #[fg=#{E:@_d3_active_number_bg},bg=#{@win_active_name_bg}]#{@seam}#[fg=#{@win_active_name_text},bg=#{@win_active_name_bg}]#W #[fg=#{@win_active_name_bg},bg=#{@bar_bg}]#{@cap_r}"
-set -g window-status-format         "#[fg=#{E:@_d3_inactive_number_bg},bg=#{@bar_bg}]#{@cap_l}#[fg=#{@win_inactive_number_text},bg=#{E:@_d3_inactive_number_bg}]#I #[fg=#{E:@_d3_inactive_number_bg},bg=#{@win_inactive_name_bg}]#{@seam}#[fg=#{@win_inactive_name_text},bg=#{@win_inactive_name_bg}]#W #[fg=#{@win_inactive_name_bg},bg=#{@bar_bg}]#{@cap_r}"
+set -g window-status-format         "#[fg=#{E:@_d3_inactive_number_bg},bg=#{@bar_bg}]#{@cap_l}#[fg=#{E:@_d3_inactive_number_text},bg=#{E:@_d3_inactive_number_bg}]#I #[fg=#{E:@_d3_inactive_number_bg},bg=#{@win_inactive_name_bg}]#{@seam}#[fg=#{@win_inactive_name_text},bg=#{@win_inactive_name_bg}]#W #[fg=#{@win_inactive_name_bg},bg=#{@bar_bg}]#{@cap_r}"
 
 set -g window-status-separator " "
 
