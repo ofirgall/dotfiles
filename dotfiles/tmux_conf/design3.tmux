@@ -45,24 +45,24 @@ set -u window-active-style
 # Every role/module assignment downstream is `set -gF "#{@c_X}"` so
 # the palette references resolve at set time and downstream lookups
 # return literal hex.
-set -g @c_bar_bg       "#051829"
-set -g @c_text_dark    "#11111b"
-set -g @c_text_light   "#d9e6fa"
-set -g @c_text_dim     "#94d0fe"
-set -g @c_surface      "#22385c"
-set -g @c_surface_dim  "#2c4a73"
-set -g @c_blue_strong  "#1ca0fd"
-set -g @c_blue_mid     "#58b8fd"
-set -g @c_blue_light   "#94d0fe"
-set -g @c_red          "#ff7979"
-set -g @c_peach        "#f8b471"
-set -g @c_yellow       "#f0e68c"
+set -g @c_bar_bg       "#051829"  ;# status bar background
+set -g @c_text_dark    "#11111b"  ;# text on bright bubbles (number circle, ssh, prefix, zoomed, synced, suspended)
+set -g @c_text_light   "#d9e6fa"  ;# bar fg + text on dark bubbles (session, github, active-window name)
+set -g @c_text_dim     "#94d0fe"  ;# (unused — was inactive name text before the inactive-palette refactor)
+set -g @c_surface      "#22385c"  ;# session, github, active-window name pill bg
+set -g @c_surface_dim  "#2c4a73"  ;# (unused — was inactive number bg before refactor)
+set -g @c_blue_strong  "#1ca0fd"  ;# (unused — was github bg before it was unified with session)
+set -g @c_blue_mid     "#58b8fd"  ;# ssh bubble bg
+set -g @c_blue_light   "#94d0fe"  ;# active window number circle bg
+set -g @c_red          "#ff7979"  ;# prefix + suspended bubble bg
+set -g @c_peach        "#f8b471"  ;# zoomed bubble bg
+set -g @c_yellow       "#f0e68c"  ;# synced bubble bg
 
-# Inactive window tab — darker blue bg + gray-blue text, distinct
-# from the bright `@c_surface` used by active tabs and modules.
-set -g @c_inactive_bg     "#102842"
-set -g @c_inactive_bg_dim "#1b3858"
-set -g @c_inactive_text   "#c4c6cc"
+# Inactive window tab — darker bg + dim text, distinct from the bright
+# `@c_surface` used by active tabs / modules.
+set -g @c_inactive_bg     "#102842"  ;# inactive window name pill bg
+set -g @c_inactive_bg_dim "#1b3858"  ;# inactive window number circle bg
+set -g @c_inactive_text   "#c4c6cc"  ;# inactive window text (both number and name)
 
 ### ROLES ###
 # Bar.
