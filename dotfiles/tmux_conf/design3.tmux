@@ -137,7 +137,7 @@ set -g @mod_suspended_text "#11111b"
 set -g @_mod_suspended_body "#[fg=#{@mod_suspended_bg},bg=#{@bar_bg}]#{@cap_l}#[fg=#{@mod_suspended_text},bg=#{@mod_suspended_bg},bold] SUSPENDED #[fg=#{@mod_suspended_bg},bg=#{@bar_bg}]#{@cap_r}"
 set -g @mod_suspended "#{?#{@suspended_mode},#{E:@_mod_suspended_body},}"
 
-set -g status-left "#{E:@mod_session}"
+set -g status-left "#{E:@mod_session} "
 set -g status-right "#{E:@mod_suspended}#{E:@mod_synced}#{E:@mod_zoomed}#{E:@mod_prefix}#{E:@mod_ssh}#{E:@mod_github}#{E:@mod_whoami}"
 
 # ─── WINDOW TABS ────────────────────────────────────────────────────

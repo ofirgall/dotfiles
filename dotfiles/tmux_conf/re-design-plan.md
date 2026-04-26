@@ -149,11 +149,13 @@ reverted to inline hex per role/module. Each `@mod_*_bg` and
 - [x] Right `` cap kept.
 - [ ] User verifies.
 
-## Step 9 — Thin space between session and window list  [ ]
+## Step 9 — Thin space between session and window list  [~]
 
-- [ ] Insert a tiny gap (likely `▏` thin glyph or a regular space) on
-  the right side of the session bubble, before the first window tab,
-  so the session pill doesn't touch the first window's left rounded cap.
+- [x] Appended one regular space to `status-left` after `#{E:@mod_session}`
+  so the session pill's right cap doesn't touch the first window tab's
+  left cap.
+- [ ] **User verifies**. Swap to ▏ or a thin space (U+2009) if a wider
+  gap or visible divider is preferred.
 
 ## Step 10 — Right side: one merged pill with separators  [ ]
 
