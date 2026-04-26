@@ -45,9 +45,13 @@ function get_ssh_host_in_pane() {
 }
 
 function toggle_ai_agent_idle() {
+    # tmux run-shell -b strips TMUX_PANE; the bind passes pane_id as $1.
+    local pane="${1:-$TMUX_PANE}"
+    [ -n "$pane" ] && export TMUX_PANE="$pane"
+
     local current agent
-    current="$(tmux show-option -wqv @ai-agent-status)"
-    agent="$(tmux show-option -wqv @ai-agent)"
+    current="$(tmux show-option -wqv -t "$pane" @ai-agent-status)"
+    agent="$(tmux show-option -wqv -t "$pane" @ai-agent)"
     [ -z "$agent" ] && agent="claude"
 
     # shellcheck source=/dev/null
