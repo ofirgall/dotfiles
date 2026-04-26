@@ -126,11 +126,34 @@ set -g @mod_synced_text "#11111b"
 set -g @_mod_synced_body "#[fg=#{@mod_synced_bg},bg=#{@bar_bg}]#[fg=#{@mod_synced_text},bg=#{@mod_synced_bg},bold] SYNCED #[fg=#{@mod_synced_bg},bg=#{@bar_bg}]"
 set -g @mod_synced "#{?pane_synchronized,#{E:@_mod_synced_body},}"
 
+# suspended — visible only while #{@suspended_mode} is set (by
+# tmux-suspend's @suspend_on_suspend_command).
+set -g @mod_suspended_bg   "#f38ba8"
+set -g @mod_suspended_text "#11111b"
+set -g @_mod_suspended_body "#[fg=#{@mod_suspended_bg},bg=#{@bar_bg}]#[fg=#{@mod_suspended_text},bg=#{@mod_suspended_bg},bold] SUSPENDED #[fg=#{@mod_suspended_bg},bg=#{@bar_bg}]"
+set -g @mod_suspended "#{?#{@suspended_mode},#{E:@_mod_suspended_body},}"
+
 set -g status-left "#{E:@mod_session}"
-set -g status-right "#{E:@mod_synced}#{E:@mod_zoomed}#{E:@mod_prefix}#{E:@mod_ssh}#{E:@mod_github}#{E:@mod_whoami}"
+set -g status-right "#{E:@mod_suspended}#{E:@mod_synced}#{E:@mod_zoomed}#{E:@mod_prefix}#{E:@mod_ssh}#{E:@mod_github}#{E:@mod_whoami}"
 
 # ─── WINDOW TABS ────────────────────────────────────────────────────
 set -g window-status-current-format "#[fg=#{E:@_d3_active_number_bg},bg=#{@bar_bg}]#[fg=#{@win_active_number_text},bg=#{E:@_d3_active_number_bg},bold]#I #[fg=#{E:@_d3_active_number_bg},bg=#{@win_active_name_bg}]▏#[fg=#{@win_active_name_text},bg=#{@win_active_name_bg}]#W #[fg=#{@win_active_name_bg},bg=#{@bar_bg}]"
 set -g window-status-format         "#[fg=#{E:@_d3_inactive_number_bg},bg=#{@bar_bg}]#[fg=#{@win_inactive_number_text},bg=#{E:@_d3_inactive_number_bg}]#I #[fg=#{E:@_d3_inactive_number_bg},bg=#{@win_inactive_name_bg}]▏#[fg=#{@win_inactive_name_text},bg=#{@win_inactive_name_bg}]#W #[fg=#{@win_inactive_name_bg},bg=#{@bar_bg}]"
 
 set -g window-status-separator " "
+
+### POLISH ###
+# Pane borders + copy-mode selection — colors taken from design.tmux.
+set -g pane-border-style        "fg=#1865b5"
+set -g pane-active-border-style "fg=#44475a"
+set -g mode-style               "bg=#27406b,fg=#ffffff"
+
+# message-style left at tmux default (design.tmux didn't override it).
+set -u message-style
+set -u message-command-style
+
+### SUSPENDED MODE ###
+# tmux-suspend toggles @suspended_mode; the @mod_suspended module
+# (defined above) shows a red SUSPENDED bubble when it's set.
+set -g @suspend_on_suspend_command "tmux set -g @suspended_mode 1 \\; refresh-client -S"
+set -g @suspend_on_resume_command  "tmux set -ug @suspended_mode \\; refresh-client -S"

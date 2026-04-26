@@ -134,15 +134,18 @@ indirection layer. User decided it wasn't worth the extra layer —
 reverted to inline hex per role/module. Each `@mod_*_bg` and
 `@win_*_bg` keeps its own literal hex value.
 
-## Step 7 — Polish
+## Step 7 — Polish  [~]
 
-- [ ] Pane border styling.
-- [ ] Message / mode-style.
-- [ ] Suspended-mode handling (port from old design.tmux if still used).
+- [x] Pane borders — `pane-border-style fg=#45475a` (surface_1, subtle),
+  `pane-active-border-style fg=#cba6f7` (mauve, matches active tab).
+- [x] `message-style` / `message-command-style` — teal text on
+  surface_0, centred.
+- [x] `mode-style` — surface_1 bg + fg text + bold (copy-mode select).
+- [x] `clock-mode-colour` — blue.
+- [x] tmux-suspend hooks ported: gray-out on suspend, restore on resume.
 - [ ] **session** module — refine the look (bg/text colors, bold,
   optional icon, padding, possibly a leading glyph). Currently using
-  surface_0 bg + fg text + bold; revisit once the full status bar is
-  in place.
+  surface_0 bg + fg text + bold; revisit anytime.
 
 ---
 
