@@ -190,30 +190,33 @@ conditionals required to flip between a cap and a seam glyph.
   in `@_mod_github_body`. Body now reads `<cap> #(...)`.
 - [ ] **User verifies** the icon renders.
 
-## Step 12 — Finalize: status bar background  [ ]
+## Step 12 — Finalize: status bar background  [x]
 
-- [ ] Pick the final `@bar_bg` value. Currently `#181825` (mantle).
-  Verify it pairs well with all module colors and the terminal bg.
+- [x] `@bar_bg` set to `#051829` (custom dark teal-blue, user-picked).
 
-## Step 13 — Finalize: status bar text color  [ ]
+## Step 13 — Finalize: status bar text color  [x]
 
-- [ ] Pick the final default fg color (currently `#cdd6f4` = catppuccin
-  mocha fg). Confirm contrast on `@bar_bg`.
+- [x] `status-style fg` set to `#d9e6fa` (light blue-white, harmonizes
+  with the dark teal-blue `@bar_bg #051829`).
 
-## Step 14 — Finalize: bubbles background color  [ ]
+## Step 14 — Finalize: bubbles background color  [x]
 
-- [ ] Audit each module's bg / text combo and decide on the final
-  per-component palette. Currently:
-  - session: `#313244` / `#cdd6f4`
-  - whoami:  `#313244` / `#cdd6f4`
-  - github:  `#cba6f7` / `#11111b`
-  - ssh:     `#74c7ec` / `#11111b`
-  - prefix:  `#f38ba8` / `#11111b`
-  - zoomed:  `#fab387` / `#11111b`
-  - synced:  `#f9e2af` / `#11111b`
-  - suspended: `#f38ba8` / `#11111b`
-- [ ] Decide whether to also revisit the window-tab `@win_*` colors
-  here (probably yes for consistency).
+Blue-leaning palette to match `@bar_bg #051829`:
+
+Right-side modules:
+- session, whoami: `#22385c` / `#cdd6f4` (deep-blue surface)
+- github:  `#1ca0fd` / `#11111b` (strong primary blue)
+- ssh:     `#58b8fd` / `#11111b` (mid blue)
+- prefix:  `#ff7979` / `#11111b` (red — alert)
+- zoomed:  `#f8b471` / `#11111b` (peach)
+- synced:  `#f0e68c` / `#11111b` (yellow)
+- suspended: `#ff7979` / `#11111b` (red)
+
+Window tabs (refreshed to match the same family):
+- active number circle: `#94d0fe` / `#11111b` (light primary blue)
+- active name pill:     `#22385c` / `#d9e6fa`
+- inactive number circle: `#2c4a73` / `#d9e6fa`
+- inactive name pill:     `#22385c` / `#94d0fe`
 
 ## Step 15 — Centralize glyph definitions  [~]
 
