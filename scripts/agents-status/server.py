@@ -13,7 +13,8 @@ Event shape:
       "instance_id": "tmux:<session>:<window>" | "tty:<tty>",
       "status": "IDLE" | "INPROGRESS" | "WAITING",   # optional
       "notify": "Done" | "Requires Permission" | ...,  # optional
-      "clear": true                                     # optional (session-end)
+      "clear": true,                                    # optional (session-end)
+      "unset_status": true                              # optional (clear status only)
     }
 """
 
@@ -68,6 +69,7 @@ def apply_state(instance_id, state):
     agent = state.get("agent") or ""
     status = state.get("status")
     clear = state.get("clear", False)
+    unset_status = state.get("unset_status", False)
 
     if instance_id.startswith("tmux:"):
         target = instance_id[len("tmux:"):]
@@ -79,6 +81,9 @@ def apply_state(instance_id, state):
         else:
             if agent:
                 _run(["tmux", "set-option", "-wq", "-t", target, "@ai-agent", agent])
+            if unset_status:
+                _run(["tmux", "set-option", "-wqu", "-t", target, "@ai-agent-status"])
+                _run(["tmux", "setw", "-u", "-t", target, "@window_color"])
             if status:
                 _run(["tmux", "set-option", "-wq", "-t", target, "@ai-agent-status", status])
                 color = {

@@ -51,9 +51,9 @@ _get_branch() {
     git -C "$(_project_dir)" rev-parse --abbrev-ref HEAD 2>/dev/null
 }
 
-# send_event AGENT STATUS [NOTIFY] [CLEAR]
+# send_event AGENT STATUS [NOTIFY] [CLEAR] [UNSET_STATUS]
 send_event() {
-    local agent="$1" status="$2" notify="$3" clear="$4"
+    local agent="$1" status="$2" notify="$3" clear="$4" unset_status="$5"
     local iid tmux_sess tmux_win repo branch payload
     iid="$(get_instance_id)"
     tmux_sess="$(_get_tmux_session)"
@@ -62,18 +62,19 @@ send_event() {
     branch="$(_get_branch)"
 
     payload="$(python3 - "$agent" "$iid" "$status" "$notify" "$clear" \
-        "$tmux_sess" "$tmux_win" "$repo" "$branch" <<'PY'
+        "$tmux_sess" "$tmux_win" "$repo" "$branch" "$unset_status" <<'PY'
 import json, sys
 (agent, iid, status, notify, clear,
- tmux_sess, tmux_win, repo, branch) = sys.argv[1:10]
+ tmux_sess, tmux_win, repo, branch, unset_status) = sys.argv[1:11]
 ev = {"agent": agent, "instance_id": iid}
-if status:     ev["status"] = status
-if notify:     ev["notify"] = notify
-if clear:      ev["clear"] = True
-if tmux_sess:  ev["tmux_session"] = tmux_sess
-if tmux_win:   ev["tmux_window"] = tmux_win
-if repo:       ev["repo"] = repo
-if branch:     ev["branch"] = branch
+if status:        ev["status"] = status
+if notify:        ev["notify"] = notify
+if clear:         ev["clear"] = True
+if unset_status:  ev["unset_status"] = True
+if tmux_sess:     ev["tmux_session"] = tmux_sess
+if tmux_win:      ev["tmux_window"] = tmux_win
+if repo:          ev["repo"] = repo
+if branch:        ev["branch"] = branch
 print(json.dumps(ev))
 PY
 )"

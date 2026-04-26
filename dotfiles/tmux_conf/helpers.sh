@@ -45,13 +45,18 @@ function get_ssh_host_in_pane() {
 }
 
 function toggle_ai_agent_idle() {
-    local current="$(tmux show-option -wqv @ai-agent-status)"
+    local current agent
+    current="$(tmux show-option -wqv @ai-agent-status)"
+    agent="$(tmux show-option -wqv @ai-agent)"
+    [ -z "$agent" ] && agent="claude"
+
+    # shellcheck source=/dev/null
+    . "${AGENTS_STATUS_DIR:-$HOME/dotfiles_scripts/agents-status}/helpers.sh"
     if [ "$current" = "IDLE" ]; then
-        tmux set-option -wqu @ai-agent-status
+        send_event "$agent" "" "" "" "1"
     else
-        tmux set-option -wq @ai-agent-status "IDLE"
+        send_event "$agent" "IDLE"
     fi
-    [ -x "$HOME/.config/hypr/UserScripts/RenameWorkspaces.py" ] && "$HOME/.config/hypr/UserScripts/RenameWorkspaces.py"
 }
 
 function swap_hanging_ssh_session() {
