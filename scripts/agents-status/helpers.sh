@@ -3,15 +3,29 @@
 
 AGENTS_STATUS_DIR="${AGENTS_STATUS_DIR:-$HOME/dotfiles_scripts/agents-status}"
 
+# Populates TMUX_SESSION, TMUX_WINDOW_ID, TMUX_WINDOW_INDEX in one tmux call.
+# Empty if not inside tmux. Cached across calls within the same process.
+_load_tmux_info() {
+    [ -n "$_TMUX_INFO_LOADED" ] && return
+    _TMUX_INFO_LOADED=1
+    TMUX_SESSION=""
+    TMUX_WINDOW_ID=""
+    TMUX_WINDOW_INDEX=""
+    [ -n "$TMUX" ] && [ -n "$TMUX_PANE" ] && command -v tmux >/dev/null 2>&1 || return
+    local info
+    info="$(tmux display-message -p -t "$TMUX_PANE" \
+        '#{session_name}	#{window_id}	#{window_index}' 2>/dev/null)" || return
+    TMUX_SESSION="${info%%	*}"
+    info="${info#*	}"
+    TMUX_WINDOW_ID="${info%%	*}"
+    TMUX_WINDOW_INDEX="${info#*	}"
+}
+
 get_instance_id() {
-    if [ -n "$TMUX" ] && [ -n "$TMUX_PANE" ] && command -v tmux >/dev/null 2>&1; then
-        local sess win
-        sess="$(tmux display-message -p -t "$TMUX_PANE" '#{session_name}' 2>/dev/null)"
-        win="$(tmux display-message -p -t "$TMUX_PANE" '#{window_id}' 2>/dev/null)"
-        if [ -n "$sess" ] && [ -n "$win" ]; then
-            printf 'tmux:%s:%s' "$sess" "$win"
-            return
-        fi
+    _load_tmux_info
+    if [ -n "$TMUX_SESSION" ] && [ -n "$TMUX_WINDOW_ID" ]; then
+        printf 'tmux:%s:%s' "$TMUX_SESSION" "$TMUX_WINDOW_ID"
+        return
     fi
     local t
     t="$(tty 2>/dev/null)"
@@ -20,16 +34,6 @@ get_instance_id() {
         return
     fi
     printf 'pid:%s' "$PPID"
-}
-
-_get_tmux_session() {
-    [ -n "$TMUX" ] && [ -n "$TMUX_PANE" ] && \
-        tmux display-message -p -t "$TMUX_PANE" '#{session_name}' 2>/dev/null
-}
-
-_get_tmux_window_index() {
-    [ -n "$TMUX" ] && [ -n "$TMUX_PANE" ] && \
-        tmux display-message -p -t "$TMUX_PANE" '#{window_index}' 2>/dev/null
 }
 
 _project_dir() {
@@ -56,15 +60,14 @@ _get_branch() {
 # send_event AGENT STATUS [NOTIFY] [CLEAR] [UNSET_STATUS]
 send_event() {
     local agent="$1" status="$2" notify="$3" clear="$4" unset_status="$5"
-    local iid tmux_sess tmux_win repo branch payload
+    local iid repo branch payload
     iid="$(get_instance_id)"
-    tmux_sess="$(_get_tmux_session)"
-    tmux_win="$(_get_tmux_window_index)"
+    _load_tmux_info
     repo="$(_get_repo)"
     branch="$(_get_branch)"
 
     payload="$(python3 - "$agent" "$iid" "$status" "$notify" "$clear" \
-        "$tmux_sess" "$tmux_win" "$repo" "$branch" "$unset_status" <<'PY'
+        "$TMUX_SESSION" "$TMUX_WINDOW_INDEX" "$repo" "$branch" "$unset_status" <<'PY'
 import json, sys
 (agent, iid, status, notify, clear,
  tmux_sess, tmux_win, repo, branch, unset_status) = sys.argv[1:11]
