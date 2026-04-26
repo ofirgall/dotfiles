@@ -134,18 +134,109 @@ indirection layer. User decided it wasn't worth the extra layer —
 reverted to inline hex per role/module. Each `@mod_*_bg` and
 `@win_*_bg` keeps its own literal hex value.
 
-## Step 7 — Polish  [~]
+## Step 7 — Polish  [x]
 
-- [x] Pane borders — `pane-border-style fg=#45475a` (surface_1, subtle),
-  `pane-active-border-style fg=#cba6f7` (mauve, matches active tab).
-- [x] `message-style` / `message-command-style` — teal text on
-  surface_0, centred.
-- [x] `mode-style` — surface_1 bg + fg text + bold (copy-mode select).
-- [x] `clock-mode-colour` — blue.
-- [x] tmux-suspend hooks ported: gray-out on suspend, restore on resume.
-- [ ] **session** module — refine the look (bg/text colors, bold,
-  optional icon, padding, possibly a leading glyph). Currently using
-  surface_0 bg + fg text + bold; revisit anytime.
+- [x] Pane borders, copy-mode `mode-style` and `message-style` —
+  reverted to the design.tmux color values per user request.
+- [x] tmux-suspend hooks ported: now show a red `SUSPENDED` bubble on
+  the right (toggles `@suspended_mode`), instead of graying out the
+  whole bar.
+
+## Step 8 — Session bubble: rounded right only  [~]
+
+- [x] Removed the leading `` cap from `@mod_session`. Pill starts
+  flush against the bar's left edge with the session bg.
+- [x] Right `` cap kept.
+- [ ] User verifies.
+
+## Step 9 — Thin space between session and window list  [ ]
+
+- [ ] Insert a tiny gap (likely `▏` thin glyph or a regular space) on
+  the right side of the session bubble, before the first window tab,
+  so the session pill doesn't touch the first window's left rounded cap.
+
+## Step 10 — Right side: one merged pill with separators  [ ]
+
+Currently each module on the right is its own bubble with its own
+caps. The user wants them merged into a single pill running to the
+right edge of the bar, with internal `|`-style separators between
+components and per-component bg colors.
+
+Shape: `<comp1|comp2|comp3` (rounded on the LEFT; flat/rectangle on
+the right edge — same logic as the session pill).
+
+- [ ] Build a single format string for `status-right` that:
+    - Opens with one `<L>` cap on the bg of the leftmost visible
+      component.
+    - For each component: bg = component's color, content padded with
+      spaces, fg = its text color.
+    - Between components: a thin separator glyph (▏ or similar) drawn
+      on a bg color that bridges the two components (probably the
+      next component's bg, with the previous component's fg color so
+      it reads as a colored line where the bg shifts).
+    - No closing right cap — the pill ends flat at the bar edge.
+- [ ] Optional modules (prefix/zoomed/synced/ssh/github/suspended)
+  should still collapse out cleanly — each component's body wrapped
+  in `#{?cond,#{E:body},}` with the leading-cap-or-separator decision
+  made dynamically (first visible component gets the `<L>`, others
+  get the separator).
+- [ ] Decide separator colors and behaviour at boundaries between
+  hidden/visible components (e.g. should the leftmost visible one
+  always start with `<L>` regardless of which component it is).
+
+## Step 11 — Github icon  [ ]
+
+- [ ] Prepend the GitHub nerdfont icon `` (U+F09B) before the username
+  in `@_mod_github_body`.
+
+## Step 12 — Finalize: status bar background  [ ]
+
+- [ ] Pick the final `@bar_bg` value. Currently `#181825` (mantle).
+  Verify it pairs well with all module colors and the terminal bg.
+
+## Step 13 — Finalize: status bar text color  [ ]
+
+- [ ] Pick the final default fg color (currently `#cdd6f4` = catppuccin
+  mocha fg). Confirm contrast on `@bar_bg`.
+
+## Step 14 — Finalize: bubbles background color  [ ]
+
+- [ ] Audit each module's bg / text combo and decide on the final
+  per-component palette. Currently:
+  - session: `#313244` / `#cdd6f4`
+  - whoami:  `#313244` / `#cdd6f4`
+  - github:  `#cba6f7` / `#11111b`
+  - ssh:     `#74c7ec` / `#11111b`
+  - prefix:  `#f38ba8` / `#11111b`
+  - zoomed:  `#fab387` / `#11111b`
+  - synced:  `#f9e2af` / `#11111b`
+  - suspended: `#f38ba8` / `#11111b`
+- [ ] Decide whether to also revisit the window-tab `@win_*` colors
+  here (probably yes for consistency).
+
+## Step 15 — Centralize glyph definitions  [~]
+
+Earlier in the rebuild we believed Powerline-extra glyphs (U+E0Bx)
+were stripped from `#{@option}` expansion. That was wrong — turned
+out terminal rendering was hiding them in bracketed display-message
+output (the bytes ARE in the stream, verified via xxd).
+
+- [x] Removed the obsolete bug-warning comment block from `design3.tmux`.
+- [x] Added a glyph block at the top:
+    - `@cap_l`     U+E0B6   (default left rounded cap)
+    - `@cap_r`     U+E0B4   (default right rounded cap)
+    - `@cap_l_alt` U+E0B5   (hollowed-edges left variant)
+    - `@cap_r_alt` U+E0B7   (hollowed-edges right variant)
+    - `@seam`      U+258F   (thin vertical seam used in window tabs)
+- [x] All module / window-status formats now reference `#{@cap_l}`,
+  `#{@cap_r}`, `#{@seam}` instead of inlining the literal bytes.
+- [x] Verified glyphs survive `#{@option}` expansion in real status
+  formats (tested via xxd of `#{E:status-left}`).
+- [ ] **User verifies** the visual output is identical.
+
+## Done-later: session-module visual refinement
+- [ ] Refine session module look (bg/text, bold, optional icon,
+  padding, leading glyph). Surface_0 + fg + bold today; revisit anytime.
 
 ---
 
