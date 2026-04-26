@@ -69,11 +69,22 @@ def apply_state(instance_id, state):
         if clear:
             _run(["tmux", "set-option", "-wqu", "-t", target, "@ai-agent-status"])
             _run(["tmux", "set-option", "-wqu", "-t", target, "@ai-agent"])
+            _run(["tmux", "setw", "-u", "-t", target, "@window_color"])
+            _run(["tmux", "setw", "-u", "-t", target, "@window_color_dim"])
         else:
             if agent:
                 _run(["tmux", "set-option", "-wq", "-t", target, "@ai-agent", agent])
             if status:
                 _run(["tmux", "set-option", "-wq", "-t", target, "@ai-agent-status", status])
+                color = {
+                    "WAITING": "#cf1313",
+                    "INPROGRESS": "#fa7900",
+                    "IDLE": "#15c70c",
+                }.get(status)
+                if color:
+                    _run(["tmux", "setw", "-t", target, "@window_color", color])
+                else:
+                    _run(["tmux", "setw", "-u", "-t", target, "@window_color"])
 
     script = os.path.expanduser("~/.config/hypr/UserScripts/RenameWorkspaces.py")
     if os.access(script, os.X_OK):
