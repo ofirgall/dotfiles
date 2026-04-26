@@ -4,10 +4,10 @@
 AGENTS_STATUS_DIR="${AGENTS_STATUS_DIR:-$HOME/dotfiles_scripts/agents-status}"
 
 get_instance_id() {
-    if [ -n "$TMUX" ] && command -v tmux >/dev/null 2>&1; then
+    if [ -n "$TMUX" ] && [ -n "$TMUX_PANE" ] && command -v tmux >/dev/null 2>&1; then
         local sess win
-        sess="$(tmux display-message -p '#{session_name}' 2>/dev/null)"
-        win="$(tmux display-message -p '#{window_id}' 2>/dev/null)"
+        sess="$(tmux display-message -p -t "$TMUX_PANE" '#{session_name}' 2>/dev/null)"
+        win="$(tmux display-message -p -t "$TMUX_PANE" '#{window_id}' 2>/dev/null)"
         if [ -n "$sess" ] && [ -n "$win" ]; then
             printf 'tmux:%s:%s' "$sess" "$win"
             return
@@ -23,11 +23,13 @@ get_instance_id() {
 }
 
 _get_tmux_session() {
-    [ -n "$TMUX" ] && tmux display-message -p '#{session_name}' 2>/dev/null
+    [ -n "$TMUX" ] && [ -n "$TMUX_PANE" ] && \
+        tmux display-message -p -t "$TMUX_PANE" '#{session_name}' 2>/dev/null
 }
 
 _get_tmux_window_index() {
-    [ -n "$TMUX" ] && tmux display-message -p '#{window_index}' 2>/dev/null
+    [ -n "$TMUX" ] && [ -n "$TMUX_PANE" ] && \
+        tmux display-message -p -t "$TMUX_PANE" '#{window_index}' 2>/dev/null
 }
 
 _project_dir() {
