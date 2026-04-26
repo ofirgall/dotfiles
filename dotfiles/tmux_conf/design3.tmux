@@ -100,16 +100,12 @@ set -gF @mod_session_bg   "#{@c_surface}"
 set -gF @mod_session_text "#{@c_text_light}"
 set -g @mod_session "#[fg=#{@mod_session_text},bg=#{@mod_session_bg},bold] #{=35:#{s/^drift-chore-//:session_name}}#[fg=#{@mod_session_bg},bg=#{@bar_bg}]#{@cap_r}"
 
-# whoami — user@host
-set -gF @mod_whoami_bg   "#{@c_surface}"
-set -gF @mod_whoami_text "#{@c_text_light}"
-set -g @mod_whoami "#[fg=#{@mod_whoami_bg}]#{@cap_l}#[fg=#{@mod_whoami_text},bg=#{@mod_whoami_bg}]#(whoami)@#h "
 
 # github — current authenticated github account, hidden when empty.
 # Body is in @_mod_github_body so the comma-laden #[bg=X,fg=Y]
 # directives don't collide with the #{?cond,then,else} parser.
-set -gF @mod_github_bg   "#{@c_blue_strong}"
-set -gF @mod_github_text "#{@c_text_dark}"
+set -gF @mod_github_bg   "#{@c_surface}"
+set -gF @mod_github_text "#{@c_text_light}"
 set -g @_mod_github_body "#[fg=#{@mod_github_bg}]#{@cap_l}#[fg=#{@mod_github_text},bg=#{@mod_github_bg},bold] #(bash $HOME/.tmux_conf/helpers.sh get_github_user_name) "
 set -g @mod_github "#{?#{!=:#(bash $HOME/.tmux_conf/helpers.sh get_github_user_name),},#{E:@_mod_github_body},}"
 
@@ -145,7 +141,7 @@ set -g @_mod_suspended_body "#[fg=#{@mod_suspended_bg}]#{@cap_l}#[fg=#{@mod_susp
 set -g @mod_suspended "#{?#{@suspended_mode},#{E:@_mod_suspended_body},}"
 
 set -g status-left "#{E:@mod_session} "
-set -g status-right "#{E:@mod_suspended}#{E:@mod_synced}#{E:@mod_zoomed}#{E:@mod_prefix}#{E:@mod_ssh}#{E:@mod_github}#{E:@mod_whoami}"
+set -g status-right "#{E:@mod_suspended}#{E:@mod_synced}#{E:@mod_zoomed}#{E:@mod_prefix}#{E:@mod_ssh}#{E:@mod_github}"
 
 # ─── WINDOW TABS ────────────────────────────────────────────────────
 set -g window-status-current-format "#[fg=#{E:@_d3_active_number_bg},bg=#{@bar_bg}]#{@cap_l}#[fg=#{@win_active_number_text},bg=#{E:@_d3_active_number_bg},bold]#I #[fg=#{E:@_d3_active_number_bg},bg=#{@win_active_name_bg}]#{@seam}#[fg=#{@win_active_name_text},bg=#{@win_active_name_bg}]#W #[fg=#{@win_active_name_bg},bg=#{@bar_bg}]#{@cap_r}"
