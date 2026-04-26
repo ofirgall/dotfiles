@@ -2,9 +2,10 @@
 """Agent status aggregation server.
 
 Hook scripts (claude / cursor) send JSON events over a Unix datagram socket.
-Events are debounced per-instance — the latest state wins after DEBOUNCE_MS
-of quiet. The server owns all side-effects: tmux window-local options,
-desktop notifications, and the hypr workspace rename.
+State side-effects (tmux window-local options, hypr workspace rename) are
+applied immediately. Notifications are debounced per-instance so a
+short-lived "Done" superseded by a follow-up event within DEBOUNCE_MS does
+not fire.
 
 Event shape:
     {
@@ -26,8 +27,8 @@ import threading
 SOCKET_PATH = f"/tmp/agent-status-{os.getuid()}.sock"
 DEBOUNCE_MS = 1500
 
-_pending = {}
-_timers = {}
+_pending_notify = {}
+_notify_timers = {}
 _lock = threading.Lock()
 
 
@@ -39,30 +40,34 @@ def _run(cmd):
         pass
 
 
+def send_notification(instance_id, state):
+    agent = state.get("agent") or ""
+    notify_msg = state.get("notify")
+    if not notify_msg:
+        return
+    title = f"❇️ {agent.capitalize() or 'Agent'} {notify_msg} ❇️"
+    lines = []
+    tmux_sess = state.get("tmux_session")
+    tmux_win = state.get("tmux_window")
+    if tmux_sess and tmux_win:
+        lines.append(f"TMUX: {tmux_sess}#{tmux_win}")
+    elif tmux_sess:
+        lines.append(f"TMUX: {tmux_sess}")
+    repo = state.get("repo")
+    if repo:
+        lines.append(f"Repo: {repo}")
+    branch = state.get("branch")
+    if branch:
+        lines.append(f"Branch: {branch}")
+    if not lines:
+        lines.append(f"INSTANCE: {instance_id}")
+    _run(["notify-send", title, "\n".join(lines)])
+
+
 def apply_state(instance_id, state):
     agent = state.get("agent") or ""
     status = state.get("status")
-    notify_msg = state.get("notify")
     clear = state.get("clear", False)
-
-    if notify_msg:
-        title = f"❇️ {agent.capitalize() or 'Agent'} {notify_msg} ❇️"
-        lines = []
-        tmux_sess = state.get("tmux_session")
-        tmux_win = state.get("tmux_window")
-        if tmux_sess and tmux_win:
-            lines.append(f"TMUX: {tmux_sess}#{tmux_win}")
-        elif tmux_sess:
-            lines.append(f"TMUX: {tmux_sess}")
-        repo = state.get("repo")
-        if repo:
-            lines.append(f"Repo: {repo}")
-        branch = state.get("branch")
-        if branch:
-            lines.append(f"Branch: {branch}")
-        if not lines:
-            lines.append(f"INSTANCE: {instance_id}")
-        _run(["notify-send", title, "\n".join(lines)])
 
     if instance_id.startswith("tmux:"):
         target = instance_id[len("tmux:"):]
@@ -101,32 +106,32 @@ def apply_state(instance_id, state):
         t.start()
 
 
-def flush(instance_id):
+def flush_notify(instance_id):
     with _lock:
-        state = _pending.pop(instance_id, None)
-        _timers.pop(instance_id, None)
+        state = _pending_notify.pop(instance_id, None)
+        _notify_timers.pop(instance_id, None)
     if state:
-        apply_state(instance_id, state)
+        send_notification(instance_id, state)
 
 
 def handle_event(event):
     instance_id = event.get("instance_id") or "default"
-    with _lock:
-        prev = _pending.get(instance_id, {})
-        merged = dict(prev)
-        for k in ("agent", "status", "notify", "clear",
-                  "tmux_session", "tmux_window", "repo", "branch"):
-            if k in event:
-                merged[k] = event[k]
-        _pending[instance_id] = merged
 
-        t = _timers.get(instance_id)
+    apply_state(instance_id, event)
+
+    with _lock:
+        t = _notify_timers.pop(instance_id, None)
         if t is not None:
             t.cancel()
-        nt = threading.Timer(DEBOUNCE_MS / 1000.0, flush, args=(instance_id,))
-        nt.daemon = True
-        _timers[instance_id] = nt
-        nt.start()
+        _pending_notify.pop(instance_id, None)
+
+        if event.get("notify"):
+            _pending_notify[instance_id] = event
+            nt = threading.Timer(DEBOUNCE_MS / 1000.0, flush_notify,
+                                 args=(instance_id,))
+            nt.daemon = True
+            _notify_timers[instance_id] = nt
+            nt.start()
 
 
 def main():
