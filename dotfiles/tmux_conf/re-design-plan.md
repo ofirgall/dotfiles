@@ -157,34 +157,32 @@ reverted to inline hex per role/module. Each `@mod_*_bg` and
 - [ ] **User verifies**. Swap to ▏ or a thin space (U+2009) if a wider
   gap or visible divider is preferred.
 
-## Step 10 — Right side: one merged pill with separators  [ ]
+## Step 10 — Right side: one merged pill with separators  [~]
 
-Currently each module on the right is its own bubble with its own
-caps. The user wants them merged into a single pill running to the
-right edge of the bar, with internal `|`-style separators between
-components and per-component bg colors.
+Trick: each right-side module starts with `#[fg=MOD_BG]#{@cap_l}` — a
+fg-only directive that does NOT set bg, so the cap glyph is drawn
+against whatever bg the previous module left behind. Then the body
+sets `bg=MOD_BG` for content.
 
-Shape: `<comp1|comp2|comp3` (rounded on the LEFT; flat/rectangle on
-the right edge — same logic as the session pill).
+- For the LEFTMOST visible module, the inherited bg = bar_bg → the
+  cap renders as a rounded left cap.
+- For SUBSEQUENT visible modules, the inherited bg = previous
+  module's bg → the cap renders as a curve seam transitioning between
+  the two colors.
 
-- [ ] Build a single format string for `status-right` that:
-    - Opens with one `<L>` cap on the bg of the leftmost visible
-      component.
-    - For each component: bg = component's color, content padded with
-      spaces, fg = its text color.
-    - Between components: a thin separator glyph (▏ or similar) drawn
-      on a bg color that bridges the two components (probably the
-      next component's bg, with the previous component's fg color so
-      it reads as a colored line where the bg shifts).
-    - No closing right cap — the pill ends flat at the bar edge.
-- [ ] Optional modules (prefix/zoomed/synced/ssh/github/suspended)
-  should still collapse out cleanly — each component's body wrapped
-  in `#{?cond,#{E:body},}` with the leading-cap-or-separator decision
-  made dynamically (first visible component gets the `<L>`, others
-  get the separator).
-- [ ] Decide separator colors and behaviour at boundaries between
-  hidden/visible components (e.g. should the leftmost visible one
-  always start with `<L>` regardless of which component it is).
+This makes the "is-first-visible" decision automatic — no
+conditionals required to flip between a cap and a seam glyph.
+
+- [x] Restructured every right-side module body to drop both leading
+  `bg=#{@bar_bg}` and the trailing right-cap directive.
+- [x] Hidden optional modules emit nothing, so bg state stays at the
+  previous visible module's bg — caps continue to bridge correctly.
+- [x] Right edge is flat (no closing cap) — last module's bg extends
+  to the screen edge.
+- [ ] **User verifies** the merged-pill look. If they want literal
+  vertical-line `|` seams instead of curve seams, swap `#{@cap_l}`
+  for `#{@seam}` in each non-leftmost slot — but that re-introduces
+  the "is-first-visible" problem.
 
 ## Step 11 — Github icon  [ ]
 

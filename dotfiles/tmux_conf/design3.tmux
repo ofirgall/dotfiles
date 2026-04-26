@@ -30,18 +30,6 @@ set -g @cap_r ""
 set -g @cap_l_alt ""
 set -g @cap_r_alt ""
 set -g @seam "▏"
-# Format expansion `#{@option}` silently DROPS Powerline-extra glyphs
-# (U+E0B0..U+E0BF) from user-option values. The option stores the bytes
-# correctly (visible via show-options + xxd), but every reference
-# through #{@name} or #{E:@name} in a status format expands to
-# empty. WORKAROUND: inline the cap glyphs as literal bytes in the
-# format string. Colors and other multi-char strings expand fine.
-#
-# Repro:
-#   set -g @testbub "#{@cap_l}"
-#   show-options -g @testbub                    # prints the glyph
-#   display-message -p '#{@testbub}' | xxd     # 0a only — empty
-#   display-message -p '#{n:@testbub}'         # 3 (byte length)
 # ─────────────────────────────────────────────────────────────────────
 
 # Pane bg — explicitly unset so a reload restores tmux default
@@ -96,45 +84,45 @@ set -g @mod_session "#[fg=#{@mod_session_text},bg=#{@mod_session_bg},bold] #{=35
 # whoami — user@host
 set -g @mod_whoami_bg   "#313244"
 set -g @mod_whoami_text "#cdd6f4"
-set -g @mod_whoami "#[fg=#{@mod_whoami_bg},bg=#{@bar_bg}]#{@cap_l}#[fg=#{@mod_whoami_text},bg=#{@mod_whoami_bg}] #(whoami)@#h #[fg=#{@mod_whoami_bg},bg=#{@bar_bg}]#{@cap_r}"
+set -g @mod_whoami "#[fg=#{@mod_whoami_bg}]#{@cap_l}#[fg=#{@mod_whoami_text},bg=#{@mod_whoami_bg}]#(whoami)@#h "
 
 # github — current authenticated github account, hidden when empty.
 # Body is in @_mod_github_body so the comma-laden #[bg=X,fg=Y]
 # directives don't collide with the #{?cond,then,else} parser.
 set -g @mod_github_bg   "#cba6f7"
 set -g @mod_github_text "#11111b"
-set -g @_mod_github_body "#[fg=#{@mod_github_bg},bg=#{@bar_bg}]#{@cap_l}#[fg=#{@mod_github_text},bg=#{@mod_github_bg},bold]  #(bash $HOME/.tmux_conf/helpers.sh get_github_user_name) #[fg=#{@mod_github_bg},bg=#{@bar_bg}]#{@cap_r}"
+set -g @_mod_github_body "#[fg=#{@mod_github_bg}]#{@cap_l}#[fg=#{@mod_github_text},bg=#{@mod_github_bg},bold]#(bash $HOME/.tmux_conf/helpers.sh get_github_user_name) "
 set -g @mod_github "#{?#{!=:#(bash $HOME/.tmux_conf/helpers.sh get_github_user_name),},#{E:@_mod_github_body},}"
 
 # current-ssh — reads /tmp/tmux_ssh_hosts_<session>, hidden when empty.
 set -g @mod_ssh_bg   "#74c7ec"
 set -g @mod_ssh_text "#11111b"
-set -g @_mod_ssh_body "#[fg=#{@mod_ssh_bg},bg=#{@bar_bg}]#{@cap_l}#[fg=#{@mod_ssh_text},bg=#{@mod_ssh_bg},bold] #(cat /tmp/tmux_ssh_hosts_#S 2>/dev/null) #[fg=#{@mod_ssh_bg},bg=#{@bar_bg}]#{@cap_r}"
+set -g @_mod_ssh_body "#[fg=#{@mod_ssh_bg}]#{@cap_l}#[fg=#{@mod_ssh_text},bg=#{@mod_ssh_bg},bold]#(cat /tmp/tmux_ssh_hosts_#S 2>/dev/null) "
 set -g @mod_ssh "#{?#{!=:#(cat /tmp/tmux_ssh_hosts_#S 2>/dev/null),},#{E:@_mod_ssh_body},}"
 
 # prefix — visible only while #{client_prefix} is true.
 set -g @mod_prefix_bg   "#f38ba8"
 set -g @mod_prefix_text "#11111b"
-set -g @_mod_prefix_body "#[fg=#{@mod_prefix_bg},bg=#{@bar_bg}]#{@cap_l}#[fg=#{@mod_prefix_text},bg=#{@mod_prefix_bg},bold] PREFIX #[fg=#{@mod_prefix_bg},bg=#{@bar_bg}]#{@cap_r}"
+set -g @_mod_prefix_body "#[fg=#{@mod_prefix_bg}]#{@cap_l}#[fg=#{@mod_prefix_text},bg=#{@mod_prefix_bg},bold]PREFIX "
 set -g @mod_prefix "#{?client_prefix,#{E:@_mod_prefix_body},}"
 
 # zoomed — visible only while #{window_zoomed_flag} is true.
 set -g @mod_zoomed_bg   "#fab387"
 set -g @mod_zoomed_text "#11111b"
-set -g @_mod_zoomed_body "#[fg=#{@mod_zoomed_bg},bg=#{@bar_bg}]#{@cap_l}#[fg=#{@mod_zoomed_text},bg=#{@mod_zoomed_bg},bold] ZOOMED #[fg=#{@mod_zoomed_bg},bg=#{@bar_bg}]#{@cap_r}"
+set -g @_mod_zoomed_body "#[fg=#{@mod_zoomed_bg}]#{@cap_l}#[fg=#{@mod_zoomed_text},bg=#{@mod_zoomed_bg},bold]ZOOMED "
 set -g @mod_zoomed "#{?window_zoomed_flag,#{E:@_mod_zoomed_body},}"
 
 # synced — visible only while #{pane_synchronized} is true.
 set -g @mod_synced_bg   "#f9e2af"
 set -g @mod_synced_text "#11111b"
-set -g @_mod_synced_body "#[fg=#{@mod_synced_bg},bg=#{@bar_bg}]#{@cap_l}#[fg=#{@mod_synced_text},bg=#{@mod_synced_bg},bold] SYNCED #[fg=#{@mod_synced_bg},bg=#{@bar_bg}]#{@cap_r}"
+set -g @_mod_synced_body "#[fg=#{@mod_synced_bg}]#{@cap_l}#[fg=#{@mod_synced_text},bg=#{@mod_synced_bg},bold]SYNCED "
 set -g @mod_synced "#{?pane_synchronized,#{E:@_mod_synced_body},}"
 
 # suspended — visible only while #{@suspended_mode} is set (by
 # tmux-suspend's @suspend_on_suspend_command).
 set -g @mod_suspended_bg   "#f38ba8"
 set -g @mod_suspended_text "#11111b"
-set -g @_mod_suspended_body "#[fg=#{@mod_suspended_bg},bg=#{@bar_bg}]#{@cap_l}#[fg=#{@mod_suspended_text},bg=#{@mod_suspended_bg},bold] SUSPENDED #[fg=#{@mod_suspended_bg},bg=#{@bar_bg}]#{@cap_r}"
+set -g @_mod_suspended_body "#[fg=#{@mod_suspended_bg}]#{@cap_l}#[fg=#{@mod_suspended_text},bg=#{@mod_suspended_bg},bold]SUSPENDED "
 set -g @mod_suspended "#{?#{@suspended_mode},#{E:@_mod_suspended_body},}"
 
 set -g status-left "#{E:@mod_session} "
