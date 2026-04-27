@@ -39,10 +39,11 @@ def _log(msg, *args):
 
 SOCKET_PATH = f"/tmp/agent-status-{os.getuid()}.sock"
 DEBOUNCE_MS = 1500
-# How long a `defer:true` event sits before being applied. If another event
-# for the same instance arrives within this window, the deferred event is
-# dropped entirely (state never applied, notification never sent).
-DEFER_MS = 1500
+# How long a `defer:true` event sits before being applied. A non-defer event
+# for the same instance within this window drops the deferred event entirely
+# (auto-run case). A subsequent defer event resets the timer (parallel
+# permission requests — only the latest fires after the window settles).
+DEFER_MS = 5000
 
 _pending_notify = {}
 _notify_timers = {}
@@ -175,11 +176,13 @@ def handle_event(event):
          instance_id, event.get("agent"), event.get("status"),
          event.get("notify"), event.get("defer"), event.get("clear"))
 
-    # Any incoming event cancels a pending deferred event for this instance.
+    # Any incoming event clears a pending deferred event. If the new event
+    # is itself deferred, the timer just resets (parallel permission requests).
+    # Otherwise the deferred event is dropped entirely (auto-run case).
     with _lock:
-        cancelled = _cancel_deferred(instance_id)
-    if cancelled:
-        _log("defer cancel %s (superseded)", instance_id)
+        had_pending = _cancel_deferred(instance_id)
+    if had_pending and not event.get("defer"):
+        _log("defer cancel %s (superseded by non-defer)", instance_id)
 
     if event.get("defer"):
         with _lock:
@@ -189,7 +192,8 @@ def handle_event(event):
             dt.daemon = True
             _deferred_timers[instance_id] = dt
             dt.start()
-        _log("defer schedule %s in %dms", instance_id, DEFER_MS)
+        action = "reset" if had_pending else "schedule"
+        _log("defer %s %s in %dms", action, instance_id, DEFER_MS)
         return
 
     apply_state(instance_id, event)
