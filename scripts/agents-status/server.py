@@ -24,12 +24,30 @@ import socket
 import subprocess
 import sys
 import threading
+import time
+
+DEBUG = os.environ.get("AGENTS_STATUS_DEBUG", "1") not in ("", "0", "false")
+
+
+def _log(msg, *args):
+    if not DEBUG:
+        return
+    ts = time.strftime("%H:%M:%S") + f".{int(time.time() * 1000) % 1000:03d}"
+    if args:
+        msg = msg % args
+    print(f"[{ts}] {msg}", flush=True)
 
 SOCKET_PATH = f"/tmp/agent-status-{os.getuid()}.sock"
 DEBOUNCE_MS = 1500
+# How long a `defer:true` event sits before being applied. If another event
+# for the same instance arrives within this window, the deferred event is
+# dropped entirely (state never applied, notification never sent).
+DEFER_MS = 1500
 
 _pending_notify = {}
 _notify_timers = {}
+_deferred_events = {}
+_deferred_timers = {}
 _lock = threading.Lock()
 
 
@@ -125,11 +143,54 @@ def flush_notify(instance_id):
         state = _pending_notify.pop(instance_id, None)
         _notify_timers.pop(instance_id, None)
     if state:
+        _log("notify fire %s: %s", instance_id, state.get("notify"))
         send_notification(instance_id, state)
+
+
+def flush_deferred(instance_id):
+    with _lock:
+        event = _deferred_events.pop(instance_id, None)
+        _deferred_timers.pop(instance_id, None)
+    if not event:
+        _log("defer flush %s: nothing pending", instance_id)
+        return
+    _log("defer flush %s: applying status=%s notify=%s",
+         instance_id, event.get("status"), event.get("notify"))
+    apply_state(instance_id, event)
+    if event.get("notify"):
+        send_notification(instance_id, event)
+
+
+def _cancel_deferred(instance_id):
+    dt = _deferred_timers.pop(instance_id, None)
+    had = _deferred_events.pop(instance_id, None) is not None
+    if dt is not None:
+        dt.cancel()
+    return had
 
 
 def handle_event(event):
     instance_id = event.get("instance_id") or "default"
+    _log("recv %s agent=%s status=%s notify=%s defer=%s clear=%s",
+         instance_id, event.get("agent"), event.get("status"),
+         event.get("notify"), event.get("defer"), event.get("clear"))
+
+    # Any incoming event cancels a pending deferred event for this instance.
+    with _lock:
+        cancelled = _cancel_deferred(instance_id)
+    if cancelled:
+        _log("defer cancel %s (superseded)", instance_id)
+
+    if event.get("defer"):
+        with _lock:
+            _deferred_events[instance_id] = event
+            dt = threading.Timer(DEFER_MS / 1000.0, flush_deferred,
+                                 args=(instance_id,))
+            dt.daemon = True
+            _deferred_timers[instance_id] = dt
+            dt.start()
+        _log("defer schedule %s in %dms", instance_id, DEFER_MS)
+        return
 
     apply_state(instance_id, event)
 
@@ -137,6 +198,7 @@ def handle_event(event):
         t = _notify_timers.pop(instance_id, None)
         if t is not None:
             t.cancel()
+            _log("notify cancel %s (superseded)", instance_id)
         _pending_notify.pop(instance_id, None)
 
         if event.get("notify"):
@@ -146,6 +208,8 @@ def handle_event(event):
             nt.daemon = True
             _notify_timers[instance_id] = nt
             nt.start()
+            _log("notify schedule %s in %dms (%s)",
+                 instance_id, DEBOUNCE_MS, event.get("notify"))
 
 
 def main():
