@@ -262,14 +262,6 @@ bind W command-prompt -p "window color (hex/name, empty=clear):" {
 # -------------------------
 #	    PLUGINS BINDS
 # -------------------------
-##### TMUX-THUMBS #####
-# Copy fast with Alt+s
-bind -n M-s if-shell "$is_nvim" "send-keys M-s" 'thumbs-pick'
-
-##### TMUX-JUMP #####
-# Tmux (like acejump or vimium) with ALT+shift+s
-bind -n M-S run-shell -b $HOME/.tmux/plugins/tmux-jump/scripts/tmux-jump.sh
-
 ##### tmux-text-macros #####
 open_macros="tmux split-window -v  \"PANE='#{pane_id}' $HOME/.tmux/plugins/tmux-text-macros/tmux-text-macros.tmux -r\""
 # open macros menu with Alt+m except in nvim
