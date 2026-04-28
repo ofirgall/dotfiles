@@ -283,10 +283,5 @@ bind -n M-R run-shell -b "TMUX_FZF_OPTIONS='-p -w 80% -h 80% -m' $HOME/.tmux/plu
 bind -n C-Space if-shell "$is_nvim" "send-keys C-Space" 'run-shell "$HOME/.tmux/plugins/extrakto/scripts/open.sh #{pane_id}"'
 bind -n C-S-Space 'run-shell "$HOME/.tmux/plugins/extrakto/scripts/open.sh #{pane_id}"'
 
-# I hit shift + space while typing upper case letters
-# bind -n S-Space 'run-shell "$HOME/.tmux/plugins/extrakto/scripts/open.sh #{pane_id}"'
-
-# fuzzback
-bind -n M-f if-shell "$is_nvim" "send-keys M-f" 'run-shell -b $HOME/.tmux/plugins/tmux-fuzzback/scripts/fuzzback.sh'
-
-bind -n M-/ if-shell "$is_nvim" "send-keys M-f" 'run-shell -b $HOME/.tmux/plugins/tmux-fuzzback/scripts/fuzzback.sh'
+# fuzzback (jump to a line by fuzzy find)
+bind -n M-/ run-shell -b '$HOME/.tmux/plugins/tmux-fuzzback/scripts/fuzzback.sh'
