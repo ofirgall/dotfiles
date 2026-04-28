@@ -270,7 +270,7 @@ bind -n M-m if-shell "$is_nvim || $is_hunk" "send-keys M-m" 'run-shell $open_mac
 # open macros menu with Alt+shift+m anywhere
 bind -n M-N run-shell $open_macros
 
-bind -n M-R run-shell -b "TMUX_FZF_OPTIONS='-p -w 80% -h 80% -m' $HOME/.tmux/plugins/tmux-fzf/scripts/clipboard.sh buffer"
+bind -n M-V run-shell -b "TMUX_FZF_OPTIONS='-p -w 80% -h 80% -m' $HOME/.tmux/plugins/tmux-fzf/scripts/clipboard.sh buffer"
 
 bind -n C-Space if-shell "$is_nvim" "send-keys C-Space" 'run-shell "$HOME/.tmux/plugins/extrakto/scripts/open.sh #{pane_id}"'
 bind -n C-S-Space 'run-shell "$HOME/.tmux/plugins/extrakto/scripts/open.sh #{pane_id}"'
