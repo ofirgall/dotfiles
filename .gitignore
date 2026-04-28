@@ -13,3 +13,4 @@ playgrounds/*
 !playgrounds/.templates*
 !playgrounds/generate.sh
 .claude/
+dotfiles/ghostty/shaders

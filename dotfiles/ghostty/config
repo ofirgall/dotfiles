@@ -54,6 +54,7 @@ keybind = ctrl+shift+l=text:\x1bL
 keybind = ctrl+shift+comma=text:\x1b[27;5;60~
 keybind = ctrl+shift+period=text:\x1b[27;5;62~
 keybind = alt+shift+e=text:\x1bE
+keybind = alt+shift+v=text:\x1bV
 keybind = alt+shift+o=text:\x1bO
 keybind = alt+shift+w=text:\x1bW
 keybind = alt+shift+q=text:\x1bQ
@@ -75,3 +76,6 @@ keybind = shift+space=text:\x1b[27;2;32~
 keybind = ctrl+shift+space=text:\x1b[27;6;32~
 
 app-notifications = no-clipboard-copy
+
+# Plugins
+custom-shader = shaders/cursor_warp.glsl

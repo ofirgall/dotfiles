@@ -74,3 +74,4 @@
     # - [install_scripts/firefox_from_deb.sh, Installing firefox from deb]
     - [install_scripts/install_spotify.sh, Installing spotify]
     - [awesomewm/install_awesomewm.sh, Installing awesome]
+    - [install_scripts/install_ghostty_plugins.sh, Installing ghostty plugins]
