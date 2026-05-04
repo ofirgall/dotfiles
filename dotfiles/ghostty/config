@@ -88,4 +88,4 @@ keybind = ctrl+zero=text:\x1b[48;5u
 app-notifications = no-clipboard-copy
 
 # Plugins
-custom-shader = shaders/cursor_warp.glsl
+# custom-shader = shaders/cursor_warp.glsl
