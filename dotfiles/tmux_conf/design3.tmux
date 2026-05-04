@@ -30,6 +30,7 @@ set -g @cap_r ""
 set -g @cap_l_alt ""
 set -g @cap_r_alt ""
 set -g @seam "▏"
+set -g @visible_seam "│"
 # ─────────────────────────────────────────────────────────────────────
 
 # Pane bg — explicitly unset so a reload restores tmux default
@@ -111,13 +112,22 @@ set -gF @mod_session_text "#{@c_text_light}"
 set -g @mod_session "#[fg=#{@mod_session_text},bg=#{@mod_session_bg},bold] #{=35:#{s/^drift-chore-//:session_name}}#[fg=#{@mod_session_bg},bg=#{@bar_bg}]#{@cap_r}"
 
 
-# github — current authenticated github account, hidden when empty.
-# Body is in @_mod_github_body so the comma-laden #[bg=X,fg=Y]
-# directives don't collide with the #{?cond,then,else} parser.
-set -gF @mod_github_bg   "#{@c_surface}"
-set -gF @mod_github_text "#{@c_text_light}"
-set -g @_mod_github_body "#[fg=#{@mod_github_bg}]#{@cap_l}#[fg=#{@mod_github_text},bg=#{@mod_github_bg},bold] #(bash $HOME/.tmux_conf/helpers.sh get_github_user_name) "
-set -g @mod_github "#{?#{!=:#(bash $HOME/.tmux_conf/helpers.sh get_github_user_name),},#{E:@_mod_github_body},}"
+# third_party_connections — single pill bundling external-service
+# identities (github + aws). Each segment hides when its helper is
+# empty; the pill itself hides when both are empty.
+#   github:  authenticated `gh` account
+#   aws:     $AWS_PROFILE, or DISCONNECTED when
+#            `aws sts get-caller-identity` fails (cached, refreshed
+#            in background since the call is slow).
+set -gF @mod_tpc_bg   "#{@c_surface}"
+set -gF @mod_tpc_text "#{@c_text_light}"
+set -g @_tpc_gh "#(bash $HOME/.tmux_conf/helpers.sh get_github_user_name)"
+set -g @_tpc_aws "#(bash $HOME/.tmux_conf/helpers.sh get_aws_display)"
+set -g @_tpc_gh_seg "#{?#{!=:#{E:@_tpc_gh},},  #{E:@_tpc_gh} ,}"
+set -g @_tpc_aws_seg "#{?#{!=:#{E:@_tpc_aws},},  #{E:@_tpc_aws} ,}"
+set -g @_tpc_sep "#{?#{&&:#{!=:#{E:@_tpc_gh},},#{!=:#{E:@_tpc_aws},}},#[nobold]#{@visible_seam}#[bold],}"
+set -g @_mod_tpc_body "#[fg=#{@mod_tpc_bg}]#{@cap_l}#[fg=#{@mod_tpc_text},bg=#{@mod_tpc_bg},bold]#{E:@_tpc_gh_seg}#{E:@_tpc_sep}#{E:@_tpc_aws_seg}"
+set -g @mod_third_party_connections "#{?#{||:#{!=:#{E:@_tpc_gh},},#{!=:#{E:@_tpc_aws},}},#{E:@_mod_tpc_body},}"
 
 # current-ssh — reads /tmp/tmux_ssh_hosts_<session>, hidden when empty.
 set -gF @mod_ssh_bg   "#{@c_blue_mid}"
@@ -151,7 +161,7 @@ set -g @_mod_suspended_body "#[fg=#{@mod_suspended_bg}]#{@cap_l}#[fg=#{@mod_susp
 set -g @mod_suspended "#{?#{@suspended_mode},#{E:@_mod_suspended_body},}"
 
 set -g status-left "#{E:@mod_session} "
-set -g status-right "#{E:@mod_suspended}#{E:@mod_synced}#{E:@mod_zoomed}#{E:@mod_prefix}#{E:@mod_ssh}#{E:@mod_github}"
+set -g status-right "#{E:@mod_suspended}#{E:@mod_synced}#{E:@mod_zoomed}#{E:@mod_prefix}#{E:@mod_ssh}#{E:@mod_third_party_connections}"
 
 # ─── WINDOW TABS ────────────────────────────────────────────────────
 set -g window-status-current-format "#[fg=#{E:@_d3_active_number_bg},bg=#{@bar_bg}]#{@cap_l}#[fg=#{@win_active_number_text},bg=#{E:@_d3_active_number_bg},bold]#I #[fg=#{E:@_d3_active_number_bg},bg=#{@win_active_name_bg}]#{@seam}#[fg=#{@win_active_name_text},bg=#{@win_active_name_bg}]#W #[fg=#{@win_active_name_bg},bg=#{@bar_bg}]#{@cap_r}"

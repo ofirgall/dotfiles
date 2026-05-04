@@ -13,6 +13,44 @@ function get_github_user_name() {
     echo $uname
 }
 
+function _aws_status_refresh() {
+    local cache=$1
+    local tmp="${cache}.tmp.$$"
+    if aws sts get-caller-identity &>/dev/null; then
+        echo ok > "$tmp"
+    else
+        echo fail > "$tmp"
+    fi
+    mv "$tmp" "$cache"
+}
+
+# Echoes the AWS_PROFILE (or "default") when connected, "DISCONNECTED" when
+# `aws sts get-caller-identity` failed. Connection status is cached and
+# refreshed in the background since the call is slow.
+function get_aws_display() {
+    local profile="${AWS_PROFILE:-default}"
+    local cache="/tmp/tmux_aws_status_$(id -u)"
+    local lock="${cache}.lock"
+    local max_age=60
+
+    local now=$(date +%s)
+    local mtime=0
+    [ -f "$cache" ] && mtime=$(stat -c %Y "$cache" 2>/dev/null || echo 0)
+
+    if [ $((now - mtime)) -ge $max_age ] && mkdir "$lock" 2>/dev/null; then
+        ( _aws_status_refresh "$cache"; rmdir "$lock" ) &>/dev/null &
+    fi
+
+    local status="ok"
+    [ -f "$cache" ] && status=$(cat "$cache")
+
+    if [ "$status" = "fail" ]; then
+        echo "DISCONNECTED"
+    else
+        echo "$profile"
+    fi
+}
+
 function get_ssh_cmd_in_pane() {
     local tty=$1
     local pid=$(get_pid_in_pane $tty)
