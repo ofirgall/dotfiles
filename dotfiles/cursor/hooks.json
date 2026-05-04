@@ -18,6 +18,12 @@
     ],
     "afterShellExecution": [
       { "command": "~/.cursor_scripts/hook-after-shell" }
+    ],
+    "beforeReadFile": [
+      { "command": "~/.cursor_scripts/hook-agent-activity" }
+    ],
+    "afterFileEdit": [
+      { "command": "~/.cursor_scripts/hook-agent-activity" }
     ]
   }
 }
