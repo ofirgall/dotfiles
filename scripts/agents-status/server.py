@@ -43,7 +43,7 @@ DEBOUNCE_MS = 1500
 # for the same instance within this window drops the deferred event entirely
 # (auto-run case). A subsequent defer event resets the timer (parallel
 # permission requests — only the latest fires after the window settles).
-DEFER_MS = 10000
+DEFER_MS = 30000
 
 _pending_notify = {}
 _notify_timers = {}
