@@ -23,6 +23,7 @@ alias cdw='cd $HOME/worktrees/$(tmux display-message -p "#S" | sed "s,-,/,")' # 
 alias cdh='cd $HOME/dotfiles/hypr-dots/' # cd to hypr-dots
 alias cdr='groot'
 alias gr='groot'
+alias plans='cd ~/.cursor/plans' # cd cursor plans
 
 # cg aliases
 alias cgp='cg $HOME/workspace/personal/' # cg to personal
