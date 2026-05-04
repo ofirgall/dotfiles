@@ -1,6 +1,3 @@
-[app]
-overall = { bg = "#24273a" }
-
 [mgr]
 cwd = { fg = "#8bd5ca" }
 
