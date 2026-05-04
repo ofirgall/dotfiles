@@ -74,6 +74,16 @@ keybind = ctrl+enter=text:\x1b[13;5u
 keybind = ctrl+semicolon=text:\x1b;
 keybind = shift+space=text:\x1b[27;2;32~
 keybind = ctrl+shift+space=text:\x1b[27;6;32~
+keybind = ctrl+one=text:\x1b[49;5u
+keybind = ctrl+two=text:\x1b[50;5u
+keybind = ctrl+three=text:\x1b[51;5u
+keybind = ctrl+four=text:\x1b[52;5u
+keybind = ctrl+five=text:\x1b[53;5u
+keybind = ctrl+six=text:\x1b[54;5u
+keybind = ctrl+seven=text:\x1b[55;5u
+keybind = ctrl+eight=text:\x1b[56;5u
+keybind = ctrl+nine=text:\x1b[57;5u
+keybind = ctrl+zero=text:\x1b[48;5u
 
 app-notifications = no-clipboard-copy
 
