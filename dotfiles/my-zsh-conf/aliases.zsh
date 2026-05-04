@@ -19,7 +19,13 @@ alias cdZ='cd $HOME/.zsh-conf/' # cd to zsh config
 alias cdt='cd $HOME/dotfiles/dotfiles/tmux_conf/' # cd to tmux config
 alias cdnt='cd $HOME/.local/share/nvim/lazy/ofirkai.nvim/' # cd to nvim theme
 alias cda='cd $HOME/.config/awesome/' # cd to awesome config
-alias cdw='cd $HOME/worktrees/$(tmux display-message -p "#S" | sed "s,-,/,")' # cd to my worktree tmux standard
+cdw() {
+	if [[ "$(tmux show-options -v -t "$TMUX_PANE" @ez_managed 2>/dev/null)" == "1" ]]; then
+		ez cd-to-session
+	else
+		cd "$HOME/worktrees/$(tmux display-message -p "#S" | sed "s,-,/,")" # cd to my worktree tmux standard
+	fi
+}
 alias cdh='cd $HOME/dotfiles/hypr-dots/' # cd to hypr-dots
 alias cdr='groot'
 alias gr='groot'
