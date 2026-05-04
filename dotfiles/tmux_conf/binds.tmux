@@ -68,10 +68,10 @@ bind -r -T prefix x run-shell "tmux new-window \"$($helpers swap_hanging_ssh_ses
 navigate="$HOME/.tmux_conf/navigate_pane.sh"
 
 # Move around with alt+arrow/ctrl+hjkl
-bind -n C-h if-shell "$is_nvim" 'send-keys C-h'  "run-shell '$navigate left'"
-bind -n C-j if-shell "$is_nvim || $is_fzf" 'send-keys C-j'  "run-shell '$navigate down'"
-bind -n C-k if-shell "$is_nvim || $is_fzf" 'send-keys C-k'  "run-shell '$navigate up'"
-bind -n C-l if-shell "$is_nvim" 'send-keys C-l'  "run-shell '$navigate right'"
+bind -n C-h if-shell -b "$is_nvim" 'send-keys C-h'  "run-shell '$navigate left'"
+bind -n C-j if-shell -b "$is_nvim || $is_fzf" 'send-keys C-j'  "run-shell '$navigate down'"
+bind -n C-k if-shell -b "$is_nvim || $is_fzf" 'send-keys C-k'  "run-shell '$navigate up'"
+bind -n C-l if-shell -b "$is_nvim" 'send-keys C-l'  "run-shell '$navigate right'"
 
 # For killing k9s pods
 bind -T prefix M-k send-keys C-k
