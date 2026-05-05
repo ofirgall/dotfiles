@@ -2,5 +2,5 @@
 
 (
     . "$HOME/dotfiles_scripts/agents-status/helpers.sh"
-    send_event claude WAITING Done
+    send_event claude DONE Done
 ) </dev/null >/dev/null 2>&1 &

@@ -11,7 +11,7 @@ Event shape:
     {
       "agent": "claude" | "cursor",
       "instance_id": "tmux:<session>:<window>" | "tty:<tty>",
-      "status": "IDLE" | "INPROGRESS" | "WAITING",   # optional
+      "status": "IDLE" | "INPROGRESS" | "WAITING" | "DONE",  # optional
       "notify": "Done" | "Requires Permission" | ...,  # optional
       "clear": true,                                    # optional (session-end)
       "unset_status": true                              # optional (clear status only)
@@ -108,6 +108,7 @@ def apply_state(instance_id, state):
                 color = {
                     "WAITING": "#cf1313",
                     "INPROGRESS": "#fa7900",
+                    "DONE": "#1e88ff",
                     "IDLE": "#15c70c",
                 }.get(status)
                 if color:
