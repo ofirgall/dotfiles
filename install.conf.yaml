@@ -63,6 +63,8 @@
         path: dotfiles/ftdv/config.yaml
     ~/.config/ghostty:
         path: dotfiles/ghostty
+    ~/.config/ez/config.toml:
+        path: dotfiles/ez-workspaces/config.toml
 
 - shell:
     # - [install_scripts/install_sublime.sh, Installing Sublime Text/Merge]

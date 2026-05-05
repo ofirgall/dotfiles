@@ -19,3 +19,6 @@ cargo install lumen
 
 # https://github.com/wtnqk/ftdv
 cargo install ftdv
+
+# https://github.com/KoalaVim/ez-workspaces
+cargo install --git https://github.com/KoalaVim/ez-workspaces
