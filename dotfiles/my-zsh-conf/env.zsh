@@ -63,6 +63,7 @@ export PATH=$PATH:~/dotfiles_scripts/git
 export PATH=$PATH:~/dotfiles_scripts/tmux_layouts/
 export PATH=$PATH:~/dotfiles_scripts/settings/
 export PATH=$PATH:~/dotfiles_scripts/tmux/
+export PATH=$PATH:~/dotfiles_scripts/cursor/
 export PATH=$PATH:$HOME/.spicetify
 
 # Fix WAYLAND_DISPLAY pointing to wayland-0 when only wayland-1 exist
