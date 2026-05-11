@@ -57,6 +57,28 @@ _get_branch() {
     git -C "$(_project_dir)" rev-parse --abbrev-ref HEAD 2>/dev/null
 }
 
+# Chat name from a Cursor store.db, looked up by $CURSOR_CONVERSATION_ID.
+# Workspace hash is md5(realpath(project_dir)) — matches cursor-agent's
+# computeChatsDir: createHash("md5").update(resolve(cwd)).digest("hex").
+_get_cursor_title() {
+    [ -n "$CURSOR_CONVERSATION_ID" ] || return
+    command -v sqlite3 >/dev/null 2>&1 || return
+    local proj wshash db
+    proj="$(_project_dir)"
+    proj="$(readlink -f "$proj" 2>/dev/null || printf '%s' "$proj")"
+    wshash="$(printf '%s' "$proj" | md5sum | cut -d' ' -f1)"
+    db="$HOME/.cursor/chats/$wshash/$CURSOR_CONVERSATION_ID/store.db"
+    [ -f "$db" ] || return
+    sqlite3 "$db" "SELECT value FROM meta LIMIT 1;" 2>/dev/null \
+        | xxd -r -p 2>/dev/null \
+        | python3 -c 'import json,sys
+try:
+    t = json.loads(sys.stdin.read()).get("name", "")
+    print(t if len(t) <= 25 else t[:24].rstrip() + "…")
+except Exception:
+    pass' 2>/dev/null
+}
+
 # Latest ai-title from a Claude transcript JSONL. Empty if not yet generated.
 _get_claude_title() {
     [ -n "$CLAUDE_TRANSCRIPT_PATH" ] && [ -f "$CLAUDE_TRANSCRIPT_PATH" ] || return
@@ -84,6 +106,8 @@ send_event() {
     branch="$(_get_branch)"
     if [ "$agent" = "claude" ]; then
         title="$(_get_claude_title)"
+    elif [ "$agent" = "cursor" ]; then
+        title="$(_get_cursor_title)"
     fi
 
     payload="$(python3 - "$agent" "$iid" "$status" "$notify" "$clear" \
