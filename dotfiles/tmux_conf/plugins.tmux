@@ -26,6 +26,7 @@ set -g @extrakto_popup_size '50%'
 set -g @extrakto_grab_area 'window full'
 set -g @extrakto_copy_key 'tab'
 set -g @extrakto_insert_key 'enter'
+set -g @tnotify-shell-integration 'on'
 
 # New settings
 set -g @fuzzback-popup 1
@@ -64,6 +65,7 @@ set -g @plugin 'Neo-Oli/tmux-text-macros'
 set -g @plugin 'sainnhe/tmux-fzf'
 set -g @plugin 'laktak/extrakto'
 set -g @plugin 'aless3/tmux-click-copy'
+set -g @plugin 'KoalaVim/tmux-notify'
 
 ###########
 # RUN TPM #

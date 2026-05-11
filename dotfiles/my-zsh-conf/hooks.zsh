@@ -4,4 +4,5 @@ tmux-window-name() {
 
 if [ -n "$TMUX_PLUGIN_MANAGER_PATH" ]; then
 	add-zsh-hook chpwd tmux-window-name
+	source ~/.tmux/plugins/tmux-notify/shell/tmux-notify.zsh
 fi
