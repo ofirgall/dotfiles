@@ -15,26 +15,18 @@ fi
 command -v hyprctl >/dev/null 2>&1 || exit 0
 command -v jq >/dev/null 2>&1 || exit 0
 
-# Walk client pids up the process tree until one matches a hypr window pid.
-client_pids="$(tmux list-clients -t "$session" -F '#{client_pid}' 2>/dev/null)"
-[ -n "$client_pids" ] || exit 0
-
 clients_json="$(hyprctl clients -j 2>/dev/null)"
 [ -n "$clients_json" ] || exit 0
 
-addr=""
-for cp in $client_pids; do
-    p="$cp"
-    while [ -n "$p" ] && [ "$p" != "1" ] && [ "$p" != "0" ]; do
-        match="$(printf '%s' "$clients_json" | jq -r --argjson pid "$p" \
-            '.[] | select(.pid==$pid) | .address' | head -1)"
-        if [ -n "$match" ]; then
-            addr="$match"
-            break
-        fi
-        p="$(ps -o ppid= -p "$p" 2>/dev/null | tr -d ' ')"
-    done
-    [ -n "$addr" ] && break
-done
+# Match by title (tmux sets the terminal title to '<session> - TMUX' via
+# set-titles-string). Pid matching doesn't work for single-process terminals
+# like ghostty/gnome-terminal where many windows share one pid.
+addr="$(printf '%s' "$clients_json" | jq -r --arg s "$session" \
+    '.[] | select(.title == ($s + " - TMUX")) | .address' | head -1)"
+
+if [ -z "$addr" ]; then
+    addr="$(printf '%s' "$clients_json" | jq -r --arg s "$session" \
+        '.[] | select(.title | startswith($s + " ") or . == $s) | .address' | head -1)"
+fi
 
 [ -n "$addr" ] && hyprctl dispatch focuswindow "address:$addr" >/dev/null 2>&1
