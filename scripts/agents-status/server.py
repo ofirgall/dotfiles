@@ -49,6 +49,7 @@ _pending_notify = {}
 _notify_timers = {}
 _deferred_events = {}
 _deferred_timers = {}
+_last_title = {}
 _lock = threading.Lock()
 
 
@@ -97,7 +98,13 @@ def apply_state(instance_id, state):
             _run(["tmux", "set-option", "-wqu", "-t", target, "@ai-agent"])
             _run(["tmux", "setw", "-u", "-t", target, "@window_color"])
             _run(["tmux", "setw", "-u", "-t", target, "@window_color_dim"])
+            if _last_title.pop(instance_id, None) is not None:
+                _run(["tmux", "rename-window", "-t", target, ""])
         else:
+            title = state.get("tmux_title")
+            if title and _last_title.get(instance_id) != title:
+                _run(["tmux", "rename-window", "-t", target, title])
+                _last_title[instance_id] = title
             if agent:
                 _run(["tmux", "set-option", "-wq", "-t", target, "@ai-agent", agent])
             if unset_status:

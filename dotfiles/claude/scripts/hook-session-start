@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 
+input=$(cat 2>/dev/null)
+
 (
+    export CLAUDE_TRANSCRIPT_PATH="$(printf '%s' "$input" | grep -o '"transcript_path"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/.*"\([^"]*\)"$/\1/')"
     . "$HOME/dotfiles_scripts/agents-status/helpers.sh"
     ensure_server
     send_event claude IDLE
