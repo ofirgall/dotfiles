@@ -1,0 +1,40 @@
+#!/usr/bin/env sh
+# focus SESSION WINDOW
+# Switch tmux to SESSION:WINDOW and focus the terminal hosting that session
+# in Hyprland.
+
+session="$1"
+window="$2"
+
+[ -n "$session" ] || exit 0
+
+if [ -n "$window" ]; then
+    tmux select-window -t "$session:$window" 2>/dev/null
+fi
+
+command -v hyprctl >/dev/null 2>&1 || exit 0
+command -v jq >/dev/null 2>&1 || exit 0
+
+# Walk client pids up the process tree until one matches a hypr window pid.
+client_pids="$(tmux list-clients -t "$session" -F '#{client_pid}' 2>/dev/null)"
+[ -n "$client_pids" ] || exit 0
+
+clients_json="$(hyprctl clients -j 2>/dev/null)"
+[ -n "$clients_json" ] || exit 0
+
+addr=""
+for cp in $client_pids; do
+    p="$cp"
+    while [ -n "$p" ] && [ "$p" != "1" ] && [ "$p" != "0" ]; do
+        match="$(printf '%s' "$clients_json" | jq -r --argjson pid "$p" \
+            '.[] | select(.pid==$pid) | .address' | head -1)"
+        if [ -n "$match" ]; then
+            addr="$match"
+            break
+        fi
+        p="$(ps -o ppid= -p "$p" 2>/dev/null | tr -d ' ')"
+    done
+    [ -n "$addr" ] && break
+done
+
+[ -n "$addr" ] && hyprctl dispatch focuswindow "address:$addr" >/dev/null 2>&1

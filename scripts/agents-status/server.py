@@ -86,8 +86,34 @@ def send_notification(instance_id, state):
     urgency = state.get("urgency")
     if urgency:
         cmd += ["-u", urgency]
+    can_focus = bool(tmux_sess and tmux_win)
+    if can_focus:
+        cmd += ["-A", "default=Focus"]
     cmd += [title, "\n".join(lines)]
-    _run(cmd)
+
+    if not can_focus:
+        _run(cmd)
+        return
+
+    def _run_with_action():
+        try:
+            r = subprocess.run(cmd, capture_output=True, timeout=3600, text=True)
+        except Exception:
+            return
+        if r.stdout.strip() != "default":
+            return
+        focus = os.path.join(os.path.dirname(os.path.abspath(__file__)), "focus")
+        if not os.access(focus, os.X_OK):
+            return
+        try:
+            subprocess.Popen([focus, str(tmux_sess), str(tmux_win)],
+                             stdout=subprocess.DEVNULL,
+                             stderr=subprocess.DEVNULL,
+                             start_new_session=True)
+        except Exception:
+            pass
+
+    threading.Thread(target=_run_with_action, daemon=True).start()
 
 
 def apply_state(instance_id, state):
