@@ -6,9 +6,11 @@
 #   1. ~/.cursor/projects/<workspace-slug>/agent-transcripts/<conv-uuid>/
 #   2. ~/.cursor/chats/<chat-hash>/<conv-uuid>/
 #
-# There is no direct workspace -> chat-hash mapping on disk, so we infer it
-# by finding which chats/<hash>/ dir contains any transcript UUID that the
-# workspace already owns.
+# chat-hash = md5(realpath(workspacePath)) — same algorithm cursor-agent uses
+# (see versions/.../*.index.js: createHash("md5").update(resolve(cwd))). The
+# absolute workspacePath is recorded in projects/<slug>/worker.log; we grep
+# it out and md5 it. Falls back to a transcript-UUID scan if worker.log is
+# missing.
 
 set -euo pipefail
 
@@ -33,10 +35,30 @@ list_workspaces_with_transcripts() {
     done
 }
 
-# Resolve chat-hash for a workspace by finding any of its transcript UUIDs
-# under chats/<hash>/. Echoes the hash on success, returns 1 if none found.
+# Extract the absolute workspace path that cursor recorded in worker.log.
+workspace_path_from_slug() {
+    local log="$PROJECTS_DIR/$1/worker.log"
+    [[ -f "$log" ]] || return 1
+    local p
+    p="$(grep -aoE 'workspacePath=[^[:space:]]+' "$log" | head -1)"
+    [[ -n "$p" ]] || return 1
+    printf '%s' "${p#workspacePath=}"
+}
+
+# Resolve chat-hash for a workspace. Cursor's cursor-agent computes the chat
+# dir as md5(realpath(workspacePath)) joined under ~/.cursor/chats/ — see
+# cursor-agent/src/.../computeChatsDir (`createHash("md5").update(resolve(cwd))
+# .digest("hex")`). Compute it directly; fall back to scanning transcripts
+# only if worker.log is missing (older projects).
 resolve_chat_hash() {
     local workspace="$1"
+    local ws_path hash
+    if ws_path="$(workspace_path_from_slug "$workspace")"; then
+        ws_path="$(readlink -f "$ws_path" 2>/dev/null || printf '%s' "$ws_path")"
+        hash="$(printf '%s' "$ws_path" | md5sum | cut -d' ' -f1)"
+        printf '%s' "$hash"
+        return 0
+    fi
     local transcripts="$PROJECTS_DIR/$workspace/agent-transcripts"
     local uuid hash_dir
     [[ -d "$transcripts" ]] || return 1
@@ -80,10 +102,7 @@ dst_ws="$(
 # 4. Resolve chat-hashes.
 src_hash="$(resolve_chat_hash "$src_ws")" \
     || die "could not resolve chat-hash for source workspace '$src_ws' (no transcripts found in any chats/ dir)"
-dst_hash="$(resolve_chat_hash "$dst_ws")" || die "could not resolve chat-hash for destination workspace '$dst_ws'.
-The destination workspace has no existing transcripts that we can use to
-locate its chats/<hash>/ directory. Open Cursor in that workspace and start
-any conversation once (it can be empty), then re-run this script."
+dst_hash="$(resolve_chat_hash "$dst_ws")" || die "could not resolve chat-hash for destination workspace '$dst_ws' (no worker.log and no existing transcripts to scan). Open Cursor in that workspace once, then re-run."
 
 src_transcript_path="$src_transcripts/$conv_uuid"
 dst_transcript_dir="$PROJECTS_DIR/$dst_ws/agent-transcripts"
@@ -113,6 +132,7 @@ EOF
 read -r -p "Proceed? [y/N] " ans
 [[ "$ans" == "y" || "$ans" == "Y" ]] || die "aborted"
 
+mkdir -p "$dst_transcript_dir" "$dst_chat_dir"
 cp -r "$src_transcript_path" "$dst_transcript_dir/"
 cp -r "$src_chat_path" "$dst_chat_dir/"
 
