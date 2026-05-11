@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -x
+set -e
 
 # log=/tmp/test-notify.log
 # exec >>"$log" 2>&1
