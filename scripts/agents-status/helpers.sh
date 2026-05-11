@@ -92,13 +92,14 @@ except Exception:
     pass' 2>/dev/null
 }
 
-# send_event AGENT STATUS [NOTIFY] [CLEAR] [UNSET_STATUS]
+# send_event AGENT STATUS [NOTIFY] [CLEAR] [UNSET_STATUS] [URGENCY]
+# URGENCY is passed through to notify-send -u (low|normal|critical).
 # Set AGENTS_STATUS_DEFER=1 in the environment to mark the event as deferred:
 # the server holds it briefly and drops it if any follow-up event arrives for
 # the same instance. Used to suppress cursor's "Requires Permission" event
 # when auto-run kicks in (afterShellExecution arrives shortly after).
 send_event() {
-    local agent="$1" status="$2" notify="$3" clear="$4" unset_status="$5"
+    local agent="$1" status="$2" notify="$3" clear="$4" unset_status="$5" urgency="$6"
     local iid repo branch title payload defer="${AGENTS_STATUS_DEFER:-}"
     iid="$(get_instance_id)"
     _load_tmux_info
@@ -111,10 +112,10 @@ send_event() {
     fi
 
     payload="$(python3 - "$agent" "$iid" "$status" "$notify" "$clear" \
-        "$TMUX_SESSION" "$TMUX_WINDOW_INDEX" "$repo" "$branch" "$unset_status" "$defer" "$title" <<'PY'
+        "$TMUX_SESSION" "$TMUX_WINDOW_INDEX" "$repo" "$branch" "$unset_status" "$defer" "$title" "$urgency" <<'PY'
 import json, sys
 (agent, iid, status, notify, clear,
- tmux_sess, tmux_win, repo, branch, unset_status, defer, title) = sys.argv[1:13]
+ tmux_sess, tmux_win, repo, branch, unset_status, defer, title, urgency) = sys.argv[1:14]
 ev = {"agent": agent, "instance_id": iid}
 if status:        ev["status"] = status
 if notify:        ev["notify"] = notify
@@ -126,6 +127,7 @@ if repo:          ev["repo"] = repo
 if branch:        ev["branch"] = branch
 if defer:         ev["defer"] = True
 if title:         ev["tmux_title"] = title
+if urgency:       ev["urgency"] = urgency
 print(json.dumps(ev))
 PY
 )"

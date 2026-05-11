@@ -82,7 +82,12 @@ def send_notification(instance_id, state):
         lines.append(f"Branch: {branch}")
     if not lines:
         lines.append(f"INSTANCE: {instance_id}")
-    _run(["notify-send", title, "\n".join(lines)])
+    cmd = ["notify-send"]
+    urgency = state.get("urgency")
+    if urgency:
+        cmd += ["-u", urgency]
+    cmd += [title, "\n".join(lines)]
+    _run(cmd)
 
 
 def apply_state(instance_id, state):
