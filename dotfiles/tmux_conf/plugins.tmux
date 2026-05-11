@@ -31,6 +31,7 @@ set -g @tnotify-verbose 'on'
 set -g @tnotify-verbose-msg 'Session #S|#I'
 set -g @tnotify-on-start  '$HOME/.tmux_conf/tnotify_on_start.sh'
 set -g @tnotify-on-finish '$HOME/.tmux_conf/tnotify_on_finish.sh'
+set -g @tnotify-on-cancel '$HOME/.tmux_conf/tnotify_on_finish.sh'
 
 # New settings
 set -g @fuzzback-popup 1
