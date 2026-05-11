@@ -27,6 +27,8 @@ set -g @extrakto_grab_area 'window full'
 set -g @extrakto_copy_key 'tab'
 set -g @extrakto_insert_key 'enter'
 set -g @tnotify-shell-integration 'on'
+set -g @tnotify-verbose 'on'
+set -g @tnotify-verbose-msg 'Session #S|#I'
 
 # New settings
 set -g @fuzzback-popup 1
