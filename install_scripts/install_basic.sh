@@ -57,6 +57,7 @@ sudo apt install -y libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfix
 cargo install jless
 
 cargo install igrep
+cargo install bottom --locked
 cargo install --locked broot
 if ! $IS_REMOTE; then
 	# Install latest alacritty
