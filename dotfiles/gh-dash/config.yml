@@ -89,6 +89,10 @@ keybindings:
     - key: v
       name: view in browser
       command: gh issue view --web --repo {{.RepoName}} {{.IssueNumber}}
+    - key: e
+      name: edit
+      command: >-
+        tmux popup -w 80% -h 80% -E "gh issue edit {{.IssueNumber}} --repo {{.RepoName}}"
 
 repoPaths:
   "*/*": ~/projects/*
