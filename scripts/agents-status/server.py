@@ -166,7 +166,8 @@ def apply_state(instance_id, state):
                 pass
         if os.access(rename, os.X_OK):
             try:
-                subprocess.Popen([rename], stdout=subprocess.DEVNULL,
+                subprocess.Popen(["hyprctl", "dispatch", "exec", rename],
+                                 stdout=subprocess.DEVNULL,
                                  stderr=subprocess.DEVNULL, start_new_session=True)
             except Exception:
                 pass
