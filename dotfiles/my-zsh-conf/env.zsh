@@ -71,7 +71,7 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
 	if [ -S "/run/user/$UID/wayland-0" ]; then
 		export WAYLAND_DISPLAY=wayland-0
 	else
-		for sock in /run/user/$UID/wayland-*; do
+		for sock in /run/user/$UID/wayland-*(N); do
 			[ -S "$sock" ] || continue
 			export WAYLAND_DISPLAY=$(basename "$sock")
 			break
