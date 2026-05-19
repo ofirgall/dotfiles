@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=GitHub Markdown Preview
+Exec=gh markdown-preview --full %f
+MimeType=text/markdown;text/x-markdown;

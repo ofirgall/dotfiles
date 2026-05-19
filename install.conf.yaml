@@ -65,6 +65,8 @@
         path: dotfiles/ghostty
     ~/.config/ez/config.toml:
         path: dotfiles/ez-workspaces/config.toml
+    ~/.local/share/applications/gh-markdown-preview.desktop:
+        path: desktop-apps/gh-markdown-preview.desktop
 
 - shell:
     # - [install_scripts/install_sublime.sh, Installing Sublime Text/Merge]
@@ -77,3 +79,4 @@
     - [install_scripts/install_spotify.sh, Installing spotify]
     - [awesomewm/install_awesomewm.sh, Installing awesome]
     - [install_scripts/install_ghostty_plugins.sh, Installing ghostty plugins]
+    - [install_scripts/xdg_defaults.sh, Setting xdg defaults]
