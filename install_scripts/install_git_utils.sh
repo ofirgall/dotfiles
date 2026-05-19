@@ -11,4 +11,4 @@ gh extension install dlvhdr/gh-dash
 gh extension install dlvhdr/gh-enhance
 
 # markdown preview
-gh extension install yusukebe/gh-markdown-preview
+gh extension install ofirgall/gh-markdown-preview # forked
