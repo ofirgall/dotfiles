@@ -2,7 +2,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "claude-opus-4-6",
   "hooks": {
     "Stop": [
       {
@@ -75,6 +75,10 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
   "enabledPlugins": {
     "lua-lsp@claude-plugins-official": true,
     "clangd-lsp@claude-plugins-official": true,
@@ -85,9 +89,5 @@
   "syntaxHighlightingDisabled": false,
   "effortLevel": "high",
   "editorMode": "vim",
-  "skipAutoPermissionPrompt": true,
-  "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/statusline-command.sh"
-  }
+  "skipAutoPermissionPrompt": true
 }
