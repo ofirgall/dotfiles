@@ -89,5 +89,6 @@
   "syntaxHighlightingDisabled": false,
   "effortLevel": "high",
   "editorMode": "vim",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "alwaysThinkingEnabled": true
 }
