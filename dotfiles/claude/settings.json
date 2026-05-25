@@ -83,7 +83,11 @@
     "superpowers@claude-plugins-official": true
   },
   "syntaxHighlightingDisabled": false,
-  "effortLevel": "medium",
+  "effortLevel": "high",
   "editorMode": "vim",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  }
 }
