@@ -52,6 +52,8 @@
         path: dotfiles/claude/scripts
     ~/.cursor/hooks.json:
         path: dotfiles/cursor/hooks.json
+    ~/.cursor/statusline.sh:
+        path: dotfiles/cursor/statusline.sh
     ~/.cursor_scripts:
         path: dotfiles/cursor/scripts
     ~/.codex/hooks.json:
