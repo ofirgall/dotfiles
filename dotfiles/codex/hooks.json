@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      { "hooks": [ { "type": "command", "command": "~/.codex_scripts/hook-prompt-start" } ] }
+    ],
+    "PostToolUse": [
+      { "hooks": [ { "type": "command", "command": "~/.codex_scripts/hook-tool-done" } ] }
+    ],
+    "PermissionRequest": [
+      { "hooks": [ { "type": "command", "command": "~/.codex_scripts/hook-perm-req" } ] }
+    ],
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "~/.codex_scripts/hook-finish" } ] }
+    ]
+  }
+}

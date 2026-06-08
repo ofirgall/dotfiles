@@ -92,6 +92,59 @@ except Exception:
     pass' 2>/dev/null
 }
 
+# Title from a Codex transcript JSONL. Codex has no Claude-style ai-title, so we
+# use the first user message text as the window title. The transcript format is
+# explicitly unstable (per the Codex hooks docs), so this is best-effort and
+# degrades to empty output on any parse failure — status reporting is the
+# contract, titles are a bonus.
+_get_codex_title() {
+    [ -n "$CODEX_TRANSCRIPT_PATH" ] && [ -f "$CODEX_TRANSCRIPT_PATH" ] || return
+    python3 - "$CODEX_TRANSCRIPT_PATH" <<'PY' 2>/dev/null
+import json, sys
+
+def text_of(content):
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        parts = []
+        for c in content:
+            if isinstance(c, dict):
+                parts.append(c.get("text") or c.get("content") or "")
+            elif isinstance(c, str):
+                parts.append(c)
+        return " ".join(p for p in parts if p)
+    return ""
+
+title = ""
+try:
+    with open(sys.argv[1], encoding="utf-8", errors="replace") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                obj = json.loads(line)
+            except Exception:
+                continue
+            # Find the first user message, tolerating a few shapes:
+            #   {"type":"message","role":"user","content":...}
+            #   {"role":"user","content":...}
+            #   {"payload":{"role":"user","content":...}}
+            msg = obj.get("payload") if isinstance(obj.get("payload"), dict) else obj
+            if msg.get("role") == "user" or obj.get("role") == "user":
+                t = text_of(msg.get("content", obj.get("content", ""))).strip()
+                t = " ".join(t.split())
+                if t:
+                    title = t
+                    break
+except Exception:
+    title = ""
+
+if title:
+    print(title if len(title) <= 25 else title[:24].rstrip() + "…")
+PY
+}
+
 # send_event AGENT STATUS [NOTIFY] [CLEAR] [UNSET_STATUS] [URGENCY]
 # URGENCY is passed through to notify-send -u (low|normal|critical).
 # Set AGENTS_STATUS_DEFER=1 in the environment to mark the event as deferred:
@@ -109,6 +162,8 @@ send_event() {
         title="$(_get_claude_title)"
     elif [ "$agent" = "cursor" ]; then
         title="$(_get_cursor_title)"
+    elif [ "$agent" = "codex" ]; then
+        title="$(_get_codex_title)"
     fi
 
     payload="$(python3 - "$agent" "$iid" "$status" "$notify" "$clear" \

@@ -54,6 +54,10 @@
         path: dotfiles/cursor/hooks.json
     ~/.cursor_scripts:
         path: dotfiles/cursor/scripts
+    ~/.codex/hooks.json:
+        path: dotfiles/codex/hooks.json
+    ~/.codex_scripts:
+        path: dotfiles/codex/scripts
     ~/.config/gh-dash/config.yml:
         path: dotfiles/gh-dash/config.yml
 

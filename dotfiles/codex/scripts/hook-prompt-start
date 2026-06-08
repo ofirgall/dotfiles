@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+input=$(cat 2>/dev/null)
+
+(
+    export CODEX_TRANSCRIPT_PATH="$(printf '%s' "$input" | grep -o '"transcript_path"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/.*"\([^"]*\)"$/\1/')"
+    . "$HOME/dotfiles_scripts/agents-status/helpers.sh"
+    send_event codex INPROGRESS
+) </dev/null >/dev/null 2>&1 &
