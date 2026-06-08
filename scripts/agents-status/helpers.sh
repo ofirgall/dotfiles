@@ -92,32 +92,22 @@ except Exception:
     pass' 2>/dev/null
 }
 
-# Title from a Codex transcript JSONL. Codex has no Claude-style ai-title, so we
-# use the first user message text as the window title. The transcript format is
-# explicitly unstable (per the Codex hooks docs), so this is best-effort and
-# degrades to empty output on any parse failure — status reporting is the
-# contract, titles are a bonus.
+# Title from a Codex transcript JSONL (the rollout-*.jsonl that hooks pass as
+# transcript_path). Codex has no Claude-style ai-title, so we use the first
+# user-typed prompt. The transcript is line-delimited JSON; the prompt lives in
+# an `event_msg` whose payload.type is "user_message" (payload.message). We use
+# that rather than the first role:"user" response_item, because the very first
+# user message is always the injected <environment_context> turn, not the prompt.
+# Best-effort: degrades to empty output on any parse failure — status reporting
+# is the contract, titles are a bonus.
 _get_codex_title() {
     [ -n "$CODEX_TRANSCRIPT_PATH" ] && [ -f "$CODEX_TRANSCRIPT_PATH" ] || return
     python3 - "$CODEX_TRANSCRIPT_PATH" <<'PY' 2>/dev/null
 import json, sys
 
-def text_of(content):
-    if isinstance(content, str):
-        return content
-    if isinstance(content, list):
-        parts = []
-        for c in content:
-            if isinstance(c, dict):
-                parts.append(c.get("text") or c.get("content") or "")
-            elif isinstance(c, str):
-                parts.append(c)
-        return " ".join(p for p in parts if p)
-    return ""
-
-title = ""
-try:
-    with open(sys.argv[1], encoding="utf-8", errors="replace") as f:
+def first_prompt(path):
+    fallback = ""
+    with open(path, encoding="utf-8", errors="replace") as f:
         for line in f:
             line = line.strip()
             if not line:
@@ -126,17 +116,26 @@ try:
                 obj = json.loads(line)
             except Exception:
                 continue
-            # Find the first user message, tolerating a few shapes:
-            #   {"type":"message","role":"user","content":...}
-            #   {"role":"user","content":...}
-            #   {"payload":{"role":"user","content":...}}
-            msg = obj.get("payload") if isinstance(obj.get("payload"), dict) else obj
-            if msg.get("role") == "user" or obj.get("role") == "user":
-                t = text_of(msg.get("content", obj.get("content", ""))).strip()
-                t = " ".join(t.split())
-                if t:
-                    title = t
-                    break
+            payload = obj.get("payload")
+            if not isinstance(payload, dict):
+                continue
+            # Preferred: the user-visible message event — the actual typed
+            # prompt, without the injected <environment_context> turn.
+            if obj.get("type") == "event_msg" and payload.get("type") == "user_message":
+                msg = (payload.get("message") or "").strip()
+                if msg:
+                    return msg
+            # Fallback for format drift: first user message that isn't an
+            # injected XML-wrapped context turn.
+            if not fallback and payload.get("type") == "message" and payload.get("role") == "user":
+                parts = [c.get("text") or "" for c in payload.get("content", []) if isinstance(c, dict)]
+                txt = " ".join(p for p in parts if p).strip()
+                if txt and not txt.startswith("<"):
+                    fallback = txt
+    return fallback
+
+try:
+    title = " ".join(first_prompt(sys.argv[1]).split())
 except Exception:
     title = ""
 
