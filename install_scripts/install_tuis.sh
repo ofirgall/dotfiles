@@ -20,5 +20,8 @@ cargo install lumen
 # https://github.com/wtnqk/ftdv
 cargo install ftdv
 
+# TUI for CSV/table editing and viewing
+cargo install tuitab
+
 # https://github.com/KoalaVim/ez-workspaces
 cargo install --git https://github.com/KoalaVim/ez-workspaces
