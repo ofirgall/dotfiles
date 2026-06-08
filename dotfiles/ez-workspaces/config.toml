@@ -5,6 +5,8 @@ workspace_roots = [
 default_shell = "zsh"
 plugin_timeout = 30
 default_select_by = "workspace"
+on_enter = "tmux"
+on_create = "tmux"
 
 [selector]
 backend = "fzf"
@@ -43,9 +45,7 @@ choices = [
 [[session_name_stages]]
 name = "ticket-prefix"
 kind = "choice"
-choices = [
-    "DR"
-]
+choices = ["DR"]
 
 [[session_name_stages]]
 name = "ticket-number"
