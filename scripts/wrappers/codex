@@ -23,19 +23,36 @@ done
 unset IFS
 [ -n "$real" ] || real="$HOME/.local/bin/codex"
 
+cleanup_done=0
+cleanup_status() {
+    [ "$cleanup_done" -eq 0 ] || return
+    cleanup_done=1
+
+    ( . "$HOME/dotfiles_scripts/agents-status/helpers.sh"
+      send_event codex "" "" clear ) >/dev/null 2>&1
+}
+
+signal_exit() {
+    status="$1"
+    trap - EXIT HUP TERM
+    cleanup_status
+    exit "$status"
+}
+
+trap cleanup_status EXIT
+trap 'signal_exit 129' HUP
+trap 'signal_exit 143' TERM
+
 # Session start: ensure the agents-status server is up and mark idle. Done here
 # rather than via a SessionStart hook so it runs once per real launch (the hook
 # also fires on resume/compact) and so the server is guaranteed running before
-# Codex's first hook fires. Synchronous on purpose — the hooks no longer call
+# Codex's first hook fires. Synchronous on purpose - the hooks no longer call
 # ensure_server, so this must finish before the TUI starts.
 ( . "$HOME/dotfiles_scripts/agents-status/helpers.sh"
   ensure_server
-  send_event codex IDLE ) </dev/null >/dev/null 2>&1
+  send_event codex IDLE ) >/dev/null 2>&1
 
 "$real" "$@"
 ret=$?
 
-( . "$HOME/dotfiles_scripts/agents-status/helpers.sh"
-  send_event codex "" "" clear ) </dev/null >/dev/null 2>&1 &
-
-exit $ret
+exit "$ret"
