@@ -1,8 +1,11 @@
 {
+  "env": {
+    "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1"
+  },
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "claude-opus-4-6",
+  "model": "opus",
   "hooks": {
     "Stop": [
       {
@@ -87,8 +90,8 @@
     "superpowers@claude-plugins-official": true
   },
   "syntaxHighlightingDisabled": false,
+  "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "editorMode": "vim",
-  "skipAutoPermissionPrompt": true,
-  "alwaysThinkingEnabled": true
+  "skipAutoPermissionPrompt": true
 }
