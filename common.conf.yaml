@@ -22,6 +22,8 @@
         path: dotfiles/gitconfig
     ~/.gitignore_global:
         path: dotfiles/gitignore_global
+    ~/.ripgreprc:
+        path: dotfiles/ripgreprc
     ~/.tmux.conf:
         path: dotfiles/tmux_conf/entrypoint.tmux
     ~/.tmux_conf:

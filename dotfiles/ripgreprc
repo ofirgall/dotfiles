@@ -1,0 +1,4 @@
+--hidden
+--glob=!.git
+--glob=!**/.git
+--glob=!**/.git/**

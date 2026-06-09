@@ -38,6 +38,11 @@ export PATH=$GOROOT/bin:$PATH
 # Rust
 export CARGO_NET_GIT_FETCH_WITH_CLI=true # fetch git dependecies
 
+# ripgrep
+if [[ -f "$HOME/.ripgreprc" ]]; then
+	export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+fi
+
 # Mason
 export PATH=$HOME/.local/share/nvim/mason/bin:$PATH
 
