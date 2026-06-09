@@ -69,6 +69,8 @@
         path: dotfiles/vdesk-collapser/config.toml
     ~/.local/share/applications/gh-markdown-preview.desktop:
         path: desktop-apps/gh-markdown-preview.desktop
+    ~/.local/share/applications/hypr-browser.desktop:
+        path: desktop-apps/hypr-browser.desktop
 
 - shell:
     # - [install_scripts/install_sublime.sh, Installing Sublime Text/Merge]

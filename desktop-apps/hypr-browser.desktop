@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Hypr Browser (active vdesk)
+GenericName=Web Browser
+Exec=/home/ofirg/.config/hypr/scripts/OpenUrl.sh %U
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/http;x-scheme-handler/https;text/html;
+Categories=Network;WebBrowser;
+NoDisplay=true
