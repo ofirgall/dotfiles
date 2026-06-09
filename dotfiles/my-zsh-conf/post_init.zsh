@@ -36,4 +36,8 @@ if ! [ -z "$VIEW_TMUX_SESSION" ]; then # tmux-go
 fi
 
 export ZSH_TMUX_ALWAYS_SELECT_SESSION=true
-select_tmux_session.sh
+# select_tmux_session.sh
+if [ -z "$TMUX" ]; then
+	cd ~
+	ez
+fi
