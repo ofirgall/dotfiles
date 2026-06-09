@@ -65,6 +65,8 @@
         path: dotfiles/ghostty
     ~/.config/ez/config.toml:
         path: dotfiles/ez-workspaces/config.toml
+    ~/.config/vdesk-collapser/config.toml:
+        path: dotfiles/vdesk-collapser/config.toml
     ~/.local/share/applications/gh-markdown-preview.desktop:
         path: desktop-apps/gh-markdown-preview.desktop
 

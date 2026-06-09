@@ -1,0 +1,23 @@
+[general]
+debounce_ms = 1500
+
+# 1-monitor profile: unpin Slack and route it to vdesk 9.
+[[profile.1.rules]]
+match.class = "Slack"
+target_vdesk = 9
+pin = false
+
+# 1-monitor profile: distribute tmux windows one per vdesk.
+[[profile.1.rules]]
+match.title_regex = ".* - TMUX$"
+distribute = true
+
+# 3-monitor profile: keep Slack pinned across vdesks.
+[[profile.3.rules]]
+match.class = "Slack"
+pin = true
+
+# 3-monitor profile: distribute tmux windows one per vdesk.
+[[profile.3.rules]]
+match.title_regex = ".* - TMUX$"
+distribute = true
