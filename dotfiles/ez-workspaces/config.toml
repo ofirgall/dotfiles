@@ -4,7 +4,7 @@ workspace_roots = [
 ]
 default_shell = "zsh"
 plugin_timeout = 30
-default_select_by = "workspace"
+default_select_by = "repo"
 on_enter = "tmux"
 on_create = "tmux"
 
