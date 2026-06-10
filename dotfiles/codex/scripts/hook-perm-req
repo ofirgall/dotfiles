@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+exit 0 # not used as of now
 input=$(cat 2>/dev/null)
 
 (
