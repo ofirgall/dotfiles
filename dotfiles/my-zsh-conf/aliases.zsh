@@ -7,6 +7,8 @@ alias lz='XDG_CONFIG_HOME=~/dotfiles_wip/editors/lazynvim/ XDG_DATA_HOME=~/.loca
 alias lzlog='XDG_CONFIG_HOME=~/dotfiles_wip/editors/lazynvim/ XDG_DATA_HOME=~/.local/share/wip_nvim XDG_STATE_HOME=~/.local/state/wip_nvim NVLOG=1 nvim'
 alias cat='bat'
 alias open-codex-plan='codex-latest-plan.sh | mdp --full'
+alias del='ez session delete'
+alias new='ez session new'
 
 alias open='xdg-open'
 alias venv='. ./bin/activate'
