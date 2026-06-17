@@ -1,24 +1,3 @@
-# Cursor CLI Wrapper — Notification Config
-#
-# Place this file at:
-#   ~/.config/cursor-cli-wrapper/config.toml
-#
-# All fields are optional. Defaults are shown below.
-#
-# Supported placeholders (resolved at notification time):
-#   {cwd}           — current working directory
-#   {git_branch}    — current git branch name
-#   {tmux-session}  — current tmux session name
-
-[general]
-notification-title = "=== Cursor CLI Done ==="
-notification-body = "TMUX: {tmux-session}\nREPO: {git_repo}"
-notification-urgency = "normal"
-notification-app-name = "Cursor"
-notification-icon = ""
-
 [hooks]
-status-change = "~/.config/hypr/UserScripts/RenameWorkspaces.py"
-esc-in-normal = "tmux send-key M-Escape"
-# esc-in-normal = "echo esc >> /tmp/b.log"
-# vim-mode-change = "echo mode is now {vim_mode} >> /tmp/vim_mode.log"
+on-question = ". \"$HOME/dotfiles_scripts/agents-status/helpers.sh\"; send_event cursor WAITING \"Asking Question\""
+on-question-cooldown-ms = 0
