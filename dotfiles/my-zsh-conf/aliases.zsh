@@ -9,6 +9,7 @@ alias cat='bat'
 alias open-codex-plan='codex-latest-plan.sh | mdp --full'
 alias del='ez session delete'
 alias new='ez session new'
+alias t='select_tmux_session.sh'
 
 alias open='xdg-open'
 alias venv='. ./bin/activate'
