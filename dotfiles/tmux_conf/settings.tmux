@@ -20,6 +20,9 @@ set -sa terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{25
 set -s extended-keys on
 set -as terminal-features 'xterm-ghostty:RGB:usstyle:extkeys'
 
+# enable images passthrough for gammons/slk
+set -g allow-passthrough on
+
 # Faster status bar
 set-option -g status-interval 10
 
