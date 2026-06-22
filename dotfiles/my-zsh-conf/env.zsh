@@ -29,7 +29,7 @@ fi
 
 # GOLANG
 export GOROOT=/usr/local/go
-export GOPATH=~/go/
+export GOPATH=~/go
 export CGO_ENABLED=0
 export GOPRIVATE="bitbucket.org/volumez/*"
 export PATH=$PATH:$GOPATH/bin
@@ -45,9 +45,6 @@ fi
 
 # Mason
 export PATH=$HOME/.local/share/nvim/mason/bin:$PATH
-
-# Volumez
-export PATH=$PATH:$HOME/go/volumez-tools/tools
 
 # Editor settings
 export EDITOR='vim'
