@@ -5,5 +5,5 @@ input=$(cat 2>/dev/null)
 (
     export CURSOR_CONVERSATION_ID="$(printf '%s' "$input" | grep -o '"conversation_id"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/.*"\([^"]*\)"$/\1/')"
     . "$HOME/dotfiles_scripts/agents-status/helpers.sh"
-    send_event cursor DONE Done "" "" critical
+    send_event cursor DONE Done "" ""
 ) </dev/null >/dev/null 2>&1 &
