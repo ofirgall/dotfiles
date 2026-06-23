@@ -1,4 +1,13 @@
 #!/usr/bin/env sh
 
+# Session start: ensure the agents-status server is up and mark idle. Done here
+# rather than via a SessionStart hook so it runs once per real launch (the hook
+# also fires on resume/compact) and so the server is guaranteed running before
+# Codex's first hook fires. Synchronous on purpose - the hooks no longer call
+# ensure_server, so this must finish before the TUI starts.
+( . "$HOME/dotfiles_scripts/agents-status/helpers.sh"
+  ensure_server
+  send_event cursor IDLE ) >/dev/null 2>&1
+
 BIN="${CURSOR_CLI_WRAPPER_BIN:-cursor-cli-wrapper}"
 "$BIN" "$@"
