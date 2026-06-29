@@ -8,8 +8,10 @@ AGENTS_STATUS_DIR="${AGENTS_STATUS_DIR:-$HOME/dotfiles_scripts/agents-status}"
 _asdf_shims="${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
 case ":$PATH:" in
 *":$_asdf_shims:"*)
-    PATH=:${PATH}:
-    PATH=${PATH//:$_asdf_shims:/:}
+    PATH=":${PATH}:"
+    _prefix="${PATH%%:${_asdf_shims}:*}"
+    _suffix="${PATH#*:${_asdf_shims}:}"
+    PATH="${_prefix}:${_suffix}"
     PATH=${PATH#:}; PATH=${PATH%:}
     export PATH
     ;;
