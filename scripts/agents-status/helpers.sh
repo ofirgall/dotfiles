@@ -3,6 +3,18 @@
 
 AGENTS_STATUS_DIR="${AGENTS_STATUS_DIR:-$HOME/dotfiles_scripts/agents-status}"
 
+# Remove asdf shims so git/python3/tmux resolve to real binaries. Same idea as
+# dotfiles/my-zsh-conf/hooks.zsh — no-op when shims aren't on PATH.
+_asdf_shims="${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+case ":$PATH:" in
+*":$_asdf_shims:"*)
+    PATH=:${PATH}:
+    PATH=${PATH//:$_asdf_shims:/:}
+    PATH=${PATH#:}; PATH=${PATH%:}
+    export PATH
+    ;;
+esac
+
 # Populates TMUX_SESSION, TMUX_WINDOW_ID, TMUX_WINDOW_INDEX in one tmux call.
 # Empty if not inside tmux. Cached across calls within the same process.
 _load_tmux_info() {
