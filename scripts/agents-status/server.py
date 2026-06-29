@@ -14,8 +14,14 @@ Event shape:
       "status": "IDLE" | "INPROGRESS" | "WAITING" | "DONE",  # optional
       "notify": "Done" | "Requires Permission" | ...,  # optional
       "clear": true,                                    # optional (session-end)
-      "unset_status": true                              # optional (clear status only)
+      "unset_status": true,                             # optional (clear status only)
+      "subagent_delta": +1 | -1                         # optional (track active subagents)
     }
+
+Subagent tracking: when subagent_delta is present the server adjusts a per-instance
+counter. A DONE event arriving while the counter > 0 is held (not applied) until the
+counter drops back to zero, preventing premature "Done" notifications while background
+tasks are still running.
 """
 
 import json
@@ -50,7 +56,12 @@ _notify_timers = {}
 _deferred_events = {}
 _deferred_timers = {}
 _last_title = {}
+_active_subagents = {}
+_held_done = {}
+_held_done_timers = {}
 _lock = threading.Lock()
+
+HELD_DONE_TIMEOUT_MS = 300000  # 5 minutes safety net
 
 
 def _run(cmd):
@@ -210,11 +221,70 @@ def _cancel_deferred(instance_id):
     return had
 
 
+def _flush_held_done(instance_id):
+    """Fire a held DONE event after the safety timeout expires."""
+    with _lock:
+        event = _held_done.pop(instance_id, None)
+        _held_done_timers.pop(instance_id, None)
+        active = _active_subagents.get(instance_id, 0)
+    if not event:
+        return
+    _log("done EXPIRED %s: held DONE timed out after %dms, active_subagents=%d (forcing fire)",
+         instance_id, HELD_DONE_TIMEOUT_MS, active)
+    apply_state(instance_id, event)
+    if event.get("notify"):
+        expired_event = dict(event, notify=f"{event['notify']} (timeout, {active} subagents unresolved)")
+        send_notification(instance_id, expired_event)
+
+
+def _cancel_held_done(instance_id):
+    """Cancel a held DONE timer and discard the event. Returns whether one existed."""
+    ht = _held_done_timers.pop(instance_id, None)
+    had = _held_done.pop(instance_id, None) is not None
+    if ht is not None:
+        ht.cancel()
+    return had
+
+
 def handle_event(event):
     instance_id = event.get("instance_id") or "default"
-    _log("recv %s agent=%s status=%s notify=%s defer=%s clear=%s",
+    _log("recv %s agent=%s status=%s notify=%s defer=%s clear=%s subagent_delta=%s",
          instance_id, event.get("agent"), event.get("status"),
-         event.get("notify"), event.get("defer"), event.get("clear"))
+         event.get("notify"), event.get("defer"), event.get("clear"),
+         event.get("subagent_delta"))
+
+    # --- Subagent tracking ---
+    delta = event.get("subagent_delta")
+    if delta is not None:
+        with _lock:
+            prev = _active_subagents.get(instance_id, 0)
+            new_count = max(0, prev + delta)
+            _active_subagents[instance_id] = new_count
+            _log("subagent delta %s: %+d -> active=%d", instance_id, delta, new_count)
+
+            if new_count == 0 and instance_id in _held_done:
+                held_event = _held_done.pop(instance_id)
+                ht = _held_done_timers.pop(instance_id, None)
+                if ht is not None:
+                    ht.cancel()
+                _log("done RELEASED %s: all subagents finished, firing held DONE",
+                     instance_id)
+
+                def _fire_held(iid=instance_id, ev=held_event):
+                    apply_state(iid, ev)
+                    if ev.get("notify"):
+                        send_notification(iid, ev)
+
+                threading.Thread(target=_fire_held, daemon=True).start()
+        return
+
+    # --- Session clear: drop held state ---
+    if event.get("clear"):
+        with _lock:
+            had_held = _cancel_held_done(instance_id)
+            _active_subagents.pop(instance_id, None)
+        if had_held:
+            _log("done DROPPED %s: session cleared while DONE was held", instance_id)
 
     # Any incoming event clears a pending deferred event. If the new event
     # is itself deferred, the timer just resets (parallel permission requests).
@@ -235,6 +305,26 @@ def handle_event(event):
         action = "reset" if had_pending else "schedule"
         _log("defer %s %s in %dms", action, instance_id, DEFER_MS)
         return
+
+    # --- Hold DONE if subagents are still active ---
+    if event.get("status") == "DONE":
+        with _lock:
+            active = _active_subagents.get(instance_id, 0)
+        if active > 0:
+            with _lock:
+                _cancel_held_done(instance_id)
+                _held_done[instance_id] = event
+                ht = threading.Timer(HELD_DONE_TIMEOUT_MS / 1000.0,
+                                     _flush_held_done, args=(instance_id,))
+                ht.daemon = True
+                _held_done_timers[instance_id] = ht
+                ht.start()
+            _log("done HELD %s: active_subagents=%d, waiting for subagents to finish",
+                 instance_id, active)
+            return
+        else:
+            _log("done IMMEDIATE %s: no active subagents, processing normally",
+                 instance_id)
 
     apply_state(instance_id, event)
 

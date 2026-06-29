@@ -201,6 +201,24 @@ PY
     "$AGENTS_STATUS_DIR/send" "$payload"
 }
 
+# send_subagent_event AGENT DELTA
+# DELTA is +1 (subagent started) or -1 (subagent stopped).
+send_subagent_event() {
+    local agent="$1" delta="$2"
+    local iid payload
+    iid="$(get_instance_id)"
+
+    payload="$(python3 - "$agent" "$iid" "$delta" <<'PY'
+import json, sys
+agent, iid, delta = sys.argv[1:4]
+ev = {"agent": agent, "instance_id": iid, "subagent_delta": int(delta)}
+print(json.dumps(ev))
+PY
+)"
+
+    "$AGENTS_STATUS_DIR/send" "$payload"
+}
+
 ensure_server() {
     "$AGENTS_STATUS_DIR/ensure-running"
 }

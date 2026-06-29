@@ -13,6 +13,12 @@
     "stop": [
       { "command": "~/.cursor_scripts/hook-finish" }
     ],
+    "subagentStart": [
+      { "command": "~/.cursor_scripts/hook-subagent-start" }
+    ],
+    "subagentStop": [
+      { "command": "~/.cursor_scripts/hook-subagent-stop" }
+    ],
     "beforeShellExecution": [
       { "command": "~/.cursor_scripts/hook-perm-req" }
     ],
