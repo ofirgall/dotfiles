@@ -9,3 +9,5 @@ if brew list --cask karabiner-elements &>/dev/null; then
 fi
 
 brew install --cask karabiner-elements
+/usr/bin/open -a "Karabiner-Elements"
+echo "Karabiner launched — grant Input Monitoring permissions when prompted"
