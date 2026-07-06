@@ -36,6 +36,7 @@ export PATH=$PATH:$GOPATH/bin
 
 # Rust
 export CARGO_NET_GIT_FETCH_WITH_CLI=true # fetch git dependecies
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # ripgrep
 if [[ -f "$HOME/.ripgreprc" ]]; then

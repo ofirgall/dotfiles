@@ -2,7 +2,7 @@
 set -e
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-export PATH="$HOME/.cargo/bin:$PATH"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 if command -v ez &>/dev/null; then
     echo "ez-workspaces already installed"
@@ -11,6 +11,7 @@ fi
 
 if ! command -v cargo &>/dev/null; then
     brew install rust
+    [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 fi
 
 cargo install --git https://github.com/KoalaVim/ez-workspaces
