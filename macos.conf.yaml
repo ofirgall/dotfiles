@@ -2,6 +2,7 @@
     - [git submodule update --init --recursive, Installing submodules]
     - [install_scripts/mac/install_brew.sh, Installing Homebrew]
     - [install_scripts/mac/install_basic.sh, Installing basic dependencies]
+    - [install_scripts/mac/install_ghostty.sh, Installing Ghostty]
 
 - defaults:
     link:
@@ -18,3 +19,5 @@
         path: dotfiles/zsh-conf
     ~/.my-zsh-conf:
         path: dotfiles/my-zsh-conf
+    ~/.config/ghostty:
+        path: dotfiles/ghostty
