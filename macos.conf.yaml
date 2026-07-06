@@ -5,6 +5,7 @@
     - [install_scripts/mac/install_fonts.sh, Installing Nerd Fonts]
     - [install_scripts/mac/install_tmux.sh, Installing tmux]
     - [install_scripts/mac/install_ghostty.sh, Installing Ghostty]
+    - [install_scripts/mac/install_ez_workspaces.sh, Installing ez-workspaces]
 
 - defaults:
     link:
@@ -23,3 +24,5 @@
         path: dotfiles/my-zsh-conf
     ~/.config/ghostty:
         path: dotfiles/ghostty
+    ~/.config/ez/config.toml:
+        path: dotfiles/ez-workspaces/config.toml
