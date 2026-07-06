@@ -243,7 +243,7 @@ bind -n C-u if-shell "$is_nvim || $is_vim || $is_nested_tmux || $is_less || $is_
 bind -n F12 if-shell "$is_nvim" "send-keys F12" 'setw synchronize-panes' # Toggle type on all panes
 
 # Toggle the current window's AI agent IDLE status
-bind -n M-i run-shell -b "$helpers toggle_ai_agent_idle #{pane_id}"
+# bind -n M-i run-shell -b "$helpers toggle_ai_agent_idle #{pane_id}"
 
 # Tag the current window with a custom number-circle color (or clear).
 # Accepts hex (#ff0000) or a known color name (red/green/mauve/peach/...).
