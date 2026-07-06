@@ -6,9 +6,9 @@ Goal: Make macOS feel like Linux for keyboard interaction.
 
 ### Swap CapsLock and Escape
 - **Linux source**: `awesomewm/autorun.sh` → `setxkbmap -option caps:escape`
-- **macOS approach**: System Settings > Keyboard > Keyboard Shortcuts > Modifier Keys (built-in, no extra software). Alternatively Karabiner for more control.
-- **Status**: [ ] Not started
-- **Notes**: Native macOS support since Ventura. Karabiner only needed if you want tap=Escape, hold=Ctrl (dual-role).
+- **macOS approach**: Karabiner-Elements simple modification (full swap both directions).
+- **Status**: [x] Done
+- **Notes**: Using Karabiner simple_modifications in `macos_migration/karabiner/karabiner.json`.
 
 ### Swap Fn and Left Ctrl (built-in keyboard)
 - **Linux source**: Not needed on external keyboards; laptop-specific preference.

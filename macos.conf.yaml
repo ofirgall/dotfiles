@@ -2,6 +2,7 @@
     - [git submodule update --init --recursive, Installing submodules]
     - [install_scripts/mac/install_brew.sh, Installing Homebrew]
     - [install_scripts/mac/install_basic.sh, Installing basic dependencies]
+    - [install_scripts/mac/install_karabiner.sh, Installing Karabiner-Elements]
     - [install_scripts/mac/install_fonts.sh, Installing Nerd Fonts]
     - [install_scripts/mac/install_tmux.sh, Installing tmux]
     - [install_scripts/mac/install_ghostty.sh, Installing Ghostty]
@@ -28,6 +29,8 @@
         path: dotfiles/tmux_conf
     ~/.tmux/custom-macros:
         path: dotfiles/tmux_conf/custom-macros
+    ~/.config/karabiner/karabiner.json:
+        path: macos_migration/karabiner/karabiner.json
     ~/dotfiles_scripts:
         path: scripts
     ~/.config/ghostty:
