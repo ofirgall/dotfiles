@@ -22,6 +22,12 @@
         path: dotfiles/zsh-conf
     ~/.my-zsh-conf:
         path: dotfiles/my-zsh-conf
+    ~/.tmux.conf:
+        path: dotfiles/tmux_conf/entrypoint.tmux
+    ~/.tmux_conf:
+        path: dotfiles/tmux_conf
+    ~/.tmux/custom-macros:
+        path: dotfiles/tmux_conf/custom-macros
     ~/.config/ghostty:
         path: dotfiles/ghostty
     ~/Library/Application Support/ez/config.toml:
