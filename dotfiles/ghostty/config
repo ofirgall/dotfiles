@@ -17,6 +17,7 @@ adjust-cursor-thickness = 2
 mouse-scroll-multiplier = precision:0.15,discrete:0.5
 mouse-hide-while-typing = true
 confirm-close-surface = false
+macos-option-as-alt = true
 
 background = #000000
 foreground = #ffffff
