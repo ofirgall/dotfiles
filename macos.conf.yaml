@@ -1,6 +1,7 @@
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     - [install_scripts/mac/install_brew.sh, Installing Homebrew]
+    - [install_scripts/mac/install_basic.sh, Installing basic dependencies]
 
 - defaults:
     link:
