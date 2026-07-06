@@ -24,7 +24,7 @@
         path: dotfiles/my-zsh-conf
     ~/.config/ghostty:
         path: dotfiles/ghostty
-    ~/.config/ez/config.toml:
+    ~/Library/Application Support/ez/config.toml:
         path: dotfiles/ez-workspaces-macos/config.toml
 
 - create:
