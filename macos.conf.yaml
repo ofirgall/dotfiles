@@ -26,3 +26,7 @@
         path: dotfiles/ghostty
     ~/.config/ez/config.toml:
         path: dotfiles/ez-workspaces-macos/config.toml
+
+- create:
+    - ~/workspace/personal
+    - ~/workspace/work
