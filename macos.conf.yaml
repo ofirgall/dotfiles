@@ -25,4 +25,4 @@
     ~/.config/ghostty:
         path: dotfiles/ghostty
     ~/.config/ez/config.toml:
-        path: dotfiles/ez-workspaces/config.toml
+        path: dotfiles/ez-workspaces-macos/config.toml

@@ -1,0 +1,53 @@
+workspace_roots = [
+    "/Users/ofirgal/workspace/personal",
+    "/Users/ofirgal/workspace/work",
+]
+default_shell = "zsh"
+plugin_timeout = 30
+default_select_by = "repo"
+on_enter = "tmux"
+on_create = "tmux"
+
+[selector]
+backend = "fzf"
+
+[fzf]
+height = "90%"
+
+[keybinds]
+new_session = "alt-n"
+delete_session = "alt-d"
+rename_session = "alt-r"
+view_tree = "ctrl-t"
+view_workspace = "ctrl-w"
+view_repo = "ctrl-e"
+view_owner = "ctrl-o"
+view_label = "ctrl-g"
+edit_labels = "alt-l"
+
+[plugins]
+enabled = [
+    "git-worktree",
+    "tmux",
+]
+
+[plugin_settings]
+
+[[session_name_stages]]
+name = "prefix"
+kind = "choice"
+choices = [
+    "feat",
+    "fix",
+    "chore",
+]
+
+[[session_name_stages]]
+name = "ticket-prefix"
+kind = "choice"
+choices = ["DR"]
+
+[[session_name_stages]]
+name = "ticket-number"
+kind = "text"
+choices = []
