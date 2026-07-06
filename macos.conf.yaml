@@ -28,6 +28,8 @@
         path: dotfiles/tmux_conf
     ~/.tmux/custom-macros:
         path: dotfiles/tmux_conf/custom-macros
+    ~/dotfiles_scripts:
+        path: scripts
     ~/.config/ghostty:
         path: dotfiles/ghostty
     ~/Library/Application Support/ez/config.toml:
