@@ -1,0 +1,15 @@
+- defaults:
+    link:
+      relink: true
+      force: true
+      create: true
+
+- link:
+    ~/.zshrc:
+        path: dotfiles/zsh-conf/entrypoint.zsh
+    ~/.zshenv:
+        path: dotfiles/zsh-conf/env.zsh
+    ~/.zsh-conf:
+        path: dotfiles/zsh-conf
+    ~/.my-zsh-conf:
+        path: dotfiles/my-zsh-conf
