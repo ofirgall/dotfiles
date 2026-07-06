@@ -2,6 +2,7 @@
 set -e
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 if command -v ez &>/dev/null; then
     echo "ez-workspaces already installed"
