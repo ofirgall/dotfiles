@@ -2,6 +2,13 @@
 
 Tracks configs that diverge from the Linux versions due to macOS differences.
 
+## Ghostty
+
+- **File**: `dotfiles/ghostty/config` (shared)
+- **Changes for macOS**:
+  - `window-decoration = auto` (was `none` on Linux) — macOS needs window decorations for drag/fullscreen controls
+  - `keybind = ctrl+shift+enter=toggle_fullscreen` — replaces WM-based fullscreen toggle
+
 ## ez-workspaces
 
 - **File**: `dotfiles/ez-workspaces-macos/config.toml` (macOS) vs `dotfiles/ez-workspaces/config.toml` (Linux)

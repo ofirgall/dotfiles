@@ -10,7 +10,7 @@ window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
 window-padding-color = extend
-window-decoration = none
+window-decoration = auto
 
 adjust-cursor-thickness = 2
 # precision=touchpad | discrete=mouse
@@ -72,6 +72,7 @@ keybind = alt+shift+comma=text:\x1b[27;3;60~
 keybind = alt+shift+period=text:\x1b[27;3;62~
 keybind = shift+enter=text:\x1b[13;2u
 keybind = ctrl+enter=text:\x1b[13;5u
+keybind = ctrl+shift+enter=toggle_fullscreen
 keybind = ctrl+semicolon=text:\x1b;
 keybind = shift+space=text:\x1b[27;2;32~
 keybind = ctrl+shift+space=text:\x1b[27;6;32~
