@@ -7,9 +7,8 @@ After first install, grant access in:
 - System Settings > Privacy & Security > Input Monitoring
 - System Settings > Privacy & Security > Accessibility
 
-## Key Repeat Rate
+## One-time System Setup
 ```bash
-defaults write -g InitialKeyRepeat -int 10
-defaults write -g KeyRepeat -int 1
+install_scripts/mac/setup_once.sh
 ```
-Requires logout to take effect.
+Requires logout for key repeat changes to take effect.
