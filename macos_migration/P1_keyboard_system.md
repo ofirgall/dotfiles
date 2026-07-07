@@ -6,7 +6,7 @@ Goal: Make macOS feel like Linux for keyboard interaction.
 
 ### Swap CapsLock and Escape
 - **Linux source**: `awesomewm/autorun.sh` → `setxkbmap -option caps:escape`
-- **macOS approach**: Karabiner-Elements simple modification (full swap both directions).
+- **macOS approach**: Karabiner-Elements simple modification (CapsLock → Escape only, Escape stays as Escape).
 - **Status**: [x] Done
 - **Notes**: Using Karabiner simple_modifications in `macos_migration/karabiner/karabiner.json`.
 
