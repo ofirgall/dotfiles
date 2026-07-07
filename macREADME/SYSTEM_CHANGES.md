@@ -8,6 +8,7 @@ Tracks which native macOS keybinds and behaviors we override or change.
 |--------|--------|--------|
 | CapsLock → Escape | Karabiner simple_modification | Vim workflow, matches Linux setup |
 | Escape → CapsLock | Karabiner simple_modification | Full swap so CapsLock is still accessible |
+| Fn ↔ Left Ctrl (built-in) | Karabiner per-device simple_modification | Puts Ctrl in bottom-left (PC position) |
 | Option acts as Alt/Meta | Ghostty `macos-option-as-alt = true` | Tmux M- prefix and terminal Alt bindings |
 
 ## Window Decorations

@@ -12,9 +12,9 @@ Goal: Make macOS feel like Linux for keyboard interaction.
 
 ### Swap Fn and Left Ctrl (built-in keyboard)
 - **Linux source**: Not needed on external keyboards; laptop-specific preference.
-- **macOS approach**: Karabiner-Elements complex rule: swap `fn` ↔ `left_control` for the built-in keyboard only (leave external keyboards untouched).
-- **Status**: [ ] Not started
-- **Notes**: This cannot be done in System Settings — Karabiner is required.
+- **macOS approach**: Karabiner-Elements per-device simple modification: swap `apple_vendor_top_case_key_code: keyboard_fn` ↔ `left_control` for the built-in keyboard only (vendor_id: 0, product_id: 0).
+- **Status**: [x] Done
+- **Notes**: Uses `apple_vendor_top_case_key_code` for the Fn key (not regular `key_code`). Configured in `dotfiles/mac/karabiner/karabiner.json` under `devices` array.
 
 ### Ctrl-based shortcuts (copy, paste, cut, undo, select-all, new tab, close tab, etc.)
 - **Linux source**: Default Linux behavior (Ctrl+C/V/X/Z/A/T/W/N).
