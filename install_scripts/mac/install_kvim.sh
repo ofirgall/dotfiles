@@ -17,4 +17,5 @@ fi
 
 if [ ! -d "$HOME/.config/kvim-envs/main" ]; then
     kv env create main --from ~/.config/nvim
+    kv install
 fi
