@@ -6,7 +6,6 @@
     - [install_scripts/mac/install_fonts.sh, Installing Nerd Fonts]
     - [install_scripts/mac/install_tmux.sh, Installing tmux]
     - [install_scripts/mac/install_ghostty.sh, Installing Ghostty]
-    - [install_scripts/mac/install_kvim.sh, Installing KoalaVim]
     - [install_scripts/mac/install_ez_workspaces.sh, Installing ez-workspaces]
 
 - defaults:
@@ -46,3 +45,6 @@
 - create:
     - ~/workspace/personal
     - ~/workspace/work
+
+- shell:
+    - [install_scripts/mac/install_kvim.sh, Installing KoalaVim]
