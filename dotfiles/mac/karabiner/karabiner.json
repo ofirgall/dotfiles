@@ -70,12 +70,6 @@
                             },
                             {
                                 "type": "basic",
-                                "from": { "key_code": "tab", "modifiers": { "mandatory": ["left_control"], "optional": ["shift"] } },
-                                "to": [{ "key_code": "tab", "modifiers": ["left_command"] }],
-                                "conditions": [{ "type": "frontmost_application_unless", "bundle_identifiers": ["^com\\.mitchellh\\.ghostty$", "^com\\.apple\\.Terminal$", "^com\\.googlecode\\.iterm2$", "^com\\.todesktop\\.230313mzl4w4u92$"] }]
-                            },
-                            {
-                                "type": "basic",
                                 "from": { "key_code": "l", "modifiers": { "mandatory": ["left_control"], "optional": ["shift"] } },
                                 "to": [{ "key_code": "l", "modifiers": ["left_command"] }],
                                 "conditions": [{ "type": "frontmost_application_unless", "bundle_identifiers": ["^com\\.mitchellh\\.ghostty$", "^com\\.apple\\.Terminal$", "^com\\.googlecode\\.iterm2$", "^com\\.todesktop\\.230313mzl4w4u92$"] }]
