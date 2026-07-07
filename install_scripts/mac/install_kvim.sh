@@ -9,10 +9,6 @@ if ! command -v cargo &>/dev/null; then
     [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 fi
 
-if ! command -v nvim &>/dev/null; then
-    brew install neovim
-fi
-
 if command -v kv &>/dev/null; then
     echo "kv already installed"
 else
