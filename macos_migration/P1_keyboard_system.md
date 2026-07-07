@@ -55,6 +55,14 @@ Goal: Make macOS feel like Linux for keyboard interaction.
 
 Karabiner config lives at `~/.config/karabiner/karabiner.json`. We'll store ours in `macos_migration/karabiner/` and symlink.
 
+## Detailed Strategy
+
+See [keylayout/](keylayout/) for the full key layout migration strategy, covering:
+- Physical key remapping (Karabiner) with per-device rules
+- Aerospace WM keybind mapping from AwesomeWM/Hyprland
+- Ghostty terminal keybind changes
+- macOS system settings and shortcut conflicts
+
 ## Implementation order
 
 1. CapsLock ↔ Escape (quick win, native macOS)

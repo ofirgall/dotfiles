@@ -3,9 +3,11 @@
 ## Folder Structure
 
 - `macos_migration/` — Tracks the migration process from Linux to macOS. Temporary — will be removed once migration is complete.
+  - `keylayout/` — Key layout migration strategy: how to replicate Linux Ctrl/Alt/Super roles on macOS using Karabiner, Aerospace, and Ghostty.
 - `macREADME/` — Permanent documentation for macOS-specific setup. Survives after migration.
   - `MANUAL.md` — Manual steps (permissions, defaults commands)
   - `SYSTEM_CHANGES.md` — Native keybinds/behaviors we override
+  - `KEY_CONFLICTS.md` — macOS system shortcuts overridden by our config (populated reactively)
 - `dotfiles/mac/` — macOS-specific config files (karabiner, etc.)
 - `dotfiles/ez-workspaces-macos/` — macOS-specific app configs that diverge from Linux
 - `install_scripts/mac/` — macOS install scripts
