@@ -9,6 +9,7 @@
   - `SYSTEM_CHANGES.md` — Native keybinds/behaviors we override
   - `KEY_CONFLICTS.md` — macOS system shortcuts overridden by our config (populated reactively)
 - `dotfiles/mac/` — macOS-specific config files (karabiner, etc.)
+  - `karabiner/karabiner.json` — Symlinked to `~/.config/karabiner/karabiner.json`. Karabiner watches the inode, not the path, so after editing this file you MUST run `touch -h ~/.config/karabiner/karabiner.json` to trigger a reload.
 - `dotfiles/ez-workspaces-macos/` — macOS-specific app configs that diverge from Linux
 - `install_scripts/mac/` — macOS install scripts
 - `macos.conf.yaml` — Dotbot config for macOS symlinks and install steps

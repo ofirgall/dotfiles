@@ -7,6 +7,7 @@
     - [install_scripts/mac/install_tmux.sh, Installing tmux]
     - [install_scripts/mac/install_ghostty.sh, Installing Ghostty]
     - [install_scripts/mac/install_ez_workspaces.sh, Installing ez-workspaces]
+    - [install_scripts/mac/install_cursor_cli_wrapper.sh, Installing cursor-cli-wrapper]
 
 - defaults:
     link:
@@ -41,10 +42,13 @@
         path: dotfiles/ghostty
     ~/Library/Application Support/ez/config.toml:
         path: dotfiles/ez-workspaces-macos/config.toml
+    ~/.config/cursor-cli-wrapper/config.toml:
+        path: dotfiles/cursor-cli-wrapper.toml
 
 - create:
     - ~/workspace/personal
     - ~/workspace/work
 
 - shell:
+    - [touch -h ~/.config/karabiner/karabiner.json, Triggering Karabiner reload]
     - [install_scripts/mac/install_kvim.sh, Installing KoalaVim]
