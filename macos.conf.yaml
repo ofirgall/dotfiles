@@ -19,6 +19,7 @@
       force: true
       create: true
 
+# --- Portable symlinks (shared with Linux) ---
 - link:
     ~/.zshrc:
         path: dotfiles/zsh-conf/entrypoint.zsh
@@ -34,26 +35,18 @@
         path: dotfiles/tmux_conf
     ~/.tmux/custom-macros:
         path: dotfiles/tmux_conf/custom-macros
-    ~/.config/karabiner/karabiner.json:
-        path: dotfiles/mac/karabiner/karabiner.json
-    ~/.config/linearmouse/linearmouse.json:
-        path: dotfiles/mac/linearmouse/linearmouse.json
     ~/.config/nvim:
         path: editors/KoalaConfig
     ~/.kvim.conf:
         path: dotfiles/.kvim.conf
+    ~/.config/kvim-envs/main:
+        path: editors/KoalaConfig
+    ~/.vimrc:
+        path: dotfiles/vimrc
     ~/dotfiles_scripts:
         path: scripts
     ~/.config/ghostty:
         path: dotfiles/ghostty
-    ~/Library/Application Support/ez/config.toml:
-        path: dotfiles/ez-workspaces-macos/config.toml
-    ~/.aerospace.toml:
-        path: dotfiles/mac/aerospace/aerospace.toml
-    ~/.config/sketchybar:
-        path: dotfiles/mac/sketchybar
-    ~/.config/borders/bordersrc:
-        path: dotfiles/mac/borders/bordersrc
     ~/.profile:
         path: dotfiles/profile
     ~/.gitconfig:
@@ -62,10 +55,6 @@
         path: dotfiles/gitignore_global
     ~/.ripgreprc:
         path: dotfiles/ripgreprc
-    ~/.config/kvim-envs/main:
-        path: editors/KoalaConfig
-    ~/.vimrc:
-        path: dotfiles/vimrc
     ~/.config/yazi:
         path: dotfiles/yazi
     ~/.claude/settings.json:
@@ -74,10 +63,25 @@
         path: dotfiles/claude/scripts
     ~/.cursor/statusline.sh:
         path: dotfiles/cursor/statusline.sh
-    ~/.config/gh-dash/config.yml:
-        path: dotfiles/gh-dash/config.yml
     ~/.config/cursor-cli-wrapper/config.toml:
         path: dotfiles/cursor-cli-wrapper.toml
+    ~/.config/gh-dash/config.yml:
+        path: dotfiles/gh-dash/config.yml
+
+# --- macOS-specific symlinks ---
+- link:
+    ~/.config/karabiner/karabiner.json:
+        path: dotfiles/mac/karabiner/karabiner.json
+    ~/.config/linearmouse/linearmouse.json:
+        path: dotfiles/mac/linearmouse/linearmouse.json
+    ~/.aerospace.toml:
+        path: dotfiles/mac/aerospace/aerospace.toml
+    ~/.config/sketchybar:
+        path: dotfiles/mac/sketchybar
+    ~/.config/borders/bordersrc:
+        path: dotfiles/mac/borders/bordersrc
+    ~/Library/Application Support/ez/config.toml:
+        path: dotfiles/ez-workspaces-macos/config.toml
 
 - create:
     - ~/workspace/personal
