@@ -9,6 +9,7 @@
     - [install_scripts/mac/install_ghostty.sh, Installing Ghostty]
     - [install_scripts/mac/install_aerospace.sh, Installing AeroSpace]
     - [install_scripts/mac/install_sketchybar.sh, Installing SketchyBar]
+    - [install_scripts/mac/install_jankyborders.sh, Installing JankyBorders]
     - [install_scripts/mac/install_ez_workspaces.sh, Installing ez-workspaces]
     - [install_scripts/mac/install_cursor_cli_wrapper.sh, Installing cursor-cli-wrapper]
 
@@ -51,6 +52,8 @@
         path: dotfiles/mac/aerospace/aerospace.toml
     ~/.config/sketchybar:
         path: dotfiles/mac/sketchybar
+    ~/.config/borders/bordersrc:
+        path: dotfiles/mac/borders/bordersrc
     ~/.profile:
         path: dotfiles/profile
     ~/.gitconfig:
