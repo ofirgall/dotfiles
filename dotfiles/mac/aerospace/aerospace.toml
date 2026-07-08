@@ -1,0 +1,104 @@
+config-version = 2
+
+start-at-login = true
+auto-reload-config = true
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+automatically-unhide-macos-hidden-apps = true
+
+key-mapping.preset = 'qwerty'
+
+gaps.inner.horizontal = 0
+gaps.inner.vertical =   0
+gaps.outer.left =       0
+gaps.outer.bottom =     0
+gaps.outer.top =        0
+gaps.outer.right =      0
+
+[mode.main.binding]
+
+# Focus (Super+hjkl)
+cmd-h = 'focus left'
+cmd-j = 'focus down'
+cmd-k = 'focus up'
+cmd-l = 'focus right'
+
+# Move/swap windows (Super+Shift+hjkl)
+cmd-shift-h = 'move left'
+cmd-shift-j = 'move down'
+cmd-shift-k = 'move up'
+cmd-shift-l = 'move right'
+
+# Workspaces (Super+1-9)
+cmd-1 = 'workspace 1'
+cmd-2 = 'workspace 2'
+cmd-3 = 'workspace 3'
+cmd-4 = 'workspace 4'
+cmd-5 = 'workspace 5'
+cmd-6 = 'workspace 6'
+cmd-7 = 'workspace 7'
+cmd-8 = 'workspace 8'
+cmd-9 = 'workspace 9'
+
+# Move window to workspace (Super+Shift+1-9)
+cmd-shift-1 = 'move-node-to-workspace 1'
+cmd-shift-2 = 'move-node-to-workspace 2'
+cmd-shift-3 = 'move-node-to-workspace 3'
+cmd-shift-4 = 'move-node-to-workspace 4'
+cmd-shift-5 = 'move-node-to-workspace 5'
+cmd-shift-6 = 'move-node-to-workspace 6'
+cmd-shift-7 = 'move-node-to-workspace 7'
+cmd-shift-8 = 'move-node-to-workspace 8'
+cmd-shift-9 = 'move-node-to-workspace 9'
+
+# Open terminal (Super+Enter)
+cmd-enter = 'exec-and-forget /usr/bin/open -na Ghostty --args --working-directory=$HOME'
+
+# Open browser (Super+b)
+cmd-b = 'exec-and-forget /usr/bin/open -na "Google Chrome" --args --new-window'
+
+# Close window (Super+q)
+cmd-q = 'close --quit-if-last-window'
+
+# Fullscreen (Super+f)
+cmd-f = 'fullscreen'
+
+# Maximize toggle (Super+m / Super+z)
+cmd-m = 'fullscreen'
+cmd-z = 'fullscreen'
+
+# Prev/next workspace (Super+, / Super+.)
+cmd-comma = 'workspace prev'
+cmd-period = 'workspace next'
+
+# Last workspace (Super+`)
+cmd-backtick = 'workspace-back-and-forth'
+
+# Move window to other monitor (Super+o)
+cmd-o = 'move-node-to-monitor --wrap-around next'
+
+# Layout toggle
+cmd-slash = 'layout tiles horizontal vertical'
+
+# Resize (Super+Ctrl+h/l)
+cmd-ctrl-h = 'resize width -50'
+cmd-ctrl-l = 'resize width +50'
+
+# Float toggle (Super+Shift+f -- matches Hyprland Ctrl+F)
+cmd-shift-f = 'layout floating tiling'
+
+# Service mode (Super+Shift+;)
+cmd-shift-semicolon = 'mode service'
+
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main']
+f = ['layout floating tiling', 'mode main']
+backspace = ['close-all-windows-but-current', 'mode main']
