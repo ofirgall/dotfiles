@@ -11,12 +11,7 @@
     - [install_scripts/mac/install_sketchybar.sh, Installing SketchyBar]
     - [install_scripts/mac/install_jankyborders.sh, Installing JankyBorders]
     - [install_scripts/mac/install_ez_workspaces.sh, Installing ez-workspaces]
-    - ["test -d $HOME/agents-status || git clone git@github.com:KoalaVim/agents-status.git $HOME/agents-status", Cloning agents-status]
-    - [$HOME/agents-status/install.sh core, Installing agents-status core]
-    - [$HOME/agents-status/install.sh hooks cursor, Installing agents-status cursor hooks]
-    - [$HOME/agents-status/install.sh hooks codex, Installing agents-status codex hooks]
-    - [$HOME/agents-status/install.sh wrapper cursor, Installing agents-status cursor wrapper]
-    - [$HOME/agents-status/install.sh cursor-cli-wrapper, Installing cursor-cli-wrapper]
+    - [install_scripts/mac/install_agents_status.sh, Installing agents-status]
 
 - defaults:
     link:
