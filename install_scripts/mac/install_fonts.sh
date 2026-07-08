@@ -12,3 +12,6 @@ brew install --cask \
     font-0xproto-nerd-font \
     font-recursive-mono-nerd-font \
     font-maple-mono-nf
+
+# Remove Caskaydia custom italic fonts
+rm -f ~/Library/Fonts/Caskaydia*Italic*
