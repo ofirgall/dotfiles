@@ -3,7 +3,7 @@
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 sketchybar --bar \
-    height=37 \
+    height=33 \
     blur_radius=30 \
     position=top \
     sticky=on \
