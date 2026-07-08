@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+# notify-send compatible wrapper for macOS using alerter.
+# Usage: notify-macos [OPTIONS...] TITLE BODY
+# Supports -u (urgency, ignored) and -A (actions, ignored) for compatibility.
+#
+# Global defaults — edit these to configure all notifications in one place.
+ALERTER_SOUND="default"
+ALERTER_TIMEOUT=30
+ALERTER_IGNORE_DND=1
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -u) shift 2 ;;
+        -A) shift 2 ;;
+        *)  break ;;
+    esac
+done
+
+title="${1:-Notification}"
+body="${2:-}"
+
+args="--title '$title' --message '$body'"
+[ -n "$ALERTER_SOUND" ] && args="$args --sound $ALERTER_SOUND"
+[ -n "$ALERTER_TIMEOUT" ] && args="$args --timeout $ALERTER_TIMEOUT"
+[ "$ALERTER_IGNORE_DND" = "1" ] && args="$args --ignore-dnd"
+
+eval alerter $args >/dev/null 2>&1

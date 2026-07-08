@@ -1,6 +1,7 @@
 [notification]
-command = "$HOME/agents-status/core/notify-macos"
+# notify-macos is on PATH via ~/dotfiles_scripts/notify/
 # Requires: brew install vjeantet/tap/alerter
+command = "notify-macos"
 
 [post-event]
 commands = [
