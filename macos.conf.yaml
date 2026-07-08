@@ -34,6 +34,8 @@
         path: dotfiles/tmux_conf/custom-macros
     ~/.config/karabiner/karabiner.json:
         path: dotfiles/mac/karabiner/karabiner.json
+    ~/.config/linearmouse/linearmouse.json:
+        path: dotfiles/mac/linearmouse/linearmouse.json
     ~/.config/nvim:
         path: editors/KoalaConfig
     ~/.kvim.conf:

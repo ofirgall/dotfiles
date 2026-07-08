@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schema.linearmouse.app/0.11.2",
+  "schemes": [
+    {
+      "if": {
+        "device": {
+          "category": "trackpad"
+        }
+      },
+      "pointer": {
+        "disableAcceleration": true
+      },
+      "scrolling": {
+        "natural": true
+      }
+    }
+  ]
+}
