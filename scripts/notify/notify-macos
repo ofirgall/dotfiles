@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 # notify-send compatible wrapper for macOS using alerter.
 # Usage: notify-macos [OPTIONS...] TITLE BODY
-# Supports -u (urgency, ignored) and -A (actions, ignored) for compatibility.
+# Supports -u (urgency: critical disables timeout) and -A (actions, ignored).
 #
 # Global defaults — edit these to configure all notifications in one place.
 ALERTER_SOUND="default"
@@ -10,11 +10,13 @@ ALERTER_IGNORE_DND=1
 
 while [ $# -gt 0 ]; do
     case "$1" in
-        -u) shift 2 ;;
+        -u) urgency="$2"; shift 2 ;;
         -A) shift 2 ;;
         *)  break ;;
     esac
 done
+
+[ "$urgency" = "critical" ] && ALERTER_TIMEOUT=0
 
 title="${1:-Notification}"
 body="${2:-}"
