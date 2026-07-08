@@ -94,8 +94,8 @@ cmd-period = 'workspace next'
 # Last workspace (Super+`)
 cmd-backtick = 'workspace-back-and-forth'
 
-# Move window to other monitor (Super+o)
-cmd-o = 'move-node-to-monitor --wrap-around next'
+# Move window to other monitor and follow focus (Super+o)
+cmd-o = ['move-node-to-monitor --wrap-around next', 'focus-monitor --wrap-around next']
 
 # Layout toggle
 cmd-slash = 'layout tiles horizontal vertical'

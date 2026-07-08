@@ -1,5 +1,6 @@
 [notification]
-command = "terminal-notifier"
+command = "$HOME/agents-status/core/notify-macos"
+# Requires: brew install vjeantet/tap/alerter
 
 [post-event]
 commands = [

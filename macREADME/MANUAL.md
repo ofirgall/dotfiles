@@ -7,6 +7,12 @@ After first install, grant access in:
 - System Settings > Privacy & Security > Input Monitoring
 - System Settings > Privacy & Security > Accessibility
 
+## agents-status Notifications
+Grant notification permission to alerter (first run triggers macOS permission prompt):
+```bash
+alerter --title "Setup" --message "Click Allow" --sound default --timeout 10
+```
+
 ## One-time System Setup
 ```bash
 install_scripts/mac/setup_once.sh
