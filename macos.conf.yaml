@@ -3,9 +3,11 @@
     - [install_scripts/mac/install_brew.sh, Installing Homebrew]
     - [install_scripts/mac/install_basic.sh, Installing basic dependencies]
     - [install_scripts/mac/install_karabiner.sh, Installing Karabiner-Elements]
+    - [install_scripts/mac/install_linearmouse.sh, Installing LinearMouse]
     - [install_scripts/mac/install_fonts.sh, Installing Nerd Fonts]
     - [install_scripts/mac/install_tmux.sh, Installing tmux]
     - [install_scripts/mac/install_ghostty.sh, Installing Ghostty]
+    - [install_scripts/mac/install_aerospace.sh, Installing AeroSpace]
     - [install_scripts/mac/install_ez_workspaces.sh, Installing ez-workspaces]
     - [install_scripts/mac/install_cursor_cli_wrapper.sh, Installing cursor-cli-wrapper]
 
@@ -42,6 +44,8 @@
         path: dotfiles/ghostty
     ~/Library/Application Support/ez/config.toml:
         path: dotfiles/ez-workspaces-macos/config.toml
+    ~/.aerospace.toml:
+        path: dotfiles/mac/aerospace/aerospace.toml
     ~/.config/cursor-cli-wrapper/config.toml:
         path: dotfiles/cursor-cli-wrapper.toml
 
