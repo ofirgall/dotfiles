@@ -14,6 +14,11 @@ Goal: Make macOS feel like Linux for keyboard interaction.
 - **macOS approach**: Karabiner simple modification: `right_option` → `delete_or_backspace`.
 - **Status**: [ ] Not started
 
+### Alt+Tab with maximized (fullscreen) windows
+- **Linux source**: Alt+Tab cycles all windows regardless of fullscreen state.
+- **macOS approach**: Karabiner remaps Option+Tab → F19, Aerospace catches F19 and runs `cycle-window.sh` which preserves fullscreen state when cycling.
+- **Status**: [x] Done
+
 ### Language switching (English/Hebrew)
 - **Linux source**: AwesomeWM `Mod4+Space` via echuraev/keyboard_layout widget.
 - **macOS approach**: System Settings > Keyboard > Input Sources. Set shortcut to Ctrl+Space.

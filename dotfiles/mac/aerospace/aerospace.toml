@@ -105,6 +105,9 @@ cmd-ctrl-l = 'resize width +50'
 # Float toggle (Super+Shift+f -- matches Hyprland Ctrl+F)
 cmd-shift-f = 'layout floating tiling'
 
+# Alt+Tab: cycle windows in workspace (preserves fullscreen)
+f19 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/cycle-window.sh'
+
 # Reload aerospace + sketchybar (Super+Shift+r)
 cmd-shift-r = ['reload-config', 'exec-and-forget sketchybar --reload']
 

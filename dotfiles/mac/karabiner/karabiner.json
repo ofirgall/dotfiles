@@ -94,12 +94,17 @@
                         ]
                     },
                     {
-                        "description": "Option+Tab -> Cmd+Tab (Alt+Tab window switching)",
+                        "description": "Option+Tab -> F19 (Alt+Tab window cycling for Aerospace)",
                         "manipulators": [
                             {
                                 "type": "basic",
-                                "from": { "key_code": "tab", "modifiers": { "mandatory": ["left_option"], "optional": ["shift"] } },
-                                "to": [{ "key_code": "tab", "modifiers": ["left_command"] }]
+                                "from": { "key_code": "tab", "modifiers": { "mandatory": ["left_option"] } },
+                                "to": [{ "key_code": "f19" }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "tab", "modifiers": { "mandatory": ["right_option"] } },
+                                "to": [{ "key_code": "f19" }]
                             }
                         ]
                     }
