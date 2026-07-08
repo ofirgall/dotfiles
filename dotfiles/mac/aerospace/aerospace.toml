@@ -9,6 +9,8 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 
+accordion-padding = 0
+
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 automatically-unhide-macos-hidden-apps = true
@@ -78,12 +80,12 @@ cmd-q = '''exec-and-forget APP=$(aerospace list-windows --focused --format '%{ap
         aerospace close --quit-if-last-window; \
     fi'''
 
-# Fullscreen (Super+f)
-cmd-f = 'fullscreen'
+# Fullscreen/Monocle toggle (Super+f) — uses accordion with 0 padding for true monocle
+cmd-f = 'layout tiles accordion'
 
 # Maximize toggle (Super+m / Super+z)
-cmd-m = 'fullscreen'
-cmd-z = 'fullscreen'
+cmd-m = 'layout tiles accordion'
+cmd-z = 'layout tiles accordion'
 
 # Prev/next workspace (Super+, / Super+.)
 cmd-comma = 'workspace prev'
