@@ -4,7 +4,7 @@
 
 - **Tap to Click**: Enabled — single tap = click, double tap = double click
 - **Drag style**: "Without Drag Lock" — double-tap and hold on the second tap to drag, lift to stop
-- **Acceleration**: Disabled via LinearMouse (config tracked in `dotfiles/mac/linearmouse/`)
+- **Acceleration**: Low acceleration (0.65) via LinearMouse (config tracked in `dotfiles/mac/linearmouse/`)
 - **Natural scrolling**: Enabled
 
 ## How to use
@@ -24,7 +24,7 @@
 - If the delay is annoying, alternatives:
   - **Physical click + drag** — press the trackpad down and drag (no delay, works like Linux libinput default)
   - **Three Finger Drag** — enable in Accessibility > Pointer Control > Trackpad Options. Instant response, no delay.
-- LinearMouse disables trackpad acceleration so pointer movement is 1:1 linear.
+- LinearMouse controls trackpad acceleration. Fully disabling acceleration also disables speed control on M-series Macs (Apple limitation). Using low acceleration (0.65) as a compromise.
 
 ## Relevant settings locations
 
