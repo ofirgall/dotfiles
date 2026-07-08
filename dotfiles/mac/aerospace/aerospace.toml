@@ -105,6 +105,9 @@ cmd-ctrl-l = 'resize width +50'
 # Float toggle (Super+Shift+f -- matches Hyprland Ctrl+F)
 cmd-shift-f = 'layout floating tiling'
 
+# Reload aerospace + sketchybar (Super+Shift+r)
+cmd-shift-r = ['reload-config', 'exec-and-forget sketchybar --reload']
+
 # Service mode (Super+Shift+;)
 cmd-shift-semicolon = 'mode service'
 
