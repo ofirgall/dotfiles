@@ -11,3 +11,6 @@ defaults write -g KeyRepeat -int 2
 
 # Fn Lock: F1-F12 act as standard function keys (media controls require Fn)
 defaults write -g com.apple.keyboard.fnState -bool true
+
+# Tap to Click on trackpad
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
