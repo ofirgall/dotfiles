@@ -94,7 +94,7 @@ export AWS_PROFILE=dev
 
 source $HOME/secrets.zsh
 
-export PATH=~/dotfiles_scripts/wrappers:$PATH
+export PATH=~/agents-status/simple-wrappers:$PATH
 
 # Koala
 export NEOGIT=true

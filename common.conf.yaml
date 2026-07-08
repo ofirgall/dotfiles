@@ -1,5 +1,12 @@
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - ["test -d $HOME/agents-status || git clone git@github.com:KoalaVim/agents-status.git $HOME/agents-status", Cloning agents-status]
+    - [$HOME/agents-status/install.sh core, Installing agents-status core]
+    - [$HOME/agents-status/install.sh hooks claude, Installing agents-status claude hooks]
+    - [$HOME/agents-status/install.sh hooks cursor, Installing agents-status cursor hooks]
+    - [$HOME/agents-status/install.sh hooks codex, Installing agents-status codex hooks]
+    - [$HOME/agents-status/install.sh wrapper codex, Installing agents-status codex wrapper]
+    - [$HOME/agents-status/install.sh wrapper cursor, Installing agents-status cursor wrapper]
 
 - defaults:
     link:
@@ -50,18 +57,12 @@
         path: dotfiles/lumen
     ~/.claude/settings.json:
         path: dotfiles/claude/settings.json
-    ~/.claude_scripts:
-        path: dotfiles/claude/scripts
-    ~/.cursor/hooks.json:
-        path: dotfiles/cursor/hooks.json
     ~/.cursor/statusline.sh:
         path: dotfiles/cursor/statusline.sh
-    ~/.cursor_scripts:
-        path: dotfiles/cursor/scripts
-    ~/.codex/hooks.json:
-        path: dotfiles/codex/hooks.json
-    ~/.codex_scripts:
-        path: dotfiles/codex/scripts
+    ~/.config/agents-status/config.toml:
+        path: dotfiles/agents-status-config.toml
+    ~/.config/cursor-cli-wrapper/config.toml:
+        path: dotfiles/cursor-cli-wrapper.toml
     ~/.config/gh-dash/config.yml:
         path: dotfiles/gh-dash/config.yml
 

@@ -12,5 +12,5 @@ window="${TMUX_NOTIFY_SESSION_NAME}:@${TMUX_NOTIFY_WINDOW_ID}"
 tmux set-option -wu -t "$window" @monitor-status
 tmux set-option -wu -t "$window" @window_color
 
-"$HOME/.tmux_conf/refresh_dim_colors.sh"
+"$HOME/agents-status/tmux/scripts/refresh_dim_colors.sh"
 "$HOME/.config/hypr/UserScripts/RenameWorkspaces.py"

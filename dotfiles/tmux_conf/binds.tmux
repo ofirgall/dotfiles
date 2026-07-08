@@ -252,7 +252,7 @@ bind -n F12 if-shell "$is_nvim" "send-keys F12" 'setw synchronize-panes' # Toggl
 # call here so the dim is visible immediately, not only after the next
 # window switch.
 # Empty input clears the tag.
-refresh_dim_colors="$HOME/.tmux_conf/refresh_dim_colors.sh"
+refresh_dim_colors="$HOME/agents-status/tmux/scripts/refresh_dim_colors.sh"
 bind W command-prompt -p "window color (hex/name, empty=clear):" {
   if -F "#{==:%1,}" \
     "setw -u @window_color ; run-shell -b $refresh_dim_colors" \

@@ -11,7 +11,12 @@
     - [install_scripts/mac/install_sketchybar.sh, Installing SketchyBar]
     - [install_scripts/mac/install_jankyborders.sh, Installing JankyBorders]
     - [install_scripts/mac/install_ez_workspaces.sh, Installing ez-workspaces]
-    - [install_scripts/mac/install_cursor_cli_wrapper.sh, Installing cursor-cli-wrapper]
+    - ["test -d $HOME/agents-status || git clone git@github.com:KoalaVim/agents-status.git $HOME/agents-status", Cloning agents-status]
+    - [$HOME/agents-status/install.sh core, Installing agents-status core]
+    - [$HOME/agents-status/install.sh hooks cursor, Installing agents-status cursor hooks]
+    - [$HOME/agents-status/install.sh hooks codex, Installing agents-status codex hooks]
+    - [$HOME/agents-status/install.sh wrapper cursor, Installing agents-status cursor wrapper]
+    - [$HOME/agents-status/install.sh cursor-cli-wrapper, Installing cursor-cli-wrapper]
 
 - defaults:
     link:
@@ -59,12 +64,12 @@
         path: dotfiles/yazi
     ~/.claude/settings.json:
         path: dotfiles/claude/settings.json
-    ~/.claude_scripts:
-        path: dotfiles/claude/scripts
     ~/.cursor/statusline.sh:
         path: dotfiles/cursor/statusline.sh
     ~/.config/cursor-cli-wrapper/config.toml:
         path: dotfiles/cursor-cli-wrapper.toml
+    ~/.config/agents-status/config.toml:
+        path: dotfiles/agents-status-config.toml
     ~/.config/gh-dash/config.yml:
         path: dotfiles/gh-dash/config.yml
 

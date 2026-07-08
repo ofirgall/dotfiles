@@ -1,0 +1,7 @@
+[notification]
+command = "terminal-notifier"
+
+[post-event]
+commands = [
+    "$AGENTS_STATUS_DIR/../tmux/scripts/refresh_dim_colors.sh",
+]
