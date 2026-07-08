@@ -21,3 +21,7 @@ defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true
 defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad DragLock -bool false
+
+# Auto-hide Dock
+defaults write com.apple.dock autohide -bool true
+killall Dock
