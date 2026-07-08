@@ -15,6 +15,9 @@ defaults write -g com.apple.keyboard.fnState -bool true
 # Tap to Click on trackpad
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 
-# Tap and drag (double-tap and hold to drag, without drag lock)
+# Tap and drag: double-tap and hold to drag (without drag lock)
+# This is the Accessibility > Pointer Control > Trackpad Options setting
 defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true
 defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad DragLock -bool false
