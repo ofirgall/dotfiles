@@ -1,0 +1,49 @@
+#!/bin/bash
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+sketchybar --bar \
+    height=28 \
+    blur_radius=30 \
+    position=top \
+    sticky=on \
+    padding_left=10 \
+    padding_right=10 \
+    color=0xff1e1e2e
+
+sketchybar --default \
+    icon.font="CaskaydiaCove NFM:Bold:14.0" \
+    label.font="CaskaydiaCove NFM:Regular:12.0" \
+    icon.color=0xffcad3f5 \
+    label.color=0xffcad3f5 \
+    padding_left=5 \
+    padding_right=5
+
+# Aerospace workspaces
+for sid in $(aerospace list-workspaces --all 2>/dev/null || echo "1 2 3 4 5 6 7 8 9"); do
+    sketchybar --add event aerospace_workspace_change_"$sid" \
+               --add item space."$sid" left \
+               --subscribe space."$sid" aerospace_workspace_change_"$sid" \
+               --set space."$sid" \
+                    icon="$sid" \
+                    icon.padding_left=8 \
+                    icon.padding_right=8 \
+                    background.color=0x40ffffff \
+                    background.corner_radius=5 \
+                    background.height=22 \
+                    background.drawing=off \
+                    click_script="aerospace workspace $sid" \
+                    script="$PLUGIN_DIR/aerospace.sh $sid"
+done
+
+# Clock
+sketchybar --add item clock right \
+           --set clock update_freq=10 \
+                 script="$PLUGIN_DIR/clock.sh"
+
+# Battery
+sketchybar --add item battery right \
+           --set battery update_freq=120 \
+                 script="$PLUGIN_DIR/battery.sh"
+
+sketchybar --update

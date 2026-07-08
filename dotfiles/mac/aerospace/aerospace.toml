@@ -13,6 +13,10 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 automatically-unhide-macos-hidden-apps = true
 
+# SketchyBar integration
+exec-on-workspace-change = ['/opt/homebrew/bin/bash', '-c',
+    '/opt/homebrew/bin/sketchybar --trigger aerospace_workspace_change_$AEROSPACE_FOCUSED_WORKSPACE FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
+
 key-mapping.preset = 'qwerty'
 
 gaps.inner.horizontal = 0
@@ -59,7 +63,7 @@ cmd-shift-8 = 'move-node-to-workspace 8'
 cmd-shift-9 = 'move-node-to-workspace 9'
 
 # Open terminal (Super+Enter)
-cmd-enter = 'exec-and-forget /usr/bin/open -na Ghostty --args --working-directory=$HOME'
+cmd-enter = 'exec-and-forget /Applications/Ghostty.app/Contents/MacOS/ghostty +new-window'
 
 # Open browser (Super+b)
 cmd-b = 'exec-and-forget /usr/bin/open -na "Google Chrome" --args --new-window'
