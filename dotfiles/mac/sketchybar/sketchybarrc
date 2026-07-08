@@ -20,10 +20,10 @@ sketchybar --default \
     padding_right=5
 
 # Aerospace workspaces
-for sid in $(aerospace list-workspaces --all 2>/dev/null || echo "1 2 3 4 5 6 7 8 9"); do
+for sid in 1 2 3 4 5 6 7 8 9; do
     sketchybar --add event aerospace_workspace_change_"$sid" \
                --add item space."$sid" left \
-               --subscribe space."$sid" aerospace_workspace_change_"$sid" \
+               --subscribe space."$sid" aerospace_workspace_change_"$sid" forced \
                --set space."$sid" \
                     icon="$sid" \
                     icon.padding_left=8 \

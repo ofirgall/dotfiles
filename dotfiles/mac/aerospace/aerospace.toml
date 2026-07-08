@@ -14,8 +14,8 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 automatically-unhide-macos-hidden-apps = true
 
 # SketchyBar integration
-exec-on-workspace-change = ['/opt/homebrew/bin/bash', '-c',
-    '/opt/homebrew/bin/sketchybar --trigger aerospace_workspace_change_$AEROSPACE_FOCUSED_WORKSPACE FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'for sid in 1 2 3 4 5 6 7 8 9; do /opt/homebrew/bin/sketchybar --trigger aerospace_workspace_change_$sid FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE; done']
 
 key-mapping.preset = 'qwerty'
 
