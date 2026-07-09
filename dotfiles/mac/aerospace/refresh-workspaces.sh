@@ -1,6 +1,6 @@
 #!/bin/bash
 # Refresh sketchybar after a window moves between workspaces.
-# run.py updates sentinel + labels, then aerospace.sh updates highlights.
+# run.py updates sentinel + names, then aerospace.sh reads fresh sentinel for highlights.
 # Usage: refresh-workspaces.sh <target_workspace_id>
 
 TARGET="$1"
