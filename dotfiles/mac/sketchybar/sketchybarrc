@@ -57,14 +57,70 @@ sketchybar --add item window_count e \
                 label.max_chars=50 \
                 script="$PLUGIN_DIR/window_count.sh"
 
-# Clock
+# Clock — yellow
 sketchybar --add item clock right \
            --set clock update_freq=10 \
+                 icon.color=0xfff9e2af \
+                 label.color=0xfff9e2af \
                  script="$PLUGIN_DIR/clock.sh"
 
-# Battery
+# Battery — green
 sketchybar --add item battery right \
            --set battery update_freq=120 \
+                 icon.color=0xffa6e3a1 \
+                 label.color=0xffa6e3a1 \
                  script="$PLUGIN_DIR/battery.sh"
+
+# Keyboard language — purple
+sketchybar --add item keyboard right \
+           --set keyboard update_freq=5 \
+                 icon="󰌌" \
+                 icon.color=0xffb459ff \
+                 label.color=0xffb459ff \
+                 script="$PLUGIN_DIR/keyboard.sh" \
+           --subscribe keyboard front_app_switched
+
+# Volume — sapphire (dynamic color in script for muted)
+sketchybar --add item volume right \
+           --set volume \
+                 script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change
+
+# Bluetooth — blue
+sketchybar --add item bluetooth right \
+           --set bluetooth update_freq=30 \
+                 icon.color=0xff89b4fa \
+                 label.color=0xff89b4fa \
+                 script="$PLUGIN_DIR/bluetooth.sh"
+
+# WiFi — teal (dynamic color in script for disconnected)
+sketchybar --add item wifi right \
+           --set wifi update_freq=30 \
+                 script="$PLUGIN_DIR/wifi.sh" \
+           --subscribe wifi wifi_change
+
+# CPU — green
+sketchybar --add item cpu right \
+           --set cpu update_freq=10 \
+                 icon="󰻠" \
+                 icon.color=0xffa6e3a1 \
+                 label.color=0xffa6e3a1 \
+                 script="$PLUGIN_DIR/cpu.sh"
+
+# RAM — sky
+sketchybar --add item ram right \
+           --set ram update_freq=10 \
+                 icon="󰍛" \
+                 icon.color=0xff89dceb \
+                 label.color=0xff89dceb \
+                 script="$PLUGIN_DIR/ram.sh"
+
+# Media — lavender
+sketchybar --add item media right \
+           --set media update_freq=5 \
+                 icon.color=0xffb4befe \
+                 label.color=0xffb4befe \
+                 label.max_chars=40 \
+                 script="$PLUGIN_DIR/media.sh"
 
 sketchybar --update
