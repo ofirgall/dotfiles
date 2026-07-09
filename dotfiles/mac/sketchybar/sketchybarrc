@@ -37,7 +37,8 @@ for sid in 1 2 3 4 5 6 7 8 9; do
 done
 
 # Window count for focused workspace
-WINDOW_COUNT_EVENTS="forced"
+sketchybar --add event window_count_change
+WINDOW_COUNT_EVENTS="forced window_count_change"
 for sid in 1 2 3 4 5 6 7 8 9; do
     WINDOW_COUNT_EVENTS="$WINDOW_COUNT_EVENTS aerospace_workspace_change_$sid"
 done

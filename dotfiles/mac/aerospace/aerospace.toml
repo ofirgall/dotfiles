@@ -78,14 +78,15 @@ cmd-q = '''exec-and-forget APP=$(aerospace list-windows --focused --format '%{ap
         osascript -e 'tell application "System Events" to keystroke "w" using command down'; \
     else \
         aerospace close --quit-if-last-window; \
-    fi'''
+    fi; \
+    sleep 0.2 && sketchybar --trigger window_count_change'''
 
 # Fullscreen/Monocle toggle (Super+f) — uses accordion with 0 padding for true monocle
-cmd-f = 'layout tiles accordion'
+cmd-f = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
 
 # Maximize toggle (Super+m / Super+z)
-cmd-m = 'layout tiles accordion'
-cmd-z = 'layout tiles accordion'
+cmd-m = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
+cmd-z = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
 
 # Prev/next workspace (Super+, / Super+.)
 cmd-comma = 'workspace prev'
@@ -121,3 +122,11 @@ esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main']
 f = ['layout floating tiling', 'mode main']
 backspace = ['close-all-windows-but-current', 'mode main']
+
+[[on-window-detected]]
+if.during-aerospace-startup = true
+run = []
+
+[[on-window-detected]]
+if = 'true'
+run = 'exec-and-forget sketchybar --trigger window_count_change'
