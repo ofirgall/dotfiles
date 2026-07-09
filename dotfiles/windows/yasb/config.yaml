@@ -1,0 +1,112 @@
+watch_stylesheet: true
+watch_config: true
+
+bars:
+  primary:
+    enabled: true
+    screens: ['*']
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      center: false
+    blur_effect:
+      enabled: true
+      acrylic: true
+      dark_mode: true
+    window_flags:
+      always_on_top: false
+      windows_app_bar: true
+    dimensions:
+      width: "100%"
+      height: 33
+    padding:
+      top: 0
+      left: 10
+      bottom: 0
+      right: 10
+    widgets:
+      left: ["komorebi_workspaces", "komorebi_active_layout"]
+      center: []
+      right: ["media", "ram", "cpu", "wifi", "volume", "keyboard", "battery", "clock"]
+
+widgets:
+  komorebi_workspaces:
+    type: "yasb.widgets.komorebi.workspaces.WorkspacesWidget"
+    options:
+      label_offline: "Komorebi Offline"
+      label_workspace_btn: "{index}"
+      label_default_name: "{index}"
+      label_zero_index: false
+      hide_empty_workspaces: false
+
+  komorebi_active_layout:
+    type: "yasb.widgets.komorebi.active_layout.ActiveLayoutWidget"
+    options:
+      hide_if_offline: true
+      label: "{icon}"
+      layouts: ["BSP", "Columns", "Rows", "VerticalStack", "HorizontalStack", "UltrawideVerticalStack"]
+      layout_icons:
+        bsp: "[\\\\]"
+        columns: "[||]"
+        rows: "[==]"
+        vertical_stack: "[V]"
+        horizontal_stack: "[H]"
+        ultrawide_vertical_stack: "[UV]"
+        monocle: "[M]"
+        maximised: "[X]"
+        floating: "[~]"
+        paused: "[P]"
+
+  clock:
+    type: "yasb.widgets.clock.ClockWidget"
+    options:
+      label: "{%H:%M %d/%m}"
+      label_alt: "{%A %d %B %Y %H:%M:%S}"
+      timezones: []
+
+  battery:
+    type: "yasb.widgets.battery.BatteryWidget"
+    options:
+      label: "{icon} {percent}%"
+      label_alt: "{icon} {percent}% ({power_status})"
+      time_remaining_natural: true
+
+  volume:
+    type: "yasb.widgets.volume.VolumeWidget"
+    options:
+      label: "{icon} {level}%"
+      label_alt: "{volume}"
+
+  keyboard:
+    type: "yasb.widgets.keyboard.KeyboardWidget"
+    options:
+      label: "󰄌 {lang}"
+
+  wifi:
+    type: "yasb.widgets.wifi.WifiWidget"
+    options:
+      label: "{wifi_icon}"
+      label_alt: "{wifi_icon} {wifi_name}"
+
+  cpu:
+    type: "yasb.widgets.cpu.CpuWidget"
+    options:
+      label: "\udb82\udf2 {info[percent][total]}%"
+      label_alt: "\udb82\udf2 {info[histograms][cpu_percent]}"
+      update_interval: 2000
+
+  ram:
+    type: "yasb.widgets.memory.MemoryWidget"
+    options:
+      label: "󰕛 {virtual_mem_percent}%"
+      label_alt: "󰕛 {virtual_mem_free}"
+      update_interval: 5000
+
+  media:
+    type: "yasb.widgets.media.MediaWidget"
+    options:
+      label: "{title} - {artist}"
+      label_alt: "{title}"
+      max_field_size:
+        label: 40
+        label_alt: 20

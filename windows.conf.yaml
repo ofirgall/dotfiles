@@ -1,0 +1,94 @@
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - [install_scripts/windows/install_msys2_packages.sh, Installing MSYS2 packages]
+    - [install_scripts/windows/install_rust.sh, Installing Rust toolchain]
+    - [install_scripts/windows/install_basic.sh, Installing basic CLI tools]
+    - [install_scripts/windows/install_kanata.sh, Installing Kanata]
+    - [install_scripts/windows/install_fonts.sh, Installing Nerd Fonts]
+    - [install_scripts/windows/install_tmux.sh, Installing tmux]
+    - [install_scripts/windows/install_ghostty.sh, Installing Ghostty]
+    - [install_scripts/windows/install_komorebi.sh, Installing Komorebi]
+    - [install_scripts/windows/install_yasb.sh, Installing Yasb]
+    - [install_scripts/windows/install_git_utils.sh, Installing git utilities]
+    - [install_scripts/windows/install_ez_workspaces.sh, Installing ez-workspaces]
+    - [install_scripts/windows/install_agents_status.sh, Installing agents-status]
+
+- defaults:
+    link:
+      relink: true
+      force: true
+      create: true
+
+# --- Portable symlinks (shared with Linux/macOS) ---
+- link:
+    ~/.zshrc:
+        path: dotfiles/zsh-conf/entrypoint.zsh
+    ~/.zshenv:
+        path: dotfiles/zsh-conf/env.zsh
+    ~/.zsh-conf:
+        path: dotfiles/zsh-conf
+    ~/.my-zsh-conf:
+        path: dotfiles/my-zsh-conf
+    ~/.tmux.conf:
+        path: dotfiles/tmux_conf/entrypoint.tmux
+    ~/.tmux_conf:
+        path: dotfiles/tmux_conf
+    ~/.tmux/custom-macros:
+        path: dotfiles/tmux_conf/custom-macros
+    ~/.config/nvim:
+        path: editors/KoalaConfig
+    ~/.kvim.conf:
+        path: dotfiles/.kvim.conf
+    ~/.config/kvim-envs/main:
+        path: editors/KoalaConfig
+    ~/.vimrc:
+        path: dotfiles/vimrc
+    ~/dotfiles_scripts:
+        path: scripts
+    ~/.config/ghostty:
+        path: dotfiles/ghostty
+    ~/.profile:
+        path: dotfiles/profile
+    ~/.gitconfig:
+        path: dotfiles/gitconfig
+    ~/.gitignore_global:
+        path: dotfiles/gitignore_global
+    ~/.ripgreprc:
+        path: dotfiles/ripgreprc
+    ~/.config/yazi:
+        path: dotfiles/yazi
+    ~/.claude/settings.json:
+        path: dotfiles/claude/settings.json
+    ~/.cursor/statusline.sh:
+        path: dotfiles/cursor/statusline.sh
+    ~/.config/cursor-cli-wrapper/config.toml:
+        path: dotfiles/cursor-cli-wrapper.toml
+    ~/.config/agents-status/config.toml:
+        path: dotfiles/agents-status-config-windows.toml
+    ~/.config/gh-dash/config.yml:
+        path: dotfiles/gh-dash/config.yml
+
+# --- Windows-specific symlinks ---
+- link:
+    ~/.config/komorebi/komorebi.json:
+        path: dotfiles/windows/komorebi/komorebi.json
+    ~/.config/komorebi/applications.yaml:
+        path: dotfiles/windows/komorebi/applications.yaml
+    ~/.config/whkd/whkdrc:
+        path: dotfiles/windows/komorebi/whkdrc
+    ~/.config/kanata/kanata.kbd:
+        path: dotfiles/windows/kanata/kanata.kbd
+    ~/.config/yasb/config.yaml:
+        path: dotfiles/windows/yasb/config.yaml
+    ~/.config/yasb/styles.css:
+        path: dotfiles/windows/yasb/styles.css
+    ~/.config/ez/config.toml:
+        path: dotfiles/ez-workspaces-windows/config.toml
+
+- create:
+    - ~/workspace/personal
+    - ~/workspace/work
+
+- shell:
+    - [install_scripts/windows/install_kvim.sh, Installing KoalaVim]
+    - [install_scripts/windows/setup_once.sh, One-time Windows configuration]

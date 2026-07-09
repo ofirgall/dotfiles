@@ -1,0 +1,85 @@
+/* Catppuccin Mocha palette — matching SketchyBar colors */
+* {
+    font-family: "CaskaydiaCove NFM";
+    font-size: 12px;
+    color: #cad3f5;
+}
+
+.yasb-bar {
+    background-color: #151520;
+}
+
+/* Workspace buttons */
+.komorebi-workspaces .ws-btn {
+    padding: 0 8px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 4px 2px;
+    min-width: 22px;
+    background-color: transparent;
+    color: #cad3f5;
+}
+
+.komorebi-workspaces .ws-btn.active {
+    background-color: #cba6f7;
+    color: #151520;
+}
+
+.komorebi-workspaces .ws-btn:hover {
+    background-color: #45475a;
+}
+
+/* Active layout */
+.komorebi-active-layout {
+    padding: 0 8px;
+    color: #cad3f5;
+}
+
+/* Clock — yellow */
+.clock-widget {
+    padding: 0 8px;
+    color: #f9e2af;
+}
+
+/* Battery — green */
+.battery-widget {
+    padding: 0 8px;
+    color: #a6e3a1;
+}
+
+/* Keyboard — purple */
+.keyboard-widget {
+    padding: 0 8px;
+    color: #b459ff;
+}
+
+/* Volume — sapphire */
+.volume-widget {
+    padding: 0 8px;
+    color: #74c7ec;
+}
+
+/* WiFi — teal */
+.wifi-widget {
+    padding: 0 8px;
+    color: #94e2d5;
+}
+
+/* CPU — green */
+.cpu-widget {
+    padding: 0 8px;
+    color: #a6e3a1;
+}
+
+/* RAM — sky */
+.memory-widget {
+    padding: 0 8px;
+    color: #89dceb;
+}
+
+/* Media — lavender */
+.media-widget {
+    padding: 0 8px;
+    color: #b4befe;
+}

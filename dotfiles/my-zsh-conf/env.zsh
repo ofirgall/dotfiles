@@ -17,6 +17,12 @@ if [[ $(uname -a) == *"Microsoft"* ]]; then
 	export WSL=true
 fi
 
+# Check if MSYS2
+export IS_MSYS2=false
+if [[ "$(uname -o 2>/dev/null)" == "Msys" ]]; then
+	export IS_MSYS2=true
+fi
+
 # Export Local pkgs if on remote (non-root usage)
 if $NO_SUDO; then
 	export PATH="$HOME/pkgs/usr/sbin:$HOME/pkgs/usr/bin:$HOME/pkgs/bin:$PATH"
@@ -67,6 +73,12 @@ export PATH=$PATH:~/dotfiles_scripts/settings/
 export PATH=$PATH:~/dotfiles_scripts/tmux/
 export PATH=$PATH:~/dotfiles_scripts/cursor/
 export PATH=$PATH:$HOME/.spicetify
+
+# MSYS2/Windows native tools on PATH
+if $IS_MSYS2; then
+	export PATH="/ucrt64/bin:/mingw64/bin:$PATH"
+	export PATH="$HOME/AppData/Local/Microsoft/WindowsApps:$PATH"
+fi
 
 # Fix WAYLAND_DISPLAY pointing to wayland-0 when only wayland-1 exist
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then

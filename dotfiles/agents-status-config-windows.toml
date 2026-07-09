@@ -1,0 +1,8 @@
+[notification]
+command = "powershell.exe"
+args = ["-File", "~/dotfiles_scripts/notify/windows_notify.ps1"]
+
+[post-event]
+commands = [
+    "$AGENTS_STATUS_DIR/../tmux/scripts/refresh_dim_colors.sh",
+]
