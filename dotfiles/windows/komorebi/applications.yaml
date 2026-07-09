@@ -1,0 +1,30 @@
+---
+# Float rules for apps that shouldn't be tiled
+float_rules:
+  - kind: exe
+    id: "Taskmgr.exe"
+    matching_strategy: Equals
+  - kind: exe
+    id: "ScreenClippingHost.exe"
+    matching_strategy: Equals
+  - kind: class
+    id: "OperationStatusWindow"
+    matching_strategy: Equals
+  - kind: title
+    id: "Picture-in-Picture"
+    matching_strategy: Equals
+  - kind: exe
+    id: "1Password.exe"
+    matching_strategy: Equals
+  - kind: exe
+    id: "WinStore.App.exe"
+    matching_strategy: Equals
+
+# Rules for apps that should be forcibly managed
+manage_rules:
+  - kind: exe
+    id: "Ghostty.exe"
+    matching_strategy: Equals
+  - kind: exe
+    id: "chrome.exe"
+    matching_strategy: Equals

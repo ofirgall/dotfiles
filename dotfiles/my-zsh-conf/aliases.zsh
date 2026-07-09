@@ -12,7 +12,13 @@ alias del='ez session delete'
 alias new='ez session new'
 alias t='select_tmux_session.sh'
 
-[[ "$(uname)" != "Darwin" ]] && alias open='xdg-open'
+if [[ "$(uname)" == "Darwin" ]]; then
+	:
+elif [[ "$(uname -o 2>/dev/null)" == "Msys" ]]; then
+	alias open='start'
+else
+	alias open='xdg-open'
+fi
 alias venv='. ./bin/activate'
 alias notify='notify-send -u critical done'
 
