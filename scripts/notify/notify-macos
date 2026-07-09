@@ -4,7 +4,10 @@
 # Supports -u (urgency: critical disables timeout) and -A (actions, ignored).
 #
 # Global defaults — edit these to configure all notifications in one place.
-ALERTER_SOUND="default"
+# ALERTER_SOUND="Blow"
+ALERTER_SOUND="Funk"
+# ALERTER_SOUND="Tink"
+# ALERTER_SOUND="Hero"
 ALERTER_TIMEOUT=5
 ALERTER_IGNORE_DND=1
 
