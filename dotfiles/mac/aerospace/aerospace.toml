@@ -53,16 +53,16 @@ cmd-7 = 'workspace 7'
 cmd-8 = 'workspace 8'
 cmd-9 = 'workspace 9'
 
-# Move window to workspace (Super+Shift+1-9)
-cmd-shift-1 = 'move-node-to-workspace 1'
-cmd-shift-2 = 'move-node-to-workspace 2'
-cmd-shift-3 = 'move-node-to-workspace 3'
-cmd-shift-4 = 'move-node-to-workspace 4'
-cmd-shift-5 = 'move-node-to-workspace 5'
-cmd-shift-6 = 'move-node-to-workspace 6'
-cmd-shift-7 = 'move-node-to-workspace 7'
-cmd-shift-8 = 'move-node-to-workspace 8'
-cmd-shift-9 = 'move-node-to-workspace 9'
+# Move window to workspace (Super+Shift+1-9) — refresh sketchybar + agents-status names
+cmd-shift-1 = ['move-node-to-workspace 1', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 1']
+cmd-shift-2 = ['move-node-to-workspace 2', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 2']
+cmd-shift-3 = ['move-node-to-workspace 3', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 3']
+cmd-shift-4 = ['move-node-to-workspace 4', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 4']
+cmd-shift-5 = ['move-node-to-workspace 5', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 5']
+cmd-shift-6 = ['move-node-to-workspace 6', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 6']
+cmd-shift-7 = ['move-node-to-workspace 7', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 7']
+cmd-shift-8 = ['move-node-to-workspace 8', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 8']
+cmd-shift-9 = ['move-node-to-workspace 9', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 9']
 
 # Open terminal (Super+Enter)
 cmd-enter = "exec-and-forget osascript -e 'tell application \"Ghostty\" to new window'"
@@ -112,7 +112,7 @@ cmd-shift-f = 'layout floating tiling'
 f19 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/cycle-window.sh'
 
 # Reload aerospace + sketchybar (Super+Shift+r)
-cmd-shift-r = ['reload-config', 'exec-and-forget sketchybar --reload']
+cmd-shift-r = ['reload-config', 'exec-and-forget sketchybar --reload; sleep 0.5; /opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py']
 
 # Service mode (Super+Shift+;)
 cmd-shift-semicolon = 'mode service'

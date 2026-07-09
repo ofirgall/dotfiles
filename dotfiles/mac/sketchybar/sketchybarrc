@@ -128,3 +128,6 @@ sketchybar --add item media right \
                  script="$PLUGIN_DIR/media.sh"
 
 sketchybar --update
+
+# Load agents-status workspace names after sketchybar init
+(/opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py &)
