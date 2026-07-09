@@ -43,7 +43,11 @@ if [ -n "$TEMPLATE" ] && [ -n "$AGENT_LABEL" ]; then
     LABEL="${LABEL//\{agent_icon\}/$AGENT_ICON}"
     LABEL="${LABEL//\{tmux_sessions\}/$TMUX_SESSIONS}"
     LABEL="${LABEL//\{app_icons\}/$APP_ICONS}"
-    LABEL="${LABEL//\{window_count\}/$WIN_COUNT}"
+    if [ "$IS_FOCUSED" = "true" ]; then
+        LABEL=$(echo "$LABEL" | sed 's/\[{window_count}\]//g; s/{window_count}//g')
+    else
+        LABEL=$(echo "$LABEL" | sed "s/{window_count}/$WIN_COUNT/g")
+    fi
     # Collapse multiple spaces and trim
     LABEL=$(echo "$LABEL" | sed 's/  */ /g;s/^[[:space:]]*//;s/[[:space:]]*$//')
 elif [ "$WIN_COUNT" -gt 1 ] 2>/dev/null; then
