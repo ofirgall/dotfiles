@@ -10,6 +10,7 @@
     - [install_scripts/mac/install_aerospace.sh, Installing AeroSpace]
     - [install_scripts/mac/install_sketchybar.sh, Installing SketchyBar]
     - [install_scripts/mac/install_jankyborders.sh, Installing JankyBorders]
+    - [install_scripts/mac/install_git_utils.sh, Installing git utilities]
     - [install_scripts/mac/install_ez_workspaces.sh, Installing ez-workspaces]
     - [install_scripts/mac/install_agents_status.sh, Installing agents-status]
 
