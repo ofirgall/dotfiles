@@ -76,7 +76,7 @@
         path: dotfiles/windows/komorebi/komorebi.json
     ~/.config/komorebi/applications.yaml:
         path: dotfiles/windows/komorebi/applications.yaml
-    ~/.config/whkd/whkdrc:
+    ~/.config/whkdrc:
         path: dotfiles/windows/komorebi/whkdrc
     ~/.config/kanata/kanata.kbd:
         path: dotfiles/windows/kanata/kanata.kbd
