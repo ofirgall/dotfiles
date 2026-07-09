@@ -1,4 +1,4 @@
-.shell pwsh
+.shell cmd
 
 # Focus (Win+hjkl)
 win + h                 : komorebic focus left
@@ -35,10 +35,10 @@ win + shift + 8         : komorebic move-to-workspace 7
 win + shift + 9         : komorebic move-to-workspace 8
 
 # Open terminal (Win+Enter)
-win + return            : winghostty.exe
+win + return            : start "" "C:\Program Files\winghostty\winghostty.exe"
 
 # Open browser (Win+b)
-win + b                 : start chrome
+win + b                 : start "" chrome
 
 # Close window (Win+q)
 win + q                 : komorebic close
@@ -70,8 +70,8 @@ win + oem_period        : komorebic cycle-workspace next
 # Last workspace (Win+`)
 win + oem_3             : komorebic focus-last-workspace
 
-# Reload config (Win+Shift+r)
-win + shift + r         : komorebic reload-configuration
+# Reload config (Win+Ctrl+Shift+r)
+win + ctrl + shift + r  : komorebic reload-configuration
 
 # Retile (Win+Shift+;)
 win + shift + oem_1     : komorebic retile
