@@ -9,7 +9,8 @@ sketchybar --bar \
     sticky=on \
     padding_left=10 \
     padding_right=10 \
-    color=0xff1e1e2e
+    color=0xff1e1e2e \
+    notch_width=200
 
 sketchybar --default \
     icon.font="CaskaydiaCove NFM:Bold:14.0" \
@@ -42,12 +43,18 @@ WINDOW_COUNT_EVENTS="forced window_count_change"
 for sid in 1 2 3 4 5 6 7 8 9; do
     WINDOW_COUNT_EVENTS="$WINDOW_COUNT_EVENTS aerospace_workspace_change_$sid"
 done
-sketchybar --add item window_count left \
+sketchybar --add item window_count e \
            --subscribe window_count $WINDOW_COUNT_EVENTS \
            --set window_count \
                 icon="󰖯" \
                 icon.padding_left=4 \
                 label.padding_right=4 \
+                script="$PLUGIN_DIR/window_count.sh" \
+           --add item window_name e \
+           --subscribe window_name $WINDOW_COUNT_EVENTS front_app_switched \
+           --set window_name \
+                icon.drawing=off \
+                label.max_chars=50 \
                 script="$PLUGIN_DIR/window_count.sh"
 
 # Clock
