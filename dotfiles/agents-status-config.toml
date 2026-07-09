@@ -6,4 +6,9 @@ command = "notify-macos"
 [post-event]
 commands = [
     "$AGENTS_STATUS_DIR/../tmux/scripts/refresh_dim_colors.sh",
+    "/opt/homebrew/bin/python3.14 $AGENTS_STATUS_DIR/../statusbar/run.py",
 ]
+
+[statusbar]
+workspaces_provider = "aerospace"
+bar = "sketchybar"
