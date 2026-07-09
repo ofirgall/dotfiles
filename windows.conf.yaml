@@ -70,6 +70,8 @@
 
 # --- Windows-specific symlinks ---
 - link:
+    ~/AppData/Local/winghostty/config.ghostty:
+        path: dotfiles/ghostty/config
     ~/.config/komorebi/komorebi.json:
         path: dotfiles/windows/komorebi/komorebi.json
     ~/.config/komorebi/applications.yaml:
