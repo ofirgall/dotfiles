@@ -9,7 +9,7 @@ sketchybar --bar \
     sticky=on \
     padding_left=10 \
     padding_right=10 \
-    color=0xff1e1e2e \
+    color=0xff151520 \
     notch_width=200
 
 sketchybar --default \
@@ -29,7 +29,7 @@ for sid in 1 2 3 4 5 6 7 8 9; do
                     icon="$sid" \
                     icon.padding_left=8 \
                     icon.padding_right=8 \
-                    background.color=0x40ffffff \
+                    background.color=0xffcba6f7 \
                     background.corner_radius=5 \
                     background.height=22 \
                     background.drawing=off \
