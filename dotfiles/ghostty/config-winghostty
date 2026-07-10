@@ -91,4 +91,4 @@ app-notifications = no-clipboard-copy
 # Plugins
 # custom-shader = shaders/cursor_warp.glsl
 
-command = C:/msys64/usr/bin/zsh.exe --login
+command = C:/msys64/usr/bin/env.exe MSYSTEM=UCRT64 MSYS=winsymlinks:nativestrict /usr/bin/zsh --login
