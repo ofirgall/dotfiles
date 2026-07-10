@@ -67,8 +67,10 @@ cmd-shift-9 = ['move-node-to-workspace 9', 'exec-and-forget ~/dotfiles/dotfiles/
 # Open terminal (Super+Enter)
 cmd-enter = "exec-and-forget osascript -e 'tell application \"Ghostty\" to new window'"
 
-# Open browser (Super+b)
-cmd-b = 'exec-and-forget /usr/bin/open -na "Google Chrome" --args --new-window'
+# Open browser (Super+b: Default, Super+Shift+b: Profile 1, Super+Alt+b: Profile 2 → YouTube)
+cmd-b = 'exec-and-forget /usr/bin/open -na "Google Chrome" --args --profile-directory=Default --new-window'
+cmd-shift-b = 'exec-and-forget /usr/bin/open -na "Google Chrome" --args --profile-directory="Profile 1" --new-window'
+cmd-alt-b = 'exec-and-forget /usr/bin/open -na "Google Chrome" --args --profile-directory="Profile 2" --new-window https://www.youtube.com'
 
 # Close window (Super+q)
 # Aerospace's `close` doesn't work for Ghostty, so we check the focused app
