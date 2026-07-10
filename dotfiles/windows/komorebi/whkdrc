@@ -70,8 +70,8 @@ win + oem_period        : komorebic cycle-workspace next
 # Last workspace (Win+`)
 win + oem_3             : komorebic focus-last-workspace
 
-# Reload config (Win+Ctrl+Shift+r)
-win + ctrl + shift + r  : komorebic reload-configuration
+# Reload config (Win+Shift+`)
+win + shift + oem_3     : komorebic reload-configuration
 
 # Retile (Win+Shift+;)
 win + shift + oem_1     : komorebic retile

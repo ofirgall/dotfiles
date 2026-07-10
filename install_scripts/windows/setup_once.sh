@@ -11,4 +11,17 @@ MSYS_NO_PATHCONV=1 reg add "HKCU\Control Panel\Keyboard" /v KeyboardSpeed /t REG
 # Disable snap assist popup (komorebi handles tiling)
 MSYS_NO_PATHCONV=1 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v SnapAssist /t REG_DWORD /d 0 /f
 
+# Set KOMOREBI_CONFIG_HOME so komorebi reads from ~/.config/komorebi
+powershell.exe -NoProfile -Command '[Environment]::SetEnvironmentVariable("KOMOREBI_CONFIG_HOME", "$env:USERPROFILE\.config\komorebi", "User")'
+
+# Add komorebi and whkd to user PATH
+powershell.exe -NoProfile -Command '
+$path = [Environment]::GetEnvironmentVariable("Path", "User")
+$additions = @("C:\Program Files\komorebi\bin", "C:\Program Files\whkd\bin")
+foreach ($dir in $additions) {
+    if ($path -notlike "*$dir*") { $path += ";$dir" }
+}
+[Environment]::SetEnvironmentVariable("Path", $path, "User")
+'
+
 echo "Some changes require logout to take effect"
