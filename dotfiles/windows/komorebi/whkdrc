@@ -35,7 +35,7 @@ win + shift + 8         : komorebic move-to-workspace 7
 win + shift + 9         : komorebic move-to-workspace 8
 
 # Open terminal (Win+Enter)
-win + return            : start "" "C:\Program Files\winghostty\winghostty.exe"
+win + return            : start "" "C:\Program Files\WezTerm\wezterm-gui.exe"
 
 # Open browser (Win+b)
 win + b                 : start "" chrome
