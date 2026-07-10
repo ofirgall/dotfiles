@@ -1,5 +1,5 @@
 font-family = CaskaydiaCove NFM
-font-size = 15
+font-size = 12
 # Remove Ligatures
 font-feature = -liga
 font-feature = -calt
@@ -10,7 +10,7 @@ window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
 window-padding-color = extend
-window-decoration = none
+# window-decoration = none
 
 adjust-cursor-thickness = 2
 # precision=touchpad | discrete=mouse
@@ -91,4 +91,4 @@ app-notifications = no-clipboard-copy
 # Plugins
 # custom-shader = shaders/cursor_warp.glsl
 
-command = C:/msys64/usr/bin/env.exe MSYSTEM=UCRT64 MSYS=winsymlinks:nativestrict /usr/bin/zsh --login
+command = C:/msys64/usr/bin/env.exe MSYSTEM=UCRT64 /usr/bin/zsh.exe

@@ -14,7 +14,7 @@ alias t='select_tmux_session.sh'
 
 if [[ "$(uname)" == "Darwin" ]]; then
 	:
-elif [[ "$(uname -o 2>/dev/null)" == "Msys" ]]; then
+elif [[ -n "$MSYSTEM" ]]; then
 	alias open='start'
 else
 	alias open='xdg-open'
