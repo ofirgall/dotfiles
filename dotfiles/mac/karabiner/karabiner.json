@@ -94,6 +94,65 @@
                         ]
                     },
                     {
+                        "description": "Alt+1-9 -> switch browser tabs via AppleScript (bypasses Aerospace)",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "1", "modifiers": { "mandatory": ["left_option"] } },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"1\" using command down'" }],
+                                "conditions": [{ "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.google\\.Chrome$", "^org\\.mozilla\\.firefox$", "^com\\.apple\\.Safari$", "^com\\.microsoft\\.edgemac$", "^com\\.brave\\.Browser$"] }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "2", "modifiers": { "mandatory": ["left_option"] } },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"2\" using command down'" }],
+                                "conditions": [{ "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.google\\.Chrome$", "^org\\.mozilla\\.firefox$", "^com\\.apple\\.Safari$", "^com\\.microsoft\\.edgemac$", "^com\\.brave\\.Browser$"] }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "3", "modifiers": { "mandatory": ["left_option"] } },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"3\" using command down'" }],
+                                "conditions": [{ "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.google\\.Chrome$", "^org\\.mozilla\\.firefox$", "^com\\.apple\\.Safari$", "^com\\.microsoft\\.edgemac$", "^com\\.brave\\.Browser$"] }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "4", "modifiers": { "mandatory": ["left_option"] } },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"4\" using command down'" }],
+                                "conditions": [{ "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.google\\.Chrome$", "^org\\.mozilla\\.firefox$", "^com\\.apple\\.Safari$", "^com\\.microsoft\\.edgemac$", "^com\\.brave\\.Browser$"] }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "5", "modifiers": { "mandatory": ["left_option"] } },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"5\" using command down'" }],
+                                "conditions": [{ "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.google\\.Chrome$", "^org\\.mozilla\\.firefox$", "^com\\.apple\\.Safari$", "^com\\.microsoft\\.edgemac$", "^com\\.brave\\.Browser$"] }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "6", "modifiers": { "mandatory": ["left_option"] } },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"6\" using command down'" }],
+                                "conditions": [{ "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.google\\.Chrome$", "^org\\.mozilla\\.firefox$", "^com\\.apple\\.Safari$", "^com\\.microsoft\\.edgemac$", "^com\\.brave\\.Browser$"] }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "7", "modifiers": { "mandatory": ["left_option"] } },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"7\" using command down'" }],
+                                "conditions": [{ "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.google\\.Chrome$", "^org\\.mozilla\\.firefox$", "^com\\.apple\\.Safari$", "^com\\.microsoft\\.edgemac$", "^com\\.brave\\.Browser$"] }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "8", "modifiers": { "mandatory": ["left_option"] } },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"8\" using command down'" }],
+                                "conditions": [{ "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.google\\.Chrome$", "^org\\.mozilla\\.firefox$", "^com\\.apple\\.Safari$", "^com\\.microsoft\\.edgemac$", "^com\\.brave\\.Browser$"] }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "9", "modifiers": { "mandatory": ["left_option"] } },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"9\" using command down'" }],
+                                "conditions": [{ "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.google\\.Chrome$", "^org\\.mozilla\\.firefox$", "^com\\.apple\\.Safari$", "^com\\.microsoft\\.edgemac$", "^com\\.brave\\.Browser$"] }]
+                            }
+                        ]
+                    },
+                    {
                         "description": "Ctrl+Space -> F18 (bypass macOS input source switcher)",
                         "manipulators": [
                             {
