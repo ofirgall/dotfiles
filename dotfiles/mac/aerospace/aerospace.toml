@@ -109,7 +109,8 @@ cmd-ctrl-l = 'resize width +50'
 cmd-s = 'exec-and-forget screencapture -ic'
 cmd-shift-s = 'exec-and-forget screencapture -iUc'
 
-# Clipboard history (Alt+v) — Raycast
+# Raycast (Super+r), clipboard history (Alt+v)
+cmd-r = 'exec-and-forget open -a Raycast'
 alt-v = 'exec-and-forget open raycast://extensions/raycast/clipboard-history/clipboard-history'
 
 # Float toggle (Super+Shift+f -- matches Hyprland Ctrl+F)
