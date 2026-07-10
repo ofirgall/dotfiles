@@ -1,3 +1,8 @@
+# zsh-vi-mode: override broken cursor style function on MSYS2
+if [[ -n "$MSYSTEM" ]]; then
+	function zvm_cursor_style() { echo -n '\e[0 q'; }
+fi
+
 autoload -Uz add-zsh-hook
 
 _asdf_update_path_for_repo() {
