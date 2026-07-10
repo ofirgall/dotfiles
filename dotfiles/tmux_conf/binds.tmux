@@ -2,12 +2,12 @@
 ##### UTILS #####
 #################
 current_tty="#{pane_tty}"
-is_fzf="ps -o state= -o comm= -t '#{pane_tty}' | grep -q 'S fzf'"
+is_fzf="ps -o state= -o comm= -t '#{pane_tty}' | grep -qE 'S\\S*\\s+.*fzf'"
 is_nvim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|nvim?x?)(diff)?$'"
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|vim?x?)(diff)?$'"
 is_less="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '^:$'"
 is_nested_tmux="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '' | grep ''" # Matching my status line
-is_hunk="ps -o state= -o comm= -t '#{pane_tty}' | grep -q 'S hunk'"
+is_hunk="ps -o state= -o comm= -t '#{pane_tty}' | grep -qE 'S\\S*\\s+.*hunk'"
 helpers="$HOME/.tmux_conf/helpers.sh"
 
 ##### MISC #####
