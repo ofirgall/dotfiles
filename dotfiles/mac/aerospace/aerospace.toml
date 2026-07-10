@@ -112,6 +112,9 @@ cmd-shift-s = 'exec-and-forget screencapture -iUc'
 cmd-r = 'exec-and-forget open -a Raycast'
 alt-v = 'exec-and-forget open raycast://extensions/raycast/clipboard-history/clipboard-history'
 
+# Tmux viewer (Super+Shift+v) — open viewer for focused tmux session
+cmd-shift-v = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/tmux-viewer.sh'
+
 # Float toggle (Super+Shift+f -- matches Hyprland Ctrl+F)
 cmd-shift-f = 'layout floating tiling'
 
