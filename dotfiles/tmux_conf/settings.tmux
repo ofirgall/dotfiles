@@ -1,5 +1,5 @@
 setw -g xterm-keys on
-set -s escape-time 1 # Faster escape time
+if-shell -b 'test -n "$MSYSTEM"' 'set -s escape-time 25' 'set -s escape-time 1'
 set -sg repeat-time 600 # Increase repeat timeout
 set -s focus-events on
 

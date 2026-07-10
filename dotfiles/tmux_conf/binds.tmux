@@ -261,11 +261,7 @@ bind -n F12 if-shell "$is_nvim" "send-keys F12" 'setw synchronize-panes' # Toggl
 # window switch.
 # Empty input clears the tag.
 refresh_dim_colors="$HOME/agents-status/tmux/scripts/refresh_dim_colors.sh"
-bind W command-prompt -p "window color (hex/name, empty=clear):" {
-  if -F "#{==:%1,}" \
-    "setw -u @window_color ; run-shell -b $refresh_dim_colors" \
-    "setw @window_color '%1' ; run-shell -b $refresh_dim_colors"
-}
+bind W command-prompt -p "window color (hex/name, empty=clear):" "if -F '#{==:%%,}' 'setw -u @window_color' 'setw @window_color \"%%\"' ; run-shell -b $refresh_dim_colors"
 
 # -------------------------
 #	    PLUGINS BINDS
