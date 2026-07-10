@@ -105,6 +105,9 @@ cmd-slash = 'layout tiles horizontal vertical'
 cmd-ctrl-h = 'resize width -50'
 cmd-ctrl-l = 'resize width +50'
 
+# Clipboard history (Alt+v) — Raycast
+alt-v = 'exec-and-forget open raycast://extensions/raycast/clipboard-history/clipboard-history'
+
 # Float toggle (Super+Shift+f -- matches Hyprland Ctrl+F)
 cmd-shift-f = 'layout floating tiling'
 
