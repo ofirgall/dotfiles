@@ -83,9 +83,6 @@ cmd-q = '''exec-and-forget APP=$(aerospace list-windows --focused --format '%{ap
     fi; \
     sleep 0.2 && sketchybar --trigger window_count_change'''
 
-# Fullscreen/Monocle toggle (Super+f) — uses accordion with 0 padding for true monocle
-cmd-f = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
-
 # Maximize toggle (Super+m / Super+z)
 cmd-m = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
 cmd-z = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
