@@ -105,8 +105,9 @@ cmd-slash = 'layout tiles horizontal vertical'
 cmd-ctrl-h = 'resize width -50'
 cmd-ctrl-l = 'resize width +50'
 
-# Screenshot (Super+s) — macOS interactive screenshot
-cmd-s = 'exec-and-forget screencapture -i ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png'
+# Screenshot: region to clipboard (Super+s), UI toolbar to clipboard (Super+Shift+s)
+cmd-s = 'exec-and-forget screencapture -ic'
+cmd-shift-s = 'exec-and-forget screencapture -iUc'
 
 # Clipboard history (Alt+v) — Raycast
 alt-v = 'exec-and-forget open raycast://extensions/raycast/clipboard-history/clipboard-history'
