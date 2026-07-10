@@ -73,6 +73,8 @@ keybind = alt+shift+period=text:\x1b[27;3;62~
 keybind = shift+enter=text:\x1b[13;2u
 keybind = ctrl+enter=text:\x1b[13;5u
 keybind = ctrl+shift+enter=toggle_fullscreen
+keybind = f18=text:\x1b[32;5u
+keybind = f17=text:\x1b[27;6;32~
 keybind = ctrl+semicolon=text:\x1b;
 keybind = shift+space=text:\x1b[27;2;32~
 keybind = ctrl+shift+space=text:\x1b[27;6;32~

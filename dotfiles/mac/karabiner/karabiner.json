@@ -94,6 +94,26 @@
                         ]
                     },
                     {
+                        "description": "Ctrl+Space -> F18 (bypass macOS input source switcher)",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "spacebar", "modifiers": { "mandatory": ["left_control"] } },
+                                "to": [{ "key_code": "f18" }]
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+Shift+Space -> F17 (pass to Ghostty/tmux)",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "spacebar", "modifiers": { "mandatory": ["left_control", "shift"] } },
+                                "to": [{ "key_code": "f17" }]
+                            }
+                        ]
+                    },
+                    {
                         "description": "Option+Tab -> F19 (Alt+Tab window cycling for Aerospace)",
                         "manipulators": [
                             {
