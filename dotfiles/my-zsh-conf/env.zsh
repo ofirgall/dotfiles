@@ -11,18 +11,18 @@ if test -f "$HOME/.no_sudo_indicator"; then
 	export NO_SUDO=true
 fi
 
+# Check if MSYS2 (use MSYSTEM env var — doesn't need uname on PATH)
+export IS_MSYS2=false
+if [[ -n "$MSYSTEM" ]]; then
+	export IS_MSYS2=true
+	export PATH="/c/msys64/ucrt64/bin:/c/msys64/mingw64/bin:/c/msys64/usr/local/bin:/c/msys64/usr/bin:/c/msys64/bin:$HOME/.cargo/bin:$PATH"
+	[[ "$TERM" == "xterm-ghostty" ]] && export TERM=xterm-256color
+fi
+
 # Check if WSL
 export WSL=false
 if [[ $(uname -a) == *"Microsoft"* ]]; then
 	export WSL=true
-fi
-
-# Check if MSYS2
-export IS_MSYS2=false
-if [[ "$(uname -o 2>/dev/null)" == "Msys" ]]; then
-	export IS_MSYS2=true
-	# MSYS2 lacks ghostty terminfo
-	[[ "$TERM" == "xterm-ghostty" ]] && export TERM=xterm-256color
 fi
 
 # Export Local pkgs if on remote (non-root usage)
@@ -78,8 +78,7 @@ export PATH=$PATH:$HOME/.spicetify
 
 # MSYS2/Windows native tools on PATH
 if $IS_MSYS2; then
-	export PATH="/ucrt64/bin:/mingw64/bin:$PATH"
-	export PATH="$HOME/AppData/Local/Microsoft/WindowsApps:$PATH"
+	export PATH="$PATH:$HOME/AppData/Local/Microsoft/WindowsApps"
 fi
 
 # Fix WAYLAND_DISPLAY pointing to wayland-0 when only wayland-1 exist
