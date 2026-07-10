@@ -21,6 +21,8 @@ fi
 export IS_MSYS2=false
 if [[ "$(uname -o 2>/dev/null)" == "Msys" ]]; then
 	export IS_MSYS2=true
+	# MSYS2 lacks ghostty terminfo
+	[[ "$TERM" == "xterm-ghostty" ]] && export TERM=xterm-256color
 fi
 
 # Export Local pkgs if on remote (non-root usage)
@@ -104,7 +106,7 @@ esac
 # AWS
 export AWS_PROFILE=dev
 
-source $HOME/secrets.zsh
+[ -f "$HOME/secrets.zsh" ] && source "$HOME/secrets.zsh"
 
 export PATH=~/agents-status/simple-wrappers:$PATH
 
