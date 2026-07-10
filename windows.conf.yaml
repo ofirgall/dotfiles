@@ -7,6 +7,7 @@
     - [install_scripts/windows/install_fonts.sh, Installing Nerd Fonts]
     - [install_scripts/windows/install_tmux.sh, Installing tmux]
     - [install_scripts/windows/install_ghostty.sh, Installing Ghostty]
+    - [install_scripts/windows/install_wezterm.sh, Installing WezTerm]
     - [install_scripts/windows/install_komorebi.sh, Installing Komorebi]
     - [install_scripts/windows/install_yasb.sh, Installing Yasb]
     - [install_scripts/windows/install_git_utils.sh, Installing git utilities]
@@ -72,6 +73,8 @@
 - link:
     ~/AppData/Local/winghostty/config.ghostty:
         path: dotfiles/ghostty/config-winghostty
+    ~/.wezterm.lua:
+        path: windows/.wezterm.lua
     ~/.config/komorebi/komorebi.json:
         path: dotfiles/windows/komorebi/komorebi.json
     ~/.config/komorebi/applications.yaml:
