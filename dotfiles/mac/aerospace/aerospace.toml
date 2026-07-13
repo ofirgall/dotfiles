@@ -62,11 +62,11 @@ gaps.outer.right =      0
 
 [mode.main.binding]
 
-# Focus (Super+hjkl)
-cmd-h = 'focus left'
-cmd-j = 'focus down'
-cmd-k = 'focus up'
-cmd-l = 'focus right'
+# Focus (Super+hjkl) — crosses monitor boundaries
+cmd-h = 'focus --boundaries all-monitors-outer-frame left'
+cmd-j = 'focus --boundaries all-monitors-outer-frame down'
+cmd-k = 'focus --boundaries all-monitors-outer-frame up'
+cmd-l = 'focus --boundaries all-monitors-outer-frame right'
 
 # Move/swap windows (Super+Shift+hjkl)
 cmd-shift-h = 'move left'
