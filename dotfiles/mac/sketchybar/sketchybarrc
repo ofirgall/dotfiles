@@ -37,7 +37,7 @@ for sid in 1 2 3 4 5 6 7 8 9; do
                     background.corner_radius=5 \
                     background.height=22 \
                     background.drawing=off \
-                    click_script="aerospace workspace $sid" \
+                    click_script="~/dotfiles/dotfiles/mac/aerospace/switch-group.sh $sid" \
                     script="$PLUGIN_DIR/aerospace.sh $sid"
 done
 

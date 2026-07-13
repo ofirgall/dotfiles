@@ -15,9 +15,9 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 automatically-unhide-macos-hidden-apps = true
 
-# SketchyBar integration — only trigger the two affected workspaces
+# Grouped workspaces: on-workspace-change translates sub-workspace names to group events
 exec-on-workspace-change = ['/bin/bash', '-c',
-    '/opt/homebrew/bin/sketchybar --trigger aerospace_workspace_change_$AEROSPACE_PREV_WORKSPACE FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE --trigger aerospace_workspace_change_$AEROSPACE_FOCUSED_WORKSPACE FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
+    '~/dotfiles/dotfiles/mac/aerospace/on-workspace-change.sh']
 
 key-mapping.preset = 'qwerty'
 
@@ -27,6 +27,38 @@ gaps.outer.left =       0
 gaps.outer.bottom =     0
 gaps.outer.top = [{ monitor.'built-in' = 0 }, 33]
 gaps.outer.right =      0
+
+# Grouped workspaces: each "group" N has sub-workspaces N, Nb, Nc
+# assigned to monitors by physical position (left-to-right sequence number).
+# With fewer monitors, fallback chains ensure all workspaces land somewhere.
+[workspace-to-monitor-force-assignment]
+1 = [1, 'main']
+2 = [1, 'main']
+3 = [1, 'main']
+4 = [1, 'main']
+5 = [1, 'main']
+6 = [1, 'main']
+7 = [1, 'main']
+8 = [1, 'main']
+9 = [1, 'main']
+'1b' = [2, 'secondary', 1]
+'2b' = [2, 'secondary', 1]
+'3b' = [2, 'secondary', 1]
+'4b' = [2, 'secondary', 1]
+'5b' = [2, 'secondary', 1]
+'6b' = [2, 'secondary', 1]
+'7b' = [2, 'secondary', 1]
+'8b' = [2, 'secondary', 1]
+'9b' = [2, 'secondary', 1]
+'1c' = [3, 'built-in', 2, 1]
+'2c' = [3, 'built-in', 2, 1]
+'3c' = [3, 'built-in', 2, 1]
+'4c' = [3, 'built-in', 2, 1]
+'5c' = [3, 'built-in', 2, 1]
+'6c' = [3, 'built-in', 2, 1]
+'7c' = [3, 'built-in', 2, 1]
+'8c' = [3, 'built-in', 2, 1]
+'9c' = [3, 'built-in', 2, 1]
 
 [mode.main.binding]
 
@@ -42,27 +74,27 @@ cmd-shift-j = 'move down'
 cmd-shift-k = 'move up'
 cmd-shift-l = 'move right'
 
-# Workspaces (Super+1-9)
-cmd-1 = 'workspace 1'
-cmd-2 = 'workspace 2'
-cmd-3 = 'workspace 3'
-cmd-4 = 'workspace 4'
-cmd-5 = 'workspace 5'
-cmd-6 = 'workspace 6'
-cmd-7 = 'workspace 7'
-cmd-8 = 'workspace 8'
-cmd-9 = 'workspace 9'
+# Workspaces (Super+1-9) — grouped: switches all monitors together
+cmd-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 1'
+cmd-2 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 2'
+cmd-3 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 3'
+cmd-4 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 4'
+cmd-5 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 5'
+cmd-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 6'
+cmd-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 7'
+cmd-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 8'
+cmd-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 9'
 
-# Move window to workspace (Super+Shift+1-9) — refresh sketchybar + agents-status names
-cmd-shift-1 = ['move-node-to-workspace 1', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 1']
-cmd-shift-2 = ['move-node-to-workspace 2', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 2']
-cmd-shift-3 = ['move-node-to-workspace 3', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 3']
-cmd-shift-4 = ['move-node-to-workspace 4', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 4']
-cmd-shift-5 = ['move-node-to-workspace 5', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 5']
-cmd-shift-6 = ['move-node-to-workspace 6', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 6']
-cmd-shift-7 = ['move-node-to-workspace 7', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 7']
-cmd-shift-8 = ['move-node-to-workspace 8', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 8']
-cmd-shift-9 = ['move-node-to-workspace 9', 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/refresh-workspaces.sh 9']
+# Move window to workspace (Super+Shift+1-9) — moves to same-monitor sub-workspace
+cmd-shift-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 1'
+cmd-shift-2 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 2'
+cmd-shift-3 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 3'
+cmd-shift-4 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 4'
+cmd-shift-5 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 5'
+cmd-shift-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 6'
+cmd-shift-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 7'
+cmd-shift-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 8'
+cmd-shift-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 9'
 
 # Open terminal (Super+Enter)
 cmd-enter = "exec-and-forget osascript -e 'tell application \"Ghostty\" to new window'"
@@ -89,12 +121,12 @@ cmd-q = '''exec-and-forget APP=$(aerospace list-windows --focused --format '%{ap
 cmd-m = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
 cmd-z = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
 
-# Prev/next workspace (Super+, / Super+.)
-cmd-comma = 'workspace prev'
-cmd-period = 'workspace next'
+# Prev/next group (Super+, / Super+.)
+cmd-comma = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-relative.sh prev'
+cmd-period = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-relative.sh next'
 
-# Last workspace (Super+`)
-cmd-backtick = 'workspace-back-and-forth'
+# Last group (Super+`) — switches all monitors back to previous group
+cmd-backtick = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-back.sh'
 
 # Move window to other monitor and follow focus (Super+o)
 cmd-o = ['move-node-to-monitor --wrap-around next', 'focus-monitor --wrap-around next']
@@ -125,6 +157,10 @@ cmd-space = 'exec-and-forget open -a Raycast'
 
 # Alt+Tab: cycle windows in workspace (preserves fullscreen)
 f19 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/cycle-window.sh'
+
+
+# Sticky window toggle (Super+p)
+cmd-p = 'exec-and-forget /Users/ofirgal/dotfiles/dotfiles/mac/aerospace/sticky-toggle.sh'
 
 # Reload aerospace + sketchybar (Super+Shift+r)
 cmd-shift-r = ['reload-config', 'exec-and-forget sketchybar --reload; sleep 0.5; /opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py']

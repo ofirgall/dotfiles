@@ -1,11 +1,24 @@
 #!/bin/bash
 
-FOCUSED=$(aerospace list-workspaces --focused 2>/dev/null)
+# Grouped workspaces: strip suffix (b/c) to get group number
+FOCUSED_RAW=$(aerospace list-workspaces --focused 2>/dev/null)
+FOCUSED_GROUP="${FOCUSED_RAW%%[bc]}"
 NON_EMPTY=$(aerospace list-workspaces --monitor all --empty no 2>/dev/null)
 
-IS_FOCUSED=$( [ "$1" = "$FOCUSED" ] && echo "true" || echo "false" )
-HAS_WINDOWS=$(echo "$NON_EMPTY" | grep -q "^$1$" && echo "true" || echo "false")
-WIN_COUNT=$(aerospace list-windows --workspace "$1" --count 2>/dev/null)
+IS_FOCUSED=$( [ "$1" = "$FOCUSED_GROUP" ] && echo "true" || echo "false" )
+
+# A group "has windows" if any sub-workspace (N, Nb, Nc) has windows
+HAS_WINDOWS="false"
+for suffix in "" "b" "c"; do
+    echo "$NON_EMPTY" | grep -q "^${1}${suffix}$" && HAS_WINDOWS="true" && break
+done
+
+# Count windows across all sub-workspaces in this group
+WIN_COUNT=0
+for suffix in "" "b" "c"; do
+    count=$(aerospace list-windows --workspace "${1}${suffix}" --count 2>/dev/null)
+    WIN_COUNT=$((WIN_COUNT + count))
+done
 
 SENTINEL="/tmp/agent-status-bg-$(id -u)"
 TEMPLATE=""
