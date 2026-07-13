@@ -73,13 +73,13 @@ set_workspace() {
 }
 
 if [ "$IS_FOCUSED" = "true" ]; then
-    if [ -n "$AGENT_BG" ]; then
+    if [ -n "$AGENT_BG" ] && [ -n "$AGENT_TEXT" ]; then
         set_workspace background.color="$AGENT_BG" background.drawing=on icon.color="$AGENT_TEXT" label.color="$AGENT_TEXT"
     else
         set_workspace background.color=0xffcba6f7 background.drawing=on icon.color=0xff1e1e1e label.color=0xff1e1e1e
     fi
 elif [ "$HAS_WINDOWS" = "true" ]; then
-    if [ -n "$AGENT_BG" ]; then
+    if [ -n "$AGENT_BG" ] && [ -n "$AGENT_TEXT" ]; then
         set_workspace background.color="$AGENT_BG" background.drawing=on icon.color="$AGENT_TEXT" label.color="$AGENT_TEXT"
     else
         set_workspace background.color=0xff23243e background.drawing=on icon.color=0xffa287c5 label.color=0xffa287c5
