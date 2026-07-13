@@ -11,7 +11,7 @@ default-root-container-orientation = 'auto'
 
 accordion-padding = 0
 
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focused-monitor-changed = []
 
 automatically-unhide-macos-hidden-apps = true
 
