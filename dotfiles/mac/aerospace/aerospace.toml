@@ -116,7 +116,7 @@ cmd-q = '''exec-and-forget APP=$(aerospace list-windows --focused --format '%{ap
     else \
         aerospace close --quit-if-last-window; \
     fi; \
-    sleep 0.2 && sketchybar --trigger window_count_change'''
+    sleep 0.3 && ~/dotfiles/dotfiles/mac/aerospace/on-window-detected.sh'''
 
 # Maximize toggle (Super+m)
 cmd-m = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
