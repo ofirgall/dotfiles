@@ -47,9 +47,11 @@ WINDOW_COUNT_EVENTS="forced window_count_change"
 for sid in 1 2 3 4 5 6 7 8 9; do
     WINDOW_COUNT_EVENTS="$WINDOW_COUNT_EVENTS aerospace_workspace_change_$sid"
 done
+# Laptop (notch display) — position 'e' shifts right of notch
 sketchybar --add item window_count e \
            --subscribe window_count $WINDOW_COUNT_EVENTS \
            --set window_count \
+                display=1 \
                 icon="󰖯" \
                 icon.padding_left=4 \
                 label.padding_right=4 \
@@ -57,6 +59,24 @@ sketchybar --add item window_count e \
            --add item window_name e \
            --subscribe window_name $WINDOW_COUNT_EVENTS front_app_switched \
            --set window_name \
+                display=1 \
+                icon.drawing=off \
+                label.max_chars=50 \
+                script="$PLUGIN_DIR/window_count.sh"
+
+# External monitors — true center
+sketchybar --add item window_count_ext center \
+           --subscribe window_count_ext $WINDOW_COUNT_EVENTS \
+           --set window_count_ext \
+                display=2,3 \
+                icon="󰖯" \
+                icon.padding_left=4 \
+                label.padding_right=4 \
+                script="$PLUGIN_DIR/window_count.sh" \
+           --add item window_name_ext center \
+           --subscribe window_name_ext $WINDOW_COUNT_EVENTS front_app_switched \
+           --set window_name_ext \
+                display=2,3 \
                 icon.drawing=off \
                 label.max_chars=50 \
                 script="$PLUGIN_DIR/window_count.sh"
