@@ -76,13 +76,13 @@ if [ "$IS_FOCUSED" = "true" ]; then
     if [ -n "$AGENT_BG" ]; then
         set_workspace background.color="$AGENT_BG" background.drawing=on icon.color="$AGENT_TEXT" label.color="$AGENT_TEXT"
     else
-        set_workspace background.drawing=on icon.color=0xff1e1e1e label.color=0xff1e1e1e
+        set_workspace background.color=0xffcba6f7 background.drawing=on icon.color=0xff1e1e1e label.color=0xff1e1e1e
     fi
 elif [ "$HAS_WINDOWS" = "true" ]; then
     if [ -n "$AGENT_BG" ]; then
         set_workspace background.color="$AGENT_BG" background.drawing=on icon.color="$AGENT_TEXT" label.color="$AGENT_TEXT"
     else
-        set_workspace background.drawing=off icon.color=0xffcad3f5 label.color=0xffcad3f5
+        set_workspace background.color=0xff23243e background.drawing=on icon.color=0xffa287c5 label.color=0xffa287c5
     fi
 else
     sketchybar --set "$NAME" label.drawing=off drawing=off
