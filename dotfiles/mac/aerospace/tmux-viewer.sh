@@ -5,7 +5,8 @@ SUFFIX=" - TMUX"
 
 if [[ "$TITLE" == *"$SUFFIX" ]]; then
     SESSION_NAME="${TITLE%$SUFFIX}"
-    open -na Ghostty.app --args --command="/bin/zsh -c 'export VIEW_TMUX_SESSION=\"$SESSION_NAME\"; exec zsh -i'"
+    echo "$SESSION_NAME" > /tmp/tmux-viewer-pending
+    osascript -e 'tell application "Ghostty" to new window'
 else
     osascript -e 'display notification "Active window is not a TMUX session" with title "TmuxViewer"'
 fi
