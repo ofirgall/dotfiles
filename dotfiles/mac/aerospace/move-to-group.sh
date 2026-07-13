@@ -12,10 +12,12 @@ TARGET_WS="${GROUP}${SUFFIXES[$SUFFIX_IDX]}"
 
 aerospace move-node-to-workspace "$TARGET_WS" 2>/dev/null
 
-# Refresh sketchybar
-FOCUSED=$(aerospace list-workspaces --focused 2>/dev/null)
-FOCUSED_GROUP="${FOCUSED%%[bc]}"
+# Refresh cache + sketchybar
+~/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh
+FOCUSED_GROUP=$(sed -n '1p' /tmp/aerospace-ws-cache)
+
 /opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py 2>/dev/null
-/opt/homebrew/bin/sketchybar \
-    --trigger "aerospace_workspace_change_${GROUP}" "FOCUSED_WORKSPACE=$FOCUSED" \
-    --trigger "aerospace_workspace_change_${FOCUSED_GROUP}" "FOCUSED_WORKSPACE=$FOCUSED" 2>/dev/null
+for i in 1 2 3 4 5 6 7 8 9; do
+    /opt/homebrew/bin/sketchybar --trigger "aerospace_workspace_change_$i" "FOCUSED_WORKSPACE=$FOCUSED_GROUP" 2>/dev/null &
+done
+wait
