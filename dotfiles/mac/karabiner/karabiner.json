@@ -93,7 +93,7 @@
                         ]
                     },
                     {
-                        "description": "Cmd+L/K/= -> F16/F15/F14 (Aerospace binds, frees Cmd keys for apps)",
+                        "description": "Cmd+L/K/=/Space -> F-keys (Aerospace binds, bypasses system shortcuts)",
                         "manipulators": [
                             {
                                 "type": "basic",
@@ -109,6 +109,11 @@
                                 "type": "basic",
                                 "from": { "key_code": "equal_sign", "modifiers": { "mandatory": ["left_command"] } },
                                 "to": [{ "key_code": "f13" }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "spacebar", "modifiers": { "mandatory": ["left_command"] } },
+                                "to": [{ "key_code": "f20" }]
                             }
                         ]
                     },

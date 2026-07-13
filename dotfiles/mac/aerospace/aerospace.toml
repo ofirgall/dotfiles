@@ -153,8 +153,8 @@ cmd-shift-v = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/tmux-viewer.sh'
 # Float toggle (Super+Shift+f -- matches Hyprland Ctrl+F)
 cmd-shift-f = 'layout floating tiling'
 
-# Super+Space: Raycast
-cmd-space = 'exec-and-forget open -a Raycast'
+# Super+Space: toggle keyboard language (ABC/Hebrew)
+f20 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/toggle-input-source'
 
 # Alt+Tab: cycle windows in workspace (preserves fullscreen)
 f19 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/cycle-window.sh'
