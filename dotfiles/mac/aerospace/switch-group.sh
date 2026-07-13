@@ -47,9 +47,8 @@ for i in $(seq 0 $((NUM_MONITORS - 1))); do
     OLD_WS="${CURRENT_GROUP}${SUFFIXES[$i]}"
     NEW_WS="${GROUP}${SUFFIXES[$i]}"
 
-    aerospace workspace "$NEW_WS" 2>/dev/null
-
-    # Move sticky windows from old to new workspace on this monitor
+    # Move sticky windows BEFORE switching (shorter flicker — window is already
+    # on target workspace when it becomes visible)
     if [ -n "$ALL_WIN_WS" ]; then
         while IFS= read -r wid; do
             [ -z "$wid" ] && continue
@@ -59,6 +58,8 @@ for i in $(seq 0 $((NUM_MONITORS - 1))); do
             fi
         done < "$STICKY_FILE"
     fi
+
+    aerospace workspace "$NEW_WS" 2>/dev/null
 done
 
 # Return focus to the original monitor
