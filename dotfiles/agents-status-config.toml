@@ -18,4 +18,4 @@ workspaces_provider = "aerospace"
 bar = "sketchybar"
 
 [statusbar.sketchybar]
-label_template = "{agent_icon} {tmux_sessions} [{window_count}]"
+label_template = "{app_icons} {agent_icon} {tmux_sessions} [{window_count}]"
