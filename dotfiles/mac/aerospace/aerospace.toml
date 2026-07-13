@@ -65,8 +65,8 @@ gaps.outer.right =      0
 # Focus (Super+hjkl) — crosses monitor boundaries
 cmd-h = 'focus --boundaries all-monitors-outer-frame left'
 cmd-j = 'focus --boundaries all-monitors-outer-frame down'
-cmd-k = 'focus --boundaries all-monitors-outer-frame up'
-cmd-l = 'focus --boundaries all-monitors-outer-frame right'
+f15 = 'focus --boundaries all-monitors-outer-frame up'
+f16 = 'focus --boundaries all-monitors-outer-frame right'
 
 # Move/swap windows (Super+Shift+hjkl)
 cmd-shift-h = 'move left'
@@ -117,9 +117,8 @@ cmd-q = '''exec-and-forget APP=$(aerospace list-windows --focused --format '%{ap
     fi; \
     sleep 0.2 && sketchybar --trigger window_count_change'''
 
-# Maximize toggle (Super+m / Super+z)
+# Maximize toggle (Super+m)
 cmd-m = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
-cmd-z = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
 
 # Prev/next group (Super+, / Super+.)
 cmd-comma = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-relative.sh prev'
