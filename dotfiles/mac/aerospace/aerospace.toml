@@ -125,8 +125,9 @@ cmd-z = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_
 cmd-comma = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-relative.sh prev'
 cmd-period = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-relative.sh next'
 
-# Last group (Super+`) — switches all monitors back to previous group
+# Last group (Super+`)
 cmd-backtick = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-back.sh'
+cmd-equal = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-back.sh' # Voyager: = is where ` is
 
 # Move window to other monitor and follow focus (Super+o)
 cmd-o = ['move-node-to-monitor --wrap-around next', 'focus-monitor --wrap-around next']
