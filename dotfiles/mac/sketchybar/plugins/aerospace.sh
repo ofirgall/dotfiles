@@ -1,24 +1,21 @@
 #!/bin/bash
 
-# Grouped workspaces: strip suffix (b/c) to get group number
-FOCUSED_RAW=$(aerospace list-workspaces --focused 2>/dev/null)
-FOCUSED_GROUP="${FOCUSED_RAW%%[bc]}"
-NON_EMPTY=$(aerospace list-workspaces --monitor all --empty no 2>/dev/null)
+# Read pre-computed state from cache (written by on-workspace-change.sh)
+CACHE="/tmp/aerospace-ws-cache"
+if [ -f "$CACHE" ]; then
+    FOCUSED_GROUP=$(sed -n '1p' "$CACHE")
+    CACHE_LINE=$(grep "^$1 " "$CACHE")
+    HAS_WINDOWS=$( [ "$(echo "$CACHE_LINE" | cut -d' ' -f2)" = "1" ] && echo "true" || echo "false" )
+    WIN_COUNT=$(echo "$CACHE_LINE" | cut -d' ' -f3)
+else
+    FOCUSED_GROUP=$(aerospace list-workspaces --focused 2>/dev/null)
+    FOCUSED_GROUP="${FOCUSED_GROUP%%[bc]}"
+    HAS_WINDOWS="false"
+    WIN_COUNT=0
+fi
 
 IS_FOCUSED=$( [ "$1" = "$FOCUSED_GROUP" ] && echo "true" || echo "false" )
-
-# A group "has windows" if any sub-workspace (N, Nb, Nc) has windows
-HAS_WINDOWS="false"
-for suffix in "" "b" "c"; do
-    echo "$NON_EMPTY" | grep -q "^${1}${suffix}$" && HAS_WINDOWS="true" && break
-done
-
-# Count windows across all sub-workspaces in this group
-WIN_COUNT=0
-for suffix in "" "b" "c"; do
-    count=$(aerospace list-windows --workspace "${1}${suffix}" --count 2>/dev/null)
-    WIN_COUNT=$((WIN_COUNT + count))
-done
+: "${WIN_COUNT:=0}"
 
 SENTINEL="/tmp/agent-status-bg-$(id -u)"
 TEMPLATE=""

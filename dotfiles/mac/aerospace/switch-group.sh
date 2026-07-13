@@ -6,12 +6,18 @@ GROUP="$1"
 [ -z "$GROUP" ] && exit 1
 
 SUFFIXES=("" "b" "c")
-NUM_MONITORS=$(aerospace list-monitors 2>/dev/null | wc -l | tr -d ' ')
-FOCUSED_MON=$(aerospace list-monitors --focused --format '%{monitor-id}' 2>/dev/null)
 
-# Determine current group from focused workspace
-CURRENT_WS=$(aerospace list-workspaces --focused 2>/dev/null)
-CURRENT_GROUP="${CURRENT_WS%%[bc]}"
+# Read current group from cache (avoids an aerospace call)
+CACHE="/tmp/aerospace-ws-cache"
+if [ -f "$CACHE" ]; then
+    CURRENT_GROUP=$(sed -n '1p' "$CACHE")
+else
+    CURRENT_WS=$(aerospace list-workspaces --focused 2>/dev/null)
+    CURRENT_GROUP="${CURRENT_WS%%[bc]}"
+fi
+
+FOCUSED_MON=$(aerospace list-monitors --focused --format '%{monitor-id}' 2>/dev/null)
+NUM_MONITORS=$(aerospace list-monitors 2>/dev/null | wc -l | tr -d ' ')
 
 # No-op if already on this group
 [ "$CURRENT_GROUP" = "$GROUP" ] && exit 0
@@ -19,13 +25,20 @@ CURRENT_GROUP="${CURRENT_WS%%[bc]}"
 # Save previous group for back-and-forth
 echo "$CURRENT_GROUP" > /tmp/aerospace-prev-group
 
-# Set flag so on-workspace-change.sh skips sticky-move (we handle it here)
+# Set flag so on-workspace-change.sh hooks are no-ops
 touch /tmp/aerospace-switching-group
 
-# Collect current visible workspace per monitor, then switch + move sticky windows
+# Update cache + trigger sketchybar IMMEDIATELY (before workspace switches)
+# so the bar updates in parallel with window transitions
+FOCUSED_WS="${GROUP}${SUFFIXES[$((FOCUSED_MON-1))]}"
+sed -i '' "1s/.*/$GROUP/" /tmp/aerospace-ws-cache 2>/dev/null
+/opt/homebrew/bin/sketchybar \
+    --trigger "aerospace_workspace_change_${CURRENT_GROUP}" "FOCUSED_WORKSPACE=$FOCUSED_WS" \
+    --trigger "aerospace_workspace_change_${GROUP}" "FOCUSED_WORKSPACE=$FOCUSED_WS" 2>/dev/null &
+
+# Switch all monitors to the target group
 STICKY_FILE="/tmp/aerospace-sticky-windows"
 for i in $(seq 0 $((NUM_MONITORS - 1))); do
-    MON_SEQ=$((i + 1))
     OLD_WS="${CURRENT_GROUP}${SUFFIXES[$i]}"
     NEW_WS="${GROUP}${SUFFIXES[$i]}"
 
@@ -43,7 +56,8 @@ for i in $(seq 0 $((NUM_MONITORS - 1))); do
     fi
 done
 
-rm -f /tmp/aerospace-switching-group
-
 # Return focus to the original monitor
 aerospace focus-monitor "$FOCUSED_MON" 2>/dev/null
+
+# Delayed flag removal — async hooks spawned during the switch still see it
+(sleep 0.3 && rm -f /tmp/aerospace-switching-group) &
