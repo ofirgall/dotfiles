@@ -79,11 +79,21 @@
                                 "from": { "key_code": "k", "modifiers": { "mandatory": ["left_control"], "optional": ["shift"] } },
                                 "to": [{ "key_code": "k", "modifiers": ["left_command"] }],
                                 "conditions": [{ "type": "frontmost_application_unless", "bundle_identifiers": ["^com\\.mitchellh\\.ghostty$", "^com\\.apple\\.Terminal$", "^com\\.googlecode\\.iterm2$", "^com\\.todesktop\\.230313mzl4w4u92$"] }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "equal_sign", "modifiers": { "mandatory": ["left_control"], "optional": ["shift"] } },
+                                "to": [{ "key_code": "equal_sign", "modifiers": ["left_command"] }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "hyphen", "modifiers": { "mandatory": ["left_control"], "optional": ["shift"] } },
+                                "to": [{ "key_code": "hyphen", "modifiers": ["left_command"] }]
                             }
                         ]
                     },
                     {
-                        "description": "Cmd+L/K -> F16/F15 (Aerospace focus, frees Cmd+L/K for apps)",
+                        "description": "Cmd+L/K/= -> F16/F15/F14 (Aerospace binds, frees Cmd keys for apps)",
                         "manipulators": [
                             {
                                 "type": "basic",
@@ -94,6 +104,11 @@
                                 "type": "basic",
                                 "from": { "key_code": "k", "modifiers": { "mandatory": ["left_command"] } },
                                 "to": [{ "key_code": "f15" }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "equal_sign", "modifiers": { "mandatory": ["left_command"] } },
+                                "to": [{ "key_code": "f13" }]
                             }
                         ]
                     },

@@ -126,7 +126,7 @@ cmd-period = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-rel
 
 # Last group (Super+`)
 cmd-backtick = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-back.sh'
-cmd-equal = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-back.sh' # Voyager: = is where ` is
+f13 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-back.sh' # Voyager: = is where ` is
 
 # Move window to other monitor and follow focus (Super+o)
 cmd-o = ['move-node-to-monitor --wrap-around next', 'focus-monitor --wrap-around next']
