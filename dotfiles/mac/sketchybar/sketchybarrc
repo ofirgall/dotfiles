@@ -8,8 +8,8 @@ sketchybar --bar \
     blur_radius=30 \
     position=top \
     sticky=on \
-    padding_left=10 \
-    padding_right=10 \
+    padding_left=2 \
+    padding_right=2 \
     color=0xff151520 \
     notch_width=200
 
@@ -28,16 +28,18 @@ for sid in 1 2 3 4 5 6 7 8 9; do
                --subscribe space."$sid" aerospace_workspace_change_"$sid" forced \
                --set space."$sid" \
                     icon="$sid" \
-                    icon.padding_left=8 \
-                    icon.padding_right=4 \
+                    icon.padding_left=4 \
+                    icon.padding_right=2 \
                     label.font="CaskaydiaCove NFM:Regular:13.0" \
                     label.color=0xffcad3f5 \
                     label.drawing=off \
-                    label.padding_right=6 \
+                    label.padding_right=4 \
                     background.color=0xffcba6f7 \
                     background.corner_radius=5 \
                     background.height=22 \
                     background.drawing=off \
+                    padding_left=3 \
+                    padding_right=3 \
                     click_script="~/dotfiles/dotfiles/mac/aerospace/switch-group.sh $sid" \
                     script="$PLUGIN_DIR/aerospace.sh $sid"
 done
