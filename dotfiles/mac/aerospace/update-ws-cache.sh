@@ -4,6 +4,7 @@
 # Format: line 1 = focused group, lines 2+ = "GROUP HAS_WINDOWS WIN_COUNT"
 
 CACHE="/tmp/aerospace-ws-cache"
+TMP_CACHE="${CACHE}.tmp.$$"
 
 FOCUSED_RAW=$(aerospace list-workspaces --focused 2>/dev/null)
 FOCUSED_GROUP="${FOCUSED_RAW%%[bc]}"
@@ -22,4 +23,4 @@ END {
         has = (count[i] > 0) ? 1 : 0
         print i, has, count[i]
     }
-}' > "$CACHE"
+}' > "$TMP_CACHE" && mv "$TMP_CACHE" "$CACHE"
