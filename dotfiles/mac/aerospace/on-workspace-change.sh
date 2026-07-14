@@ -21,5 +21,5 @@ FOCUSED_GROUP="${FOCUSED%%[bc]}"
 PREV_GROUP="${PREV%%[bc]}"
 
 /opt/homebrew/bin/sketchybar \
-    --trigger "aerospace_workspace_change_${PREV_GROUP}" "FOCUSED_WORKSPACE=$FOCUSED" \
-    --trigger "aerospace_workspace_change_${FOCUSED_GROUP}" "FOCUSED_WORKSPACE=$FOCUSED" 2>/dev/null
+    --trigger "aerospace_workspace_change_${PREV_GROUP}" "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
+    --trigger "aerospace_workspace_change_${FOCUSED_GROUP}" "FOCUSED_WORKSPACE=$FOCUSED_GROUP" 2>/dev/null

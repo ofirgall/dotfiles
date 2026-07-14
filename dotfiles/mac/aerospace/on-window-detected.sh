@@ -6,8 +6,13 @@
 
 FOCUSED_GROUP=$(sed -n '1p' /tmp/aerospace-ws-cache)
 
-# Trigger all workspace events so sketchybar redraws visibility
-for i in 1 2 3 4 5 6 7 8 9; do
-    /opt/homebrew/bin/sketchybar --trigger "aerospace_workspace_change_$i" "FOCUSED_WORKSPACE=$FOCUSED_GROUP" 2>/dev/null &
-done
-wait
+/opt/homebrew/bin/sketchybar \
+    --trigger aerospace_workspace_change_1 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
+    --trigger aerospace_workspace_change_2 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
+    --trigger aerospace_workspace_change_3 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
+    --trigger aerospace_workspace_change_4 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
+    --trigger aerospace_workspace_change_5 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
+    --trigger aerospace_workspace_change_6 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
+    --trigger aerospace_workspace_change_7 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
+    --trigger aerospace_workspace_change_8 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
+    --trigger aerospace_workspace_change_9 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" 2>/dev/null
