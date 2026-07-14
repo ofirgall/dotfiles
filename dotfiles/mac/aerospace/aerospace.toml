@@ -69,11 +69,11 @@ cmd-j = 'focus --boundaries all-monitors-outer-frame down; move-mouse window-laz
 f15 = 'focus --boundaries all-monitors-outer-frame up; move-mouse window-lazy-center || move-mouse monitor-lazy-center'
 f16 = 'focus --boundaries all-monitors-outer-frame right; move-mouse window-lazy-center || move-mouse monitor-lazy-center'
 
-# Move/swap windows (Super+Shift+hjkl)
-cmd-shift-h = 'move left'
-cmd-shift-j = 'move down'
-cmd-shift-k = 'move up'
-cmd-shift-l = 'move right'
+# Swap windows (Super+Shift+hjkl) — within workspace or across monitors
+cmd-shift-h = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/swap-window.sh left'
+cmd-shift-j = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/swap-window.sh down'
+cmd-shift-k = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/swap-window.sh up'
+cmd-shift-l = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/swap-window.sh right'
 
 # Workspaces (Super+1-9) — grouped: switches all monitors together
 cmd-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 1'
@@ -108,15 +108,7 @@ cmd-alt-b = 'exec-and-forget /usr/bin/open -na "Google Chrome" --args --profile-
 # Close window (Super+q)
 # Aerospace's `close` doesn't work for Ghostty, so we check the focused app
 # and send Cmd+W for Ghostty, otherwise use native aerospace close.
-cmd-q = '''exec-and-forget APP=$(aerospace list-windows --focused --format '%{app-bundle-id}') && \
-    if [ "$APP" = "com.mitchellh.ghostty" ]; then \
-        osascript -e 'tell application "System Events" to keystroke "w" using command down'; \
-    elif [ "$APP" = "com.lujjjh.LinearMouse" ] || [ "$APP" = "com.raycast.macos" ]; then \
-        osascript -e 'tell application "System Events" to keystroke "w" using command down'; \
-    else \
-        aerospace close --quit-if-last-window; \
-    fi; \
-    sleep 0.3 && ~/dotfiles/dotfiles/mac/aerospace/on-window-detected.sh'''
+cmd-q = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/close-window.sh'
 
 # Maximize toggle (Super+m)
 cmd-m = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
