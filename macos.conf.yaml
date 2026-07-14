@@ -69,6 +69,8 @@
         path: dotfiles/agents-status-config.toml
     ~/.config/gh-dash/config.yml:
         path: dotfiles/gh-dash/config.yml
+    ~/.config/hop/config.toml:
+        path: dotfiles/hop/config.toml
 
 # --- macOS-specific symlinks ---
 - link:

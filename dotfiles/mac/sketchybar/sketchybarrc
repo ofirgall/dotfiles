@@ -2,14 +2,6 @@
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-NUM_MONITORS=$(sketchybar --query displays | grep -c "arrangement-id")
-if [ "$NUM_MONITORS" -eq 3 ]; then
-    BUILTIN_DISPLAY=3
-    EXTERNAL_DISPLAYS=1,2
-else
-    BUILTIN_DISPLAY=1
-    EXTERNAL_DISPLAYS=
-fi
 
 sketchybar --bar \
     height=33 \
@@ -50,46 +42,6 @@ for sid in 1 2 3 4 5 6 7 8 9; do
                     script="$PLUGIN_DIR/aerospace.sh $sid"
 done
 
-# Window count for focused workspace
-sketchybar --add event window_count_change
-WINDOW_COUNT_EVENTS="forced window_count_change"
-for sid in 1 2 3 4 5 6 7 8 9; do
-    WINDOW_COUNT_EVENTS="$WINDOW_COUNT_EVENTS aerospace_workspace_change_$sid"
-done
-# Laptop (notch display) — position 'e' shifts right of notch
-sketchybar --add item window_count e \
-           --subscribe window_count $WINDOW_COUNT_EVENTS \
-           --set window_count \
-                display=$BUILTIN_DISPLAY \
-                icon="󰖯" \
-                icon.padding_left=4 \
-                label.padding_right=4 \
-                script="$PLUGIN_DIR/window_count.sh" \
-           --add item window_name e \
-           --subscribe window_name $WINDOW_COUNT_EVENTS front_app_switched \
-           --set window_name \
-                display=$BUILTIN_DISPLAY \
-                icon.drawing=off \
-                label.max_chars=50 \
-                script="$PLUGIN_DIR/window_count.sh"
-
-# External monitors — true center
-sketchybar --add item window_count_ext center \
-           --subscribe window_count_ext $WINDOW_COUNT_EVENTS \
-           --set window_count_ext \
-                display=$EXTERNAL_DISPLAYS \
-                icon="󰖯" \
-                icon.padding_left=4 \
-                label.padding_right=4 \
-                script="$PLUGIN_DIR/window_count.sh" \
-           --add item window_name_ext center \
-           --subscribe window_name_ext $WINDOW_COUNT_EVENTS front_app_switched \
-           --set window_name_ext \
-                display=$EXTERNAL_DISPLAYS \
-                icon.drawing=off \
-                label.max_chars=50 \
-                script="$PLUGIN_DIR/window_count.sh"
-
 # Clock — yellow
 sketchybar --add item clock right \
            --set clock update_freq=10 \
@@ -119,19 +71,6 @@ sketchybar --add item volume right \
                  script="$PLUGIN_DIR/volume.sh" \
            --subscribe volume volume_change
 
-# Bluetooth — blue
-sketchybar --add item bluetooth right \
-           --set bluetooth update_freq=30 \
-                 icon.color=0xff89b4fa \
-                 label.color=0xff89b4fa \
-                 script="$PLUGIN_DIR/bluetooth.sh"
-
-# WiFi — teal (dynamic color in script for disconnected)
-sketchybar --add item wifi right \
-           --set wifi update_freq=30 \
-                 script="$PLUGIN_DIR/wifi.sh" \
-           --subscribe wifi wifi_change
-
 # CPU — green
 sketchybar --add item cpu right \
            --set cpu update_freq=10 \
@@ -155,6 +94,32 @@ sketchybar --add item media right \
                  label.color=0xffb4befe \
                  label.max_chars=40 \
                  script="$PLUGIN_DIR/media.sh"
+
+# Window count for focused workspace (leftmost on right side)
+sketchybar --add event window_count_change
+WINDOW_COUNT_EVENTS="forced window_count_change"
+for sid in 1 2 3 4 5 6 7 8 9; do
+    WINDOW_COUNT_EVENTS="$WINDOW_COUNT_EVENTS aerospace_workspace_change_$sid"
+done
+sketchybar --add item window_sep right \
+           --set window_sep \
+                icon="│" \
+                icon.padding_left=1 \
+                icon.padding_right=1 \
+                label.drawing=off \
+           --add item window_name right \
+           --subscribe window_name $WINDOW_COUNT_EVENTS front_app_switched \
+           --set window_name \
+                icon.drawing=off \
+                label.max_chars=50 \
+                script="$PLUGIN_DIR/window_count.sh" \
+           --add item window_count right \
+           --subscribe window_count $WINDOW_COUNT_EVENTS \
+           --set window_count \
+                icon="󰖯" \
+                icon.padding_left=1 \
+                label.padding_right=1 \
+                script="$PLUGIN_DIR/window_count.sh"
 
 sketchybar --update
 
