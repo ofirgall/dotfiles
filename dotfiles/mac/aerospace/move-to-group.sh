@@ -15,6 +15,7 @@ TARGET_WS="${GROUP}${SUFFIXES[$SUFFIX_IDX]}"
 aerospace move-node-to-workspace "$TARGET_WS" 2>/dev/null
 
 if [ "$FOLLOW" = "--follow" ]; then
+    /opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py 2>/dev/null &
     exec ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh "$GROUP"
 fi
 
