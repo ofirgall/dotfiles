@@ -183,8 +183,9 @@ ez() {
 alias c=y
 
 drift-mcp-auth() {
-  local src_slug="home-ofirg-workspace-work-drift"
   local projects_dir="$HOME/.cursor/projects"
+  local src_path="$HOME/workspace/work/drift"
+  local src_slug=$(echo "$src_path" | sed -E 's/[^a-zA-Z0-9]/-/g; s/-+/-/g; s/^-+|-+$//g')
   local src="$projects_dir/$src_slug/mcp-auth.json"
 
   if [[ ! -f "$src" ]]; then
@@ -192,7 +193,7 @@ drift-mcp-auth() {
     return 1
   fi
 
-  local slug=$(pwd | sed 's/[^a-zA-Z0-9]/-/g; s/-\+/-/g; s/^-\+\|-\+$//g')
+  local slug=$(pwd | sed -E 's/[^a-zA-Z0-9]/-/g; s/-+/-/g; s/^-+|-+$//g')
   local dest_dir="$projects_dir/$slug"
   local dest="$dest_dir/mcp-auth.json"
 
