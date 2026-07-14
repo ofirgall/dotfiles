@@ -163,8 +163,8 @@ f19 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/cycle-window.sh'
 # Sticky window toggle (Super+p)
 cmd-p = 'exec-and-forget /Users/ofirgal/dotfiles/dotfiles/mac/aerospace/sticky-toggle.sh'
 
-# Reload aerospace + sketchybar (Super+Shift+r)
-cmd-shift-r = ['reload-config', 'exec-and-forget sketchybar --reload; sleep 0.5; /opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py']
+# Reload aerospace + sketchybar + borders (Super+Shift+r)
+cmd-shift-r = ['reload-config', 'exec-and-forget sketchybar --reload; brew services restart borders; sleep 0.5; /opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py']
 
 # Service mode (Super+Shift+;)
 cmd-shift-semicolon = 'mode service'
