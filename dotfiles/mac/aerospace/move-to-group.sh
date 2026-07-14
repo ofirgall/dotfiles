@@ -16,7 +16,7 @@ aerospace move-node-to-workspace "$TARGET_WS" 2>/dev/null
 ~/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh
 FOCUSED_GROUP=$(sed -n '1p' /tmp/aerospace-ws-cache)
 
-/opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py 2>/dev/null
+/opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py 2>/dev/null &
 /opt/homebrew/bin/sketchybar \
     --trigger "aerospace_workspace_change_${FOCUSED_GROUP}" "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
     --trigger "aerospace_workspace_change_${GROUP}" "FOCUSED_WORKSPACE=$FOCUSED_GROUP" 2>/dev/null

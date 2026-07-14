@@ -27,21 +27,22 @@ AGENT_BG=""
 AGENT_TEXT=""
 
 if [ -f "$SENTINEL" ]; then
-    TEMPLATE=$(head -1 "$SENTINEL" | jq -r '.template // empty' 2>/dev/null)
-    ws_line=$(jq -c "select(.id == $1)" "$SENTINEL" 2>/dev/null | head -1)
-    if [ -n "$ws_line" ]; then
-        AGENT_LABEL=$(echo "$ws_line" | jq -r '.display_name // empty')
-        AGENT_ICON=$(echo "$ws_line" | jq -r '.agent_icon // empty')
-        TMUX_SESSIONS=$(echo "$ws_line" | jq -r '.tmux_sessions // empty')
-        APP_ICONS=$(echo "$ws_line" | jq -r '.app_icons // empty')
-        if [ "$IS_FOCUSED" = "true" ]; then
-            AGENT_BG=$(echo "$ws_line" | jq -r 'select(.bg_focused != "") | .bg_focused')
-            AGENT_TEXT=$(echo "$ws_line" | jq -r 'select(.text_focused != "") | .text_focused')
-        else
-            AGENT_BG=$(echo "$ws_line" | jq -r 'select(.bg_unfocused != "") | .bg_unfocused')
-            AGENT_TEXT=$(echo "$ws_line" | jq -r 'select(.text_unfocused != "") | .text_unfocused')
-        fi
+    if [ "$IS_FOCUSED" = "true" ]; then
+        BG_KEY="bg_focused"; TEXT_KEY="text_focused"
+    else
+        BG_KEY="bg_unfocused"; TEXT_KEY="text_unfocused"
     fi
+    eval $(jq -r --arg id "$1" --arg bg_key "$BG_KEY" --arg text_key "$TEXT_KEY" '
+        if .template then "TEMPLATE=\(.template | @sh)"
+        elif .id == ($id | tonumber) then
+            "AGENT_LABEL=\(.display_name // "" | @sh)",
+            "AGENT_ICON=\(.agent_icon // "" | @sh)",
+            "TMUX_SESSIONS=\(.tmux_sessions // "" | @sh)",
+            "APP_ICONS=\(.app_icons // "" | @sh)",
+            "AGENT_BG=\(.[$bg_key] // "" | @sh)",
+            "AGENT_TEXT=\(.[$text_key] // "" | @sh)"
+        else empty end
+    ' "$SENTINEL" 2>/dev/null)
 fi
 
 # Build label from template or fallback

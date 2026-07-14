@@ -20,7 +20,7 @@ fi
 [ "$CURRENT_GROUP" = "$GROUP" ] && exit 0
 
 FOCUSED_MON=$(aerospace list-monitors --focused --format '%{monitor-id}' 2>/dev/null)
-NUM_MONITORS=$(aerospace list-monitors 2>/dev/null | wc -l | tr -d ' ')
+NUM_MONITORS=$(aerospace list-monitors --format '%{monitor-id}' 2>/dev/null | wc -l | tr -d ' ')
 
 # Save previous group for back-and-forth
 echo "$CURRENT_GROUP" > /tmp/aerospace-prev-group
