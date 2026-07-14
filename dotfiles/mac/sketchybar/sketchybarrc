@@ -35,7 +35,7 @@ for sid in 1 2 3 4 5 6 7 8 9; do
                     label.drawing=off \
                     label.padding_right=4 \
                     background.color=0xffcba6f7 \
-                    background.corner_radius=5 \
+                    background.corner_radius=8 \
                     background.height=22 \
                     background.drawing=off \
                     padding_left=3 \
