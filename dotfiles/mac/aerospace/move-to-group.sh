@@ -1,9 +1,11 @@
 #!/bin/bash
 # Move focused window to workspace group N on the SAME monitor.
 # Determines which sub-workspace (N, Nb, Nc) based on current monitor.
+# Usage: move-to-group.sh <group> [--follow]
 
 GROUP="$1"
 [ -z "$GROUP" ] && exit 1
+FOLLOW="$2"
 
 SUFFIXES=("" "b" "c")
 FOCUSED_MON=$(aerospace list-monitors --focused --format '%{monitor-id}' 2>/dev/null)
@@ -11,6 +13,10 @@ SUFFIX_IDX=$((FOCUSED_MON - 1))
 TARGET_WS="${GROUP}${SUFFIXES[$SUFFIX_IDX]}"
 
 aerospace move-node-to-workspace "$TARGET_WS" 2>/dev/null
+
+if [ "$FOLLOW" = "--follow" ]; then
+    exec ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh "$GROUP"
+fi
 
 # Refresh cache + sketchybar
 ~/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh

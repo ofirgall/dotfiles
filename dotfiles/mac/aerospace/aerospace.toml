@@ -86,16 +86,38 @@ cmd-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 7'
 cmd-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 8'
 cmd-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 9'
 
-# Move window to workspace (Super+Shift+1-9) — moves to same-monitor sub-workspace
-cmd-shift-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 1'
-cmd-shift-2 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 2'
-cmd-shift-3 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 3'
-cmd-shift-4 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 4'
-cmd-shift-5 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 5'
-cmd-shift-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 6'
-cmd-shift-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 7'
-cmd-shift-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 8'
-cmd-shift-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 9'
+# Move window to workspace and follow (Super+Shift+1-9)
+cmd-shift-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 1 --follow'
+cmd-shift-2 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 2 --follow'
+cmd-shift-3 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 3 --follow'
+cmd-shift-4 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 4 --follow'
+cmd-shift-5 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 5 --follow'
+cmd-shift-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 6 --follow'
+cmd-shift-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 7 --follow'
+cmd-shift-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 8 --follow'
+cmd-shift-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 9 --follow'
+
+# Move all windows to workspace and follow (Super+Shift+Ctrl+1-9)
+cmd-shift-ctrl-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 1'
+cmd-shift-ctrl-2 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 2'
+cmd-shift-ctrl-3 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 3'
+cmd-shift-ctrl-4 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 4'
+cmd-shift-ctrl-5 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 5'
+cmd-shift-ctrl-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 6'
+cmd-shift-ctrl-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 7'
+cmd-shift-ctrl-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 8'
+cmd-shift-ctrl-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 9'
+
+# Move window to workspace silently (Super+Ctrl+1-9)
+cmd-ctrl-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 1'
+cmd-ctrl-2 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 2'
+cmd-ctrl-3 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 3'
+cmd-ctrl-4 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 4'
+cmd-ctrl-5 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 5'
+cmd-ctrl-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 6'
+cmd-ctrl-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 7'
+cmd-ctrl-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 8'
+cmd-ctrl-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 9'
 
 # Open terminal (Super+Enter)
 cmd-enter = "exec-and-forget osascript -e 'tell application \"Ghostty\" to new window'"
