@@ -185,5 +185,10 @@ check-further-callbacks = true
 run = 'layout floating'
 
 [[on-window-detected]]
+if = 'test-not %{window-layout} = floating'
+check-further-callbacks = true
+run = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-window-to-cursor-monitor.sh'
+
+[[on-window-detected]]
 if = 'true'
 run = ['exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/on-window-detected.sh']
