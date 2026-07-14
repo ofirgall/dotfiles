@@ -3,7 +3,7 @@ config-version = 2
 start-at-login = true
 auto-reload-config = true
 
-enable-normalization-flatten-containers = true
+enable-normalization-flatten-containers = false
 enable-normalization-opposite-orientation-for-nested-containers = true
 
 default-root-container-layout = 'tiles'
@@ -138,9 +138,10 @@ cmd-ctrl-l = 'resize width +50'
 cmd-s = 'exec-and-forget screencapture -ic'
 cmd-shift-s = 'exec-and-forget screencapture -iUc'
 
-# Raycast (Super+r), clipboard history (Alt+v)
+# Raycast (Super+r), clipboard history (Alt+v), window picker (Super+t)
 cmd-r = 'exec-and-forget open -a Raycast'
 alt-v = 'exec-and-forget open raycast://extensions/raycast/clipboard-history/clipboard-history'
+cmd-t = 'exec-and-forget open raycast://extensions/raycast/navigation/switch-windows'
 
 # Tmux viewer (Super+Shift+v) — open viewer for focused tmux session
 cmd-shift-v = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/tmux-viewer.sh'
