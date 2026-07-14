@@ -2,6 +2,15 @@
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
+NUM_MONITORS=$(sketchybar --query displays | grep -c "arrangement-id")
+if [ "$NUM_MONITORS" -eq 3 ]; then
+    BUILTIN_DISPLAY=3
+    EXTERNAL_DISPLAYS=1,2
+else
+    BUILTIN_DISPLAY=1
+    EXTERNAL_DISPLAYS=
+fi
+
 sketchybar --bar \
     height=33 \
     blur_radius=30 \
@@ -51,7 +60,7 @@ done
 sketchybar --add item window_count e \
            --subscribe window_count $WINDOW_COUNT_EVENTS \
            --set window_count \
-                display=1 \
+                display=$BUILTIN_DISPLAY \
                 icon="󰖯" \
                 icon.padding_left=4 \
                 label.padding_right=4 \
@@ -59,7 +68,7 @@ sketchybar --add item window_count e \
            --add item window_name e \
            --subscribe window_name $WINDOW_COUNT_EVENTS front_app_switched \
            --set window_name \
-                display=1 \
+                display=$BUILTIN_DISPLAY \
                 icon.drawing=off \
                 label.max_chars=50 \
                 script="$PLUGIN_DIR/window_count.sh"
@@ -68,7 +77,7 @@ sketchybar --add item window_count e \
 sketchybar --add item window_count_ext center \
            --subscribe window_count_ext $WINDOW_COUNT_EVENTS \
            --set window_count_ext \
-                display=2,3 \
+                display=$EXTERNAL_DISPLAYS \
                 icon="󰖯" \
                 icon.padding_left=4 \
                 label.padding_right=4 \
@@ -76,7 +85,7 @@ sketchybar --add item window_count_ext center \
            --add item window_name_ext center \
            --subscribe window_name_ext $WINDOW_COUNT_EVENTS front_app_switched \
            --set window_name_ext \
-                display=2,3 \
+                display=$EXTERNAL_DISPLAYS \
                 icon.drawing=off \
                 label.max_chars=50 \
                 script="$PLUGIN_DIR/window_count.sh"
