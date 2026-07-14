@@ -13,4 +13,9 @@ tmux set-option -wu -t "$window" @monitor-status
 tmux set-option -wu -t "$window" @window_color
 
 "$HOME/agents-status/tmux/scripts/refresh_dim_colors.sh"
-"$HOME/.config/hypr/UserScripts/RenameWorkspaces.py"
+
+if [[ "$OSTYPE" == darwin* ]]; then
+    /opt/homebrew/bin/python3.14 "$HOME/agents-status/statusbar/run.py" &
+else
+    "$HOME/.config/hypr/UserScripts/RenameWorkspaces.py"
+fi
