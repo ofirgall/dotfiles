@@ -93,4 +93,5 @@
 
 - shell:
     - [touch -h ~/.config/karabiner/karabiner.json, Triggering Karabiner reload]
+    - [install_scripts/install_ghostty_plugins.sh, Installing ghostty plugins]
     - [install_scripts/mac/install_kvim.sh, Installing KoalaVim]
