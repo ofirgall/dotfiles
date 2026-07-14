@@ -44,8 +44,14 @@
         "redirectsToScroll" : false
       },
       "scrolling" : {
+        "acceleration" : {
+          "vertical" : 0
+        },
         "reverse" : {
           "vertical" : true
+        },
+        "speed" : {
+          "vertical" : 28
         }
       }
     }
