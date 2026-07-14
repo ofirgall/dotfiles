@@ -12,7 +12,7 @@ default-root-container-orientation = 'auto'
 accordion-padding = 0
 
 on-focused-monitor-changed = []
-focus-follows-mouse.enabled = true
+# focus-follows-mouse.enabled = true
 
 automatically-unhide-macos-hidden-apps = true
 
