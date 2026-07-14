@@ -121,6 +121,9 @@ cmd-period = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-rel
 cmd-backtick = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-back.sh'
 f13 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-back.sh' # Voyager: = is where ` is
 
+# Hide window (Super+n)
+cmd-n = 'macos-native-minimize'
+
 # Move window to other monitor and follow focus (Super+o)
 cmd-o = ['move-node-to-monitor --wrap-around next', 'focus-monitor --wrap-around next']
 
