@@ -1,0 +1,21 @@
+[notification]
+# notify-macos is on PATH via ~/dotfiles_scripts/notify/
+# Requires: brew install vjeantet/tap/alerter
+command = "notify-macos"
+
+[post-event]
+commands = [
+    "$AGENTS_STATUS_DIR/../tmux/scripts/refresh_dim_colors.sh",
+    "/opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py",
+]
+
+[colors]
+idle = "#15c70c"
+done = "#1e88ff"
+
+[statusbar]
+workspaces_provider = "aerospace"
+bar = "sketchybar"
+
+[statusbar.sketchybar]
+label_template = "{app_icons} {agent_icon} {tmux_sessions}"

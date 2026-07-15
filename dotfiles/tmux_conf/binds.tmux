@@ -2,12 +2,12 @@
 ##### UTILS #####
 #################
 current_tty="#{pane_tty}"
-is_fzf="ps -o state= -o comm= -t '#{pane_tty}' | grep -q 'S fzf'"
+is_fzf="ps -o state= -o comm= -t '#{pane_tty}' | grep -qE 'S\\S*\\s+.*fzf'"
 is_nvim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|nvim?x?)(diff)?$'"
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|vim?x?)(diff)?$'"
 is_less="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '^:$'"
 is_nested_tmux="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '' | grep ''" # Matching my status line
-is_hunk="ps -o state= -o comm= -t '#{pane_tty}' | grep -q 'S hunk'"
+is_hunk="ps -o state= -o comm= -t '#{pane_tty}' | grep -qE 'S\\S*\\s+.*hunk'"
 helpers="$HOME/.tmux_conf/helpers.sh"
 
 ##### MISC #####
@@ -15,7 +15,15 @@ helpers="$HOME/.tmux_conf/helpers.sh"
 set -g status-keys vi
 set -g mode-keys vi
 
-bind r source-file ~/.tmux.conf; display "Reloaded!"
+bind r {
+  unbind-key -a -T prefix
+  unbind-key -a -T root
+  unbind-key -a -T copy-mode
+  unbind-key -a -T copy-mode-vi
+  source-file ~/.tmux/default-keys.conf
+  source-file ~/.tmux.conf
+  display "Reloaded!"
+}
 
 # Fix end/home for xterm-256color
 bind -n End send-key C-e
@@ -252,7 +260,7 @@ bind -n F12 if-shell "$is_nvim" "send-keys F12" 'setw synchronize-panes' # Toggl
 # call here so the dim is visible immediately, not only after the next
 # window switch.
 # Empty input clears the tag.
-refresh_dim_colors="$HOME/.tmux_conf/refresh_dim_colors.sh"
+refresh_dim_colors="$HOME/agents-status/tmux/scripts/refresh_dim_colors.sh"
 bind W command-prompt -p "window color (hex/name, empty=clear):" {
   if -F "#{==:%1,}" \
     "setw -u @window_color ; run-shell -b $refresh_dim_colors" \

@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-# Kill any running agents-status server and start a fresh one.
-
-pkill -f 'agents-status/server.py' 2>/dev/null
-sleep 0.1
-exec "$(dirname "$0")/ensure-running"

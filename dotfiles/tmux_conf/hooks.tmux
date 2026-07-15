@@ -15,7 +15,7 @@ set-hook -g 'pane-focus-in[1212]' "run-shell \"$get_current_ssh_host | $cut_ssh_
 # for every window. Fires on any window selection so manual
 # `tmux setw @window_color X` is picked up automatically once the user
 # switches windows.
-refresh_dim_colors="$HOME/.tmux_conf/refresh_dim_colors.sh"
+refresh_dim_colors="$HOME/agents-status/tmux/scripts/refresh_dim_colors.sh"
 set-hook -g after-select-window "run-shell -b $refresh_dim_colors"
 set-hook -g window-linked        "run-shell -b $refresh_dim_colors"
 set-hook -g session-created      "run-shell -b $refresh_dim_colors"

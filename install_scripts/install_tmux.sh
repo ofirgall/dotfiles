@@ -25,3 +25,6 @@ download_latest_release /tmp/tmux tmux/tmux *\.tar\.gz build_tmux
 # Install tpm
 rm -rf ~/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Generate default keybindings (used by reload to cleanly unbind plugin keys)
+tmux -L _defaults -f /dev/null start-server \; list-keys \; kill-server > ~/.tmux/default-keys.conf

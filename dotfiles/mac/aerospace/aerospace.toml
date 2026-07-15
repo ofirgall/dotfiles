@@ -1,0 +1,222 @@
+config-version = 2
+
+start-at-login = true
+auto-reload-config = true
+
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+accordion-padding = 0
+
+on-focused-monitor-changed = []
+on-focus-changed = []
+
+automatically-unhide-macos-hidden-apps = true
+
+# Grouped workspaces: on-workspace-change translates sub-workspace names to group events
+exec-on-workspace-change = ['/bin/bash', '-c',
+    '~/dotfiles/dotfiles/mac/aerospace/on-workspace-change.sh']
+
+key-mapping.preset = 'qwerty'
+
+gaps.inner.horizontal = 0
+gaps.inner.vertical =   0
+gaps.outer.left =       0
+gaps.outer.bottom =     0
+gaps.outer.top = [{ monitor.'built-in' = 0 }, 33]
+gaps.outer.right =      0
+
+# Grouped workspaces: each "group" N has sub-workspaces N, Nb, Nc
+# assigned to monitors by physical position (left-to-right sequence number).
+# With fewer monitors, fallback chains ensure all workspaces land somewhere.
+[workspace-to-monitor-force-assignment]
+1 = [1, 'main']
+2 = [1, 'main']
+3 = [1, 'main']
+4 = [1, 'main']
+5 = [1, 'main']
+6 = [1, 'main']
+7 = [1, 'main']
+8 = [1, 'main']
+9 = [1, 'main']
+10 = [1, 'main']
+'1b' = [2, 'secondary', 1]
+'2b' = [2, 'secondary', 1]
+'3b' = [2, 'secondary', 1]
+'4b' = [2, 'secondary', 1]
+'5b' = [2, 'secondary', 1]
+'6b' = [2, 'secondary', 1]
+'7b' = [2, 'secondary', 1]
+'8b' = [2, 'secondary', 1]
+'9b' = [2, 'secondary', 1]
+'10b' = [2, 'secondary', 1]
+'1c' = [3, 'built-in', 2, 1]
+'2c' = [3, 'built-in', 2, 1]
+'3c' = [3, 'built-in', 2, 1]
+'4c' = [3, 'built-in', 2, 1]
+'5c' = [3, 'built-in', 2, 1]
+'6c' = [3, 'built-in', 2, 1]
+'7c' = [3, 'built-in', 2, 1]
+'8c' = [3, 'built-in', 2, 1]
+'9c' = [3, 'built-in', 2, 1]
+'10c' = [3, 'built-in', 2, 1]
+
+[mode.main.binding]
+
+# Focus (Super+hjkl) — crosses monitor boundaries
+cmd-h = 'focus --boundaries all-monitors-outer-frame left; move-mouse window-lazy-center || move-mouse monitor-lazy-center'
+cmd-j = 'focus --boundaries all-monitors-outer-frame down; move-mouse window-lazy-center || move-mouse monitor-lazy-center'
+f15 = 'focus --boundaries all-monitors-outer-frame up; move-mouse window-lazy-center || move-mouse monitor-lazy-center'
+f16 = 'focus --boundaries all-monitors-outer-frame right; move-mouse window-lazy-center || move-mouse monitor-lazy-center'
+
+# Swap windows (Super+Shift+hjkl) — within workspace or across monitors
+cmd-shift-h = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/swap-window.sh left'
+cmd-shift-j = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/swap-window.sh down'
+cmd-shift-k = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/swap-window.sh up'
+cmd-shift-l = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/swap-window.sh right'
+
+# Workspaces (Super+1-9) — grouped: switches all monitors together
+cmd-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 1'
+cmd-2 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 2'
+cmd-3 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 3'
+cmd-4 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 4'
+cmd-5 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 5'
+cmd-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 6'
+cmd-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 7'
+cmd-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 8'
+cmd-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 9'
+cmd-0 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 10'
+
+# Move window to workspace and follow (Super+Shift+1-9)
+cmd-shift-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 1 --follow'
+cmd-shift-2 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 2 --follow'
+cmd-shift-3 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 3 --follow'
+cmd-shift-4 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 4 --follow'
+cmd-shift-5 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 5 --follow'
+cmd-shift-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 6 --follow'
+cmd-shift-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 7 --follow'
+cmd-shift-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 8 --follow'
+cmd-shift-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 9 --follow'
+cmd-shift-0 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 10 --follow'
+
+# Move all windows to workspace and follow (Super+Shift+Ctrl+1-9)
+cmd-shift-ctrl-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 1'
+cmd-shift-ctrl-2 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 2'
+cmd-shift-ctrl-3 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 3'
+cmd-shift-ctrl-4 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 4'
+cmd-shift-ctrl-5 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 5'
+cmd-shift-ctrl-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 6'
+cmd-shift-ctrl-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 7'
+cmd-shift-ctrl-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 8'
+cmd-shift-ctrl-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 9'
+cmd-shift-ctrl-0 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 10'
+
+# Move window to workspace silently (Super+Ctrl+1-9)
+cmd-ctrl-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 1'
+cmd-ctrl-2 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 2'
+cmd-ctrl-3 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 3'
+cmd-ctrl-4 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 4'
+cmd-ctrl-5 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 5'
+cmd-ctrl-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 6'
+cmd-ctrl-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 7'
+cmd-ctrl-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 8'
+cmd-ctrl-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 9'
+cmd-ctrl-0 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 10'
+
+# Move ALL windows (from all workspaces) to workspace 10 (Super+F12)
+cmd-f12 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-windows-to-group.sh 10'
+
+# Open terminal (Super+Enter)
+cmd-enter = "exec-and-forget osascript -e 'tell application \"Ghostty\" to new window'"
+
+# Open browser (Super+b: Default, Super+Shift+b: Profile 1, Super+Alt+b: Profile 2 → YouTube)
+cmd-b = 'exec-and-forget /usr/bin/open -na "Google Chrome" --args --profile-directory=Default --new-window'
+cmd-shift-b = 'exec-and-forget /usr/bin/open -na "Google Chrome" --args --profile-directory="Profile 1" --new-window'
+cmd-alt-b = 'exec-and-forget /usr/bin/open -na "Google Chrome" --args --profile-directory="Profile 2" --new-window https://www.youtube.com'
+
+# Close window (Super+q)
+# Aerospace's `close` doesn't work for Ghostty, so we check the focused app
+# and send Cmd+W for Ghostty, otherwise use native aerospace close.
+cmd-q = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/close-window.sh'
+
+# Maximize toggle (Super+m)
+cmd-m = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
+
+# Prev/next group (Super+, / Super+.)
+cmd-comma = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-relative.sh prev'
+cmd-period = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-relative.sh next'
+
+# Last group (Super+`)
+cmd-backtick = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-back.sh'
+f13 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-back.sh' # Voyager: = is where ` is
+
+# Hide window (Super+n)
+cmd-n = 'macos-native-minimize'
+
+# Move window to other monitor and follow focus (Super+o)
+cmd-o = ['move-node-to-monitor --wrap-around next', 'focus-monitor --wrap-around next']
+
+# Layout toggle
+cmd-slash = 'layout tiles horizontal vertical'
+
+# Resize (Super+Ctrl+h/l)
+cmd-ctrl-h = 'resize width -50'
+cmd-ctrl-l = 'resize width +50'
+
+# Screenshot: region to clipboard (Super+s), UI toolbar to clipboard (Super+Shift+s)
+cmd-s = 'exec-and-forget screencapture -ic'
+cmd-shift-s = 'exec-and-forget screencapture -iUc'
+
+# Raycast (Super+r), clipboard history (Alt+v), window picker (Super+t)
+cmd-r = 'exec-and-forget open -a Raycast'
+alt-v = 'exec-and-forget open raycast://extensions/raycast/clipboard-history/clipboard-history'
+cmd-alt-t = 'exec-and-forget open raycast://extensions/raycast/navigation/switch-windows'
+
+# Tmux viewer (Super+Shift+v) — open viewer for focused tmux session
+cmd-shift-v = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/tmux-viewer.sh'
+
+# Float toggle (Super+Shift+f -- matches Hyprland Ctrl+F)
+cmd-shift-f = 'layout floating tiling'
+
+# Super+Space: toggle keyboard language (ABC/Hebrew)
+f20 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/toggle-input-source'
+
+# Alt+Tab: cycle windows in workspace (preserves fullscreen)
+f19 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/cycle-window.sh'
+
+
+# Sticky window toggle (Super+p)
+cmd-p = 'exec-and-forget /Users/ofirgal/dotfiles/dotfiles/mac/aerospace/sticky-toggle.sh'
+
+# Reload aerospace + sketchybar + borders (Super+Shift+r)
+cmd-shift-r = ['reload-config', 'exec-and-forget rm -f /tmp/aerospace-ws-cache; ~/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh; sketchybar --reload; brew services restart borders; sleep 0.5; /opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py']
+
+# Service mode (Super+Shift+;)
+cmd-shift-semicolon = 'mode service'
+
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main']
+f = ['layout floating tiling', 'mode main']
+backspace = ['close-all-windows-but-current', 'mode main']
+
+[[on-window-detected]]
+if.during-aerospace-startup = true
+run = []
+
+[[on-window-detected]]
+if.app-id = 'com.lujjjh.LinearMouse'
+check-further-callbacks = true
+run = 'layout floating'
+
+[[on-window-detected]]
+if = 'test-not %{window-layout} = floating'
+check-further-callbacks = true
+run = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-window-to-cursor-monitor.sh'
+
+[[on-window-detected]]
+if = 'true'
+run = ['exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/on-window-detected.sh']

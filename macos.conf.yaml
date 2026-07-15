@@ -1,0 +1,100 @@
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - [install_scripts/mac/install_brew.sh, Installing Homebrew]
+    - [install_scripts/mac/install_basic.sh, Installing basic dependencies]
+    - [install_scripts/mac/install_karabiner.sh, Installing Karabiner-Elements]
+    - [install_scripts/mac/install_linearmouse.sh, Installing LinearMouse]
+    - [install_scripts/mac/install_fonts.sh, Installing Nerd Fonts]
+    - [install_scripts/mac/install_tmux.sh, Installing tmux]
+    - [install_scripts/mac/install_ghostty.sh, Installing Ghostty]
+    - [install_scripts/mac/install_aerospace.sh, Installing AeroSpace]
+    - [install_scripts/mac/install_sketchybar.sh, Installing SketchyBar]
+    - [install_scripts/mac/install_jankyborders.sh, Installing JankyBorders]
+    - [install_scripts/mac/install_git_utils.sh, Installing git utilities]
+    - [install_scripts/mac/install_betterdisplay.sh, Installing BetterDisplay]
+    - [install_scripts/mac/install_ez_workspaces.sh, Installing ez-workspaces]
+    - [install_scripts/mac/install_agents_status.sh, Installing agents-status]
+
+- defaults:
+    link:
+      relink: true
+      force: true
+      create: true
+
+# --- Portable symlinks (shared with Linux) ---
+- link:
+    ~/.zshrc:
+        path: dotfiles/zsh-conf/entrypoint.zsh
+    ~/.zshenv:
+        path: dotfiles/zsh-conf/env.zsh
+    ~/.zsh-conf:
+        path: dotfiles/zsh-conf
+    ~/.my-zsh-conf:
+        path: dotfiles/my-zsh-conf
+    ~/.tmux.conf:
+        path: dotfiles/tmux_conf/entrypoint.tmux
+    ~/.tmux_conf:
+        path: dotfiles/tmux_conf
+    ~/.tmux/custom-macros:
+        path: dotfiles/tmux_conf/custom-macros
+    ~/.config/nvim:
+        path: editors/KoalaConfig
+    ~/.kvim.conf:
+        path: dotfiles/.kvim.conf
+    ~/.config/kvim-envs/main:
+        path: editors/KoalaConfig
+    ~/.vimrc:
+        path: dotfiles/vimrc
+    ~/dotfiles_scripts:
+        path: scripts
+    ~/.config/ghostty:
+        path: dotfiles/ghostty
+    ~/.profile:
+        path: dotfiles/profile
+    ~/.gitconfig:
+        path: dotfiles/gitconfig
+    ~/.gitignore_global:
+        path: dotfiles/gitignore_global
+    ~/.ripgreprc:
+        path: dotfiles/ripgreprc
+    ~/.config/yazi:
+        path: dotfiles/yazi
+    ~/.claude/settings.json:
+        path: dotfiles/claude/settings.json
+    ~/.cursor/statusline.sh:
+        path: dotfiles/cursor/statusline.sh
+    ~/.config/cursor-cli-wrapper/config.toml:
+        path: dotfiles/cursor-cli-wrapper.toml
+    ~/.config/agents-status/config.toml:
+        path: dotfiles/agents-status-config.toml
+    ~/.config/gh-dash/config.yml:
+        path: dotfiles/gh-dash/config.yml
+    ~/.config/hop/config.toml:
+        path: dotfiles/hop/config.toml
+
+# --- macOS-specific symlinks ---
+- link:
+    ~/.config/karabiner/karabiner.json:
+        path: dotfiles/mac/karabiner/karabiner.json
+    ~/.config/linearmouse/linearmouse.json:
+        path: dotfiles/mac/linearmouse/linearmouse.json
+    ~/.aerospace.toml:
+        path: dotfiles/mac/aerospace/aerospace.toml
+    ~/.config/sketchybar:
+        path: dotfiles/mac/sketchybar
+    ~/.config/borders/bordersrc:
+        path: dotfiles/mac/borders/bordersrc
+    ~/Library/Application Support/ez/config.toml:
+        path: dotfiles/ez-workspaces-macos/config.toml
+    ~/Library/Application Support/bottom/bottom.toml:
+        path: dotfiles/bottom/bottom.toml
+
+- create:
+    - ~/workspace/personal
+    - ~/workspace/work
+
+- shell:
+    - [touch -h ~/.config/karabiner/karabiner.json, Triggering Karabiner reload]
+    - [ln -sf config.macos dotfiles/ghostty/config.platform, Setting Ghostty platform config]
+    - [install_scripts/install_ghostty_plugins.sh, Installing ghostty plugins]
+    - [install_scripts/mac/install_kvim.sh, Installing KoalaVim]

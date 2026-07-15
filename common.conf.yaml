@@ -1,5 +1,6 @@
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - [install_scripts/install_agents_status.sh, Installing agents-status]
 
 - defaults:
     link:
@@ -50,18 +51,12 @@
         path: dotfiles/lumen
     ~/.claude/settings.json:
         path: dotfiles/claude/settings.json
-    ~/.claude_scripts:
-        path: dotfiles/claude/scripts
-    ~/.cursor/hooks.json:
-        path: dotfiles/cursor/hooks.json
     ~/.cursor/statusline.sh:
         path: dotfiles/cursor/statusline.sh
-    ~/.cursor_scripts:
-        path: dotfiles/cursor/scripts
-    ~/.codex/hooks.json:
-        path: dotfiles/codex/hooks.json
-    ~/.codex_scripts:
-        path: dotfiles/codex/scripts
+    ~/.config/agents-status/config.toml:
+        path: dotfiles/agents-status-config.toml
+    ~/.config/cursor-cli-wrapper/config.toml:
+        path: dotfiles/cursor-cli-wrapper.toml
     ~/.config/gh-dash/config.yml:
         path: dotfiles/gh-dash/config.yml
 

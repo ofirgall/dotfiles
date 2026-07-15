@@ -1,0 +1,8 @@
+font-size = 15
+macos-option-as-alt = true
+
+keybind = ctrl+shift+enter=toggle_fullscreen
+keybind = f18=text:\x1b[32;5u
+keybind = f17=text:\x1b[27;6;32~
+
+custom-shader = shaders/cursor_warp.glsl

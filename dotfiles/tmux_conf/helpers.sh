@@ -93,7 +93,7 @@ function toggle_ai_agent_idle() {
     [ -z "$agent" ] && agent="claude"
 
     # shellcheck source=/dev/null
-    . "${AGENTS_STATUS_DIR:-$HOME/dotfiles_scripts/agents-status}/helpers.sh"
+    . "${AGENTS_STATUS_DIR:-$HOME/agents-status/core}/helpers.sh"
     if [ "$current" = "IDLE" ]; then
         send_event "$agent" "" "" "" "1"
     else

@@ -22,6 +22,11 @@ fi
 # ---------------------------
 #		  Auto tmux
 # ---------------------------
+if [ -f /tmp/tmux-viewer-pending ]; then
+	VIEW_TMUX_SESSION=$(cat /tmp/tmux-viewer-pending)
+	rm -f /tmp/tmux-viewer-pending
+fi
+
 if ! [ -z "$VIEW_TMUX_SESSION" ]; then # tmux-go
 	echo "Creating viewer for $VIEW_TMUX_SESSION"
 	# TODO: integrate with select_tmux_session

@@ -1,5 +1,4 @@
 font-family = CaskaydiaCove NFM
-font-size = 11
 # Remove Ligatures
 font-feature = -liga
 font-feature = -calt
@@ -87,5 +86,4 @@ keybind = ctrl+zero=text:\x1b[48;5u
 
 app-notifications = no-clipboard-copy
 
-# Plugins
-# custom-shader = shaders/cursor_warp.glsl
+config-file = ?config.platform

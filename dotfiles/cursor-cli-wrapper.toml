@@ -1,4 +1,4 @@
 [hooks]
-on-question = ". \"$HOME/dotfiles_scripts/agents-status/helpers.sh\"; send_event cursor WAITING \"Asking Question\""
-on-question-submit = ". \"$HOME/dotfiles_scripts/agents-status/helpers.sh\"; send_event cursor INPROGRESS"
+on-question = ". \"$HOME/agents-status/core/helpers.sh\"; send_event cursor WAITING \"Asking Question\""
+on-question-submit = ". \"$HOME/agents-status/core/helpers.sh\"; send_event cursor INPROGRESS"
 on-question-cooldown-ms = 0

@@ -1,0 +1,129 @@
+#!/bin/bash
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+
+sketchybar --bar \
+    height=33 \
+    blur_radius=30 \
+    position=top \
+    sticky=on \
+    padding_left=2 \
+    padding_right=2 \
+    color=0xff151520 \
+    notch_width=200
+
+sketchybar --default \
+    icon.font="CaskaydiaCove NFM:Bold:14.0" \
+    label.font="CaskaydiaCove NFM:Regular:12.0" \
+    icon.color=0xffcad3f5 \
+    label.color=0xffcad3f5 \
+    padding_left=5 \
+    padding_right=5
+
+# Aerospace workspaces
+for sid in 1 2 3 4 5 6 7 8 9 10; do
+    sketchybar --add event aerospace_workspace_change_"$sid" \
+               --add item space."$sid" left \
+               --subscribe space."$sid" aerospace_workspace_change_"$sid" forced \
+               --set space."$sid" \
+                    icon="$sid" \
+                    icon.padding_left=4 \
+                    icon.padding_right=2 \
+                    label.font="CaskaydiaCove NFM:Regular:13.0" \
+                    label.color=0xffcad3f5 \
+                    label.drawing=off \
+                    label.padding_right=4 \
+                    background.color=0xffcba6f7 \
+                    background.corner_radius=8 \
+                    background.height=22 \
+                    background.drawing=off \
+                    padding_left=3 \
+                    padding_right=3 \
+                    click_script="~/dotfiles/dotfiles/mac/aerospace/switch-group.sh $sid" \
+                    script="$PLUGIN_DIR/aerospace.sh $sid"
+done
+
+# Clock — yellow
+sketchybar --add item clock right \
+           --set clock update_freq=10 \
+                 icon.color=0xfff9e2af \
+                 label.color=0xfff9e2af \
+                 script="$PLUGIN_DIR/clock.sh"
+
+# Battery — green
+sketchybar --add item battery right \
+           --set battery update_freq=120 \
+                 icon.color=0xffa6e3a1 \
+                 label.color=0xffa6e3a1 \
+                 script="$PLUGIN_DIR/battery.sh"
+
+# Keyboard language — purple
+sketchybar --add item keyboard right \
+           --set keyboard update_freq=5 \
+                 icon="󰌌" \
+                 icon.color=0xffb459ff \
+                 label.color=0xffb459ff \
+                 script="$PLUGIN_DIR/keyboard.sh" \
+           --subscribe keyboard front_app_switched
+
+# Volume — sapphire (dynamic color in script for muted)
+sketchybar --add item volume right \
+           --set volume \
+                 script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change
+
+# CPU — green
+sketchybar --add item cpu right \
+           --set cpu update_freq=10 \
+                 icon="󰻠" \
+                 icon.color=0xffa6e3a1 \
+                 label.color=0xffa6e3a1 \
+                 script="$PLUGIN_DIR/cpu.sh"
+
+# RAM — sky
+sketchybar --add item ram right \
+           --set ram update_freq=10 \
+                 icon="󰍛" \
+                 icon.color=0xff89dceb \
+                 label.color=0xff89dceb \
+                 script="$PLUGIN_DIR/ram.sh"
+
+# Media — lavender
+sketchybar --add item media right \
+           --set media update_freq=5 \
+                 icon.color=0xffb4befe \
+                 label.color=0xffb4befe \
+                 label.max_chars=40 \
+                 script="$PLUGIN_DIR/media.sh"
+
+# Window count for focused workspace (leftmost on right side)
+sketchybar --add event window_count_change
+WINDOW_COUNT_EVENTS="forced window_count_change"
+for sid in 1 2 3 4 5 6 7 8 9 10; do
+    WINDOW_COUNT_EVENTS="$WINDOW_COUNT_EVENTS aerospace_workspace_change_$sid"
+done
+sketchybar --add item window_sep right \
+           --set window_sep \
+                icon="│" \
+                icon.padding_left=1 \
+                icon.padding_right=1 \
+                label.drawing=off \
+           --add item window_name right \
+           --subscribe window_name $WINDOW_COUNT_EVENTS front_app_switched \
+           --set window_name \
+                icon.drawing=off \
+                label.max_chars=50 \
+                script="$PLUGIN_DIR/window_count.sh" \
+           --add item window_count right \
+           --subscribe window_count $WINDOW_COUNT_EVENTS \
+           --set window_count \
+                icon="󰖯" \
+                icon.padding_left=1 \
+                label.padding_right=1 \
+                script="$PLUGIN_DIR/window_count.sh"
+
+sketchybar --update
+
+# Load agents-status workspace names after sketchybar init
+(/opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py &)
