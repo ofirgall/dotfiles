@@ -10,8 +10,8 @@ commands = [
 ]
 
 [colors]
-idle = "#1e88ff"
-done = "#15c70c"
+idle = "#15c70c"
+done = "#1e88ff"
 
 [statusbar]
 workspaces_provider = "aerospace"
