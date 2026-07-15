@@ -44,6 +44,12 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 184 '{ e
 defaults write com.apple.dock autohide -bool true
 killall Dock
 
+# Launch apps that need to be opened once to apply config / enable login item
+open -a Karabiner-Elements
+open -a AeroSpace
+open -a LinearMouse
+open -a BetterDisplay
+
 # Cursor: size 1.75x, white fill, black outline
 sudo defaults write com.apple.universalaccess mouseDriverCursorSize -float 1.75
 sudo defaults write com.apple.universalaccess cursorFill -dict alpha -float 1 blue -float 1 green -float 1 red -float 1
