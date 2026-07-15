@@ -173,7 +173,7 @@ cmd-shift-s = 'exec-and-forget screencapture -iUc'
 # Raycast (Super+r), clipboard history (Alt+v), window picker (Super+t)
 cmd-r = 'exec-and-forget open -a Raycast'
 alt-v = 'exec-and-forget open raycast://extensions/raycast/clipboard-history/clipboard-history'
-cmd-t = 'exec-and-forget open raycast://extensions/raycast/navigation/switch-windows'
+cmd-alt-t = 'exec-and-forget open raycast://extensions/raycast/navigation/switch-windows'
 
 # Tmux viewer (Super+Shift+v) — open viewer for focused tmux session
 cmd-shift-v = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/tmux-viewer.sh'
