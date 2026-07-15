@@ -86,6 +86,8 @@
         path: dotfiles/mac/borders/bordersrc
     ~/Library/Application Support/ez/config.toml:
         path: dotfiles/ez-workspaces-macos/config.toml
+    ~/Library/Application Support/bottom/bottom.toml:
+        path: dotfiles/bottom/bottom.toml
 
 - create:
     - ~/workspace/personal
