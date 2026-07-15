@@ -42,6 +42,7 @@ gaps.outer.right =      0
 7 = [1, 'main']
 8 = [1, 'main']
 9 = [1, 'main']
+10 = [1, 'main']
 '1b' = [2, 'secondary', 1]
 '2b' = [2, 'secondary', 1]
 '3b' = [2, 'secondary', 1]
@@ -51,6 +52,7 @@ gaps.outer.right =      0
 '7b' = [2, 'secondary', 1]
 '8b' = [2, 'secondary', 1]
 '9b' = [2, 'secondary', 1]
+'10b' = [2, 'secondary', 1]
 '1c' = [3, 'built-in', 2, 1]
 '2c' = [3, 'built-in', 2, 1]
 '3c' = [3, 'built-in', 2, 1]
@@ -60,6 +62,7 @@ gaps.outer.right =      0
 '7c' = [3, 'built-in', 2, 1]
 '8c' = [3, 'built-in', 2, 1]
 '9c' = [3, 'built-in', 2, 1]
+'10c' = [3, 'built-in', 2, 1]
 
 [mode.main.binding]
 
@@ -85,6 +88,7 @@ cmd-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 6'
 cmd-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 7'
 cmd-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 8'
 cmd-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 9'
+cmd-0 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 10'
 
 # Move window to workspace and follow (Super+Shift+1-9)
 cmd-shift-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 1 --follow'
@@ -96,6 +100,7 @@ cmd-shift-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.s
 cmd-shift-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 7 --follow'
 cmd-shift-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 8 --follow'
 cmd-shift-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 9 --follow'
+cmd-shift-0 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 10 --follow'
 
 # Move all windows to workspace and follow (Super+Shift+Ctrl+1-9)
 cmd-shift-ctrl-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 1'
@@ -107,6 +112,7 @@ cmd-shift-ctrl-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-t
 cmd-shift-ctrl-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 7'
 cmd-shift-ctrl-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 8'
 cmd-shift-ctrl-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 9'
+cmd-shift-ctrl-0 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 10'
 
 # Move window to workspace silently (Super+Ctrl+1-9)
 cmd-ctrl-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 1'
@@ -118,6 +124,10 @@ cmd-ctrl-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh
 cmd-ctrl-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 7'
 cmd-ctrl-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 8'
 cmd-ctrl-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 9'
+cmd-ctrl-0 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 10'
+
+# Move ALL windows (from all workspaces) to workspace 10 (Super+F12)
+cmd-f12 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-windows-to-group.sh 10'
 
 # Open terminal (Super+Enter)
 cmd-enter = "exec-and-forget osascript -e 'tell application \"Ghostty\" to new window'"
@@ -182,7 +192,7 @@ f19 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/cycle-window.sh'
 cmd-p = 'exec-and-forget /Users/ofirgal/dotfiles/dotfiles/mac/aerospace/sticky-toggle.sh'
 
 # Reload aerospace + sketchybar + borders (Super+Shift+r)
-cmd-shift-r = ['reload-config', 'exec-and-forget sketchybar --reload; brew services restart borders; sleep 0.5; /opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py']
+cmd-shift-r = ['reload-config', 'exec-and-forget rm -f /tmp/aerospace-ws-cache; ~/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh; sketchybar --reload; brew services restart borders; sleep 0.5; /opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py']
 
 # Service mode (Super+Shift+;)
 cmd-shift-semicolon = 'mode service'

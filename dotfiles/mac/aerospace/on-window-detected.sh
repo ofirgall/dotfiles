@@ -15,4 +15,5 @@ FOCUSED_GROUP=$(sed -n '1p' /tmp/aerospace-ws-cache)
     --trigger aerospace_workspace_change_6 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
     --trigger aerospace_workspace_change_7 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
     --trigger aerospace_workspace_change_8 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
-    --trigger aerospace_workspace_change_9 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" 2>/dev/null
+    --trigger aerospace_workspace_change_9 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" \
+    --trigger aerospace_workspace_change_10 "FOCUSED_WORKSPACE=$FOCUSED_GROUP" 2>/dev/null
