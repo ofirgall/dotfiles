@@ -9,10 +9,6 @@ commands = [
     "/opt/homebrew/bin/python3.14 $HOME/agents-status/statusbar/run.py",
 ]
 
-[colors]
-idle = "#15c70c"
-done = "#1e88ff"
-
 [statusbar]
 workspaces_provider = "aerospace"
 bar = "sketchybar"
