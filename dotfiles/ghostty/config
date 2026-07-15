@@ -1,5 +1,4 @@
 font-family = CaskaydiaCove NFM
-font-size = 15
 # Remove Ligatures
 font-feature = -liga
 font-feature = -calt
@@ -17,7 +16,6 @@ adjust-cursor-thickness = 2
 mouse-scroll-multiplier = precision:0.15,discrete:0.5
 mouse-hide-while-typing = true
 confirm-close-surface = false
-macos-option-as-alt = true
 
 background = #000000
 foreground = #ffffff
@@ -72,9 +70,6 @@ keybind = alt+shift+comma=text:\x1b[27;3;60~
 keybind = alt+shift+period=text:\x1b[27;3;62~
 keybind = shift+enter=text:\x1b[13;2u
 keybind = ctrl+enter=text:\x1b[13;5u
-keybind = ctrl+shift+enter=toggle_fullscreen
-keybind = f18=text:\x1b[32;5u
-keybind = f17=text:\x1b[27;6;32~
 keybind = ctrl+semicolon=text:\x1b;
 keybind = shift+space=text:\x1b[27;2;32~
 keybind = ctrl+shift+space=text:\x1b[27;6;32~
@@ -91,5 +86,4 @@ keybind = ctrl+zero=text:\x1b[48;5u
 
 app-notifications = no-clipboard-copy
 
-# Plugins
-custom-shader = shaders/cursor_warp.glsl
+config-file = ?config.platform

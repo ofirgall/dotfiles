@@ -14,3 +14,4 @@ playgrounds/*
 !playgrounds/generate.sh
 .claude/
 dotfiles/ghostty/shaders
+dotfiles/ghostty/config.platform
