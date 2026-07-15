@@ -6,7 +6,7 @@ command = "notify-macos"
 [post-event]
 commands = [
     "$AGENTS_STATUS_DIR/../tmux/scripts/refresh_dim_colors.sh",
-    "/opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py",
+    "/opt/homebrew/bin/python3.14 $HOME/agents-status/statusbar/run.py",
 ]
 
 [colors]

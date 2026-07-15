@@ -126,4 +126,4 @@ sketchybar --add item window_sep right \
 sketchybar --update
 
 # Load agents-status workspace names after sketchybar init
-(/opt/homebrew/bin/python3.14 /Users/ofirgal/agents-status/statusbar/run.py &)
+(/opt/homebrew/bin/python3.14 $HOME/agents-status/statusbar/run.py &)

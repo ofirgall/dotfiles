@@ -1,6 +1,6 @@
 workspace_roots = [
-    "/Users/ofirgal/workspace/personal",
-    "/Users/ofirgal/workspace/work",
+    "~/workspace/personal",
+    "~/workspace/work",
 ]
 default_shell = "zsh"
 plugin_timeout = 30
