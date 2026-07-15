@@ -1,21 +1,19 @@
-# Default layout: focused on CPU, RAM, and temperature
+# Full layout: network, disk, processes, and battery
 [[row]]
-  ratio = 25
+  ratio = 30
   [[row.child]]
-    ratio = 65
-    type = "cpu"
+    type = "net"
   [[row.child]]
-    ratio = 35
-    type = "mem"
+    type = "disk"
 [[row]]
-  ratio = 75
+  ratio = 70
   [[row.child]]
-    ratio = 90
     type = "proc"
     default = true
-  [[row.child]]
-    ratio = 10
-    type = "temp"
+
+[flags]
+battery = true
+show_table_scroll_position = true
 
 # Catppuccin Mocha
 [styles.cpu]
