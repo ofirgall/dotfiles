@@ -25,9 +25,11 @@ defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad DragLock -bool false
 
-# Disable Spotlight shortcut (Cmd+Space) — replaced by Raycast
+# Disable Spotlight entirely — replaced by Raycast
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 '{"enabled" = 0; "value" = {"parameters" = (32, 49, 1048576); "type" = "standard";};}'
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 65 '{"enabled" = 0; "value" = {"parameters" = (32, 49, 1572864); "type" = "standard";};}'
+sudo mdutil -a -i off
+sudo mdutil -a -E
 
 # Disable Ctrl+Space input source switching (let it pass to tmux)
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 '{"enabled" = 0; "value" = {"parameters" = (32, 49, 262144); "type" = "standard";};}'
