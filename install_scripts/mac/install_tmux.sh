@@ -23,6 +23,9 @@ fi
 /opt/homebrew/opt/ncurses/bin/tic -x -o ~/.terminfo /tmp/tmux-256color.terminfo
 rm /tmp/tmux-256color.terminfo
 
+# Generate default keybindings (used by reload to cleanly unbind plugin keys)
+tmux -L _defaults -f /dev/null start-server \; list-keys \; kill-server > ~/.tmux/default-keys.conf
+
 # Plugin dependencies
 brew install python3
 pip3 install --break-system-packages --user libtmux

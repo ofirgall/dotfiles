@@ -15,7 +15,15 @@ helpers="$HOME/.tmux_conf/helpers.sh"
 set -g status-keys vi
 set -g mode-keys vi
 
-bind r source-file ~/.tmux.conf; display "Reloaded!"
+bind r {
+  unbind-key -a -T prefix
+  unbind-key -a -T root
+  unbind-key -a -T copy-mode
+  unbind-key -a -T copy-mode-vi
+  source-file ~/.tmux/default-keys.conf
+  source-file ~/.tmux.conf
+  display "Reloaded!"
+}
 
 # Fix end/home for xterm-256color
 bind -n End send-key C-e
