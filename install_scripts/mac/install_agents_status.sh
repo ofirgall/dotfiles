@@ -4,6 +4,8 @@ set -e
 REPO="$HOME/agents-status"
 REMOTE="git@github.com:KoalaVim/agents-status.git"
 
+brew install vjeantet/tap/alerter
+
 if [ ! -d "$REPO" ]; then
     git clone "$REMOTE" "$REPO"
 else
