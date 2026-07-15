@@ -6,9 +6,16 @@ _asdf_update_path_for_repo() {
 
 	path=("${(@)path:#$asdf_shims}")
 
-	repo_root="$(git -C "$PWD" rev-parse --show-toplevel 2>/dev/null)" &&
-		[[ -f "$repo_root/.tool-versions" ]] &&
+	repo_root="$(git -C "$PWD" rev-parse --show-toplevel 2>/dev/null)"
+
+	if [[ -n "$repo_root" && -f "$repo_root/.tool-versions" ]]; then
 		path=("$asdf_shims" $path)
+
+		# Atlas is excluded from asdf (fragile plugin) and resolved via ensure-atlas.sh
+		local atlas_bin_dir="$repo_root/IaC/local-dev/.bin"
+		path=("${(@)path:#$atlas_bin_dir}")
+		[[ -d "$atlas_bin_dir" ]] && path=("$atlas_bin_dir" $path)
+	fi
 
 	export PATH
 }
