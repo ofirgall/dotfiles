@@ -166,7 +166,7 @@ function y() {
 }
 
 # set ez() function
-eval $(ez init-shell zsh)
+eval "$(ez init-shell zsh)"
 
 alias c=y
 
