@@ -24,6 +24,7 @@ view_repo = "ctrl-e"
 view_owner = "ctrl-o"
 view_label = "ctrl-g"
 edit_labels = "alt-l"
+cd_session = "ctrl-d"
 
 [plugins]
 enabled = [
