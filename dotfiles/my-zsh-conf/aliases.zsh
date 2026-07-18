@@ -165,21 +165,8 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-ez() {
-    local tmp=$(mktemp)
-    local post_cmd=$(mktemp)
-    command ez "$@" --cd-file="$tmp" --post-cmd-file="$post_cmd"
-    local ret=$?
-    if [ -s "$tmp" ]; then
-        cd "$(cat "$tmp")"
-    fi
-    if [ -s "$post_cmd" ]; then
-        source "$post_cmd"
-    fi
-    rm -f "$tmp" "$post_cmd"
-    return $ret
-}
-
+# set ez() function
+eval $(ez init-shell zsh)
 
 alias c=y
 
