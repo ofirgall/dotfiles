@@ -101,5 +101,6 @@
     - ~/workspace/work
 
 - shell:
+    - [ln -sf config.windows dotfiles/ghostty/config.platform, Setting Ghostty platform config]
     - [install_scripts/windows/install_kvim.sh, Installing KoalaVim]
     - [install_scripts/windows/setup_once.sh, One-time Windows configuration]
