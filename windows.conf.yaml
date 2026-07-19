@@ -12,6 +12,8 @@
     - [install_scripts/windows/install_yasb.sh, Installing Yasb]
     - [install_scripts/windows/install_git_utils.sh, Installing git utilities]
     - [install_scripts/windows/install_ez_workspaces.sh, Installing ez-workspaces]
+    - [install_scripts/windows/install_tuis.sh, Installing TUIs]
+    - [install_scripts/windows/install_wrappers.sh, Installing Wrappers]
     - [install_scripts/windows/install_agents_status.sh, Installing agents-status]
 
 - defaults:
@@ -68,6 +70,10 @@
         path: dotfiles/agents-status-config-windows.toml
     ~/.config/gh-dash/config.yml:
         path: dotfiles/gh-dash/config.yml
+    ~/.config/bottom/bottom.toml:
+        path: dotfiles/bottom/bottom.toml
+    ~/.config/hop/config.toml:
+        path: dotfiles/hop/config.toml
 
 # --- Windows-specific symlinks ---
 - link:
