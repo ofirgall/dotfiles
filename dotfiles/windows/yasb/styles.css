@@ -1,12 +1,12 @@
-/* Catppuccin Mocha palette — matching SketchyBar colors */
+/* Catppuccin Mocha palette */
 * {
     font-family: "CaskaydiaCove NFM";
     font-size: 12px;
-    color: #cad3f5;
+    color: #cdd6f4;
 }
 
 .yasb-bar {
-    background-color: #151520;
+    background-color: #11111b;
 }
 
 /* Workspace buttons */
@@ -18,12 +18,12 @@
     margin: 4px 2px;
     min-width: 22px;
     background-color: transparent;
-    color: #cad3f5;
+    color: #cdd6f4;
 }
 
 .komorebi-workspaces .ws-btn.active {
     background-color: #cba6f7;
-    color: #151520;
+    color: #11111b;
 }
 
 .komorebi-workspaces .ws-btn:hover {
@@ -35,10 +35,16 @@
     padding: 0 8px;
     color: #f9e2af;
 }
+.clock-widget .label {
+    color: #f9e2af;
+}
 
 /* Battery — green */
 .battery-widget {
     padding: 0 8px;
+    color: #a6e3a1;
+}
+.battery-widget .label {
     color: #a6e3a1;
 }
 
@@ -47,10 +53,16 @@
     padding: 0 8px;
     color: #b459ff;
 }
+.language-widget .label {
+    color: #b459ff;
+}
 
 /* Volume — sapphire */
 .volume-widget {
     padding: 0 8px;
+    color: #74c7ec;
+}
+.volume-widget .label {
     color: #74c7ec;
 }
 
@@ -59,10 +71,16 @@
     padding: 0 8px;
     color: #94e2d5;
 }
+.wifi-widget .label {
+    color: #94e2d5;
+}
 
 /* CPU — green */
 .cpu-widget {
     padding: 0 8px;
+    color: #a6e3a1;
+}
+.cpu-widget .label {
     color: #a6e3a1;
 }
 
@@ -71,9 +89,15 @@
     padding: 0 8px;
     color: #89dceb;
 }
+.memory-widget .label {
+    color: #89dceb;
+}
 
 /* Media — lavender */
 .media-widget {
     padding: 0 8px;
+    color: #b4befe;
+}
+.media-widget .label {
     color: #b4befe;
 }
