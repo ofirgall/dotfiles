@@ -8,6 +8,8 @@ wezterm.on("gui-startup", function(cmd)
 end)
 
 local keys = {
+  { key = 'c', mods = 'CTRL|SHIFT', action = act.CopyTo 'Clipboard' },
+  { key = 'v', mods = 'CTRL|SHIFT', action = act.PasteFrom 'Clipboard' },
   { key = 'F5', mods = 'SUPER', action = act.ResetFontSize },
   { key = 'F6', mods = 'SUPER', action = act.ReloadConfiguration },
   { key = 'F12', mods = 'CTRL|SHIFT', action = act.ShowDebugOverlay },
