@@ -38,15 +38,6 @@ because it uses Unix PTY APIs not available on MSYS2.
 - [ ] If supported, enable the cargo install in install_wrappers.sh
 - [ ] If not, consider a Windows-native alternative or contribute Windows PTY support upstream
 
-## Windows Notification Sound
-
-`windows_notify.ps1` supports BurntToast for rich toast notifications
-with sound, falling back to balloon tips. The BurntToast module may not
-be installed by default.
-
-- [ ] Consider adding `Install-Module BurntToast -Scope CurrentUser` to `setup_once.sh` or a dedicated install step
-- [ ] Test that balloon tip fallback works correctly without BurntToast
-
 ## Ghostty vs WinGhostty
 
 Windows currently has two ghostty configs:
@@ -57,19 +48,3 @@ These may diverge over time.
 
 - [ ] Determine if winghostty can use the shared config + platform override mechanism instead of a standalone config
 - [ ] If so, consolidate to eliminate `config-winghostty` duplication
-
-## install_dap.sh for Windows
-
-The shared `install_scripts/install_dap.sh` installs codelldb (C/C++/Rust
-debugger) for Linux. No Windows version exists.
-
-- [ ] Create `install_scripts/windows/install_dap.sh` that downloads `codelldb-win32-x64.vsix`
-- [ ] Add to windows.conf.yaml install pipeline
-
-## uv Package Manager
-
-macOS installs `uv` via brew for agents-status package management.
-Windows agents-status install uses `uv` if available but doesn't install it.
-
-- [ ] Add `uv` installation to Windows — either via `cargo install uv` or `winget install astral-sh.uv`
-- [ ] Add to install_msys2_packages.sh or install_basic.sh
