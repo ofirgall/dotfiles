@@ -30,12 +30,6 @@
     background-color: #45475a;
 }
 
-/* Active layout */
-.komorebi-active-layout {
-    padding: 0 8px;
-    color: #cad3f5;
-}
-
 /* Clock — yellow */
 .clock-widget {
     padding: 0 8px;
@@ -48,8 +42,8 @@
     color: #a6e3a1;
 }
 
-/* Keyboard — purple */
-.keyboard-widget {
+/* Language — purple */
+.language-widget {
     padding: 0 8px;
     color: #b459ff;
 }
