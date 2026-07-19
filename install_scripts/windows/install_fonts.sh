@@ -30,7 +30,9 @@ for font in "${FONTS[@]}"; do
     curl -fsSL -o "$TMPDIR/$font.zip" "$NERD_FONTS_URL/$font.zip"
     unzip -qo "$TMPDIR/$font.zip" -d "$TMPDIR/$font"
 
-    find "$TMPDIR/$font" \( -name "*.ttf" -o -name "*.otf" \) -exec cp {} "$FONT_DIR/" \;
+    find "$TMPDIR/$font" \( -name "*.ttf" -o -name "*.otf" \) -print0 | while IFS= read -r -d '' f; do
+        cp "$f" "$FONT_DIR/" 2>/dev/null || true
+    done
     rm -rf "$TMPDIR/$font" "$TMPDIR/$font.zip"
 done
 
@@ -40,7 +42,9 @@ if ! ls "$FONT_DIR"/*Maple* &>/dev/null; then
     MAPLE_VERSION="v7.0-beta36"
     curl -fsSL -o "$TMPDIR/MapleMono.zip" "https://github.com/subframe7536/maple-font/releases/download/$MAPLE_VERSION/MapleMono-NF.zip"
     unzip -qo "$TMPDIR/MapleMono.zip" -d "$TMPDIR/MapleMono"
-    find "$TMPDIR/MapleMono" \( -name "*.ttf" -o -name "*.otf" \) -exec cp {} "$FONT_DIR/" \;
+    find "$TMPDIR/MapleMono" \( -name "*.ttf" -o -name "*.otf" \) -print0 | while IFS= read -r -d '' f; do
+        cp "$f" "$FONT_DIR/" 2>/dev/null || true
+    done
 fi
 
 # Remove CaskaydiaCove italic variants (matching macOS)

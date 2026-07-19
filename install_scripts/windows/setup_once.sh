@@ -24,4 +24,14 @@ foreach ($dir in $additions) {
 [Environment]::SetEnvironmentVariable("Path", $path, "User")
 '
 
+# Install BurntToast PowerShell module for rich Windows notifications
+powershell.exe -NoProfile -Command '
+if (-not (Get-Module -ListAvailable -Name BurntToast -ErrorAction SilentlyContinue)) {
+    Install-Module BurntToast -Scope CurrentUser -Force
+    Write-Host "BurntToast module installed"
+} else {
+    Write-Host "BurntToast module already installed"
+}
+'
+
 echo "Some changes require logout to take effect"
