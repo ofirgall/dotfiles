@@ -19,7 +19,7 @@ if ! command -v yj &>/dev/null; then
 fi
 
 # Python packages
-pip3 install --break-system-packages libtmux
+python3 -m pip install --break-system-packages libtmux
 # brotab depends on psutil which doesn't support MSYS2 — skip on Windows
 
 # Ghostty shaders
