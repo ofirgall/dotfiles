@@ -26,10 +26,9 @@ pacman -S --noconfirm --needed \
     mingw-w64-ucrt-x86_64-neovim \
     mingw-w64-ucrt-x86_64-ripgrep \
     mingw-w64-ucrt-x86_64-fd \
-    mingw-w64-x86_64-fzf \
-    mingw-w64-x86_64-jq \
-    mingw-w64-x86_64-bat \
-    mingw-w64-x86_64-btop
+    mingw-w64-ucrt-x86_64-fzf \
+    mingw-w64-ucrt-x86_64-jq \
+    mingw-w64-ucrt-x86_64-bat
 
 # Set zsh as default MSYS2 shell
 if ! grep -q "db_shell:.*/zsh" /etc/nsswitch.conf 2>/dev/null; then
