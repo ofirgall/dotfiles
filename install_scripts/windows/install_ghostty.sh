@@ -2,8 +2,8 @@
 set -e
 source "$(dirname "$0")/helpers.sh"
 
-if command -v winghostty &>/dev/null || command -v ghostty &>/dev/null; then
-    echo "Ghostty already installed"
+if winget.exe list --id AmanThanvi.winghostty 2>/dev/null | grep -q "winghostty"; then
+    echo "winghostty already installed"
     exit 0
 fi
 
