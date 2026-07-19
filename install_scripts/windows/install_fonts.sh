@@ -4,15 +4,15 @@ set -e
 FONT_DIR="$LOCALAPPDATA/Microsoft/Windows/Fonts"
 mkdir -p "$FONT_DIR"
 
-FONTS=(
-    "CascadiaCode"
-    "UbuntuMono"
-    "JetBrainsMono"
-    "IosevkaTerm"
-    "CommitMono"
-    "0xProto"
-    "Recursive"
-)
+# Map: zip-name -> installed-file-pattern
+declare -A FONTS
+FONTS[CascadiaCode]="CaskaydiaCove"
+FONTS[UbuntuMono]="UbuntuMono"
+FONTS[JetBrainsMono]="JetBrainsMono"
+FONTS[IosevkaTerm]="IosevkaTerm"
+FONTS[CommitMono]="CommitMono"
+FONTS[0xProto]="0xProto"
+FONTS[Recursive]="RecMono"
 
 NERD_FONTS_VERSION="v3.3.0"
 NERD_FONTS_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/$NERD_FONTS_VERSION"
@@ -20,20 +20,21 @@ NERD_FONTS_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/$NERD_
 TMPDIR=$(mktemp -d)
 trap 'rm -rf "$TMPDIR"' EXIT
 
-for font in "${FONTS[@]}"; do
-    if ls "$FONT_DIR"/*"$font"* &>/dev/null; then
-        echo "$font Nerd Font already installed"
+for zip_name in "${!FONTS[@]}"; do
+    check_pattern="${FONTS[$zip_name]}"
+    if ls "$FONT_DIR"/*"$check_pattern"* &>/dev/null; then
+        echo "$zip_name Nerd Font already installed"
         continue
     fi
 
-    echo "Installing $font Nerd Font..."
-    curl -fsSL -o "$TMPDIR/$font.zip" "$NERD_FONTS_URL/$font.zip"
-    unzip -qo "$TMPDIR/$font.zip" -d "$TMPDIR/$font"
+    echo "Installing $zip_name Nerd Font..."
+    curl -fsSL -o "$TMPDIR/$zip_name.zip" "$NERD_FONTS_URL/$zip_name.zip"
+    unzip -qo "$TMPDIR/$zip_name.zip" -d "$TMPDIR/$zip_name"
 
-    find "$TMPDIR/$font" \( -name "*.ttf" -o -name "*.otf" \) -print0 | while IFS= read -r -d '' f; do
+    find "$TMPDIR/$zip_name" \( -name "*.ttf" -o -name "*.otf" \) -print0 | while IFS= read -r -d '' f; do
         cp "$f" "$FONT_DIR/" 2>/dev/null || true
     done
-    rm -rf "$TMPDIR/$font" "$TMPDIR/$font.zip"
+    rm -rf "$TMPDIR/$zip_name" "$TMPDIR/$zip_name.zip"
 done
 
 # Maple Mono NF (separate release page)
