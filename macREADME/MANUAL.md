@@ -7,6 +7,10 @@ After first install, grant access in:
 - System Settings > Privacy & Security > Input Monitoring
 - System Settings > Privacy & Security > Accessibility
 
+## AeroSpace Screen Recording Permission
+AeroSpace needs Screen Recording access for `screencapture` keybindings (Cmd+S, Cmd+Shift+S) to work:
+- System Settings > Privacy & Security > Screen Recording > enable **AeroSpace**
+
 ## agents-status Notifications
 Grant notification permission to alerter (first run triggers macOS permission prompt):
 ```bash
