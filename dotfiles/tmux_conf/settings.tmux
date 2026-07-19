@@ -35,6 +35,9 @@ set-hook -g 'client-attached[10]' "run-shell $HOME/dotfiles_scripts/inner/_on_tm
 # Default shell in no_sudo
 if-shell -b 'test -f "$HOME/.no_sudo_indicator"' 'set -g default-shell /bin/zsh'
 
+# On MSYS2, spawn non-login shells so /etc/profile doesn't overwrite PATH
+if-shell -b 'test -n "$MSYSTEM"' 'set -g default-command zsh'
+
 # Enabling osc(remote) clipboard
 set -g set-clipboard on
 
