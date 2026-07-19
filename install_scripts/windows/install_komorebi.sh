@@ -2,14 +2,18 @@
 set -e
 source "$(dirname "$0")/helpers.sh"
 
-if winget.exe list --id LGUG2Z.komorebi 2>/dev/null | grep -q "komorebi"; then
+winget_installed() {
+    winget.exe list --id "$1" 2>/dev/null | grep -q "$2"
+}
+
+if winget_installed LGUG2Z.komorebi komorebi; then
     echo "Komorebi already installed"
 else
     echo "Installing Komorebi..."
     winget.exe install --id LGUG2Z.komorebi --accept-package-agreements --accept-source-agreements
 fi
 
-if winget.exe list --id LGUG2Z.whkd 2>/dev/null | grep -q "whkd"; then
+if winget_installed LGUG2Z.whkd whkd; then
     echo "whkd already installed"
 else
     echo "Installing whkd..."
