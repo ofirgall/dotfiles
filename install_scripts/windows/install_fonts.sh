@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+LOCALAPPDATA="${LOCALAPPDATA:-$HOME/AppData/Local}"
 FONT_DIR="$LOCALAPPDATA/Microsoft/Windows/Fonts"
 mkdir -p "$FONT_DIR"
 
