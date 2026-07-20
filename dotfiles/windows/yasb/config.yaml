@@ -33,7 +33,7 @@ widgets:
     type: "komorebi.workspaces.WorkspaceWidget"
     options:
       label_offline: "Komorebi Offline"
-      label_workspace_btn: "{index}"
+      label_workspace_btn: "{name}"
       label_default_name: "{index}"
       label_zero_index: false
       hide_empty_workspaces: false
