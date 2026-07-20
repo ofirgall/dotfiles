@@ -2,6 +2,10 @@
 set -e
 source "$(dirname "$0")/helpers.sh"
 
+# Ensure gcc temp dirs are set (Python subprocess may not inherit Windows TEMP)
+_tmpdir="${TMPDIR:-${TEMP:-${TMP:-$HOME/AppData/Local/Temp}}}"
+export TMPDIR="$_tmpdir" TMP="$_tmpdir" TEMP="$_tmpdir"
+
 # Cargo packages (cross-platform)
 cargo install difftastic
 cargo install du-dust
