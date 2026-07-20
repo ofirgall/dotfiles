@@ -41,13 +41,11 @@ Created Windows equivalent of `install_scripts/install_tuis.sh`:
 - `lumen` and `ftdv` via cargo
 - Skips `wiremix` (Linux-only, requires pipewire)
 
-Added to `windows.conf.yaml` shell steps.
-
 ### Wrappers install script (placeholder)
 **Commit:** `eaea9d38`
 **Files:** `install_scripts/windows/install_wrappers.sh`
 
-Placeholder script — `cursor-cli-wrapper` requires Unix PTY APIs not available on MSYS2. Documented in TODO.
+Placeholder — `cursor-cli-wrapper` depends on `pty-process` crate which uses Unix PTY APIs (`std::os::unix`, `rustix::termios`). Requires upstream ConPTY support.
 
 ### agents-status hooks alignment
 **Commit:** `42573f10`
@@ -59,19 +57,19 @@ Changed from explicit `hooks cursor` + `hooks codex` to `hooks all`, matching th
 **Commit:** `5c8e45ea`
 **Files:** `dotfiles/ghostty/config.windows`, `windows.conf.yaml`
 
-Created `config.windows` platform override (font-size 12, ctrl+shift+enter fullscreen toggle) matching the `config.macos`/`config.linux` split pattern. Added symlink step in `windows.conf.yaml`: `ln -sf config.windows dotfiles/ghostty/config.platform`.
+Created `config.windows` platform override (font-size 12, ctrl+shift+enter fullscreen toggle) matching the `config.macos`/`config.linux` split pattern. Added symlink step in `windows.conf.yaml`.
 
-### tmux tnotify MSYS2 guards
-**Commit:** `66173ee5`
+### tmux tnotify MSYS2 guards → YASB refresh
+**Commits:** `66173ee5`, `6ccf9f05`
 **Files:** `dotfiles/tmux_conf/tnotify_on_finish.sh`, `dotfiles/tmux_conf/tnotify_on_start.sh`
 
-Added `elif [[ -n "$MSYSTEM" ]]; then :` branch between Darwin and Linux, preventing MSYS2 from falling into the Linux/Hyprland code path.
+Initially added MSYS2 no-op guards, then wired to call `python3 ~/agents-status/statusbar/run.py` to refresh YASB workspace labels on agent status changes.
 
-### tmux hooks.tmux MSYS2 guard
-**Commit:** `1921bd86`
+### tmux hooks.tmux → YASB refresh
+**Commits:** `1921bd86`, `6ccf9f05`
 **Files:** `dotfiles/tmux_conf/hooks.tmux`
 
-Added MSYS2 guard to client-attached/detached hooks, preventing calls to Hyprland/macOS statusbar refresh on Windows.
+client-attached/detached hooks now call `python3 run.py` on MSYS2 to refresh YASB statusbar (previously no-op).
 
 ### Windows notification system upgrade
 **Commit:** `085a0e7b`
@@ -82,18 +80,20 @@ Rewrote `windows_notify.ps1` to match `notify-macos` feature parity:
 - Proper arg parsing matching notify-send interface
 - BurntToast PowerShell module support with balloon tip fallback
 
-### agents-status YASB config
-**Commit:** `63059ae6`
-**Files:** `dotfiles/agents-status-config-windows.toml`
+### agents-status komorebi + YASB backend
+**Commits:** `63059ae6`, `4bf547c2` (dotfiles), `b09c807` (agents-status)
+**Files:** `dotfiles/agents-status-config-windows.toml`, `dotfiles/windows/yasb/config.yaml`, `~/agents-status/statusbar/komorebi/`
 
-Added `[statusbar]` section for YASB integration:
-- `workspaces_provider = "komorebi"`
-- `bar = "yasb"`
-- `label_template` matching sketchybar format
+Full agents-status integration for Windows:
+- **KomorebiWorkspacesProvider** — queries `komorebic state` JSON, collects windows from containers, floating, and monocle layers
+- **YasbBar** — sets workspace names via `komorebic workspace-name` so YASB displays agent status icons/tmux sessions, writes sentinel file for external scripts
+- **Auto-detection** — `komorebic`/`komorebic.exe` on PATH triggers komorebi+yasb
+- **YASB config** — changed workspace label from `{index}` to `{name}` to display enriched names
+- **Post-event** — `run.py` added to `[post-event]` commands in agents-status config
 
 ### AeroSpace keybinds → komorebi/whkd
-**Commit:** `73b09444`
-**Files:** `dotfiles/windows/komorebi/whkdrc`
+**Commits:** `73b09444`, `15f200d3`
+**Files:** `dotfiles/windows/komorebi/whkdrc`, `scripts/komorebi/`
 
 Full port of AeroSpace keybinds to whkd:
 
@@ -101,34 +101,39 @@ Full port of AeroSpace keybinds to whkd:
 |---|---|---|
 | Cmd+h/j/k/l | Win+h/j/k/l | Focus direction |
 | Cmd+Shift+h/j/k/l | Win+Shift+h/j/k/l | Move/swap window |
-| Cmd+1-9, Cmd+0 | Win+1-9, Win+0 | Switch workspace (added ws 10) |
-| Cmd+Shift+1-0 | Win+Shift+1-0 | Move window + follow (NEW: chains move + focus) |
-| Cmd+Ctrl+1-0 | Win+Ctrl+1-0 | Move window silently (NEW) |
+| Cmd+1-9, Cmd+0 | Win+1-9, Win+0 | Switch workspace |
+| Cmd+Shift+1-0 | Win+Shift+1-0 | Move window + follow |
+| Cmd+Ctrl+1-0 | Win+Ctrl+1-0 | Move window silently |
+| Cmd+Shift+Ctrl+1-0 | Win+Shift+Ctrl+1-0 | Move ALL windows from workspace |
+| Cmd+F12 | Win+F12 | Move ALL windows (all ws) to ws 10 |
 | Cmd+Enter | Win+Enter | Open terminal |
 | Cmd+b | Win+b | Browser (default profile) |
-| Cmd+Shift+b | Win+Shift+b | Browser Profile 1 (NEW) |
-| Cmd+Alt+b | Win+Alt+b | Browser Profile 2 → YouTube (NEW) |
+| Cmd+Shift+b | Win+Shift+b | Browser Profile 1 |
+| Cmd+Alt+b | Win+Alt+b | Browser Profile 2 → YouTube |
 | Cmd+q | Win+q | Close window |
 | Cmd+m | Win+m | Maximize/monocle toggle |
-| Cmd+n | Win+n | Minimize window (NEW) |
+| Cmd+n | Win+n | Minimize window |
+| Cmd+p | Win+p | Sticky window toggle |
 | Cmd+Shift+f | Win+Shift+f | Float toggle |
 | Cmd+/ | Win+/ | Cycle layout |
 | Cmd+Ctrl+h/l | Win+Ctrl+h/l | Resize horizontal |
-| Cmd+o | Win+o | Move to monitor + follow (FIXED: now follows) |
+| Cmd+o | Win+o | Move to monitor + follow |
 | Cmd+,/. | Win+,/. | Prev/next workspace |
 | Cmd+\` | Win+\` | Last workspace |
 | Cmd+Shift+r | Win+Shift+r | Reload config |
-| Cmd+Shift+; | Win+Shift+; | Retile / service mode |
+| Cmd+Shift+; | Win+Shift+; | Retile |
 
-**Not ported** (no komorebi equivalent):
-- Cmd+Shift+Ctrl+1-0 — move ALL windows to workspace (needs scripting)
-- Cmd+F12 — move all windows to workspace 10
-- Cmd+p — sticky window toggle (not supported by komorebi)
+Komorebi helper scripts (`scripts/komorebi/`):
+- `move-all-to-workspace.sh` — moves all windows from focused workspace via komorebic state iteration
+- `move-all-windows-to-workspace.sh` — moves all windows from ALL workspaces
+- `sticky-toggle.sh` — file-based sticky window registry at `$LOCALAPPDATA/komorebi-sticky/`
+
+**Not ported** (native Windows alternatives):
+- Cmd+s/Shift+s — screenshot (Windows uses Win+Shift+S)
+- Cmd+r — launcher (Windows Start/PowerToys Run)
+- Alt+v — clipboard history (Windows Win+V)
+- F20 — toggle keyboard language (Windows Win+Space)
 - Service mode — whkd doesn't support modal keybinds
-- Cmd+s/Shift+s — screenshot (Windows uses Win+Shift+S natively)
-- Cmd+r — Raycast launcher (no equivalent)
-- Alt+v — clipboard history (Windows uses Win+V natively)
-- F20 — toggle keyboard language (Windows uses Win+Space)
 
 ---
 
@@ -140,46 +145,38 @@ Full port of AeroSpace keybinds to whkd:
 | Script | Issue | Fix |
 |---|---|---|
 | `install_basic.sh` | `pip3: bad interpreter` | Changed to `python3 -m pip install` |
-| `install_fonts.sh` | `cp: Device or resource busy` | Suppress errors for locked fonts (`2>/dev/null \|\| true`) |
+| `install_fonts.sh` | `cp: Device or resource busy` | Suppress errors for locked fonts |
 | `install_tuis.sh` | `npm: command not found` | Guard with `command -v npm` |
-| `install_msys2_packages.sh` | `sed: Permission denied` on `/etc/` | Wrap in fallback with warning |
+| `install_msys2_packages.sh` | `sed: Permission denied` | Wrap in fallback with warning |
 | `setup_once.sh` | — | Add BurntToast PowerShell module install |
 | `install_msys2_packages.sh` | — | Add `uv` install via cargo/winget |
 
 ### Fix winget exit codes
 **Commit:** `fa1d4d9e`
 
-winget returns exit code 43 when package is already up-to-date. Fixed `install_ghostty.sh`, `install_komorebi.sh`, `install_yasb.sh`, `install_git_utils.sh` with proper already-installed detection.
+Replaced `winget list` checks with filesystem/PATH checks — winget fails with "Access is denied" under dotbot's Python subprocess context.
 
 ### Fix font name mapping
 **Commit:** `b67b779d`
 
-Font zips extract to different filenames than the zip name (e.g., CascadiaCode → CaskaydiaCove, Recursive → RecMono). Added associative array mapping zip names to installed file patterns for correct already-installed detection.
+CascadiaCode→CaskaydiaCove, Recursive→RecMono mapping for correct already-installed detection.
 
-### Fix dotbot subprocess context
-**Commit:** `85890759`
+### Fix dotbot subprocess env
+**Commits:** `85890759`, `e7c427ff`
 
-All scripts using `winget.exe list` fail under dotbot's Python subprocess with "Access is denied" to `C:\WINDOWS\WinGet`. Fixed by replacing winget checks with filesystem/PATH checks:
-
-| Script | Check |
-|---|---|
-| `install_ghostty.sh` | `[ -d "/c/Program Files/winghostty" ]` |
-| `install_komorebi.sh` | `[ -d "/c/Program Files/komorebi" ]` + `[ -d "/c/Program Files/whkd" ]` |
-| `install_yasb.sh` | `[ -d "/c/Program Files/YASB" ]` |
-| `install_fonts.sh` | `LOCALAPPDATA` fallback to `$HOME/AppData/Local` |
+- `LOCALAPPDATA` fallback for `install_fonts.sh`
+- `TMPDIR`/`TMP`/`TEMP` export for `install_basic.sh` (mingw gcc can't write temp files to `C:\WINDOWS\`)
 
 ---
 
 ## Pipeline Status
 
-The full install pipeline (`dotbot -c windows.conf.yaml`) passes with **all tasks executed successfully** — every install script exits 0, all symlinks are created, and all directories exist.
+The full install pipeline (`dotbot -c windows.conf.yaml`) passes with **all tasks executed successfully**.
 
 ---
 
 ## Remaining Items
 
-See `WINDOWS_FULL_MIGRATION_TODO.md` for items that need upstream changes or manual decisions:
-- agents-status YASB backend support
-- tmux tnotify/hooks YASB refresh (currently no-op on MSYS2)
-- cursor-cli-wrapper Windows PTY support
-- Ghostty/WinGhostty config consolidation
+See `WINDOWS_FULL_MIGRATION_TODO.md`:
+- **cursor-cli-wrapper** — needs upstream `pty-process` crate ConPTY support (confirmed: compile fails on Windows)
+- **Ghostty config consolidation** — determine if winghostty supports `config-file` directive
