@@ -36,9 +36,14 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 '{"en
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 61 '{"enabled" = 0; "value" = {"parameters" = (32, 49, 393216); "type" = "standard";};}'
 
 # Disable screenshot shortcuts (Cmd+Shift+3/4/5) — conflicts with aerospace workspace binds
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 28 '{ enabled = 0; }'
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 30 '{ enabled = 0; }'
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 184 '{ enabled = 0; }'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 28 '{"enabled" = 0; "value" = {"parameters" = (65535, 20, 1179648); "type" = "standard";};}'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 29 '{"enabled" = 0; "value" = {"parameters" = (65535, 20, 1441792); "type" = "standard";};}'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 30 '{"enabled" = 0; "value" = {"parameters" = (65535, 21, 1179648); "type" = "standard";};}'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 31 '{"enabled" = 0; "value" = {"parameters" = (65535, 21, 1441792); "type" = "standard";};}'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 184 '{"enabled" = 0; "value" = {"parameters" = (65535, 23, 1179648); "type" = "standard";};}'
+
+# Apply keyboard shortcut changes immediately (no logout needed)
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
 # Auto-hide Dock
 defaults write com.apple.dock autohide -bool true
