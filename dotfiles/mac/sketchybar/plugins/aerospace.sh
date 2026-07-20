@@ -21,6 +21,7 @@ SENTINEL="/tmp/agent-status-bg-$(id -u)"
 TEMPLATE=""
 AGENT_LABEL=""
 AGENT_ICON=""
+MONITOR_ICON=""
 TMUX_SESSIONS=""
 APP_ICONS=""
 AGENT_BG=""
@@ -37,6 +38,7 @@ if [ -f "$SENTINEL" ]; then
         elif .id == ($id | tonumber) then
             "AGENT_LABEL=\(.display_name // "" | @sh)",
             "AGENT_ICON=\(.agent_icon // "" | @sh)",
+            "MONITOR_ICON=\(.monitor_icon // "" | @sh)",
             "TMUX_SESSIONS=\(.tmux_sessions // "" | @sh)",
             "APP_ICONS=\(.app_icons // "" | @sh)",
             "AGENT_BG=\(.[$bg_key] // "" | @sh)",
@@ -52,6 +54,7 @@ if [ -n "$TEMPLATE" ] && [ -n "$AGENT_LABEL" ]; then
     LABEL="${LABEL//\{id\}/$1}"
     LABEL="${LABEL//\{agent_label\}/$AGENT_LABEL}"
     LABEL="${LABEL//\{agent_icon\}/$AGENT_ICON}"
+    LABEL="${LABEL//\{monitor_icon\}/$MONITOR_ICON}"
     LABEL="${LABEL//\{tmux_sessions\}/$TMUX_SESSIONS}"
     LABEL="${LABEL//\{app_icons\}/$APP_ICONS}"
     if [ "$IS_FOCUSED" = "true" ]; then
