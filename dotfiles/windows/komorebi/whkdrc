@@ -85,6 +85,24 @@ win + oem_period        : komorebic cycle-workspace next
 # Last workspace (Win+`)
 win + oem_3             : komorebic focus-last-workspace
 
+# Move all windows from focused workspace to workspace (Win+Shift+Ctrl+1-0)
+win + shift + ctrl + 1  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 0"
+win + shift + ctrl + 2  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 1"
+win + shift + ctrl + 3  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 2"
+win + shift + ctrl + 4  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 3"
+win + shift + ctrl + 5  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 4"
+win + shift + ctrl + 6  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 5"
+win + shift + ctrl + 7  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 6"
+win + shift + ctrl + 8  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 7"
+win + shift + ctrl + 9  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 8"
+win + shift + ctrl + 0  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 9"
+
+# Move ALL windows (from all workspaces) to workspace 10 (Win+F12)
+win + f12               : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-windows-to-workspace.sh 9"
+
+# Sticky window toggle (Win+p)
+win + p                 : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/sticky-toggle.sh"
+
 # Reload config (Win+Shift+r)
 win + shift + r         : komorebic reload-configuration
 
