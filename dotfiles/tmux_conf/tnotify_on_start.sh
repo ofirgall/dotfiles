@@ -17,7 +17,7 @@ tmux set-option -w -t "$window" @window_color "#fa7900"
 if [[ "$OSTYPE" == darwin* ]]; then
     /opt/homebrew/bin/python3.14 "$HOME/agents-status/statusbar/run.py" &
 elif [[ -n "$MSYSTEM" ]]; then
-    :
+    python3 "$HOME/agents-status/statusbar/run.py" &
 else
     "$HOME/.config/hypr/UserScripts/RenameWorkspaces.py"
 fi
