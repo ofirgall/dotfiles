@@ -15,3 +15,9 @@ bar = "sketchybar"
 
 [statusbar.sketchybar]
 label_template = "{app_icons} {agent_icon} {monitor_icon} {tmux_sessions}"
+
+[statusbar.sketchybar.colors]
+default_bg_focused = "0xffcba6f7"
+default_bg_unfocused = "0xff23243e"
+default_text_focused = "0xff1e1e1e"
+default_text_unfocused = "0xffa287c5"
