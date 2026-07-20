@@ -27,6 +27,7 @@ foreach ($dir in $additions) {
 # Install BurntToast PowerShell module for rich Windows notifications
 powershell.exe -NoProfile -Command '
 if (-not (Get-Module -ListAvailable -Name BurntToast -ErrorAction SilentlyContinue)) {
+    Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Scope CurrentUser
     Install-Module BurntToast -Scope CurrentUser -Force
     Write-Host "BurntToast module installed"
 } else {
