@@ -22,5 +22,5 @@ pip3 install --break-system-packages libtmux brotab
 
 # Ghostty shaders
 if [ ! -d "$HOME/.config/ghostty/shaders" ]; then
-    git clone https://github.com/sahaj-b/ghostty-cursor-shaders ~/.config/ghostty/shaders
+    git clone https://github.com/ofirgall/ghostty-cursor-shaders ~/.config/ghostty/shaders
 fi
