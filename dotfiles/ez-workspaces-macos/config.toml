@@ -19,6 +19,9 @@ copy_cursor_conversations = true
 [selector]
 backend = "fzf"
 
+[fzf]
+height = "100%"
+
 [keybinds]
 new_session = "alt-n"
 delete_session = "alt-d"
@@ -41,9 +44,11 @@ enabled = [
     "cursor-mcp-auth",
     "cursor-mcp-approvals",
     "cursor-trusted-workspace",
+    "kv",
 ]
 
-[plugin_settings]
+[plugin_settings.kv]
+repos = "KoalaVim"
 
 [[session_name_stages]]
 name = "prefix"
