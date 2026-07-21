@@ -40,8 +40,8 @@ fi
 
 ~/dotfiles/dotfiles/mac/aerospace/sticky-move.sh
 
-# Update cache before triggering sketchybar (2 aerospace calls for all 9 groups)
-~/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh
+# Update cache before triggering sketchybar (2 aerospace calls for all 10 groups)
+~/agents-status/statusbar/sketchybar/update-ws-cache.sh
 
 FOCUSED="$AEROSPACE_FOCUSED_WORKSPACE"
 PREV="$AEROSPACE_PREV_WORKSPACE"

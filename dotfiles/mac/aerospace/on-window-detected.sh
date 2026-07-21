@@ -2,7 +2,7 @@
 # Refresh workspace cache + sketchybar when a new window appears.
 # This ensures workspaces with newly opened apps show up in the bar.
 
-~/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh
+~/agents-status/statusbar/sketchybar/update-ws-cache.sh
 
 FOCUSED_GROUP=$(sed -n '1p' /tmp/aerospace-ws-cache)
 

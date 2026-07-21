@@ -192,7 +192,7 @@ f19 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/cycle-window.sh'
 cmd-p = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/sticky-toggle.sh'
 
 # Reload aerospace + sketchybar + borders (Super+Shift+r)
-cmd-shift-r = ['reload-config', 'exec-and-forget rm -f /tmp/aerospace-ws-cache; ~/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh; sketchybar --reload; brew services restart borders; sleep 0.5; /opt/homebrew/bin/python3.14 ~/agents-status/statusbar/run.py']
+cmd-shift-r = ['reload-config', 'exec-and-forget rm -f /tmp/aerospace-ws-cache; ~/agents-status/statusbar/sketchybar/update-ws-cache.sh; sketchybar --reload; brew services restart borders; sleep 0.5; /opt/homebrew/bin/python3.14 ~/agents-status/statusbar/run.py']
 
 # Service mode (Super+Shift+;)
 cmd-shift-semicolon = 'mode service'

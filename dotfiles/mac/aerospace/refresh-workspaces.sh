@@ -5,7 +5,7 @@
 
 TARGET="$1"
 
-~/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh
+~/agents-status/statusbar/sketchybar/update-ws-cache.sh
 FOCUSED_GROUP=$(sed -n '1p' /tmp/aerospace-ws-cache)
 
 /opt/homebrew/bin/python3.14 $HOME/agents-status/statusbar/run.py
