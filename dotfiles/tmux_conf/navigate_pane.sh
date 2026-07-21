@@ -26,6 +26,8 @@ fi
 
 if [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]; then
     hyprctl dispatch movefocus "$hypr_dir" > /dev/null
+elif command -v aerospace > /dev/null 2>&1; then
+    aerospace focus "$direction" > /dev/null 2>&1
 fi
 
 exit 0
