@@ -74,6 +74,9 @@ unalias gd # Remove ofir zsh framework ghs
 function gd() {
 	kv --git-diff -- $@
 }
+function gdm() {
+	kv --git-diff -- $(git merge-base HEAD origin/main)
+}
 unalias ghs # Remove ofir zsh framework ghs
 alias ghs='gt'
 
