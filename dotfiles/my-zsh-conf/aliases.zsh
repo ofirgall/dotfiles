@@ -39,7 +39,7 @@ alias plans='cd ~/.cursor/plans' # cd cursor plans
 # cg aliases
 alias cgp='cg $HOME/workspace/personal/' # cg to personal
 alias cgw='cg $HOME/worktrees/'
-alias cgnp='cg $HOME/.local/share/kvim-envs/main/lazy/' # cg to nvim plugins
+alias cgnp='cg $HOME/.local/share/kvim-envs/${KV_ENV:-main}/lazy/'
 cgk() {
   local dir
   dir=$(ls -d "$HOME/.local/share/kvim-envs"/*/ 2>/dev/null | xargs -n1 basename | fzf --reverse --height=30) || return
