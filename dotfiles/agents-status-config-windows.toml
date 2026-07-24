@@ -1,6 +1,5 @@
 [notification]
-command = "powershell.exe"
-args = ["-File", "~/dotfiles_scripts/notify/windows_notify.ps1"]
+command = "powershell.exe -NoProfile -File $HOME/dotfiles_scripts/notify/windows_notify.ps1"
 
 [post-event]
 commands = [

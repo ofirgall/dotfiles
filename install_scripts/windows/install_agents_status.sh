@@ -2,6 +2,16 @@
 set -e
 source "$(dirname "$0")/helpers.sh"
 
+# On Windows, "python3" is a WindowsApps stub that just opens the Store.
+# The real interpreter is "python.exe". Create a shim so agents-status's
+# install.sh (which calls python3) finds the real one.
+if command -v python &>/dev/null && ! python3 --version &>/dev/null 2>&1; then
+    _shim_dir="$(mktemp -d)"
+    printf '#!/bin/bash\nexec python "$@"\n' > "$_shim_dir/python3"
+    chmod +x "$_shim_dir/python3"
+    export PATH="$_shim_dir:$PATH"
+fi
+
 REPO="$HOME/agents-status"
 REMOTE="git@github.com:KoalaVim/agents-status.git"
 
