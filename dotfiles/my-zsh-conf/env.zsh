@@ -11,14 +11,6 @@ if test -f "$HOME/.no_sudo_indicator"; then
 	export NO_SUDO=true
 fi
 
-# Check if MSYS2 (use MSYSTEM env var — doesn't need uname on PATH)
-export IS_MSYS2=false
-if [[ -n "$MSYSTEM" ]]; then
-	export IS_MSYS2=true
-	export PATH="/c/msys64/ucrt64/bin:/c/msys64/mingw64/bin:/c/msys64/usr/local/bin:/c/msys64/usr/bin:/c/msys64/bin:$HOME/.cargo/bin:$PATH"
-	[[ "$TERM" == "xterm-ghostty" ]] && export TERM=xterm-256color
-fi
-
 # Check if WSL
 export WSL=false
 if [[ $(uname -a) == *"Microsoft"* ]]; then
@@ -76,11 +68,6 @@ export PATH=$PATH:~/dotfiles_scripts/tmux/
 export PATH=$PATH:~/dotfiles_scripts/cursor/
 export PATH=$PATH:$HOME/.spicetify
 
-# MSYS2/Windows native tools on PATH
-if $IS_MSYS2; then
-	export PATH="$PATH:$HOME/AppData/Local/Microsoft/WindowsApps"
-fi
-
 # Fix WAYLAND_DISPLAY pointing to wayland-0 when only wayland-1 exist
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
 	if [ -S "/run/user/$UID/wayland-0" ]; then
@@ -105,7 +92,7 @@ esac
 # AWS
 export AWS_PROFILE=dev
 
-[ -f "$HOME/secrets.zsh" ] && source "$HOME/secrets.zsh"
+source $HOME/secrets.zsh
 
 export PATH=~/agents-status/simple-wrappers:$PATH
 
