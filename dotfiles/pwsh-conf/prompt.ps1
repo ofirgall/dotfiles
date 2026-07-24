@@ -2,6 +2,13 @@
 
 if (Get-Command starship -ErrorAction SilentlyContinue) {
     Invoke-Expression (& starship init powershell --print-full-init | Out-String)
+    # Wrap prompt to emit OSC 7 (cwd reporting) for WezTerm/Ghostty
+    $global:__starship_prompt = $function:prompt
+    function global:prompt {
+        $osc7 = 'file:///' + ($PWD.Path -replace '\\', '/')
+        [Console]::Write("`e]7;$osc7`e\")
+        & $global:__starship_prompt
+    }
 }
 
 $_starship_files = @("$HOME\.zsh-conf\starship.toml")

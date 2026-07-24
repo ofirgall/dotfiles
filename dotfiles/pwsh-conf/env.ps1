@@ -17,4 +17,5 @@ function Append-ToPath {
 }
 
 Add-ToPath "$HOME\.local\bin"
+Add-ToPath "C:\Program Files\Git\usr\bin"
 Append-ToPath "$HOME\.npm-packages\bin"
