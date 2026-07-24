@@ -26,67 +26,38 @@ Migrating the Windows dotfiles setup from MSYS2/zsh/tmux to native Windows: Powe
 - [x] fzf and starship install via winget in install_basic.sh
 - [x] Removed: install_msys2_packages.sh, install_tmux.sh, libtmux pip install
 
-## TODO
-
 ### Wave 2 — Environment & PATH
-
-Create `pwsh-conf/env.ps1` and `my-pwsh-conf/env.ps1` to port the environment setup from `zsh-conf/env.zsh` and `my-zsh-conf/env.zsh`.
-
-Shared env (`env.ps1`):
-- [ ] `$env:FZF_DEFAULT_OPTS = ""`
-- [ ] PATH: `~/.local/bin`
-- [ ] PATH: `~/.npm-packages/bin`
-
-Personal env (`my-pwsh-conf/env.ps1`):
-- [ ] `$env:GOPATH = "$HOME\go"` and `$GOPATH\bin` on PATH
-- [ ] `$env:CARGO_NET_GIT_FETCH_WITH_CLI = "true"` and `.cargo\bin` on PATH
-- [ ] `$env:RIPGREP_CONFIG_PATH = "$HOME\.ripgreprc"`
-- [ ] `$env:EDITOR = "kv"` (with nvim check)
-- [ ] `$env:MANPAGER = "kv +Man!"` and `$env:MANWIDTH = "999"`
-- [ ] PATH: `~/.local/share/nvim/mason/bin` (Mason LSPs)
-- [ ] PATH: `~/dotfiles_scripts/notify`, `misc`, `inner`, `git`, `cursor`
-- [ ] PATH: `~/agents-status/simple-wrappers`
-- [ ] `$env:NEOGIT = "true"` and `$env:KOALA_CODE_DIFF = "true"`
-- [ ] `$env:AWS_PROFILE = "dev"`
-- [ ] Source `$HOME\secrets.ps1` if it exists
-- [ ] Skip tmux-specific PATH entries (`tmux_layouts`, `tmux`, `settings`)
-- [ ] Skip Linux-only entries (pnpm Linux path, Wayland, LD_LIBRARY_PATH, spicetify)
+- [x] Shared `env.ps1`: `Add-ToPath`/`Append-ToPath` helpers, FZF_DEFAULT_OPTS, ~/.local/bin, ~/.npm-packages/bin
+- [x] Personal `my-pwsh-conf/env.ps1`: GOPATH, CARGO_NET_GIT_FETCH_WITH_CLI, RIPGREP_CONFIG_PATH, EDITOR/MANPAGER/MANWIDTH, Mason bin, dotfiles_scripts PATH entries, agents-status wrappers, NEOGIT/KOALA_CODE_DIFF, AWS_PROFILE, secrets sourcing
+- [x] Profile sources env.ps1 before settings.ps1
 
 ### Wave 3 — Shell behavior & settings
-
-PSReadLine settings to match OMZ defaults:
-- [ ] History: `MaximumHistoryCount` (50000), `HistoryNoDuplicates`, `HistorySaveStyle IncrementalAndFlush`
-- [ ] Auto-cd: directory name alone changes directory — needs `Set-PSReadLineOption` or custom `CommandNotFoundHandler`
+- [x] History: MaximumHistoryCount 50000, HistoryNoDuplicates, SaveIncrementally
+- [x] Auto-cd via CommandNotFoundAction
 
 ### Wave 4 — Missing aliases & functions
-
-Personal aliases present in zsh but not yet ported:
-- [ ] `del` / `new` — `ez session delete` / `ez session new`
-- [ ] `ez` shell init — `ez init-shell powershell` (if supported, else manual cd wrapper)
-- [ ] `ezp` / `ezw` — ez with workspace flag
-- [ ] `venv` — Python virtualenv activation (`. .\Scripts\Activate.ps1` on Windows)
-- [ ] `cdw` — cd to worktree (needs Windows adaptation, no tmux session)
-- [ ] `pg` — cd to playgrounds and open neovim
-- [ ] `notes` — currently hardcodes "general", should use workspace/project name
-- [ ] `ssh` wrapper — TERM=xterm-256color
-- [ ] `cls` — `Clear-Host` (simpler on Windows without tmux)
-- [ ] `gfork` — fork workflow (rename origin, fork, set push defaults, switch accounts)
-- [ ] `gh_select_account` — fzf-based GitHub account switcher
-- [ ] `mdp` — `gh markdown-preview --full`
-- [ ] `up` function — cd ../../.. by count
-- [ ] `cdl` — cd to last argument
-
-cd-to-git plugin replacement:
-- [ ] Port `cg` function (fzf over git repos in a directory)
-- [ ] `cgp`, `cgw`, `cgnp`, `cgk`, `cgg` aliases
+- [x] `del` / `new` — ez session delete/new
+- [x] `ez` shell init — manual cd wrapper (ez doesn't support powershell natively)
+- [x] `ezp` / `ezw` — ez with workspace flag
+- [x] `venv` — `. .\Scripts\Activate.ps1`
+- [x] `pg` — cd to playgrounds and open neovim
+- [x] `notes` — uses current directory name as session
+- [x] `ssh` wrapper — TERM=xterm-256color
+- [x] `cls` — Clear-Host
+- [x] `gfork` — fork workflow
+- [x] `gh_select_account` — fzf-based GitHub account switcher
+- [x] `mdp` — gh markdown-preview
+- [x] `up` — cd ../../.. by count
+- [x] `cdl` — cd to last argument
+- [x] `cg` — fzf over git repos in a directory
+- [x] `cgp`, `cgw`, `cgnp`, `cgk`, `cgg` aliases
 
 ### Wave 5 — Hooks & post-init
+- [x] Starship auto-regen: checks source toml mtimes on profile load, calls `_gen_starship` if stale
+- [x] Fixed Out-File to use utf8NoBOM encoding for starship config
+- [x] Source `$HOME\.extra_utils.ps1` if it exists (post-init equivalent)
 
-- [ ] Starship auto-regen: check source toml mtimes on profile load, call `_gen_starship` if stale
-- [ ] `notes` function: derive session/project name (from ez, komorebi workspace, or pwd)
-- [ ] Source `$HOME\.extra_utils` if it exists (post-init equivalent)
-
-### Not porting (by design)
+## Not porting (by design)
 
 Dropped because we removed tmux or they're Linux-specific:
 - tmux plugin, aliases (`tkill`, `trename`, `t`, `cls` tmux variant), tmux hooks, auto-tmux session launch, tmux window rename, tmux-notify, `ZSH_TMUX_*` vars

@@ -21,7 +21,7 @@ function _gen_starship {
     $i = 0
     foreach ($f in $script:_starship_files) {
         if (Test-Path $f) {
-            yq eval -oy $f | Out-File "$tmpDir\$i.yaml" -Encoding utf8
+            yq eval -oy $f | Out-File "$tmpDir\$i.yaml" -Encoding utf8NoBOM
             $i++
         }
     }
@@ -31,7 +31,21 @@ function _gen_starship {
 
     yq eval-all -oy --expression '. as $item ireduce ({}; . *+d $item)' "$tmpDir\*.yaml" |
         yj -yt |
-        Out-File "$HOME\.config\starship.toml" -Encoding utf8
+        Out-File "$HOME\.config\starship.toml" -Encoding utf8NoBOM
 
     Remove-Item $tmpDir -Recurse -Force
+}
+
+# Auto-regen starship.toml if any source file is newer than the generated config
+$_genTarget = "$HOME\.config\starship.toml"
+if (Test-Path $_genTarget) {
+    $_targetTime = (Get-Item $_genTarget).LastWriteTime
+    foreach ($f in $_starship_files) {
+        if ((Test-Path $f) -and (Get-Item $f).LastWriteTime -gt $_targetTime) {
+            _gen_starship
+            break
+        }
+    }
+} elseif ($_starship_files | Where-Object { Test-Path $_ }) {
+    _gen_starship
 }
