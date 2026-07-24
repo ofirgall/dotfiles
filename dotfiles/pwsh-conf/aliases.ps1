@@ -120,4 +120,7 @@ if ($env:NO_EZA -ne "1" -and (Get-Command eza -ErrorAction SilentlyContinue)) {
     function la { eza @global:EZA_PARAMS -lbhHigUmuSa @args }
     function tree { eza --tree @args }
     function lS { eza -1 @args }
+} else {
+    function ll { Get-ChildItem -Force @args }
+    function la { Get-ChildItem -Force @args }
 }
