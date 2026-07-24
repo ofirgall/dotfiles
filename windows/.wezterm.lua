@@ -20,8 +20,19 @@ local function get_agents_state()
   return agents_state_cache
 end
 
+local function is_agent_process(proc_name)
+  if not proc_name then return false end
+  local name = (proc_name:match('[^/\\]+$') or ''):lower()
+  return name:find('node') ~= nil
+      or name:find('claude') ~= nil
+      or name:find('cursor') ~= nil
+end
+
 local function find_agent_for_pane(pane_info)
+  if not is_agent_process(pane_info.foreground_process_name) then return nil end
   local state = get_agents_state()
+  local key = 'wezterm:' .. tostring(pane_info.pane_id)
+  if state[key] then return state[key] end
   local cwd = tostring(pane_info.current_working_dir or '')
   cwd = cwd:gsub('^file:///', ''):gsub('[/\\]+$', '')
   for _, entry in pairs(state) do
@@ -236,6 +247,7 @@ end)
 wezterm.on('format-tab-title', function(tab, _tabs, _panes, _config, _hover, _max_width)
   local pane_info = tab.active_pane
   local entry = find_agent_for_pane(pane_info)
+  local tab_num = tostring(tab.tab_index + 1) .. ': '
   local title = tab.tab_title
   if #title == 0 then
     title = pane_info.title
@@ -247,9 +259,10 @@ wezterm.on('format-tab-title', function(tab, _tabs, _panes, _config, _hover, _ma
     else agent_icon = '● ' end
     return {
       { Foreground = { Color = entry.color } },
-      { Text = agent_icon .. title },
+      { Text = tab_num .. agent_icon .. title },
     }
   end
+  return tab_num .. title
 end)
 
 return {
