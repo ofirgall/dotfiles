@@ -3,11 +3,24 @@
 # Supports -u (urgency: critical uses longer timeout) and -A (ignored).
 
 param(
-    [string]$u,
-    [string]$A,
     [Parameter(ValueFromRemainingArguments=$true)]
     [string[]]$remaining
 )
+
+$u = ""
+$A = ""
+$positional = @()
+$i = 0
+while ($i -lt $remaining.Count) {
+    if ($remaining[$i] -eq "-u" -and ($i + 1) -lt $remaining.Count) {
+        $u = $remaining[$i + 1]; $i += 2
+    } elseif ($remaining[$i] -eq "-A" -and ($i + 1) -lt $remaining.Count) {
+        $A = $remaining[$i + 1]; $i += 2
+    } else {
+        $positional += $remaining[$i]; $i++
+    }
+}
+$remaining = $positional
 
 $title = if ($remaining.Count -ge 1) { $remaining[0] } else { "Notification" }
 $body  = if ($remaining.Count -ge 2) { $remaining[1..($remaining.Count-1)] -join ' ' } else { "" }
