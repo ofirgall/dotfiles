@@ -11,6 +11,11 @@ if ! command -v fzf.exe &>/dev/null; then
     winget.exe install --id junegunn.fzf --accept-package-agreements --accept-source-agreements || true
 fi
 
+# Starship prompt
+if ! command -v starship.exe &>/dev/null; then
+    winget.exe install --id Starship.Starship --accept-package-agreements --accept-source-agreements || true
+fi
+
 # Cargo packages (cross-platform)
 cargo install difftastic
 cargo install du-dust

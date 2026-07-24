@@ -1,7 +1,7 @@
 # Starship prompt — mirrors zsh-conf/design.zsh
 
 if (Get-Command starship -ErrorAction SilentlyContinue) {
-    Invoke-Expression (&starship init powershell)
+    Invoke-Expression (& starship init powershell --print-full-init | Out-String)
 }
 
 $_starship_files = @("$HOME\.zsh-conf\starship.toml")
