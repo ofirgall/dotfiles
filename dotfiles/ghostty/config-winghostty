@@ -43,6 +43,9 @@ palette = 15=#eeeeec
 
 keybind = super+f5=reset_font_size
 keybind = super+f6=reload_config
+keybind = ctrl+shift+enter=toggle_fullscreen
+
+# Nvim escape sequences
 keybind = ctrl+tab=text:\x1b[27;5;9~
 keybind = ctrl+shift+tab=text:\x1b[27;6;9~
 keybind = ctrl+comma=text:\x1b[27;5;44~
@@ -53,25 +56,8 @@ keybind = ctrl+shift+k=text:\x1bK
 keybind = ctrl+shift+l=text:\x1bL
 keybind = ctrl+shift+comma=text:\x1b[27;5;60~
 keybind = ctrl+shift+period=text:\x1b[27;5;62~
-keybind = alt+shift+e=text:\x1bE
-keybind = alt+shift+v=text:\x1bV
-keybind = alt+shift+o=text:\x1bO
-keybind = alt+shift+w=text:\x1bW
-keybind = alt+shift+q=text:\x1bQ
-keybind = alt+shift+t=text:\x1bT
-keybind = alt+shift+z=text:\x1bZ
-keybind = alt+shift+s=text:\x1bS
-keybind = alt+shift+n=text:\x1bN
-keybind = alt+shift+r=text:\x1bR
-keybind = alt+shift+h=text:\x1bH
-keybind = alt+shift+j=text:\x1bJ
-keybind = alt+shift+k=text:\x1bK
-keybind = alt+shift+l=text:\x1bL
-keybind = alt+shift+comma=text:\x1b[27;3;60~
-keybind = alt+shift+period=text:\x1b[27;3;62~
 keybind = shift+enter=text:\x1b[13;2u
 keybind = ctrl+enter=text:\x1b[13;5u
-keybind = ctrl+shift+enter=toggle_fullscreen
 keybind = ctrl+semicolon=text:\x1b;
 keybind = shift+space=text:\x1b[27;2;32~
 keybind = ctrl+shift+space=text:\x1b[27;6;32~
@@ -86,9 +72,35 @@ keybind = ctrl+eight=text:\x1b[56;5u
 keybind = ctrl+nine=text:\x1b[57;5u
 keybind = ctrl+zero=text:\x1b[48;5u
 
+# Alt+Shift escape sequences for nvim
+keybind = alt+shift+e=text:\x1bE
+keybind = alt+shift+v=text:\x1bV
+keybind = alt+shift+o=text:\x1bO
+keybind = alt+shift+s=text:\x1bS
+keybind = alt+shift+n=text:\x1bN
+keybind = alt+shift+r=text:\x1bR
+
+# Tab management (mirrors tmux Alt+key scheme)
+keybind = alt+t=new_tab
+keybind = alt+w=close_surface
+keybind = alt+one=goto_tab:1
+keybind = alt+two=goto_tab:2
+keybind = alt+three=goto_tab:3
+keybind = alt+four=goto_tab:4
+keybind = alt+five=goto_tab:5
+keybind = alt+six=goto_tab:6
+keybind = alt+seven=goto_tab:7
+keybind = alt+eight=goto_tab:8
+keybind = alt+nine=goto_tab:9
+keybind = alt+zero=goto_tab:10
+keybind = alt+comma=previous_tab
+keybind = alt+period=next_tab
+keybind = alt+minus=last_tab
+keybind = alt+grave_accent=last_tab
+
 app-notifications = no-clipboard-copy
 
 # Plugins
 # custom-shader = shaders/cursor_warp.glsl
 
-command = C:/msys64/usr/bin/env.exe MSYSTEM=UCRT64 /usr/bin/zsh.exe
+command = pwsh
