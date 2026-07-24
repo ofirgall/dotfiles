@@ -1,0 +1,106 @@
+font-family = CaskaydiaCove NFM
+font-size = 12
+# Remove Ligatures
+font-feature = -liga
+font-feature = -calt
+font-feature = -rlig
+
+# Remove bottom blackbar (for tmux)
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = true
+window-padding-color = extend
+# window-decoration = none
+
+adjust-cursor-thickness = 2
+# precision=touchpad | discrete=mouse
+mouse-scroll-multiplier = precision:0.15,discrete:0.5
+mouse-hide-while-typing = true
+confirm-close-surface = false
+
+background = #000000
+foreground = #ffffff
+
+# Normal colors
+palette = 0=#2e3436
+palette = 1=#cc0000
+palette = 2=#4e9a06
+palette = 3=#c4a000
+palette = 4=#3465a4
+palette = 5=#75507b
+palette = 6=#06989a
+palette = 7=#d3d7cf
+
+# Bright colors
+palette = 8=#555753
+palette = 9=#ef2929
+palette = 10=#8ae234
+palette = 11=#fce94f
+palette = 12=#729fcf
+palette = 13=#ad7fa8
+palette = 14=#34e2e2
+palette = 15=#eeeeec
+
+keybind = super+f5=reset_font_size
+keybind = super+f6=reload_config
+keybind = ctrl+shift+enter=toggle_fullscreen
+
+# Nvim escape sequences
+keybind = ctrl+tab=text:\x1b[27;5;9~
+keybind = ctrl+shift+tab=text:\x1b[27;6;9~
+keybind = ctrl+comma=text:\x1b[27;5;44~
+keybind = ctrl+period=text:\x1b[27;5;46~
+keybind = ctrl+shift+j=text:\x1bJ
+keybind = ctrl+shift+h=text:\x1bH
+keybind = ctrl+shift+k=text:\x1bK
+keybind = ctrl+shift+l=text:\x1bL
+keybind = ctrl+shift+comma=text:\x1b[27;5;60~
+keybind = ctrl+shift+period=text:\x1b[27;5;62~
+keybind = shift+enter=text:\x1b[13;2u
+keybind = ctrl+enter=text:\x1b[13;5u
+keybind = ctrl+semicolon=text:\x1b;
+keybind = shift+space=text:\x1b[27;2;32~
+keybind = ctrl+shift+space=text:\x1b[27;6;32~
+keybind = ctrl+one=text:\x1b[49;5u
+keybind = ctrl+two=text:\x1b[50;5u
+keybind = ctrl+three=text:\x1b[51;5u
+keybind = ctrl+four=text:\x1b[52;5u
+keybind = ctrl+five=text:\x1b[53;5u
+keybind = ctrl+six=text:\x1b[54;5u
+keybind = ctrl+seven=text:\x1b[55;5u
+keybind = ctrl+eight=text:\x1b[56;5u
+keybind = ctrl+nine=text:\x1b[57;5u
+keybind = ctrl+zero=text:\x1b[48;5u
+
+# Alt+Shift escape sequences for nvim
+keybind = alt+shift+e=text:\x1bE
+keybind = alt+shift+v=text:\x1bV
+keybind = alt+shift+o=text:\x1bO
+keybind = alt+shift+s=text:\x1bS
+keybind = alt+shift+n=text:\x1bN
+keybind = alt+shift+r=text:\x1bR
+
+# Tab management (mirrors tmux Alt+key scheme)
+keybind = alt+t=new_tab
+keybind = alt+w=close_surface
+keybind = alt+one=goto_tab:1
+keybind = alt+two=goto_tab:2
+keybind = alt+three=goto_tab:3
+keybind = alt+four=goto_tab:4
+keybind = alt+five=goto_tab:5
+keybind = alt+six=goto_tab:6
+keybind = alt+seven=goto_tab:7
+keybind = alt+eight=goto_tab:8
+keybind = alt+nine=goto_tab:9
+keybind = alt+zero=goto_tab:10
+keybind = alt+comma=previous_tab
+keybind = alt+period=next_tab
+keybind = alt+minus=last_tab
+keybind = alt+grave_accent=last_tab
+
+app-notifications = no-clipboard-copy
+
+# Plugins
+# custom-shader = shaders/cursor_warp.glsl
+
+command = pwsh

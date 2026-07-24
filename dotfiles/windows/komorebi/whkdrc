@@ -1,0 +1,110 @@
+.shell cmd
+
+# Focus (Win+hjkl)
+win + h                 : komorebic focus left
+win + j                 : komorebic focus down
+win + k                 : komorebic focus up
+win + l                 : komorebic focus right
+
+# Move/swap windows (Win+Shift+hjkl)
+win + shift + h         : komorebic move left
+win + shift + j         : komorebic move down
+win + shift + k         : komorebic move up
+win + shift + l         : komorebic move right
+
+# Workspaces (Win+1-0)
+win + 1                 : komorebic focus-workspace 0
+win + 2                 : komorebic focus-workspace 1
+win + 3                 : komorebic focus-workspace 2
+win + 4                 : komorebic focus-workspace 3
+win + 5                 : komorebic focus-workspace 4
+win + 6                 : komorebic focus-workspace 5
+win + 7                 : komorebic focus-workspace 6
+win + 8                 : komorebic focus-workspace 7
+win + 9                 : komorebic focus-workspace 8
+win + 0                 : komorebic focus-workspace 9
+
+# Move window to workspace and follow (Win+Shift+1-0)
+win + shift + 1         : komorebic move-to-workspace 0 && komorebic focus-workspace 0
+win + shift + 2         : komorebic move-to-workspace 1 && komorebic focus-workspace 1
+win + shift + 3         : komorebic move-to-workspace 2 && komorebic focus-workspace 2
+win + shift + 4         : komorebic move-to-workspace 3 && komorebic focus-workspace 3
+win + shift + 5         : komorebic move-to-workspace 4 && komorebic focus-workspace 4
+win + shift + 6         : komorebic move-to-workspace 5 && komorebic focus-workspace 5
+win + shift + 7         : komorebic move-to-workspace 6 && komorebic focus-workspace 6
+win + shift + 8         : komorebic move-to-workspace 7 && komorebic focus-workspace 7
+win + shift + 9         : komorebic move-to-workspace 8 && komorebic focus-workspace 8
+win + shift + 0         : komorebic move-to-workspace 9 && komorebic focus-workspace 9
+
+# Move window to workspace silently (Win+Ctrl+1-0)
+win + ctrl + 1          : komorebic move-to-workspace 0
+win + ctrl + 2          : komorebic move-to-workspace 1
+win + ctrl + 3          : komorebic move-to-workspace 2
+win + ctrl + 4          : komorebic move-to-workspace 3
+win + ctrl + 5          : komorebic move-to-workspace 4
+win + ctrl + 6          : komorebic move-to-workspace 5
+win + ctrl + 7          : komorebic move-to-workspace 6
+win + ctrl + 8          : komorebic move-to-workspace 7
+win + ctrl + 9          : komorebic move-to-workspace 8
+win + ctrl + 0          : komorebic move-to-workspace 9
+
+# Open terminal (Win+Enter)
+win + return            : start "" "C:\Program Files\WezTerm\wezterm-gui.exe"
+
+# Open browser (Win+b: Default, Win+Shift+b: Profile 1, Win+Alt+b: Profile 2 → YouTube)
+win + b                 : start "" chrome
+win + shift + b         : start "" chrome --profile-directory="Profile 1" --new-window
+win + alt + b           : start "" chrome --profile-directory="Profile 2" --new-window https://www.youtube.com
+
+# Close window (Win+q)
+win + q                 : komorebic close
+
+# Maximize/monocle toggle (Win+m)
+win + m                 : komorebic toggle-monocle
+
+# Minimize window (Win+n)
+win + n                 : komorebic minimize
+
+# Float toggle (Win+Shift+f)
+win + shift + f         : komorebic toggle-float
+
+# Layout toggle (Win+/)
+win + oem_2             : komorebic cycle-layout next
+
+# Resize (Win+Ctrl+h/l)
+win + ctrl + h          : komorebic resize-axis horizontal decrease
+win + ctrl + l          : komorebic resize-axis horizontal increase
+
+# Move window to other monitor and follow (Win+o)
+win + o                 : komorebic cycle-move-to-monitor next && komorebic cycle-monitor next
+
+# Prev/next workspace (Win+,/.)
+win + oem_comma         : komorebic cycle-workspace previous
+win + oem_period        : komorebic cycle-workspace next
+
+# Last workspace (Win+`)
+win + oem_3             : komorebic focus-last-workspace
+
+# Move all windows from focused workspace to workspace (Win+Shift+Ctrl+1-0)
+win + shift + ctrl + 1  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 0"
+win + shift + ctrl + 2  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 1"
+win + shift + ctrl + 3  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 2"
+win + shift + ctrl + 4  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 3"
+win + shift + ctrl + 5  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 4"
+win + shift + ctrl + 6  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 5"
+win + shift + ctrl + 7  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 6"
+win + shift + ctrl + 8  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 7"
+win + shift + ctrl + 9  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 8"
+win + shift + ctrl + 0  : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-to-workspace.sh 9"
+
+# Move ALL windows (from all workspaces) to workspace 10 (Win+F12)
+win + f12               : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/move-all-windows-to-workspace.sh 9"
+
+# Sticky window toggle (Win+p)
+win + p                 : C:\msys64\usr\bin\bash.exe -l -c "~/dotfiles_scripts/komorebi/sticky-toggle.sh"
+
+# Reload config (Win+Shift+r)
+win + shift + r         : komorebic reload-configuration
+
+# Retile (Win+Shift+;)
+win + shift + oem_1     : komorebic retile

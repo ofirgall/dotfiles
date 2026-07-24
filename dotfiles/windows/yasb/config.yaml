@@ -1,0 +1,95 @@
+watch_stylesheet: true
+watch_config: true
+
+bars:
+  primary:
+    enabled: true
+    screens: ['*']
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      align: "left"
+    blur_effect:
+      enabled: true
+      dark_mode: true
+    window_flags:
+      always_on_top: false
+      windows_app_bar: true
+    dimensions:
+      width: "100%"
+      height: 33
+    padding:
+      top: 0
+      left: 10
+      bottom: 0
+      right: 10
+    widgets:
+      left: ["komorebi_workspaces"]
+      center: []
+      right: ["media", "ram", "cpu", "wifi", "volume", "language", "battery", "clock"]
+
+widgets:
+  komorebi_workspaces:
+    type: "komorebi.workspaces.WorkspaceWidget"
+    options:
+      label_offline: "Komorebi Offline"
+      label_workspace_btn: "{name}"
+      label_workspace_active_btn: "{name}"
+      label_workspace_populated_btn: "{name}"
+      label_default_name: "{index}"
+      label_zero_index: false
+      hide_empty_workspaces: false
+
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "{%H:%M %d/%m}"
+      label_alt: "{%A %d %B %Y %H:%M:%S}"
+      timezones: []
+
+  battery:
+    type: "yasb.battery.BatteryWidget"
+    options:
+      label: "{icon} {percent}%"
+      label_alt: "{icon} {percent}% ({power_status})"
+      time_remaining_natural: true
+
+  volume:
+    type: "yasb.volume.VolumeWidget"
+    options:
+      label: "{icon} {level}%"
+      label_alt: "{volume}"
+
+  language:
+    type: "yasb.language.LanguageWidget"
+    options:
+      label: "󰄌 {lang[language_code]}"
+
+  wifi:
+    type: "yasb.wifi.WifiWidget"
+    options:
+      label: "{wifi_icon}"
+      label_alt: "{wifi_icon} {wifi_name}"
+
+  cpu:
+    type: "yasb.cpu.CpuWidget"
+    options:
+      label: '󰍛 {info[percent][total]}%'
+      label_alt: '󰍛 {info[histograms][cpu_percent]}'
+      update_interval: 2000
+
+  ram:
+    type: "yasb.memory.MemoryWidget"
+    options:
+      label: "󰕛 {virtual_mem_percent}%"
+      label_alt: "󰕛 {virtual_mem_free}"
+      update_interval: 5000
+
+  media:
+    type: "yasb.media.MediaWidget"
+    options:
+      label: "{title} - {artist}"
+      label_alt: "{title}"
+      max_field_size:
+        label: 40
+        label_alt: 20

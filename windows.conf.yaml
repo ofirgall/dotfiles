@@ -1,0 +1,100 @@
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_pwsh.sh', Installing PowerShell 7]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_vcbuildtools.sh', Installing Visual C++ Build Tools]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_rust.sh', Installing Rust toolchain]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_basic.sh', Installing basic CLI tools]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_kanata.sh', Installing Kanata]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_fonts.sh', Installing Nerd Fonts]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_ghostty.sh', Installing Ghostty]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_wezterm.sh', Installing WezTerm]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_komorebi.sh', Installing Komorebi]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_yasb.sh', Installing Yasb]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_git_utils.sh', Installing git utilities]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_ez_workspaces.sh', Installing ez-workspaces]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_tuis.sh', Installing TUIs]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_wrappers.sh', Installing Wrappers]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_agents_status.sh', Installing agents-status]
+
+- defaults:
+    link:
+      relink: true
+      force: true
+      create: true
+
+# --- Portable symlinks (shared with Linux/macOS) ---
+- link:
+    ~/.config/nvim:
+        path: editors/KoalaConfig
+    ~/.kvim.conf:
+        path: dotfiles/.kvim.conf
+    ~/.config/kvim-envs/main:
+        path: editors/KoalaConfig
+    ~/.vimrc:
+        path: dotfiles/vimrc
+    ~/dotfiles_scripts:
+        path: scripts
+    ~/.config/ghostty:
+        path: dotfiles/ghostty
+    ~/.profile:
+        path: dotfiles/profile
+    ~/.gitconfig:
+        path: dotfiles/gitconfig
+    ~/.gitignore_global:
+        path: dotfiles/gitignore_global
+    ~/.ripgreprc:
+        path: dotfiles/ripgreprc
+    ~/.config/yazi:
+        path: dotfiles/yazi
+    ~/.claude/settings.json:
+        path: dotfiles/claude/settings.json
+    ~/.cursor/statusline.sh:
+        path: dotfiles/cursor/statusline.sh
+    ~/.config/cursor-cli-wrapper/config.toml:
+        path: dotfiles/cursor-cli-wrapper.toml
+    ~/.config/agents-status/config.toml:
+        path: dotfiles/agents-status-config-windows.toml
+    ~/.config/gh-dash/config.yml:
+        path: dotfiles/gh-dash/config.yml
+    ~/.config/bottom/bottom.toml:
+        path: dotfiles/bottom/bottom.toml
+    ~/.config/hop/config.toml:
+        path: dotfiles/hop/config.toml
+
+# --- PowerShell profile ---
+- link:
+    ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
+        path: dotfiles/pwsh-conf/profile.ps1
+    ~/.pwsh-conf:
+        path: dotfiles/pwsh-conf
+    ~/.my-pwsh-conf:
+        path: dotfiles/my-pwsh-conf
+
+# --- Windows-specific symlinks ---
+- link:
+    ~/AppData/Local/winghostty/config.ghostty:
+        path: dotfiles/ghostty/config-winghostty
+    ~/.wezterm.lua:
+        path: windows/.wezterm.lua
+    ~/.config/komorebi/komorebi.json:
+        path: dotfiles/windows/komorebi/komorebi.json
+    ~/.config/komorebi/applications.yaml:
+        path: dotfiles/windows/komorebi/applications.yaml
+    ~/.config/whkdrc:
+        path: dotfiles/windows/komorebi/whkdrc
+    ~/.config/kanata/kanata.kbd:
+        path: dotfiles/windows/kanata/kanata.kbd
+    ~/.config/yasb/config.yaml:
+        path: dotfiles/windows/yasb/config.yaml
+    ~/.config/yasb/styles.css:
+        path: dotfiles/windows/yasb/styles.css
+    ~/.config/ez/config.toml:
+        path: dotfiles/ez-workspaces-windows/config.toml
+
+- create:
+    - ~/workspace/personal
+    - ~/workspace/work
+
+- shell:
+    - ['"C:/Program Files/Git/bin/bash.exe" -c "ln -sf config.windows dotfiles/ghostty/config.platform"', Setting Ghostty platform config]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_kvim.sh', Installing KoalaVim]

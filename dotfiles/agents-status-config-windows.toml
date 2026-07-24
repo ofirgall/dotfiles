@@ -1,0 +1,15 @@
+[notification]
+command = "powershell.exe -NoProfile -File $HOME/dotfiles_scripts/notify/windows_notify.ps1"
+
+[post-event]
+commands = [
+    "$AGENTS_STATUS_DIR/../tmux/scripts/refresh_dim_colors.sh",
+    "python3 $AGENTS_STATUS_DIR/../statusbar/run.py",
+]
+
+[statusbar]
+workspaces_provider = "komorebi"
+bar = "yasb"
+
+[statusbar.yasb]
+label_template = "{app_icons} {agent_icon} {tmux_sessions}"

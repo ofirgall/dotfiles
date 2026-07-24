@@ -1,0 +1,63 @@
+- name: Task Manager
+  identifier:
+    kind: Exe
+    id: Taskmgr.exe
+    matching_strategy: Equals
+  options:
+    - force
+
+- name: Snipping Tool
+  identifier:
+    kind: Exe
+    id: ScreenClippingHost.exe
+    matching_strategy: Equals
+  options:
+    - force
+
+- name: File Explorer Copy Dialog
+  identifier:
+    kind: Class
+    id: OperationStatusWindow
+    matching_strategy: Equals
+  options:
+    - force
+
+- name: Picture-in-Picture
+  identifier:
+    kind: Title
+    id: Picture-in-Picture
+    matching_strategy: Equals
+  options:
+    - force
+
+- name: 1Password
+  identifier:
+    kind: Exe
+    id: 1Password.exe
+    matching_strategy: Equals
+  options:
+    - force
+
+- name: Microsoft Store
+  identifier:
+    kind: Exe
+    id: WinStore.App.exe
+    matching_strategy: Equals
+  options:
+    - force
+
+- name: winghostty
+  identifier:
+    kind: Exe
+    id: winghostty.exe
+    matching_strategy: Equals
+  options:
+    - tray_and_multi_window
+
+- name: Chrome
+  identifier:
+    kind: Exe
+    id: chrome.exe
+    matching_strategy: Equals
+  options:
+    - tray_and_multi_window
