@@ -34,6 +34,8 @@ widgets:
     options:
       label_offline: "Komorebi Offline"
       label_workspace_btn: "{name}"
+      label_workspace_active_btn: "{name}"
+      label_workspace_populated_btn: "{name}"
       label_default_name: "{index}"
       label_zero_index: false
       hide_empty_workspaces: false
