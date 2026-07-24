@@ -14,6 +14,9 @@ fi
 # Python 3.13+ (needed for AF_UNIX socket support on Windows)
 winget.exe install --id Python.Python.3.13 --accept-package-agreements --accept-source-agreements || true
 
+# CMake
+winget.exe install --id Kitware.CMake --accept-package-agreements --accept-source-agreements || true
+
 # Starship prompt
 if ! command -v starship.exe &>/dev/null; then
     winget.exe install --id Starship.Starship --accept-package-agreements --accept-source-agreements || true
