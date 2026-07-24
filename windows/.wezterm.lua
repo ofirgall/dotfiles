@@ -2,6 +2,41 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 local mux = wezterm.mux
 
+-- agents-status: read file-based state written by the agents-status server
+local sep = package.config:sub(1, 1)
+local agents_state_file = wezterm.home_dir .. sep .. '.cache' .. sep .. 'agents-status' .. sep .. 'state.json'
+local agents_state_cache = {}
+
+local function get_agents_state()
+  local fh = io.open(agents_state_file, 'r')
+  if not fh then return agents_state_cache end
+  local content = fh:read('*a')
+  fh:close()
+  if not content or #content == 0 then return agents_state_cache end
+  local ok, parsed = pcall(wezterm.json_parse, content)
+  if ok and type(parsed) == 'table' then
+    agents_state_cache = parsed
+  end
+  return agents_state_cache
+end
+
+local function find_agent_for_pane(pane_info)
+  local state = get_agents_state()
+  local cwd = tostring(pane_info.current_working_dir or '')
+  cwd = cwd:gsub('^file:///', ''):gsub('[/\\]+$', '')
+  for _, entry in pairs(state) do
+    if entry.repo then
+      local repo_lower = entry.repo:lower()
+      for segment in cwd:gmatch('[^/\\]+') do
+        if segment:lower() == repo_lower then
+          return entry
+        end
+      end
+    end
+  end
+  return nil
+end
+
 wezterm.on("gui-startup", function(cmd)
   local _, _, window = mux.spawn_window(cmd or {})
   window:gui_window():maximize()
@@ -169,6 +204,53 @@ end
 for _, c in ipairs({ '!', '@', '#', '$', '%', '^', '&', '*', '(', ')' }) do
   table.insert(keys, { key = c, mods = 'ALT', action = act.SendString('\x1b' .. c) })
 end
+
+-- agents-status: show aggregate status in right status bar
+wezterm.on('update-status', function(window, _pane)
+  local state = get_agents_state()
+  local counts = {}
+  for _, entry in pairs(state) do
+    local s = entry.status
+    if s then counts[s] = (counts[s] or 0) + 1 end
+  end
+  local parts = {}
+  local order = { 'WAITING', 'INPROGRESS', 'DONE', 'IDLE' }
+  local icons = { WAITING = '⏳', INPROGRESS = '⚡', DONE = '✓', IDLE = '●' }
+  local colors = { WAITING = '#cf1313', INPROGRESS = '#fa7900', DONE = '#1e88ff', IDLE = '#15c70c' }
+  for _, s in ipairs(order) do
+    if counts[s] then
+      table.insert(parts, wezterm.format {
+        { Foreground = { Color = colors[s] } },
+        { Text = icons[s] .. counts[s] },
+      })
+    end
+  end
+  if #parts > 0 then
+    window:set_right_status(table.concat(parts, ' '))
+  else
+    window:set_right_status('')
+  end
+end)
+
+-- agents-status: color tab titles based on agent status
+wezterm.on('format-tab-title', function(tab, _tabs, _panes, _config, _hover, _max_width)
+  local pane_info = tab.active_pane
+  local entry = find_agent_for_pane(pane_info)
+  local title = tab.tab_title
+  if #title == 0 then
+    title = pane_info.title
+  end
+  if entry and entry.color and entry.color ~= '' then
+    local agent_icon = ''
+    if entry.agent == 'claude' then agent_icon = '◐ '
+    elseif entry.agent == 'cursor' then agent_icon = '◑ '
+    else agent_icon = '● ' end
+    return {
+      { Foreground = { Color = entry.color } },
+      { Text = agent_icon .. title },
+    }
+  end
+end)
 
 return {
   default_prog = { 'pwsh' },
