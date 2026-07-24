@@ -2,6 +2,9 @@
 
 $psrlOptions = @{
     HistorySearchCursorMovesToEnd = $true
+    MaximumHistoryCount        = 50000
+    HistoryNoDuplicates        = $true
+    HistorySaveStyle           = 'SaveIncrementally'
     BellStyle                  = 'None'
 }
 
@@ -16,3 +19,12 @@ if ($psrlVersion -ge [version]'2.2.0') {
 }
 
 Set-PSReadLineOption @psrlOptions
+
+# Auto-cd: type a directory name to cd into it
+$ExecutionContext.InvokeCommand.CommandNotFoundAction = {
+    param($Name, $EventArgs)
+    if (Test-Path $Name -PathType Container) {
+        $EventArgs.StopSearch = $true
+        $EventArgs.CommandScriptBlock = { Set-Location $Name }.GetNewClosure()
+    }
+}
