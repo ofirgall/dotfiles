@@ -14,6 +14,7 @@
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_ez_workspaces.sh', Installing ez-workspaces]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_tuis.sh', Installing TUIs]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_wrappers.sh', Installing Wrappers]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_flow_launcher.sh', Installing Flow Launcher]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_agents_status.sh', Installing agents-status]
 
 - defaults:
@@ -82,6 +83,8 @@
         path: dotfiles/windows/komorebi/applications.json
     ~/.config/whkdrc:
         path: dotfiles/windows/komorebi/whkdrc
+    ~/AppData/Roaming/FlowLauncher/Settings/Settings.json:
+        path: dotfiles/windows/flow-launcher/Settings.json
     ~/.config/kanata/kanata.kbd:
         path: dotfiles/windows/kanata/kanata.kbd
     ~/.config/yasb/config.yaml:

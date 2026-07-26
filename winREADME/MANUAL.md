@@ -27,3 +27,12 @@ Create start/stop shortcuts for GUI apps:
 Must be enabled before running the install (required for NTFS symlinks):
 
 Settings → System → For developers → Developer Mode → On
+
+## Flow Launcher Plugins
+
+After installing Flow Launcher, open it (`Alt+Space`) and install these plugins:
+
+```
+pm install Clipboard+
+pm install Window Walker
+```
