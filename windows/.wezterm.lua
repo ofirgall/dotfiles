@@ -243,26 +243,81 @@ wezterm.on('update-status', function(window, _pane)
   end
 end)
 
--- agents-status: color tab titles based on agent status
+local function dim_color(hex, factor)
+  factor = factor or 0.5
+  local r = tonumber(hex:sub(2, 3), 16)
+  local g = tonumber(hex:sub(4, 5), 16)
+  local b = tonumber(hex:sub(6, 7), 16)
+  r = math.floor(r * factor)
+  g = math.floor(g * factor)
+  b = math.floor(b * factor)
+  return string.format('#%02x%02x%02x', r, g, b)
+end
+
+-- Tab bar palette (matches tmux design3)
+local tab_colors = {
+  bar_bg          = '#051829',
+  active_num_bg   = '#94d0fe',
+  active_num_text = '#11111b',
+  active_name_bg  = '#22385c',
+  active_name_text = '#d9e6fa',
+  inactive_num_bg  = '#1b3858',
+  inactive_name_bg = '#0f253e',
+  inactive_text    = '#c4c6cc',
+}
+local cap_l = ''
+local cap_r = ''
+local seam = '▏'
+
 wezterm.on('format-tab-title', function(tab, _tabs, _panes, _config, _hover, _max_width)
   local pane_info = tab.active_pane
   local entry = find_agent_for_pane(pane_info)
-  local tab_num = tostring(tab.tab_index + 1) .. ': '
+  local tab_num = tostring(tab.tab_index + 1)
   local title = tab.tab_title
   if #title == 0 then
     title = pane_info.title
   end
+
+  local agent_icon = ''
+  local agent_color = nil
   if entry and entry.color and entry.color ~= '' then
-    local agent_icon = ''
+    agent_color = entry.color
     if entry.agent == 'claude' then agent_icon = '◐ '
     elseif entry.agent == 'cursor' then agent_icon = '◑ '
     else agent_icon = '● ' end
-    return {
-      { Foreground = { Color = entry.color } },
-      { Text = tab_num .. agent_icon .. title },
-    }
   end
-  return tab_num .. title
+
+  local is_active = tab.is_active
+  local num_bg = is_active and tab_colors.active_num_bg or tab_colors.inactive_num_bg
+  local num_text = is_active and tab_colors.active_num_text or tab_colors.inactive_text
+  local name_bg = is_active and tab_colors.active_name_bg or tab_colors.inactive_name_bg
+  local name_text = is_active and tab_colors.active_name_text or tab_colors.inactive_text
+
+  if agent_color then
+    num_bg = is_active and agent_color or dim_color(agent_color)
+  end
+
+  return {
+    { Background = { Color = tab_colors.bar_bg } },
+    { Text = ' ' },
+    { Foreground = { Color = num_bg } },
+    { Background = { Color = tab_colors.bar_bg } },
+    { Text = cap_l },
+    { Foreground = { Color = num_text } },
+    { Background = { Color = num_bg } },
+    { Attribute = { Intensity = 'Bold' } },
+    { Text = ' ' .. tab_num .. ' ' },
+    { Foreground = { Color = num_bg } },
+    { Background = { Color = name_bg } },
+    { Text = seam },
+    { Foreground = { Color = name_text } },
+    { Background = { Color = name_bg } },
+    { Attribute = { Intensity = 'Normal' } },
+    { Text = agent_icon .. title .. ' ' },
+    { Foreground = { Color = name_bg } },
+    { Background = { Color = tab_colors.bar_bg } },
+    { Text = cap_r },
+  }
 end)
 
 return {
@@ -302,6 +357,10 @@ return {
     foreground = '#ffffff',
     cursor_bg = '#ffffff',
     cursor_fg = '#000000',
+
+    tab_bar = {
+      background = '#051829',
+    },
 
     ansi = {
       '#2e3436',
