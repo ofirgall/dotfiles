@@ -285,6 +285,7 @@ return {
   use_fancy_tab_bar = false,
   tab_bar_at_bottom = true,
   hide_tab_bar_if_only_one_tab = true,
+  tab_max_width = 32,
 
   window_close_confirmation = "NeverPrompt",
 
