@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/master/schema.json",
-  "app_specific_configuration_path": "$Env:USERPROFILE/.config/komorebi/applications.yaml",
+  "app_specific_configuration_path": "$Env:USERPROFILE/.config/komorebi/applications.json",
   "window_hiding_behaviour": "Cloak",
   "cross_monitor_move_behaviour": "Insert",
   "default_workspace_padding": 0,
@@ -15,6 +15,9 @@
     "monocle": "#7aa2f7",
     "unfocused": "#00000000"
   },
+  "ignore_rules": [
+    { "kind": "exe", "id": "cs2.exe", "matching_strategy": "Equals" }
+  ],
   "mouse_follows_focus": true,
   "monitors": [
     {

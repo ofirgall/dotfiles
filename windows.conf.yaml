@@ -78,8 +78,8 @@
         path: windows/.wezterm.lua
     ~/.config/komorebi/komorebi.json:
         path: dotfiles/windows/komorebi/komorebi.json
-    ~/.config/komorebi/applications.yaml:
-        path: dotfiles/windows/komorebi/applications.yaml
+    ~/.config/komorebi/applications.json:
+        path: dotfiles/windows/komorebi/applications.json
     ~/.config/whkdrc:
         path: dotfiles/windows/komorebi/whkdrc
     ~/.config/kanata/kanata.kbd:

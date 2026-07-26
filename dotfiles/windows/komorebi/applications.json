@@ -1,0 +1,26 @@
+{
+  "Task Manager": {
+    "manage": [{ "kind": "Exe", "id": "Taskmgr.exe", "matching_strategy": "Equals" }]
+  },
+  "Snipping Tool": {
+    "manage": [{ "kind": "Exe", "id": "ScreenClippingHost.exe", "matching_strategy": "Equals" }]
+  },
+  "File Explorer Copy Dialog": {
+    "manage": [{ "kind": "Class", "id": "OperationStatusWindow", "matching_strategy": "Equals" }]
+  },
+  "Picture-in-Picture": {
+    "manage": [{ "kind": "Title", "id": "Picture-in-Picture", "matching_strategy": "Equals" }]
+  },
+  "1Password": {
+    "manage": [{ "kind": "Exe", "id": "1Password.exe", "matching_strategy": "Equals" }]
+  },
+  "Microsoft Store": {
+    "manage": [{ "kind": "Exe", "id": "WinStore.App.exe", "matching_strategy": "Equals" }]
+  },
+  "winghostty": {
+    "tray_and_multi_window": [{ "kind": "Exe", "id": "winghostty.exe", "matching_strategy": "Equals" }]
+  },
+  "Chrome": {
+    "tray_and_multi_window": [{ "kind": "Exe", "id": "chrome.exe", "matching_strategy": "Equals" }]
+  }
+}
