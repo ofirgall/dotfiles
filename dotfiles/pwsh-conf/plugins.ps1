@@ -15,6 +15,11 @@ foreach ($mod in $_requiredModules) {
 }
 
 if (Get-Module PSFzf) {
+    # PSFzf bug: $script:PowershellCmd is only set for PS5, leaving it
+    # empty on PS7+ which makes fzf preview fall through to cmd.exe.
+    $psfzfModule = Get-Module PSFzf
+    & $psfzfModule { $script:PowershellCmd = 'pwsh' }
+
     Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
         -PSReadlineChordReverseHistory 'Ctrl+r' `
         -TabContinuousTrigger '\' `
