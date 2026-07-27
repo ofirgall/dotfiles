@@ -17,7 +17,8 @@ foreach ($mod in $_requiredModules) {
 if (Get-Module PSFzf) {
     Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
         -PSReadlineChordReverseHistory 'Ctrl+r' `
-        -TabContinuousTrigger '\'
+        -TabContinuousTrigger '\' `
+        -TabCompletionPreviewWindow 'right:50%:wrap'
     Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
     Set-PSReadLineKeyHandler -Key Shift+Tab -Function MenuComplete
 }
