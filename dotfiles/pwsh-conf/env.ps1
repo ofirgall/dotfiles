@@ -1,6 +1,6 @@
 # Shared environment — mirrors zsh-conf/env.zsh
 
-$env:FZF_DEFAULT_OPTS = ""
+$env:FZF_DEFAULT_OPTS = '--height=40% --reverse'
 
 function Add-ToPath {
     param([string]$Dir)
