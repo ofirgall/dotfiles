@@ -295,6 +295,7 @@ wezterm.on('format-tab-title', function(tab, _tabs, _panes, _config, _hover, _ma
 
   if agent_color then
     num_bg = is_active and agent_color or dim_color(agent_color)
+    num_text = tab_colors.active_num_text
   end
 
   return {

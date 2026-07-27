@@ -19,7 +19,7 @@
     { "kind": "exe", "id": "cs2.exe", "matching_strategy": "Equals" },
     { "kind": "exe", "id": "RocketLeague.exe", "matching_strategy": "Equals" }
   ],
-  "mouse_follows_focus": true,
+  "mouse_follows_focus": false,
   "monitors": [
     {
       "workspaces": [
