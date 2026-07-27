@@ -118,6 +118,7 @@ if ($env:NO_EZA -ne "1" -and (Get-Command eza -ErrorAction SilentlyContinue)) {
     function ll { eza @global:EZA_PARAMS -la @args }
     function llm { eza @global:EZA_PARAMS -la --sort=modified @args }
     function la { eza @global:EZA_PARAMS -lbhHigUmuSa @args }
+    function lx { eza @global:EZA_PARAMS -lbhHigUmuSa@ @args }
     function tree { eza --tree @args }
     function lS { eza -1 @args }
 } else {
