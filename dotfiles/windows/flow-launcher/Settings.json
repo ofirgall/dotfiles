@@ -156,7 +156,7 @@
   "CustomWindowTop": 0,
   "KeepMaxResults": false,
   "MaxResultsToShow": 5,
-  "ActivateTimes": 2,
+  "ActivateTimes": 5,
   "CustomPluginHotkeys": [
     {
       "Hotkey": "Win \u002B Alt \u002B V",
@@ -172,7 +172,7 @@
   "EnableUpdateLog": false,
   "StartFlowLauncherOnSystemStartup": false,
   "UseLogonTaskForStartup": false,
-  "HideOnStartup": false,
+  "HideOnStartup": true,
   "HideNotifyIcon": false,
   "LeaveCmdOpen": false,
   "HideWhenDeactivated": true,
