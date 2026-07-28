@@ -10,3 +10,4 @@ _ofir*
 */.ropeproject
 .cursor/plans/
 .cursor/.gitignore
+*.null-ls*
