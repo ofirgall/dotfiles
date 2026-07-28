@@ -162,9 +162,17 @@ cmd-o = ['move-node-to-monitor --wrap-around next', 'focus-monitor --wrap-around
 # Layout toggle
 cmd-slash = 'layout tiles horizontal vertical'
 
-# Resize (Super+Ctrl+h/l)
-cmd-ctrl-h = 'resize width -50'
-cmd-ctrl-l = 'resize width +50'
+# Move window (non-swap) (Super+Alt+hjkl)
+cmd-alt-h = 'move left'
+cmd-alt-j = 'move down'
+cmd-alt-k = 'move up'
+cmd-alt-l = 'move right'
+
+# Resize (Super+Ctrl+hjkl)
+cmd-ctrl-h = 'resize width +50'
+cmd-ctrl-j = 'resize height +50'
+cmd-ctrl-k = 'resize height -50'
+cmd-ctrl-l = 'resize width -50'
 
 # Screenshot: region to clipboard (Super+s), UI toolbar to clipboard (Super+Shift+s)
 cmd-s = 'exec-and-forget screencapture -ic'
