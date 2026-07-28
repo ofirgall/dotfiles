@@ -49,12 +49,13 @@ sketchybar --default \
 
 # --- Helper: add workspace items for a display ---
 add_workspace_items() {
-    local display="$1" suffix="$2" icon_size="$3" label_sm_size="$4"
+    local display="$1" suffix="$2" icon_size="$3" label_sm_size="$4" has_notch="${5:-}"
     local icon_font="$FONT_FACE:$ICON_FONT_STYLE:$icon_size"
     local label_font="$FONT_FACE:$LABEL_SM_FONT_STYLE:$label_sm_size"
     local display_prop=""
     [[ "$display" != "0" ]] && display_prop="display=$display"
 
+    local filler_events="forced"
     for sid in 1 2 3 4 5 6 7 8 9 10; do
         sketchybar --add event aerospace_workspace_change_"$sid" \
                    --add item "space.${sid}${suffix}" left \
@@ -77,7 +78,25 @@ add_workspace_items() {
                         padding_right=3 \
                         click_script="~/dotfiles/dotfiles/mac/aerospace/switch-group.sh $sid" \
                         script="$PLUGIN_DIR/aerospace.sh $sid"
+        filler_events="$filler_events aerospace_workspace_change_$sid"
     done
+
+    if [[ "$has_notch" == "notch" ]]; then
+        sketchybar --add item "notch_filler${suffix}" left \
+                   --subscribe "notch_filler${suffix}" $filler_events \
+                   --set "notch_filler${suffix}" \
+                        $display_prop \
+                        drawing=on \
+                        icon.drawing=off \
+                        label.drawing=off \
+                        background.drawing=on \
+                        background.color=0xffffffff \
+                        background.height=33 \
+                        width=0 \
+                        padding_left=0 \
+                        padding_right=0 \
+                        script="$PLUGIN_DIR/notch_filler.sh '$suffix'"
+    fi
 }
 
 # --- Helper: add right-side items for a display ---
@@ -207,13 +226,13 @@ done
 
 # --- Create items per display ---
 if [[ -n "$BUILTIN_DISPLAY" && -n "$EXTERNAL_DISPLAYS" ]]; then
-    add_workspace_items "$BUILTIN_DISPLAY" ".builtin" "$ICON_FONT_SIZE_BUILTIN" "$LABEL_SM_FONT_SIZE_BUILTIN"
+    add_workspace_items "$BUILTIN_DISPLAY" ".builtin" "$ICON_FONT_SIZE_BUILTIN" "$LABEL_SM_FONT_SIZE_BUILTIN" notch
     add_workspace_items "$EXTERNAL_DISPLAYS" ".ext" "$ICON_FONT_SIZE" "$LABEL_SM_FONT_SIZE"
     add_right_items "$BUILTIN_DISPLAY" ".builtin" "$ICON_FONT_SIZE_BUILTIN" "$LABEL_FONT_SIZE_BUILTIN" "$ICON_LG_FONT_SIZE_BUILTIN"
     add_right_items "$EXTERNAL_DISPLAYS" ".ext" "$ICON_FONT_SIZE" "$LABEL_FONT_SIZE" "$ICON_LG_FONT_SIZE"
 else
     if [[ -n "$BUILTIN_DISPLAY" ]]; then
-        add_workspace_items "0" "" "$ICON_FONT_SIZE_BUILTIN" "$LABEL_SM_FONT_SIZE_BUILTIN"
+        add_workspace_items "0" "" "$ICON_FONT_SIZE_BUILTIN" "$LABEL_SM_FONT_SIZE_BUILTIN" notch
         add_right_items "0" "" "$ICON_FONT_SIZE_BUILTIN" "$LABEL_FONT_SIZE_BUILTIN" "$ICON_LG_FONT_SIZE_BUILTIN"
     else
         add_workspace_items "0" "" "$ICON_FONT_SIZE" "$LABEL_SM_FONT_SIZE"
