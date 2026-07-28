@@ -18,10 +18,13 @@ sleep 0.3
 [ "$(cat "$LOCKFILE" 2>/dev/null)" != "$$" ] && exit 0
 
 DISPLAY_INFO=$(sketchybar --query displays 2>/dev/null)
-DISPLAY_W=$(echo "$DISPLAY_INFO" | jq '.[0].frame.w')
+BUILTIN_W=1512
+BUILTIN_DISPLAY=$(echo "$DISPLAY_INFO" | jq --argjson bw "$BUILTIN_W" '[.[] | select(.frame.w == $bw)] | .[0] // .[0]')
+DISPLAY_W=$(echo "$BUILTIN_DISPLAY" | jq '.frame.w')
+DISPLAY_X=$(echo "$BUILTIN_DISPLAY" | jq '.frame.x')
 
 NOTCH_W=185
-NOTCH_LEFT=$(echo "($DISPLAY_W - $NOTCH_W) / 2" | bc)
+NOTCH_LEFT=$(echo "$DISPLAY_X + ($DISPLAY_W - $NOTCH_W) / 2" | bc)
 NOTCH_RIGHT=$(echo "$NOTCH_LEFT + $NOTCH_W" | bc)
 
 # Get current filler width and position in item order to compensate
@@ -93,7 +96,7 @@ done
 
 if [ -n "$MOVE_REF" ]; then
     [ -n "$DEBUG" ] && echo "=> move $FILLER $MOVE_DIR $MOVE_REF, width=$FILLER_W"
-    local debug_bg=()
+    debug_bg=()
     [ -n "$DEBUG" ] && debug_bg=(background.drawing=on background.color=0xffffffff background.height=33)
     sketchybar --move "$FILLER" "$MOVE_DIR" "$MOVE_REF" \
                --set "$FILLER" width="$FILLER_W" "${debug_bg[@]}"
