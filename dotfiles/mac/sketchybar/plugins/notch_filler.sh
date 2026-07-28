@@ -15,12 +15,7 @@ if [ -f "$LOCKFILE" ]; then
 fi
 echo $$ > "$LOCKFILE"
 sleep 0.3
-# Exit if a newer instance replaced us
 [ "$(cat "$LOCKFILE" 2>/dev/null)" != "$$" ] && exit 0
-
-# Reset filler width before measuring so it doesn't affect bounding rects
-sketchybar --set "$FILLER" width=0
-sleep 0.1
 
 DISPLAY_INFO=$(sketchybar --query displays 2>/dev/null)
 DISPLAY_W=$(echo "$DISPLAY_INFO" | jq '.[0].frame.w')
@@ -29,12 +24,30 @@ NOTCH_W=185
 NOTCH_LEFT=$(echo "($DISPLAY_W - $NOTCH_W) / 2" | bc)
 NOTCH_RIGHT=$(echo "$NOTCH_LEFT + $NOTCH_W" | bc)
 
-[ -n "$DEBUG" ] && echo "display_width=$DISPLAY_W  notch_width=$NOTCH_W  notch_zone=$NOTCH_LEFT..$NOTCH_RIGHT"
+# Get current filler width and position in item order to compensate
+# without resetting (which causes flicker)
+FILLER_DATA=$(sketchybar --query "$FILLER" 2>/dev/null)
+CUR_FILLER_W=$(echo "$FILLER_DATA" | jq '.geometry.width // 0')
+[ "$CUR_FILLER_W" = "-1" ] && CUR_FILLER_W=0
+
+BAR_ITEMS=$(sketchybar --query bar 2>/dev/null | jq -r '.items[]')
+FILLER_IDX=-1
+idx=0
+while IFS= read -r item_name; do
+    if [ "$item_name" = "$FILLER" ]; then
+        FILLER_IDX=$idx
+        break
+    fi
+    idx=$((idx + 1))
+done <<< "$BAR_ITEMS"
+
+[ -n "$DEBUG" ] && echo "display_width=$DISPLAY_W  notch_zone=$NOTCH_LEFT..$NOTCH_RIGHT  cur_filler_w=$CUR_FILLER_W  filler_idx=$FILLER_IDX"
 
 MOVE_REF=""
 MOVE_DIR=""
 FILLER_W=0
 LAST_VISIBLE=""
+ITEM_IDX=0
 for sid in 1 2 3 4 5 6 7 8 9 10; do
     ITEM="space.${sid}${SUFFIX}"
     DATA=$(sketchybar --query "$ITEM" 2>/dev/null) || continue
@@ -46,25 +59,33 @@ for sid in 1 2 3 4 5 6 7 8 9 10; do
     SIZE_W=$(echo "$DATA" | jq --arg k "$RECT_KEY" '.bounding_rects[$k].size[0] // empty')
     [ -n "$ORIGIN_X" ] && [ -n "$SIZE_W" ] || continue
 
-    RIGHT_EDGE=$(echo "$ORIGIN_X + $SIZE_W" | bc)
+    # Compensate: items after the filler are shifted right by the current filler width
+    NATURAL_X="$ORIGIN_X"
+    NATURAL_RIGHT=$(echo "$ORIGIN_X + $SIZE_W" | bc)
+    if (( FILLER_IDX >= 0 && ITEM_IDX >= FILLER_IDX )) && (( CUR_FILLER_W > 0 )); then
+        NATURAL_X=$(echo "$ORIGIN_X - $CUR_FILLER_W" | bc)
+        NATURAL_RIGHT=$(echo "$NATURAL_X + $SIZE_W" | bc)
+    fi
+    ITEM_IDX=$((ITEM_IDX + 1))
+
     LABEL=$(echo "$DATA" | jq -r '.label.value')
 
-    if (( $(echo "$RIGHT_EDGE > $NOTCH_LEFT" | bc -l) )); then
-        if (( $(echo "$ORIGIN_X >= $NOTCH_LEFT" | bc -l) )); then
-            FILLER_W=$(echo "$NOTCH_RIGHT - $ORIGIN_X" | bc | awk '{printf "%d", $1+0.5}')
+    if (( $(echo "$NATURAL_RIGHT > $NOTCH_LEFT" | bc -l) )); then
+        if (( $(echo "$NATURAL_X >= $NOTCH_LEFT" | bc -l) )); then
+            FILLER_W=$(echo "$NOTCH_RIGHT - $NATURAL_X" | bc | awk '{printf "%d", $1+0.5}')
             MOVE_REF="$ITEM"
             MOVE_DIR="before"
-            [ -n "$DEBUG" ] && echo "  space.$sid: x=$ORIGIN_X w=$SIZE_W right=$RIGHT_EDGE  ** STARTS IN NOTCH **  filler_w=$FILLER_W  label=\"$LABEL\""
+            [ -n "$DEBUG" ] && echo "  space.$sid: natural_x=$NATURAL_X w=$SIZE_W natural_right=$NATURAL_RIGHT  ** STARTS IN NOTCH **  filler_w=$FILLER_W  label=\"$LABEL\""
         else
-            FILLER_W=$(echo "$NOTCH_RIGHT - $RIGHT_EDGE" | bc | awk '{printf "%d", $1+0.5}')
+            FILLER_W=$(echo "$NOTCH_RIGHT - $NATURAL_RIGHT" | bc | awk '{printf "%d", $1+0.5}')
             if (( FILLER_W < 0 )); then FILLER_W=0; fi
             MOVE_REF="$ITEM"
             MOVE_DIR="after"
-            [ -n "$DEBUG" ] && echo "  space.$sid: x=$ORIGIN_X w=$SIZE_W right=$RIGHT_EDGE  ** BLEEDS INTO NOTCH **  filler_w=$FILLER_W  label=\"$LABEL\""
+            [ -n "$DEBUG" ] && echo "  space.$sid: natural_x=$NATURAL_X w=$SIZE_W natural_right=$NATURAL_RIGHT  ** BLEEDS INTO NOTCH **  filler_w=$FILLER_W  label=\"$LABEL\""
         fi
         break
     else
-        [ -n "$DEBUG" ] && echo "  space.$sid: x=$ORIGIN_X w=$SIZE_W right=$RIGHT_EDGE <= $NOTCH_LEFT  ok  label=\"$LABEL\""
+        [ -n "$DEBUG" ] && echo "  space.$sid: natural_x=$NATURAL_X w=$SIZE_W natural_right=$NATURAL_RIGHT <= $NOTCH_LEFT  ok  label=\"$LABEL\""
         LAST_VISIBLE="$ITEM"
     fi
 done
