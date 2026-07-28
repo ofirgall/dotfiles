@@ -86,17 +86,19 @@ sketchybar --add item volume right \
 # CPU — green
 sketchybar --add item cpu right \
            --set cpu update_freq=10 \
-                 icon="󰻠" \
+                 icon="󰍛" \
                  icon.color=0xffa6e3a1 \
                  label.color=0xffa6e3a1 \
+                 icon.font="$FONT_FACE:$ICON_FONT_STYLE:18" \
                  script="$PLUGIN_DIR/cpu.sh"
 
 # RAM — sky
 sketchybar --add item ram right \
            --set ram update_freq=10 \
-                 icon="󰍛" \
+                 icon="󰾆" \
                  icon.color=0xff89dceb \
                  label.color=0xff89dceb \
+                 icon.font="$FONT_FACE:$ICON_FONT_STYLE:18" \
                  script="$PLUGIN_DIR/ram.sh"
 
 # Media — lavender
