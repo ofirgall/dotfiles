@@ -6,7 +6,7 @@ win + j                 : komorebic focus down
 win + k                 : komorebic focus up
 win + l                 : komorebic focus right
 
-# Move/swap windows (Win+Shift+hjkl)
+# Swap windows (Win+Shift+hjkl)
 win + shift + h         : komorebic move left
 win + shift + j         : komorebic move down
 win + shift + k         : komorebic move up
@@ -71,9 +71,11 @@ win + shift + f         : komorebic toggle-float
 # Layout toggle (Win+/)
 win + oem_2             : komorebic cycle-layout next
 
-# Resize (Win+Ctrl+h/l)
+# Resize (Win+Ctrl+hjkl)
 win + ctrl + h          : komorebic resize-axis horizontal decrease
 win + ctrl + l          : komorebic resize-axis horizontal increase
+win + ctrl + j          : komorebic resize-axis vertical increase
+win + ctrl + k          : komorebic resize-axis vertical decrease
 
 # Move window to other monitor and follow (Win+o)
 win + o                 : komorebic cycle-move-to-monitor next && komorebic cycle-monitor next
