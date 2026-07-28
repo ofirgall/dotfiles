@@ -10,6 +10,8 @@ alias btmf='btm -C "$HOME/dotfiles/dotfiles/bottom/bottom-full.toml"'
 alias open-codex-plan='codex-latest-plan.sh | mdp --full'
 alias del='ez session delete'
 alias new='ez session new'
+alias note='ez session note open'
+alias Note='ez session note cd'
 alias t='select_tmux_session.sh'
 
 [[ "$(uname)" != "Darwin" ]] && alias open='xdg-open'

@@ -267,6 +267,9 @@ bind W command-prompt -p "window color (hex/name, empty=clear):" {
     "setw @window_color '%1' ; run-shell -b $refresh_dim_colors"
 }
 
+# Session notes popup
+bind -T prefix n display-popup -E -w 65% -h 65% "ez session note open"
+
 # -------------------------
 #	    PLUGINS BINDS
 # -------------------------
