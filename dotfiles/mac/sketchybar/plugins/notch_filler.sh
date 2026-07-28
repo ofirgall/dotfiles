@@ -92,8 +92,10 @@ done
 
 if [ -n "$MOVE_REF" ]; then
     [ -n "$DEBUG" ] && echo "=> move $FILLER $MOVE_DIR $MOVE_REF, width=$FILLER_W"
+    local debug_bg=()
+    [ -n "$DEBUG" ] && debug_bg=(background.drawing=on background.color=0xffffffff background.height=33)
     sketchybar --move "$FILLER" "$MOVE_DIR" "$MOVE_REF" \
-               --set "$FILLER" width="$FILLER_W"
+               --set "$FILLER" width="$FILLER_W" "${debug_bg[@]}"
 elif [ -n "$LAST_VISIBLE" ]; then
     [ -n "$DEBUG" ] && echo "=> no overlap, move after $LAST_VISIBLE, width=0"
     sketchybar --move "$FILLER" after "$LAST_VISIBLE" \

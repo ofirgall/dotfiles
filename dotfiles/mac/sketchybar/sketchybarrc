@@ -89,9 +89,7 @@ add_workspace_items() {
                         drawing=on \
                         icon.drawing=off \
                         label.drawing=off \
-                        background.drawing=on \
-                        background.color=0xffffffff \
-                        background.height=33 \
+                        background.drawing=off \
                         width=0 \
                         padding_left=0 \
                         padding_right=0 \
