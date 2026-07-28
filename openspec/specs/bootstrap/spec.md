@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Install entrypoints
-The system SHALL provide two install entrypoints: `./install` for Linux (Ubuntu) and `./install-macos` for macOS. Each entrypoint SHALL invoke Dotbot with the appropriate config files.
+The system SHALL provide two install entrypoints: `./install` for Linux (Ubuntu) and `./install-macos` for macOS. Each entrypoint SHALL invoke Dotbot with the appropriate config files. The README SHALL document these entrypoints with exact commands for each platform.
 
 #### Scenario: Linux install
 - **WHEN** `./install` is run
@@ -10,6 +10,10 @@ The system SHALL provide two install entrypoints: `./install` for Linux (Ubuntu)
 #### Scenario: macOS install
 - **WHEN** `./install-macos` is run
 - **THEN** it SHALL run `macos.conf.yaml` which includes both shared and macOS-specific links and install scripts
+
+#### Scenario: README documents install
+- **WHEN** a user reads the README install section
+- **THEN** the documented commands SHALL match the actual entrypoint scripts and their behavior
 
 ### Requirement: Dotbot config layering
 The system SHALL use Dotbot as the orchestration tool with YAML config files defining symlinks, directory creation, and shell commands. Configs SHALL be layered: `common.conf.yaml` for cross-platform items, `install.conf.yaml` for Linux-specific items, and `macos.conf.yaml` for macOS (which duplicates common links — known duplication, to be resolved when Dotbot is replaced).
