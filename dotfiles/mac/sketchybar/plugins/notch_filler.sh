@@ -54,7 +54,8 @@ for sid in 1 2 3 4 5 6 7 8 9 10; do
     DRAWING=$(echo "$DATA" | jq -r '.geometry.drawing')
     [ "$DRAWING" = "on" ] || continue
 
-    RECT_KEY="display-1"
+    RECT_KEY=$(echo "$DATA" | jq -r '.bounding_rects | to_entries[] | select(.value.origin[0] > -9000) | .key' | head -1)
+    [ -n "$RECT_KEY" ] || continue
     ORIGIN_X=$(echo "$DATA" | jq --arg k "$RECT_KEY" '.bounding_rects[$k].origin[0] // empty')
     SIZE_W=$(echo "$DATA" | jq --arg k "$RECT_KEY" '.bounding_rects[$k].size[0] // empty')
     [ -n "$ORIGIN_X" ] && [ -n "$SIZE_W" ] || continue
