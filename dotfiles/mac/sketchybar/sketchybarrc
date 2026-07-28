@@ -2,6 +2,16 @@
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
+FONT_FACE="CaskaydiaCove NFM"
+
+ICON_FONT_STYLE="Bold"
+ICON_FONT_SIZE="14.0"
+
+LABEL_FONT_STYLE="Regular"
+LABEL_FONT_SIZE="12.0"
+
+LABEL_SM_FONT_STYLE="Regular"
+LABEL_SM_FONT_SIZE="13.0"
 
 sketchybar --bar \
     height=33 \
@@ -14,8 +24,8 @@ sketchybar --bar \
     notch_width=200
 
 sketchybar --default \
-    icon.font="CaskaydiaCove NFM:Bold:14.0" \
-    label.font="CaskaydiaCove NFM:Regular:12.0" \
+    icon.font="$FONT_FACE:$ICON_FONT_STYLE:$ICON_FONT_SIZE" \
+    label.font="$FONT_FACE:$LABEL_FONT_STYLE:$LABEL_FONT_SIZE" \
     icon.color=0xffcad3f5 \
     label.color=0xffcad3f5 \
     padding_left=5 \
@@ -30,7 +40,7 @@ for sid in 1 2 3 4 5 6 7 8 9 10; do
                     icon="$sid" \
                     icon.padding_left=4 \
                     icon.padding_right=2 \
-                    label.font="CaskaydiaCove NFM:Regular:13.0" \
+                    label.font="$FONT_FACE:$LABEL_SM_FONT_STYLE:$LABEL_SM_FONT_SIZE" \
                     label.color=0xffcad3f5 \
                     label.drawing=off \
                     label.padding_right=4 \
