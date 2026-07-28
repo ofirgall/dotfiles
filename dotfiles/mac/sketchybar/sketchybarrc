@@ -5,14 +5,30 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 FONT_FACE="CaskaydiaCove NFM"
 
 ICON_FONT_STYLE="Bold"
-ICON_FONT_SIZE="14.0"
-
 LABEL_FONT_STYLE="Regular"
-LABEL_FONT_SIZE="12.0"
-
 LABEL_SM_FONT_STYLE="Regular"
-LABEL_SM_FONT_SIZE="13.0"
 
+# Font sizes for external monitors (current defaults)
+ICON_FONT_SIZE="14.0"
+LABEL_FONT_SIZE="12.0"
+LABEL_SM_FONT_SIZE="13.0"
+ICON_LG_FONT_SIZE="18"
+
+# Font sizes for built-in display (smaller)
+ICON_FONT_SIZE_BUILTIN="12.0"
+LABEL_FONT_SIZE_BUILTIN="10.0"
+LABEL_SM_FONT_SIZE_BUILTIN="11.0"
+ICON_LG_FONT_SIZE_BUILTIN="15"
+
+# --- Display detection (read from cache) ---
+DISPLAY_CACHE="/tmp/sketchybar-display-info"
+if [ ! -f "$DISPLAY_CACHE" ]; then
+    "$PLUGIN_DIR/detect_displays.sh"
+fi
+BUILTIN_DISPLAY=$(sed -n '1p' "$DISPLAY_CACHE")
+EXTERNAL_DISPLAYS=$(sed -n '2p' "$DISPLAY_CACHE")
+
+# --- Bar defaults ---
 sketchybar --bar \
     height=33 \
     blur_radius=30 \
@@ -31,109 +47,185 @@ sketchybar --default \
     padding_left=5 \
     padding_right=5
 
-# Aerospace workspaces
-for sid in 1 2 3 4 5 6 7 8 9 10; do
-    sketchybar --add event aerospace_workspace_change_"$sid" \
-               --add item space."$sid" left \
-               --subscribe space."$sid" aerospace_workspace_change_"$sid" forced \
-               --set space."$sid" \
-                    icon="$sid" \
-                    icon.padding_left=4 \
-                    icon.padding_right=2 \
-                    label.font="$FONT_FACE:$LABEL_SM_FONT_STYLE:$LABEL_SM_FONT_SIZE" \
-                    label.color=0xffcad3f5 \
-                    label.drawing=off \
-                    label.padding_right=4 \
-                    background.color=0xffcba6f7 \
-                    background.corner_radius=8 \
-                    background.height=22 \
-                    background.drawing=off \
-                    padding_left=3 \
-                    padding_right=3 \
-                    click_script="~/dotfiles/dotfiles/mac/aerospace/switch-group.sh $sid" \
-                    script="$PLUGIN_DIR/aerospace.sh $sid"
-done
+# --- Helper: add workspace items for a display ---
+add_workspace_items() {
+    local display="$1" suffix="$2" icon_size="$3" label_sm_size="$4"
+    local icon_font="$FONT_FACE:$ICON_FONT_STYLE:$icon_size"
+    local label_font="$FONT_FACE:$LABEL_SM_FONT_STYLE:$label_sm_size"
+    local display_prop=""
+    [[ "$display" != "0" ]] && display_prop="display=$display"
 
-# Clock — yellow
-sketchybar --add item clock right \
-           --set clock update_freq=10 \
-                 icon.color=0xfff9e2af \
-                 label.color=0xfff9e2af \
-                 script="$PLUGIN_DIR/clock.sh"
+    for sid in 1 2 3 4 5 6 7 8 9 10; do
+        sketchybar --add event aerospace_workspace_change_"$sid" \
+                   --add item "space.${sid}${suffix}" left \
+                   --subscribe "space.${sid}${suffix}" aerospace_workspace_change_"$sid" forced \
+                   --set "space.${sid}${suffix}" \
+                        $display_prop \
+                        icon="$sid" \
+                        icon.font="$icon_font" \
+                        icon.padding_left=4 \
+                        icon.padding_right=2 \
+                        label.font="$label_font" \
+                        label.color=0xffcad3f5 \
+                        label.drawing=off \
+                        label.padding_right=4 \
+                        background.color=0xffcba6f7 \
+                        background.corner_radius=8 \
+                        background.height=22 \
+                        background.drawing=off \
+                        padding_left=3 \
+                        padding_right=3 \
+                        click_script="~/dotfiles/dotfiles/mac/aerospace/switch-group.sh $sid" \
+                        script="$PLUGIN_DIR/aerospace.sh $sid"
+    done
+}
 
-# Battery — green
-sketchybar --add item battery right \
-           --set battery update_freq=120 \
-                 icon.color=0xffa6e3a1 \
-                 label.color=0xffa6e3a1 \
-                 script="$PLUGIN_DIR/battery.sh"
+# --- Helper: add right-side items for a display ---
+add_right_items() {
+    local display="$1" suffix="$2" icon_size="$3" label_size="$4" icon_lg_size="$5"
+    local icon_font="$FONT_FACE:$ICON_FONT_STYLE:$icon_size"
+    local label_font="$FONT_FACE:$LABEL_FONT_STYLE:$label_size"
+    local icon_lg_font="$FONT_FACE:$ICON_FONT_STYLE:$icon_lg_size"
+    local display_prop=""
+    [[ "$display" != "0" ]] && display_prop="display=$display"
 
-# Keyboard language — purple
-sketchybar --add item keyboard right \
-           --set keyboard update_freq=5 \
-                 icon="󰌌" \
-                 icon.color=0xffb459ff \
-                 label.color=0xffb459ff \
-                 script="$PLUGIN_DIR/keyboard.sh" \
-           --subscribe keyboard front_app_switched
+    # Clock — yellow
+    sketchybar --add item "clock${suffix}" right \
+               --set "clock${suffix}" \
+                     $display_prop \
+                     update_freq=10 \
+                     icon.font="$icon_font" \
+                     label.font="$label_font" \
+                     icon.color=0xfff9e2af \
+                     label.color=0xfff9e2af \
+                     script="$PLUGIN_DIR/clock.sh"
 
-# Volume — sapphire (dynamic color in script for muted)
-sketchybar --add item volume right \
-           --set volume \
-                 script="$PLUGIN_DIR/volume.sh" \
-           --subscribe volume volume_change
+    # Battery — green
+    sketchybar --add item "battery${suffix}" right \
+               --set "battery${suffix}" \
+                     $display_prop \
+                     update_freq=120 \
+                     icon.font="$icon_font" \
+                     label.font="$label_font" \
+                     icon.color=0xffa6e3a1 \
+                     label.color=0xffa6e3a1 \
+                     script="$PLUGIN_DIR/battery.sh"
 
-# CPU — green
-sketchybar --add item cpu right \
-           --set cpu update_freq=10 \
-                 icon="󰍛" \
-                 icon.color=0xffa6e3a1 \
-                 label.color=0xffa6e3a1 \
-                 icon.font="$FONT_FACE:$ICON_FONT_STYLE:18" \
-                 script="$PLUGIN_DIR/cpu.sh"
+    # Keyboard language — purple
+    sketchybar --add item "keyboard${suffix}" right \
+               --set "keyboard${suffix}" \
+                     $display_prop \
+                     update_freq=5 \
+                     icon="󰌌" \
+                     icon.font="$icon_font" \
+                     label.font="$label_font" \
+                     icon.color=0xffb459ff \
+                     label.color=0xffb459ff \
+                     script="$PLUGIN_DIR/keyboard.sh" \
+               --subscribe "keyboard${suffix}" front_app_switched
 
-# RAM — sky
-sketchybar --add item ram right \
-           --set ram update_freq=10 \
-                 icon="󰾆" \
-                 icon.color=0xff89dceb \
-                 label.color=0xff89dceb \
-                 icon.font="$FONT_FACE:$ICON_FONT_STYLE:18" \
-                 script="$PLUGIN_DIR/ram.sh"
+    # Volume — sapphire (dynamic color in script for muted)
+    sketchybar --add item "volume${suffix}" right \
+               --set "volume${suffix}" \
+                     $display_prop \
+                     icon.font="$icon_font" \
+                     label.font="$label_font" \
+                     script="$PLUGIN_DIR/volume.sh" \
+               --subscribe "volume${suffix}" volume_change
 
-# Media — lavender
-sketchybar --add item media right \
-           --set media update_freq=5 \
-                 icon.color=0xffb4befe \
-                 label.color=0xffb4befe \
-                 label.max_chars=40 \
-                 script="$PLUGIN_DIR/media.sh"
+    # CPU — green
+    sketchybar --add item "cpu${suffix}" right \
+               --set "cpu${suffix}" \
+                     $display_prop \
+                     update_freq=10 \
+                     icon="󰍛" \
+                     icon.color=0xffa6e3a1 \
+                     label.color=0xffa6e3a1 \
+                     icon.font="$icon_lg_font" \
+                     label.font="$label_font" \
+                     script="$PLUGIN_DIR/cpu.sh"
 
-# Window count for focused workspace (leftmost on right side)
+    # RAM — sky
+    sketchybar --add item "ram${suffix}" right \
+               --set "ram${suffix}" \
+                     $display_prop \
+                     update_freq=10 \
+                     icon="󰾆" \
+                     icon.color=0xff89dceb \
+                     label.color=0xff89dceb \
+                     icon.font="$icon_lg_font" \
+                     label.font="$label_font" \
+                     script="$PLUGIN_DIR/ram.sh"
+
+    # Media — lavender
+    sketchybar --add item "media${suffix}" right \
+               --set "media${suffix}" \
+                     $display_prop \
+                     update_freq=5 \
+                     icon.font="$icon_font" \
+                     label.font="$label_font" \
+                     icon.color=0xffb4befe \
+                     label.color=0xffb4befe \
+                     label.max_chars=40 \
+                     script="$PLUGIN_DIR/media.sh"
+
+    # Window count for focused workspace
+    sketchybar --add item "window_sep${suffix}" right \
+               --set "window_sep${suffix}" \
+                     $display_prop \
+                     icon="│" \
+                     icon.font="$icon_font" \
+                     icon.padding_left=1 \
+                     icon.padding_right=1 \
+                     label.drawing=off \
+               --add item "window_name${suffix}" right \
+               --subscribe "window_name${suffix}" $WINDOW_COUNT_EVENTS front_app_switched \
+               --set "window_name${suffix}" \
+                     $display_prop \
+                     icon.drawing=off \
+                     label.font="$label_font" \
+                     label.max_chars=50 \
+                     script="$PLUGIN_DIR/window_count.sh" \
+               --add item "window_count${suffix}" right \
+               --subscribe "window_count${suffix}" $WINDOW_COUNT_EVENTS \
+               --set "window_count${suffix}" \
+                     $display_prop \
+                     icon="󰖯" \
+                     icon.font="$icon_font" \
+                     label.font="$label_font" \
+                     icon.padding_left=1 \
+                     label.padding_right=1 \
+                     script="$PLUGIN_DIR/window_count.sh"
+}
+
+# --- Build window count events list (needed by add_right_items) ---
 sketchybar --add event window_count_change
 WINDOW_COUNT_EVENTS="forced window_count_change"
 for sid in 1 2 3 4 5 6 7 8 9 10; do
     WINDOW_COUNT_EVENTS="$WINDOW_COUNT_EVENTS aerospace_workspace_change_$sid"
 done
-sketchybar --add item window_sep right \
-           --set window_sep \
-                icon="│" \
-                icon.padding_left=1 \
-                icon.padding_right=1 \
-                label.drawing=off \
-           --add item window_name right \
-           --subscribe window_name $WINDOW_COUNT_EVENTS front_app_switched \
-           --set window_name \
-                icon.drawing=off \
-                label.max_chars=50 \
-                script="$PLUGIN_DIR/window_count.sh" \
-           --add item window_count right \
-           --subscribe window_count $WINDOW_COUNT_EVENTS \
-           --set window_count \
-                icon="󰖯" \
-                icon.padding_left=1 \
-                label.padding_right=1 \
-                script="$PLUGIN_DIR/window_count.sh"
+
+# --- Create items per display ---
+if [[ -n "$BUILTIN_DISPLAY" && -n "$EXTERNAL_DISPLAYS" ]]; then
+    add_workspace_items "$BUILTIN_DISPLAY" ".builtin" "$ICON_FONT_SIZE_BUILTIN" "$LABEL_SM_FONT_SIZE_BUILTIN"
+    add_workspace_items "$EXTERNAL_DISPLAYS" ".ext" "$ICON_FONT_SIZE" "$LABEL_SM_FONT_SIZE"
+    add_right_items "$BUILTIN_DISPLAY" ".builtin" "$ICON_FONT_SIZE_BUILTIN" "$LABEL_FONT_SIZE_BUILTIN" "$ICON_LG_FONT_SIZE_BUILTIN"
+    add_right_items "$EXTERNAL_DISPLAYS" ".ext" "$ICON_FONT_SIZE" "$LABEL_FONT_SIZE" "$ICON_LG_FONT_SIZE"
+else
+    if [[ -n "$BUILTIN_DISPLAY" ]]; then
+        add_workspace_items "0" "" "$ICON_FONT_SIZE_BUILTIN" "$LABEL_SM_FONT_SIZE_BUILTIN"
+        add_right_items "0" "" "$ICON_FONT_SIZE_BUILTIN" "$LABEL_FONT_SIZE_BUILTIN" "$ICON_LG_FONT_SIZE_BUILTIN"
+    else
+        add_workspace_items "0" "" "$ICON_FONT_SIZE" "$LABEL_SM_FONT_SIZE"
+        add_right_items "0" "" "$ICON_FONT_SIZE" "$LABEL_FONT_SIZE" "$ICON_LG_FONT_SIZE"
+    fi
+fi
+
+# --- Display change handler: re-detect and reload only if displays changed ---
+sketchybar --add item display_watcher left \
+           --set display_watcher drawing=off \
+                 script="$PLUGIN_DIR/detect_displays.sh && sketchybar --reload" \
+           --subscribe display_watcher display_change
 
 sketchybar --update
 
