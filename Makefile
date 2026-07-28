@@ -17,6 +17,7 @@ help:
 init:
 	git submodule update --init --recursive
 	git config core.hooksPath .githooks
+	git config push.recurseSubmodules on-demand
 
 status:
 	@git submodule status
