@@ -48,7 +48,7 @@ export PATH=$HOME/.local/share/nvim/mason/bin:$PATH
 
 # Editor settings
 export EDITOR='vim'
-if type nvim &> /dev/null; then
+if type kv &> /dev/null; then
 	alias vi='vim'
 	export EDITOR='kv'
 
