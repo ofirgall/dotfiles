@@ -6,12 +6,21 @@ DEBUG="${DEBUG:-}"
 
 SUFFIX="$1"
 FILLER="notch_filler${SUFFIX}"
+LOCKFILE="/tmp/notch_filler${SUFFIX}.lock"
 
-sleep 0.2
+# Debounce: kill any previous pending run and wait for labels to settle
+if [ -f "$LOCKFILE" ]; then
+    prev_pid=$(cat "$LOCKFILE" 2>/dev/null)
+    [ -n "$prev_pid" ] && kill "$prev_pid" 2>/dev/null
+fi
+echo $$ > "$LOCKFILE"
+sleep 0.3
+# Exit if a newer instance replaced us
+[ "$(cat "$LOCKFILE" 2>/dev/null)" != "$$" ] && exit 0
 
 # Reset filler width before measuring so it doesn't affect bounding rects
 sketchybar --set "$FILLER" width=0
-sleep 0.05
+sleep 0.1
 
 DISPLAY_INFO=$(sketchybar --query displays 2>/dev/null)
 DISPLAY_W=$(echo "$DISPLAY_INFO" | jq '.[0].frame.w')
@@ -22,7 +31,8 @@ NOTCH_RIGHT=$(echo "$NOTCH_LEFT + $NOTCH_W" | bc)
 
 [ -n "$DEBUG" ] && echo "display_width=$DISPLAY_W  notch_width=$NOTCH_W  notch_zone=$NOTCH_LEFT..$NOTCH_RIGHT"
 
-MOVE_AFTER=""
+MOVE_REF=""
+MOVE_DIR=""
 FILLER_W=0
 LAST_VISIBLE=""
 for sid in 1 2 3 4 5 6 7 8 9 10; do
@@ -40,10 +50,18 @@ for sid in 1 2 3 4 5 6 7 8 9 10; do
     LABEL=$(echo "$DATA" | jq -r '.label.value')
 
     if (( $(echo "$RIGHT_EDGE > $NOTCH_LEFT" | bc -l) )); then
-        FILLER_W=$(echo "$NOTCH_RIGHT - $RIGHT_EDGE" | bc | awk '{printf "%d", $1}')
-        if (( FILLER_W < 0 )); then FILLER_W=0; fi
-        MOVE_AFTER="$ITEM"
-        [ -n "$DEBUG" ] && echo "  space.$sid: x=$ORIGIN_X w=$SIZE_W right=$RIGHT_EDGE > $NOTCH_LEFT  ** OVERLAP **  filler_w=$FILLER_W  label=\"$LABEL\""
+        if (( $(echo "$ORIGIN_X >= $NOTCH_LEFT" | bc -l) )); then
+            FILLER_W=$(echo "$NOTCH_RIGHT - $ORIGIN_X" | bc | awk '{printf "%d", $1+0.5}')
+            MOVE_REF="$ITEM"
+            MOVE_DIR="before"
+            [ -n "$DEBUG" ] && echo "  space.$sid: x=$ORIGIN_X w=$SIZE_W right=$RIGHT_EDGE  ** STARTS IN NOTCH **  filler_w=$FILLER_W  label=\"$LABEL\""
+        else
+            FILLER_W=$(echo "$NOTCH_RIGHT - $RIGHT_EDGE" | bc | awk '{printf "%d", $1+0.5}')
+            if (( FILLER_W < 0 )); then FILLER_W=0; fi
+            MOVE_REF="$ITEM"
+            MOVE_DIR="after"
+            [ -n "$DEBUG" ] && echo "  space.$sid: x=$ORIGIN_X w=$SIZE_W right=$RIGHT_EDGE  ** BLEEDS INTO NOTCH **  filler_w=$FILLER_W  label=\"$LABEL\""
+        fi
         break
     else
         [ -n "$DEBUG" ] && echo "  space.$sid: x=$ORIGIN_X w=$SIZE_W right=$RIGHT_EDGE <= $NOTCH_LEFT  ok  label=\"$LABEL\""
@@ -51,9 +69,9 @@ for sid in 1 2 3 4 5 6 7 8 9 10; do
     fi
 done
 
-if [ -n "$MOVE_AFTER" ]; then
-    [ -n "$DEBUG" ] && echo "=> move $FILLER after $MOVE_AFTER, width=$FILLER_W"
-    sketchybar --move "$FILLER" after "$MOVE_AFTER" \
+if [ -n "$MOVE_REF" ]; then
+    [ -n "$DEBUG" ] && echo "=> move $FILLER $MOVE_DIR $MOVE_REF, width=$FILLER_W"
+    sketchybar --move "$FILLER" "$MOVE_DIR" "$MOVE_REF" \
                --set "$FILLER" width="$FILLER_W"
 elif [ -n "$LAST_VISIBLE" ]; then
     [ -n "$DEBUG" ] && echo "=> no overlap, move after $LAST_VISIBLE, width=0"
