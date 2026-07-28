@@ -15,7 +15,6 @@
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_tuis.sh', Installing TUIs]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_wrappers.sh', Installing Wrappers]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_flow_launcher.sh', Installing Flow Launcher]
-    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_agents_status.sh', Installing agents-status]
 
 - defaults:
     link:
@@ -99,5 +98,6 @@
     - ~/workspace/work
 
 - shell:
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_agents_status.sh', Installing agents-status]
     - ['"C:/Program Files/Git/bin/bash.exe" -c "ln -sf config.windows dotfiles/ghostty/config.platform"', Setting Ghostty platform config]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_kvim.sh', Installing KoalaVim]

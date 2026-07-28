@@ -1,6 +1,5 @@
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [install_scripts/install_agents_status.sh, Installing agents-status]
 
 - defaults:
     link:
@@ -9,6 +8,8 @@
       create: true
 
 - link:
+    ~/agents-status:
+        path: agents-status
     ~/.zshrc:
         path: dotfiles/zsh-conf/entrypoint.zsh
     ~/.zshenv:
@@ -65,6 +66,7 @@
     - ~/workspace
 
 - shell:
+    - [install_scripts/install_agents_status.sh, Installing agents-status]
     - [install_scripts/install_zsh.sh, Installing ZSH]
     - [install_scripts/install_basic.sh, Running basic libs installation]
     - [install_scripts/install_tuis.sh, Installing TUIs]

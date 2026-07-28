@@ -17,3 +17,7 @@
 	path = hypr-dots
 	url = git@github.com:ofirgall/hypr-dots.git
 	ignore = dirty
+[submodule "agents-status"]
+	path = agents-status
+	url = git@github.com:KoalaVim/agents-status.git
+	ignore = dirty
