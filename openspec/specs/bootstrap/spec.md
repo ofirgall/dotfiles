@@ -27,7 +27,7 @@ The system SHALL use git submodules for external or separately-versioned compone
 
 #### Scenario: Submodule inventory
 - **WHEN** checking `.gitmodules`
-- **THEN** the following submodules SHALL exist: `dotbot` (installer engine), `editors/KoalaConfig` (nvim config), `dotfiles/zsh-conf` (zsh config), `editors/vscode-settings`, `hypr-dots` (Hyprland config)
+- **THEN** the following submodules SHALL exist: `dotbot` (installer engine), `editors/KoalaConfig` (nvim config), `dotfiles/zsh-conf` (zsh config), `editors/vscode-settings`, `hypr-dots` (Hyprland config), `agents-status` (AI agent status tool)
 
 ### Requirement: Environment indicators
 The system SHALL support environment indicator files that modify install behavior. `~/.remote_indicator` SHALL cause `./install` to skip the local (Linux-specific) config. `~/.no_sudo_indicator` SHALL cause install scripts to skip commands requiring sudo.

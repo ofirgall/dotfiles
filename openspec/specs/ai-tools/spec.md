@@ -15,7 +15,7 @@ The system SHALL configure cursor-cli-wrapper via `dotfiles/cursor-cli-wrapper.t
 - **THEN** `~/.config/cursor-cli-wrapper/config.toml` SHALL be symlinked
 
 ### Requirement: agents-status
-agents-status (a KoalaVim org tool) SHALL be installed from its git repo (`git@github.com:KoalaVim/agents-status.git`) to `~/agents-status`. The core SHALL be installed via `uv tool install` (or fallback installer). Hooks SHALL be installed for relevant editors. On macOS, `alerter` SHALL additionally be installed via Homebrew for native notifications.
+agents-status (a KoalaVim org tool) SHALL be included as a git submodule at `agents-status/` and symlinked to `~/agents-status`. The core SHALL be installed via `uv tool install` (or fallback installer). Hooks SHALL be installed for relevant editors. On macOS, `alerter` SHALL additionally be installed via Homebrew for native notifications. Install scripts SHALL run after the link section so the symlink exists when they reference `~/agents-status`.
 
 #### Scenario: agents-status on macOS
 - **WHEN** the macOS install runs
