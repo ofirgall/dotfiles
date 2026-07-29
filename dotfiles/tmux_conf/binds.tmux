@@ -270,6 +270,8 @@ bind W command-prompt -p "window color (hex/name, empty=clear):" {
 # Session notes popup
 bind -T prefix n display-popup -E -w 65% -h 65% "ez session note open"
 
+bind -n M-n if-shell "$is_nvim" "send-keys M-n" 'display-popup -E -w 65% -h 65% "ez session note open"'
+
 # -------------------------
 #	    PLUGINS BINDS
 # -------------------------
