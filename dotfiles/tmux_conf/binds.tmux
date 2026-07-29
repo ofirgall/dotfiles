@@ -8,6 +8,7 @@ is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)
 is_less="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '^:$'"
 is_nested_tmux="tmux capture-pane -p -t '#{pane_id}' | tail -n 1 | grep '' | grep ''" # Matching my status line
 is_hunk="ps -o state= -o comm= -t '#{pane_tty}' | grep -qE 'S\\S*\\s+.*hunk'"
+is_ez="ps -o state= -o comm= -t '#{pane_tty}' | grep -qE 'S\\S*\\s+.*ez'"
 helpers="$HOME/.tmux_conf/helpers.sh"
 
 ##### MISC #####
@@ -270,7 +271,7 @@ bind W command-prompt -p "window color (hex/name, empty=clear):" {
 # Session notes popup
 bind -T prefix n display-popup -E -w 65% -h 65% "ez session note open"
 
-bind -n M-n if-shell "$is_nvim" "send-keys M-n" 'display-popup -E -w 65% -h 65% "ez session note open"'
+bind -n M-n if-shell "$is_nvim || $is_ez" "send-keys M-n" 'display-popup -E -w 65% -h 65% "ez session note open"'
 
 # -------------------------
 #	    PLUGINS BINDS
