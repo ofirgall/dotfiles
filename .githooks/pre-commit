@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Unstage submodules listed in wip-submodules
+if [ -f wip-submodules ]; then
+    while IFS= read -r mod || [ -n "$mod" ]; do
+        mod=$(echo "$mod" | sed 's/#.*//' | xargs)
+        [ -z "$mod" ] && continue
+        if git diff --cached --name-only | grep -q "^$mod"; then
+            echo "wip-submodules: unstaging $mod"
+            git reset HEAD -- "$mod"
+        fi
+    done < wip-submodules
+fi
+
+# Add submodules
+git add editors/KoalaConfig dotfiles/zsh-conf hypr-dots editors/vscode-settings

@@ -103,4 +103,7 @@
 }
 
 /* BEGIN agents-status */
+.komorebi-workspaces .ws-btn.button-1 { background-color: #fa7900; color: #11111b; }
+.komorebi-workspaces .ws-btn.button-1.active { background-color: #fa7900; color: #11111b; }
+.komorebi-workspaces .ws-btn.button-1.populated { background-color: #fa7900; color: #11111b; }
 /* END agents-status */

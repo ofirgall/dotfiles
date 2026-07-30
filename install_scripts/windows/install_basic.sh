@@ -17,6 +17,9 @@ winget.exe install --id Python.Python.3.13 --accept-package-agreements --accept-
 # CMake
 winget.exe install --id Kitware.CMake --accept-package-agreements --accept-source-agreements || true
 
+# Make (GNU)
+winget.exe install --id GnuWin32.Make --accept-package-agreements --accept-source-agreements || true
+
 # Starship prompt
 if ! command -v starship.exe &>/dev/null; then
     winget.exe install --id Starship.Starship --accept-package-agreements --accept-source-agreements || true

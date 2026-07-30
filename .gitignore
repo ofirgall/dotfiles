@@ -13,5 +13,6 @@ playgrounds/*
 !playgrounds/.templates*
 !playgrounds/generate.sh
 .claude/
+wip-submodules
 dotfiles/ghostty/shaders
 dotfiles/ghostty/config.platform
