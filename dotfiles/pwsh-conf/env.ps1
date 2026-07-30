@@ -1,6 +1,6 @@
 # Shared environment — mirrors zsh-conf/env.zsh
 
-$env:FZF_DEFAULT_OPTS = '--height=40% --reverse --with-shell "pwsh -NoProfile -NonInteractive -Command"'
+$env:FZF_DEFAULT_OPTS = '--height=40% --reverse'
 
 function Add-ToPath {
     param([string]$Dir)

@@ -92,8 +92,9 @@
   "syntaxHighlightingDisabled": false,
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
-  "theme": "dark",
   "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
   "editorMode": "vim",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "agentPushNotifEnabled": true
 }

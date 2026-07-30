@@ -15,6 +15,9 @@ foreach ($mod in $_requiredModules) {
 }
 
 if (Get-Module PSFzf) {
+    $psfzfModule = Get-Module PSFzf
+    & $psfzfModule { $script:PowershellCmd = 'pwsh' }
+
     Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
         -PSReadlineChordReverseHistory 'Ctrl+r' `
         -TabContinuousTrigger '\' `
