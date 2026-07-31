@@ -92,7 +92,7 @@
         path: dotfiles/windows/yasb/config.yaml
     ~/.config/yasb/styles.css:
         path: dotfiles/windows/yasb/styles.css
-    ~/.config/ez/config.toml:
+    ~/AppData/Roaming/ez/config.toml:
         path: dotfiles/ez-workspaces-windows/config.toml
 
 - create:
