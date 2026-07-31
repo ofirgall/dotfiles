@@ -52,6 +52,8 @@
         path: dotfiles/lumen
     ~/.claude/settings.json:
         path: dotfiles/claude/settings.json
+    ~/.claude/statusline-command.sh:
+        path: dotfiles/claude/statusline-command.sh
     ~/.cursor/statusline.sh:
         path: dotfiles/cursor/statusline.sh
     ~/.config/agents-status/config.toml:

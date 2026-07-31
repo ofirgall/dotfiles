@@ -48,6 +48,8 @@
         path: dotfiles/yazi
     ~/.claude/settings.json:
         path: dotfiles/claude/settings.json
+    ~/.claude/statusline-command.sh:
+        path: dotfiles/claude/statusline-command.sh
     ~/.cursor/statusline.sh:
         path: dotfiles/cursor/statusline.sh
     ~/.config/cursor-cli-wrapper/config.toml:
