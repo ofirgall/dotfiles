@@ -164,6 +164,7 @@ local keys = {
   { key = ';', mods = 'CTRL', action = act.SendString '\x1b;' },
   { key = ' ', mods = 'SHIFT', action = act.SendString '\x1b[27;2;32~' },
   { key = ' ', mods = 'CTRL|SHIFT', action = act.SendString '\x1b[27;6;32~' },
+  { key = 'F12', mods = 'ALT', action = act.SendString '\x1b\x1b' },
   { key = '1', mods = 'CTRL', action = act.SendString '\x1b[49;5u' },
   { key = '2', mods = 'CTRL', action = act.SendString '\x1b[50;5u' },
   { key = '3', mods = 'CTRL', action = act.SendString '\x1b[51;5u' },
