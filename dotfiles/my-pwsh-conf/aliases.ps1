@@ -108,22 +108,7 @@ function notes {
     Set-Location $dir
 }
 
-# ez-workspaces (no native powershell init, manual cd wrapper)
-function ez {
-    $tmp = Join-Path ([System.IO.Path]::GetTempPath()) "ez-cd-$(Get-Random)"
-    $postCmd = Join-Path ([System.IO.Path]::GetTempPath()) "ez-post-$(Get-Random)"
-    & (Get-Command ez -CommandType Application) @args --cd-file="$tmp" --post-cmd-file="$postCmd"
-    if ((Test-Path $postCmd) -and (Get-Item $postCmd).Length -gt 0) {
-        Remove-Item $tmp, $postCmd -Force -ErrorAction SilentlyContinue
-        ez @args
-        return
-    }
-    if ((Test-Path $tmp) -and (Get-Item $tmp).Length -gt 0) {
-        $dest = (Get-Content $tmp -Raw).Trim()
-        if ($dest) { Set-Location $dest }
-    }
-    Remove-Item $tmp, $postCmd -Force -ErrorAction SilentlyContinue
-}
+Invoke-Expression ((& ez init-shell pwsh) -join "`n")
 function del { ez session delete @args }
 function new { ez session new @args }
 function ezp { ez --workspace "$HOME\workspace\personal" @args }
