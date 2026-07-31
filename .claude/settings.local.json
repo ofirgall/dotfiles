@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"C:/Users/Ofir/dotfiles/dotfiles/claude/settings.json\" \"C:/Users/Ofir/.claude/settings.json\")",
+      "Read(//c/Users/Ofir/.claude/**)"
+    ]
+  }
+}
