@@ -79,6 +79,9 @@ function gd() {
 function gdm() {
 	kv --git-diff -- $(git merge-base HEAD origin/main)
 }
+function ldm() {
+	lazydiff diff $(git merge-base HEAD origin/main)
+}
 unalias ghs # Remove ofir zsh framework ghs
 alias ghs='gt'
 
@@ -194,3 +197,6 @@ drift-mcp-auth() {
   ln -sf "$src" "$dest"
   echo "Linked mcp-auth.json -> $dest"
 }
+
+alias mode-laptop="~/dotfiles/dotfiles/mac/sketchybar/plugins/mode-laptop.sh"
+alias mode-docked="~/dotfiles/dotfiles/mac/sketchybar/plugins/mode-docked.sh"
