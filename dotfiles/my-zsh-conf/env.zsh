@@ -96,7 +96,3 @@ source $HOME/secrets.zsh
 
 export PATH=~/agents-status/simple-wrappers:$PATH
 
-# Koala
-export NEOGIT=true
-export KOALA_CODE_DIFF=true
-
