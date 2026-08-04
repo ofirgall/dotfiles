@@ -6,3 +6,4 @@ keybind = f18=text:\x1b[32;5u
 keybind = f17=text:\x1b[27;6;32~
 
 custom-shader = shaders/cursor_warp.glsl
+macos-secure-input-indication = false
