@@ -21,6 +21,11 @@ Grant notification permission to alerter (first run triggers macOS permission pr
 alerter --title "Setup" --message "Click Allow" --sound default --timeout 10
 ```
 
+## Ghostty: Disable Secure Keyboard Entry
+Ghostty may hold the macOS Secure Input lock, which prevents AeroSpace from intercepting `alt`-only keybindings (e.g. `alt-v`). `cmd-alt-*` bindings are unaffected.
+- In Ghostty: Terminal menu > uncheck **Secure Keyboard Entry**
+- To verify: `ioreg -l -w 0 | grep kCGSSessionSecureInputPID` — if a PID appears, that process is holding the lock
+
 ## One-time System Setup
 ```bash
 install_scripts/mac/setup_once.sh
