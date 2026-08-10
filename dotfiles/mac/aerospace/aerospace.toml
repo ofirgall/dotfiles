@@ -222,6 +222,11 @@ check-further-callbacks = true
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.1password.1password'
+check-further-callbacks = true
+run = 'layout floating'
+
+[[on-window-detected]]
 if = 'test-not %{window-layout} = floating'
 check-further-callbacks = true
 run = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-window-to-cursor-monitor.sh'
