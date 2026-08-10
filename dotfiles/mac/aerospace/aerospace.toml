@@ -177,6 +177,7 @@ cmd-ctrl-l = 'resize width -50'
 # Screenshot: region to clipboard (Super+s), UI toolbar to clipboard (Super+Shift+s)
 cmd-s = 'exec-and-forget screencapture -ic'
 cmd-shift-s = 'exec-and-forget screencapture -iUc'
+cmd-ctrl-s = 'exec-and-forget /Applications/flameshot.app/Contents/MacOS/flameshot gui'
 
 # Raycast (Super+r), clipboard history (Alt+v), window picker (Super+t)
 cmd-r = 'exec-and-forget open -a Raycast'
