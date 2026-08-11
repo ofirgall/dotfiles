@@ -103,16 +103,16 @@ cmd-shift-9 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 9 --
 cmd-shift-0 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 10 --follow'
 
 # Move all windows to workspace and follow (Super+Shift+Ctrl+1-9)
-cmd-shift-ctrl-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 1'
-cmd-shift-ctrl-2 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 2'
-cmd-shift-ctrl-3 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 3'
-cmd-shift-ctrl-4 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 4'
-cmd-shift-ctrl-5 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 5'
-cmd-shift-ctrl-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 6'
-cmd-shift-ctrl-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 7'
-cmd-shift-ctrl-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 8'
-cmd-shift-ctrl-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 9'
-cmd-shift-ctrl-0 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 10'
+cmd-shift-ctrl-1 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-all-to-group 1'
+cmd-shift-ctrl-2 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-all-to-group 2'
+cmd-shift-ctrl-3 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-all-to-group 3'
+cmd-shift-ctrl-4 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-all-to-group 4'
+cmd-shift-ctrl-5 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-all-to-group 5'
+cmd-shift-ctrl-6 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-all-to-group 6'
+cmd-shift-ctrl-7 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-all-to-group 7'
+cmd-shift-ctrl-8 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-all-to-group 8'
+cmd-shift-ctrl-9 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-all-to-group 9'
+cmd-shift-ctrl-0 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-all-to-group 10'
 
 # Move window to workspace silently (Super+Ctrl+1-9)
 cmd-ctrl-1 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 1'
@@ -127,7 +127,7 @@ cmd-ctrl-9 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 9'
 cmd-ctrl-0 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 10'
 
 # Move ALL windows (from all workspaces) to workspace 10 (Super+F12)
-cmd-f12 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-windows-to-group.sh 10'
+cmd-f12 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-all-windows-to-group 10'
 
 # Open terminal (Super+Enter)
 cmd-enter = "exec-and-forget osascript -e 'tell application \"Ghostty\" to new window'"

@@ -17,19 +17,17 @@ Tracking migration of AeroSpace shell scripts to the Rust IPC binary.
 | ~~`switch-group.sh`~~ | Super+1-0 | 3 + 1 eval | Switch all monitors to workspace group N |
 | ~~`switch-group-relative.sh`~~ | Super+, / Super+. | 0-1 (delegates to switch-group) | Previous/next group |
 | ~~`switch-group-back.sh`~~ | Super+\` / F13 | 0 (delegates to switch-group) | Toggle back to last group |
+| ~~`move-all-to-group.sh`~~ | Super+Shift+Ctrl+1-0 | 2 + 1 eval | Move all windows from current group to group N |
+| ~~`move-all-windows-to-group.sh`~~ | Super+F12 | 2 + 1 eval | Move ALL windows to group 10 |
 
 ## Remaining
 
 | Script | Binding | Aerospace calls | What it does |
 |---|---|---|---|
-| `move-all-to-group.sh` | Super+Shift+Ctrl+1-0 | 2 + 1 eval | Move all windows from current group to group N |
-| `move-all-windows-to-group.sh` | Super+F12 | 2 + 1 eval | Move ALL windows to group 10 |
 | `tmux-viewer.sh` | Super+Shift+v | 1 | Open tmux viewer for focused session |
 | `sticky-move.sh` | *(on-workspace-change)* | 2 + 0-1 eval | Move sticky windows to new workspace |
 | `on-workspace-change.sh` | `exec-on-workspace-change` | 1 + 0-1 eval | Event handler: revert, sticky, cache, sketchybar |
 | `move-window-to-cursor-monitor.sh` | `on-window-detected` | 2 | Move new window to cursor's monitor |
-| `on-window-detected.sh` | `on-window-detected` | 0 (sketchybar only) | Post-detection sketchybar refresh |
-| `refresh-workspaces.sh` | *(called by other scripts)* | 0 (sketchybar only) | Refresh sketchybar cache |
 
 ## Notes
 

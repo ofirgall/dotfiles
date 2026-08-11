@@ -32,6 +32,8 @@ fn main() -> ExitCode {
         "switch-group" => switch_group(&mut conn, dir()),
         "switch-group-relative" => switch_group_relative(&mut conn, dir()),
         "switch-group-back" => switch_group_back(&mut conn),
+        "move-all-to-group" => move_all_to_group(&mut conn, dir()),
+        "move-all-windows-to-group" => move_all_windows_to_group(&mut conn, args.get(2).map(|s| s.as_str())),
         _ => return usage(),
     }
 
@@ -403,6 +405,74 @@ fn switch_group_back(conn: &mut Connection) {
     if !prev.is_empty() {
         switch_group(conn, prev);
     }
+}
+
+/// Move all windows from the current group to target group N, then switch.
+fn move_all_to_group(conn: &mut Connection, target: &str) {
+    let cur = current_group(conn);
+    if cur == target {
+        return;
+    }
+
+    let num_monitors: usize = conn
+        .query(&["list-monitors", "--format", "%{monitor-id}"])
+        .map(|s| s.lines().count())
+        .unwrap_or(1);
+
+    let mut eval_cmd = String::new();
+    for i in 0..num_monitors {
+        let src_ws = format!("{cur}{}", SUFFIXES.get(i).unwrap_or(&""));
+        let dst_ws = format!("{target}{}", SUFFIXES.get(i).unwrap_or(&""));
+
+        if let Some(windows) = conn.query(&["list-windows", "--workspace", &src_ws, "--format", "%{window-id}"]) {
+            for wid in windows.lines().filter(|l| !l.is_empty()) {
+                eval_cmd += &format!("move-node-to-workspace {dst_ws} --window-id {wid}; ");
+            }
+        }
+    }
+
+    if !eval_cmd.is_empty() {
+        conn.run(&["eval", &eval_cmd]);
+    }
+
+    switch_group(conn, target);
+}
+
+/// Move ALL windows from every workspace to target group, then switch.
+fn move_all_windows_to_group(conn: &mut Connection, target: Option<&str>) {
+    use std::process::Command;
+
+    let target = target.unwrap_or("10");
+
+    let focused_mon: usize = conn
+        .query(&["list-monitors", "--focused", "--format", "%{monitor-id}"])
+        .and_then(|s| s.parse().ok())
+        .unwrap_or(1);
+    let suffix = SUFFIXES.get(focused_mon - 1).unwrap_or(&"");
+    let target_ws = format!("{target}{suffix}");
+
+    let windows = conn
+        .query(&["list-windows", "--all", "--format", "%{window-id}"])
+        .unwrap_or_default();
+    if windows.is_empty() {
+        return;
+    }
+
+    let mut eval_cmd = String::new();
+    for wid in windows.lines().filter(|l| !l.is_empty()) {
+        eval_cmd += &format!("move-node-to-workspace {target_ws} --window-id {wid}; ");
+    }
+
+    if !eval_cmd.is_empty() {
+        conn.run(&["eval", &eval_cmd]);
+    }
+
+    let _ = std::fs::remove_file(WS_CACHE);
+    switch_group(conn, target);
+
+    let h = home();
+    let _ = Command::new(format!("{h}/dotfiles/dotfiles/mac/aerospace/on-window-detected.sh"))
+        .spawn();
 }
 
 struct LockGuard;
