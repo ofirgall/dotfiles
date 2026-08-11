@@ -91,16 +91,16 @@ cmd-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 9'
 cmd-0 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 10'
 
 # Move window to workspace and follow (Super+Shift+1-9)
-cmd-shift-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 1 --follow'
-cmd-shift-2 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 2 --follow'
-cmd-shift-3 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 3 --follow'
-cmd-shift-4 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 4 --follow'
-cmd-shift-5 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 5 --follow'
-cmd-shift-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 6 --follow'
-cmd-shift-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 7 --follow'
-cmd-shift-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 8 --follow'
-cmd-shift-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 9 --follow'
-cmd-shift-0 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 10 --follow'
+cmd-shift-1 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 1 --follow'
+cmd-shift-2 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 2 --follow'
+cmd-shift-3 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 3 --follow'
+cmd-shift-4 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 4 --follow'
+cmd-shift-5 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 5 --follow'
+cmd-shift-6 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 6 --follow'
+cmd-shift-7 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 7 --follow'
+cmd-shift-8 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 8 --follow'
+cmd-shift-9 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 9 --follow'
+cmd-shift-0 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 10 --follow'
 
 # Move all windows to workspace and follow (Super+Shift+Ctrl+1-9)
 cmd-shift-ctrl-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 1'
@@ -115,16 +115,16 @@ cmd-shift-ctrl-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-t
 cmd-shift-ctrl-0 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-to-group.sh 10'
 
 # Move window to workspace silently (Super+Ctrl+1-9)
-cmd-ctrl-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 1'
-cmd-ctrl-2 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 2'
-cmd-ctrl-3 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 3'
-cmd-ctrl-4 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 4'
-cmd-ctrl-5 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 5'
-cmd-ctrl-6 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 6'
-cmd-ctrl-7 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 7'
-cmd-ctrl-8 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 8'
-cmd-ctrl-9 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 9'
-cmd-ctrl-0 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-to-group.sh 10'
+cmd-ctrl-1 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 1'
+cmd-ctrl-2 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 2'
+cmd-ctrl-3 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 3'
+cmd-ctrl-4 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 4'
+cmd-ctrl-5 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 5'
+cmd-ctrl-6 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 6'
+cmd-ctrl-7 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 7'
+cmd-ctrl-8 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 8'
+cmd-ctrl-9 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 9'
+cmd-ctrl-0 = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-group 10'
 
 # Move ALL windows (from all workspaces) to workspace 10 (Super+F12)
 cmd-f12 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-all-windows-to-group.sh 10'
@@ -140,7 +140,7 @@ cmd-alt-b = 'exec-and-forget /usr/bin/open -na "Google Chrome" --args --profile-
 # Close window (Super+q)
 # Aerospace's `close` doesn't work for Ghostty, so we check the focused app
 # and send Cmd+W for Ghostty, otherwise use native aerospace close.
-cmd-q = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/close-window.sh'
+cmd-q = 'exec-and-forget ~/.local/bin/aerospace-scripts close'
 
 # Maximize toggle (Super+m)
 cmd-m = ['layout tiles accordion', 'exec-and-forget sketchybar --trigger window_count_change']
@@ -154,8 +154,8 @@ cmd-backtick = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-b
 f13 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group-back.sh' # Voyager: = is where ` is
 
 # Hide window (Super+n) / Un-hide last (Super+shift+n)
-cmd-n = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/minimize-window.sh'
-cmd-shift-n = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/unminimize-window.sh'
+cmd-n = 'exec-and-forget ~/.local/bin/aerospace-scripts minimize'
+cmd-shift-n = 'exec-and-forget ~/.local/bin/aerospace-scripts unminimize'
 
 # Move window to other monitor and follow focus (Super+o)
 cmd-o = ['move-node-to-monitor --wrap-around next', 'focus-monitor --wrap-around next']
@@ -199,7 +199,7 @@ f19 = 'exec-and-forget ~/.local/bin/aerospace-scripts cycle'
 
 
 # Sticky window toggle (Super+p)
-cmd-p = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/sticky-toggle.sh'
+cmd-p = 'exec-and-forget ~/.local/bin/aerospace-scripts sticky-toggle'
 
 # Reload aerospace + sketchybar + borders (Super+Shift+r)
 cmd-shift-r = ['reload-config', 'exec-and-forget rm -f /tmp/aerospace-ws-cache; ~/agents-status/statusbar/sketchybar/update-ws-cache.sh; sketchybar --reload; brew services restart borders; sleep 0.5; /opt/homebrew/bin/python3.14 ~/agents-status/statusbar/run.py']
