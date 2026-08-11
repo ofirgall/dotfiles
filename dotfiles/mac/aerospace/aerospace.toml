@@ -66,11 +66,11 @@ gaps.outer.right =      0
 
 [mode.main.binding]
 
-# Focus (Super+hjkl) — crosses monitor boundaries
-cmd-h = 'focus --boundaries all-monitors-outer-frame left; move-mouse window-lazy-center || move-mouse monitor-lazy-center'
-cmd-j = 'focus --boundaries all-monitors-outer-frame down; move-mouse window-lazy-center || move-mouse monitor-lazy-center'
-f15 = 'focus --boundaries all-monitors-outer-frame up; move-mouse window-lazy-center || move-mouse monitor-lazy-center'
-f16 = 'focus --boundaries all-monitors-outer-frame right; move-mouse window-lazy-center || move-mouse monitor-lazy-center'
+# Focus (Super+hjkl) — crosses monitor boundaries, skips hidden accordion windows
+cmd-h = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/focus-window.sh left'
+cmd-j = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/focus-window.sh down'
+f15 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/focus-window.sh up'
+f16 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/focus-window.sh right'
 
 # Swap windows (Super+Shift+hjkl) — within workspace or across monitors
 cmd-shift-h = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/swap-window.sh left'
