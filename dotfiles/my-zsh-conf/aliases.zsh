@@ -94,7 +94,23 @@ alias gpv="gh pr view --web"
 alias gpvc="gh pr view | egrep \"url:\" | head -n 1 | sed \"s/url://g\" | xargs echo -n | toclip"
 alias gpar="gh pr edit --add-reviewer"
 alias ghd="gh dash"
-alias mdp="gh markdown-preview --full"
+function mdp() {
+	# if [[ "$(uname)" == "Darwin" ]]; then
+	# 	local args=()
+	# 	local arg
+	# 	for arg in "$@"; do
+	# 		if [[ -e "$arg" ]]; then
+	# 			args+=("${arg:A}")
+	# 		else
+	# 			args+=("$arg")
+	# 		fi
+	# 	done
+	# 	open -a "Markdown Preview" "${args[@]}"
+	# else
+	gh markdown-preview --full "$@"
+	# fi
+}
+
 
 function gh_select_account() {
 	local users=("${(@f)$(gh auth status 2>/dev/null | awk '/Logged in/ {for(i=1;i<=NF;i++) if($i=="account") print $(i+1)}')}")
