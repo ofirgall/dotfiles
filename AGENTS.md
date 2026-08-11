@@ -28,8 +28,8 @@ Config and scripts live in `dotfiles/mac/aerospace/`.
 
 - `aerospace.toml` — main config: keybindings, workspace-to-monitor assignments, window rules
 - `~/dotfiles/aerospace-scripts/` — Rust binary that talks to AeroSpace via Unix socket IPC (see its own `AGENTS.md`)
-- `*.sh` — bash helper scripts for bindings that need logic beyond what the toml supports
-- Grouped workspaces: workspaces `N`, `Nb`, `Nc` form a group; `switch-group.sh` switches all monitors together
+- `on-window-detected.sh`, `refresh-workspaces.sh` — remaining bash helpers for hooks
+- Grouped workspaces: workspaces `N`, `Nb`, `Nc` form a group; `aerospace-scripts switch-group` switches all monitors together
 
 ### Keybindings
 

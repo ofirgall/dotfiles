@@ -76,7 +76,7 @@ add_workspace_items() {
                         background.drawing=off \
                         padding_left=3 \
                         padding_right=3 \
-                        click_script="~/dotfiles/dotfiles/mac/aerospace/switch-group.sh $sid" \
+                        click_script="~/.local/bin/aerospace-scripts switch-group $sid" \
                         script="$PLUGIN_DIR/aerospace.sh $sid"
         filler_events="$filler_events aerospace_workspace_change_$sid"
     done

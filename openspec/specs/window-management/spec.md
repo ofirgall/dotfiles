@@ -16,12 +16,12 @@ Both WMs SHALL support grouped workspaces across monitors. Each workspace group 
 - **WHEN** the user presses Super+1 with three monitors
 - **THEN** monitor 1 SHALL show workspace 1, monitor 2 SHALL show workspace 1b, monitor 3 SHALL show workspace 1c
 
-### Requirement: AeroSpace helper scripts
-AeroSpace SHALL use helper scripts in `dotfiles/mac/aerospace/` for complex operations: `switch-group.sh` (workspace switching), `move-to-group.sh` (move window), `move-all-to-group.sh` (move all windows), `swap-window.sh` (cross-monitor swap), `cycle-window.sh` (Alt+Tab within workspace), `sticky-toggle.sh` (pin window across workspaces), `switch-group-relative.sh` (prev/next workspace), `switch-group-back.sh` (last workspace), and `close-window.sh`.
+### Requirement: AeroSpace Rust binary
+AeroSpace SHALL use the `aerospace-scripts` Rust binary (`~/.local/bin/aerospace-scripts`) for complex operations: `switch-group` (workspace switching), `move-to-group` (move window), `move-all-to-group` (move all windows), `swap` (cross-monitor swap), `cycle` (Alt+Tab within workspace), `sticky-toggle` (pin window across workspaces), `switch-group-relative` (prev/next workspace), `switch-group-back` (last workspace), and `close` (close window). The binary communicates with AeroSpace via Unix socket IPC for lower latency than CLI spawning.
 
 #### Scenario: Script-backed operations
 - **WHEN** the user presses Super+1 on macOS
-- **THEN** AeroSpace SHALL execute `switch-group.sh 1` which switches all monitors to group 1
+- **THEN** AeroSpace SHALL execute `aerospace-scripts switch-group 1` which switches all monitors to group 1
 
 ### Requirement: Window focus and movement
 Both WMs SHALL use Super+hjkl for window focus (crossing monitor boundaries) and Super+Shift+hjkl for window swap. On macOS, Karabiner remaps Cmd+k and Cmd+l to F15/F16 to avoid system shortcut conflicts, and AeroSpace binds F15/F16 for up/right focus.
