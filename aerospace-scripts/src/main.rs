@@ -34,6 +34,10 @@ fn main() -> ExitCode {
         "switch-group-back" => switch_group_back(&mut conn),
         "move-all-to-group" => move_all_to_group(&mut conn, dir()),
         "move-all-windows-to-group" => move_all_windows_to_group(&mut conn, args.get(2).map(|s| s.as_str())),
+        "tmux-viewer" => tmux_viewer(&mut conn),
+        "sticky-move" => sticky_move(&mut conn),
+        "move-to-cursor-monitor" => move_to_cursor_monitor(&mut conn),
+        "on-workspace-change" => on_workspace_change(&mut conn),
         _ => return usage(),
     }
 
@@ -472,6 +476,132 @@ fn move_all_windows_to_group(conn: &mut Connection, target: Option<&str>) {
 
     let h = home();
     let _ = Command::new(format!("{h}/dotfiles/dotfiles/mac/aerospace/on-window-detected.sh"))
+        .spawn();
+}
+
+/// Open tmux viewer for the focused tmux session window.
+fn tmux_viewer(conn: &mut Connection) {
+    use std::process::Command;
+
+    let title = conn
+        .query(&["list-windows", "--focused", "--format", "%{window-title}"])
+        .unwrap_or_default();
+
+    if let Some(session) = title.strip_suffix(" - TMUX") {
+        let _ = std::fs::write("/tmp/tmux-viewer-pending", session);
+        let _ = Command::new("osascript")
+            .arg("-e").arg(r#"tell application "Ghostty" to new window"#).spawn();
+    } else {
+        let _ = Command::new("osascript")
+            .arg("-e").arg(r#"display notification "Active window is not a TMUX session" with title "TmuxViewer""#)
+            .spawn();
+    }
+}
+
+/// Move sticky windows from previous to focused workspace (same-monitor only).
+fn sticky_move(conn: &mut Connection) {
+    let sticky = std::fs::read_to_string(STICKY_FILE).unwrap_or_default();
+    if sticky.is_empty() { return; }
+
+    let target_ws = std::env::var("AEROSPACE_FOCUSED_WORKSPACE").unwrap_or_default();
+    let prev_ws = std::env::var("AEROSPACE_PREV_WORKSPACE").unwrap_or_default();
+    if target_ws.is_empty() || prev_ws.is_empty() || target_ws == prev_ws { return; }
+
+    let mon_map = conn
+        .query(&["list-workspaces", "--monitor", "all", "--format", "%{workspace} %{monitor-id}"])
+        .unwrap_or_default();
+    let mon_for = |ws: &str| -> Option<&str> {
+        mon_map.lines().find_map(|l| {
+            let (w, m) = l.split_once(' ')?;
+            (w == ws).then_some(m)
+        })
+    };
+    if mon_for(&target_ws) != mon_for(&prev_ws) { return; }
+
+    let all_win_ws = conn
+        .query(&["list-windows", "--all", "--format", "%{window-id} %{workspace}"])
+        .unwrap_or_default();
+
+    let mut eval_cmd = String::new();
+    for wid in sticky.lines().filter(|l| !l.is_empty()) {
+        for line in all_win_ws.lines() {
+            if let Some((id, ws)) = line.split_once(' ') {
+                if id == wid && ws == prev_ws {
+                    eval_cmd += &format!("move-node-to-workspace {target_ws} --window-id {wid}; ");
+                }
+            }
+        }
+    }
+
+    if !eval_cmd.is_empty() {
+        conn.run(&["eval", &eval_cmd]);
+    }
+}
+
+/// Move a newly detected window to the workspace under the mouse cursor.
+fn move_to_cursor_monitor(conn: &mut Connection) {
+    let wid = std::env::var("AEROSPACE_WINDOW_ID").unwrap_or_default();
+    if wid.is_empty() || !wid.chars().all(|c| c.is_ascii_digit()) { return; }
+
+    let Some(target) = conn.query(&[
+        "list-workspaces", "--monitor", "mouse", "--visible", "--format", "%{workspace}",
+    ]) else { return };
+    if target.is_empty() || target.contains('\n') { return; }
+
+    conn.run(&["move-node-to-workspace", "--focus-follows-window", "--window-id", &wid, "--", &target]);
+}
+
+/// Workspace-change event handler: revert close-stealing, sticky moves, cache, sketchybar.
+fn on_workspace_change(conn: &mut Connection) {
+    use std::process::Command;
+
+    if std::fs::metadata("/tmp/aerospace-switching-group").is_ok() { return; }
+
+    // Revert unwanted workspace switch caused by macOS focus-stealing after close
+    if std::fs::metadata(CLOSE_REVERT).is_ok() {
+        let revert = std::fs::read_to_string(CLOSE_REVERT).unwrap_or_default();
+        let _ = std::fs::remove_file(CLOSE_REVERT);
+
+        if let Some((desired_group, desired_mon)) = revert.trim().split_once(' ') {
+            let focused_ws = std::env::var("AEROSPACE_FOCUSED_WORKSPACE").unwrap_or_default();
+            let focused_group = focused_ws.trim_end_matches(['b', 'c']);
+
+            if focused_group != desired_group {
+                let _ = std::fs::write("/tmp/aerospace-switching-group", "");
+                let num_monitors: usize = conn
+                    .query(&["list-monitors", "--format", "%{monitor-id}"])
+                    .map(|s| s.lines().count())
+                    .unwrap_or(1);
+                let mut eval_cmd = String::new();
+                for i in 0..num_monitors {
+                    eval_cmd += &format!("workspace {}{}; ", desired_group, SUFFIXES.get(i).unwrap_or(&""));
+                }
+                eval_cmd += &format!("focus-monitor {desired_mon}");
+                conn.run(&["eval", &eval_cmd]);
+                let _ = std::fs::remove_file("/tmp/aerospace-switching-group");
+            }
+        }
+
+        let h = home();
+        let _ = Command::new(format!("{h}/dotfiles/dotfiles/mac/aerospace/on-window-detected.sh")).status();
+        return;
+    }
+
+    sticky_move(conn);
+
+    let h = home();
+    let _ = Command::new(format!("{h}/agents-status/statusbar/sketchybar/update-ws-cache.sh")).status();
+
+    let focused = std::env::var("AEROSPACE_FOCUSED_WORKSPACE").unwrap_or_default();
+    let prev = std::env::var("AEROSPACE_PREV_WORKSPACE").unwrap_or_default();
+    let focused_group = focused.trim_end_matches(['b', 'c']);
+    let prev_group = prev.trim_end_matches(['b', 'c']);
+
+    let _ = Command::new("/opt/homebrew/bin/sketchybar")
+        .arg("--trigger").arg(format!("aerospace_workspace_change_{prev_group}"))
+        .arg(format!("FOCUSED_WORKSPACE={focused_group}"))
+        .arg("--trigger").arg(format!("aerospace_workspace_change_{focused_group}"))
+        .arg(format!("FOCUSED_WORKSPACE={focused_group}"))
         .spawn();
 }
 

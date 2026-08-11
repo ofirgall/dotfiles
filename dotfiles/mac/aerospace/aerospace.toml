@@ -17,8 +17,7 @@ on-focus-changed = []
 automatically-unhide-macos-hidden-apps = true
 
 # Grouped workspaces: on-workspace-change translates sub-workspace names to group events
-exec-on-workspace-change = ['/bin/bash', '-c',
-    '~/dotfiles/dotfiles/mac/aerospace/on-workspace-change.sh']
+exec-on-workspace-change = ['~/.local/bin/aerospace-scripts', 'on-workspace-change']
 
 key-mapping.preset = 'qwerty'
 
@@ -186,7 +185,7 @@ alt-v = 'exec-and-forget open raycast://extensions/raycast/clipboard-history/cli
 cmd-alt-t = 'exec-and-forget open raycast://extensions/raycast/navigation/switch-windows'
 
 # Tmux viewer (Super+Shift+v) — open viewer for focused tmux session
-cmd-shift-v = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/tmux-viewer.sh'
+cmd-shift-v = 'exec-and-forget ~/.local/bin/aerospace-scripts tmux-viewer'
 
 # Float toggle (Super+Shift+f -- matches Hyprland Ctrl+F)
 cmd-shift-f = 'layout floating tiling'
@@ -230,7 +229,7 @@ run = 'layout floating'
 [[on-window-detected]]
 if = 'test-not %{window-layout} = floating'
 check-further-callbacks = true
-run = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/move-window-to-cursor-monitor.sh'
+run = 'exec-and-forget ~/.local/bin/aerospace-scripts move-to-cursor-monitor'
 
 [[on-window-detected]]
 if = 'true'
