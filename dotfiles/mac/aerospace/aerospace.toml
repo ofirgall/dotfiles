@@ -67,16 +67,16 @@ gaps.outer.right =      0
 [mode.main.binding]
 
 # Focus (Super+hjkl) — crosses monitor boundaries, skips hidden accordion windows
-cmd-h = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/focus-window.sh left'
-cmd-j = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/focus-window.sh down'
-f15 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/focus-window.sh up'
-f16 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/focus-window.sh right'
+cmd-h = 'exec-and-forget ~/.local/bin/aerospace-scripts focus left'
+cmd-j = 'exec-and-forget ~/.local/bin/aerospace-scripts focus down'
+f15 = 'exec-and-forget ~/.local/bin/aerospace-scripts focus up'
+f16 = 'exec-and-forget ~/.local/bin/aerospace-scripts focus right'
 
 # Swap windows (Super+Shift+hjkl) — within workspace or across monitors
-cmd-shift-h = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/swap-window.sh left'
-cmd-shift-j = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/swap-window.sh down'
-cmd-shift-k = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/swap-window.sh up'
-cmd-shift-l = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/swap-window.sh right'
+cmd-shift-h = 'exec-and-forget ~/.local/bin/aerospace-scripts swap left'
+cmd-shift-j = 'exec-and-forget ~/.local/bin/aerospace-scripts swap down'
+cmd-shift-k = 'exec-and-forget ~/.local/bin/aerospace-scripts swap up'
+cmd-shift-l = 'exec-and-forget ~/.local/bin/aerospace-scripts swap right'
 
 # Workspaces (Super+1-9) — grouped: switches all monitors together
 cmd-1 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh 1'
@@ -195,7 +195,7 @@ cmd-shift-f = 'layout floating tiling'
 f20 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/toggle-input-source'
 
 # Alt+Tab: cycle windows in workspace (preserves fullscreen)
-f19 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/cycle-window.sh'
+f19 = 'exec-and-forget ~/.local/bin/aerospace-scripts cycle'
 
 
 # Sticky window toggle (Super+p)
