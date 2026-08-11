@@ -34,4 +34,4 @@ done
 
 [ -n "$EVAL_CMD" ] && aerospace eval "$EVAL_CMD" 2>/dev/null
 
-exec ~/dotfiles/dotfiles/mac/aerospace/switch-group.sh "$TARGET_GROUP"
+exec ~/.local/bin/aerospace-scripts switch-group "$TARGET_GROUP"

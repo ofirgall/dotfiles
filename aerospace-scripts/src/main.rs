@@ -29,6 +29,9 @@ fn main() -> ExitCode {
         "close" => close(&mut conn),
         "sticky-toggle" => sticky_toggle(&mut conn),
         "move-to-group" => move_to_group(&mut conn, dir(), args.get(3).map(|s| s.as_str())),
+        "switch-group" => switch_group(&mut conn, dir()),
+        "switch-group-relative" => switch_group_relative(&mut conn, dir()),
+        "switch-group-back" => switch_group_back(&mut conn),
         _ => return usage(),
     }
 
@@ -250,8 +253,7 @@ fn move_to_group(conn: &mut Connection, group: &str, follow: Option<&str>) {
         let _ = Command::new("bash").arg("-c")
             .arg(format!("/opt/homebrew/bin/python3.14 {h}/agents-status/statusbar/run.py 2>/dev/null &"))
             .spawn();
-        let _ = Command::new(format!("{h}/dotfiles/dotfiles/mac/aerospace/switch-group.sh"))
-            .arg(group).status();
+        switch_group(conn, group);
         return;
     }
 
@@ -268,4 +270,145 @@ fn move_to_group(conn: &mut Connection, group: &str, follow: Option<&str>) {
         .arg("--trigger").arg(format!("aerospace_workspace_change_{group}"))
         .arg(format!("FOCUSED_WORKSPACE={focused_group}"))
         .spawn();
+}
+
+const WS_CACHE: &str = "/tmp/aerospace-ws-cache";
+const SWITCH_LOCK: &str = "/tmp/aerospace-switch-group.lock";
+
+/// Read current workspace group from cache, falling back to an aerospace query.
+fn current_group(conn: &mut Connection) -> String {
+    if let Ok(cache) = std::fs::read_to_string(WS_CACHE) {
+        if let Some(first) = cache.lines().next() {
+            if !first.is_empty() {
+                return first.to_string();
+            }
+        }
+    }
+    conn.query(&["list-workspaces", "--focused"])
+        .unwrap_or_default()
+        .trim_end_matches(['b', 'c'])
+        .to_string()
+}
+
+/// Switch all monitors to workspace group N atomically.
+fn switch_group(conn: &mut Connection, group: &str) {
+    use std::process::Command;
+
+    // Serialize: only one switch-group at a time (mkdir is atomic)
+    if std::fs::create_dir(SWITCH_LOCK).is_err() {
+        return;
+    }
+    let _lock = LockGuard;
+
+    let cur = current_group(conn);
+    if cur == group {
+        return;
+    }
+
+    let focused_mon: usize = conn
+        .query(&["list-monitors", "--focused", "--format", "%{monitor-id}"])
+        .and_then(|s| s.parse().ok())
+        .unwrap_or(1);
+    let num_monitors: usize = conn
+        .query(&["list-monitors", "--format", "%{monitor-id}"])
+        .map(|s| s.lines().count())
+        .unwrap_or(1);
+
+    // Save previous group for back-and-forth
+    let _ = std::fs::write("/tmp/aerospace-prev-group", &cur);
+
+    // Set flag so on-workspace-change hooks are no-ops during the batch
+    let _ = std::fs::write("/tmp/aerospace-switching-group", "");
+
+    // Update cache immediately (before workspace switches for responsiveness)
+    let focused_ws = format!("{group}{}", SUFFIXES.get(focused_mon - 1).unwrap_or(&""));
+    if let Ok(cache) = std::fs::read_to_string(WS_CACHE) {
+        let mut lines: Vec<&str> = cache.lines().collect();
+        if lines.is_empty() {
+            lines.push(group);
+        } else {
+            lines[0] = group;
+        }
+        let _ = std::fs::write(WS_CACHE, lines.join("\n") + "\n");
+    }
+
+    // Trigger sketchybar in background (before switches for visual responsiveness)
+    let _ = Command::new("/opt/homebrew/bin/sketchybar")
+        .arg("--trigger").arg(format!("aerospace_workspace_change_{cur}"))
+        .arg(format!("FOCUSED_WORKSPACE={focused_ws}"))
+        .arg("--trigger").arg(format!("aerospace_workspace_change_{group}"))
+        .arg(format!("FOCUSED_WORKSPACE={focused_ws}"))
+        .spawn();
+
+    // Pre-fetch sticky window locations if any exist
+    let sticky_ids: Vec<String> = std::fs::read_to_string(STICKY_FILE)
+        .unwrap_or_default()
+        .lines()
+        .filter(|l| !l.is_empty())
+        .map(|l| l.to_string())
+        .collect();
+
+    let all_win_ws = if !sticky_ids.is_empty() {
+        conn.query(&["list-windows", "--all", "--format", "%{window-id} %{workspace}"])
+            .unwrap_or_default()
+    } else {
+        String::new()
+    };
+
+    // Build a single eval expression for all workspace switches + sticky moves
+    let mut eval_cmd = String::new();
+
+    for i in 0..num_monitors {
+        let old_ws = format!("{cur}{}", SUFFIXES.get(i).unwrap_or(&""));
+        let new_ws = format!("{group}{}", SUFFIXES.get(i).unwrap_or(&""));
+
+        for wid in &sticky_ids {
+            for line in all_win_ws.lines() {
+                if let Some((id, ws)) = line.split_once(' ') {
+                    if id == wid && ws == old_ws {
+                        eval_cmd += &format!("move-node-to-workspace {new_ws} --window-id {wid}; ");
+                    }
+                }
+            }
+        }
+
+        eval_cmd += &format!("workspace {new_ws}; ");
+    }
+
+    eval_cmd += &format!("focus-monitor {focused_mon}");
+
+    // Single atomic IPC call
+    conn.run(&["eval", &eval_cmd]);
+
+    let _ = std::fs::remove_file("/tmp/aerospace-switching-group");
+}
+
+/// Switch to prev/next workspace group (wrapping 1-9).
+fn switch_group_relative(conn: &mut Connection, direction: &str) {
+    let cur: i32 = current_group(conn).parse().unwrap_or(1);
+
+    let target = if direction == "prev" {
+        if cur <= 1 { 9 } else { cur - 1 }
+    } else {
+        if cur >= 9 { 1 } else { cur + 1 }
+    };
+
+    switch_group(conn, &target.to_string());
+}
+
+/// Switch back to the previous workspace group (back-and-forth).
+fn switch_group_back(conn: &mut Connection) {
+    let prev = std::fs::read_to_string("/tmp/aerospace-prev-group").unwrap_or_default();
+    let prev = prev.trim();
+    if !prev.is_empty() {
+        switch_group(conn, prev);
+    }
+}
+
+struct LockGuard;
+
+impl Drop for LockGuard {
+    fn drop(&mut self) {
+        let _ = std::fs::remove_dir(SWITCH_LOCK);
+    }
 }

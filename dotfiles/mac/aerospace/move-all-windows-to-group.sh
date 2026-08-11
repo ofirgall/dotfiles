@@ -28,7 +28,7 @@ done <<< "$ALL_WINDOWS"
 
 # Invalidate cache and switch to the target group
 rm -f /tmp/aerospace-ws-cache
-~/dotfiles/dotfiles/mac/aerospace/switch-group.sh "$TARGET_GROUP"
+~/.local/bin/aerospace-scripts switch-group "$TARGET_GROUP"
 
 # Full refresh since windows moved from many workspaces
 ~/dotfiles/dotfiles/mac/aerospace/on-window-detected.sh &
