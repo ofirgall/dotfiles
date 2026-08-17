@@ -94,5 +94,3 @@ export AWS_PROFILE=dev
 
 source $HOME/secrets.zsh
 
-export PATH=~/agents-status/simple-wrappers:$PATH
-

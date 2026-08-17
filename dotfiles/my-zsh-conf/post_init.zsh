@@ -6,6 +6,15 @@ if test -f $HOME/.extra_utils; then
 	source $HOME/.extra_utils
 fi
 
+
+# ---------------------------
+#     PATH WITH PRIORITY
+# ---------------------------
+# Homebrew
+[[ "$(uname)" == "Darwin" ]] && export PATH="/opt/homebrew/bin:$PATH"
+# Wrappers are last to priority
+export PATH="~/agents-status/simple-wrappers:$PATH"
+
 # ---------------------------
 #		  Daemons
 # ---------------------------
