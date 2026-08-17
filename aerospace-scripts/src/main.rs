@@ -539,14 +539,24 @@ fn sticky_move(conn: &mut Connection) {
 }
 
 /// Move a newly detected window to the workspace under the mouse cursor.
+const OPEN_TARGET: &str = "/tmp/aerospace-open-target";
+
 fn move_to_cursor_monitor(conn: &mut Connection) {
     let wid = std::env::var("AEROSPACE_WINDOW_ID").unwrap_or_default();
     if wid.is_empty() || !wid.chars().all(|c| c.is_ascii_digit()) { return; }
 
-    let Some(target) = conn.query(&[
-        "list-workspaces", "--monitor", "mouse", "--visible", "--format", "%{workspace}",
-    ]) else { return };
-    if target.is_empty() || target.contains('\n') { return; }
+    let target = if let Ok(saved) = std::fs::read_to_string(OPEN_TARGET) {
+        let _ = std::fs::remove_file(OPEN_TARGET);
+        let t = saved.trim().to_string();
+        if t.is_empty() { return; }
+        t
+    } else {
+        let Some(t) = conn.query(&[
+            "list-workspaces", "--monitor", "mouse", "--visible", "--format", "%{workspace}",
+        ]) else { return };
+        if t.is_empty() || t.contains('\n') { return; }
+        t
+    };
 
     conn.run(&["move-node-to-workspace", "--focus-follows-window", "--window-id", &wid, "--", &target]);
 }
