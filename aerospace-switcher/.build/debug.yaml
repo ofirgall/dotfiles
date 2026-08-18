@@ -1,0 +1,81 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "aerospace-switcher-arm64-apple-macosx-debug.exe": ["<aerospace-switcher-arm64-apple-macosx-debug.exe>"]
+  "aerospace-switcher-arm64-apple-macosx-debug.module": ["<aerospace-switcher-arm64-apple-macosx-debug.module>"]
+  "main": ["<aerospace-switcher-arm64-apple-macosx-debug.exe>","<aerospace-switcher-arm64-apple-macosx-debug.module>"]
+  "test": ["<aerospace-switcher-arm64-apple-macosx-debug.exe>","<aerospace-switcher-arm64-apple-macosx-debug.module>"]
+default: "main"
+nodes:
+  "/Users/ofirg/dotfiles/aerospace-switcher/Sources/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher":
+    is-mutated: true
+commands:
+  "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher-entitlement.plist":
+    tool: write-auxiliary-file
+    inputs: ["<entitlement-plist>","<com.apple.security.get-task-allow>"]
+    outputs: ["/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher-entitlement.plist"]
+    description: "Write auxiliary file /Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher-entitlement.plist"
+
+  "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/AeroSpaceIPC.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/App.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/InstanceLock.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/KeyMonitor.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/SwitcherPanel.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/ThumbnailCapture.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/WindowInfo.swift.o"]
+    outputs: ["/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher.product/Objects.LinkFileList"
+
+  "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/ofirg/dotfiles/aerospace-switcher/Sources/AeroSpaceIPC.swift","/Users/ofirg/dotfiles/aerospace-switcher/Sources/App.swift","/Users/ofirg/dotfiles/aerospace-switcher/Sources/InstanceLock.swift","/Users/ofirg/dotfiles/aerospace-switcher/Sources/KeyMonitor.swift","/Users/ofirg/dotfiles/aerospace-switcher/Sources/SwitcherPanel.swift","/Users/ofirg/dotfiles/aerospace-switcher/Sources/ThumbnailCapture.swift","/Users/ofirg/dotfiles/aerospace-switcher/Sources/WindowInfo.swift"]
+    outputs: ["/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/sources"]
+    description: "Write auxiliary file /Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/sources"
+
+  "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Library/Developer/CommandLineTools/usr/bin/swiftc"]
+    outputs: ["/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+
+  "<aerospace-switcher-arm64-apple-macosx-debug.exe>":
+    tool: phony
+    inputs: ["<aerospace-switcher-arm64-apple-macosx-debug.exe-CodeSigning>"]
+    outputs: ["<aerospace-switcher-arm64-apple-macosx-debug.exe>"]
+
+  "<aerospace-switcher-arm64-apple-macosx-debug.module>":
+    tool: phony
+    inputs: ["/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/AeroSpaceIPC.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/App.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/InstanceLock.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/KeyMonitor.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/SwitcherPanel.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/ThumbnailCapture.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/WindowInfo.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/Modules/aerospace_switcher.swiftmodule"]
+    outputs: ["<aerospace-switcher-arm64-apple-macosx-debug.module>"]
+
+  "C.aerospace-switcher-arm64-apple-macosx-debug.exe":
+    tool: shell
+    inputs: ["/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/AeroSpaceIPC.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/App.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/InstanceLock.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/KeyMonitor.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/SwitcherPanel.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/ThumbnailCapture.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/WindowInfo.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher.product/Objects.LinkFileList"]
+    outputs: ["/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/aerospace-switcher"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-L","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug","-o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher","-module-name","aerospace_switcher","-Xlinker","-no_warn_duplicate_libraries","-emit-executable","-Xlinker","-alias","-Xlinker","_aerospace_switcher_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Library/Developer/CommandLineTools/usr/lib/swift-6.2/macosx","-target","arm64-apple-macosx13.0","-framework","AppKit","-framework","CoreGraphics","-framework","QuartzCore","-Xlinker","-add_ast_path","-Xlinker","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/Modules/aerospace_switcher.swiftmodule","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g"]
+
+  "C.aerospace-switcher-arm64-apple-macosx-debug.exe-entitlements":
+    tool: shell
+    inputs: ["/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher-entitlement.plist"]
+    outputs: ["<aerospace-switcher-arm64-apple-macosx-debug.exe-CodeSigning>"]
+    description: "Applying debug entitlements to ./.build/arm64-apple-macosx/debug/aerospace-switcher"
+    args: ["codesign","--force","--sign","-","--entitlements","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher-entitlement.plist","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace-switcher"]
+
+  "C.aerospace-switcher-arm64-apple-macosx-debug.module":
+    tool: shell
+    inputs: ["/Users/ofirg/dotfiles/aerospace-switcher/Sources/AeroSpaceIPC.swift","/Users/ofirg/dotfiles/aerospace-switcher/Sources/App.swift","/Users/ofirg/dotfiles/aerospace-switcher/Sources/InstanceLock.swift","/Users/ofirg/dotfiles/aerospace-switcher/Sources/KeyMonitor.swift","/Users/ofirg/dotfiles/aerospace-switcher/Sources/SwitcherPanel.swift","/Users/ofirg/dotfiles/aerospace-switcher/Sources/ThumbnailCapture.swift","/Users/ofirg/dotfiles/aerospace-switcher/Sources/WindowInfo.swift","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/sources"]
+    outputs: ["/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/AeroSpaceIPC.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/App.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/InstanceLock.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/KeyMonitor.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/SwitcherPanel.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/ThumbnailCapture.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/WindowInfo.swift.o","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/Modules/aerospace_switcher.swiftmodule"]
+    description: "Compiling Swift Module 'aerospace_switcher' (7 sources)"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-module-name","aerospace_switcher","-emit-dependencies","-emit-module","-emit-module-path","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/Modules/aerospace_switcher.swiftmodule","-output-file-map","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/output-file-map.json","-incremental","-c","@/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/sources","-I","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx13.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j18","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","aerospace_switcher_main","-swift-version","5","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xcc","-isysroot","-Xcc","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-Xcc","-fPIC","-Xcc","-g","-package-name","aerospace_switcher"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/ofirg/dotfiles/aerospace-switcher/Sources/","/Users/ofirg/dotfiles/aerospace-switcher/Package.swift","/Users/ofirg/dotfiles/aerospace-switcher/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

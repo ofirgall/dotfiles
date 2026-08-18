@@ -1,0 +1,333 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.aerospace-switcher-arm64-apple-macosx-release.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/sources",
+      "importPath" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/AeroSpaceIPC.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/App.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/InstanceLock.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/KeyMonitor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/SwitcherPanel.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/ThumbnailCapture.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/WindowInfo.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "aerospace_switcher",
+      "moduleOutputPath" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/Modules/aerospace_switcher.swiftmodule",
+      "objects" : [
+        "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/AeroSpaceIPC.swift.o",
+        "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/App.swift.o",
+        "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/InstanceLock.swift.o",
+        "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/KeyMonitor.swift.o",
+        "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/SwitcherPanel.swift.o",
+        "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/ThumbnailCapture.swift.o",
+        "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/WindowInfo.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-whole-module-optimization",
+        "-num-threads",
+        "18",
+        "-serialize-diagnostics",
+        "-O",
+        "-j18",
+        "-DSWIFT_PACKAGE",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "aerospace_switcher_main",
+        "-swift-version",
+        "5",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "aerospace_switcher"
+      ],
+      "outputFileMapPath" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/AeroSpaceIPC.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/App.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/InstanceLock.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/KeyMonitor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/SwitcherPanel.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/ThumbnailCapture.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/WindowInfo.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/Modules/aerospace_switcher.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/ofirg/dotfiles/aerospace-switcher/Sources/AeroSpaceIPC.swift",
+        "/Users/ofirg/dotfiles/aerospace-switcher/Sources/App.swift",
+        "/Users/ofirg/dotfiles/aerospace-switcher/Sources/InstanceLock.swift",
+        "/Users/ofirg/dotfiles/aerospace-switcher/Sources/KeyMonitor.swift",
+        "/Users/ofirg/dotfiles/aerospace-switcher/Sources/SwitcherPanel.swift",
+        "/Users/ofirg/dotfiles/aerospace-switcher/Sources/ThumbnailCapture.swift",
+        "/Users/ofirg/dotfiles/aerospace-switcher/Sources/WindowInfo.swift"
+      ],
+      "tempsPath" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build",
+      "wholeModuleOptimization" : true
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "aerospace_switcher" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "aerospace_switcher",
+      "-package-name",
+      "aerospace_switcher",
+      "-c",
+      "/Users/ofirg/dotfiles/aerospace-switcher/Sources/AeroSpaceIPC.swift",
+      "/Users/ofirg/dotfiles/aerospace-switcher/Sources/App.swift",
+      "/Users/ofirg/dotfiles/aerospace-switcher/Sources/InstanceLock.swift",
+      "/Users/ofirg/dotfiles/aerospace-switcher/Sources/KeyMonitor.swift",
+      "/Users/ofirg/dotfiles/aerospace-switcher/Sources/SwitcherPanel.swift",
+      "/Users/ofirg/dotfiles/aerospace-switcher/Sources/ThumbnailCapture.swift",
+      "/Users/ofirg/dotfiles/aerospace-switcher/Sources/WindowInfo.swift",
+      "-I",
+      "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/Modules",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-whole-module-optimization",
+      "-num-threads",
+      "18",
+      "-serialize-diagnostics",
+      "-O",
+      "-j18",
+      "-DSWIFT_PACKAGE",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "aerospace_switcher_main",
+      "-swift-version",
+      "5",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "aerospace_switcher",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "aerospace_switcher" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace-switcher.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/AeroSpaceIPC.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/App.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/InstanceLock.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/KeyMonitor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/SwitcherPanel.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/ThumbnailCapture.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/WindowInfo.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace-switcher.product/Objects.LinkFileList"
+    },
+    "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/AeroSpaceIPC.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/App.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/InstanceLock.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/KeyMonitor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/SwitcherPanel.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/ThumbnailCapture.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ofirg/dotfiles/aerospace-switcher/Sources/WindowInfo.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/aerospace_switcher.build/sources"
+    },
+    "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt"
+    }
+  }
+}

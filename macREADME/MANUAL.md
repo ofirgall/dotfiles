@@ -11,6 +11,10 @@ After first install, grant access in:
 AeroSpace needs Screen Recording access for `screencapture` keybindings (Cmd+S, Cmd+Shift+S) to work:
 - System Settings > Privacy & Security > Screen Recording > enable **AeroSpace**
 
+## aerospace-switcher Accessibility Permission
+The window switcher (Ctrl+Tab) needs Accessibility access for keyboard monitoring (Enter/Escape/arrow key handling):
+- System Settings > Privacy & Security > Accessibility > add `~/.local/bin/aerospace-switcher`
+
 ## Disable macOS Screenshot Shortcuts
 `setup_once.sh` disables Cmd+Shift+3/4/5 via `defaults write`. If screenshots still fire (conflicting with AeroSpace workspace binds), disable manually:
 - System Settings > Keyboard > Keyboard Shortcuts > Screenshots > uncheck all Cmd+Shift entries

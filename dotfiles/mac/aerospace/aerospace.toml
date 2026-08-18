@@ -197,6 +197,8 @@ f20 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/toggle-input-source'
 
 # Alt+Tab: cycle windows in workspace (preserves fullscreen)
 f19 = 'exec-and-forget ~/.local/bin/aerospace-scripts cycle'
+# Ctrl+Tab: window switcher with thumbnails (Enter to confirm, Escape to cancel)
+ctrl-tab = 'exec-and-forget ~/.local/bin/aerospace-switcher'
 
 
 # Sticky window toggle (Super+p)

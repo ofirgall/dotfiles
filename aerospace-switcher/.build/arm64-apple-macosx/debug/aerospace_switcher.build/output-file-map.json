@@ -1,0 +1,54 @@
+{
+  "": {
+    "swift-dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/primary.swiftdeps"
+  },
+  "/Users/ofirg/dotfiles/aerospace-switcher/Sources/AeroSpaceIPC.swift": {
+    "dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/AeroSpaceIPC.d",
+    "object": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/AeroSpaceIPC.swift.o",
+    "swiftmodule": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/AeroSpaceIPC~partial.swiftmodule",
+    "swift-dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/AeroSpaceIPC.swiftdeps",
+    "diagnostics": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/AeroSpaceIPC.dia"
+  },
+  "/Users/ofirg/dotfiles/aerospace-switcher/Sources/App.swift": {
+    "dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/App.d",
+    "object": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/App.swift.o",
+    "swiftmodule": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/App~partial.swiftmodule",
+    "swift-dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/App.swiftdeps",
+    "diagnostics": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/App.dia"
+  },
+  "/Users/ofirg/dotfiles/aerospace-switcher/Sources/InstanceLock.swift": {
+    "dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/InstanceLock.d",
+    "object": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/InstanceLock.swift.o",
+    "swiftmodule": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/InstanceLock~partial.swiftmodule",
+    "swift-dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/InstanceLock.swiftdeps",
+    "diagnostics": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/InstanceLock.dia"
+  },
+  "/Users/ofirg/dotfiles/aerospace-switcher/Sources/KeyMonitor.swift": {
+    "dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/KeyMonitor.d",
+    "object": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/KeyMonitor.swift.o",
+    "swiftmodule": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/KeyMonitor~partial.swiftmodule",
+    "swift-dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/KeyMonitor.swiftdeps",
+    "diagnostics": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/KeyMonitor.dia"
+  },
+  "/Users/ofirg/dotfiles/aerospace-switcher/Sources/SwitcherPanel.swift": {
+    "dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/SwitcherPanel.d",
+    "object": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/SwitcherPanel.swift.o",
+    "swiftmodule": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/SwitcherPanel~partial.swiftmodule",
+    "swift-dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/SwitcherPanel.swiftdeps",
+    "diagnostics": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/SwitcherPanel.dia"
+  },
+  "/Users/ofirg/dotfiles/aerospace-switcher/Sources/ThumbnailCapture.swift": {
+    "dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/ThumbnailCapture.d",
+    "object": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/ThumbnailCapture.swift.o",
+    "swiftmodule": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/ThumbnailCapture~partial.swiftmodule",
+    "swift-dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/ThumbnailCapture.swiftdeps",
+    "diagnostics": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/ThumbnailCapture.dia"
+  },
+  "/Users/ofirg/dotfiles/aerospace-switcher/Sources/WindowInfo.swift": {
+    "dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/WindowInfo.d",
+    "object": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/WindowInfo.swift.o",
+    "swiftmodule": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/WindowInfo~partial.swiftmodule",
+    "swift-dependencies": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/WindowInfo.swiftdeps",
+    "diagnostics": "/Users/ofirg/dotfiles/aerospace-switcher/.build/arm64-apple-macosx/debug/aerospace_switcher.build/WindowInfo.dia"
+  }
+}
