@@ -15,3 +15,4 @@ playgrounds/*
 wip-submodules
 dotfiles/ghostty/shaders
 dotfiles/ghostty/config.platform
+aerospace-switcher/.build
