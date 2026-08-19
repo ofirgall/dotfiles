@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 REPO="$HOME/agents-status"
 
 brew install vjeantet/tap/alerter

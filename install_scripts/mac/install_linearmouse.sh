@@ -9,5 +9,5 @@ if brew list --cask linearmouse &>/dev/null; then
 fi
 
 brew install --cask linearmouse
-/usr/bin/open -a "Linear Mouse"
+/usr/bin/open -a "LinearMouse"
 echo "LinearMouse launched — grant Accessibility permissions when prompted"
