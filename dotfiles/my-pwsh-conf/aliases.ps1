@@ -2,6 +2,7 @@
 
 Set-Alias nv kv -Force -Option AllScope
 Set-Alias v kv -Force -Option AllScope
+Set-Alias h herdr -Force -Option AllScope
 function br { broot --conf "$HOME\.brootrc.toml" @args }
 function btmf { btm -C "$HOME\dotfiles\dotfiles\bottom\bottom-full.toml" @args }
 
