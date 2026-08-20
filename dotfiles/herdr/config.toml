@@ -6,6 +6,13 @@ name = "tokyo-night"
 [terminal]
 new_cwd = "follow"
 
+[ui]
+pane_outer_borders = false
+pane_gaps = false
+tab_bar_position = "bottom"
+prompt_new_tab_name = false
+confirm_close = false
+
 [keys]
 prefix = "ctrl+b"
 
@@ -79,10 +86,3 @@ key = "alt+z"
 type = "plugin_action"
 command = "herdr-nvim-aware.zoom"
 
-[ui]
-pane_outer_borders = false
-pane_gaps = false
-pane_scrollbars = false
-tab_bar_position = "bottom"
-prompt_new_tab_name = false
-confirm_close = false
