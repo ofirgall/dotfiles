@@ -26,6 +26,8 @@ switch_tab = "alt+1..9"
 previous_tab = "alt+comma"
 next_tab = "alt+."
 close_tab = "alt+shift+w"
+move_tab_previous = "alt+shift+comma"
+move_tab_next = "alt+shift+."
 
 new_workspace = "prefix+shift+n"
 workspace_picker = "prefix+w"
@@ -35,12 +37,18 @@ focus_pane_down = "alt+shift+j"
 focus_pane_up = "alt+shift+k"
 focus_pane_right = "alt+shift+l"
 
+swap_pane_left = "prefix+shift+h"
+swap_pane_down = "prefix+shift+j"
+swap_pane_up = "prefix+shift+k"
+swap_pane_right = "prefix+shift+l"
+
 resize_pane_left = "prefix+ctrl+h"
 resize_pane_down = "prefix+ctrl+j"
 resize_pane_up = "prefix+ctrl+k"
 resize_pane_right = "prefix+ctrl+l"
 
 copy_mode = "alt+c"
+last_pane = "alt+minus"
 
 # Nvim-aware binds via herdr-nvim-aware plugin
 [[keys.command]]
@@ -87,4 +95,19 @@ command = "herdr-nvim-aware.quit"
 key = "alt+z"
 type = "plugin_action"
 command = "herdr-nvim-aware.zoom"
+
+# Popups
+[[keys.command]]
+key = "prefix+alt+g"
+type = "popup"
+command = "lazygit"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+n"
+type = "popup"
+command = "ez session note open"
+width = "65%"
+height = "65%"
 
