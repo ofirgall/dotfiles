@@ -20,3 +20,5 @@ Add-ToPath "$HOME\.local\bin"
 Add-ToPath "C:\Program Files\Git\usr\bin"
 Add-ToPath "C:\Program Files (x86)\GnuWin32\bin"
 Append-ToPath "$HOME\.npm-packages\bin"
+
+$env:LINK_SKILLS_REPO = "C:\Users\Ofir\workspace\personal\agent-skills"
