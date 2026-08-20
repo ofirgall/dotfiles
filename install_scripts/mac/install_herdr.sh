@@ -31,14 +31,3 @@ cargo install --path "$HERDR_DIR" --locked
 if ! herdr plugin list 2>/dev/null | grep -q herdr-nvim-aware; then
     herdr plugin install KoalaVim/herdr-nvim-aware --yes
 fi
-
-# Install herdr-fingers plugin (tmux-fingers style text grabbing)
-if ! herdr plugin list 2>/dev/null | grep -q herdr-fingers; then
-    herdr plugin install hitaishi2222/herdr-fingers --yes
-fi
-pip3 install --break-system-packages rich 2>/dev/null || true
-
-# Install herdr-hint plugin (vimium-style tab/agent jump)
-if ! herdr plugin list 2>/dev/null | grep -q maedana.hint; then
-    herdr plugin install maedana/herdr-hint --yes
-fi
