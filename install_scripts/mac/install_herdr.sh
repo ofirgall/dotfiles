@@ -31,3 +31,8 @@ cargo install --path "$HERDR_DIR" --locked
 if ! herdr plugin list 2>/dev/null | grep -q herdr-nvim-aware; then
     herdr plugin install KoalaVim/herdr-nvim-aware --yes
 fi
+
+# Install extrakto-herdr plugin (text extraction + fzf)
+if ! herdr plugin list 2>/dev/null | grep -q extrakto-herdr; then
+    herdr plugin install ofirgall/extrakto-herdr --yes
+fi
