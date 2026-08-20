@@ -9,10 +9,10 @@ new_cwd = "follow"
 [keys]
 prefix = "ctrl+b"
 
-split_vertical = "alt+e"
-split_horizontal = "alt+o"
-close_pane = "alt+w"
-zoom = "alt+z"
+split_vertical = ""
+split_horizontal = ""
+close_pane = ""
+zoom = ""
 
 new_tab = "alt+t"
 switch_tab = "alt+1..9"
@@ -33,26 +33,56 @@ resize_pane_down = "prefix+ctrl+j"
 resize_pane_up = "prefix+ctrl+k"
 resize_pane_right = "prefix+ctrl+l"
 
-# Nvim-aware navigation via herdr-nvim-nav plugin
+# Nvim-aware binds via herdr-nvim-aware plugin
 [[keys.command]]
 key = "ctrl+h"
 type = "plugin_action"
-command = "herdr-nvim-nav.left"
+command = "herdr-nvim-aware.left"
 
 [[keys.command]]
 key = "ctrl+j"
 type = "plugin_action"
-command = "herdr-nvim-nav.down"
+command = "herdr-nvim-aware.down"
 
 [[keys.command]]
 key = "ctrl+k"
 type = "plugin_action"
-command = "herdr-nvim-nav.up"
+command = "herdr-nvim-aware.up"
 
 [[keys.command]]
 key = "ctrl+l"
 type = "plugin_action"
-command = "herdr-nvim-nav.right"
+command = "herdr-nvim-aware.right"
+
+[[keys.command]]
+key = "alt+e"
+type = "plugin_action"
+command = "herdr-nvim-aware.split_v"
+
+[[keys.command]]
+key = "alt+o"
+type = "plugin_action"
+command = "herdr-nvim-aware.split_h"
+
+[[keys.command]]
+key = "alt+w"
+type = "plugin_action"
+command = "herdr-nvim-aware.close"
+
+[[keys.command]]
+key = "alt+q"
+type = "plugin_action"
+command = "herdr-nvim-aware.quit"
+
+[[keys.command]]
+key = "alt+z"
+type = "plugin_action"
+command = "herdr-nvim-aware.zoom"
+
+[[keys.command]]
+key = "ctrl+u"
+type = "plugin_action"
+command = "herdr-nvim-aware.scroll_up"
 
 [[keys.command]]
 key = "prefix+alt+g"
