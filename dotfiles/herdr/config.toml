@@ -106,3 +106,14 @@ command = "ez session note open"
 width = "65%"
 height = "65%"
 
+# Plugins
+[[keys.command]]
+key = "alt+f"
+type = "plugin_action"
+command = "herdr-fingers.finger"
+
+[[keys.command]]
+key = "prefix+f"
+type = "shell"
+command = "herdr plugin pane open --plugin maedana.hint --entrypoint jump"
+
