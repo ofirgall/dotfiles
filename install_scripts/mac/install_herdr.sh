@@ -26,3 +26,8 @@ fi
 
 echo "Building herdr from $HERDR_DIR..."
 cargo install --path "$HERDR_DIR" --locked
+
+# Install herdr-nvim-nav plugin (nvim-aware pane navigation)
+if ! herdr plugin list 2>/dev/null | grep -q herdr-nvim-nav; then
+    herdr plugin install aimdevlee/herdr-nvim-nav --yes
+fi

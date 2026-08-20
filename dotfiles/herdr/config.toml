@@ -1,1 +1,70 @@
-# onboarding = false
+onboarding = false
+
+[theme]
+name = "tokyo-night"
+
+[terminal]
+new_cwd = "follow"
+
+[keys]
+prefix = "ctrl+b"
+
+split_vertical = "alt+e"
+split_horizontal = "alt+o"
+close_pane = "alt+w"
+zoom = "alt+z"
+
+new_tab = "alt+t"
+switch_tab = "alt+1..9"
+previous_tab = "alt+comma"
+next_tab = "alt+."
+close_tab = "alt+shift+w"
+
+new_workspace = "prefix+shift+n"
+workspace_picker = "prefix+w"
+
+focus_pane_left = ""
+focus_pane_down = ""
+focus_pane_up = ""
+focus_pane_right = ""
+
+resize_pane_left = "prefix+ctrl+h"
+resize_pane_down = "prefix+ctrl+j"
+resize_pane_up = "prefix+ctrl+k"
+resize_pane_right = "prefix+ctrl+l"
+
+# Nvim-aware navigation via herdr-nvim-nav plugin
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "herdr-nvim-nav.left"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "herdr-nvim-nav.down"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "herdr-nvim-nav.up"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "herdr-nvim-nav.right"
+
+[[keys.command]]
+key = "prefix+alt+g"
+type = "popup"
+command = "lazygit"
+width = "80%"
+height = "80%"
+
+[ui]
+pane_outer_borders = false
+pane_gaps = false
+pane_scrollbars = false
+tab_bar_position = "bottom"
+prompt_new_tab_name = false
+confirm_close = false
