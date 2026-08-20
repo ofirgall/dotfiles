@@ -74,6 +74,8 @@
         path: dotfiles/gh-dash/config.yml
     ~/.config/hop/config.toml:
         path: dotfiles/hop/config.toml
+    ~/.config/herdr:
+        path: dotfiles/herdr
 
 # --- macOS-specific symlinks ---
 - link:
@@ -102,3 +104,4 @@
     - [ln -sf config.macos dotfiles/ghostty/config.platform, Setting Ghostty platform config]
     - [install_scripts/install_ghostty_plugins.sh, Installing ghostty plugins]
     - [install_scripts/mac/install_kvim.sh, Installing KoalaVim]
+    - [install_scripts/mac/install_herdr.sh, Installing herdr]
