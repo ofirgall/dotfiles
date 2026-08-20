@@ -1,5 +1,6 @@
 
 alias nv=kv
+alias h=herdr
 alias nv-10='kv --override-state --profile 010 --nvim-bin-path ~/.local/nvim-010/bin/bin/nvim --lua-cfg ~/dotfiles/editors/KoalaConfig-10/'
 alias v=kv
 alias br='broot --conf ~/.brootrc.toml'
