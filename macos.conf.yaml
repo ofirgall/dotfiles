@@ -104,4 +104,5 @@
     - [ln -sf config.macos dotfiles/ghostty/config.platform, Setting Ghostty platform config]
     - [install_scripts/install_ghostty_plugins.sh, Installing ghostty plugins]
     - [install_scripts/mac/install_kvim.sh, Installing KoalaVim]
+    - [dotfiles/herdr/generate-config.sh mac, Generating herdr config]
     - [install_scripts/mac/install_herdr.sh, Installing herdr]

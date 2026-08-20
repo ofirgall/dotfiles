@@ -25,6 +25,12 @@ if ! command -v starship.exe &>/dev/null; then
     winget.exe install --id Starship.Starship --accept-package-agreements --accept-source-agreements || true
 fi
 
+# jq
+winget.exe install --id jqlang.jq --accept-package-agreements --accept-source-agreements || true
+
+# yq
+winget.exe install --id MikeFarah.yq --accept-package-agreements --accept-source-agreements || true
+
 # Cargo packages (cross-platform)
 cargo install difftastic
 cargo install du-dust

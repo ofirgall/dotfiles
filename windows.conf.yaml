@@ -4,6 +4,7 @@
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_vcbuildtools.sh', Installing Visual C++ Build Tools]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_rust.sh', Installing Rust toolchain]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_basic.sh', Installing basic CLI tools]
+    - ['"C:/Program Files/Git/bin/bash.exe" dotfiles/herdr/generate-config.sh windows', Generating herdr config]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_kanata.sh', Installing Kanata]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_fonts.sh', Installing Nerd Fonts]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_ghostty.sh', Installing Ghostty]
@@ -62,8 +63,8 @@
         path: dotfiles/bottom/bottom.toml
     ~/.config/hop/config.toml:
         path: dotfiles/hop/config.toml
-    ~/.config/herdr:
-        path: dotfiles/herdr
+    ~/AppData/Roaming/herdr/config.toml:
+        path: dotfiles/herdr/config.toml
 
 # --- PowerShell profile ---
 - link:
