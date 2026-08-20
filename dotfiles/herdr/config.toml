@@ -9,10 +9,10 @@ new_cwd = "follow"
 [keys]
 prefix = "ctrl+b"
 
-split_vertical = ""
-split_horizontal = ""
+split_vertical = "alt+shift+e"
+split_horizontal = "prefix+o"
 close_pane = ""
-zoom = ""
+zoom = "alt+shift+z"
 
 new_tab = "alt+t"
 switch_tab = "alt+1..9"
@@ -23,10 +23,10 @@ close_tab = "alt+shift+w"
 new_workspace = "prefix+shift+n"
 workspace_picker = "prefix+w"
 
-focus_pane_left = ""
-focus_pane_down = ""
-focus_pane_up = ""
-focus_pane_right = ""
+focus_pane_left = "alt+shift+h"
+focus_pane_down = "alt+shift+j"
+focus_pane_up = "alt+shift+k"
+focus_pane_right = "alt+shift+l"
 
 resize_pane_left = "prefix+ctrl+h"
 resize_pane_down = "prefix+ctrl+j"
@@ -78,18 +78,6 @@ command = "herdr-nvim-aware.quit"
 key = "alt+z"
 type = "plugin_action"
 command = "herdr-nvim-aware.zoom"
-
-[[keys.command]]
-key = "ctrl+u"
-type = "plugin_action"
-command = "herdr-nvim-aware.scroll_up"
-
-[[keys.command]]
-key = "prefix+alt+g"
-type = "popup"
-command = "lazygit"
-width = "80%"
-height = "80%"
 
 [ui]
 pane_outer_borders = false
