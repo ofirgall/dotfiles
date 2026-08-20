@@ -46,7 +46,7 @@
       "KC_I",
       "KC_U",
       "KC_Y",
-      "KC_QUOT",
+      "MT(MOD_RSFT,KC_QUOT)",
       "KC_SCLN",
       "KC_L",
       "KC_K",
