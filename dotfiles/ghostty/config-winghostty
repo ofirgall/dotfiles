@@ -11,6 +11,8 @@ window-padding-y = 0
 window-padding-balance = true
 window-padding-color = extend
 window-decoration = none
+window-show-tab-bar = never
+# window-theme = ghostt1y
 
 adjust-cursor-thickness = 2
 # precision=touchpad | discrete=mouse
