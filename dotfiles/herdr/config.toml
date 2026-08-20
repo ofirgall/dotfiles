@@ -50,6 +50,7 @@ resize_pane_right = "prefix+ctrl+l"
 
 copy_mode = "alt+c"
 last_pane = "alt+minus"
+reload_config = "prefix+r"
 
 # Nvim-aware binds via herdr-nvim-aware plugin
 [[keys.command]]
