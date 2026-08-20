@@ -32,7 +32,7 @@
       "KC_NO",
       "KC_LGUI",
       "KC_SPC",
-      "KC_ESC",
+      "LT(2,KC_ESC)",
       "KC_LBRC",
       "KC_MINS",
       "KC_0",
@@ -62,7 +62,7 @@
       "KC_NO",
       "KC_LALT",
       "KC_BSPC",
-      "LT(2,KC_GRV)",
+      "LT(1,KC_GRV)",
       "KC_RBRC"
     ],
     [
@@ -140,7 +140,7 @@
       "KC_TRNS",
       "KC_TRNS",
       "KC_TRNS",
-      "KC_ESC",
+      "A(KC_ESC)",
       "KC_END",
       "KC_TRNS",
       "KC_PGDN",
