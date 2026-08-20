@@ -12,6 +12,7 @@ pane_gaps = false
 tab_bar_position = "bottom"
 prompt_new_tab_name = false
 confirm_close = false
+pane_scrollbars = false
 
 [keys]
 prefix = "ctrl+b"
@@ -97,13 +98,6 @@ type = "plugin_action"
 command = "herdr-nvim-aware.zoom"
 
 # Popups
-[[keys.command]]
-key = "prefix+alt+g"
-type = "popup"
-command = "lazygit"
-width = "80%"
-height = "80%"
-
 [[keys.command]]
 key = "prefix+n"
 type = "popup"
