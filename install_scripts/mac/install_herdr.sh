@@ -36,6 +36,7 @@ fi
 if ! herdr plugin list 2>/dev/null | grep -q herdr-fingers; then
     herdr plugin install hitaishi2222/herdr-fingers --yes
 fi
+pip3 install --break-system-packages rich 2>/dev/null || true
 
 # Install herdr-hint plugin (vimium-style tab/agent jump)
 if ! herdr plugin list 2>/dev/null | grep -q maedana.hint; then
