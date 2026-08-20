@@ -107,7 +107,7 @@ width = "65%"
 height = "65%"
 
 [[keys.command]]
-key = "ctrl+space"
+key = "ctrl+shift+space"
 type = "plugin_action"
 command = "extrakto-herdr.open"
 
