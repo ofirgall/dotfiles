@@ -40,6 +40,8 @@ resize_pane_down = "prefix+ctrl+j"
 resize_pane_up = "prefix+ctrl+k"
 resize_pane_right = "prefix+ctrl+l"
 
+copy_mode = "alt+c"
+
 # Nvim-aware binds via herdr-nvim-aware plugin
 [[keys.command]]
 key = "ctrl+h"
