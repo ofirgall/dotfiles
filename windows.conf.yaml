@@ -62,6 +62,8 @@
         path: dotfiles/bottom/bottom.toml
     ~/.config/hop/config.toml:
         path: dotfiles/hop/config.toml
+    ~/.config/herdr:
+        path: dotfiles/herdr
 
 # --- PowerShell profile ---
 - link:
@@ -102,4 +104,5 @@
 - shell:
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_agents_status.sh', Installing agents-status]
     - ['"C:/Program Files/Git/bin/bash.exe" -c "ln -sf config.windows dotfiles/ghostty/config.platform"', Setting Ghostty platform config]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_herdr.sh', Installing herdr]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_kvim.sh', Installing KoalaVim]
