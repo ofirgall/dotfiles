@@ -107,7 +107,12 @@ width = "65%"
 height = "65%"
 
 [[keys.command]]
-key = "ctrl+shift+space"
+key = "ctrl+space"
 type = "plugin_action"
 command = "herdr-nvim-aware.extrakto"
+
+[[keys.command]]
+key = "ctrl+shift+space"
+type = "plugin_action"
+command = "extrakto-herdr.open"
 
