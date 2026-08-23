@@ -30,8 +30,8 @@
       "KC_B",
       "KC_NO",
       "KC_NO",
-      "KC_LALT",
-      "KC_SPC",
+      "KC_LGUI",
+      "MT(MOD_LALT,KC_SPC)",
       "LT(1,KC_ESC)",
       "KC_LBRC",
       "KC_MINS",
@@ -62,7 +62,7 @@
       "KC_NO",
       "LT(2,KC_GRV)",
       "KC_BSPC",
-      "KC_LGUI",
+      "KC_ESC",
       "KC_RBRC"
     ],
     [
