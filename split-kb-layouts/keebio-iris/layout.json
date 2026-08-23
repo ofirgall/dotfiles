@@ -31,7 +31,7 @@
       "KC_NO",
       "KC_NO",
       "KC_LGUI",
-      "MT(MOD_LALT,KC_SPC)",
+      "KC_SPC",
       "LT(1,KC_ESC)",
       "KC_LBRC",
       "KC_MINS",
@@ -46,7 +46,7 @@
       "KC_I",
       "KC_U",
       "KC_Y",
-      "MT(MOD_LSFT | MOD_RSFT,KC_QUOT)",
+      "MT(MOD_LALT,KC_QUOT)",
       "KC_SCLN",
       "KC_L",
       "KC_K",
@@ -62,7 +62,7 @@
       "KC_NO",
       "LT(2,KC_GRV)",
       "KC_BSPC",
-      "KC_ESC",
+      "MT(MOD_LALT,KC_ESC)",
       "KC_RBRC"
     ],
     [
