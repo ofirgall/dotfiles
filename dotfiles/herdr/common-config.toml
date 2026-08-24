@@ -51,6 +51,8 @@ resize_pane_right = "prefix+ctrl+l"
 copy_mode = "alt+c"
 last_pane = ""
 reload_config = "prefix+r"
+detach = "prefix+d"
+toggle_sidebar = "prefix+m"
 
 # Nvim-aware binds via herdr-nvim-aware plugin
 [[keys.command]]
