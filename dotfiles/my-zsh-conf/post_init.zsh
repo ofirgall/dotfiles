@@ -51,7 +51,7 @@ fi
 
 export ZSH_TMUX_ALWAYS_SELECT_SESSION=true
 # select_tmux_session.sh
-if [ -z "$TMUX" ]; then
+if [ -z "$TMUX" ] && [ -z "${HERDR_PANE_ID:-}" ]; then
 	cd ~
 	ez
 fi
