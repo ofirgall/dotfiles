@@ -28,11 +28,13 @@ The merge uses `yq` deep-merge (`*+`), so platform files only need to specify ov
 
 ## Viewing Herdr Defaults
 
-Herdr does not have a `config dump-defaults` command. To see all available config keys and their defaults:
+Print the full default config (all keys and their defaults):
 
-- Check the herdr docs: `https://herdr.dev/agent-guide.md`
-- Reset to defaults with `herdr config reset-keys` (backs up current config first)
-- Use `herdr config check` to validate and see warnings about unknown keys
+```bash
+herdr --default-config
+```
+
+Use `herdr config check` to validate the current config and see warnings about unknown keys.
 
 ## herdr-last-tab
 
