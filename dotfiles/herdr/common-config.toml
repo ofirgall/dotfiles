@@ -54,6 +54,7 @@ reload_config = "prefix+r"
 detach = "prefix+d"
 toggle_sidebar = "prefix+m"
 focus_agent = "prefix+alt+1..9"
+switch_workspace = "prefix+ctrl+1..9"
 
 # Nvim-aware binds via herdr-nvim-aware plugin
 [[keys.command]]
