@@ -4,3 +4,4 @@ session.json
 plugins.json
 plugins/
 config.toml
+sessions/
