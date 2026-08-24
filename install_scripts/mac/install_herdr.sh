@@ -19,3 +19,7 @@ fi
 if ! herdr plugin list 2>/dev/null | grep -q extrakto-herdr; then
     herdr plugin install ofirgall/extrakto-herdr --yes
 fi
+
+# Build herdr-last-tab (last-tab switcher)
+echo "Building herdr-last-tab..."
+cargo install --path "$HOME/dotfiles/herdr-last-tab" --force --quiet

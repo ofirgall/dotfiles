@@ -49,7 +49,7 @@ resize_pane_up = "prefix+ctrl+k"
 resize_pane_right = "prefix+ctrl+l"
 
 copy_mode = "alt+c"
-last_pane = "alt+minus"
+last_pane = ""
 reload_config = "prefix+r"
 
 # Nvim-aware binds via herdr-nvim-aware plugin
@@ -115,4 +115,20 @@ command = "herdr-nvim-aware.extrakto"
 key = "ctrl+shift+space"
 type = "plugin_action"
 command = "extrakto-herdr.open"
+
+# Last-tab (like tmux last-window)
+[[keys.command]]
+key = "alt+`"
+type = "shell"
+command = "herdr-last-tab"
+
+[[keys.command]]
+key = "alt+="
+type = "shell"
+command = "herdr-last-tab"
+
+[[keys.command]]
+key = "alt+-"
+type = "shell"
+command = "herdr-last-tab"
 

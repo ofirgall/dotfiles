@@ -31,3 +31,11 @@ if [ -n "$TMUX_PLUGIN_MANAGER_PATH" ]; then
 	add-zsh-hook chpwd tmux-window-name
 	source ~/.tmux/plugins/tmux-notify/shell/tmux-notify.zsh
 fi
+
+# Start herdr-last-tab daemon (once per server)
+if [[ -n "${HERDR_PANE_ID:-}" ]]; then
+	local _pid_file="/tmp/herdr-last-tab/daemon.pid"
+	if ! { [[ -f "$_pid_file" ]] && kill -0 "$(cat "$_pid_file")" 2>/dev/null; }; then
+		herdr-last-tab daemon
+	fi
+fi
