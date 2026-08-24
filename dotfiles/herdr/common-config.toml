@@ -134,3 +134,26 @@ key = "alt+-"
 type = "shell"
 command = "herdr-last-tab"
 
+# Navigator
+[[keys.command]]
+key = "prefix+f"
+type = "plugin_action"
+command = "herdr-navigator.open"
+
+[[keys.command]]
+key = "prefix+-"
+type = "plugin_action"
+command = "herdr-navigator.jump-back"
+
+# Reviewr
+[[keys.command]]
+key = "prefix+g"
+type = "plugin_action"
+command = "persiyanov.reviewr.toggle"
+
+# Automatic rename
+[[keys.command]]
+key = "prefix+alt+n"
+type = "plugin_action"
+command = "herdr-automatic-rename.reset"
+

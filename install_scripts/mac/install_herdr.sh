@@ -20,6 +20,21 @@ if ! herdr plugin list 2>/dev/null | grep -q extrakto-herdr; then
     herdr plugin install ofirgall/extrakto-herdr --yes
 fi
 
+# Install herdr-automatic-rename plugin (auto-name tabs/workspaces)
+if ! herdr plugin list 2>/dev/null | grep -q herdr-automatic-rename; then
+    herdr plugin install qu8n/herdr-automatic-rename --yes
+fi
+
+# Install herdr-navigator plugin (fuzzy jump to workspace/agent/project)
+if ! herdr plugin list 2>/dev/null | grep -q herdr-navigator; then
+    herdr plugin install thanhdat77/herdr-navigator --yes
+fi
+
+# Install herdr-reviewr plugin (review agent diffs)
+if ! herdr plugin list 2>/dev/null | grep -q persiyanov.reviewr; then
+    herdr plugin install persiyanov/herdr-reviewr --yes
+fi
+
 # Build herdr-last-tab (last-tab switcher)
 echo "Building herdr-last-tab..."
 cargo install --path "$HOME/dotfiles/herdr-last-tab" --force --quiet
