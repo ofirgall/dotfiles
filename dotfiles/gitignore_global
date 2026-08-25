@@ -11,3 +11,5 @@ _ofir*
 .cursor/plans/
 .cursor/.gitignore
 *.null-ls*
+
+**/.claude/settings.local.json

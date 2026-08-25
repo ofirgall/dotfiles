@@ -120,6 +120,7 @@ function pg { Set-Location "$HOME\playgrounds"; kv }
 function cls { Clear-Host }
 
 function ssh { $env:TERM = 'xterm-256color'; ssh.exe @args }
+function catv { bash -c "cat -v" }
 
 # cd-to-git: fzf over git repos in a directory
 function cg {
