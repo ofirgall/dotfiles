@@ -1,25 +1,41 @@
 use serde::Deserialize;
 use std::env;
 use std::fs;
-use std::io::{BufRead, BufReader, Write};
-use std::os::unix::net::UnixStream;
+use std::io::{BufRead, BufReader, Read, Write};
 use std::path::PathBuf;
 use std::process::Command;
 use std::thread;
 use std::time::Duration;
 
+#[cfg(unix)]
+use std::os::unix::net::UnixStream;
+
 fn state_dir() -> PathBuf {
+    #[cfg(unix)]
     let dir = PathBuf::from("/tmp/herdr-last-tab");
+    #[cfg(windows)]
+    let dir = PathBuf::from(env::var("TEMP").unwrap_or_else(|_| r"C:\Temp".into()))
+        .join("herdr-last-tab");
     fs::create_dir_all(&dir).ok();
     dir
 }
 
 fn sock_path() -> PathBuf {
     if let Ok(p) = env::var("HERDR_SOCKET_PATH") {
-        PathBuf::from(p)
-    } else {
+        return PathBuf::from(p);
+    }
+    #[cfg(unix)]
+    {
         let home = env::var("HOME").unwrap_or_else(|_| "/tmp".into());
         PathBuf::from(home).join(".config/herdr/herdr.sock")
+    }
+    #[cfg(windows)]
+    {
+        let appdata = env::var("APPDATA").unwrap_or_else(|_| {
+            let profile = env::var("USERPROFILE").unwrap_or_else(|_| r"C:\Users\Default".into());
+            format!(r"{}\AppData\Roaming", profile)
+        });
+        PathBuf::from(appdata).join(r"herdr\herdr.sock")
     }
 }
 
@@ -27,13 +43,28 @@ fn pid_file() -> PathBuf {
     state_dir().join("daemon.pid")
 }
 
+#[cfg(unix)]
+fn is_process_alive(pid: u32) -> bool {
+    unsafe { libc::kill(pid as i32, 0) == 0 }
+}
+
+#[cfg(windows)]
+fn is_process_alive(pid: u32) -> bool {
+    unsafe {
+        let handle = winapi::OpenProcess(winapi::PROCESS_QUERY_LIMITED_INFORMATION, 0, pid);
+        if handle == 0 {
+            return false;
+        }
+        winapi::CloseHandle(handle);
+        true
+    }
+}
+
 fn is_daemon_running() -> bool {
     let pf = pid_file();
     if let Ok(content) = fs::read_to_string(&pf) {
-        if let Ok(pid) = content.trim().parse::<i32>() {
-            unsafe {
-                return libc::kill(pid, 0) == 0;
-            }
+        if let Ok(pid) = content.trim().parse::<u32>() {
+            return is_process_alive(pid);
         }
     }
     false
@@ -54,7 +85,7 @@ struct EventData {
     tab_id: Option<String>,
 }
 
-fn subscribe(stream: &mut UnixStream) -> std::io::Result<()> {
+fn subscribe(stream: &mut impl Write) -> std::io::Result<()> {
     let req = serde_json::json!({
         "id": "last-tab-sub",
         "method": "events.subscribe",
@@ -68,7 +99,7 @@ fn subscribe(stream: &mut UnixStream) -> std::io::Result<()> {
     Ok(())
 }
 
-fn listen(stream: UnixStream) {
+fn listen(stream: impl Read) {
     let reader = BufReader::new(stream);
     let sd = state_dir();
 
@@ -122,13 +153,26 @@ fn listen(stream: UnixStream) {
 
 fn daemon_loop() {
     loop {
-        match UnixStream::connect(sock_path()) {
-            Ok(mut stream) => {
+        #[cfg(unix)]
+        {
+            if let Ok(mut stream) = UnixStream::connect(sock_path()) {
                 if subscribe(&mut stream).is_ok() {
                     listen(stream);
                 }
             }
-            Err(_) => {}
+        }
+        #[cfg(windows)]
+        {
+            let pipe_path = format!(r"\\.\pipe\{}", sock_path().display());
+            if let Ok(mut file) = fs::OpenOptions::new()
+                .read(true)
+                .write(true)
+                .open(&pipe_path)
+            {
+                if subscribe(&mut file).is_ok() {
+                    listen(file);
+                }
+            }
         }
         thread::sleep(Duration::from_secs(2));
     }
@@ -152,7 +196,6 @@ fn daemonize() {
         Err(_) => std::process::exit(1),
     }
 
-    // Redirect stdio to /dev/null
     use std::os::unix::io::AsRawFd;
     let devnull = fs::OpenOptions::new()
         .read(true)
@@ -208,14 +251,32 @@ fn get_focused_workspace() -> Option<String> {
     resp.result?.snapshot?.focused_workspace_id
 }
 
-fn run_switch() {
-    // Ensure daemon is running
-    if !is_daemon_running() {
-        let exe = env::current_exe().unwrap_or_else(|_| PathBuf::from("herdr-last-tab"));
+fn spawn_daemon() {
+    let exe = env::current_exe().unwrap_or_else(|_| PathBuf::from("herdr-last-tab"));
+
+    #[cfg(unix)]
+    {
+        Command::new(exe).arg("daemon").spawn().ok();
+    }
+    #[cfg(windows)]
+    {
+        use std::os::windows::process::CommandExt;
+        use std::process::Stdio;
+        const CREATE_NO_WINDOW: u32 = 0x08000000;
         Command::new(exe)
             .arg("daemon")
+            .stdin(Stdio::null())
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
+            .creation_flags(CREATE_NO_WINDOW)
             .spawn()
             .ok();
+    }
+}
+
+fn run_switch() {
+    if !is_daemon_running() {
+        spawn_daemon();
         thread::sleep(Duration::from_millis(300));
     }
 
@@ -256,10 +317,19 @@ fn main() {
     }
 }
 
-// libc for kill(2) and dup2
+#[cfg(unix)]
 mod libc {
     extern "C" {
         pub fn kill(pid: i32, sig: i32) -> i32;
         pub fn dup2(oldfd: i32, newfd: i32) -> i32;
     }
+}
+
+#[cfg(windows)]
+mod winapi {
+    extern "system" {
+        pub fn OpenProcess(desired_access: u32, inherit_handle: i32, process_id: u32) -> isize;
+        pub fn CloseHandle(handle: isize) -> i32;
+    }
+    pub const PROCESS_QUERY_LIMITED_INFORMATION: u32 = 0x1000;
 }
