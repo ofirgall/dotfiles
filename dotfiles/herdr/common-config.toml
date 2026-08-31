@@ -59,6 +59,11 @@ toggle_sidebar = "prefix+m"
 focus_agent = "prefix+ctrl+1..9"
 switch_workspace = "prefix+1..9"
 close_workspace = "prefix+x"
+previous_workspace = "ctrl+,"
+next_workspace = "ctrl+."
+previous_agent = "ctrl+<"
+next_agent = "ctrl+>"
+
 
 [ui]
 sidebar_max_width = 50 # default = 36
