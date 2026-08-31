@@ -15,6 +15,7 @@ on_enter = "tmux"
 on_create = "tmux"
 default_sort = "lru"
 copy_cursor_conversations = true
+note_open_command = "$EDITOR"
 
 [selector]
 backend = "fzf"
@@ -36,6 +37,10 @@ cd_session = "ctrl-d"
 new_bare_session = "alt-N"
 sort_toggle = "ctrl-s"
 session_from_dirty = "alt-s"
+clone_repo = "alt-a"
+remove_repo = "alt-d"
+note_open = "alt-i"
+note_cd = "alt-I"
 
 [plugins]
 enabled = [
@@ -45,6 +50,7 @@ enabled = [
     "cursor-mcp-approvals",
     "cursor-trusted-workspace",
     "kv",
+    "herdr",
 ]
 
 [plugin_settings.kv]
