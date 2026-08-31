@@ -56,8 +56,8 @@ last_pane = ""
 reload_config = "prefix+r"
 detach = "prefix+d"
 toggle_sidebar = "prefix+m"
-focus_agent = "prefix+1..9"
-switch_workspace = "prefix+ctrl+1..9"
+focus_agent = "prefix+ctrl+1..9"
+switch_workspace = "prefix+1..9"
 close_workspace = "prefix+x"
 
 [ui]
