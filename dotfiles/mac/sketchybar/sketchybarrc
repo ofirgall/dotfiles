@@ -139,7 +139,7 @@ add_right_items() {
                      icon.color=0xffb459ff \
                      label.color=0xffb459ff \
                      script="$PLUGIN_DIR/keyboard.sh" \
-               --subscribe "keyboard${suffix}" front_app_switched
+               --subscribe "keyboard${suffix}" front_app_switched keyboard_layout_change
 
     # Volume — sapphire (dynamic color in script for muted)
     sketchybar --add item "volume${suffix}" right \
@@ -215,8 +215,9 @@ add_right_items() {
                      script="$PLUGIN_DIR/window_count.sh"
 }
 
-# --- Build window count events list (needed by add_right_items) ---
+# --- Custom events (needed by add_right_items) ---
 sketchybar --add event window_count_change
+sketchybar --add event keyboard_layout_change
 WINDOW_COUNT_EVENTS="forced window_count_change"
 for sid in 1 2 3 4 5 6 7 8 9 10; do
     WINDOW_COUNT_EVENTS="$WINDOW_COUNT_EVENTS aerospace_workspace_change_$sid"

@@ -193,7 +193,7 @@ cmd-shift-v = 'exec-and-forget ~/.local/bin/aerospace-scripts tmux-viewer'
 cmd-shift-f = 'layout floating tiling'
 
 # Super+Space: toggle keyboard language (ABC/Hebrew)
-f20 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/toggle-input-source'
+f20 = 'exec-and-forget ~/dotfiles/dotfiles/mac/aerospace/toggle-input-source; sleep 0.1; sketchybar --trigger keyboard_layout_change'
 
 # Alt+Tab: cycle windows in workspace (preserves fullscreen)
 f19 = 'exec-and-forget ~/.local/bin/aerospace-scripts cycle'
