@@ -1,2 +1,23 @@
 [terminal]
 default_shell = "pwsh"
+
+# alt+hjkl becuase windows doesn't support ctrl+hj
+[[keys.command]]
+key = "alt+h"
+type = "plugin_action"
+command = "herdr-nvim-aware.left"
+
+[[keys.command]]
+key = "alt+j"
+type = "plugin_action"
+command = "herdr-nvim-aware.down"
+
+[[keys.command]]
+key = "alt+k"
+type = "plugin_action"
+command = "herdr-nvim-aware.up"
+
+[[keys.command]]
+key = "alt+l"
+type = "plugin_action"
+command = "herdr-nvim-aware.right"
