@@ -54,6 +54,26 @@
           "vertical" : 28
         }
       }
+    },
+    {
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "productID" : "0x2022",
+          "productName" : "Model O Wireless",
+          "serialNumber" : "000000000000",
+          "vendorID" : "0x258a"
+        }
+      },
+      "pointer" : {
+        "acceleration" : 1.15,
+        "disableAcceleration" : true
+      },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      }
     }
   ]
 }
