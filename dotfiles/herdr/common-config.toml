@@ -188,3 +188,25 @@ key = "prefix+alt+n"
 type = "plugin_action"
 command = "herdr-automatic-rename.reset"
 
+# Github PRs status
+[[keys.command]]
+key = "prefix+p"
+type = "plugin_action"
+command = "herdr-pr-tracker.toggle"
+description = "toggle PR tracker board"
+
+[[keys.command]]
+key = "prefix+shift+p"
+type = "plugin_action"
+command = "herdr-pr-tracker.refresh"
+description = "refresh PR status"
+
+[[keys.command]]
+key = "prefix+ctrl+p"
+type = "plugin_action"
+command = "herdr-pr-tracker.view-toggle"
+description = "toggle PR view"
+
+[ui.sidebar.agents]
+# rows = [["state_icon", "workspace", "tab", "$pr"], ["agent"]]
+rows = [["state_icon", "workspace", "tab", "$pr"], ["agent"]]

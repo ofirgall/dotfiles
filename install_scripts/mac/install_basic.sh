@@ -5,7 +5,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 # Brew packages
-brew install yq yj bat ripgrep fd fzf fx btop jq uv
+brew install yq yj bat ripgrep fd fzf fx btop jq uv bun
 
 # Cargo packages
 cargo install difftastic

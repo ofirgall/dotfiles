@@ -35,6 +35,11 @@ if ! herdr plugin list 2>/dev/null | grep -q persiyanov.reviewr; then
     herdr plugin install persiyanov/herdr-reviewr --yes
 fi
 
+# Install herdr-pr-tracker plugin (track PRs from Claude Code sessions)
+if ! herdr plugin list 2>/dev/null | grep -q herdr-pr-tracker; then
+    herdr plugin install jakekroon/herdr-pr-tracker --yes
+fi
+
 # Build herdr-last-tab (last-tab switcher)
 echo "Building herdr-last-tab..."
 cargo install --path "$HOME/dotfiles/herdr-last-tab" --force --quiet
