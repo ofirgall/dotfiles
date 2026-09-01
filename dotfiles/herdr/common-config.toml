@@ -136,6 +136,11 @@ key = "ctrl+shift+space"
 type = "plugin_action"
 command = "extrakto-herdr.open"
 
+[[keys.command]]
+key = "prefix+u"
+type = "plugin_action"
+command = "extrakto-herdr.open-url"
+
 # Last-tab (like tmux last-window)
 [[keys.command]]
 key = "alt+`"
