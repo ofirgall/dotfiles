@@ -16,6 +16,7 @@ tab_bar_position = "bottom"
 prompt_new_tab_name = false
 confirm_close = false
 pane_scrollbars = false
+agent_panel_sort = "priority"
 # sidebar_collapsed_mode = "hidden"
 
 [keys]
@@ -223,10 +224,10 @@ rows = [
     {token = "$pr_review",   fg = "#cba6f7"},
     {token = "$pr_ci_run",   fg = "#89b4fa"},
     {token = "$pr_approved", fg = "#a6e3a1"},
-    {token = "$pr_ci_pass",  fg = "#a6e3a1"},
-    "$pr_id"],
+    {token = "$pr_ci_pass",  fg = "#a6e3a1"}
+  ],
   ["branch", "git_status"],
 ]
 
 [ui.sidebar.agents]
-rows = [["state_icon", "workspace", "tab"], ["agent", "$pr_status", "$pr_id"]]
+rows = [["agent_index", "state_icon", "workspace", "tab"], ["agent", "$pr_status", "$pr_id"]]
