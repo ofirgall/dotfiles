@@ -31,6 +31,9 @@ winget.exe install --id jqlang.jq --accept-package-agreements --accept-source-ag
 # yq
 winget.exe install --id MikeFarah.yq --accept-package-agreements --accept-source-agreements || true
 
+# bun
+winget.exe install --id Oven-sh.Bun --accept-package-agreements --accept-source-agreements || true
+
 # Cargo packages (cross-platform)
 cargo install difftastic
 cargo install du-dust
