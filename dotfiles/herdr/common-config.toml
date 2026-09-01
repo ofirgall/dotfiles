@@ -16,6 +16,7 @@ tab_bar_position = "bottom"
 prompt_new_tab_name = false
 confirm_close = false
 pane_scrollbars = false
+# sidebar_collapsed_mode = "hidden"
 
 [keys]
 prefix = "ctrl+b"
@@ -56,8 +57,8 @@ last_pane = ""
 reload_config = "prefix+r"
 detach = "prefix+d"
 toggle_sidebar = "ctrl+m"
-focus_agent = "prefix+ctrl+1..9"
-switch_workspace = "prefix+1..9"
+focus_agent = "prefix+1..9"
+switch_workspace = "ctrl+1..9"
 close_workspace = "prefix+x"
 previous_workspace = "ctrl+,"
 next_workspace = "ctrl+."
@@ -208,7 +209,19 @@ command = "herdr-pr-tracker.view-toggle"
 description = "toggle PR view"
 
 [ui.sidebar.spaces]
-rows = [["state_icon", "workspace", "$pr_status"],  ["branch", "git_status"]]
+rows = [
+  ["state_icon", "workspace",
+    {token = "$pr_conflict", fg = "#f38ba8", bold = true},
+    {token = "$pr_changes",  fg = "#f38ba8", bold = true},
+    {token = "$pr_ci_fail",  fg = "#f38ba8", bold = true},
+    {token = "$pr_threads",  fg = "#f9e2af", bold = true},
+    {token = "$pr_review",   fg = "#cba6f7"},
+    {token = "$pr_ci_run",   fg = "#89b4fa"},
+    {token = "$pr_approved", fg = "#a6e3a1"},
+    {token = "$pr_ci_pass",  fg = "#a6e3a1"},
+    "$pr_id"],
+  ["branch", "git_status"],
+]
 
 [ui.sidebar.agents]
 rows = [["state_icon", "workspace", "tab"], ["agent", "$pr_status", "$pr_id"]]
