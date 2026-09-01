@@ -208,5 +208,7 @@ command = "herdr-pr-tracker.view-toggle"
 description = "toggle PR view"
 
 [ui.sidebar.agents]
-# rows = [["state_icon", "workspace", "tab", "$pr"], ["agent"]]
-rows = [["state_icon", "workspace", "tab", "$pr"], ["agent"]]
+rows = [["state_icon", "workspace", "tab"], ["agent", "$pr_status", "$pr_id"]]
+
+[ui.sidebar.spaces]
+rows = [["state_icon", "$pr_status", "workspace", "$pr_id"],  ["branch", "git_status"]]

@@ -37,7 +37,7 @@ fi
 
 # Install herdr-pr-tracker plugin (track PRs from Claude Code sessions)
 if ! herdr plugin list 2>/dev/null | grep -q herdr-pr-tracker; then
-    herdr plugin install jakekroon/herdr-pr-tracker --yes
+    herdr plugin install ofirgall/herdr-pr-tracker --yes
 fi
 
 # Build herdr-last-tab (last-tab switcher)
