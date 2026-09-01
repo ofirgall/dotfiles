@@ -230,4 +230,13 @@ rows = [
 ]
 
 [ui.sidebar.agents]
-rows = [["agent_index", "state_icon", "workspace", "tab"], ["agent", "$pr_status", "$pr_id"]]
+rows = [[
+  {token = "agent_index", fg = "#f9e2af", bold = true},
+  "state_icon",
+  "workspace",
+  "tab"
+], [
+  "agent",
+  "$pr_status",
+  "$pr_id"
+]]
