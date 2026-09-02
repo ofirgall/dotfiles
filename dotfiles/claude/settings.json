@@ -3,7 +3,7 @@
     "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1"
   },
   "permissions": {
-    "defaultMode": "auto"
+    "defaultMode": "bypassPermissions"
   },
   "model": "claude-opus-4-6",
   "hooks": {
