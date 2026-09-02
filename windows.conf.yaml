@@ -49,6 +49,8 @@
         path: dotfiles/yazi
     ~/.claude/settings.json:
         path: dotfiles/claude/settings.json
+    ~/.pi/agent/settings.json:
+        path: dotfiles/pi/settings.json
     ~/.claude/statusline-command.sh:
         path: dotfiles/claude/statusline-command.sh
     ~/.cursor/statusline.sh:
@@ -105,5 +107,6 @@
 - shell:
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_agents_status.sh', Installing agents-status]
     - ['"C:/Program Files/Git/bin/bash.exe" -c "ln -sf config.windows dotfiles/ghostty/config.platform"', Setting Ghostty platform config]
+    - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_pi.sh', Installing pi coding agent]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_herdr.sh', Installing herdr]
     - ['"C:/Program Files/Git/bin/bash.exe" install_scripts/windows/install_kvim.sh', Installing KoalaVim]

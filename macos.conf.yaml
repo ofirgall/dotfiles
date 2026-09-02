@@ -60,6 +60,8 @@
         path: dotfiles/yazi
     ~/.claude/settings.json:
         path: dotfiles/claude/settings.json
+    ~/.pi/agent/settings.json:
+        path: dotfiles/pi/settings.json
     ~/.claude/statusline-command.sh:
         path: dotfiles/claude/statusline-command.sh
     ~/.cursor/statusline.sh:
@@ -105,4 +107,5 @@
     - [install_scripts/install_ghostty_plugins.sh, Installing ghostty plugins]
     - [install_scripts/mac/install_kvim.sh, Installing KoalaVim]
     - [dotfiles/herdr/generate-config.sh mac, Generating herdr config]
+    - [install_scripts/mac/install_pi.sh, Installing pi coding agent]
     - [install_scripts/mac/install_herdr.sh, Installing herdr]

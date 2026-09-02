@@ -1,0 +1,11 @@
+{
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-4-6",
+  "defaultThinkingLevel": "high",
+  "quietStartup": true,
+  "theme": "tokyo-night-dark",
+  "packages": [
+    "npm:pi-subagents",
+    "https://github.com/wishx127/pi-tokyo-night"
+  ]
+}
