@@ -15,12 +15,13 @@ on_enter = "tmux"
 on_create = "tmux"
 default_sort = "lru"
 copy_cursor_conversations = true
+note_open_command = "$EDITOR"
 
 [selector]
 backend = "fzf"
 
 [fzf]
-height = "90%"
+height = "100%"
 
 [keybinds]
 new_session = "alt-n"
@@ -36,17 +37,23 @@ cd_session = "ctrl-d"
 new_bare_session = "alt-N"
 sort_toggle = "ctrl-s"
 session_from_dirty = "alt-s"
+clone_repo = "alt-a"
+remove_repo = "alt-d"
+note_open = "alt-i"
+note_cd = "alt-I"
 
 [plugins]
 enabled = [
     "git-worktree",
-    "tmux",
     "cursor-mcp-auth",
     "cursor-mcp-approvals",
     "cursor-trusted-workspace",
+    "kv",
+    "herdr",
 ]
 
-[plugin_settings]
+[plugin_settings.kv]
+repos = "KoalaVim"
 
 [[session_name_stages]]
 name = "prefix"
