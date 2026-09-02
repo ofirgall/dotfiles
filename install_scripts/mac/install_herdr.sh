@@ -6,8 +6,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 if command -v herdr &>/dev/null; then
     echo "herdr already installed"
 else
-    echo "Installing herdr..."
-    brew install herdr
+    echo "Installing herdr from ofirgall fork..."
+    cargo install --git https://github.com/ofirgall/herdr
 fi
 
 # Install herdr-nvim-aware plugin (nvim-aware keybindings)

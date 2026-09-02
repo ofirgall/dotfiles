@@ -5,12 +5,9 @@ source "$(dirname "$0")/helpers.sh"
 if command -v herdr &>/dev/null; then
     echo "herdr already installed"
 else
-    echo "Installing herdr..."
-    powershell.exe -ExecutionPolicy Bypass -c "irm https://herdr.dev/install.ps1 | iex"
+    echo "Installing herdr from ofirgall fork..."
+    cargo install --git https://github.com/ofirgall/herdr
 fi
-
-# Add herdr to PATH for this session (installer only updates future PowerShell sessions)
-export PATH="$LOCALAPPDATA/Programs/Herdr/bin:$PATH"
 
 # Install herdr-nvim-aware plugin (nvim-aware keybindings)
 if ! herdr plugin list 2>/dev/null | grep -q herdr-nvim-aware; then
