@@ -77,11 +77,18 @@ unalias gd # Remove ofir zsh framework ghs
 function gd() {
 	kv --git-diff -- $@
 }
+function _git_default_branch() {
+	if git rev-parse --verify --quiet origin/main >/dev/null 2>&1; then
+		echo origin/main
+	else
+		echo origin/master
+	fi
+}
 function gdm() {
-	kv --git-diff -- $(git merge-base HEAD origin/main)
+	kv --git-diff -- $(git merge-base HEAD $(_git_default_branch))
 }
 function ldm() {
-	lazydiff diff $(git merge-base HEAD origin/main)
+	lazydiff diff $(git merge-base HEAD $(_git_default_branch))
 }
 unalias ghs # Remove ofir zsh framework ghs
 alias ghs='gt'
