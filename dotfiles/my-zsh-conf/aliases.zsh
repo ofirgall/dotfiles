@@ -224,3 +224,6 @@ drift-mcp-auth() {
 
 alias mode-laptop="~/dotfiles/dotfiles/mac/sketchybar/plugins/mode-laptop.sh"
 alias mode-docked="~/dotfiles/dotfiles/mac/sketchybar/plugins/mode-docked.sh"
+
+[[ "$(uname)" == "Darwin" ]] && alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
