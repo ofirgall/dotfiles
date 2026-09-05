@@ -65,6 +65,7 @@ previous_workspace = "ctrl+,"
 next_workspace = "ctrl+."
 previous_agent = "ctrl+<"
 next_agent = "ctrl+>"
+edit_scrollback = "prefix+c"
 
 
 [ui]
@@ -159,14 +160,14 @@ type = "shell"
 command = "herdr-last-tab"
 
 [[keys.command]]
-key = "prefix+b"
+key = "prefix+e"
 type = "popup"
 command = "ez --on-enter herdr"
 width = "80%"
 height = "80%"
 
 [[keys.command]]
-key = "prefix+shift+b"
+key = "prefix+shift+e"
 type = "popup"
 command = "ez -a --on-enter herdr"
 width = "80%"
