@@ -17,6 +17,7 @@ prompt_new_tab_name = false
 confirm_close = false
 pane_scrollbars = false
 agent_panel_sort = "priority"
+sidebar_max_width = 50 # default = 36
 # sidebar_collapsed_mode = "hidden"
 
 [keys]
@@ -55,7 +56,7 @@ resize_pane_right = "prefix+ctrl+l"
 
 copy_mode = "alt+c"
 last_pane = ""
-reload_config = "prefix+r"
+reload_config = ""
 detach = "prefix+d"
 toggle_sidebar = "ctrl+m"
 focus_agent = "ctrl+shift+1..9"
@@ -67,9 +68,6 @@ previous_agent = "ctrl+<"
 next_agent = "ctrl+>"
 edit_scrollback = "prefix+c"
 
-
-[ui]
-sidebar_max_width = 50 # default = 36
 
 [ui.toast]
 delivery = "system"
@@ -189,6 +187,12 @@ command = "herdr-navigator.jump-back"
 key = "prefix+g"
 type = "plugin_action"
 command = "persiyanov.reviewr.toggle"
+
+# Generate + reload config
+[[keys.command]]
+key = "prefix+r"
+type = "shell"
+command = "bash ~/dotfiles/dotfiles/herdr/generate-config.sh \"$(case $(uname) in Darwin) echo mac;; MINGW*|MSYS*|CYGWIN*) echo windows;; *) echo linux;; esac)\" && herdr server reload-config"
 
 # Automatic rename
 [[keys.command]]
