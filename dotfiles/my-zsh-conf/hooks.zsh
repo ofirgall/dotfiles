@@ -21,7 +21,6 @@ _asdf_update_path_for_repo() {
 }
 
 add-zsh-hook chpwd _asdf_update_path_for_repo
-_asdf_update_path_for_repo
 
 tmux-window-name() {
 	($TMUX_PLUGIN_MANAGER_PATH/tmux-window-name/scripts/rename_session_windows.py &)
