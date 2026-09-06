@@ -12,9 +12,14 @@ _asdf_update_path_for_repo() {
 		path=("$asdf_shims" $path)
 
 		# Atlas is excluded from asdf (fragile plugin) and resolved via ensure-atlas.sh
-		local atlas_bin_dir="$repo_root/IaC/local-dev/.bin"
-		path=("${(@)path:#$atlas_bin_dir}")
-		[[ -d "$atlas_bin_dir" ]] && path=("$atlas_bin_dir" $path)
+		local ensure_atlas="$repo_root/IaC/local-dev/scripts/ensure-atlas.sh"
+		if [[ -x "$ensure_atlas" ]]; then
+			local atlas_bin_dir="${$("$ensure_atlas" 2>/dev/null):h}"
+			if [[ -n "$atlas_bin_dir" && -d "$atlas_bin_dir" ]]; then
+				path=("${(@)path:#$atlas_bin_dir}")
+				path=("$atlas_bin_dir" $path)
+			fi
+		fi
 	fi
 
 	export PATH
