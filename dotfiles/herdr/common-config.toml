@@ -230,6 +230,7 @@ rows = [
     {token = "$pr_changes",  fg = "#f38ba8", bold = true},
     {token = "$pr_threads",  fg = "#f9e2af", bold = true},
     {token = "$pr_merged",   fg = "#cba6f7", bold = true},
+    {token = "$pr_queued",   fg = "#f8921a", bold = true},
     {token = "$pr_review",   fg = "#89b4fa", bold = true},
   ],
   ["branch", "git_status"],
@@ -251,6 +252,7 @@ rows = [[
     {token = "$pr_changes",  fg = "#f38ba8", bold = true},
     {token = "$pr_threads",  fg = "#f9e2af", bold = true},
     {token = "$pr_merged",   fg = "#cba6f7", bold = true},
+    {token = "$pr_queued",   fg = "#f8921a", bold = true},
     {token = "$pr_review",   fg = "#89b4fa", bold = true},
   "$pr_id"
 ]]
