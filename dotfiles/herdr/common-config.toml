@@ -223,14 +223,14 @@ description = "toggle PR view"
 rows = [
   ["state_icon", "workspace",
     {token = "$pr_conflict", fg = "#f38ba8", bold = true},
-    {token = "$pr_ci_run",   fg = "#89b4fa"},
+    {token = "$pr_ci_run",   fg = "#f8921a"},
     {token = "$pr_ci_pass",  fg = "#a6e3a1"},
     {token = "$pr_ci_fail",  fg = "#f38ba8", bold = true},
     {token = "$pr_approved", fg = "#a6e3a1"},
     {token = "$pr_changes",  fg = "#f38ba8", bold = true},
     {token = "$pr_threads",  fg = "#f9e2af", bold = true},
     {token = "$pr_merged",   fg = "#cba6f7", bold = true},
-    {token = "$pr_review",   fg = "#cba6f7", bold = true},
+    {token = "$pr_review",   fg = "#89b4fa", bold = true},
   ],
   ["branch", "git_status"],
 ]
@@ -244,13 +244,13 @@ rows = [[
 ], [
   "agent",
     {token = "$pr_conflict", fg = "#f38ba8", bold = true},
-    {token = "$pr_ci_run",   fg = "#89b4fa"},
+    {token = "$pr_ci_run",   fg = "#f8921a"},
     {token = "$pr_ci_pass",  fg = "#a6e3a1"},
     {token = "$pr_ci_fail",  fg = "#f38ba8", bold = true},
     {token = "$pr_approved", fg = "#a6e3a1"},
     {token = "$pr_changes",  fg = "#f38ba8", bold = true},
     {token = "$pr_threads",  fg = "#f9e2af", bold = true},
     {token = "$pr_merged",   fg = "#cba6f7", bold = true},
-    {token = "$pr_review",   fg = "#cba6f7", bold = true},
+    {token = "$pr_review",   fg = "#89b4fa", bold = true},
   "$pr_id"
 ]]
