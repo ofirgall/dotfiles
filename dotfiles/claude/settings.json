@@ -35,6 +35,16 @@
             "command": "~/agents-status/hooks/claude/hook-session-start"
           }
         ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/ofirg/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "SessionEnd": [
