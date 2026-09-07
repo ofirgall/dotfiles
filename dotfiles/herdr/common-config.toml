@@ -120,6 +120,13 @@ command = "herdr-nvim-aware.zoom"
 
 # Popups
 [[keys.command]]
+key = "prefix+ctrl+e"
+type = "popup"
+command = "bash ~/dotfiles/dotfiles/herdr/explain-agent.sh 2>&1; read -r"
+width = "80%"
+height = "60%"
+
+[[keys.command]]
 key = "prefix+n"
 type = "popup"
 command = "ez session note open"
