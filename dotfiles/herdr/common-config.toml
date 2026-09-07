@@ -127,6 +127,13 @@ width = "80%"
 height = "60%"
 
 [[keys.command]]
+key = "prefix+ctrl+shift+e"
+type = "popup"
+command = "bash ~/dotfiles/dotfiles/herdr/read-agent-ansi.sh 2>&1; read -r"
+width = "80%"
+height = "60%"
+
+[[keys.command]]
 key = "prefix+n"
 type = "popup"
 command = "ez session note open"
