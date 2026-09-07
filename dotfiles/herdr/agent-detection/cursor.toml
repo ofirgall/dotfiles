@@ -55,3 +55,14 @@ priority = 90
 region = "bottom_non_empty_lines(8)"
 visible_working = true
 line_regex = ['^\s*(⬡|⬢|[\u2800-\u28FF]+)\s+\p{Alphabetic}+\w*ing\b']
+
+
+# CUSTOM RULES
+
+[[rules]]
+id = "task_count_working"
+state = "working"
+priority = 93
+region = "bottom_non_empty_lines(5)"
+visible_working = true
+line_regex = ['^\s*[1-9]\d*\s+tasks?\s*$']
