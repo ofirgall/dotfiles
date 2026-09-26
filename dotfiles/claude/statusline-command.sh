@@ -40,7 +40,7 @@ duration_min=$((duration_ms / 60000))
 label="$model"
 [ "$thinking" = "true" ] && label="$label Thinking"
 [ "$fast" = "true" ] && label="$label Fast"
-[ -n "$effort" ] && label="$label ${effort^}"
+[ -n "$effort" ] && label="$label $(tr '[:lower:]' '[:upper:]' <<< "${effort:0:1}")${effort:1}"
 
 if [ "$pct" -ge 80 ]; then
   ctx_color="\033[31m"
