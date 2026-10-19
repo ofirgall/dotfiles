@@ -7,3 +7,4 @@ config.toml
 sessions/
 *.sock.agent
 session-snapshots/
+config-dev.generated.toml

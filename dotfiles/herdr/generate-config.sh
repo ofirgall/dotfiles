@@ -5,14 +5,28 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 PLATFORM_FILE="$DIR/${1:?Usage: generate-config.sh <platform> (e.g. windows, mac)}-config.toml"
 COMMON_FILE="$DIR/common-config.toml"
 OUTPUT="$DIR/config.toml"
-
-if [ ! -f "$PLATFORM_FILE" ]; then
-    cp "$COMMON_FILE" "$OUTPUT"
-    exit 0
-fi
+# Dev-only overrides, merged on top of config.toml for the dev herdr (`make run`)
+DEV_FILE="$DIR/config-dev.toml"
+DEV_OUTPUT="$DIR/config-dev.generated.toml"
 
 TMPDIR="${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"
-yq -p toml -o yaml '.' "$COMMON_FILE" > "$TMPDIR/herdr-common.yaml"
-yq -p toml -o yaml '.' "$PLATFORM_FILE" > "$TMPDIR/herdr-platform.yaml"
-yq -o toml ". *+ load(\"$TMPDIR/herdr-platform.yaml\")" "$TMPDIR/herdr-common.yaml" > "$OUTPUT"
-rm -f "$TMPDIR/herdr-common.yaml" "$TMPDIR/herdr-platform.yaml"
+
+# merge <base> <overlay> <output>
+merge() {
+    yq -p toml -o yaml '.' "$1" > "$TMPDIR/herdr-base.yaml"
+    yq -p toml -o yaml '.' "$2" > "$TMPDIR/herdr-overlay.yaml"
+    yq -o toml ". *+ load(\"$TMPDIR/herdr-overlay.yaml\")" "$TMPDIR/herdr-base.yaml" > "$3"
+    rm -f "$TMPDIR/herdr-base.yaml" "$TMPDIR/herdr-overlay.yaml"
+}
+
+if [ -f "$PLATFORM_FILE" ]; then
+    merge "$COMMON_FILE" "$PLATFORM_FILE" "$OUTPUT"
+else
+    cp "$COMMON_FILE" "$OUTPUT"
+fi
+
+if [ -f "$DEV_FILE" ]; then
+    merge "$OUTPUT" "$DEV_FILE" "$DEV_OUTPUT"
+else
+    rm -f "$DEV_OUTPUT"
+fi

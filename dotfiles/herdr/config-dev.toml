@@ -1,0 +1,18 @@
+# Dev-only overrides, merged on top of config.toml into config-dev.generated.toml
+# by generate-config.sh. Only the dev herdr (`make run` in the herdr fork) reads it.
+
+# Agent status glyphs (override status_indicators per state, keep single-cell)
+# symbols
+[ui.status_icons]
+blocked = "×"
+working = "◐"
+done    = "✓"
+idle    = "Y"
+unknown = "·"
+# dots
+# [ui.status_icons]
+# blocked = "●"
+# working = "●"
+# done    = "●"
+# idle    = "○"
+# unknown = "·"
