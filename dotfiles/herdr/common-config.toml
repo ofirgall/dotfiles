@@ -40,6 +40,7 @@ prompt_new_tab_name = false
 confirm_close = false
 pane_scrollbars = false
 agent_panel_sort = "priority"
+status_indicators = "symbols"
 sidebar_max_width = 50 # default = 36
 # sidebar_collapsed_mode = "hidden"
 
