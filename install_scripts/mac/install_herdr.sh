@@ -45,6 +45,11 @@ if ! herdr plugin list 2>/dev/null | grep -q herdr-notify; then
     herdr plugin install ofirgall/herdr-notify --yes
 fi
 
+# Install herdr-workspace-move plugin (move workspace up/down)
+if ! herdr plugin list 2>/dev/null | grep -q herdr-workspace-move; then
+    herdr plugin install ofirgall/herdr-workspace-move --yes
+fi
+
 # Install herdr terminfo (undercurl support)
 tic -o ~/.terminfo -x "$HOME/dotfiles/dotfiles/herdr/herdr-256color.terminfo"
 

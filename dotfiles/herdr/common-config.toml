@@ -57,8 +57,8 @@ switch_tab = "alt+1..9"
 previous_tab = "alt+comma"
 next_tab = "alt+."
 close_tab = "alt+shift+w"
-move_tab_previous = "alt+shift+comma"
-move_tab_next = "alt+shift+."
+move_tab_previous = "alt+<"
+move_tab_next = "alt+>"
 
 new_workspace = "prefix+shift+n"
 workspace_picker = "prefix+w"
@@ -219,6 +219,19 @@ command = "herdr-navigator.open"
 key = "prefix+-"
 type = "plugin_action"
 command = "herdr-navigator.jump-back"
+
+# Workspace move (reorder the current workspace)
+[[keys.command]]
+key = "ctrl+<"
+type = "plugin_action"
+command = "herdr-workspace-move.up"
+description = "move workspace up"
+
+[[keys.command]]
+key = "ctrl+>"
+type = "plugin_action"
+command = "herdr-workspace-move.down"
+description = "move workspace down"
 
 # Reviewr
 [[keys.command]]
