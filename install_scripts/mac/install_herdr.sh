@@ -40,6 +40,11 @@ if ! herdr plugin list 2>/dev/null | grep -q herdr-pr-tracker; then
     herdr plugin install ofirgall/herdr-pr-tracker --yes
 fi
 
+# Install herdr-notify plugin (notify when a watched pane's command finishes)
+if ! herdr plugin list 2>/dev/null | grep -q herdr-notify; then
+    herdr plugin install ofirgall/herdr-notify --yes
+fi
+
 # Install herdr terminfo (undercurl support)
 tic -o ~/.terminfo -x "$HOME/dotfiles/dotfiles/herdr/herdr-256color.terminfo"
 

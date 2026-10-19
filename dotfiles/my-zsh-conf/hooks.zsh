@@ -43,3 +43,9 @@ if [[ -n "${HERDR_PANE_ID:-}" ]]; then
 		herdr-last-tab daemon
 	fi
 fi
+
+# herdr-notify: command-finished notifications (hook symlinked by the plugin)
+if [[ -n "${HERDR_PANE_ID:-}" ]]; then
+	local _notify_hook="${XDG_STATE_HOME:-$HOME/.local/state}/herdr-notify/hook.zsh"
+	[[ -f "$_notify_hook" ]] && source "$_notify_hook"
+fi

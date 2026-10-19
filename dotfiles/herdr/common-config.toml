@@ -233,9 +233,23 @@ type = "plugin_action"
 command = "herdr-pr-tracker.view-toggle"
 description = "toggle PR view"
 
+# Notify (watch a pane's running command, notify on finish)
+[[keys.command]]
+key = "prefix+m"
+type = "plugin_action"
+command = "herdr-notify.watch"
+description = "notify when the running command finishes"
+
+[[keys.command]]
+key = "prefix+shift+m"
+type = "plugin_action"
+command = "herdr-notify.cancel"
+description = "cancel command-finished notification"
+
 [ui.sidebar.spaces]
 rows = [
   ["state_icon", "workspace",
+    {token = "$notify", fg = "#f9e2af", bold = true},
     {token = "$pr_conflict", fg = "#f38ba8", bold = true},
     {token = "$pr_ci_run",   fg = "#f8921a"},
     {token = "$pr_ci_pass",  fg = "#a6e3a1"},
