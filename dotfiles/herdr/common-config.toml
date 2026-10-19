@@ -6,7 +6,7 @@ name = "catppuccin" # every token is overridden below, the base does not matter
 
 [theme.custom]
 panel_bg      = "#080c10"   # background         (lua/ofirkai/themes/dark_blue.lua)
-sidebar_bg    = "#131a24"   # sidebar_bg         (dark_blue.lua)
+sidebar_bg    = "#0e141b"   # sidebar_bg #131a24 at 75% (dark_blue.lua)
 surface_dim   = "#253b52"   # vert_split_fg — WinSeparator (dark_blue.lua)
 surface0      = "#15162a"   # buffer_line.bg — inactive buffers (dark_blue.lua)
 surface1      = "#14364e"   # visual_bg / search_bg   (dark_blue.lua)
