@@ -284,7 +284,7 @@ rows = [
 
 [ui.sidebar.agents]
 rows = [[
-  {token = "agent_index", fg = "#f9e2af", bold = true},
+  {token = "agent_index", fg = "#8763c8", bold = true}, # ofirkai purple (mauve #a97cfa) at 80%
   "state_icon",
   "workspace",
   "tab"
