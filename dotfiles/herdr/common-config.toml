@@ -78,7 +78,7 @@ resize_pane_up = "prefix+ctrl+k"
 resize_pane_right = "prefix+ctrl+l"
 
 copy_mode = "alt+c"
-last_pane = ""
+last_pane = "ctrl+`"
 reload_config = ""
 detach = "prefix+d"
 toggle_sidebar = "ctrl+m"
