@@ -7,12 +7,13 @@ The workflow moved from tmux to herdr, but the "notify me when this command fini
 - New herdr plugin `herdr-notify` in its own repo (`ofirgall/herdr-notify`, developed at `~/workspace/personal/herdr-plugins/herdr-notify` and linked with `herdr plugin link`)
   - `watch` action: marks the focused pane as watched (sentinel file + sidebar token)
   - `cancel` action: stops watching the focused pane
+  - `toggle` action: watch, or cancel if already watched (bound to `prefix+m`)
   - zsh hook: `preexec` records the command, `precmd` fires the notification for a watched pane and clears the watch
   - Notifications go to the OS (`notify-macos` / `notify-send -u critical`) and to a herdr toast (`herdr notification show --sound done`)
   - `pane.closed` / `pane.exited` events clean up stale watches
 - Dotfiles wiring:
   - `install_scripts/mac/install_herdr.sh` installs the plugin
-  - `dotfiles/herdr/common-config.toml` binds `prefix+m` (watch) and `prefix+shift+m` (cancel) and adds a `$notify` token to the sidebar
+  - `dotfiles/herdr/common-config.toml` binds `prefix+m` to toggle the watch and adds a `$notify` token to the sidebar
   - `dotfiles/my-zsh-conf/hooks.zsh` sources the plugin's zsh hook when `HERDR_PANE_ID` is set
 - Out of scope (deliberately dropped from tmux-notify): refocus variant, configurable message templates, prompt-suffix polling mode, Telegram/Pushover, terminal bell, on-start/on-finish/on-cancel user hooks, agents-status refresh, agent-pane watching
 

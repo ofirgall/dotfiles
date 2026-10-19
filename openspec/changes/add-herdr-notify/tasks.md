@@ -21,7 +21,7 @@
 ## 4. Dotfiles wiring
 
 - [x] 4.1 `install_scripts/mac/install_herdr.sh`: add an idempotent `herdr plugin install ofirgall/herdr-notify --yes` block
-- [x] 4.2 `dotfiles/herdr/common-config.toml`: bind `prefix+m` → `herdr-notify.watch` and `prefix+shift+m` → `herdr-notify.cancel`, and add `{token = "$notify"}` to `[ui.sidebar.spaces]` rows
+- [x] 4.2 `dotfiles/herdr/common-config.toml`: bind `prefix+m` → `herdr-notify.toggle` (watch/cancel in one key), and add `{token = "$notify"}` to `[ui.sidebar.spaces]` rows
 - [x] 4.3 `dotfiles/my-zsh-conf/hooks.zsh`: source the herdr-notify zsh hook when `HERDR_PANE_ID` is set
 - [x] 4.4 Regenerate the config (`generate-config.sh mac`) and run `herdr config check`
 

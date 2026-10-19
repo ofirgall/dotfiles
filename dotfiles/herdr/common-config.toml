@@ -237,14 +237,8 @@ description = "toggle PR view"
 [[keys.command]]
 key = "prefix+m"
 type = "plugin_action"
-command = "herdr-notify.watch"
-description = "notify when the running command finishes"
-
-[[keys.command]]
-key = "prefix+shift+m"
-type = "plugin_action"
-command = "herdr-notify.cancel"
-description = "cancel command-finished notification"
+command = "herdr-notify.toggle"
+description = "toggle notify when the running command finishes"
 
 [ui.sidebar.spaces]
 rows = [

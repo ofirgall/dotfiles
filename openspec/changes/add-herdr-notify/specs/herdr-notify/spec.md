@@ -27,8 +27,15 @@ When a watched zsh pane returns to its prompt after running a command, the zsh h
 The plugin SHALL provide a `cancel` action (`herdr-notify.cancel`) that removes the focused pane's sentinel and clears its `notify` token without sending a notification.
 
 #### Scenario: Cancel
-- **WHEN** the user presses `prefix+shift+m` on a watched pane
+- **WHEN** the user presses `prefix+m` on a watched pane (toggle)
 - **THEN** the watch SHALL be removed, the token cleared, and no notification SHALL be sent when the running command finishes
+
+### Requirement: Toggle a watch
+The plugin SHALL provide a `toggle` action (`herdr-notify.toggle`) that runs `cancel` if the focused pane is watched and `watch` otherwise.
+
+#### Scenario: Toggle twice
+- **WHEN** the user presses `prefix+m` twice on an unwatched pane
+- **THEN** the first press SHALL watch the pane and the second SHALL cancel the watch
 
 ### Requirement: Cleanup on pane close
 The plugin SHALL subscribe to `pane.closed` and `pane.exited` events and remove the affected pane's sentinel.
@@ -38,7 +45,7 @@ The plugin SHALL subscribe to `pane.closed` and `pane.exited` events and remove 
 - **THEN** its sentinel file SHALL be deleted
 
 ### Requirement: Dotfiles integration
-`install_scripts/mac/install_herdr.sh` SHALL install the plugin idempotently (`herdr plugin install ofirgall/herdr-notify --yes` when absent). `dotfiles/herdr/common-config.toml` SHALL bind `prefix+m` to `herdr-notify.watch` and `prefix+shift+m` to `herdr-notify.cancel`, and SHALL render the `$notify` token in the sidebar. `dotfiles/my-zsh-conf/hooks.zsh` SHALL source the plugin's zsh hook only when `HERDR_PANE_ID` is set.
+`install_scripts/mac/install_herdr.sh` SHALL install the plugin idempotently (`herdr plugin install ofirgall/herdr-notify --yes` when absent). `dotfiles/herdr/common-config.toml` SHALL bind `prefix+m` to `herdr-notify.toggle`, and SHALL render the `$notify` token in the sidebar. `dotfiles/my-zsh-conf/hooks.zsh` SHALL source the plugin's zsh hook only when `HERDR_PANE_ID` is set.
 
 #### Scenario: Fresh macOS install
 - **WHEN** `install_herdr.sh` runs on a machine without the plugin
