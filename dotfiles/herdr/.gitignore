@@ -5,3 +5,5 @@ plugins.json
 plugins/
 config.toml
 sessions/
+*.sock.agent
+session-snapshots/
