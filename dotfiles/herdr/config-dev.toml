@@ -29,3 +29,7 @@ blocked = "#cf1313" # WAITING
 working = "#fa7900" # INPROGRESS
 done    = "#1e88ff" # DONE
 idle    = "#15c70c" # IDLE
+
+# Restore agents inside KoalaVim: kv --ai -- <tool> --resume <id>
+[session]
+resume_command_prefix = ["kv", "--ai", "--"]

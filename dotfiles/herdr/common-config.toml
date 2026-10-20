@@ -32,10 +32,6 @@ version_check = false
 [terminal]
 new_cwd = "follow"
 
-# Restore agents inside KoalaVim: kv --ai -- <tool> --resume <id>
-[session]
-resume_command_prefix = ["kv", "--ai", "--"]
-
 [ui]
 pane_outer_borders = false
 pane_gaps = false
