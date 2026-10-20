@@ -317,3 +317,39 @@ rows = [[
     {token = "$pr_review",   fg = "#89b4fa", bold = true},
   "$pr_id"
 ]]
+
+# Agent status in tab labels: glyph prefix, unfocused tabs tinted and dimmed
+[ui.tab_status]
+enabled = true
+inactive_dim = 42 # % fade toward the tab background, 0 = off (agents-status tmux dims to 0.58)
+fg = "#11111b" # dark text like tmux design3 @c_text_dark
+
+# Colors from agents-status (core/server.py _STATUS_COLORS)
+[ui.tab_status.colors]
+blocked = "#cf1313" # WAITING
+working = "#fa7900" # INPROGRESS
+done    = "#1e88ff" # DONE
+idle    = "#5CB317" # IDLE
+
+# Agent status glyphs (override status_indicators per state, keep single-cell)
+# symbols
+# [ui.status_icons]
+# blocked = "×"
+# working = "◐"
+# done    = "✓"
+# idle    = "○"
+# unknown = "·"
+# dots
+# [ui.status_icons]
+# blocked = "●"
+# working = "●"
+# done    = "●"
+# idle    = "○"
+# unknown = "·"
+
+[ui.status_icons]
+blocked = "×"
+working = "◐"
+done    = "●"
+idle    = "○"
+unknown = "·"
