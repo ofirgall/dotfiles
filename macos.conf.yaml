@@ -78,6 +78,8 @@
         path: dotfiles/hop/config.toml
     ~/.config/herdr:
         path: dotfiles/herdr
+    ~/.config/herdr-automatic-rename/config.sh:
+        path: dotfiles/herdr-automatic-rename/config.sh
 
 # --- macOS-specific symlinks ---
 - link:
