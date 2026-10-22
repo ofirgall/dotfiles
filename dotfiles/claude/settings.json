@@ -7,35 +7,7 @@
   },
   "model": "opus",
   "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-finish"
-          }
-        ]
-      }
-    ],
-    "PermissionRequest": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-perm-req"
-          }
-        ]
-      }
-    ],
     "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-session-start"
-          }
-        ]
-      },
       {
         "matcher": "*",
         "hooks": [
@@ -43,46 +15,6 @@
             "type": "command",
             "command": "bash '/Users/ofirg/.claude/hooks/herdr-agent-state.sh' session",
             "timeout": 10
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-session-stop"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-prompt-start"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-tool-done"
-          }
-        ]
-      }
-    ],
-    "PostToolUseFailure": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-tool-done"
           }
         ]
       }
