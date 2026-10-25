@@ -66,3 +66,15 @@ priority = 93
 region = "bottom_non_empty_lines(5)"
 visible_working = true
 line_regex = ['^\s*[1-9]\d*\s+tasks?\s*$']
+
+# Ask-question dialog: boxed panel whose footer reads
+#   ↑/↓ option · ←/→ question · Space select · Enter next/submit · Esc to skip
+# The footer sits right above the box's bottom border.
+[[rules]]
+id = "question_prompt"
+state = "blocked"
+priority = 310
+region = "bottom_non_empty_lines(3)"
+visible_blocker = true
+contains = ["esc to skip"]
+line_regex = ['(?i)^\s*│?\s*↑/↓ option\b.*\besc to skip\b']
