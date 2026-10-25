@@ -348,8 +348,8 @@ idle    = "#5CB317" # IDLE
 # unknown = "·"
 
 [ui.status_icons]
-blocked = "×"
-working = "◐"
-done    = "●"
-idle    = "○"
-unknown = "·"
+blocked = ""
+working = ""
+done    = ""
+idle    = ""
+unknown = " "
