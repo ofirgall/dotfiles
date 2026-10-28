@@ -4,7 +4,8 @@
 # Format: line 1 = focused group, lines 2+ = "GROUP DISPLAY HAS_WINDOWS WIN_COUNT [ICONS]"
 # DISPLAY is a sketchybar display arrangement-id; 0 aggregates all screens.
 # ICONS are sketchybar-app-font ligatures (e.g. :google_chrome:), one per unique app,
-# concatenated without spaces so they render tightly packed.
+# concatenated without spaces so they render tightly packed. Some carry a text tag
+# (e.g. ":google_chrome: CI ") to tell Chrome profiles apart.
 
 CACHE="/tmp/aerospace-ws-cache"
 TMP_CACHE="${CACHE}.tmp.$$"
@@ -21,11 +22,14 @@ IFS=',' read -r -a MON_DISPLAYS <<< "$(sed -n '3p' "$DISPLAY_CACHE" 2>/dev/null)
 # Arrays indexed by GROUP*100 + DISPLAY
 COUNTS=()
 ICONS=()
+SEEN=()  # "|entry|entry|" per key, so ":google_chrome:" doesn't match ":google_chrome: CI "
 
 add_app() {
     local key=$1
     COUNTS[key]=$(( ${COUNTS[key]:-0} + 1 ))
-    [[ "${ICONS[key]}" == *"$icon_result"* ]] || ICONS[key]="${ICONS[key]}$icon_result"
+    [[ "${SEEN[key]}" == *"|$icon_result|"* ]] && return
+    SEEN[key]="${SEEN[key]:-|}$icon_result|"
+    ICONS[key]="${ICONS[key]}$icon_result"
 }
 
 # Count windows per group and per screen; dedupe apps, keeping first-seen order
@@ -38,9 +42,13 @@ while IFS='|' read -r ws mon app title; do
         # Chrome profiles share one process; the window title ends with the profile name,
         # as "- <profile>" when signed out or "- <account> (<profile>)" when signed in
         "Google Chrome")
+            # The getdrift.ai profiles share a name, so tell them apart by account
             case "$title" in
                 *" - Person 1" | *"(Person 1)") icon_result=":whats_app:" ;;
                 *" - Person 2" | *"(Person 2)") icon_result=":music:" ;;
+                *" - CI (getdrift.ai)") icon_result=":google_chrome: CI " ;;
+                *" - Cursor (getdrift.ai)") icon_result=":google_chrome: Shraga " ;;
+                *" - getdrift.ai") icon_result=":google_chrome: DriftMusic " ;;
                 *) __icon_map "$app" ;;
             esac ;;
         *) __icon_map "$app" ;;
