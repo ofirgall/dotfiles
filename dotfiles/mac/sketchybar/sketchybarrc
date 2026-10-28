@@ -293,6 +293,15 @@ sketchybar --add item ws_title_poll left \
                  update_freq=2 \
                  script="$PLUGIN_DIR/ws_title_poll.sh"
 
+# herdr workspace changes retitle Ghostty windows; refresh tags right away
+# Runs in its own process group (set -m) so a reload can stop it together with its nc
+HERDR_LISTENER_PGID="/tmp/sketchybar-herdr-listener.pgid"
+[ -f "$HERDR_LISTENER_PGID" ] && kill -- -"$(cat "$HERDR_LISTENER_PGID")" 2>/dev/null
+set -m
+nohup "$PLUGIN_DIR/herdr_listener.sh" >/dev/null 2>&1 &
+echo $! > "$HERDR_LISTENER_PGID"
+set +m
+
 # --- Display change handler: re-detect and reload only if displays changed ---
 sketchybar --add item display_watcher left \
            --set display_watcher drawing=off \

@@ -11,13 +11,13 @@ NEW=$(cat "$CACHE" 2>/dev/null)
 
 # Focus changed: every group may need its border updated
 if [ "$(head -1 <<< "$OLD")" != "$(head -1 <<< "$NEW")" ]; then
-    GROUPS="1 2 3 4 5 6 7 8 9 10"
+    CHANGED_GROUPS="1 2 3 4 5 6 7 8 9 10"
 else
-    GROUPS=$(diff <(tail -n +2 <<< "$OLD") <(tail -n +2 <<< "$NEW") | sed -n 's/^> \([0-9]*\) .*/\1/p' | sort -u)
+    CHANGED_GROUPS=$(diff <(tail -n +2 <<< "$OLD") <(tail -n +2 <<< "$NEW") | sed -n 's/^> \([0-9]*\) .*/\1/p' | sort -u)
 fi
 
 args=()
-for g in $GROUPS; do
+for g in $CHANGED_GROUPS; do
     args+=(--trigger "aerospace_workspace_change_$g")
 done
 [ ${#args[@]} -gt 0 ] && sketchybar "${args[@]}"
