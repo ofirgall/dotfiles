@@ -70,12 +70,12 @@ add_workspace_items() {
                         $display_prop \
                         icon="$sid" \
                         icon.font="$icon_font" \
-                        icon.padding_left=4 \
+                        icon.padding_left=8 \
                         icon.padding_right=6 \
                         label.font="$label_font" \
                         label.color=0xffcad3f5 \
                         label.drawing=off \
-                        label.padding_right=4 \
+                        label.padding_right=8 \
                         background.color=0xffcba6f7 \
                         background.corner_radius=8 \
                         background.height=22 \
