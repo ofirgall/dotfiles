@@ -40,6 +40,7 @@ while IFS='|' read -r ws mon app title; do
         "Google Chrome")
             case "$title" in
                 *" - Person 1" | *"(Person 1)") icon_result=":whats_app:" ;;
+                *" - Person 2" | *"(Person 2)") icon_result=":music:" ;;
                 *) __icon_map "$app" ;;
             esac ;;
         *) __icon_map "$app" ;;
