@@ -22,7 +22,11 @@ while IFS='|' read -r ws app; do
     group="${ws%%[bc]}"
     [[ "$group" =~ ^([1-9]|10)$ ]] || continue
     COUNTS[group]=$((COUNTS[group] + 1))
-    __icon_map "$app"
+    # Local overrides on top of the vendored icon map
+    case "$app" in
+        Ghostty) icon_result=":rio:" ;;
+        *) __icon_map "$app" ;;
+    esac
     [[ "${ICONS[group]}" == *"$icon_result"* ]] || ICONS[group]="${ICONS[group]}$icon_result"
 done < <(aerospace list-windows --all --format '%{workspace}|%{app-name}' 2>/dev/null)
 
