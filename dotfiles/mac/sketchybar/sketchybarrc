@@ -287,6 +287,12 @@ else
     fi
 fi
 
+# --- Window title poll: AeroSpace has no title event, so refresh workspace tags ---
+sketchybar --add item ws_title_poll left \
+           --set ws_title_poll drawing=off \
+                 update_freq=2 \
+                 script="$PLUGIN_DIR/ws_title_poll.sh"
+
 # --- Display change handler: re-detect and reload only if displays changed ---
 sketchybar --add item display_watcher left \
            --set display_watcher drawing=off \

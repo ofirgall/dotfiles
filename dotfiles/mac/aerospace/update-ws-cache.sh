@@ -5,13 +5,15 @@
 # DISPLAY is a sketchybar display arrangement-id; 0 aggregates all screens.
 # ICONS are sketchybar-app-font ligatures (e.g. :google_chrome:), one per unique app,
 # concatenated without spaces so they render tightly packed.
-# TAGS are text names (e.g. "CI · Shraga") that tell Chrome profiles apart.
+# TAGS are text names (e.g. "CI · Shraga") that tell Chrome profiles and Ghostty windows apart.
 
 CACHE="/tmp/aerospace-ws-cache"
 TMP_CACHE="${CACHE}.tmp.$$"
 DISPLAY_CACHE="/tmp/sketchybar-display-info"
 
 source "$HOME/dotfiles/dotfiles/mac/sketchybar/helpers/icon_map.sh"
+
+HOST=$(hostname)
 
 FOCUSED_RAW=$(aerospace list-workspaces --focused 2>/dev/null)
 FOCUSED_GROUP="${FOCUSED_RAW%%[bc]}"
@@ -41,6 +43,12 @@ while IFS='|' read -r ws mon app title; do
     # Local overrides on top of the vendored icon map
     tag=""
     case "$app" in
+        # herdr titles the window "<host>: <N>. <workspace>"; other shells set the cwd
+        Ghostty)
+            icon_result=":ghostty:"
+            tag="${title#"$HOST: "}"
+            [[ "$tag" =~ ^[0-9]+\.\ (.*)$ ]] && tag="${BASH_REMATCH[1]}"
+            ;;
         # Chrome profiles share one process; the window title ends with the profile name,
         # as "- <profile>" when signed out or "- <account> (<profile>)" when signed in
         "Google Chrome")
