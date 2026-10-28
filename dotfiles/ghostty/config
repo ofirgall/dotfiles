@@ -1,4 +1,5 @@
-font-family = Lyth Mono NFM
+# font-family = Lyth Mono NFM # less spaced than Nerdwand Mono (maybe try in the future)
+font-family = Nerdwand Mono
 # Remove Ligatures
 font-feature = -liga
 font-feature = -calt
