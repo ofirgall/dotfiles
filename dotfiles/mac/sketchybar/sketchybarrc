@@ -71,7 +71,7 @@ add_workspace_items() {
                         icon="$sid" \
                         icon.font="$icon_font" \
                         icon.padding_left=4 \
-                        icon.padding_right=2 \
+                        icon.padding_right=6 \
                         label.font="$label_font" \
                         label.color=0xffcad3f5 \
                         label.drawing=off \
