@@ -15,6 +15,9 @@ LEFT_NUM_FONT_SIZE_BUILTIN="14.0"
 # App icons (item label, sketchybar-app-font)
 LEFT_APP_FONT_SIZE="15.0"
 LEFT_APP_FONT_SIZE_BUILTIN="12.0"
+# Chrome profile tags (separate item after the app icons)
+LEFT_TAG_FONT_SIZE="10.0"
+LEFT_TAG_FONT_SIZE_BUILTIN="10.0"
 
 # --- Right side (status items) font sizes ---
 # External monitors
@@ -55,15 +58,29 @@ sketchybar --default \
 
 # --- Helper: add workspace items for a display ---
 add_workspace_items() {
-    local display="$1" suffix="$2" icon_size="$3" app_font_size="$4" has_notch="${5:-}"
+    local display="$1" suffix="$2" icon_size="$3" app_font_size="$4" tag_size="$5" has_notch="${6:-}"
     local icon_font="$FONT_FACE:$ICON_FONT_STYLE:$icon_size"
     local label_font="$APP_FONT:$app_font_size"
+    local tag_font="$FONT_FACE:$LABEL_FONT_STYLE:$tag_size"
     local display_prop=""
     [[ "$display" != "0" ]] && display_prop="display=$display"
 
-    local filler_events="forced"
+    # Each workspace: [gap][space.N | space.N.tags], with the pill drawn by a bracket.
+    # A bracket spans its members' outer padding, so the gap between pills is a spacer.
+    local filler_events="forced" gap
     for sid in 1 2 3 4 5 6 7 8 9 10; do
+        gap=6; [[ "$sid" == 1 ]] && gap=3
         sketchybar --add event aerospace_workspace_change_"$sid" \
+                   --add item "space_gap.${sid}${suffix}" left \
+                   --set "space_gap.${sid}${suffix}" \
+                        $display_prop \
+                        drawing=off \
+                        width="$gap" \
+                        icon.drawing=off \
+                        label.drawing=off \
+                        background.drawing=off \
+                        padding_left=0 \
+                        padding_right=0 \
                    --add item "space.${sid}${suffix}" left \
                    --subscribe "space.${sid}${suffix}" aerospace_workspace_change_"$sid" forced \
                    --set "space.${sid}${suffix}" \
@@ -76,14 +93,28 @@ add_workspace_items() {
                         label.color=0xffcad3f5 \
                         label.drawing=off \
                         label.padding_right=8 \
-                        background.color=0xffcba6f7 \
+                        background.drawing=off \
+                        padding_left=0 \
+                        padding_right=0 \
+                        click_script="~/.local/bin/aerospace-scripts switch-group $sid" \
+                        script="$PLUGIN_DIR/aerospace.sh $sid $display" \
+                   --add item "space.${sid}.tags${suffix}" left \
+                   --set "space.${sid}.tags${suffix}" \
+                        $display_prop \
+                        drawing=off \
+                        icon.drawing=off \
+                        label.font="$tag_font" \
+                        label.padding_left=0 \
+                        label.padding_right=8 \
+                        background.drawing=off \
+                        padding_left=0 \
+                        padding_right=0 \
+                        click_script="~/.local/bin/aerospace-scripts switch-group $sid" \
+                   --add bracket "space_bracket.${sid}${suffix}" "space.${sid}${suffix}" "space.${sid}.tags${suffix}" \
+                   --set "space_bracket.${sid}${suffix}" \
                         background.corner_radius=8 \
                         background.height=22 \
-                        background.drawing=off \
-                        padding_left=3 \
-                        padding_right=3 \
-                        click_script="~/.local/bin/aerospace-scripts switch-group $sid" \
-                        script="$PLUGIN_DIR/aerospace.sh $sid $display"
+                        background.drawing=off
         filler_events="$filler_events aerospace_workspace_change_$sid"
     done
 
@@ -233,15 +264,15 @@ done
 ALL_DISPLAYS="$BUILTIN_DISPLAY${BUILTIN_DISPLAY:+${EXTERNAL_DISPLAYS:+,}}$EXTERNAL_DISPLAYS"
 if [[ "$ALL_DISPLAYS" == *,* ]]; then
     if [[ -n "$BUILTIN_DISPLAY" ]]; then
-        add_workspace_items "$BUILTIN_DISPLAY" ".builtin" "$LEFT_NUM_FONT_SIZE_BUILTIN" "$LEFT_APP_FONT_SIZE_BUILTIN" notch
+        add_workspace_items "$BUILTIN_DISPLAY" ".builtin" "$LEFT_NUM_FONT_SIZE_BUILTIN" "$LEFT_APP_FONT_SIZE_BUILTIN" "$LEFT_TAG_FONT_SIZE_BUILTIN" notch
     fi
     for ext in ${EXTERNAL_DISPLAYS//,/ }; do
-        add_workspace_items "$ext" ".ext$ext" "$LEFT_NUM_FONT_SIZE" "$LEFT_APP_FONT_SIZE"
+        add_workspace_items "$ext" ".ext$ext" "$LEFT_NUM_FONT_SIZE" "$LEFT_APP_FONT_SIZE" "$LEFT_TAG_FONT_SIZE"
     done
 elif [[ -n "$BUILTIN_DISPLAY" ]]; then
-    add_workspace_items "0" "" "$LEFT_NUM_FONT_SIZE_BUILTIN" "$LEFT_APP_FONT_SIZE_BUILTIN" notch
+    add_workspace_items "0" "" "$LEFT_NUM_FONT_SIZE_BUILTIN" "$LEFT_APP_FONT_SIZE_BUILTIN" "$LEFT_TAG_FONT_SIZE_BUILTIN" notch
 else
-    add_workspace_items "0" "" "$LEFT_NUM_FONT_SIZE" "$LEFT_APP_FONT_SIZE"
+    add_workspace_items "0" "" "$LEFT_NUM_FONT_SIZE" "$LEFT_APP_FONT_SIZE" "$LEFT_TAG_FONT_SIZE"
 fi
 
 # --- Right items per display ---

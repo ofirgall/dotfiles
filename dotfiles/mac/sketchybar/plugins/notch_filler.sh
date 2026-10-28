@@ -50,9 +50,11 @@ MOVE_REF=""
 MOVE_DIR=""
 FILLER_W=0
 LAST_VISIBLE=""
-ITEM_IDX=0
 for sid in 1 2 3 4 5 6 7 8 9 10; do
     ITEM="space.${sid}${SUFFIX}"
+    # A workspace pill is [space_gap.N][space.N][space.N.tags]; the filler must not split it
+    FIRST="space_gap.${sid}${SUFFIX}"
+    LAST="space.${sid}.tags${SUFFIX}"
     DATA=$(sketchybar --query "$ITEM" 2>/dev/null) || continue
     DRAWING=$(echo "$DATA" | jq -r '.geometry.drawing')
     [ "$DRAWING" = "on" ] || continue
@@ -63,34 +65,43 @@ for sid in 1 2 3 4 5 6 7 8 9 10; do
     SIZE_W=$(echo "$DATA" | jq --arg k "$RECT_KEY" '.bounding_rects[$k].size[0] // empty')
     [ -n "$ORIGIN_X" ] && [ -n "$SIZE_W" ] || continue
 
+    TAGS_DATA=$(sketchybar --query "space.${sid}.tags${SUFFIX}" 2>/dev/null)
+    if [ "$(echo "$TAGS_DATA" | jq -r '.geometry.drawing')" = "on" ]; then
+        TAGS_X=$(echo "$TAGS_DATA" | jq --arg k "$RECT_KEY" '.bounding_rects[$k].origin[0] // empty')
+        TAGS_W=$(echo "$TAGS_DATA" | jq --arg k "$RECT_KEY" '.bounding_rects[$k].size[0] // empty')
+        if [ -n "$TAGS_X" ] && [ -n "$TAGS_W" ]; then
+            SIZE_W=$(echo "$TAGS_X + $TAGS_W - $ORIGIN_X" | bc)
+        fi
+    fi
+
     # Compensate: items after the filler are shifted right by the current filler width
     NATURAL_X="$ORIGIN_X"
     NATURAL_RIGHT=$(echo "$ORIGIN_X + $SIZE_W" | bc)
-    if (( FILLER_IDX >= 0 && ITEM_IDX >= FILLER_IDX )) && (( CUR_FILLER_W > 0 )); then
+    ITEM_IDX=$(( $(grep -n -x -F "$ITEM" <<< "$BAR_ITEMS" | cut -d: -f1) - 1 ))
+    if (( FILLER_IDX >= 0 && ITEM_IDX > FILLER_IDX )) && (( CUR_FILLER_W > 0 )); then
         NATURAL_X=$(echo "$ORIGIN_X - $CUR_FILLER_W" | bc)
         NATURAL_RIGHT=$(echo "$NATURAL_X + $SIZE_W" | bc)
     fi
-    ITEM_IDX=$((ITEM_IDX + 1))
 
     LABEL=$(echo "$DATA" | jq -r '.label.value')
 
     if (( $(echo "$NATURAL_RIGHT > $NOTCH_LEFT" | bc -l) )); then
         if (( $(echo "$NATURAL_X >= $NOTCH_LEFT" | bc -l) )); then
             FILLER_W=$(echo "$NOTCH_RIGHT - $NATURAL_X" | bc | awk '{printf "%d", $1+0.5}')
-            MOVE_REF="$ITEM"
+            MOVE_REF="$FIRST"
             MOVE_DIR="before"
             [ -n "$DEBUG" ] && echo "  space.$sid: natural_x=$NATURAL_X w=$SIZE_W natural_right=$NATURAL_RIGHT  ** STARTS IN NOTCH **  filler_w=$FILLER_W  label=\"$LABEL\""
         else
             FILLER_W=$(echo "$NOTCH_RIGHT - $NATURAL_RIGHT" | bc | awk '{printf "%d", $1+0.5}')
             if (( FILLER_W < 0 )); then FILLER_W=0; fi
-            MOVE_REF="$ITEM"
+            MOVE_REF="$LAST"
             MOVE_DIR="after"
             [ -n "$DEBUG" ] && echo "  space.$sid: natural_x=$NATURAL_X w=$SIZE_W natural_right=$NATURAL_RIGHT  ** BLEEDS INTO NOTCH **  filler_w=$FILLER_W  label=\"$LABEL\""
         fi
         break
     else
         [ -n "$DEBUG" ] && echo "  space.$sid: natural_x=$NATURAL_X w=$SIZE_W natural_right=$NATURAL_RIGHT <= $NOTCH_LEFT  ok  label=\"$LABEL\""
-        LAST_VISIBLE="$ITEM"
+        LAST_VISIBLE="$LAST"
     fi
 done
 

@@ -40,6 +40,9 @@ if [ "$COUNT" -gt 0 ] 2>/dev/null; then
         [ "$(echo "$WS_DATA" | jq -r '.geometry.drawing')" = "on" ] || continue
         DK=$(find_display_key "$WS_DATA")
         [ -n "$DK" ] || continue
+        # A visible tags item is the right edge of the workspace pill
+        TAGS_DATA=$(sketchybar --query "space.${sid}.tags${SUFFIX}" 2>/dev/null)
+        [ "$(echo "$TAGS_DATA" | jq -r '.geometry.drawing')" = "on" ] && WS_DATA="$TAGS_DATA"
         WS_X=$(echo "$WS_DATA" | jq ".bounding_rects[\"$DK\"].origin[0]")
         WS_W=$(echo "$WS_DATA" | jq ".bounding_rects[\"$DK\"].size[0]")
         LAST_WS_RIGHT=$(echo "$WS_X + $WS_W" | bc)
