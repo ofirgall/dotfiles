@@ -29,18 +29,20 @@ add_app() {
 }
 
 # Count windows per group and per screen; dedupe apps, keeping first-seen order
-while IFS='|' read -r ws mon app; do
+while IFS='|' read -r ws mon app title; do
     group="${ws%%[bc]}"
     [[ "$group" =~ ^([1-9]|10)$ ]] || continue
     # Local overrides on top of the vendored icon map
     case "$app" in
         Ghostty) icon_result=":rio:" ;;
+        # Chrome profiles share one process; the window title ends with "(<profile name>)"
+        "Google Chrome") [[ "$title" == *"(Person 1)" ]] && icon_result=":whats_app:" || __icon_map "$app" ;;
         *) __icon_map "$app" ;;
     esac
     add_app $(( group * 100 ))
     display="${MON_DISPLAYS[mon - 1]}"
     [ -n "$display" ] && add_app $(( group * 100 + display ))
-done < <(aerospace list-windows --all --format '%{workspace}|%{monitor-id}|%{app-name}' 2>/dev/null)
+done < <(aerospace list-windows --all --format '%{workspace}|%{monitor-id}|%{app-name}|%{window-title}' 2>/dev/null)
 
 {
     echo "$FOCUSED_GROUP"
