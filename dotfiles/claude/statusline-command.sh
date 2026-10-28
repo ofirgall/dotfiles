@@ -34,6 +34,29 @@ duration_ms=$(jq_or_python '.cost.total_duration_ms' '0')
 session_limit=$(jq_or_python '.rate_limits.five_hour.used_percentage' '0' | cut -d. -f1)
 weekly_limit=$(jq_or_python '.rate_limits.seven_day.used_percentage' '0' | cut -d. -f1)
 
+model_id=$(jq_or_python '.model.id' '')
+
+# Auto-compact window isn't in the payload; resolve it like Claude Code does:
+# env var > per-model setting > global setting > auto
+settings_file="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/settings.json"
+ac_window="${CLAUDE_CODE_AUTO_COMPACT_WINDOW:-}"
+if [ -z "$ac_window" ] && [ -f "$settings_file" ]; then
+  ac_window=$(python3 -c "
+import sys, json
+s = json.load(open(sys.argv[1]))
+m = sys.argv[2].split('[')[0]
+v = (s.get('modelSettings') or {}).get(m, {}).get('autoCompactWindow', s.get('autoCompactWindow'))
+print('' if v is None else v)
+" "$settings_file" "$model_id" 2>/dev/null)
+fi
+if [[ "$ac_window" =~ ^[0-9]+$ ]]; then
+  ac_label="$((ac_window / 1000))K"
+elif [ -n "$ac_window" ]; then
+  ac_label=$(tr '[:lower:]' '[:upper:]' <<< "$ac_window")
+else
+  ac_label="auto"
+fi
+
 ctx_k=$((ctx_size / 1000))
 duration_min=$((duration_ms / 60000))
 
@@ -52,5 +75,5 @@ fi
 
 cost_fmt=$(printf '%.2f' "$cost" 2>/dev/null || echo "$cost")
 
-printf "\033[36m%s\033[0m  ${ctx_color}%s%%\033[90m/%sK\033[0m  \033[33m\$%s \033[90m(%sm)\033[0m \033[90m|\033[0m \033[90mS:\033[0m%s%%  \033[90mW:\033[0m%s%%" \
-  "$label" "$pct" "$ctx_k" "$cost_fmt" "$duration_min" "$session_limit" "$weekly_limit"
+printf "\033[36m%s\033[0m  ${ctx_color}%s%%\033[90m/%sK \033[90mAC:\033[0m%s  \033[33m\$%s \033[90m(%sm)\033[0m \033[90m|\033[0m \033[90mS:\033[0m%s%%  \033[90mW:\033[0m%s%%" \
+  "$label" "$pct" "$ctx_k" "$ac_label" "$cost_fmt" "$duration_min" "$session_limit" "$weekly_limit"
