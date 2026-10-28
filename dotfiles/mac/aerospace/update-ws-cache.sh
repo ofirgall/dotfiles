@@ -35,8 +35,13 @@ while IFS='|' read -r ws mon app title; do
     # Local overrides on top of the vendored icon map
     case "$app" in
         Ghostty) icon_result=":rio:" ;;
-        # Chrome profiles share one process; the window title ends with "(<profile name>)"
-        "Google Chrome") [[ "$title" == *"(Person 1)" ]] && icon_result=":whats_app:" || __icon_map "$app" ;;
+        # Chrome profiles share one process; the window title ends with the profile name,
+        # as "- <profile>" when signed out or "- <account> (<profile>)" when signed in
+        "Google Chrome")
+            case "$title" in
+                *" - Person 1" | *"(Person 1)") icon_result=":whats_app:" ;;
+                *) __icon_map "$app" ;;
+            esac ;;
         *) __icon_map "$app" ;;
     esac
     add_app $(( group * 100 ))
