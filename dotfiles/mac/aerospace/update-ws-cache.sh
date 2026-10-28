@@ -14,6 +14,9 @@ DISPLAY_CACHE="/tmp/sketchybar-display-info"
 source "$HOME/dotfiles/dotfiles/mac/sketchybar/helpers/icon_map.sh"
 
 HOST=$(hostname)
+# Longest Chrome page title shown; counted in characters, so bash needs a UTF-8 locale
+MAX_TITLE=30
+export LC_ALL=en_US.UTF-8
 
 FOCUSED_RAW=$(aerospace list-workspaces --focused 2>/dev/null)
 FOCUSED_GROUP="${FOCUSED_RAW%%[bc]}"
@@ -49,8 +52,8 @@ while IFS='|' read -r ws mon app title; do
             tag="${title#"$HOST: "}"
             [[ "$tag" =~ ^[0-9]+\.\ (.*)$ ]] && tag="${BASH_REMATCH[1]}"
             ;;
-        # Chrome profiles share one process; the window title ends with the profile name,
-        # as "- <profile>" when signed out or "- <account> (<profile>)" when signed in
+        # Chrome profiles share one process; the window title is "<page> - Google Chrome - "
+        # followed by "<profile>" when signed out or "<account> (<profile>)" when signed in
         "Google Chrome")
             # The getdrift.ai profiles share a name, so tell them apart by account
             case "$title" in
@@ -60,7 +63,13 @@ while IFS='|' read -r ws mon app title; do
                 *" - Cursor (getdrift.ai)") icon_result=":google_chrome:"; tag="Shraga" ;;
                 *" - getdrift.ai") icon_result=":google_chrome:"; tag="DriftMusic" ;;
                 *) __icon_map "$app" ;;
-            esac ;;
+            esac
+            # Show the page title after the profile tag, minus the "N. " window-number prefix
+            page="${title% - Google Chrome - *}"
+            [[ "$page" =~ ^[0-9]+\.\ (.*)$ ]] && page="${BASH_REMATCH[1]}"
+            (( ${#page} > MAX_TITLE )) && page="${page:0:MAX_TITLE-1}…"
+            tag="${tag:+$tag: }$page"
+            ;;
         *) __icon_map "$app" ;;
     esac
     add_app $(( group * 100 ))
