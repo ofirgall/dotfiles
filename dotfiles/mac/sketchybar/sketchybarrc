@@ -83,7 +83,7 @@ add_workspace_items() {
                         padding_left=3 \
                         padding_right=3 \
                         click_script="~/.local/bin/aerospace-scripts switch-group $sid" \
-                        script="$PLUGIN_DIR/aerospace.sh $sid"
+                        script="$PLUGIN_DIR/aerospace.sh $sid $display"
         filler_events="$filler_events aerospace_workspace_change_$sid"
     done
 
@@ -229,18 +229,29 @@ for sid in 1 2 3 4 5 6 7 8 9 10; do
     WINDOW_COUNT_EVENTS="$WINDOW_COUNT_EVENTS aerospace_workspace_change_$sid"
 done
 
-# --- Create items per display ---
+# --- Workspace items: one set per screen, each showing that screen's workspaces ---
+ALL_DISPLAYS="$BUILTIN_DISPLAY${BUILTIN_DISPLAY:+${EXTERNAL_DISPLAYS:+,}}$EXTERNAL_DISPLAYS"
+if [[ "$ALL_DISPLAYS" == *,* ]]; then
+    if [[ -n "$BUILTIN_DISPLAY" ]]; then
+        add_workspace_items "$BUILTIN_DISPLAY" ".builtin" "$LEFT_NUM_FONT_SIZE_BUILTIN" "$LEFT_APP_FONT_SIZE_BUILTIN" notch
+    fi
+    for ext in ${EXTERNAL_DISPLAYS//,/ }; do
+        add_workspace_items "$ext" ".ext$ext" "$LEFT_NUM_FONT_SIZE" "$LEFT_APP_FONT_SIZE"
+    done
+elif [[ -n "$BUILTIN_DISPLAY" ]]; then
+    add_workspace_items "0" "" "$LEFT_NUM_FONT_SIZE_BUILTIN" "$LEFT_APP_FONT_SIZE_BUILTIN" notch
+else
+    add_workspace_items "0" "" "$LEFT_NUM_FONT_SIZE" "$LEFT_APP_FONT_SIZE"
+fi
+
+# --- Right items per display ---
 if [[ -n "$BUILTIN_DISPLAY" && -n "$EXTERNAL_DISPLAYS" ]]; then
-    add_workspace_items "$BUILTIN_DISPLAY" ".builtin" "$LEFT_NUM_FONT_SIZE_BUILTIN" "$LEFT_APP_FONT_SIZE_BUILTIN" notch
-    add_workspace_items "$EXTERNAL_DISPLAYS" ".ext" "$LEFT_NUM_FONT_SIZE" "$LEFT_APP_FONT_SIZE"
     add_right_items "$BUILTIN_DISPLAY" ".builtin" "$RIGHT_ICON_FONT_SIZE_BUILTIN" "$RIGHT_LABEL_FONT_SIZE_BUILTIN" "$RIGHT_ICON_LG_FONT_SIZE_BUILTIN"
     add_right_items "$EXTERNAL_DISPLAYS" ".ext" "$RIGHT_ICON_FONT_SIZE" "$RIGHT_LABEL_FONT_SIZE" "$RIGHT_ICON_LG_FONT_SIZE"
 else
     if [[ -n "$BUILTIN_DISPLAY" ]]; then
-        add_workspace_items "0" "" "$LEFT_NUM_FONT_SIZE_BUILTIN" "$LEFT_APP_FONT_SIZE_BUILTIN" notch
         add_right_items "0" "" "$RIGHT_ICON_FONT_SIZE_BUILTIN" "$RIGHT_LABEL_FONT_SIZE_BUILTIN" "$RIGHT_ICON_LG_FONT_SIZE_BUILTIN"
     else
-        add_workspace_items "0" "" "$LEFT_NUM_FONT_SIZE" "$LEFT_APP_FONT_SIZE"
         add_right_items "0" "" "$RIGHT_ICON_FONT_SIZE" "$RIGHT_LABEL_FONT_SIZE" "$RIGHT_ICON_LG_FONT_SIZE"
     fi
 fi

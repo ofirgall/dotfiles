@@ -1,7 +1,8 @@
 #!/bin/bash
 # Detect displays and cache results for sketchybarrc to read.
 # Called at startup and on display_change events.
-# Cache format: line 1 = built-in display ID, line 2 = comma-separated external IDs
+# Cache format: line 1 = built-in display ID, line 2 = comma-separated external IDs,
+# line 3 = all display IDs ordered left-to-right (index = aerospace monitor-id)
 # Uses sketchybar arrangement IDs (not aerospace AppKit IDs).
 # Exits 1 if nothing changed (caller can skip reload).
 
@@ -26,7 +27,10 @@ while IFS=$'\t' read -r aid w h; do
     fi
 done < <(echo "$DISPLAYS" | jq -r '.[] | [.["arrangement-id"], (.frame.w | floor), (.frame.h | floor)] | @tsv')
 
-NEW_CONTENT=$(printf '%s\n%s\n' "$BUILTIN_DISPLAY" "$EXTERNAL_DISPLAYS")
+# AeroSpace numbers monitors left-to-right, top-to-bottom
+BY_POSITION=$(echo "$DISPLAYS" | jq -r 'sort_by(.frame.x, .frame.y) | map(.["arrangement-id"]) | join(",")')
+
+NEW_CONTENT=$(printf '%s\n%s\n%s\n' "$BUILTIN_DISPLAY" "$EXTERNAL_DISPLAYS" "$BY_POSITION")
 
 if [ -f "$CACHE" ] && [ "$(cat "$CACHE")" = "$NEW_CONTENT" ]; then
     exit 1
