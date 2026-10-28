@@ -256,20 +256,14 @@ fn move_to_group(conn: &mut Connection, group: &str, follow: Option<&str>) {
     let h = home();
 
     if follow == Some("--follow") {
-        let _ = Command::new("bash").arg("-c")
-            .arg(format!("/opt/homebrew/bin/python3.14 {h}/agents-status/statusbar/run.py 2>/dev/null &"))
-            .spawn();
         switch_group(conn, group);
         return;
     }
 
-    let _ = Command::new(format!("{h}/agents-status/statusbar/sketchybar/update-ws-cache.sh")).status();
+    let _ = Command::new(format!("{h}/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh")).status();
     let focused_group = std::fs::read_to_string("/tmp/aerospace-ws-cache")
         .unwrap_or_default().lines().next().unwrap_or("").to_string();
 
-    let _ = Command::new("bash").arg("-c")
-        .arg(format!("/opt/homebrew/bin/python3.14 {h}/agents-status/statusbar/run.py 2>/dev/null &"))
-        .spawn();
     let _ = Command::new("/opt/homebrew/bin/sketchybar")
         .arg("--trigger").arg(format!("aerospace_workspace_change_{focused_group}"))
         .arg(format!("FOCUSED_WORKSPACE={focused_group}"))
@@ -600,7 +594,7 @@ fn on_workspace_change(conn: &mut Connection) {
     sticky_move(conn);
 
     let h = home();
-    let _ = Command::new(format!("{h}/agents-status/statusbar/sketchybar/update-ws-cache.sh")).status();
+    let _ = Command::new(format!("{h}/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh")).status();
 
     let focused = std::env::var("AEROSPACE_FOCUSED_WORKSPACE").unwrap_or_default();
     let prev = std::env::var("AEROSPACE_PREV_WORKSPACE").unwrap_or_default();
