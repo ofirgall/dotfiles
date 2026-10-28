@@ -41,7 +41,6 @@ while IFS='|' read -r ws mon app title; do
     # Local overrides on top of the vendored icon map
     tag=""
     case "$app" in
-        Ghostty) icon_result=":rio:" ;;
         # Chrome profiles share one process; the window title ends with the profile name,
         # as "- <profile>" when signed out or "- <account> (<profile>)" when signed in
         "Google Chrome")
