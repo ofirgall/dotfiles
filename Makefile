@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 SUBMODULES := $(shell git config --file .gitmodules --get-regexp path 2>/dev/null | awk '{print $$2}')
 
-.PHONY: help init update status add remove foreach
+.PHONY: help init update status add remove foreach ls-workspace-icons
 
 help:
 	@echo "Targets:"
@@ -13,6 +13,7 @@ help:
 	@echo "  make add REPO=<url> PATH=<dir>"
 	@echo "  make remove NAME=<path>  Remove a submodule by its path"
 	@echo "  make foreach CMD='...' Run a shell command in each submodule"
+	@echo "  make ls-workspace-icons  List app icons currently shown per sketchybar workspace"
 
 init:
 	git submodule update --init --recursive
@@ -66,3 +67,8 @@ remove:
 foreach:
 	@if [ -z "$(CMD)" ]; then echo "Usage: make foreach CMD='git status -s'"; exit 2; fi; \
 	git submodule foreach --recursive "$(CMD)"
+
+ls-workspace-icons:
+	@for item in $$(sketchybar --query bar | jq -r '.items[] | select(startswith("space."))'); do \
+		sketchybar --query "$$item" | jq -r 'select(.geometry.drawing == "on") | "\(.name): \(.label.value)"'; \
+	done
