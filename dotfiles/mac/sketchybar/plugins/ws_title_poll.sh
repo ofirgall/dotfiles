@@ -4,6 +4,9 @@
 
 CACHE="/tmp/aerospace-ws-cache"
 
+# screen_lock.sh sets this while the screen is locked
+[ -f /tmp/sketchybar-screen-locked ] && exit 0
+
 OLD=$(cat "$CACHE" 2>/dev/null)
 "$HOME/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh"
 NEW=$(cat "$CACHE" 2>/dev/null)

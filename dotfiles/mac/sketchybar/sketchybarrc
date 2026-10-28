@@ -293,6 +293,14 @@ sketchybar --add item ws_title_poll left \
                  update_freq=2 \
                  script="$PLUGIN_DIR/ws_title_poll.sh"
 
+# Pause the title poll and herdr listener while the screen is locked
+rm -f /tmp/sketchybar-screen-locked
+sketchybar --add event screen_locked com.apple.screenIsLocked \
+           --add event screen_unlocked com.apple.screenIsUnlocked \
+           --add item screen_lock left \
+           --set screen_lock drawing=off script="$PLUGIN_DIR/screen_lock.sh" \
+           --subscribe screen_lock screen_locked screen_unlocked
+
 # herdr workspace changes retitle Ghostty windows; refresh tags right away
 # Runs in its own process group (set -m) so a reload can stop it together with its nc
 HERDR_LISTENER_PGID="/tmp/sketchybar-herdr-listener.pgid"
