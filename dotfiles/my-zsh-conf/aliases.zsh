@@ -34,7 +34,7 @@ cdw() {
 		cd "$HOME/worktrees/$(tmux display-message -p "#S" | sed "s,-,/,")" # cd to my worktree tmux standard
 	fi
 }
-alias cdh='cd $HOME/dotfiles/hypr-dots/' # cd to hypr-dots
+alias cdh='cd $HOME/.config/herdr/plugins/github' # cd to herdr plugins
 alias cdr='groot'
 alias gr='groot'
 alias plans='cd ~/.cursor/plans' # cd cursor plans
