@@ -181,11 +181,10 @@ cmd-s = 'exec-and-forget screencapture -ic'
 cmd-shift-s = 'exec-and-forget screencapture -iUc'
 cmd-ctrl-s = 'exec-and-forget /Applications/flameshot.app/Contents/MacOS/flameshot gui'
 
-# Raycast (Super+r), clipboard history (Alt+v), window picker (Super+t)
+# Raycast (Super+r), clipboard history (Alt+v), window picker (Super+shift+t)
 cmd-r = 'exec-and-forget open -a Raycast'
 alt-v = 'exec-and-forget open raycast://extensions/raycast/clipboard-history/clipboard-history'
-cmd-ctrl-t = 'exec-and-forget open raycast://extensions/raycast/navigation/switch-windows'
-cmd-t = 'exec-and-forget open raycast://extensions/raycast/navigation/switch-windows'
+cmd-shift-t = 'exec-and-forget open raycast://extensions/raycast/navigation/switch-windows'
 
 # Tmux viewer (Super+Shift+v) — open viewer for focused tmux session
 cmd-shift-v = 'exec-and-forget ~/.local/bin/aerospace-scripts tmux-viewer'
