@@ -4,7 +4,6 @@ set -e
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew install --cask \
-    font-caskaydia-cove-nerd-font \
     font-ubuntu-mono-nerd-font \
     font-jetbrains-mono-nerd-font \
     font-iosevka-term-nerd-font \
@@ -14,6 +13,9 @@ brew install --cask \
     font-maple-mono-nf \
     font-nordwand-mono \
     font-paper-mono
+
+# Caskaydia upgrades fail since we delete its italic fonts below; don't let that abort the script
+brew install --cask font-caskaydia-cove-nerd-font || true
 
 # Remove Caskaydia custom italic fonts
 rm -f ~/Library/Fonts/Caskaydia*Italic*
