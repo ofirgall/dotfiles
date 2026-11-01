@@ -86,5 +86,5 @@ fi
 
 cost_fmt=$(printf '%.2f' "$cost" 2>/dev/null || echo "$cost")
 
-printf "\033[36m%s\033[0m  ${ctx_color}%s%%\033[90m/%sK  \033[33m\$%s \033[90m|\033[0m \033[90mS:\033[0m%s%%  \033[90mW:\033[0m%s%% \033[90m|\033[0m \033[35m%s\033[0m" \
+printf "\033[36m%s\033[0m  ${ctx_color}%s%%\033[90m/%sK  \033[33m\$%s \033[90m|\033[0m \033[90mS:\033[0m%s%% \033[90mW:\033[0m%s%% \033[90m|\033[0m \033[35m%s\033[0m" \
   "$label" "$pct" "$ctx_k" "$cost_fmt" "$session_limit" "$weekly_limit" "$user"
