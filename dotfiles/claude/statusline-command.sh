@@ -24,13 +24,14 @@ else: print(v)
 }
 
 model=$(jq_or_python '.model.display_name' 'unknown')
-pct=$(jq_or_python '.context_window.used_percentage' '0' | cut -d. -f1)
+pct_raw=$(jq_or_python '.context_window.used_percentage' '0')
+[ "$pct_raw" = "null" ] && pct_raw=0
+pct=${pct_raw%%.*}
 ctx_size=$(jq_or_python '.context_window.context_window_size' '0')
 thinking=$(jq_or_python '.thinking.enabled' 'false')
 effort=$(jq_or_python '.effort.level' '')
 fast=$(jq_or_python '.fast_mode' 'false')
 cost=$(jq_or_python '.cost.total_cost_usd' '0')
-duration_ms=$(jq_or_python '.cost.total_duration_ms' '0')
 session_limit=$(jq_or_python '.rate_limits.five_hour.used_percentage' '0' | cut -d. -f1)
 weekly_limit=$(jq_or_python '.rate_limits.seven_day.used_percentage' '0' | cut -d. -f1)
 
@@ -49,13 +50,6 @@ v = (s.get('modelSettings') or {}).get(m, {}).get('autoCompactWindow', s.get('au
 print('' if v is None else v)
 " "$settings_file" "$model_id" 2>/dev/null)
 fi
-if [[ "$ac_window" =~ ^[0-9]+$ ]]; then
-  ac_label="$((ac_window / 1000))K"
-elif [ -n "$ac_window" ]; then
-  ac_label=$(tr '[:lower:]' '[:upper:]' <<< "$ac_window")
-else
-  ac_label="auto"
-fi
 
 if [ -n "${CLAUDE_CONFIG_DIR:-}" ]; then
   account_file="$CLAUDE_CONFIG_DIR/.claude.json"
@@ -69,8 +63,13 @@ print(a.get('emailAddress') or '')
 " "$account_file" 2>/dev/null)
 [ -z "$user" ] && user="$USER"
 
+# When AC window is set, show usage relative to it instead of the full window
+if [[ "$ac_window" =~ ^[0-9]+$ ]] && [ "$ac_window" -gt 0 ] && [[ "$ctx_size" =~ ^[0-9]+$ ]]; then
+  pct=$(awk -v p="$pct_raw" -v c="$ctx_size" -v a="$ac_window" 'BEGIN { printf "%d", p * c / a }')
+  ctx_size=$ac_window
+fi
+
 ctx_k=$((ctx_size / 1000))
-duration_min=$((duration_ms / 60000))
 
 label="$model"
 [ "$thinking" = "true" ] && label="$label Thinking"
@@ -87,5 +86,5 @@ fi
 
 cost_fmt=$(printf '%.2f' "$cost" 2>/dev/null || echo "$cost")
 
-printf "\033[36m%s\033[0m  ${ctx_color}%s%%\033[90m/%sK \033[90mAC:\033[0m%s  \033[33m\$%s \033[90m(%sm)\033[0m \033[90m|\033[0m \033[90mS:\033[0m%s%%  \033[90mW:\033[0m%s%% \033[90m|\033[0m \033[35m%s\033[0m" \
-  "$label" "$pct" "$ctx_k" "$ac_label" "$cost_fmt" "$duration_min" "$session_limit" "$weekly_limit" "$user"
+printf "\033[36m%s\033[0m  ${ctx_color}%s%%\033[90m/%sK  \033[33m\$%s \033[90m|\033[0m \033[90mS:\033[0m%s%%  \033[90mW:\033[0m%s%% \033[90m|\033[0m \033[35m%s\033[0m" \
+  "$label" "$pct" "$ctx_k" "$cost_fmt" "$session_limit" "$weekly_limit" "$user"
