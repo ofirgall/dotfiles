@@ -57,6 +57,18 @@ else
   ac_label="auto"
 fi
 
+if [ -n "${CLAUDE_CONFIG_DIR:-}" ]; then
+  account_file="$CLAUDE_CONFIG_DIR/.claude.json"
+else
+  account_file="$HOME/.claude.json"
+fi
+user=$(python3 -c "
+import sys, json
+a = json.load(open(sys.argv[1])).get('oauthAccount') or {}
+print(a.get('emailAddress') or '')
+" "$account_file" 2>/dev/null)
+[ -z "$user" ] && user="$USER"
+
 ctx_k=$((ctx_size / 1000))
 duration_min=$((duration_ms / 60000))
 
@@ -75,5 +87,5 @@ fi
 
 cost_fmt=$(printf '%.2f' "$cost" 2>/dev/null || echo "$cost")
 
-printf "\033[36m%s\033[0m  ${ctx_color}%s%%\033[90m/%sK \033[90mAC:\033[0m%s  \033[33m\$%s \033[90m(%sm)\033[0m \033[90m|\033[0m \033[90mS:\033[0m%s%%  \033[90mW:\033[0m%s%%" \
-  "$label" "$pct" "$ctx_k" "$ac_label" "$cost_fmt" "$duration_min" "$session_limit" "$weekly_limit"
+printf "\033[36m%s\033[0m  ${ctx_color}%s%%\033[90m/%sK \033[90mAC:\033[0m%s  \033[33m\$%s \033[90m(%sm)\033[0m \033[90m|\033[0m \033[90mS:\033[0m%s%%  \033[90mW:\033[0m%s%% \033[90m|\033[0m \033[35m%s\033[0m" \
+  "$label" "$pct" "$ctx_k" "$ac_label" "$cost_fmt" "$duration_min" "$session_limit" "$weekly_limit" "$user"
