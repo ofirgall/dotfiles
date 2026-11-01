@@ -26,7 +26,8 @@
     "clangd-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": false
+    "superpowers@claude-plugins-official": false,
+    "atlassian-mcp@anthropic-plugin-directory": true
   },
   "syntaxHighlightingDisabled": false,
   "alwaysThinkingEnabled": true,
@@ -37,10 +38,10 @@
       "autoCompactWindow": 300000
     }
   },
+  "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "editorMode": "vim",
-  "agentPushNotifEnabled": true,
-  "tui": "default",
-  "autoCompactEnabled": true
+  "autoCompactEnabled": true,
+  "agentPushNotifEnabled": true
 }
