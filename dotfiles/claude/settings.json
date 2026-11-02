@@ -2,6 +2,11 @@
   "permissions": {
     "defaultMode": "bypassPermissions"
   },
+  "env": {
+    "CLAUDE_CODE_DISABLE_SUBSTITUTION_RM_PROMPT": "1",
+    "CLAUDE_CODE_DISABLE_INLINE_SHELL_RM_PROMPT": "1",
+    "CLAUDE_CODE_DISABLE_MOUNTED_DRIVE_RM_PROMPT": "1"
+  },
   "model": "opus",
   "hooks": {
     "SessionStart": [
