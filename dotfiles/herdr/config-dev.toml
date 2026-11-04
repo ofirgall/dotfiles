@@ -33,3 +33,17 @@ idle    = "#15c70c" # IDLE
 # Restore agents inside KoalaVim: kv --ai -- <tool> --resume <id>
 [session]
 resume_command_prefix = ["kv", "--ai", "--"]
+
+# PR board (herdr-pr-board plugin) docked in the sidebar between spaces and agents.
+# Repositories: REPOS in `herdr plugin config-dir herdr-pr-board`/config
+[[panels]]
+id = "prs"
+plugin = "herdr-pr-board"
+entrypoint = "board"
+
+[ui.sidebar]
+sections = ["spaces", "panel:prs", "agents"]
+
+[ui.sidebar.panel.prs]
+title = "pull requests"
+focus_width = 70
