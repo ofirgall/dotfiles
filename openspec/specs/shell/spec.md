@@ -5,7 +5,7 @@ The system SHALL use zsh as the default shell on both macOS and Ubuntu. The zsh 
 
 #### Scenario: Shell setup
 - **WHEN** the install completes
-- **THEN** `~/.zshrc` SHALL symlink to `dotfiles/zsh-conf/entrypoint.zsh` and `~/.zshenv` SHALL symlink to `dotfiles/zsh-conf/env.zsh`
+- **THEN** `~/.zshrc` SHALL be a local, untracked file that sources `dotfiles/zsh-conf/entrypoint.zsh`, and `~/.zshenv` SHALL symlink to `dotfiles/zsh-conf/env.zsh`
 
 ### Requirement: Zsh config structure
 The zsh-conf submodule SHALL provide a modular config: `entrypoint.zsh` (main), `env.zsh` (environment variables), `aliases.zsh`, `binds.zsh`, `completions.zsh`, `hooks.zsh`, `plugins.zsh`, `plugin_settings.zsh`, `vars.zsh`, and `post_init.zsh`. Additional customizations SHALL live in `dotfiles/my-zsh-conf/` (symlinked to `~/.my-zsh-conf`).

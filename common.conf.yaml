@@ -10,8 +10,6 @@
 - link:
     ~/agents-status:
         path: agents-status
-    ~/.zshrc:
-        path: dotfiles/zsh-conf/entrypoint.zsh
     ~/.zshenv:
         path: dotfiles/zsh-conf/env.zsh
     ~/.zsh-conf:
@@ -68,6 +66,7 @@
     - ~/workspace
 
 - shell:
+    - [install_scripts/install_zshrc.sh, Setting up ~/.zshrc]
     - [install_scripts/install_agents_status.sh, Installing agents-status]
     - [install_scripts/install_zsh.sh, Installing ZSH]
     - [install_scripts/install_basic.sh, Running basic libs installation]
