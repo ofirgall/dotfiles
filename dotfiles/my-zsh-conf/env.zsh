@@ -13,7 +13,7 @@ fi
 
 # Check if WSL
 export WSL=false
-if [[ $(uname -a) == *"Microsoft"* ]]; then
+if [[ $OSTYPE == linux* && $(uname -a) == *"Microsoft"* ]]; then
 	export WSL=true
 fi
 

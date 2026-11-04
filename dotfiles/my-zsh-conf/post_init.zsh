@@ -11,7 +11,7 @@ fi
 #     PATH WITH PRIORITY
 # ---------------------------
 # Homebrew
-[[ "$(uname)" == "Darwin" ]] && export PATH="/opt/homebrew/bin:$PATH"
+[[ $OSTYPE == darwin* ]] && export PATH="/opt/homebrew/bin:$PATH"
 # Wrappers are last to priority
 export PATH="~/agents-status/simple-wrappers:$PATH"
 

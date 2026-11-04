@@ -15,7 +15,7 @@ alias note='ez session note open'
 alias Note='ez session note cd'
 alias t='select_tmux_session.sh'
 
-[[ "$(uname)" != "Darwin" ]] && alias open='xdg-open'
+[[ $OSTYPE != darwin* ]] && alias open='xdg-open'
 alias venv='. ./bin/activate'
 alias notify='notify-send -u critical done'
 
@@ -103,7 +103,7 @@ alias gpc="gh pr view | egrep \"url:\" | head -n 1 | sed \"s/url://g\" | xargs e
 alias gpar="gh pr edit --add-reviewer"
 alias ghd="gh dash"
 function mdp() {
-	# if [[ "$(uname)" == "Darwin" ]]; then
+	# if [[ $OSTYPE == darwin* ]]; then
 	# 	local args=()
 	# 	local arg
 	# 	for arg in "$@"; do
@@ -225,5 +225,5 @@ drift-mcp-auth() {
 alias mode-laptop="~/dotfiles/dotfiles/mac/sketchybar/plugins/mode-laptop.sh"
 alias mode-docked="~/dotfiles/dotfiles/mac/sketchybar/plugins/mode-docked.sh"
 
-[[ "$(uname)" == "Darwin" ]] && alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+[[ $OSTYPE == darwin* ]] && alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 

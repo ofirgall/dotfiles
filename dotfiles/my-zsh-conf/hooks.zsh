@@ -6,7 +6,11 @@ _asdf_update_path_for_repo() {
 
 	path=("${(@)path:#$asdf_shims}")
 
-	repo_root="$(git -C "$PWD" rev-parse --show-toplevel 2>/dev/null)"
+	local d=$PWD
+	while [[ $d != / ]]; do
+		[[ -e $d/.git ]] && { repo_root=$d; break }
+		d=${d:h}
+	done
 
 	if [[ -n "$repo_root" && -f "$repo_root/.tool-versions" ]]; then
 		path=("$asdf_shims" $path)
@@ -39,7 +43,7 @@ fi
 # Start herdr-last-tab daemon (once per server)
 if [[ -n "${HERDR_PANE_ID:-}" ]]; then
 	local _pid_file="/tmp/herdr-last-tab/daemon.pid"
-	if ! { [[ -f "$_pid_file" ]] && kill -0 "$(cat "$_pid_file")" 2>/dev/null; }; then
+	if ! { [[ -f "$_pid_file" ]] && kill -0 "$(<$_pid_file)" 2>/dev/null; }; then
 		herdr-last-tab daemon
 	fi
 fi
