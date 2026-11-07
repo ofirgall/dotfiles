@@ -121,8 +121,7 @@ keybind = alt+x=text:\x1bx
 keybind = alt+y=text:\x1by
 keybind = alt+z=text:\x1bz
 keybind = alt+zero=text:\x1b0
-keybind = alt+one=new_window
-keybind = alt+1=new_window
+keybind = alt+one=text:\x1b1
 keybind = alt+two=text:\x1b2
 keybind = alt+three=text:\x1b3
 keybind = alt+four=text:\x1b4
@@ -131,6 +130,15 @@ keybind = alt+six=text:\x1b6
 keybind = alt+seven=text:\x1b7
 keybind = alt+eight=text:\x1b8
 keybind = alt+nine=text:\x1b9
+# noctty's default goto_tab binds are on physical keys, which beat the ones above
+keybind = alt+digit_1=text:\x1b1
+keybind = alt+digit_2=text:\x1b2
+keybind = alt+digit_3=text:\x1b3
+keybind = alt+digit_4=text:\x1b4
+keybind = alt+digit_5=text:\x1b5
+keybind = alt+digit_6=text:\x1b6
+keybind = alt+digit_7=text:\x1b7
+keybind = alt+digit_8=text:\x1b8
 keybind = alt+minus=text:\x1b-
 keybind = alt+equal=text:\x1b=
 keybind = alt+left_bracket=text:\x1b[
