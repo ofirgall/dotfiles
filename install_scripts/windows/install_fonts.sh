@@ -49,6 +49,42 @@ if ! ls "$FONT_DIR"/*Maple* &>/dev/null; then
     done
 fi
 
+# Nerdwand Mono is patched locally with single-cell icons using Nordwand's
+# nerd font script (it isn't attached to releases).
+if ! ls "$FONT_DIR"/NerdwandMono-*.ttf &>/dev/null; then
+    echo "Installing Nerdwand Mono..."
+    NORDWAND_VERSION="1.4.0"
+    # The 1.4.0 patch script crashes on glyphs added by the patcher, fixed later.
+    NORDWAND_SCRIPT_VERSION="1.5.2"
+    FONTFORGE_BIN="/c/Program Files/FontForgeBuilds/bin"
+
+    if [ ! -x "$FONTFORGE_BIN/fontforge.exe" ]; then
+        winget.exe install --id FontForge.FontForge -e --silent --accept-package-agreements --accept-source-agreements
+    fi
+    if ! command -v uv &>/dev/null; then
+        winget.exe install --id astral-sh.uv -e --silent --accept-package-agreements --accept-source-agreements
+    fi
+
+    git -c advice.detachedHead=false clone -q --depth 1 --branch "$NORDWAND_SCRIPT_VERSION" https://github.com/tywr/Nordwand-Mono "$TMPDIR/nordwand"
+    curl -fsSL -o "$TMPDIR/nordwand-ttf.zip" \
+        "https://github.com/tywr/Nordwand-Mono/releases/download/$NORDWAND_VERSION/NordwandMono-TTF.zip"
+    unzip -qo "$TMPDIR/nordwand-ttf.zip" -d "$TMPDIR/nordwand-ttf"
+    mkdir -p "$TMPDIR/nordwand/fonts/ttf"
+    find "$TMPDIR/nordwand-ttf" -name '*.ttf' -exec cp {} "$TMPDIR/nordwand/fonts/ttf/" \;
+
+    # font-patcher has no .py extension, so Windows fontforge needs -lang=py
+    # or it runs the file as a native fontforge script.
+    # Don't set PYTHONHOME like fontforge.bat does: it breaks uv's python,
+    # and fontforge.exe finds its bundled python without it.
+    (
+        cd "$TMPDIR/nordwand"
+        sed -i 's/"-script",/"-lang=py", "-script",/' src/scripts/nerd_font.py
+        grep -q '"-lang=py"' src/scripts/nerd_font.py
+        PATH="$FONTFORGE_BIN:$HOME/AppData/Local/Microsoft/WinGet/Links:$PATH" uv run python -m scripts.nerd_font
+    )
+    cp "$TMPDIR"/nordwand/fonts/nerd-font/*.ttf "$FONT_DIR/"
+fi
+
 # Remove CaskaydiaCove italic variants (matching macOS)
 rm -f "$FONT_DIR"/Caskaydia*Italic*
 
