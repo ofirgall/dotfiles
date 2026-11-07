@@ -17,8 +17,8 @@
   "Microsoft Store": {
     "manage": [{ "kind": "Exe", "id": "WinStore.App.exe", "matching_strategy": "Equals" }]
   },
-  "winghostty": {
-    "tray_and_multi_window": [{ "kind": "Exe", "id": "winghostty.exe", "matching_strategy": "Equals" }]
+  "noctty": {
+    "tray_and_multi_window": [{ "kind": "Exe", "id": "noctty.exe", "matching_strategy": "Equals" }]
   },
   "Chrome": {
     "tray_and_multi_window": [{ "kind": "Exe", "id": "chrome.exe", "matching_strategy": "Equals" }]

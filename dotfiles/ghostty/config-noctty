@@ -10,7 +10,8 @@ window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
 window-padding-color = extend
-window-decoration = none
+window-decoration = auto
+maximize = true
 window-show-tab-bar = never
 # window-theme = ghostt1y
 
@@ -45,7 +46,7 @@ palette = 15=#eeeeec
 
 keybind = super+f5=reset_font_size
 keybind = super+f6=reload_config
-keybind = ctrl+alt+enter=toggle_fullscreen
+keybind = alt+enter=toggle_fullscreen
 
 # Nvim escape sequences
 keybind = ctrl+tab=text:\x1b[27;5;9~
@@ -102,7 +103,8 @@ keybind = alt+x=text:\x1bx
 keybind = alt+y=text:\x1by
 keybind = alt+z=text:\x1bz
 keybind = alt+zero=text:\x1b0
-keybind = alt+one=text:\x1b1
+keybind = alt+one=new_window
+keybind = alt+1=new_window
 keybind = alt+two=text:\x1b2
 keybind = alt+three=text:\x1b3
 keybind = alt+four=text:\x1b4

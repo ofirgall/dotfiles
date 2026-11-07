@@ -77,8 +77,8 @@
 
 # --- Windows-specific symlinks ---
 - link:
-    ~/AppData/Local/winghostty/config.ghostty:
-        path: dotfiles/ghostty/config-winghostty
+    ~/AppData/Local/noctty/config.ghostty:
+        path: dotfiles/ghostty/config-noctty
     ~/.wezterm.lua:
         path: windows/.wezterm.lua
     ~/.config/komorebi/komorebi.json:

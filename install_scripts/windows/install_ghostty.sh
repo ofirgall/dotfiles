@@ -2,11 +2,11 @@
 set -e
 source "$(dirname "$0")/helpers.sh"
 
-if [ -d "/c/Program Files/winghostty" ] || command -v winghostty &>/dev/null; then
-    echo "winghostty already installed"
+if [ -x "/c/Program Files/noctty/noctty.exe" ] || [ -x "/c/Program Files/winghostty/noctty.exe" ] || command -v noctty &>/dev/null; then
+    echo "noctty already installed"
     exit 0
 fi
 
-echo "Installing winghostty (Ghostty core + native Win32 runtime)..."
-winget.exe install --id AmanThanvi.winghostty --accept-package-agreements --accept-source-agreements || true
-echo "winghostty installed"
+echo "Installing noctty (formerly winghostty)..."
+winget.exe install --id AmanThanvi.noctty -e --accept-package-agreements --accept-source-agreements || true
+echo "noctty installed"
