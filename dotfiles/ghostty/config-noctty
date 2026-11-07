@@ -12,7 +12,7 @@ window-padding-balance = true
 window-padding-color = extend
 window-decoration = auto
 maximize = true
-window-show-tab-bar = never
+window-show-tab-bar = auto
 # window-theme = ghostt1y
 
 adjust-cursor-thickness = 2
@@ -74,6 +74,24 @@ keybind = ctrl+seven=text:\x1b[55;5u
 keybind = ctrl+eight=text:\x1b[56;5u
 keybind = ctrl+nine=text:\x1b[57;5u
 keybind = ctrl+zero=text:\x1b[48;5u
+
+# Tab management (Alt+key scheme from tmux/wezterm, on ctrl+alt so alt stays passthrough)
+keybind = ctrl+alt+t=new_tab
+keybind = ctrl+alt+w=close_tab:this
+keybind = ctrl+alt+1=goto_tab:1
+keybind = ctrl+alt+2=goto_tab:2
+keybind = ctrl+alt+3=goto_tab:3
+keybind = ctrl+alt+4=goto_tab:4
+keybind = ctrl+alt+5=goto_tab:5
+keybind = ctrl+alt+6=goto_tab:6
+keybind = ctrl+alt+7=goto_tab:7
+keybind = ctrl+alt+8=goto_tab:8
+keybind = ctrl+alt+9=goto_tab:9
+keybind = ctrl+alt+0=goto_tab:10
+keybind = ctrl+alt+comma=previous_tab
+keybind = ctrl+alt+period=next_tab
+keybind = ctrl+alt+shift+comma=move_tab:-1
+keybind = ctrl+alt+shift+period=move_tab:1
 
 # Alt escape sequences
 keybind = alt+a=text:\x1ba
