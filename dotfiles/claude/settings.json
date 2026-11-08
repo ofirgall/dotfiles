@@ -71,8 +71,8 @@
         "diffStyle": "full",
         "pieStyle": "round",
         "mermaid": false,
-        "inlineCodeColor": "#fab387",
-        "strongColor": "#cba6f7"
+        "inlineCodeColor": "#cba6f7",
+        "strongColor": "#7a9cff"
       }
     }
   },
