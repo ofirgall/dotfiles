@@ -15,7 +15,7 @@ herdr integration install pi 2>/dev/null || true
 
 # Install packages (pi install is idempotent)
 pi install npm:pi-subagents 2>/dev/null || true
-pi install https://github.com/wishx127/pi-tokyo-night 2>/dev/null || true
+pi install npm:pi-powerline-footer 2>/dev/null || true
 
 # Install pi-skills
 if [ ! -d "$HOME/.pi/agent/skills/pi-skills" ]; then

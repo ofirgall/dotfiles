@@ -1,11 +1,17 @@
 {
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-6",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.3-codex",
   "defaultThinkingLevel": "high",
   "quietStartup": true,
-  "theme": "tokyo-night-dark",
+  "theme": "catppuccin-mocha",
   "packages": [
     "npm:pi-subagents",
-    "https://github.com/wishx127/pi-tokyo-night"
-  ]
+    "npm:pi-powerline-footer",
+    "git:https://github.com/hasit/pi-community-themes"
+  ],
+  "lastChangelogVersion": "1.5.0",
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.87.0",
+    "{\"source\":\"npm:pi-powerline-footer\",\"scope\":\"user\"}": "0.22.0"
+  }
 }

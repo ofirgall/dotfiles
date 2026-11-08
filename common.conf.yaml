@@ -50,6 +50,8 @@
         path: dotfiles/lumen
     ~/.claude/settings.json:
         path: dotfiles/claude/settings.json
+    ~/.pi/agent/settings.json:
+        path: dotfiles/pi/settings.json
     ~/.claude/statusline-command.sh:
         path: dotfiles/claude/statusline-command.sh
     ~/.cursor/statusline.sh:
