@@ -50,6 +50,8 @@
         path: dotfiles/lumen
     ~/.claude/settings.json:
         path: dotfiles/claude/settings.json
+    ~/.codex/config.toml:
+        path: dotfiles/codex/config.toml
     ~/.pi/agent/settings.json:
         path: dotfiles/pi/settings.json
     ~/.pi/agent/keybindings.json:

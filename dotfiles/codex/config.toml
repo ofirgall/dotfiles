@@ -1,0 +1,36 @@
+[projects."/Users/ofirg/.local/share/kvim-envs/edit-prompt-via-editor/lazy/KoalaVim"]
+trust_level = "trusted"
+
+[projects."/Users/ofirg/.local/share/kvim-envs/sidekick/lazy/KoalaVim"]
+trust_level = "trusted"
+
+[projects."/Users/ofirg/dotfiles"]
+trust_level = "trusted"
+
+[tui]
+status_line = ["model-with-reasoning", "context-used", "context-window-size", "estimated-thread-cost", "five-hour-limit", "weekly-limit"]
+screen_reader_detection_done = true
+
+[tui.model_availability_nux]
+"gpt-5.6-sol" = 4
+"gpt-6.1-sol" = 4
+
+[hooks.state]
+
+[hooks.state."/Users/ofirg/.codex/hooks.json:permission_request:0:0"]
+trusted_hash = "sha256:732ceb6490df7b377e52f6efb2f54db3d376bf441f3260b8127ec8aba9a2bc61"
+
+[hooks.state."/Users/ofirg/.codex/hooks.json:post_tool_use:0:0"]
+trusted_hash = "sha256:7ad687ff51af7ab655a4b9a94b8f7c792a56f28f526ecdd7a741984493c5121a"
+
+[hooks.state."/Users/ofirg/.codex/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:b00a900fb1d28603b88372e271946254e1c4f59c116ba0804b7a903f50aefaad"
+
+[hooks.state."/Users/ofirg/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:6ce8406c3fcc557d1a0423ef0ae19c280cc30e014a4daca92282c9f9719865c0"
+
+[hooks.state."/Users/ofirg/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:9c516dd7dda918404b27281968976eb895b17f6199c2d8ff0a4416a0a4c0565f"
+
+[features]
+hooks = true
