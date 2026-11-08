@@ -1,3 +1,6 @@
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+
 [projects."/Users/ofirg/.local/share/kvim-envs/edit-prompt-via-editor/lazy/KoalaVim"]
 trust_level = "trusted"
 
@@ -5,6 +8,9 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/ofirg/dotfiles"]
+trust_level = "trusted"
+
+[projects."/Users/ofirg/workspace/personal/herdr"]
 trust_level = "trusted"
 
 [tui]
