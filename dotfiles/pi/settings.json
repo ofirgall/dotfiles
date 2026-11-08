@@ -1,7 +1,7 @@
 {
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.3-codex",
-  "defaultThinkingLevel": "high",
+  "defaultProvider": "openai",
+  "defaultModel": "gpt-6.1-sol",
+  "defaultThinkingLevel": "low",
   "quietStartup": true,
   "theme": "catppuccin-mocha",
   "packages": [
@@ -13,5 +13,14 @@
   "extensionChangelogVersions": {
     "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.87.0",
     "{\"source\":\"npm:pi-powerline-footer\",\"scope\":\"user\"}": "0.22.0"
+  },
+  "deviceId": "abb6ae63-f731-45a9-853d-7bba99d32f87",
+  "powerline": {
+    "preset": "compact",
+    "layout": {
+      "left": ["model", "thinking", "context_pct", "context_total", "cost", "subagents", "shell_mode", "session"],
+      "right": ["git", "shell_mode", "time"],
+      "secondary": []
+    }
   }
 }

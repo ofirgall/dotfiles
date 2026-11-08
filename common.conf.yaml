@@ -52,6 +52,8 @@
         path: dotfiles/claude/settings.json
     ~/.pi/agent/settings.json:
         path: dotfiles/pi/settings.json
+    ~/.pi/agent/keybindings.json:
+        path: dotfiles/pi/keybindings.json
     ~/.claude/statusline-command.sh:
         path: dotfiles/claude/statusline-command.sh
     ~/.cursor/statusline.sh:
