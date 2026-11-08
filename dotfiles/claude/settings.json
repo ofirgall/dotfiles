@@ -69,7 +69,10 @@
         "bubbleLabels": "off",
         "toolStyle": "tree-bold",
         "diffStyle": "full",
-        "pieStyle": "round"
+        "pieStyle": "round",
+        "mermaid": false,
+        "inlineCodeColor": "#fab387",
+        "strongColor": "#cba6f7"
       }
     }
   },
