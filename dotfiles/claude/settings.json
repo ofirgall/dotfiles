@@ -1,11 +1,11 @@
 {
-  "permissions": {
-    "defaultMode": "bypassPermissions"
-  },
   "env": {
     "CLAUDE_CODE_DISABLE_SUBSTITUTION_RM_PROMPT": "1",
     "CLAUDE_CODE_DISABLE_INLINE_SHELL_RM_PROMPT": "1",
     "CLAUDE_CODE_DISABLE_MOUNTED_DRIVE_RM_PROMPT": "1"
+  },
+  "permissions": {
+    "defaultMode": "bypassPermissions"
   },
   "model": "opus",
   "hooks": {
@@ -32,7 +32,16 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": false,
-    "atlassian-mcp@anthropic-plugin-directory": true
+    "atlassian-mcp@anthropic-plugin-directory": true,
+    "prismantis@prismantis": true
+  },
+  "extraKnownMarketplaces": {
+    "prismantis": {
+      "source": {
+        "source": "github",
+        "repo": "NahumLitvin/prismantis"
+      }
+    }
   },
   "syntaxHighlightingDisabled": false,
   "alwaysThinkingEnabled": true,
@@ -41,6 +50,27 @@
     "claude-opus-5-5": {
       "effortLevel": "medium",
       "autoCompactWindow": 300000
+    }
+  },
+  "pluginConfigs": {
+    "prismantis@prismantis": {
+      "options": {
+        "theme": "catppuccin-mocha",
+        "promptStyle": "wide",
+        "toolOutput": "quiet",
+        "clock": "24h",
+        "codeStyle": "filled",
+        "tableStyle": "box",
+        "taskStyle": "progress",
+        "listMarker": "dots",
+        "headingStyle": "banner",
+        "copyButtonStyle": "dim",
+        "replyStyle": "off",
+        "bubbleLabels": "off",
+        "toolStyle": "tree-bold",
+        "diffStyle": "bar",
+        "pieStyle": "round"
+      }
     }
   },
   "tui": "default",
