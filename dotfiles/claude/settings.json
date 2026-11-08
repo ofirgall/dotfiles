@@ -80,7 +80,8 @@
         "mermaid": false,
         "inlineCodeColor": "#cba6f7",
         "strongColor": "#7a9cff",
-        "shellOutput": "dim"
+        "shellOutput": "dim",
+        "spaceAfterTools": true
       }
     }
   },
