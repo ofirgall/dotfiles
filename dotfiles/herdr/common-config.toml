@@ -329,6 +329,8 @@ rows = [[
   "$pr_id"
 ]]
 
+########### CUSTOM SETTINGS FROM FORK  ###########
+
 # Agent status in tab labels: glyph prefix, unfocused tabs tinted and dimmed
 [ui.tab_status]
 enabled = true
@@ -364,3 +366,8 @@ working = ""
 done    = ""
 idle    = ""
 unknown = " "
+
+# Restore agents inside KoalaVim: kv --ai -- <tool> --resume <id>
+[session]
+resume_command_prefix = ["kv", "--ai", "--"]
+
