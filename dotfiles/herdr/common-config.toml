@@ -142,6 +142,17 @@ key = "alt+z"
 type = "plugin_action"
 command = "herdr-nvim-aware.zoom"
 
+# Sidekick agent actions; other panes receive the original key.
+[[keys.command]]
+key = "ctrl+e"
+type = "shell"
+command = '"$HOME/.local/bin/sidekick-herdr-minimize" edit'
+
+[[keys.command]]
+key = "alt+a"
+type = "shell"
+command = '"$HOME/.local/bin/sidekick-herdr-minimize"'
+
 # Popups
 [[keys.command]]
 key = "prefix+ctrl+e"
