@@ -1,0 +1,8 @@
+{
+  "name": "ofir-mods",
+  "owner": { "name": "Ofir Gal" },
+  "description": "Personal Claude Code mods kept in the dotfiles",
+  "plugins": [
+    { "name": "question-frame", "source": "./question-frame", "description": "Rounded Catppuccin mauve frame around Claude's question dialog" }
+  ]
+}

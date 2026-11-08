@@ -33,13 +33,20 @@
     "pyright-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": false,
     "atlassian-mcp@anthropic-plugin-directory": true,
-    "prismantis@prismantis": true
+    "prismantis@prismantis": true,
+    "question-frame@ofir-mods": true
   },
   "extraKnownMarketplaces": {
     "prismantis": {
       "source": {
         "source": "github",
         "repo": "NahumLitvin/prismantis"
+      }
+    },
+    "ofir-mods": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/ofirg/dotfiles/dotfiles/claude/mods"
       }
     }
   },
