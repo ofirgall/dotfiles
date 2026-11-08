@@ -68,7 +68,7 @@
         "replyStyle": "off",
         "bubbleLabels": "off",
         "toolStyle": "tree-bold",
-        "diffStyle": "bar",
+        "diffStyle": "full",
         "pieStyle": "round"
       }
     }
