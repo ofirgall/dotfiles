@@ -3,8 +3,14 @@ set -e
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Italic files are deliberately removed below; tolerate those missing during upgrades.
+if brew list --cask font-caskaydia-cove-nerd-font &>/dev/null; then
+    brew upgrade --cask --force font-caskaydia-cove-nerd-font
+else
+    brew install --cask font-caskaydia-cove-nerd-font
+fi
+
 brew install --cask \
-    font-caskaydia-cove-nerd-font \
     font-ubuntu-mono-nerd-font \
     font-jetbrains-mono-nerd-font \
     font-iosevka-term-nerd-font \
@@ -32,17 +38,17 @@ fi
 
 # Nerdwand Mono and Lyth Mono NFM are patched locally with single-cell icons
 # using Nordwand's nerd font script. Lyth's own Nerd Font release has double-width icons.
-if ! ls "$FONTS_DIR"/NerdwandMono-*.ttf "$FONTS_DIR"/LythMonoNFM-*.ttf &>/dev/null; then
+PATCH_MARKER="$FONTS_DIR/.nerdwand-plain-italic-k-x"
+if [ ! -f "$PATCH_MARKER" ] || ! ls "$FONTS_DIR"/NerdwandMono-*.ttf "$FONTS_DIR"/LythMonoNFM-*.ttf &>/dev/null; then
     brew install fontforge uv
     git clone -q --depth 1 https://github.com/tywr/Nordwand-Mono "$TMP_DIR/nordwand"
     cd "$TMP_DIR/nordwand"
     uv sync -q
 
-    mkdir -p fonts/ttf
-    curl -fsSL -o "$TMP_DIR/nordwand-ttf.zip" \
-        https://github.com/tywr/Nordwand-Mono/releases/download/1.4.0/NordwandMono-TTF.zip
-    unzip -oq "$TMP_DIR/nordwand-ttf.zip" -d "$TMP_DIR/nordwand-ttf"
-    find "$TMP_DIR/nordwand-ttf" -name '*.ttf' -exec cp {} fonts/ttf/ \;
+    # Use the plain (slanted) k and x in italics instead of their alternate forms
+    sed -i '' 's/^    default_italic = True$/    italic_only = True/' \
+        src/glyphs/lowercase/k_2.py src/glyphs/lowercase/x_2.py
+    uv run python -m generate_font --ttf --font-version 1.4.0 >/dev/null 2>&1
     make build-nerd-font >/dev/null 2>&1
     cp fonts/nerd-font/*.ttf "$FONTS_DIR/"
 
@@ -53,4 +59,5 @@ if ! ls "$FONTS_DIR"/NerdwandMono-*.ttf "$FONTS_DIR"/LythMonoNFM-*.ttf &>/dev/nu
         --family "LythMono NFM" >/dev/null 2>&1
     cp "$TMP_DIR"/lyth-nfm/*.ttf "$FONTS_DIR/"
     cd - >/dev/null
+    touch "$PATCH_MARKER"
 fi
