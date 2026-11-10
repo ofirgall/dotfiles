@@ -13,6 +13,9 @@ trust_level = "trusted"
 [projects."/Users/ofirg/workspace/personal/herdr"]
 trust_level = "trusted"
 
+[projects."/Users/ofirg/.local/share/kvim-envs/main/lazy/KoalaVim"]
+trust_level = "trusted"
+
 [tui]
 status_line = ["model-with-reasoning", "context-used", "context-window-size", "estimated-thread-cost", "five-hour-limit", "weekly-limit"]
 screen_reader_detection_done = true
