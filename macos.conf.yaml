@@ -58,6 +58,8 @@
         path: dotfiles/yazi
     ~/.claude/settings.json:
         path: dotfiles/claude/settings.json
+    ~/.claude/keybindings.json:
+        path: dotfiles/claude/keybindings.json
     ~/.pi/agent/settings.json:
         path: dotfiles/pi/settings.json
     ~/.claude/statusline-command.sh:
