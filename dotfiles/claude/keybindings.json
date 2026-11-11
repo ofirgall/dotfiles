@@ -7,8 +7,21 @@
       "bindings": {
         "alt+u": "scroll:halfPageUp",
         "alt+d": "scroll:halfPageDown",
-        "alt+shift+g": "scroll:top",
-        "alt+g": "scroll:bottom"
+        "alt+k": "scroll:lineUp",
+        "alt+j": "scroll:lineDown",
+        "alt+shift+g": "scroll:bottom",
+        "alt+g": "scroll:top"
+      }
+    },
+    {
+      "context": "Transcript",
+      "bindings": {
+        "alt+u": "scroll:halfPageUp",
+        "alt+d": "scroll:halfPageDown",
+        "alt+k": "scroll:lineUp",
+        "alt+j": "scroll:lineDown",
+        "alt+shift+g": "scroll:bottom",
+        "alt+g": "scroll:top"
       }
     }
   ]

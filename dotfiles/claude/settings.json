@@ -81,7 +81,8 @@
         "inlineCodeColor": "#cba6f7",
         "strongColor": "#7a9cff",
         "shellOutput": "dim",
-        "spaceAfterTools": true
+        "spaceAfterTools": true,
+        "diffFold": "always"
       }
     }
   },
