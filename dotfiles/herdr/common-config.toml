@@ -192,7 +192,7 @@ command = "persiyanov.reviewr.toggle"
 [[keys.command]]
 key = "prefix+r"
 type = "shell"
-command = "bash ~/dotfiles/dotfiles/herdr/generate-config.sh \"$(case $(uname) in Darwin) echo mac;; MINGW*|MSYS*|CYGWIN*) echo windows;; *) echo linux;; esac)\" && herdr server reload-config"
+command = "bash ~/dotfiles/dotfiles/herdr/generate-config.sh auto && herdr server reload-config"
 
 # Automatic rename
 [[keys.command]]

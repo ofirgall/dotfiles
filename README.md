@@ -75,6 +75,20 @@ cd dotfiles && make init && ./install-windows
 
 See [winREADME/MANUAL.md](winREADME/MANUAL.md) for post-install manual steps.
 
+## Codex Statusline
+
+The Codex footer mirrors the supported fields from the Claude statusline: model,
+reasoning effort and Fast tier, context used and window size, estimated cost
+(Enterprise only), and five-hour/weekly limits. Codex displays limits as remaining
+capacity and has no elapsed-time field. Unavailable fields are hidden.
+
+Run `./install_scripts/install_codex_statusline.sh` (requires `uv`), then restart
+Codex. The macOS installer also applies it. Edit
+`dotfiles/codex/statusline.toml` and rerun the script to change the fields.
+Because Codex has no config includes, the script merges only these settings into
+`~/.codex/config.toml` (or `$CODEX_HOME/config.toml`), preserving other settings.
+The first update saves a `config.toml.before-statusline` backup beside the config.
+
 ## Git Setup
 
 Create `~/.git_user` with your identity:

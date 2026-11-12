@@ -101,6 +101,7 @@
     - ~/workspace/work
 
 - shell:
+    - [install_scripts/install_codex_statusline.sh, Configuring Codex statusline]
     - [install_scripts/mac/install_agents_status.sh, Installing agents-status]
     - [touch -h ~/.config/karabiner/karabiner.json, Triggering Karabiner reload]
     - [ln -sf config.macos dotfiles/ghostty/config.platform, Setting Ghostty platform config]

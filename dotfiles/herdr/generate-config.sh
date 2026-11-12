@@ -2,7 +2,15 @@
 set -e
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
-PLATFORM_FILE="$DIR/${1:?Usage: generate-config.sh <platform> (e.g. windows, mac)}-config.toml"
+PLATFORM=${1:?Usage: generate-config.sh <platform> (e.g. windows, mac, auto)}
+if [ "$PLATFORM" = auto ]; then
+    case $(uname) in
+        Darwin) PLATFORM=mac ;;
+        MINGW*|MSYS*|CYGWIN*) PLATFORM=windows ;;
+        *) PLATFORM=linux ;;
+    esac
+fi
+PLATFORM_FILE="$DIR/${PLATFORM}-config.toml"
 COMMON_FILE="$DIR/common-config.toml"
 OUTPUT="$DIR/config.toml"
 

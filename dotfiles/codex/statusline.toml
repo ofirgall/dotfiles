@@ -1,0 +1,13 @@
+# Closest native equivalent of dotfiles/claude/statusline-command.sh.
+[tui]
+status_line = [
+  "model-with-reasoning",
+  "context-used",
+  "context-window-size",
+  "estimated-thread-cost",
+  "five-hour-limit",
+  "weekly-limit",
+]
+# model-with-reasoning includes the processing tier (Fast) when applicable.
+# Cost is Enterprise-only and hidden when unavailable. Limits show remaining
+# capacity, unlike Claude's used percentages. Codex has no elapsed-time item.
