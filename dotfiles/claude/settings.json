@@ -1,75 +1,23 @@
 {
+  "env": {
+    "CLAUDE_CODE_DISABLE_SUBSTITUTION_RM_PROMPT": "1",
+    "CLAUDE_CODE_DISABLE_INLINE_SHELL_RM_PROMPT": "1",
+    "CLAUDE_CODE_DISABLE_MOUNTED_DRIVE_RM_PROMPT": "1",
+    "CLAUDE_CODE_SCROLL_SPEED": "2"
+  },
   "permissions": {
     "defaultMode": "bypassPermissions"
   },
   "model": "opus",
   "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-finish"
-          }
-        ]
-      }
-    ],
-    "PermissionRequest": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-perm-req"
-          }
-        ]
-      }
-    ],
     "SessionStart": [
       {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
         "hooks": [
           {
             "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-session-start"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-session-stop"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-prompt-start"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-tool-done"
-          }
-        ]
-      }
-    ],
-    "PostToolUseFailure": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/agents-status/hooks/claude/hook-tool-done"
+            "command": "bash '/Users/ofirg/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
           }
         ]
       }
@@ -85,20 +33,67 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": false,
+    "atlassian-mcp@anthropic-plugin-directory": true,
+    "question-frame@ofir-mods": true,
+    "prismantis@prismantis": true,
     "chrome-devtools-mcp@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "ofir-mods": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/ofirg/dotfiles/dotfiles/claude/mods"
+      }
+    },
+    "prismantis": {
+      "source": {
+        "source": "github",
+        "repo": "ofirgall/prismantis"
+      }
+    }
   },
   "syntaxHighlightingDisabled": false,
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "modelSettings": {
     "claude-opus-5-5": {
-      "effortLevel": "medium"
+      "effortLevel": "medium",
+      "autoCompactWindow": 300000
     }
   },
+  "pluginConfigs": {
+    "prismantis@prismantis": {
+      "options": {
+        "theme": "catppuccin-mocha",
+        "promptStyle": "wide",
+        "toolOutput": "quiet",
+        "clock": "24h",
+        "codeStyle": "filled",
+        "tableStyle": "box",
+        "taskStyle": "progress",
+        "listMarker": "dots",
+        "headingStyle": "banner",
+        "copyButtonStyle": "hover",
+        "replyStyle": "off",
+        "bubbleLabels": "off",
+        "toolStyle": "tree-dim",
+        "diffStyle": "full",
+        "pieStyle": "round",
+        "mermaid": false,
+        "inlineCodeColor": "#cba6f7",
+        "strongColor": "#7a9cff",
+        "shellOutput": "dim",
+        "spaceAfterTools": true,
+        "diffFold": "always"
+      }
+    }
+  },
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "editorMode": "vim",
+  "autoCompactEnabled": true,
+  "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "remoteControlAtStartup": true
+  "skipAutoPermissionPrompt": true
 }

@@ -19,6 +19,5 @@ if command -v uv >/dev/null 2>&1; then
 else
     "$REPO/install.sh" core
 fi
-"$REPO/install.sh" hooks all
 # cursor-cli-wrapper uses Unix PTY APIs — skip on Windows
 # "$REPO/install.sh" cursor-cli-wrapper
