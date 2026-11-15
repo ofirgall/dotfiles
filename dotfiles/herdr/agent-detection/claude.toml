@@ -33,6 +33,17 @@ visible_working = true
 line_regex = ['^\s*[\x{002A}\x{00B7}\x{2722}\x{2736}\x{273B}\x{273D}]\s+Waiting for [1-9]\d* background agents? to finish\s*$']
 
 [[rules]]
+id = "subagent_panel_working"
+state = "working"
+priority = 965
+region = "bottom_non_empty_lines(5)"
+visible_working = true
+# Agents panel under the prompt box lists each running subagent as
+#   ◯ general-purpose  <activity>   5m 26s · ↓ 101.1k tokens
+# The elapsed time + streaming-token tail only appears while it runs.
+line_regex = ['^\s*\x{25EF}\s+\S.*\s(?:\d+h\s+)?(?:\d+m\s+)?\d+s\s+\x{00B7}\s+[\x{2191}\x{2193}]\s+[\d.]+[kKmM]?\s+tokens\s*$']
+
+[[rules]]
 id = "background_mcp_task_working"
 state = "working"
 priority = 965
