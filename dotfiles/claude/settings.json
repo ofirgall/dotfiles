@@ -35,7 +35,8 @@
     "superpowers@claude-plugins-official": false,
     "atlassian-mcp@anthropic-plugin-directory": true,
     "question-frame@ofir-mods": true,
-    "prismantis@prismantis": true
+    "prismantis@prismantis": true,
+    "convo-preview@claude-markdown-viewer": true
   },
   "extraKnownMarketplaces": {
     "ofir-mods": {
@@ -48,6 +49,12 @@
       "source": {
         "source": "github",
         "repo": "ofirgall/prismantis"
+      }
+    },
+    "claude-markdown-viewer": {
+      "source": {
+        "source": "github",
+        "repo": "ofirgall/claude-markdown-viewer"
       }
     }
   },
