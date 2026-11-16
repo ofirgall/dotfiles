@@ -36,7 +36,7 @@
     "atlassian-mcp@anthropic-plugin-directory": true,
     "question-frame@ofir-mods": true,
     "prismantis@prismantis": true,
-    "convo-preview@claude-markdown-viewer": true
+    "markdown-preview@claude-markdown-viewer": true
   },
   "extraKnownMarketplaces": {
     "ofir-mods": {
@@ -68,12 +68,12 @@
     }
   },
   "pluginConfigs": {
-    "convo-preview": {
+    "markdown-preview": {
       "options": {
         "theme": "github-dark-ofir"
       }
     },
-    "convo-preview@claude-markdown-viewer": {
+    "markdown-preview@claude-markdown-viewer": {
       "options": {
         "theme": "github-dark-ofir"
       }
