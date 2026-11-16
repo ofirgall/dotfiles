@@ -68,6 +68,16 @@
     }
   },
   "pluginConfigs": {
+    "convo-preview": {
+      "options": {
+        "theme": "github-dark-ofir"
+      }
+    },
+    "convo-preview@claude-markdown-viewer": {
+      "options": {
+        "theme": "github-dark-ofir"
+      }
+    },
     "prismantis@prismantis": {
       "options": {
         "theme": "catppuccin-mocha",
