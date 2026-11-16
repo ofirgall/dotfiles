@@ -233,15 +233,13 @@ add_right_items() {
                      icon.padding_right=1 \
                      label.drawing=off \
                --add item "window_name${suffix}" right \
-               --subscribe "window_name${suffix}" $WINDOW_COUNT_EVENTS front_app_switched \
                --set "window_name${suffix}" \
                      $display_prop \
                      icon.drawing=off \
                      label.font="$label_font" \
                      label.max_chars=50 \
-                     script="$PLUGIN_DIR/window_count.sh" \
                --add item "window_count${suffix}" right \
-               --subscribe "window_count${suffix}" $WINDOW_COUNT_EVENTS \
+               --subscribe "window_count${suffix}" $WINDOW_COUNT_EVENTS front_app_switched \
                --set "window_count${suffix}" \
                      $display_prop \
                      icon="󰖯" \
@@ -313,7 +311,7 @@ set +m
 # --- Display change handler: re-detect and reload only if displays changed ---
 sketchybar --add item display_watcher left \
            --set display_watcher drawing=off \
-                 script="$PLUGIN_DIR/detect_displays.sh && sketchybar --reload" \
+                 script="$PLUGIN_DIR/display_change.sh" \
            --subscribe display_watcher display_change
 
 sketchybar --update

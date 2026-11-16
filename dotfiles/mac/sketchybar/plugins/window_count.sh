@@ -7,6 +7,13 @@ case "$NAME" in
     *.*) SUFFIX=".${NAME#*.}" ;;
 esac
 
+# Every workspace event fires this for each display, often 10 at once, and each run makes
+# ~10 sketchybar queries (~100ms each). Debounce so a burst collapses into one run.
+LOCKFILE="/tmp/sketchybar-window-count${SUFFIX}.pid"
+echo $$ > "$LOCKFILE"
+sleep 0.15
+[ "$(cat "$LOCKFILE" 2>/dev/null)" = "$$" ] || exit 0
+
 # Find the display key with valid coordinates for this item
 find_display_key() {
     local item_data="$1"
@@ -35,7 +42,14 @@ if [ "$COUNT" -gt 0 ] 2>/dev/null; then
     SHOW_NAME=on
     FOUND_WS=""
     LAST_WS_RIGHT=0
-    for sid in 10 9 8 7 6 5 4 3 2 1; do
+    # Only drawn workspaces matter: the focused group and groups with windows (per the
+    # cache aerospace.sh renders from), checked rightmost first. Skips ~100ms queries.
+    CANDIDATES="10 9 8 7 6 5 4 3 2 1"
+    WS_CACHE="/tmp/aerospace-ws-cache"
+    if [ -f "$WS_CACHE" ]; then
+        CANDIDATES=$(awk 'NR == 1 { print $1; next } $3 == 1 { print $1 }' "$WS_CACHE" | sort -rnu)
+    fi
+    for sid in $CANDIDATES; do
         WS_DATA=$(sketchybar --query "space.${sid}${SUFFIX}" 2>/dev/null) || continue
         [ "$(echo "$WS_DATA" | jq -r '.geometry.drawing')" = "on" ] || continue
         DK=$(find_display_key "$WS_DATA")
