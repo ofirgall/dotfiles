@@ -55,6 +55,9 @@ open -a AeroSpace
 open -a LinearMouse
 open -a BetterDisplay
 
+# LinearMouse does not enable its own login item, so register it explicitly
+osascript -e 'tell application "System Events" to if not (exists login item "LinearMouse") then make login item at end with properties {path:"/Applications/LinearMouse.app", hidden:true}'
+
 # Cursor: size 1.75x, white fill, black outline
 sudo defaults write com.apple.universalaccess mouseDriverCursorSize -float 1.75
 sudo defaults write com.apple.universalaccess cursorFill -dict alpha -float 1 blue -float 1 green -float 1 red -float 1
