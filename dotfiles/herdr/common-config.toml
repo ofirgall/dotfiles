@@ -296,6 +296,7 @@ agents = "expanded"                 # "off" | "collapsed" | "expanded"
 show_status = false                 # hide the space row status; agent children keep theirs
 row_gap = 1                         # blank line after each top-level space
 subspace_row_gap = 1                # and after each worktree subspace
+row_gap_after_agents_only = true    # gaps only after spaces showing their agents
 # tab_stripped drops the rename plugin's "N| " (INDEX_FORMAT='%s| ')
 agent_rows = [["state_icon", {token = "tab_stripped", prefix = "{}| "}]]
 # herdr draws the jump numbers (index token): they follow skipped spaces and
