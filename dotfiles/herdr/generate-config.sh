@@ -25,8 +25,22 @@ else
     cp "$COMMON_FILE" "$OUTPUT"
 fi
 
+# Row layouts replace instead of append: `*+` would add dev rows after the
+# common ones, so a dev layout could never change an existing row.
+replace_dev_rows() {
+    for path in .ui.sidebar.spaces.rows .ui.sidebar.agents.rows; do
+        if [ "$(yq -p toml -o yaml "$path" "$DEV_FILE")" != "null" ]; then
+            yq -p toml -o yaml '.' "$DEV_OUTPUT" > "$TMPDIR/herdr-merged.yaml"
+            yq -p toml -o yaml '.' "$DEV_FILE" > "$TMPDIR/herdr-dev.yaml"
+            yq -o toml "$path = load(\"$TMPDIR/herdr-dev.yaml\")$path" "$TMPDIR/herdr-merged.yaml" > "$DEV_OUTPUT"
+            rm -f "$TMPDIR/herdr-merged.yaml" "$TMPDIR/herdr-dev.yaml"
+        fi
+    done
+}
+
 if [ -f "$DEV_FILE" ]; then
     merge "$OUTPUT" "$DEV_FILE" "$DEV_OUTPUT"
+    replace_dev_rows
 else
     rm -f "$DEV_OUTPUT"
 fi

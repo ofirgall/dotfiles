@@ -25,6 +25,9 @@ yellow        = "#f8921a"   # working state: orange (peach, dark_blue.lua)
 peach         = "#f8921a"   # orange             (dark_blue.lua)
 red           = "#ea417e"   # light_red lifted 20% toward white, for contrast
                              # against herdr's inverted-text pills/badges
+# Focused space's jump number in the agent_index purple; others keep the grey
+index         = "#714fb0"
+index_focused = "#c6a6ff"
 
 [update]
 version_check = false
@@ -84,7 +87,8 @@ reload_config = ""
 detach = "prefix+d"
 toggle_sidebar = "ctrl+m"
 focus_agent = "ctrl+alt+1..9"
-switch_workspace = "ctrl+1..9"
+switch_workspace = "ctrl+0..9" # ctrl+0 reaches the tenth numbered space
+toggle_space_index = "prefix+-"
 close_workspace = "prefix+x"
 previous_workspace = "ctrl+,"
 next_workspace = "ctrl+."
@@ -226,11 +230,6 @@ key = "prefix+space"
 type = "plugin_action"
 command = "herdr-navigator.open"
 
-[[keys.command]]
-key = "prefix+-"
-type = "plugin_action"
-command = "herdr-navigator.jump-back"
-
 # Workspace move (reorder the current workspace)
 [[keys.command]]
 key = "ctrl+<"
@@ -289,8 +288,17 @@ command = "herdr-notify.toggle"
 description = "toggle notify when the running command finishes"
 
 [ui.sidebar.spaces]
+agents = "expanded"                 # "off" | "collapsed" | "expanded"
+show_status = false                 # hide the space row status; agent children keep theirs
+# tab_stripped drops the rename plugin's "N| " (INDEX_FORMAT='%s| ')
+agent_rows = [["state_icon", {token = "tab_stripped", prefix = "{}| "}]]
+# herdr draws the jump numbers (index token): they follow skipped spaces and
+# the tenth-space 0. The rename plugin leaves workspace names unnumbered.
+# Branch and git status sit on the label line; worktree children hide them
+# anyway. state_icon is dropped to stay within 16 tokens per row
+# (show_status = false hides it here), and $pr_queued to make room for index.
 rows = [
-  ["state_icon", "workspace",
+  [{token = "index", format = "{}."}, "workspace", "branch", "git_status",
     {token = "$notify", fg = "#f8921a", bold = true},
     {token = "$pr_conflict", fg = "#f38ba8", bold = true},
     {token = "$pr_ci_run",   fg = "#f8921a"},
@@ -301,19 +309,18 @@ rows = [
     {token = "$pr_human_threads",  fg = "#f9e2af", bold = true},
     {token = "$pr_bot_threads",  fg = "#f9e2af", bold = true},
     {token = "$pr_merged",   fg = "#cba6f7", bold = true},
-    {token = "$pr_queued",   fg = "#f8921a", bold = true},
     {token = "$pr_review",   fg = "#89b4fa", bold = true},
     {token = "$pr_id",   fg = "#5c6fae", bold = false},
   ],
-  ["branch", "git_status"],
 ]
 
+# The tab's "N| " number is stripped (tab_stripped).
 [ui.sidebar.agents]
 rows = [[
   {token = "agent_index", fg = "#8763c8", bold = true}, # ofirkai purple (mauve #a97cfa) at 80%
   "state_icon",
   "workspace",
-  "tab"
+  {token = "tab_stripped", prefix = "{}| "}
 ], [
   "agent",
     {token = "$pr_conflict", fg = "#f38ba8", bold = true},

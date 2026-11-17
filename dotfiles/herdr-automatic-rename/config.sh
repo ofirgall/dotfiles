@@ -10,3 +10,8 @@ INDEX_FORMAT='%s| '
 # INDEX_FORMAT_WORKSPACES=' [%s] '
 INDEX_FORMAT_WORKSPACES='%s. '
 # INDEX_FORMAT_WORKSPACES='[%s] '
+
+# herdr draws space jump numbers itself (the `index` sidebar token), which
+# follow skipped spaces and the tenth-space 0; leave workspace names unnumbered.
+# Named explicitly (not via AUTO_INDEX) so the plugin strips the old prefixes.
+AUTO_INDEX_WORKSPACES=0
