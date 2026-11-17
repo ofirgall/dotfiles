@@ -42,6 +42,7 @@ rows = [
 ]
 
 [ui.sidebar.agents]
+enabled = false  # v3: the pull requests section replaces it
 rows = [[
   {token = "agent_index", fg = "#8763c8", bold = true}, # ofirkai purple (mauve #a97cfa) at 80%
   "state_icon",
@@ -63,3 +64,21 @@ rows = [[
     {token = "$pr_review",   fg = "#89b4fa", bold = true},
   "$pr_id"
 ]]
+
+# Sidebar v3 (herdr sidebar-rework-v3 only): a native pull requests section in
+# place of the agents section. herdr polls `gh api graphql` for each repo's open
+# PRs by `user` (`@me` = the active gh account).
+# (the agents section is turned off in [ui.sidebar.agents] above)
+[ui.sidebar.pull_requests]
+enabled = true
+
+[pull_requests]
+poll_seconds = 60
+
+[[pull_requests.repos]]
+path = "~/workspace/work/drift"
+user = "@me"
+
+[[pull_requests.repos]]
+path = "~/workspace/personal/herdr"
+user = "ofirgall"
