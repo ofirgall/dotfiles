@@ -16,6 +16,5 @@
 # title = "pull requests"
 # focus_width = 70
 
-# Dev restores a copy of the main session: never resume agents (main already runs them)
-[session]
-resume_agents_on_restore = false
+# `make run` copies the main session into dev (make sync-session), and dev
+# resumes its agents too, so dev mirrors main's spaces, tabs, and agents.

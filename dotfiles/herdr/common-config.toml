@@ -287,6 +287,9 @@ type = "plugin_action"
 command = "herdr-notify.toggle"
 description = "toggle notify when the running command finishes"
 
+[ui.sidebar]
+token_link_underline = false # linked tokens ($pr_id) keep their colour, no underline
+
 [ui.sidebar.spaces]
 agents = "expanded"                 # "off" | "collapsed" | "expanded"
 show_status = false                 # hide the space row status; agent children keep theirs
