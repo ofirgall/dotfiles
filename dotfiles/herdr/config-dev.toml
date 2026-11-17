@@ -72,6 +72,20 @@ rows = [[
 [ui.sidebar.pull_requests]
 enabled = true
 
+# Same colors as the herdr-pr-tracker $pr_* tokens in common-config.toml.
+[ui.sidebar.pull_requests.colors]
+conflict      = "#f38ba8"
+approved      = "#a6e3a1"
+changes       = "#f38ba8"
+review        = "#89b4fa"
+human_threads = "#f9e2af"
+bot_threads   = "#f9e2af"
+ci_pass       = "#a6e3a1"
+ci_fail       = "#f38ba8"
+ci_run        = "#f8921a"
+queued        = "#f8921a"
+id            = "#5c6fae"
+
 [pull_requests]
 poll_seconds = 60
 
