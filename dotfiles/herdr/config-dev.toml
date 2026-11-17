@@ -18,3 +18,48 @@
 
 # `make run` copies the main session into dev (make sync-session), and dev
 # resumes its agents too, so dev mirrors main's spaces, tabs, and agents.
+
+# Sidebar rows with spacer (herdr sidebar-rework-v2 only): the PR status sits at
+# the right edge. These replace the shared rows in dev; keep them in sync with
+# common-config.toml until the installed herdr knows spacer.
+[ui.sidebar.spaces]
+rows = [
+  [{token = "index", format = "{}"}, "workspace", "branch", "git_status",
+    {token = "$notify", fg = "#f8921a", bold = true},
+    "spacer",  # right-align the PR status
+    {token = "$pr_conflict", fg = "#f38ba8", bold = true},
+    {token = "$pr_ci_run",   fg = "#f8921a"},
+    {token = "$pr_ci_pass",  fg = "#a6e3a1"},
+    {token = "$pr_ci_fail",  fg = "#f38ba8", bold = true},
+    {token = "$pr_approved", fg = "#a6e3a1"},
+    {token = "$pr_changes",  fg = "#f38ba8", bold = true},
+    {token = "$pr_human_threads",  fg = "#f9e2af", bold = true},
+    {token = "$pr_bot_threads",  fg = "#f9e2af", bold = true},
+    {token = "$pr_merged",   fg = "#cba6f7", bold = true},
+    {token = "$pr_review",   fg = "#89b4fa", bold = true},
+    {token = "$pr_id",   fg = "#5c6fae", bold = false},
+  ],
+]
+
+[ui.sidebar.agents]
+rows = [[
+  {token = "agent_index", fg = "#8763c8", bold = true}, # ofirkai purple (mauve #a97cfa) at 80%
+  "state_icon",
+  "workspace",
+  {token = "tab_stripped", prefix = "{}| "}
+], [
+  "agent",
+    "spacer",  # right-align the PR status
+    {token = "$pr_conflict", fg = "#f38ba8", bold = true},
+    {token = "$pr_ci_run",   fg = "#f8921a"},
+    {token = "$pr_ci_pass",  fg = "#a6e3a1"},
+    {token = "$pr_ci_fail",  fg = "#f38ba8", bold = true},
+    {token = "$pr_approved", fg = "#a6e3a1"},
+    {token = "$pr_changes",  fg = "#f38ba8", bold = true},
+    {token = "$pr_human_threads",  fg = "#f9e2af", bold = true},
+    {token = "$pr_bot_threads",  fg = "#f9e2af", bold = true},
+    {token = "$pr_merged",   fg = "#cba6f7", bold = true},
+    {token = "$pr_queued",   fg = "#f8921a", bold = true},
+    {token = "$pr_review",   fg = "#89b4fa", bold = true},
+  "$pr_id"
+]]
