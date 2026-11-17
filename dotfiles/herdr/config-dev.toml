@@ -84,6 +84,7 @@ ci_pass       = "#a6e3a1"
 ci_fail       = "#f38ba8"
 ci_run        = "#f8921a"
 queued        = "#f8921a"
+merged        = "#cba6f7"
 id            = "#5c6fae"
 
 [pull_requests]
