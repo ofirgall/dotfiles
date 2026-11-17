@@ -28,6 +28,7 @@ red           = "#ea417e"   # light_red lifted 20% toward white, for contrast
 # Focused space's jump number in the agent_index purple; others keep the grey
 index         = "#714fb0"
 index_focused = "#c6a6ff"
+tab           = "#5c6fae"   # sidebar tab names (tab / tab_stripped tokens); same as overlay0 for now
 
 [update]
 version_check = false
@@ -293,6 +294,8 @@ token_link_underline = false # linked tokens ($pr_id) keep their colour, no unde
 [ui.sidebar.spaces]
 agents = "expanded"                 # "off" | "collapsed" | "expanded"
 show_status = false                 # hide the space row status; agent children keep theirs
+row_gap = 1                         # blank line after each top-level space
+subspace_row_gap = 1                # and after each worktree subspace
 # tab_stripped drops the rename plugin's "N| " (INDEX_FORMAT='%s| ')
 agent_rows = [["state_icon", {token = "tab_stripped", prefix = "{}| "}]]
 # herdr draws the jump numbers (index token): they follow skipped spaces and
@@ -301,7 +304,7 @@ agent_rows = [["state_icon", {token = "tab_stripped", prefix = "{}| "}]]
 # anyway. state_icon is dropped to stay within 16 tokens per row
 # (show_status = false hides it here), and $pr_queued to make room for index.
 rows = [
-  [{token = "index", format = "{}."}, "workspace", "branch", "git_status",
+  [{token = "index", format = "{}"}, "workspace", "branch", "git_status",
     {token = "$notify", fg = "#f8921a", bold = true},
     {token = "$pr_conflict", fg = "#f38ba8", bold = true},
     {token = "$pr_ci_run",   fg = "#f8921a"},
