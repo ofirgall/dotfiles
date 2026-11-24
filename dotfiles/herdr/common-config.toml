@@ -28,7 +28,10 @@ red           = "#ea417e"   # light_red lifted 20% toward white, for contrast
 # Focused space's jump number in the agent_index purple; others keep the grey
 index         = "#714fb0"
 index_focused = "#c6a6ff"
-tab           = "#5c6fae"   # sidebar tab names (tab / tab_stripped tokens); same as overlay0 for now
+# Sidebar tab names (tab / tab_stripped tokens) in the same purples:
+# tab for every tab, tab_focused for the focused agent's tab
+tab           = "#714fb0"
+tab_focused   = "#c6a6ff"
 
 [update]
 version_check = false
@@ -91,10 +94,14 @@ focus_agent = "ctrl+alt+1..9"
 switch_workspace = "ctrl+0..9" # ctrl+0 reaches the tenth numbered space
 toggle_space_index = "prefix+-"
 close_workspace = "prefix+x"
-previous_workspace = "ctrl+,"
-next_workspace = "ctrl+."
-previous_agent = "ctrl+alt+,"
-next_agent = "ctrl+alt+."
+# ctrl+,/. steps through the spaces sidebar (spaces and their shown agents);
+# workspace stepping moves to ctrl+alt+,/., which the agent binds had.
+previous_sidebar_entry = "ctrl+,"
+next_sidebar_entry = "ctrl+."
+previous_workspace = "ctrl+alt+,"
+next_workspace = "ctrl+alt+."
+previous_agent = ""
+next_agent = ""
 edit_scrollback = "prefix+c"
 
 
@@ -307,6 +314,7 @@ agent_rows = [["state_icon", {token = "tab_stripped", prefix = "{}| "}]]
 rows = [
   [{token = "index", format = "{}"}, "workspace", "branch", "git_status",
     {token = "$notify", fg = "#f8921a", bold = true},
+    "spacer",  # right-align the PR status
     {token = "$pr_conflict", fg = "#f38ba8", bold = true},
     {token = "$pr_ci_run",   fg = "#f8921a"},
     {token = "$pr_ci_pass",  fg = "#a6e3a1"},
@@ -331,6 +339,7 @@ rows = [[
   {token = "tab_stripped", prefix = "{}| "}
 ], [
   "agent",
+    "spacer",  # right-align the PR status
     {token = "$pr_conflict", fg = "#f38ba8", bold = true},
     {token = "$pr_ci_run",   fg = "#f8921a"},
     {token = "$pr_ci_pass",  fg = "#a6e3a1"},
@@ -344,6 +353,16 @@ rows = [[
     {token = "$pr_review",   fg = "#89b4fa", bold = true},
   "$pr_id"
 ]]
+
+# Tree connectors: rounded corners for worktree spaces, dotted lines for the
+# agents listed under each space.
+[ui.sidebar.tree.worktrees]
+last = "╰─"
+
+[ui.sidebar.tree.agents]
+branch = "├╌"
+last = "╰╌"
+rail = "┆"
 
 ########### CUSTOM SETTINGS FROM FORK  ###########
 
@@ -405,9 +424,11 @@ idle    = "#5CB317" # IDLE
 # idle    = "○"
 # unknown = "·"
 
+# The working glyph animates: the list cycles every animation_interval_ms.
 [ui.status_icons]
 blocked = ""
-working = ""
+working = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+animation_interval_ms = 80
 done    = ""
 idle    = ""
 unknown = " "
