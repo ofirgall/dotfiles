@@ -30,6 +30,7 @@ fi
 # row), and it cannot merge a dev glyph list into a common single-glyph string.
 DEV_REPLACE_PATHS=(
     .ui.sidebar.spaces.rows
+    .ui.sidebar.spaces.agent_rows
     .ui.sidebar.agents.rows
     .ui.status_icons.working
 )

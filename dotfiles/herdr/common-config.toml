@@ -25,9 +25,10 @@ yellow        = "#f8921a"   # working state: orange (peach, dark_blue.lua)
 peach         = "#f8921a"   # orange             (dark_blue.lua)
 red           = "#ea417e"   # light_red lifted 20% toward white, for contrast
                              # against herdr's inverted-text pills/badges
-# Focused space's jump number in the agent_index purple; others keep the grey
-index         = "#714fb0"
-index_focused = "#c6a6ff"
+# Space jump numbers in blue (the agent purples #714fb0 / #c6a6ff moved to hue
+# 220), so the purple numbers belong to agents only
+index         = "#4f72b0"
+index_focused = "#a6c4ff"
 # Sidebar tab names (tab / tab_stripped tokens) in the same purples:
 # tab for every tab, tab_focused for the focused agent's tab
 tab           = "#714fb0"
@@ -305,7 +306,14 @@ row_gap = 1                         # blank line after each top-level space
 subspace_row_gap = 1                # and after each worktree subspace
 row_gap_after_agents_only = true    # gaps only after spaces showing their agents
 # tab_stripped drops the rename plugin's "N| " (INDEX_FORMAT='%s| ')
-agent_rows = [["state_icon", {token = "tab_stripped", prefix = "{}| "}]]
+# Agents nested under spaces get one number down the whole tree (1..N) when the
+# agents section is disabled, matching focus_agent / next_agent / previous_agent.
+# The number is purple, brighter and bold on the focused agent.
+agent_rows = [[
+  {token = "agent_index", fg = "#714fb0", focused = {fg = "#c6a6ff", bold = true}},
+  "state_icon",
+  {token = "tab_stripped", prefix = "{}| "},
+]]
 # herdr draws the jump numbers (index token): they follow skipped spaces and
 # the tenth-space 0. The rename plugin leaves workspace names unnumbered.
 # Branch and git status sit on the label line; worktree children hide them
