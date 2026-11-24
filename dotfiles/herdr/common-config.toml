@@ -91,18 +91,18 @@ last_pane = "ctrl+`"
 reload_config = ""
 detach = "prefix+d"
 toggle_sidebar = "ctrl+m"
-focus_agent = "ctrl+alt+1..9"
-switch_workspace = "ctrl+0..9" # ctrl+0 reaches the tenth numbered space
+# ctrl+ for agents (purple tree numbers), ctrl+alt+ for spaces (blue numbers)
+focus_agent = "ctrl+1..9"
+switch_workspace = "ctrl+alt+0..9" # ctrl+alt+0 reaches the tenth numbered space
 toggle_space_index = "prefix+-"
 close_workspace = "prefix+x"
-# ctrl+,/. steps through the spaces sidebar (spaces and their shown agents);
-# workspace stepping moves to ctrl+alt+,/., which the agent binds had.
-previous_sidebar_entry = "ctrl+,"
-next_sidebar_entry = "ctrl+."
+# ctrl+,/. steps agent to agent down the space tree, skipping space rows
+previous_agent = "ctrl+,"
+next_agent = "ctrl+."
 previous_workspace = "ctrl+alt+,"
 next_workspace = "ctrl+alt+."
-previous_agent = ""
-next_agent = ""
+previous_sidebar_entry = ""
+next_sidebar_entry = ""
 edit_scrollback = "prefix+c"
 
 
@@ -241,13 +241,13 @@ command = "herdr-navigator.open"
 
 # Workspace move (reorder the current workspace)
 [[keys.command]]
-key = "ctrl+<"
+key = "ctrl+alt+<" # ctrl+shift+alt+,
 type = "plugin_action"
 command = "herdr-workspace-move.up"
 description = "move workspace up"
 
 [[keys.command]]
-key = "ctrl+>"
+key = "ctrl+alt+>" # ctrl+shift+alt+.
 type = "plugin_action"
 command = "herdr-workspace-move.down"
 description = "move workspace down"

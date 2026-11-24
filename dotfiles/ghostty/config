@@ -84,6 +84,20 @@ keybind = ctrl+seven=text:\x1b[55;5u
 keybind = ctrl+eight=text:\x1b[56;5u
 keybind = ctrl+nine=text:\x1b[57;5u
 keybind = ctrl+zero=text:\x1b[48;5u
+keybind = ctrl+alt+comma=text:\x1b[27;7;44~
+keybind = ctrl+alt+period=text:\x1b[27;7;46~
+keybind = ctrl+alt+shift+comma=text:\x1b[27;7;60~
+keybind = ctrl+alt+shift+period=text:\x1b[27;7;62~
+keybind = ctrl+alt+one=text:\x1b[49;7u
+keybind = ctrl+alt+two=text:\x1b[50;7u
+keybind = ctrl+alt+three=text:\x1b[51;7u
+keybind = ctrl+alt+four=text:\x1b[52;7u
+keybind = ctrl+alt+five=text:\x1b[53;7u
+keybind = ctrl+alt+six=text:\x1b[54;7u
+keybind = ctrl+alt+seven=text:\x1b[55;7u
+keybind = ctrl+alt+eight=text:\x1b[56;7u
+keybind = ctrl+alt+nine=text:\x1b[57;7u
+keybind = ctrl+alt+zero=text:\x1b[48;7u
 
 app-notifications = no-clipboard-copy
 
