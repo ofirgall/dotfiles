@@ -36,7 +36,8 @@
     "atlassian-mcp@anthropic-plugin-directory": true,
     "question-frame@ofir-mods": true,
     "prismantis@prismantis": true,
-    "markdown-preview@claude-markdown-viewer": true
+    "markdown-preview@claude-markdown-viewer": true,
+    "slack@anthropic-plugin-directory": true
   },
   "extraKnownMarketplaces": {
     "ofir-mods": {
