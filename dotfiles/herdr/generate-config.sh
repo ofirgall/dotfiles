@@ -25,22 +25,33 @@ else
     cp "$COMMON_FILE" "$OUTPUT"
 fi
 
-# Row layouts replace instead of append: `*+` would add dev rows after the
-# common ones, so a dev layout could never change an existing row.
-replace_dev_rows() {
-    for path in .ui.sidebar.spaces.rows .ui.sidebar.agents.rows; do
-        if [ "$(yq -p toml -o yaml "$path" "$DEV_FILE")" != "null" ]; then
-            yq -p toml -o yaml '.' "$DEV_OUTPUT" > "$TMPDIR/herdr-merged.yaml"
-            yq -p toml -o yaml '.' "$DEV_FILE" > "$TMPDIR/herdr-dev.yaml"
-            yq -o toml "$path = load(\"$TMPDIR/herdr-dev.yaml\")$path" "$TMPDIR/herdr-merged.yaml" > "$DEV_OUTPUT"
-            rm -f "$TMPDIR/herdr-merged.yaml" "$TMPDIR/herdr-dev.yaml"
+# Dev values at these paths replace the base instead of merging: `*+` would add
+# dev rows after the common ones (so a dev layout could never change an existing
+# row), and it cannot merge a dev glyph list into a common single-glyph string.
+DEV_REPLACE_PATHS=(
+    .ui.sidebar.spaces.rows
+    .ui.sidebar.agents.rows
+    .ui.status_icons.working
+)
+
+# merge_dev <base> <dev> <output>: like merge, but drops DEV_REPLACE_PATHS the
+# dev file sets from the base first.
+merge_dev() {
+    local base="$TMPDIR/herdr-dev-base.toml"
+    cp "$1" "$base"
+    for path in "${DEV_REPLACE_PATHS[@]}"; do
+        if [ "$(yq -p toml -o yaml "$path" "$2")" != "null" ]; then
+            yq -p toml -o yaml "del($path)" "$base" > "$TMPDIR/herdr-dev-base.yaml"
+            yq -p yaml -o toml '.' "$TMPDIR/herdr-dev-base.yaml" > "$base"
+            rm -f "$TMPDIR/herdr-dev-base.yaml"
         fi
     done
+    merge "$base" "$2" "$3"
+    rm -f "$base"
 }
 
 if [ -f "$DEV_FILE" ]; then
-    merge "$OUTPUT" "$DEV_FILE" "$DEV_OUTPUT"
-    replace_dev_rows
+    merge_dev "$OUTPUT" "$DEV_FILE" "$DEV_OUTPUT"
 else
     rm -f "$DEV_OUTPUT"
 fi

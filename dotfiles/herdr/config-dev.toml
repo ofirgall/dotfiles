@@ -63,3 +63,19 @@ rows = [[
     {token = "$pr_review",   fg = "#89b4fa", bold = true},
   "$pr_id"
 ]]
+
+# Animated working glyph (sidebar-rework-v4 only): a list of glyphs cycles every
+# animation_interval_ms. Overrides the static working icon from common-config.toml.
+[ui.status_icons]
+working = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+animation_interval_ms = 80
+
+# Tree connectors (sidebar-rework-v4 only): rounded corners for worktree spaces,
+# dotted lines for the agents listed under each space.
+[ui.sidebar.tree.worktrees]
+last = "╰─"
+
+[ui.sidebar.tree.agents]
+branch = "├╌"
+last = "╰╌"
+rail = "┆"
