@@ -85,3 +85,13 @@ rail = "┆"
 [theme.custom]
 tab         = "#714fb0"
 tab_focused = "#c6a6ff"
+
+# ctrl+,/. steps through the spaces sidebar (spaces and their shown agents);
+# workspace stepping moves to ctrl+alt+,/., which the agent panel binds had.
+[keys]
+previous_sidebar_entry = "ctrl+,"
+next_sidebar_entry     = "ctrl+."
+previous_workspace     = "ctrl+alt+,"
+next_workspace         = "ctrl+alt+."
+previous_agent         = ""
+next_agent             = ""
