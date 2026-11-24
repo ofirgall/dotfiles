@@ -18,7 +18,7 @@ copy_cursor_conversations = true
 note_open_command = "$EDITOR"
 
 [selector]
-backend = "fzf"
+backend = "native"
 
 [fzf]
 height = "100%"
