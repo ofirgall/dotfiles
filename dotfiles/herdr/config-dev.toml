@@ -79,3 +79,9 @@ last = "╰─"
 branch = "├╌"
 last = "╰╌"
 rail = "┆"
+
+# Sidebar tab names in the same purples as the space index numbers:
+# index for every tab, index_focused for the focused agent's tab.
+[theme.custom]
+tab         = "#714fb0"
+tab_focused = "#c6a6ff"
