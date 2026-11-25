@@ -68,7 +68,7 @@ close_tab = "alt+shift+w"
 move_tab_previous = "alt+<"
 move_tab_next = "alt+>"
 
-new_workspace = "prefix+shift+n"
+new_workspace = "prefix+ctrl+n"
 workspace_picker = "prefix+w"
 
 focus_pane_left = "alt+shift+h"
@@ -184,6 +184,13 @@ height = "60%"
 [[keys.command]]
 key = "prefix+n"
 type = "popup"
+command = "ez --on-create herdr session new"
+width = "65%"
+height = "65%"
+
+[[keys.command]]
+key = "prefix+shift+n"
+type = "popup"
 command = "ez session note open"
 width = "65%"
 height = "65%"
@@ -222,14 +229,14 @@ command = "herdr-last-tab"
 [[keys.command]]
 key = "prefix+e"
 type = "popup"
-command = "ez --on-enter herdr"
+command = "ez -a --on-enter herdr"
 width = "80%"
 height = "80%"
 
 [[keys.command]]
 key = "prefix+shift+e"
 type = "popup"
-command = "ez -a --on-enter herdr"
+command = "ez --on-enter herdr"
 width = "80%"
 height = "80%"
 
