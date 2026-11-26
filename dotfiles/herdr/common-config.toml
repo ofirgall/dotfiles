@@ -452,3 +452,8 @@ unknown = " "
 [session]
 resume_command_prefix = ["kv", "--ai", "--"]
 
+# Resume Claude through cswap; kv supplies the account from .kvim.conf:
+# kv --ai -- cswap --resume <id>
+[session.resume_executable]
+claude = ["cswap"]
+
