@@ -1,3 +1,4 @@
+set -euo pipefail
 # Linux source build of the latest Ghostty tag into ~/.local (build deps come from apt packages
 # this package requires; dots must not run apt from a script).
 source "$DOTS_LIB/arch.sh"

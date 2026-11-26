@@ -1,3 +1,4 @@
+set -euo pipefail
 # Nerdwand Mono and Lyth Mono NFM are patched locally with single-cell icons
 # using Nordwand's nerd font script. Lyth's own Nerd Font release has double-width icons.
 if [ "$DOTS_OS" = macos ]; then

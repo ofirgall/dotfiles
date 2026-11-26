@@ -4,9 +4,9 @@ description = "Vicinae launcher (installer script)"
 when = 'all(os = "linux", gui)'
 bin = "vicinae"
 
-# TODO(dots-migration): needs_root = true once dots bug 4 is fixed; sudo is inline until then.
 [providers.script]
+needs_root = true
 check   = 'command -v vicinae >/dev/null'
 version = 'vicinae --version 2>/dev/null | grep -Eo "[0-9]+[.][0-9]+[.][0-9]+" | head -1'
 fetch   = { url = "https://vicinae.com/install.sh" }
-install = 'if [ "$(id -u)" = 0 ]; then bash {fetched}; else sudo -n bash {fetched}; fi'
+install = 'bash {fetched}'

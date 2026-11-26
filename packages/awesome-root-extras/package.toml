@@ -4,24 +4,23 @@ description = "System-wide awesome extras: spotify `sp` widget helper, Arc icons
 when = 'all(os = "linux", gui)'
 requires = ["git", "curl"]
 
-# TODO(dots-migration): needs_root = true once dots bug 4 is fixed; sudo is inline until then.
 # The Arc icons clone used git@github.com: (ssh); https works for the public repo.
 [providers.script]
+needs_root   = true
 check       = 'test -x /usr/local/bin/sp && test -d /usr/share/icons/Arc && test -x /usr/bin/awmtt'
 versionless = true
 install     = '''
-S=""; [ "$(id -u)" = 0 ] || S="sudo -n"
 tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
 # `sp` binary for the spotify widget
 git clone https://gist.github.com/fa6258f3ff7b17747ee3.git "$tmp/sp"
 chmod +x "$tmp/sp/sp"
-$S mv "$tmp/sp/sp" /usr/local/bin/sp
+mv "$tmp/sp/sp" /usr/local/bin/sp
 # Arc icons
 git clone --depth=1 --branch=Arc-ICONS https://github.com/rtlewis88/rtl88-Themes.git "$tmp/icons"
-$S rm -rf /usr/share/icons/Arc/
-$S mkdir -p /usr/share/icons/Arc/
-$S cp -r "$tmp/icons/Arc-ICONS/." /usr/share/icons/Arc/
+rm -rf /usr/share/icons/Arc/
+mkdir -p /usr/share/icons/Arc/
+cp -r "$tmp/icons/Arc-ICONS/." /usr/share/icons/Arc/
 # awmtt runs an xserver to debug the config
-$S curl -fsSL -o /usr/bin/awmtt https://raw.githubusercontent.com/mikar/awmtt/master/awmtt.sh
-$S chmod a+x /usr/bin/awmtt
+curl -fsSL -o /usr/bin/awmtt https://raw.githubusercontent.com/mikar/awmtt/master/awmtt.sh
+chmod a+x /usr/bin/awmtt
 '''

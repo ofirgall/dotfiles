@@ -5,15 +5,6 @@ bin = "mmdc"
 providers_only = true
 requires = ["node", { name = "npm-prefix", when = 'os = "linux"' }]
 
-# TODO(dots-migration): use the `npm-g` provider / built-in `npm` (task 7.1). `npm-g` is skipped at plan
-# time on a box without node ("not available", dots does not bootstrap it: dots bug 7), so this is a
-# script. npm resolution matches dots.toml's note: brew's npm on macOS (kv's node shadows it on PATH).
-[providers.script]
-check   = '''NPM=$(command -v /opt/homebrew/bin/npm || command -v "$HOME/.local/n/bin/npm" || command -v npm); export PATH="$(dirname "$NPM"):$PATH"; [ "$DOTS_OS" = linux ] && export NPM_CONFIG_PREFIX=$HOME/.npm-packages; "$NPM" ls -g --depth=0 @mermaid-js/mermaid-cli >/dev/null 2>&1'''
-version = '''NPM=$(command -v /opt/homebrew/bin/npm || command -v "$HOME/.local/n/bin/npm" || command -v npm); export PATH="$(dirname "$NPM"):$PATH"; [ "$DOTS_OS" = linux ] && export NPM_CONFIG_PREFIX=$HOME/.npm-packages; "$NPM" ls -g --depth=0 @mermaid-js/mermaid-cli 2>/dev/null | grep -o '@mermaid-js/mermaid-cli@[^ ]*' | head -1 | sed 's/.*@//' '''
-install = '''
-NPM=$(command -v /opt/homebrew/bin/npm || command -v "$HOME/.local/n/bin/npm" || command -v npm); export PATH="$(dirname "$NPM"):$PATH"
-[ "$DOTS_OS" = linux ] && export NPM_CONFIG_PREFIX=$HOME/.npm-packages
-mkdir -p "${NPM_CONFIG_PREFIX:-/tmp}"
-"$NPM" install -g @mermaid-js/mermaid-cli
-'''
+# TODO(dots-migration): replace with the built-in `npm` provider (task 7.1)
+[providers.npm-g]
+name = "@mermaid-js/mermaid-cli"

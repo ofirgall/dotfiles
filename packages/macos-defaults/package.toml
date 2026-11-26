@@ -2,7 +2,6 @@ schema = 1
 name = "macos-defaults"
 description = "macOS preferences from setup_once.sh, as [[defaults]] (read before write, drift visible)"
 when = 'os = "macos"'
-providers_only = true
 
 # Key repeat, ~matching Hyprland. Takes effect after logout.
 [[defaults]]

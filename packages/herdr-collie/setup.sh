@@ -1,17 +1,7 @@
-schema = 1
-name = "herdr-collie-setup"
-description = "Collie .env (loopback + tailscale serve port) and push keys; was install_collie.sh"
-when = 'all(os = "macos", not(tag = "sandbox"))'
-requires = ["herdr-collie", "scripts"]
-
-# TODO(dots-migration): convert to hook (dots bug 6): post_install of herdr-collie.
 # Collie binds loopback and publishes itself with `tailscale serve`. COLLIE_TRUSTED_USER stays
 # unset (serve sends no identity header for tagged devices). COLLIE_SERVE_PORT is 8443 because
-# colima's traefik forward holds *:443 on this Mac. Needs Tailscale: manual/tailscale.md.
-[providers.script]
-check       = "grep -q '^COLLIE_VAPID_PUBLIC=' \"$(herdr plugin config-dir herdr.collie)/.env\""
-versionless = true
-install     = '''
+# colima's traefik forward holds *:443 on this Mac.
+set -euo pipefail
 if ! command -v tailscale >/dev/null; then
   echo "tailscale CLI not on PATH: see manual/tailscale.md" >&2; exit 1
 fi
@@ -34,4 +24,3 @@ if ! grep -q '^COLLIE_VAPID_PUBLIC=' "$CONFIG_DIR/.env"; then
   START_ACTION=restart
 fi
 herdr plugin action invoke "$START_ACTION" --plugin herdr.collie || true
-'''

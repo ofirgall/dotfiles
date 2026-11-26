@@ -10,3 +10,7 @@ cask = true
 src = "linearmouse.json"
 dst = "~/.config/linearmouse/linearmouse.json"
 mode = "link"
+
+# LinearMouse does not enable its own login item (idempotent as written).
+[hooks]
+post_install = """osascript -e 'tell application "System Events" to if not (exists login item "LinearMouse") then make login item at end with properties {path:"/Applications/LinearMouse.app", hidden:true}'"""

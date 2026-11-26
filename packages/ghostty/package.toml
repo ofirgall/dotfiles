@@ -15,7 +15,7 @@ when    = 'os = "linux"'
 check   = 'test -x "$HOME/.local/bin/ghostty"'
 version = '"$HOME/.local/bin/ghostty" --version | head -1 | awk "{print \$2}"'
 latest  = 'curl -fsSL "https://api.github.com/repos/ghostty-org/ghostty/tags?per_page=1" | grep -m1 "\"name\"" | sed -E "s/.*\"v?([^\"]+)\".*/\1/"'
-install     = "source ./install.sh"
+install     = "install.sh"
 timeout = "60m"
 
 # The config dir is real (shaders are cloned into it), so the files are linked one by one.

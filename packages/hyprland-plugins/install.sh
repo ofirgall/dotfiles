@@ -1,3 +1,4 @@
+set -euo pipefail
 # hypr-dots/install_plugins.sh minus its apt line (the apt package is a requirement) and with
 # the waybar-vd clone over https.
 hyprpm update

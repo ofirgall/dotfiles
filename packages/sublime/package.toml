@@ -3,10 +3,11 @@ name = "sublime"
 description = "Sublime Text + the User/C++/Python/CustomStatusBar package dirs"
 when = 'all(os = "linux", gui)'
 bin = "subl"
-requires = ["sublime-apt-repo", "sublime-merge"]
+requires = ["sublime-merge"]
 
 [providers.apt]
 name = "sublime-text"
+repo = { url = "https://download.sublimetext.com/", suite = "apt/stable/", flat = true, key = "https://download.sublimetext.com/sublimehq-pub.gpg", fingerprint = "1EDDE2CDFC025D17F6DA9EC0ADAE6AD28A8F901A" }
 
 [[files]]
 src = "sublime/User"

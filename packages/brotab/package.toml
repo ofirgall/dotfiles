@@ -7,3 +7,7 @@ bin = "bt"
 requires = ["build-essential", "python3-dev"]
 
 [providers.uv]
+
+# native-messaging manifests for the browsers
+[hooks]
+post_install = "bt install"

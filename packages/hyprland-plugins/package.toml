@@ -10,4 +10,4 @@ requires = ["git"]
 [providers.script]
 check       = 'command -v hyprpm >/dev/null && hyprpm list | grep -q virtual-desktops && hyprpm list | grep -q monocle && test -d "$HOME/.local/share/waybar-vd/.git"'
 versionless = true
-install     = "source ./install.sh"
+install     = "install.sh"

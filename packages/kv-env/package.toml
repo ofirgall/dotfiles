@@ -6,11 +6,8 @@ requires = ["kv", "koala-config", "git", "curl"]
 
 # Not in sandboxes: `kv install` fails on linux/aarch64 ("neovim: Failed to copy binary: the source path is
 # neither a regular file nor a symlink", a kv bug seen in Docker).
-# TODO(dots-migration): `kv install` shells out to `sudo apt-get` on Linux (kv src/install.rs); that races
-# the dots apt batch on the dpkg lock. Needs a first-class hook / provider (dots bug 6).
 [providers.script]
 check       = "test -x $HOME/.local/share/kvim-envs/main/kv/bin/nvim"
 versionless = true
-# scripts don't see ~/.cargo/bin yet (dots bug 8)
-install     = "PATH=$HOME/.cargo/bin:$PATH kv install"
+install     = "kv install"
 timeout     = "30m"

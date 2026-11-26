@@ -9,7 +9,7 @@ packages = [
   # git
   "delta", "difftastic",
   # core CLI
-  "ripgrep", "fd", "fd-shim", "bat", "bat-shim", "fzf", "jq", "vim", "curl", "wget", "unzip",
+  "ripgrep", "fd", "bat", "fzf", "jq", "vim", "curl", "wget", "unzip",
   "build-essential", "cmake", "pkg-config", "moreutils", "pcregrep", "daemon", "toilet",
   "sqlite3", "subversion", "python3", "python3-venv", "ipython",
   # platform specific

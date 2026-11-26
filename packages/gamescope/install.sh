@@ -1,7 +1,6 @@
 # Gamescope from source (Ubuntu 24.04 lacks it). Wayland 1.23 is built first (wlroots needs it).
-if [ "$(id -u)" = 0 ]; then S=""; else S="sudo -n"; fi
-# -o DPkg::Lock::Timeout waits for dots' own apt batch instead of racing it.
-$S apt-get install -y -o DPkg::Lock::Timeout=600 \
+set -euo pipefail
+apt-get install -y \
 	git cmake meson ninja-build pkg-config \
 	libwayland-dev libwayland-egl-backend-dev \
 	libxcb1-dev libxcb-icccm4-dev libxcb-util-dev \
@@ -24,12 +23,12 @@ tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
 
 echo "==> Building wayland 1.23 from source"
 git clone --depth 1 --branch 1.23.0 https://gitlab.freedesktop.org/wayland/wayland.git "$tmp/wayland"
-(cd "$tmp/wayland" && meson setup build --prefix=/usr/local -Ddocumentation=false -Dtests=false && ninja -C build && $S ninja -C build install)
-$S ldconfig
+(cd "$tmp/wayland" && meson setup build --prefix=/usr/local -Ddocumentation=false -Dtests=false && ninja -C build && ninja -C build install)
+ldconfig
 
 echo "==> Building gamescope from source"
 git clone --recursive https://github.com/ValveSoftware/gamescope.git "$tmp/gamescope"
 cd "$tmp/gamescope"
 meson setup build --prefix=/usr/local --buildtype=release -Dpipewire=enabled -Davif_screenshots=enabled
 ninja -C build
-$S ninja -C build install
+ninja -C build install

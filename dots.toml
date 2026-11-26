@@ -15,13 +15,18 @@ gaming   = "Steam + gamescope + openbox session"
 dell     = "Dell laptop ACPI events"
 thinkpad = "ThinkPad ACPI events"
 
-# ---- Interim declarative providers (ARCH §5.4). Replace per TODO when tasks 7.1/7.10/7.11 land.
+# ---- Interim declarative providers (ARCH 5.4). Replace per TODO when tasks 7.1/7.10/7.11 land.
+# A failing `available` with a `bootstrap` package makes the provider usable once that package is
+# installed, so the packages below need no script stand-ins.
+
+# npm on macOS is brew's (kv's node shadows it on PATH); on Linux globals go to ~/.npm-packages
+# (the npm-prefix package exports NPM_CONFIG_PREFIX for shells, set here for the provider itself).
 # TODO(dots-migration): replace with built-in `npm` provider (task 7.1)
 [providers.npm-g]
-available = "command -v npm"
+available = "command -v /opt/homebrew/bin/npm || command -v npm"
 bootstrap = "node"
-installed = { cmd = "npm ls -g --json --depth=0", parse = "json:dependencies" }
-install   = "npm install -g {name}"
+installed = { cmd = "NPM=$(command -v /opt/homebrew/bin/npm || command -v npm); [ \"$(uname)\" = Linux ] && export NPM_CONFIG_PREFIX=$HOME/.npm-packages; $NPM ls -g --json --depth=0 || true", parse = "json:dependencies" }
+install   = "NPM=$(command -v /opt/homebrew/bin/npm || command -v npm); if [ \"$(uname)\" = Linux ]; then export NPM_CONFIG_PREFIX=$HOME/.npm-packages; mkdir -p $NPM_CONFIG_PREFIX; fi; $NPM install -g {name}"
 batch     = false
 
 # TODO(dots-migration): replace with `[providers] use = ["gh-ext"]` (task 7.11)
@@ -32,6 +37,7 @@ installed = { cmd = "gh extension list", parse = 'regex:^[^\t]+\t(?P<name>[^\t]+
 install   = "gh extension install {name}"
 batch     = false
 
+# name = the plugin id `herdr plugin list` prints, source = what `plugin install` wants (owner/repo).
 # TODO(dots-migration): replace with `use = ["herdr-plugin"]` (task 7.11): --json, --ref pinning, local link, enabled, {plugin_config}
 [providers.herdr-plugin]
 available = "command -v herdr"
@@ -40,7 +46,9 @@ installed = { cmd = "herdr plugin list", parse = 'regex:^- (?P<name>\S+) \(' }
 install   = "herdr plugin install {source} --yes"
 batch     = false
 
-# TODO(dots-migration): replace with `use = ["pi-package"]` (task 7.11)
+# Unused today: the three pi packages stay `script` packages sharing `lock = "pi"`, because custom
+# providers have no serialization and concurrent `pi install` calls lose entries in settings.json.
+# TODO(dots-migration): replace with `use = ["pi-package"]` (task 7.11) once providers can serialize
 [providers.pi-package]
 available = "command -v pi"
 bootstrap = "pi"

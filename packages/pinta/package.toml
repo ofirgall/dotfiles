@@ -4,6 +4,7 @@ description = "Screenshot editing (snap)"
 when = 'all(os = "linux", gui)'
 
 [providers.script]
+needs_root = true
 check   = 'snap list pinta >/dev/null 2>&1'
 version = "snap list pinta | awk 'NR==2{print $2}'"
-install = 'if [ "$(id -u)" = 0 ]; then snap install pinta; else sudo -n snap install pinta; fi'
+install = 'snap install pinta'

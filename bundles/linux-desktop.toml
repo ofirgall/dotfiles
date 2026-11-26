@@ -5,5 +5,5 @@ packages = [
   "hyprland", "hyprland-plugins", "pinta", "wayfreeze", "wf-recorder",
   "awesome", "awesome-plugins", "awesome-root-extras", "autorandr", "copyq", "xmodmap", "tridactyl",
   "desktop-apps", "xdg-defaults", "autolock", "acpi", "bluetuith", "wiremix", "xclip",
-  "brotab", "brotab-install",
+  "brotab",
 ]

@@ -3,16 +3,16 @@ name = "macos-power"
 description = "pmset sleep timers (15 min battery, 30 min AC) and Spotlight indexing off (Raycast replaces it)"
 when = 'os = "macos"'
 
-# TODO(dots-migration): needs_root = true once dots bug 4 is fixed; sudo is inline until then.
 # The old script also ran `mdutil -a -E` (erase the index) once; dropped, `-i off` is enough.
 [providers.script]
+needs_root = true
 check = '''
 pmset -g custom | awk '/^Battery Power:/{s="b"} /^AC Power:/{s="c"} s=="b"&&$1=="displaysleep"{bd=$2} s=="b"&&$1=="sleep"{bs=$2} s=="c"&&$1=="displaysleep"{cd=$2} s=="c"&&$1=="sleep"{cs=$2} END{exit !(bd==15&&bs==15&&cd==30&&cs==30)}' \
   && mdutil -s / | grep -q disabled
 '''
 versionless = true
 install = '''
-sudo -n pmset -b displaysleep 15 sleep 15
-sudo -n pmset -c displaysleep 30 sleep 30
-sudo -n mdutil -a -i off
+pmset -b displaysleep 15 sleep 15
+pmset -c displaysleep 30 sleep 30
+mdutil -a -i off
 '''

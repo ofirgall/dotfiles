@@ -5,7 +5,8 @@ when = 'all(os = "linux", any(tag = "dell", tag = "thinkpad"))'
 requires = ["acpid"]
 
 # TODO(dots-migration): owned /etc files instead of a root script (later dots feature).
-# TODO(dots-migration): needs_root = true once dots bug 4 is fixed; sudo is inline until then.
+# TODO(dots-migration): not `needs_root`: sudo's env_reset drops DOTS_PKG_DIR and DOTS_TAGS (and sets HOME=/root),
+# which select.sh needs, so sudo stays inline for the /etc steps (dots bug 17 below, MIGRATION.md section 12).
 # The links point into this package dir (the repo root in use when applied).
 [providers.script]
 check       = "bash select.sh check"

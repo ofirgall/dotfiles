@@ -3,7 +3,6 @@ name = "xdg-defaults"
 description = "Default apps: markdown -> gh markdown-preview, browser -> hypr-browser"
 when = 'all(os = "linux", gui)'
 requires = ["desktop-apps", "xdg-utils"]
-providers_only = true
 
 [[xdg]]
 mime = ["text/markdown"]

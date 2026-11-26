@@ -27,3 +27,10 @@ dst = "~/.tmux/custom-macros"
 mode = "terminfo"
 src  = "tmux-256color.terminfo"
 when = 'os = "macos"'
+
+# tmux's stock bindings (the reload script unbinds plugin keys with them), written once after install.
+# tpm's install_plugins, after the files phase linked ~/.tmux.conf: install-plugins.sh clones what the
+# `set -g @plugin` lines of plugins.tmux name (no tmux server needed, so it exits 0 in Docker).
+[hooks]
+post_install = "default-keys.sh"
+post_files   = "install-plugins.sh"

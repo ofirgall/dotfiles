@@ -3,7 +3,6 @@ name = "hyprland"
 description = "Hyprland desktop config (hypr-dots submodule). Hyprland itself is a manual install"
 when = 'all(os = "linux", gui)'
 requires = ["pinta", "wayfreeze", "wf-recorder", "hyprland-plugins"]
-providers_only = true
 
 # The old install_hyprland.sh never installed Hyprland itself; see manual/install.md.
 [[files]]

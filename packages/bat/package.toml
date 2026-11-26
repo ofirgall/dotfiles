@@ -6,5 +6,5 @@ bin = "bat"
 
 [providers.apt]
 bin  = "batcat"     # Debian names the binary batcat
-shim = "bat"        # dots does not create shims yet: see the bat-shim package
+shim = "bat"        # dots creates ~/.local/bin/bat -> batcat and owns it
 

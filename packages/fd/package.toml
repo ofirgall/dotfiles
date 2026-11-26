@@ -7,5 +7,5 @@ bin = "fd"
 [providers.apt]
 name = "fd-find"
 bin  = "fdfind"
-shim = "fd"         # dots does not create shims yet: see the fd-shim package
+shim = "fd"         # dots creates ~/.local/bin/fd -> fdfind and owns it
 

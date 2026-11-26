@@ -2,7 +2,7 @@ schema = 1
 description = "macOS desktop: WM, bar, input devices, system defaults and power settings"
 
 packages = [
-  "karabiner", "linearmouse", "linearmouse-login-item", "betterdisplay", "markdown-preview",
+  "karabiner", "linearmouse", "betterdisplay", "markdown-preview",
   "aerospace", "aerospace-scripts", "aerospace-switcher",
   "sketchybar-app-font", "sketchybar", "borders",
   "macos-defaults", "macos-power",

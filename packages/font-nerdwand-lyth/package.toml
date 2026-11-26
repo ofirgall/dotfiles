@@ -12,4 +12,4 @@ d="$HOME/Library/Fonts"; [ "$DOTS_OS" = macos ] || d="$HOME/.local/share/fonts/d
 '''
 versionless = true
 timeout     = "40m"
-install     = "source ./install.sh"
+install     = "install.sh"

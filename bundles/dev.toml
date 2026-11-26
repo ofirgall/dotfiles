@@ -6,7 +6,7 @@ packages = [
   "libatomic1", "libdbus-1-dev", "koala-config", "kv", "kv-env", "neovim", "neovim-build-deps", "tree-sitter-cli", "lemmy-help",
   "nvim-dict", "dict-wn", "dict-moby-thesaurus", "deno", "plantuml", "graphviz", "koala-cli", "codelldb",
   # tmux
-  "tmux", "tpm", "tpm-plugins", "tmux-default-keys", "libtmux", "ruby",
+  "tmux", "tpm", "libtmux", "ruby",
   # toolchains
   "go", "node", "npm-prefix", "bun",
   # CLIs

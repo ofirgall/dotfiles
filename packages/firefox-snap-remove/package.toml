@@ -3,12 +3,11 @@ name = "firefox-snap-remove"
 description = "Remove the Ubuntu snap Firefox and let unattended-upgrades take the PPA one"
 when = 'all(os = "linux", gui)'
 
-# TODO(dots-migration): needs_root = true once dots bug 4 is fixed; sudo is inline until then.
 [providers.script]
+needs_root  = true
 check       = '! snap list firefox >/dev/null 2>&1 && test -f /etc/apt/apt.conf.d/51unattended-upgrades-firefox'
 versionless = true
 install     = '''
-if [ "$(id -u)" = 0 ]; then S=""; else S="sudo -n"; fi
-if snap list firefox >/dev/null 2>&1; then $S snap remove firefox; fi
-echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | $S tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox >/dev/null
+if snap list firefox >/dev/null 2>&1; then snap remove firefox; fi
+echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox >/dev/null
 '''

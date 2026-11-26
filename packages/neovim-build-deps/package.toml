@@ -8,7 +8,7 @@ requires = ["cmake", "pkg-config", "unzip", "curl", "build-essential"]
 
 # TODO(dots-migration): the old installer also apt-installed gettext libtool libtool-bin autoconf
 # automake doxygen clang. dots has no multi-package apt group (one name per package) and apt calls
-# inside scripts race the dpkg lock. The prebuilt tarball (`neovim`) needs none of them; add them
+# inside scripts are no longer a race, but the prebuilt tarball (`neovim`) needs none of them; add them
 # here when a group/meta package is possible.
 [providers.apt]
 name = "ninja-build"
