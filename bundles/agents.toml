@@ -11,7 +11,7 @@ packages = [
   # agents-status
   "alerter", "agents-status", "cursor-cli-wrapper",
   # herdr
-  "zig-0.15", "herdr", "herdr-last-tab",
+  "herdr-zig", "herdr", "herdr-last-tab",
   "herdr-nvim-aware", "extrakto-herdr", "herdr-automatic-rename", "herdr-navigator",
   "herdr-reviewr", "herdr-pr-tracker", "herdr-notify", "herdr-workspace-move", "herdr-pr-board",
   "herdr-collie",

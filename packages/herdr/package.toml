@@ -2,7 +2,7 @@ schema = 1
 name = "herdr"
 description = "herdr terminal workspace manager (ofirgall fork): rendered config, agent-detection rules, terminfo"
 bin = "herdr"
-requires = ["rustup", "zig-0.15"]
+requires = ["rustup", "herdr-zig"]
 
 [providers.cargo]
 git = "https://github.com/ofirgall/herdr"

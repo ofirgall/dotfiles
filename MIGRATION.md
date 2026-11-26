@@ -1500,12 +1500,12 @@ Branch `migrate-c3`, bundle `agents`, 33 packages. Implemented against the froze
 
 ### Packages
 `claude-code claude claude-swap graphifyy codex cursor cursor-agent pi pi-herdr pi-subagents
-pi-powerline-footer pi-community-themes pi-skills alerter agents-status cursor-cli-wrapper zig-0.15
+pi-powerline-footer pi-community-themes pi-skills alerter agents-status cursor-cli-wrapper herdr-zig
 herdr herdr-last-tab herdr-nvim-aware extrakto-herdr herdr-automatic-rename herdr-navigator
 herdr-reviewr herdr-pr-tracker herdr-notify herdr-workspace-move herdr-pr-board herdr-collie
 herdr-collie-setup`.
 New helper packages (not in the §5 list): `pi-herdr` and `herdr-collie-setup` (replace the two
-planned `post_install` hooks, dots bug 6) and `zig-0.15` (herdr build dependency).
+planned `post_install` hooks, dots bug 6) and `herdr-zig` (herdr build dependency).
 
 ### Deviations
 - **herdr plugins are `script` packages, not `herdr-plugin` packages.** A custom provider's spec has
@@ -1522,7 +1522,7 @@ planned `post_install` hooks, dots bug 6) and `zig-0.15` (herdr build dependency
   `herdr-256color`, so `infocmp -x herdr-256color` fails even after tic. Kept as is (same as the old
   `tic -x`); dots compiles it into `~/.terminfo/<hex>/xterm-256color`.
 - **herdr needs zig 0.15.2** (the fork's vendored libghostty-vt; the upstream checkout wants 0.16).
-  `zig-0.15` downloads it to `~/.local/share/zig-0.15` on both OSes (brew's `zig@0.15` is keg-only)
+  `herdr-zig` downloads it to `~/.local/share/herdr-zig` on both OSes (brew's `zig@0.15` is keg-only)
   and exports `ZIG` (herdr's build.rs reads it), so nothing shadows `zig` on PATH.
 - **herdr dev render**: `config/dev.toml` sets no keys, so the second render needs no
   `[files.merge]`; mac.toml sets only a scalar, so the first needs none either. The four old
@@ -1592,7 +1592,7 @@ planned `post_install` hooks, dots bug 6) and `zig-0.15` (herdr build dependency
   `~/.claude/mods`).
 - Paths owned here that others might touch: `~/.claude/*`, `~/.codex/config.toml`, `~/.pi/agent/*`,
   `~/.cursor/statusline.sh`, `~/agents-status`, `~/.config/{herdr,agents-status,cursor-cli-wrapper,
-  herdr-automatic-rename}`, `~/.local/share/zig-0.15` (chunk 5's ghostty uses `~/.local/zig`).
+  herdr-automatic-rename}`, `~/.local/share/herdr-zig` (chunk 5's ghostty uses `~/.local/zig`).
 - Cutover (§8 step 2) is documented in `packages/herdr/manual/split-runtime-dir.md`.
 
 ## 11.2 Chunk 2 report (dev tooling)
@@ -1690,7 +1690,7 @@ Count: 13 groups, about 70 packages touched, 14 packages deleted.
 - one apt name per package: the helper packages (`libgtk-4-dev`, `libadwaita-1-dev`, ...) stay.
 - `acpi` keeps inline `sudo -n` (new bug 19).
 - git clones as scripts (tpm, ghostty-shaders, awesome-plugins, pi-skills, taskopen): file `mode = "git"` (gap G1).
-- archive-style scripts: go, node, bun, deno, fx, neovim, yazi, codelldb, bluetuith, proton-ge, zig-0.15, ghostty,
+- archive-style scripts: go, node, bun, deno, fx, neovim, yazi, codelldb, bluetuith, proton-ge, herdr-zig, ghostty,
   dopamine, win32yank, font release archives (no `archive`/`font` provider yet). `vscode-ext` (36 packages) is `code-ext`.
 - taskwarrior itself is apt 2.6 (the old installer built 3.x), `hyprland` has no provider, `pulseaudio`/`browser-extensions`
   are manual or unmapped, `zsh-conf` still reads marker files, `claude` mods path `~` expansion is unverified.
