@@ -1,7 +1,7 @@
 schema = 1
 name = "brotab"
 description = "Control browser tabs from the CLI (`bt`)"
-when = 'all(os = "linux", gui)'
+when = 'gui'
 bin = "bt"
 # psutil is built from source
 requires = ["build-essential", "python3-dev"]

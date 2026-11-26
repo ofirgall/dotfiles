@@ -4,8 +4,8 @@ description = "Taskwarrior + ~/.taskrc and the add-* shortcut scripts"
 when = 'all(os = "linux", gui)'
 bin = "task"
 
-# The old installer built taskwarrior, taskwarrior-tui and taskopen from source.
-# TODO(dots-migration): taskwarrior-tui (.deb release) and taskopen (pinned git + make) are not migrated.
+# The old installer built taskwarrior 3 from source; apt provides 2.6 (TODO: taskwarrior 3 from source if the
+# data format matters). taskwarrior-tui and taskopen are their own packages.
 [providers.apt]
 name = "taskwarrior"
 

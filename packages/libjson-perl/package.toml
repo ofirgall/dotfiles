@@ -1,0 +1,7 @@
+schema = 1
+name = "libjson-perl"
+description = "perl JSON module (taskopen)"
+when = 'os = "linux"'
+providers_only = true
+
+[providers.apt]

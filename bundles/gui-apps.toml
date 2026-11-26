@@ -3,7 +3,7 @@ description = "GUI applications. macOS: ghostty. Linux desktop: terminals, edito
 
 packages = [
   # every GUI OS
-  "ghostty", "ghostty-shaders", "browser-extensions",
+  "ghostty", "ghostty-shaders", "browser-extensions", "brotab",
   # Linux desktop (each is also gated on os = linux, gui)
   "vscode", "alacritty", "alacritty-desktop", "spotify",
   "vscode-ext-cschlosser.doxdocgen", "vscode-ext-deibit.devdocs",

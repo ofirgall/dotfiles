@@ -1,0 +1,8 @@
+schema = 1
+name = "taskwarrior-tui"
+description = "taskwarrior-tui (the old installer dpkg -i'd the x86_64 release .deb; cargo works on every arch)"
+when = 'all(os = "linux", gui)'
+bin = "taskwarrior-tui"
+requires = ["taskwarrior"]
+
+[providers.cargo]

@@ -1,0 +1,19 @@
+schema = 1
+name = "taskopen"
+description = "taskopen, pinned to the commit the old installer checked out, linked into ~/.local/bin"
+when = 'all(os = "linux", gui)'
+bin = "taskopen"
+requires = ["taskwarrior", "libjson-perl", "git", "local-bin"]
+
+[providers.script]
+check       = 'test -x "$HOME/.task/taskopen/taskopen" && test -L "$HOME/.local/bin/taskopen" && test -d "$HOME/tasknotes"'
+versionless = true
+install     = '''
+rm -rf "$HOME/.task/taskopen"
+mkdir -p "$HOME/.task" "$HOME/.local/bin"
+git clone https://github.com/jschlatow/taskopen "$HOME/.task/taskopen"
+git -C "$HOME/.task/taskopen" checkout 0727c460f17967e79b87554edd426a36113f151a
+chmod +x "$HOME/.task/taskopen/taskopen"
+ln -sf "$HOME/.task/taskopen/taskopen" "$HOME/.local/bin/taskopen"
+mkdir -p "$HOME/tasknotes"
+'''
