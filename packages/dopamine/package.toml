@@ -1,0 +1,12 @@
+schema = 1
+name = "dopamine"
+description = "Dopamine music player: latest .dmg from GitHub releases, verified against SHA256SUMS.txt (no Homebrew cask)"
+when = 'os = "macos"'
+providers_only = true
+
+# TODO(dots-migration): replace with archive provider (task 7.1, ARCH 5.2.5): dmg asset + SHA256SUMS.txt
+[providers.script]
+check   = "test -d /Applications/Dopamine.app"
+version = "/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' /Applications/Dopamine.app/Contents/Info.plist"
+latest  = "curl -fsSL https://api.github.com/repos/digimezzo/dopamine/releases/latest | grep -m1 '\"tag_name\"' | sed -E 's/.*\"tag_name\": *\"v?([^\"]+)\".*/\\1/'"
+install = "install.sh"

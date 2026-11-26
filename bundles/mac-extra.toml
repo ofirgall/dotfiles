@@ -3,6 +3,6 @@ description = "Brew leaves found on this Mac that are macOS-only (adopted, not p
 
 packages = [
   "fast-resume", "pik", "codeburn", "luarocks", "imagemagick", "ffmpeg", "tesseract", "resvg",
-  "zig", "mas", "pstree", "fontforge", "vite", "flameshot",
+  "zig", "mas", "pstree", "fontforge", "vite", "flameshot", "dopamine",
 ]
 # TODO(dots-migration): `zig@0.15` is also installed on this Mac (no dependents); not declared.
