@@ -1,5 +1,5 @@
 # Dev-only overrides, merged on top of config.toml into config-dev.generated.toml
-# by generate-config.sh. Only the dev herdr (`make run` in the herdr fork) reads it.
+# by the second render in package.toml. Only the dev herdr (`make run` in the herdr fork) reads it.
 
 # `make run` copies the main session into dev (make sync-session), and dev
 # resumes its agents too, so dev mirrors main's spaces, tabs, and agents.

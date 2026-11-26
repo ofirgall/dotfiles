@@ -7,7 +7,7 @@ check: 'test ! -L ~/.config/herdr'
 revision: 1
 ---
 
-Before dots, `~/.config/herdr` was a symlink to `~/dotfiles/dotfiles/herdr`, so herdr wrote its
+Before dots, `~/.config/herdr` was a symlink to the repo dir `herdr/` of the old dotbot layout, so herdr wrote its
 runtime state (plugins, sessions, sockets, logs) into the repo. dots manages single files inside
 a real `~/.config/herdr` directory instead. Do this once, with herdr stopped:
 

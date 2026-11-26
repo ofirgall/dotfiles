@@ -1,6 +1,6 @@
 # Shared helpers: GitHub release assets. Source it from a package script:
 #   source "$DOTS_LIB/github-release.sh"
-# Replaces download_latest_release() from the old install_scripts/helpers.sh. Nothing is eval'd.
+# Replaces download_latest_release() from the pre-dots installer helpers. Nothing is eval'd.
 # Uses $GITHUB_TOKEN when set (avoids API rate limits).
 
 # gh_release_url <owner/repo> <asset-regex> [tag]

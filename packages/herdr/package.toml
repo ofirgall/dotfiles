@@ -11,7 +11,7 @@ git = "https://github.com/ofirgall/herdr"
 # plugins.json, .locks/ all land there). Only the entries below are managed by dots, so the repo
 # never receives runtime files again. Cutover: manual/split-runtime-dir.md
 
-# config.toml = common + mac. Old behavior (generate-config.sh `yq *+`) appends arrays, but
+# config.toml = common + mac. The pre-dots generator (yq `*+`) appended arrays, but
 # mac.toml only sets a scalar ([terminal] default_shell), so no path is appended or replaced:
 # the default (deep-merge tables, replace arrays) renders the same structure.
 [[files]]

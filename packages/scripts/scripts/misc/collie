@@ -3,7 +3,7 @@
 collie="$(ls -t "$HOME"/.config/herdr/plugins/github-installations/herdr.collie-*/*/checkout/bin/collie 2>/dev/null | head -1)"
 
 if [ -z "$collie" ]; then
-    echo "collie: herdr plugin not installed, run install_scripts/mac/install_collie.sh" >&2
+    echo "collie: herdr plugin not installed, run `dots apply herdr-collie`" >&2
     exit 1
 fi
 

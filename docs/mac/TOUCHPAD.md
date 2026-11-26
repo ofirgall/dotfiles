@@ -4,7 +4,7 @@
 
 - **Tap to Click**: Enabled — single tap = click, double tap = double click
 - **Drag style**: "Without Drag Lock" — double-tap and hold on the second tap to drag, lift to stop
-- **Acceleration**: Low acceleration (0.65) via LinearMouse (config tracked in `dotfiles/mac/linearmouse/`)
+- **Acceleration**: Low acceleration (0.65) via LinearMouse (config tracked in `packages/linearmouse/`)
 - **Natural scrolling**: Enabled
 
 ## How to use

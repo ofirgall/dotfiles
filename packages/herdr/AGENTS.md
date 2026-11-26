@@ -9,7 +9,7 @@ packages/herdr/
   config/common.toml   <- shared config (edit this)
   config/mac.toml      <- macOS overrides (layer, when os = "macos")
   config/dev.toml      <- dev-herdr overrides (config-dev.generated.toml only)
-  config/windows.toml  <- Windows overrides (used by generate-config.{sh,ps1}, legacy)
+  config/windows.toml  <- Windows overrides (used by legacy/windows/herdr/generate-config.{sh,ps1})
   scripts/ agent-detection/ herdr-256color.terminfo
 ~/.config/herdr/config.toml               <- RENDERED by dots (a symlink into dots state; do NOT edit)
 ~/.config/herdr/config-dev.generated.toml <- RENDERED (common + mac + dev)

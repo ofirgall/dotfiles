@@ -212,7 +212,7 @@ fn close(conn: &mut Connection) {
     let h = home();
     let _ = Command::new("bash").arg("-c")
         .arg(format!(
-            "sleep 1 && rm -f {CLOSE_REVERT} && {h}/dotfiles/dotfiles/mac/aerospace/on-window-detected.sh"
+            "sleep 1 && rm -f {CLOSE_REVERT} && {h}/.config/aerospace/scripts/on-window-detected.sh"
         ))
         .spawn();
 }
@@ -260,7 +260,7 @@ fn move_to_group(conn: &mut Connection, group: &str, follow: Option<&str>) {
         return;
     }
 
-    let _ = Command::new(format!("{h}/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh")).status();
+    let _ = Command::new(format!("{h}/.config/aerospace/scripts/update-ws-cache.sh")).status();
     let focused_group = std::fs::read_to_string("/tmp/aerospace-ws-cache")
         .unwrap_or_default().lines().next().unwrap_or("").to_string();
 
@@ -469,7 +469,7 @@ fn move_all_windows_to_group(conn: &mut Connection, target: Option<&str>) {
     switch_group(conn, target);
 
     let h = home();
-    let _ = Command::new(format!("{h}/dotfiles/dotfiles/mac/aerospace/on-window-detected.sh"))
+    let _ = Command::new(format!("{h}/.config/aerospace/scripts/on-window-detected.sh"))
         .spawn();
 }
 
@@ -587,14 +587,14 @@ fn on_workspace_change(conn: &mut Connection) {
         }
 
         let h = home();
-        let _ = Command::new(format!("{h}/dotfiles/dotfiles/mac/aerospace/on-window-detected.sh")).status();
+        let _ = Command::new(format!("{h}/.config/aerospace/scripts/on-window-detected.sh")).status();
         return;
     }
 
     sticky_move(conn);
 
     let h = home();
-    let _ = Command::new(format!("{h}/dotfiles/dotfiles/mac/aerospace/update-ws-cache.sh")).status();
+    let _ = Command::new(format!("{h}/.config/aerospace/scripts/update-ws-cache.sh")).status();
 
     let focused = std::env::var("AEROSPACE_FOCUSED_WORKSPACE").unwrap_or_default();
     let prev = std::env::var("AEROSPACE_PREV_WORKSPACE").unwrap_or_default();

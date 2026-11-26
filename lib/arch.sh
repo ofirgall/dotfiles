@@ -1,6 +1,6 @@
 # Shared helpers: CPU architecture and OS names for installers. Source it from a package script:
 #   source "$DOTS_LIB/arch.sh"
-# Replaces the hardcoded x86_64/amd64 strings in the old install_scripts/.
+# Replaces the hardcoded x86_64/amd64 strings in the pre-dots installers.
 # Needs $DOTS_ARCH (x86_64|aarch64) and $DOTS_OS (linux|macos), which dots always sets.
 
 # dots_arch <go|zig|nerd|codelldb|bluetuith>: the architecture spelling that tool's releases use.

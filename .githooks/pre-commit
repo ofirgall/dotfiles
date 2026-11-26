@@ -12,5 +12,8 @@ if [ -f wip-submodules ]; then
     done < wip-submodules
 fi
 
-# Add submodules
-git add editors/KoalaConfig dotfiles/zsh-conf hypr-dots editors/vscode-settings
+# Add submodules (the ones that track their own branch heads; paths are inside their packages)
+for mod in packages/koala-config/KoalaConfig packages/zsh/zsh-conf packages/hyprland/hypr-dots packages/vscode/vscode-settings; do
+    [ -e "$mod/.git" ] && git add "$mod"
+done
+exit 0

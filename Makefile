@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 SUBMODULES := $(shell git config --file .gitmodules --get-regexp path 2>/dev/null | awk '{print $$2}')
 
-.PHONY: help init update status add remove foreach ls-workspace-icons
+.PHONY: help init update status add remove foreach ls-workspace-icons apply plan docker
 
 help:
 	@echo "Targets:"
@@ -14,11 +14,24 @@ help:
 	@echo "  make remove NAME=<path>  Remove a submodule by its path"
 	@echo "  make foreach CMD='...' Run a shell command in each submodule"
 	@echo "  make ls-workspace-icons  List app icons currently shown per sketchybar workspace"
+	@echo "  make plan              dots plan (what apply would change on this machine)"
+	@echo "  make apply             dots apply"
+	@echo "  make docker            Apply the docker profile in an Ubuntu container (needs ~/workspace/personal/dots-manager)"
 
 init:
 	git submodule update --init --recursive
 	git config core.hooksPath .githooks
 	git config push.recurseSubmodules on-demand
+	git config submodule.recurse true
+
+apply:
+	dots apply
+
+plan:
+	dots plan
+
+docker:
+	cd ~/workspace/personal/dots-manager && DOTS_REPO_PROFILE=docker scripts/docker-test.sh --repo $(CURDIR)
 
 status:
 	@git submodule status

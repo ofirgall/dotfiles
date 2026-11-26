@@ -1,6 +1,6 @@
 set -euo pipefail
 # Dopamine music player: install the latest .dmg from the GitHub releases and verify it
-# against SHA256SUMS.txt (migrated from install_scripts/mac/install_dopamine.sh).
+# against SHA256SUMS.txt (migrated from the pre-dots mac installer).
 APP=/Applications/Dopamine.app
 REPO=digimezzo/dopamine
 

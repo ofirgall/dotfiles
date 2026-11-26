@@ -65,4 +65,4 @@ On macOS, [Karabiner-Elements](https://karabiner-elements.pqrs.org) remaps keys 
 - **Cmd to F-keys** — Cmd+k/l remap to F15/F16 so AeroSpace receives them before macOS intercepts
 - **Built-in keyboard normalization** — Fn↔Left Ctrl and Left Cmd↔Left Option swapped to match PC layout (built-in keyboard only)
 
-See [macREADME/KEY_CONFLICTS.md](macREADME/KEY_CONFLICTS.md) for tracked conflicts between dotfiles bindings and native macOS shortcuts.
+See [docs/mac/KEY_CONFLICTS.md](docs/mac/KEY_CONFLICTS.md) for tracked conflicts between dotfiles bindings and native macOS shortcuts.
