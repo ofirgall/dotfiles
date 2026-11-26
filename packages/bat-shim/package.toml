@@ -1,0 +1,12 @@
+schema = 1
+name = "bat-shim"
+description = "~/.local/bin/bat -> batcat (Debian's name for bat)"
+when = 'os = "linux"'
+requires = ["bat"]
+
+# TODO(dots-migration): delete this package once dots creates provider `shim`s (dots bug 5);
+# `[providers.apt] shim = "bat"` on `bat` already declares it.
+[providers.script]
+check       = "command -v bat >/dev/null"
+versionless = true
+install     = "mkdir -p \"$HOME/.local/bin\" && ln -sf \"$(command -v batcat)\" \"$HOME/.local/bin/bat\""

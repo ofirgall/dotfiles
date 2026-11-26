@@ -2,10 +2,11 @@ schema = 1
 name = "locale"
 description = "en_US.UTF-8 locale (zsh-conf exports LC_ALL=en_US.UTF-8; containers ship without it)"
 when = 'os = "linux"'
-requires = ["locales"]    # apt must be done first: the script runs apt-free, dpkg's lock is exclusive
+requires = ["locales"]    # apt must be done first: the dpkg lock is exclusive
 
+# TODO(dots-migration): `needs_root = true` here once dots bug 4 is fixed (the post-install check
+# runs through the sudo wrapper and always fails); until then sudo is inline.
 [providers.script]
 check       = "locale -a | grep -qix 'en_US.utf-\\?8'"
 versionless = true
-needs_root  = true
-install     = "locale-gen en_US.UTF-8"
+install     = "if [ \"$(id -u)\" = 0 ]; then locale-gen en_US.UTF-8; else sudo -n locale-gen en_US.UTF-8; fi"

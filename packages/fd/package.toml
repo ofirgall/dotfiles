@@ -7,4 +7,5 @@ bin = "fd"
 [providers.apt]
 name = "fd-find"
 bin  = "fdfind"
-shim = "fd"
+shim = "fd"         # dots does not create shims yet: see the fd-shim package
+

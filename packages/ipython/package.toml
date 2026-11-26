@@ -1,6 +1,6 @@
 schema = 1
 name = "ipython"
-bin = "ipython"
+bin = "ipython3"
 
 [providers.brew]
 
