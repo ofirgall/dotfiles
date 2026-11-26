@@ -1,0 +1,8 @@
+schema = 1
+name = "lemmy-help"
+description = "numToStr/lemmy-help: vimdoc generator"
+bin = "lemmy-help"
+providers_only = true
+
+[providers.cargo]
+features = ["cli"]

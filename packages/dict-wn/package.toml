@@ -1,0 +1,7 @@
+schema = 1
+name = "dict-wn"
+description = "WordNet dictionary for dictd (part of nvim-dict)"
+when = 'os = "linux"'
+providers_only = true
+
+[providers.apt]

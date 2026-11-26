@@ -1,0 +1,20 @@
+schema = 1
+name = "tpm-plugins"
+description = "Install the tmux plugins plugins.tmux lists (tpm's install_plugins)"
+requires = ["tpm", "tmux", "git"]
+
+# TODO(dots-migration): this is tpm's post_files hook (dots bug 6). Scripts run before the files
+# phase, so ~/.tmux.conf may not be linked yet and tpm's own install_plugins (which reads it) can't
+# be used. This clones what `set -g @plugin 'owner/repo'` lines in plugins.tmux name, exactly what
+# tpm does; no tmux server needed, so it exits 0 in Docker.
+[providers.script]
+check       = "grep -E \"^set -g @plugin '[^']+'\" $DOTS_ROOT/packages/tmux/tmux_conf/plugins.tmux | sed -E \"s/.*'(.*)'.*/\\1/\" | while read -r p; do test -d \"$HOME/.tmux/plugins/${p##*/}\" || exit 1; done"
+versionless = true
+install = '''
+mkdir -p "$HOME/.tmux/plugins"
+grep -E "^set -g @plugin '[^']+'" $DOTS_ROOT/packages/tmux/tmux_conf/plugins.tmux | sed -E "s/.*'(.*)'.*/\1/" | while read -r p; do
+  d="$HOME/.tmux/plugins/${p##*/}"
+  if [ -d "$d" ]; then continue; fi
+  git clone --depth 1 "https://github.com/$p" "$d"
+done
+'''

@@ -1,0 +1,8 @@
+schema = 1
+name = "just"
+bin = "just"
+providers_only = true
+
+[providers.brew]
+
+[providers.apt]

@@ -1,0 +1,7 @@
+schema = 1
+name = "mermaid-rs-renderer"
+description = "mermaid diagram renderer in Rust (`mmdr`)"
+bin = "mmdr"
+providers_only = true
+
+[providers.cargo]

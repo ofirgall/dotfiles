@@ -1,0 +1,8 @@
+schema = 1
+name = "tuitab"
+description = "TUI for CSV/table viewing and editing"
+bin = "tuitab"
+bins = ["tuitab", "ttab", "ttb"]
+providers_only = true
+
+[providers.cargo]

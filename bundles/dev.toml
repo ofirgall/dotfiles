@@ -1,0 +1,21 @@
+schema = 1
+description = "Dev tooling: neovim/KoalaVim, tmux, toolchains, TUIs, gh and extensions"
+
+packages = [
+  # editor
+  "libatomic1", "libdbus-1-dev", "koala-config", "kv", "kv-env", "neovim", "neovim-build-deps", "tree-sitter-cli", "lemmy-help",
+  "nvim-dict", "dict-wn", "dict-moby-thesaurus", "deno", "plantuml", "graphviz", "koala-cli", "codelldb",
+  # tmux
+  "tmux", "tpm", "tpm-plugins", "tmux-default-keys", "libtmux", "ruby",
+  # toolchains
+  "go", "node", "npm-prefix", "bun",
+  # CLIs
+  "fx", "btop", "bottom", "du-dust", "jless", "jless-build-deps", "igrep", "broot", "tuitab", "lumen",
+  "ftdv", "hunk", "yazi", "yq", "yj", "ez-workspaces", "hop", "playgrounds",
+  "cargo-audit", "cargo-nextest", "comrak", "lazydiff", "mermaid-rs-renderer", "eza", "just", "tree",
+  "fzy", "glow",
+  # uv / npm tools
+  "shell-gpt", "mkdocs", "ranger-fm", "openspec", "mermaid-cli",
+  # github
+  "gh", "gh-dash", "gh-enhance", "gh-markdown-preview", "gh-stack",
+]

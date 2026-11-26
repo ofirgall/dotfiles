@@ -1,0 +1,29 @@
+schema = 1
+name = "tmux"
+description = "tmux + config. Linux: apt 3.4 (the old from-source build isn't worth it)."
+bin = "tmux"
+providers_only = true
+requires = ["tpm", "libtmux", "ruby"]
+# TODO(dots-migration): if the conf needs tmux >= 3.5 on Linux, add a script provider that builds it.
+
+[providers.brew]
+[providers.apt]
+
+[[files]]
+src = "tmux_conf/entrypoint.tmux"
+dst = "~/.tmux.conf"
+
+[[files]]
+src = "tmux_conf"
+dst = "~/.tmux_conf"
+
+[[files]]
+src = "tmux_conf/custom-macros"
+dst = "~/.tmux/custom-macros"
+
+# macOS ships terminfo without extended caps (Smulx, Setulc): compile Homebrew's tmux-256color
+# (generated once with `infocmp -x tmux-256color` from brew's ncurses).
+[[files]]
+mode = "terminfo"
+src  = "tmux-256color.terminfo"
+when = 'os = "macos"'

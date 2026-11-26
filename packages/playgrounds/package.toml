@@ -1,0 +1,7 @@
+schema = 1
+name = "playgrounds"
+description = "~/playgrounds scratch dirs and templates"
+
+[[files]]
+src = "playgrounds"
+dst = "~/playgrounds"

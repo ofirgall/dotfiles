@@ -1,0 +1,8 @@
+schema = 1
+name = "ranger-fm"
+description = "ranger file manager"
+bin = "ranger"
+providers_only = true
+requires = ["uv"]
+
+[providers.uv]

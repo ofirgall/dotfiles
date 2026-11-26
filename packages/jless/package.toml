@@ -1,0 +1,9 @@
+schema = 1
+name = "jless"
+bin = "jless"
+providers_only = true
+requires = [{ name = "jless-build-deps", when = 'os = "linux"' }]
+
+[providers.brew]
+
+[providers.cargo]

@@ -1,0 +1,25 @@
+schema = 1
+name = "fx"
+description = "fx JSON viewer: brew on macOS; Linux release binary in ~/.local/bin"
+bin = "fx"
+providers_only = true
+requires = [{ name = "curl", when = 'os = "linux"' }, { name = "local-bin", when = 'os = "linux"' }]
+
+[providers.brew]
+
+# fx.wtf/install.sh does `sudo mv` into /usr/local/bin; this fetches the same release asset
+# (fx_linux_{amd64,arm64}) into ~/.local/bin instead: no sudo, works in containers.
+# TODO(dots-migration): replace with archive provider (task 7.1)
+[providers.script]
+when    = 'os = "linux"'
+check   = "test -x $HOME/.local/bin/fx"
+version = "$HOME/.local/bin/fx --version | head -1 | awk '{print $NF}'"
+latest  = "curl -fsSL https://fx.wtf/install.sh | grep -m1 \"^version=\" | cut -d\"'\" -f2"
+install = '''
+source "$DOTS_LIB/github-release.sh"
+case "$DOTS_ARCH" in x86_64) a=amd64 ;; aarch64) a=arm64 ;; *) echo "unsupported arch" >&2; exit 1 ;; esac
+mkdir -p "$HOME/.local/bin"
+gh_release_download antonmedv/fx "/fx_linux_${a}\$" "$HOME/.local/bin/fx.tmp"
+chmod +x "$HOME/.local/bin/fx.tmp"
+mv -f "$HOME/.local/bin/fx.tmp" "$HOME/.local/bin/fx"
+'''

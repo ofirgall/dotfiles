@@ -1,0 +1,11 @@
+schema = 1
+name = "mkdocs"
+bin = "mkdocs"
+providers_only = true
+requires = ["uv"]
+
+# TODO(dots-migration): `[providers.uv] with = ["mkdocs-material"]` (gap G12); interim: script
+[providers.script]
+check   = "uv tool list --show-with | grep -q 'mkdocs.*mkdocs-material'"
+version = "uv tool list | awk '$1==\"mkdocs\"{sub(/^v/,\"\",$2); print $2}'"
+install = "uv tool install --force mkdocs --with mkdocs-material"

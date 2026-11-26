@@ -1,0 +1,14 @@
+schema = 1
+name = "neovim-build-deps"
+description = "Build dependencies for upgrade_nvim.sh (nightly builds)"
+when = 'os = "linux"'
+bin = "ninja"
+providers_only = true
+requires = ["cmake", "pkg-config", "unzip", "curl", "build-essential"]
+
+# TODO(dots-migration): the old installer also apt-installed gettext libtool libtool-bin autoconf
+# automake doxygen clang. dots has no multi-package apt group (one name per package) and apt calls
+# inside scripts race the dpkg lock. The prebuilt tarball (`neovim`) needs none of them; add them
+# here when a group/meta package is possible.
+[providers.apt]
+name = "ninja-build"

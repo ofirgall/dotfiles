@@ -1,0 +1,12 @@
+schema = 1
+name = "libtmux"
+description = "python libtmux for tmux plugins and scripts (system python)"
+providers_only = true
+requires = ["python3", "uv"]
+
+# TODO(dots-migration): `[providers.uv] kind = "lib", python = "system"`. dots runs `uv pip install --system`
+# without `--break-system-packages` (Ubuntu 24.04 PEP 668 refuses) and into /usr/local (needs root); dots bug 7.
+[providers.script]
+check       = "python3 -c 'import libtmux'"
+version     = "python3 -c 'import importlib.metadata as m; print(m.version(\"libtmux\"))'"
+install     = "python3 -m pip install --user --break-system-packages libtmux"

@@ -1,0 +1,9 @@
+schema = 1
+name = "tree-sitter-cli"
+description = "tree-sitter CLI (nvim-treesitter parser builds)"
+bin = "tree-sitter"
+providers_only = true
+
+[providers.brew]
+[providers.cargo]
+locked = true

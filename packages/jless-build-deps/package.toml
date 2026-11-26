@@ -1,0 +1,11 @@
+schema = 1
+name = "jless-build-deps"
+description = "libxcb headers for building jless (clipboard support)"
+when = 'os = "linux"'
+providers_only = true
+requires = ["pkg-config"]
+
+# libxcb-xfixes0-dev depends on libxcb1-dev, libxcb-render0-dev and libxcb-shape0-dev: the four the old
+# installer named. Was a script around `apt install`, which would race the dpkg lock.
+[providers.apt]
+name = "libxcb-xfixes0-dev"

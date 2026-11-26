@@ -1,0 +1,23 @@
+schema = 1
+name = "dict-moby-thesaurus"
+description = "Moby thesaurus for dictd (part of nvim-dict). Not in Ubuntu 24.04: the old installer dpkg -i'd the pool .deb."
+when = 'os = "linux"'
+providers_only = true
+requires = ["dict-wn", "curl"]
+
+# dpkg -i needs root; sudo is inline (dots bug 4). It retries because the dots apt batches take the
+# same dpkg lock.
+# TODO(dots-migration): archive provider handles `.deb` (task 7.1)
+[providers.script]
+check       = "dpkg -s dict-moby-thesaurus >/dev/null 2>&1"
+versionless = true
+install = '''
+tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+curl -fsSL -o "$tmp/m.deb" http://archive.ubuntu.com/ubuntu/pool/main/d/dict-moby-thesaurus/dict-moby-thesaurus_1.0-6.4_all.deb
+SUDO=""; [ "$(id -u)" = 0 ] || SUDO="sudo -n"
+for i in $(seq 1 30); do
+  if $SUDO dpkg -i "$tmp/m.deb"; then exit 0; fi
+  sleep 5
+done
+exit 1
+'''

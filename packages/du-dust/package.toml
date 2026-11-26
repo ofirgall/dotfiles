@@ -1,0 +1,10 @@
+schema = 1
+name = "du-dust"
+bin = "dust"
+providers_only = true
+
+[providers.brew]
+name = "dust"
+
+[providers.cargo]
+name = "du-dust"

@@ -1,0 +1,31 @@
+schema = 1
+name = "yazi"
+description = "yazi file manager (+ `ya`) and config"
+bin = "yazi"
+bins = ["yazi", "ya"]
+providers_only = true
+requires = [{ name = "unzip", when = 'os = "linux"' }, { name = "curl", when = 'os = "linux"' }]
+
+[providers.brew]
+
+# crates.io yazi-fm 26.5.6 does not compile (its published crate lacks ../yazi-plugin/preset/*), and
+# a package maps to one crate (yazi-fm + yazi-cli were both installed before). The release zip has
+# both binaries, so Linux takes that.
+# TODO(dots-migration): replace with archive provider (task 7.1)
+[providers.script]
+when    = 'os = "linux"'
+check   = "test -x $HOME/.local/bin/yazi"
+version = "$HOME/.local/bin/yazi --version | awk '{print $2}'"
+install = '''
+source "$DOTS_LIB/github-release.sh"
+case "$DOTS_ARCH" in x86_64) a=x86_64 ;; aarch64) a=aarch64 ;; *) echo "unsupported arch" >&2; exit 1 ;; esac
+tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+gh_release_download sxyazi/yazi "yazi-${a}-unknown-linux-gnu\\.zip$" "$tmp/yazi.zip"
+unzip -q "$tmp/yazi.zip" -d "$tmp"
+mkdir -p "$HOME/.local/bin"
+install -m 0755 "$tmp"/yazi-*/yazi "$tmp"/yazi-*/ya "$HOME/.local/bin/"
+'''
+
+[[files]]
+src = "yazi"
+dst = "~/.config/yazi"

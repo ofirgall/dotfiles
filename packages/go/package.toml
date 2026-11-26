@@ -1,0 +1,27 @@
+schema = 1
+name = "go"
+description = "Go toolchain: brew on macOS; Linux tarball in ~/.local/go (no sudo, any arch)"
+bin = "go"
+providers_only = true
+requires = [{ name = "curl", when = 'os = "linux"' }]
+
+[providers.brew]
+
+# TODO(dots-migration): replace with archive provider (task 7.1, ARCH §5.2.5)
+[providers.script]
+when    = 'os = "linux"'
+check   = "test -x $HOME/.local/go/bin/go"
+version = "$HOME/.local/go/bin/go version | awk '{print $3}' | sed 's/^go//'"
+latest  = "curl -fsSL 'https://go.dev/VERSION?m=text' | head -1 | sed 's/^go//'"
+install = '''
+source "$DOTS_LIB/arch.sh"
+ver=$(curl -fsSL 'https://go.dev/VERSION?m=text' | head -1)
+tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+curl -fsSL "https://dl.google.com/go/${ver}.linux-$(dots_arch go).tar.gz" -o "$tmp/go.tar.gz"
+rm -rf "$HOME/.local/go"
+mkdir -p "$HOME/.local"
+tar -C "$HOME/.local" -xzf "$tmp/go.tar.gz"
+'''
+
+[env]
+path = ["~/.local/go/bin", "~/go/bin"]

@@ -1,0 +1,8 @@
+schema = 1
+name = "libdbus-1-dev"
+description = "D-Bus headers (lazydiff's notification dependency builds against them)"
+when = 'os = "linux"'
+providers_only = true
+requires = ["pkg-config"]
+
+[providers.apt]

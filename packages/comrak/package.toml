@@ -1,0 +1,10 @@
+schema = 1
+name = "comrak"
+bin = "comrak"
+providers_only = true
+
+[providers.brew]
+
+
+[providers.cargo]
+

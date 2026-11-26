@@ -1,0 +1,12 @@
+schema = 1
+name = "lumen"
+description = "jnsahaj/lumen: AI git diff / commit helper"
+bin = "lumen"
+providers_only = true
+
+# brew has no `lumen` formula (only an unrelated cask).
+[providers.cargo]
+
+[[files]]
+src = "lumen"
+dst = "~/.config/lumen"

@@ -1594,3 +1594,38 @@ planned `post_install` hooks, dots bug 6) and `zig-0.15` (herdr build dependency
   `~/.cursor/statusline.sh`, `~/agents-status`, `~/.config/{herdr,agents-status,cursor-cli-wrapper,
   herdr-automatic-rename}`, `~/.local/share/zig-0.15` (chunk 5's ghostty uses `~/.local/zig`).
 - Cutover (§8 step 2) is documented in `packages/herdr/manual/split-runtime-dir.md`.
+
+## 11.2 Chunk 2 report (dev tooling)
+
+Branch `migrate-c2`. `bundles/dev.toml` plus 62 owned packages and 7 helper packages.
+
+### Deviations
+- **Extra packages** (one apt name per package, or hook replacements): `graphviz`, `dict-wn`, `dict-moby-thesaurus`, `libatomic1`, `libdbus-1-dev`, `tmux-default-keys`, `tpm-plugins`. All are in `bundles/dev.toml`.
+- **neovim (linux)**: pinned v0.11.5 release tarball into `~/.local/nvim` plus a `~/.local/bin/nvim` symlink, not `upgrade_nvim.sh` (it starts with `ping`, absent in containers, and builds from source). `neovim-build-deps` only installs `ninja-build` plus base packages. The gettext/libtool/autoconf/automake/doxygen/clang group needs a multi-package apt group (TODO).
+- **dict-moby-thesaurus**: not in Ubuntu 24.04, so a script with an inline `sudo -n dpkg -i` retry loop.
+- **fx (linux)**: release binary into `~/.local/bin`; fx.wtf/install.sh does `sudo mv`.
+- **yazi (linux)**: release zip (yazi + ya). crates.io `yazi-fm` 26.5.6 does not compile (the published crate lacks `../yazi-plugin/preset`).
+- **igrep**: cargo from git `konradsz/igrep` (crates.io 1.2.0 fails with current rustc, locked or not). brew on macOS.
+- **lumen, ftdv, tuitab, mermaid-rs-renderer**: cargo only (no brew formula).
+- **hunk, openspec, mermaid-cli, gh-dash, gh-enhance, gh-markdown-preview, gh-stack**: script packages, not `npm-g` / `gh-ext` (dots bug 7). The node and npm used are brew's on macOS, `~/.local/n` on Linux.
+- **libtmux**: script (`pip --user --break-system-packages`), because uv `kind = "lib"` fails (dots bug 8).
+- **kv-env**: `when = not(tag = "sandbox")`. `kv install` fails on linux/aarch64 ("neovim: Failed to copy binary"), which is a kv bug. It also shells out to `sudo apt-get`.
+- **koala-cli**: `bin` unknown; confirm it on a box with ssh.
+- **tpm-plugins** clones the `@plugin` lines of `plugins.tmux` itself (no tmux server, files not yet linked).
+- **node (linux)**: `n` via a fetched script into `~/.local/n`, plus `libatomic1`. **bun**: `SHELL=none` stops the installer editing rc files.
+- `{app_support}` bottom/ez links on macOS. hop and yq/yj/glow are macOS only.
+
+### Docker (Ubuntu 24.04 aarch64, bundles base+dev, tag sandbox, gui=false)
+`lint 0, plan 0, apply 0, status 0 ("All good. 91 packages - 32 files"), second plan empty`. In the container: nvim v0.11.5, tmux 3.4, go, node, difft, btm, yazi, ig, `tmux -f ~/.tmux.conf new -d && kill-server` exit 0, all tpm plugins cloned. The run was incremental (cargo builds cached from earlier attempts); cargo needs `CARGO_BUILD_JOBS=4` here or Docker kills the container. Local Mac `lint`/`plan` with a scratch home are clean.
+
+### New dots bugs
+7. **Custom providers (`npm-g`, `gh-ext`) are skipped as "not available" at plan time** when their tool (`npm`, `gh`) is installed in the same run, even with `bootstrap = "node"`. Repro: Linux box without node, a package with only `[providers.npm-g]`. dots prints "Not planned: X (no provider can install it)".
+8. **`uv` `kind = "lib", python = "system"` fails on Ubuntu 24.04**: `uv pip install --system` hits PEP 668 and /usr/local needs root. Repro: apply `libtmux` as a uv lib.
+9. **Scripts don't see PATH entries of packages installed earlier** in the same run (`~/.cargo/bin` for kv, `~/.local/n/bin` for npm), contrary to ARCH §5.3.
+10. **cargo defaults to `--locked`**, which breaks old locked crates (igrep, `time`). Use `locked = false` or git.
+
+### Bundle additions for machines/*.toml
+`dev` into `docker` (sandbox; kv-env and the gh extensions self-gate), `linux-desktop` (already lists it), `mac` (already lists it), and `remote`: optional. Nothing here is gated on gui.
+
+### For chunk 6 / merge
+Owned paths are disjoint from other chunks. `packages/koala-config/package.toml` is an add/add conflict with the chunk-1 placeholder: take mine. `dotfiles/ez-workspaces-windows` stays for chunk 6. Moved: `dotfiles/{.kvim.conf,tmux_conf,yazi,hunk,lumen,ftdv,ez-workspaces,ez-workspaces-macos,hop,bottom,gh-dash}`, `editors/KoalaConfig-10`, `playgrounds`. Follow-ups: the Mac's local-path cargo copies of kv/ez-workspaces/hop (`dots bins --shadowed`), koala-cli bin name, and re-check with a gui profile.

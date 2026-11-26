@@ -1,0 +1,29 @@
+schema = 1
+name = "neovim"
+description = "Neovim: brew on macOS, release tarball (pinned 0.11.5) on Linux"
+bin = "nvim"
+providers_only = true
+requires = [{ name = "curl", when = 'os = "linux"' }, { name = "neovim-build-deps", when = 'os = "linux"' }]
+
+[providers.brew]
+
+# The old installer called ~/dotfiles_scripts/misc/upgrade_nvim.sh v0.11.5, a from-source build that
+# starts with `ping github.com` (no ping in containers) and builds for minutes; its `-d` guard was
+# also a bug (never ran). The prebuilt tarball is arch-aware and deterministic. upgrade_nvim.sh stays
+# for nightly builds (it installs over ~/.local/bin/nvim).
+# TODO(dots-migration): replace with archive provider (task 7.1, ARCH §5.2.5)
+[providers.script]
+when    = 'os = "linux"'
+check   = "test -x $HOME/.local/bin/nvim"
+version = "$HOME/.local/bin/nvim --version | head -1 | sed 's/^NVIM v//'"
+install = '''
+source "$DOTS_LIB/github-release.sh"
+ver=0.11.5
+case "$DOTS_ARCH" in x86_64) a=x86_64 ;; aarch64) a=arm64 ;; *) echo "unsupported arch $DOTS_ARCH" >&2; exit 1 ;; esac
+tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+gh_release_download neovim/neovim "nvim-linux-${a}\\.tar\\.gz$" "$tmp/nvim.tar.gz" "v$ver"
+rm -rf "$HOME/.local/nvim"
+mkdir -p "$HOME/.local/nvim" "$HOME/.local/bin"
+tar -xzf "$tmp/nvim.tar.gz" -C "$HOME/.local/nvim" --strip-components=1
+ln -sfn "$HOME/.local/nvim/bin/nvim" "$HOME/.local/bin/nvim"
+'''

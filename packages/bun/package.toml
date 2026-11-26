@@ -1,0 +1,21 @@
+schema = 1
+name = "bun"
+description = "Bun"
+bin = "bun"
+providers_only = true
+requires = [{ name = "unzip", when = 'os = "linux"' }, { name = "curl", when = 'os = "linux"' }]
+
+[providers.brew]
+tap = "oven-sh/bun"
+
+# TODO(dots-migration): replace with archive provider (task 7.1)
+[providers.script]
+when    = 'os = "linux"'
+check   = "test -x $HOME/.bun/bin/bun"
+version = "$HOME/.bun/bin/bun --version"
+# SHELL=none: the installer would otherwise append to ~/.bashrc / ~/.zshrc; dots owns PATH.
+install = "SHELL=none bash {fetched}"
+fetch   = { url = "https://bun.sh/install" }
+
+[env]
+path = ["~/.bun/bin"]

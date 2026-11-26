@@ -1,0 +1,8 @@
+schema = 1
+name = "glow"
+description = "macOS only here; on Linux glow comes from zinit (zsh-conf)"
+when = 'os = "macos"'
+bin = "glow"
+providers_only = true
+
+[providers.brew]

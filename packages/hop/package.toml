@@ -1,0 +1,15 @@
+schema = 1
+name = "hop"
+description = "amittamari/hop (macOS)"
+when = 'os = "macos"'
+bin = "hop"
+providers_only = true
+
+# The Mac also has a cargo build of hop from a local path (shadowed duplicate): uninstall by hand
+# (`dots bins --shadowed`).
+[providers.brew]
+tap = "amittamari/tap"
+
+[[files]]
+src = "config.toml"
+dst = "~/.config/hop/config.toml"

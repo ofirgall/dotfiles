@@ -1,3 +1,21 @@
-# PLACEHOLDER from chunk 1 (the submodule dir lives here). Chunk 2 replaces this file.
 schema = 1
 name = "koala-config"
+description = "KoalaVim config (submodule) as ~/.config/nvim and kv env `main`, the KoalaConfig-10 test env, and ~/.kvim.conf"
+# Files only. nvim, kv and the kv env come from neovim / kv / kv-env.
+
+[[files]]
+src = "KoalaConfig"
+dst = "~/.config/nvim"
+
+[[files]]
+src = "KoalaConfig"
+dst = "~/.config/kvim-envs/main"
+
+# `nv-10` alias (my-zsh-conf/aliases.zsh)
+[[files]]
+src = "KoalaConfig-10"
+dst = "~/.config/kvim-envs/010"
+
+[[files]]
+src = "kvim.conf"
+dst = "~/.kvim.conf"

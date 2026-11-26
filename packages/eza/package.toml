@@ -1,0 +1,10 @@
+schema = 1
+name = "eza"
+bin = "eza"
+providers_only = true
+
+[providers.brew]
+
+
+[providers.cargo]
+

@@ -1,0 +1,8 @@
+schema = 1
+name = "yj"
+description = "macOS only here; on Linux yj comes from zinit (zsh-conf)"
+when = 'os = "macos"'
+bin = "yj"
+providers_only = true
+
+[providers.brew]

@@ -1,0 +1,24 @@
+schema = 1
+name = "codelldb"
+description = "C/C++/Rust debug adapter (vadimcn/vscode-lldb) for nvim-dap"
+when = 'os = "linux"'
+bin = "codelldb"
+providers_only = true
+requires = ["unzip", "curl"]
+
+# TODO(dots-migration): replace with archive provider (task 7.1, ARCH §5.2.5). Arch-aware: x64 / arm64.
+[providers.script]
+check       = "test -x $HOME/.local/dap/codelldb/extension/adapter/codelldb && test -L $HOME/.local/bin/codelldb"
+version     = "grep -o '\"version\": *\"[^\"]*\"' $HOME/.local/dap/codelldb/extension/package.json | head -1 | sed 's/.*: *\"//; s/\"$//'"
+install = '''
+source "$DOTS_LIB/arch.sh"
+source "$DOTS_LIB/github-release.sh"
+a=$(dots_arch codelldb)
+tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+gh_release_download vadimcn/vscode-lldb "codelldb-linux-${a}\\.vsix$" "$tmp/codelldb.vsix"
+rm -rf "$HOME/.local/dap/codelldb"
+mkdir -p "$HOME/.local/dap/codelldb" "$HOME/.local/bin"
+unzip -q "$tmp/codelldb.vsix" -d "$HOME/.local/dap/codelldb"
+chmod +x "$HOME/.local/dap/codelldb/extension/adapter/codelldb" "$HOME/.local/dap/codelldb/extension/lldb/bin/"* 2>/dev/null || true
+ln -sf "$HOME/.local/dap/codelldb/extension/adapter/codelldb" "$HOME/.local/bin/codelldb"
+'''

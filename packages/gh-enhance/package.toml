@@ -1,0 +1,15 @@
+schema = 1
+name = "gh-enhance"
+description = "gh enhance: GitHub Actions TUI"
+when = 'not(tag = "sandbox")'
+providers_only = true
+requires = ["gh"]
+
+# Needs gh auth / the API, so not in sandboxes.
+# TODO(dots-migration): `gh-ext` provider (task 7.11). It is skipped at plan time while `gh` is not yet
+# installed (dots does not bootstrap it: dots bug 7), so this is a script.
+[providers.script]
+check       = "gh extension list | awk -F'\\t' '$2==\"dlvhdr/gh-enhance\"{f=1} END{exit !f}'"
+version     = "gh extension list | awk -F'\\t' '$2==\"dlvhdr/gh-enhance\"{print $3}'"
+install     = "gh extension install dlvhdr/gh-enhance"
+

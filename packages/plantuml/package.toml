@@ -1,0 +1,9 @@
+schema = 1
+name = "plantuml"
+description = "plantuml-previewer.vim"
+bin = "plantuml"
+providers_only = true
+requires = ["graphviz"]
+
+[providers.brew]
+[providers.apt]

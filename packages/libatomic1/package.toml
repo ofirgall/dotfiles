@@ -1,0 +1,7 @@
+schema = 1
+name = "libatomic1"
+description = "libatomic.so.1: the node release binaries link it (missing from minimal Ubuntu images)"
+when = 'os = "linux"'
+providers_only = true
+
+[providers.apt]

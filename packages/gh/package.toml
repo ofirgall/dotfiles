@@ -1,0 +1,8 @@
+schema = 1
+name = "gh"
+description = "GitHub CLI"
+bin = "gh"
+providers_only = true
+
+[providers.brew]
+[providers.apt]

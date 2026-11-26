@@ -1,0 +1,9 @@
+schema = 1
+name = "lazydiff"
+description = "Ataraxy-Labs/lazydiff"
+bin = "lazydiff"
+providers_only = true
+requires = [{ name = "libdbus-1-dev", when = 'os = "linux"' }]
+
+[providers.cargo]
+git = "https://github.com/Ataraxy-Labs/lazydiff"

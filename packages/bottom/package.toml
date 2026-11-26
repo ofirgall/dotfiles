@@ -1,0 +1,18 @@
+schema = 1
+name = "bottom"
+description = "bottom (btm) + its two configs"
+bin = "btm"
+providers_only = true
+
+[providers.brew]
+
+[providers.cargo]
+
+[[files]]
+src = "bottom.toml"
+dst = { default = "~/.config/bottom/bottom.toml", macos = "{app_support}/bottom/bottom.toml" }
+
+# `btmf` alias (my-zsh-conf/aliases.zsh) points at ${BTM_CONF_DIR}/bottom-full.toml
+[[files]]
+src = "bottom-full.toml"
+dst = { default = "~/.config/bottom/bottom-full.toml", macos = "{app_support}/bottom/bottom-full.toml" }

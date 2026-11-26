@@ -1,0 +1,10 @@
+schema = 1
+name = "nvim-dict"
+description = "dictd + wordnet + moby thesaurus for telescope-dict.nvim"
+when = 'os = "linux"'
+bin = "dictd"
+providers_only = true
+requires = ["dict-wn", "dict-moby-thesaurus"]
+
+[providers.apt]
+name = "dictd"

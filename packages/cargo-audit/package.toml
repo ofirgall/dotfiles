@@ -1,0 +1,10 @@
+schema = 1
+name = "cargo-audit"
+bin = "cargo-audit"
+providers_only = true
+
+[providers.brew]
+
+
+[providers.cargo]
+

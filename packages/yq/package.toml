@@ -1,0 +1,8 @@
+schema = 1
+name = "yq"
+description = "macOS only here; on Linux yq comes from zinit (zsh-conf)"
+when = 'os = "macos"'
+bin = "yq"
+providers_only = true
+
+[providers.brew]

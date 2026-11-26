@@ -1,0 +1,11 @@
+schema = 1
+name = "koala-cli"
+description = "KoalaVim/koala-cli (private repo: ssh)"
+when = 'not(tag = "sandbox")'
+bin = "koala"
+providers_only = true
+requires = ["uv"]
+
+# TODO(dots-migration): confirm the entry point name (`bin`) once installed on a machine with ssh access.
+[providers.uv]
+git = "git+ssh://git@github.com/KoalaVim/koala-cli.git"

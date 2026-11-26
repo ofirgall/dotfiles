@@ -1,0 +1,11 @@
+schema = 1
+name = "ftdv"
+description = "wtnqk/ftdv: file tree diff viewer"
+bin = "ftdv"
+providers_only = true
+
+[providers.cargo]
+
+[[files]]
+src = "config.yaml"
+dst = "~/.config/ftdv/config.yaml"

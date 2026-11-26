@@ -1,0 +1,7 @@
+schema = 1
+name = "shell-gpt"
+bin = "sgpt"
+providers_only = true
+requires = ["uv"]
+
+[providers.uv]

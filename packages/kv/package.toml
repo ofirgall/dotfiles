@@ -1,0 +1,10 @@
+schema = 1
+name = "kv"
+description = "KoalaVim launcher / env manager"
+bin = "kv"
+providers_only = true
+
+# Mac today runs a build from ~/workspace/personal/koala-monorepo/kv; git source shows `outdated` until reinstalled.
+[providers.cargo]
+git = "https://github.com/KoalaVim/kv"
+git_fetch_with_cli = true

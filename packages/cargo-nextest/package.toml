@@ -1,0 +1,10 @@
+schema = 1
+name = "cargo-nextest"
+bin = "cargo-nextest"
+providers_only = true
+
+[providers.brew]
+
+
+[providers.cargo]
+

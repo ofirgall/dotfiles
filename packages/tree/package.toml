@@ -1,0 +1,8 @@
+schema = 1
+name = "tree"
+bin = "tree"
+providers_only = true
+
+[providers.brew]
+
+[providers.apt]

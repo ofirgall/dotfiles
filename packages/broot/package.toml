@@ -1,0 +1,10 @@
+schema = 1
+name = "broot"
+bin = "broot"
+providers_only = true
+
+[providers.brew]
+
+
+[providers.cargo]
+

@@ -1,0 +1,13 @@
+schema = 1
+name = "npm-prefix"
+description = "Linux: global npm installs go to ~/.npm-packages (was `npm config set prefix`)"
+when = 'os = "linux"'
+after = ["node"]
+
+[env]
+vars = { NPM_CONFIG_PREFIX = "~/.npm-packages" }
+path = ["~/.npm-packages/bin"]
+
+[[files]]
+mode = "dir"
+dst  = "~/.npm-packages"

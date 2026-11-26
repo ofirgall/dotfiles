@@ -1,0 +1,13 @@
+schema = 1
+name = "tmux-default-keys"
+description = "~/.tmux/default-keys.conf: tmux's stock bindings (the reload script unbinds plugin keys with it)"
+requires = ["tmux"]
+
+# TODO(dots-migration): this is `tmux`'s post_install hook (dots bug 6)
+[providers.script]
+check       = "test -s $HOME/.tmux/default-keys.conf"
+versionless = true
+install = '''
+mkdir -p "$HOME/.tmux"
+tmux -L _defaults -f /dev/null start-server \; list-keys \; kill-server > "$HOME/.tmux/default-keys.conf"
+'''

@@ -1,6 +1,8 @@
 schema = 1
 name = "ruby"
-description = "fusuma dependency"
-when = 'all(os = "linux", gui)'
+description = "tmux plugin dependency; also used by fusuma"
+bin = "ruby"
+providers_only = true
 
+[providers.brew]
 [providers.apt]

@@ -1,0 +1,8 @@
+schema = 1
+name = "fzy"
+bin = "fzy"
+providers_only = true
+
+[providers.brew]
+
+[providers.apt]

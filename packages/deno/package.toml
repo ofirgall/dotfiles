@@ -1,0 +1,18 @@
+schema = 1
+name = "deno"
+description = "Deno (peek.nvim)"
+bin = "deno"
+providers_only = true
+requires = ["unzip", "curl"]
+
+[providers.brew]
+
+[providers.script]
+when    = 'os = "linux"'
+check   = "test -x $HOME/.deno/bin/deno"
+version = "$HOME/.deno/bin/deno --version | head -1 | awk '{print $2}'"
+install = "sh {fetched} --no-modify-path --yes"
+fetch   = { url = "https://deno.land/install.sh" }
+
+[env]
+path = ["~/.deno/bin"]

@@ -1,0 +1,16 @@
+schema = 1
+name = "tpm"
+description = "tmux plugin manager, cloned to ~/.tmux/plugins/tpm"
+requires = ["git"]
+providers_only = true
+
+# TODO(dots-migration): file `mode = "git"` (gap G1)
+[providers.script]
+check   = "test -d $HOME/.tmux/plugins/tpm/.git"
+version = "git -C $HOME/.tmux/plugins/tpm rev-parse --short HEAD"
+latest  = "git ls-remote https://github.com/tmux-plugins/tpm HEAD | cut -c1-7"
+install = '''
+rm -rf "$HOME/.tmux/plugins/tpm"
+mkdir -p "$HOME/.tmux/plugins"
+git clone --depth 1 https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+'''

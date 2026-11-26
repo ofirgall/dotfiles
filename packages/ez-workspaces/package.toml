@@ -1,0 +1,20 @@
+schema = 1
+name = "ez-workspaces"
+description = "KoalaVim/ez-workspaces (`ez`) + per-OS config"
+bin = "ez"
+providers_only = true
+
+# The Mac runs a build from ~/workspace/personal/koala-monorepo/ez-workspaces; a git source shows
+# `outdated` until reinstalled.
+[providers.cargo]
+git = "https://github.com/KoalaVim/ez-workspaces"
+
+[[files]]
+src  = "linux/config.toml"
+dst  = "~/.config/ez/config.toml"
+when = 'os = "linux"'
+
+[[files]]
+src  = "macos/config.toml"
+dst  = "{app_support}/ez/config.toml"
+when = 'os = "macos"'
