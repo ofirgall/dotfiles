@@ -1706,7 +1706,7 @@ Count: 13 groups, about 70 packages touched, 14 packages deleted.
 
 - `lint`: 0 (`ok (294 packages, 11 bundles checked)`), Mac and Docker.
 - **Docker, profile `docker`, tag `sandbox`** (`dots-test:v02c`, `--memory 6g --memory-swap 6g`, `CARGO_BUILD_JOBS=4`, fresh container, one
-  uninterrupted run, about 6 minutes): plan: 92 installs, 48 file changes, 2 shims, 3 hooks; `lint 0, plan 0, apply 0,
+  uninterrupted run): plan: 92 installs, 48 file changes, 2 shims, 3 hooks; `lint 0, plan 0, apply 0,
   status 0 ("All good. 104 packages - 47 files"), recheck 0 ("Nothing to do: the machine already matches the repo")`, `RESULT: OK`.
   Shims and the three hooks (`default-keys.sh`, `install-plugins.sh`, pi/herdr) ran in that apply.
 - **Docker, `gui = true`**, bundles base + gui-apps + linux-desktop, tag sandbox, plan only: `lint 0`, `plan 0`: 108 installs, 37 file
