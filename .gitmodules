@@ -2,22 +2,22 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "editors/KoalaConfig"]
-	path = editors/KoalaConfig
-	url = git@github.com:ofirgall/KoalaConfig.git
+[submodule "packages/koala-config/KoalaConfig"]
+	path = packages/koala-config/KoalaConfig
+	url = https://github.com/ofirgall/KoalaConfig.git
 	ignore = dirty
-[submodule "dotfiles/zsh-conf"]
-	path = dotfiles/zsh-conf
-	url = git@github.com:ofirgall/zsh-conf.git
+[submodule "packages/zsh/zsh-conf"]
+	path = packages/zsh/zsh-conf
+	url = https://github.com/ofirgall/zsh-conf.git
 	ignore = dirty
-[submodule "editors/vscode-settings"]
-	path = editors/vscode-settings
-	url = git@github.com:ofirgall/vscode-settings.git
-[submodule "hypr-dots"]
-	path = hypr-dots
-	url = git@github.com:ofirgall/hypr-dots.git
+[submodule "packages/vscode/vscode-settings"]
+	path = packages/vscode/vscode-settings
+	url = https://github.com/ofirgall/vscode-settings.git
+[submodule "packages/hyprland/hypr-dots"]
+	path = packages/hyprland/hypr-dots
+	url = https://github.com/ofirgall/hypr-dots.git
 	ignore = dirty
-[submodule "agents-status"]
-	path = agents-status
-	url = git@github.com:KoalaVim/agents-status.git
+[submodule "packages/agents-status/agents-status"]
+	path = packages/agents-status/agents-status
+	url = https://github.com/KoalaVim/agents-status.git
 	ignore = dirty
