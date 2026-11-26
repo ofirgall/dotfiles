@@ -5,7 +5,7 @@ packages = [
   # bootstrap
   "homebrew", "rustup", "uv", "git", "local-bin",
   # shell
-  "zsh", "profile", "locale", "workspace-dirs", "scripts",
+  "zsh", "profile", "locales", "locale", "workspace-dirs", "scripts",
   # git
   "delta", "difftastic",
   # core CLI

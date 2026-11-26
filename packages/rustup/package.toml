@@ -2,6 +2,8 @@ schema = 1
 name = "rustup"
 description = "Rust toolchain: brew `rust` on macOS (what is installed there), rustup elsewhere"
 bin = "cargo"
+# every cargo package needs a C compiler/linker to build crates with build scripts
+requires = [{ name = "build-essential", when = 'os = "linux"' }]
 
 [providers.brew]
 name = "rust"

@@ -1,0 +1,7 @@
+schema = 1
+name = "locales"
+description = "locale-gen and the locale data (absent in minimal containers)"
+bin = "locale-gen"
+when = 'os = "linux"'
+
+[providers.apt]
