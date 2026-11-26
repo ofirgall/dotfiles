@@ -40,8 +40,8 @@ if ! herdr plugin list 2>/dev/null | grep -q herdr-pr-tracker; then
 fi
 
 # Install herdr terminfo (undercurl support)
-tic -o ~/.terminfo -x "$HOME/dotfiles/dotfiles/herdr/herdr-256color.terminfo"
+tic -o ~/.terminfo -x "$HOME/dotfiles/packages/herdr/herdr-256color.terminfo"
 
 # Build herdr-last-tab (last-tab switcher)
 echo "Building herdr-last-tab..."
-cargo install --path "$HOME/dotfiles/herdr-last-tab" --force --quiet
+cargo install --path "$HOME/dotfiles/packages/herdr-last-tab" --force --quiet

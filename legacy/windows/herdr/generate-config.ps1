@@ -4,9 +4,10 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-$Dir = $PSScriptRoot
-$PlatformFile = Join-Path $Dir "$Platform-config.toml"
-$CommonFile = Join-Path $Dir 'common-config.toml'
+$Dir = $PSScriptRoot   # legacy/windows/herdr: the generated config lands here
+$ConfigDir = Join-Path $Dir '..\..\..\packages\herdr\config'
+$PlatformFile = Join-Path $ConfigDir "$Platform.toml"
+$CommonFile = Join-Path $ConfigDir 'common.toml'
 $Output = Join-Path $Dir 'config.toml'
 
 if (-not (Test-Path $PlatformFile)) {

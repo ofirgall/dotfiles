@@ -1,12 +1,13 @@
 #!/bin/bash
 set -e
 
-DIR="$(cd "$(dirname "$0")" && pwd)"
-PLATFORM_FILE="$DIR/${1:?Usage: generate-config.sh <platform> (e.g. windows, mac)}-config.toml"
-COMMON_FILE="$DIR/common-config.toml"
+DIR="$(cd "$(dirname "$0")" && pwd)"            # legacy/windows/herdr: the generated files land here
+CONFIG_DIR="$DIR/../../../packages/herdr/config" # the dots package's layers
+PLATFORM_FILE="$CONFIG_DIR/${1:?Usage: generate-config.sh <platform> (e.g. windows, mac)}.toml"
+COMMON_FILE="$CONFIG_DIR/common.toml"
 OUTPUT="$DIR/config.toml"
 # Dev-only overrides, merged on top of config.toml for the dev herdr (`make run`)
-DEV_FILE="$DIR/config-dev.toml"
+DEV_FILE="$CONFIG_DIR/dev.toml"
 DEV_OUTPUT="$DIR/config-dev.generated.toml"
 
 TMPDIR="${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Windows dotbot entry point. DEFER until dots task 7.5 (see README.md); then convert like the other packages.
+# Run from anywhere in Git Bash; dotbot paths in windows.conf.yaml are relative to the repo root.
+
+export MSYS=winsymlinks:nativestrict
+
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"   # legacy/windows
+ROOT="$(cd "${BASEDIR}/../.." && pwd)"                    # the repo root, dotbot's -d
+DOTBOT_DIR="${ROOT}/dotbot"                               # == ../../dotbot
+
+cd "${ROOT}"
+git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+git submodule update --init --recursive dotbot
+
+"${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${ROOT}" -c "${BASEDIR}/windows.conf.yaml" "${@}"

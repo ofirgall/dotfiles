@@ -7,7 +7,7 @@ Steps that require manual intervention and can't be run by the install scripts.
 Open **Terminal as Administrator** (right-click Start → Terminal (Admin)) and run:
 
 ```powershell
-& "$env:USERPROFILE\dotfiles\install_scripts\windows\setup_admin.ps1"
+& "$env:USERPROFILE\dotfiles\legacy\windows\install_scripts\setup_admin.ps1"
 ```
 
 This currently:
@@ -19,7 +19,7 @@ This currently:
 Create start/stop shortcuts for GUI apps:
 
 ```powershell
-& "$env:USERPROFILE\dotfiles\install_scripts\windows\create_shortcuts.ps1"
+& "$env:USERPROFILE\dotfiles\legacy\windows\install_scripts\create_shortcuts.ps1"
 ```
 
 ## Developer Mode

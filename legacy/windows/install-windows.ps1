@@ -1,5 +1,5 @@
 # Windows dotfiles bootstrap — runs dotbot with system Python and Git Bash.
-# Run from PowerShell: .\install-windows.ps1
+# Run from PowerShell: .\legacy\windows\install-windows.ps1
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
@@ -39,14 +39,17 @@ if (-not (Get-Command python -ErrorAction SilentlyContinue) -or
     Write-Host "Python already installed: $(python --version)"
 }
 
-# 4. Init submodules
+# 4. Init submodules (the repo root is two levels up)
 Write-Host "Initializing submodules..."
+Push-Location (Resolve-Path (Join-Path (Split-Path -Parent $MyInvocation.MyCommand.Definition) "..\.."))
 git submodule update --init --recursive
+Pop-Location
 
 # 5. Run dotbot with system Python
-$repoDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+$legacyDir = Split-Path -Parent $MyInvocation.MyCommand.Definition   # legacy\windows
+$repoDir = (Resolve-Path (Join-Path $legacyDir "..\..")).Path       # the repo root, dotbot's -d
 $dotbotBin = Join-Path $repoDir "dotbot\bin\dotbot"
-$configFile = Join-Path $repoDir "windows.conf.yaml"
+$configFile = Join-Path $legacyDir "windows.conf.yaml"
 
 Write-Host "Running dotbot..."
 python $dotbotBin -d $repoDir -c $configFile @args

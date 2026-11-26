@@ -1,0 +1,120 @@
+# Windows dotbot config (DEFER until dots task 7.5; then convert like the other packages).
+# Run through legacy/windows/install-windows (dotbot -d is the repo root, so every path below is
+# relative to the repo root). The packages/... paths are the migrated dots package layout.
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_pwsh.sh', Installing PowerShell 7]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_vcbuildtools.sh', Installing Visual C++ Build Tools]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_rust.sh', Installing Rust toolchain]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_basic.sh', Installing basic CLI tools]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/herdr/generate-config.sh windows', Generating herdr config]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_kanata.sh', Installing Kanata]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_fonts.sh', Installing Nerd Fonts]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_ghostty.sh', Installing Ghostty]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_wezterm.sh', Installing WezTerm]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_komorebi.sh', Installing Komorebi]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_yasb.sh', Installing Yasb]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_git_utils.sh', Installing git utilities]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_ez_workspaces.sh', Installing ez-workspaces]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_tuis.sh', Installing TUIs]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_wrappers.sh', Installing Wrappers]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_flow_launcher.sh', Installing Flow Launcher]
+
+- defaults:
+    link:
+      relink: true
+      force: true
+      create: true
+
+# --- Portable symlinks (shared with Linux/macOS) ---
+- link:
+    ~/.config/nvim:
+        path: packages/koala-config/KoalaConfig
+    ~/.kvim.conf:
+        path: packages/koala-config/kvim.conf
+    ~/.config/kvim-envs/main:
+        path: packages/koala-config/KoalaConfig
+    ~/.vimrc:
+        path: packages/vim/vimrc
+    ~/dotfiles_scripts:
+        path: packages/scripts/scripts
+    ~/.config/ghostty/config:
+        path: packages/ghostty/config
+    ~/.config/ghostty/config.platform:
+        path: legacy/windows/ghostty/config.windows
+    ~/.profile:
+        path: packages/profile/profile
+    ~/.gitconfig:
+        path: legacy/windows/gitconfig
+    ~/.gitignore_global:
+        path: packages/git/gitignore_global
+    ~/.ripgreprc:
+        path: packages/ripgrep/ripgreprc
+    ~/.config/yazi:
+        path: packages/yazi/yazi
+    ~/.claude/settings.json:
+        path: packages/claude/settings.json
+    ~/.claude/keybindings.json:
+        path: packages/claude/keybindings.json
+    ~/.pi/agent/settings.json:
+        path: packages/pi/settings.json
+    ~/.claude/statusline-command.sh:
+        path: packages/claude/statusline-command.sh
+    ~/.cursor/statusline.sh:
+        path: packages/cursor/statusline.sh
+    ~/.config/cursor-cli-wrapper/config.toml:
+        path: packages/cursor-cli-wrapper/config.toml
+    ~/agents-status:
+        path: packages/agents-status/agents-status
+    ~/.config/agents-status/config.toml:
+        path: legacy/windows/agents-status-config-windows.toml
+    ~/.config/gh-dash/config.yml:
+        path: packages/gh-dash/config.yml
+    ~/.config/bottom/bottom.toml:
+        path: packages/bottom/bottom.toml
+    ~/.config/hop/config.toml:
+        path: packages/hop/config.toml
+    ~/AppData/Roaming/herdr/config.toml:
+        path: legacy/windows/herdr/config.toml
+
+# --- PowerShell profile ---
+- link:
+    ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
+        path: legacy/windows/pwsh-conf/profile.ps1
+    ~/.pwsh-conf:
+        path: legacy/windows/pwsh-conf
+    ~/.my-pwsh-conf:
+        path: legacy/windows/my-pwsh-conf
+
+# --- Windows-specific symlinks ---
+- link:
+    ~/AppData/Local/winghostty/config.ghostty:
+        path: legacy/windows/ghostty/config-winghostty
+    ~/.wezterm.lua:
+        path: legacy/windows/setup/.wezterm.lua
+    ~/.config/komorebi/komorebi.json:
+        path: legacy/windows/apps/komorebi/komorebi.json
+    ~/.config/komorebi/applications.json:
+        path: legacy/windows/apps/komorebi/applications.json
+    ~/.config/whkdrc:
+        path: legacy/windows/apps/komorebi/whkdrc
+    ~/AppData/Roaming/FlowLauncher/Settings/Settings.json:
+        path: legacy/windows/apps/flow-launcher/Settings.json
+    ~/.config/kanata/kanata.kbd:
+        path: legacy/windows/apps/kanata/kanata.kbd
+    ~/.config/yasb/config.yaml:
+        path: legacy/windows/apps/yasb/config.yaml
+    ~/.config/yasb/styles.css:
+        path: legacy/windows/apps/yasb/styles.css
+    ~/AppData/Roaming/ez/config.toml:
+        path: legacy/windows/ez-workspaces/config.toml
+
+- create:
+    - ~/workspace/personal
+    - ~/workspace/work
+
+- shell:
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_agents_status.sh', Installing agents-status]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_pi.sh', Installing pi coding agent]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_herdr.sh', Installing herdr]
+    - ['"C:/Program Files/Git/bin/bash.exe" legacy/windows/install_scripts/install_kvim.sh', Installing KoalaVim]
