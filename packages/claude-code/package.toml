@@ -1,0 +1,10 @@
+schema = 1
+name = "claude-code"
+description = "Claude Code (native installer)"
+bin = "claude"
+
+[providers.script]
+check   = "test -x $HOME/.local/bin/claude"
+version = "$HOME/.local/bin/claude --version | awk '{print $1}'"
+install = "bash {fetched}"
+fetch   = { url = "https://claude.ai/install.sh" }

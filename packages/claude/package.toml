@@ -1,0 +1,25 @@
+schema = 1
+name = "claude"
+description = "Claude Code config: settings, keybindings, statusline, local plugin marketplace"
+requires = ["claude-code"]
+providers_only = true
+
+# The app rewrites settings.json, so it stays a link: edits land in the repo.
+[[files]]
+src = "settings.json"
+dst = "~/.claude/settings.json"
+
+[[files]]
+src = "keybindings.json"
+dst = "~/.claude/keybindings.json"
+
+[[files]]
+src = "statusline-command.sh"
+dst = "~/.claude/statusline-command.sh"
+
+# settings.json `extraKnownMarketplaces.ofir-mods.source.path` points here (was an absolute repo path).
+# TODO(dots-migration): verify Claude expands `~` in that path, else render settings.json with a
+# `[[files.set]]` for it (task 5.4 / gap G18)
+[[files]]
+src = "mods"
+dst = "~/.claude/mods"

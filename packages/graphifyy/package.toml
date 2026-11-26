@@ -1,0 +1,8 @@
+schema = 1
+name = "graphifyy"
+description = "graphify knowledge-graph CLI + MCP server (uv tool)"
+bins = ["graphify", "graphify-mcp"]
+# tree-sitter builds from source on Linux aarch64 (needs cc)
+requires = [{ name = "build-essential", when = 'os = "linux"' }]
+
+[providers.uv]

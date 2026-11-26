@@ -1,0 +1,8 @@
+schema = 1
+name = "herdr-last-tab"
+description = "last-tab switcher daemon for herdr (the crate lives at the package root)"
+bin = "herdr-last-tab"
+requires = ["herdr", "rustup"]
+
+[providers.cargo]
+path = "."

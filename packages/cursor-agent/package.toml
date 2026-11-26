@@ -1,0 +1,10 @@
+schema = 1
+name = "cursor-agent"
+description = "Cursor CLI agent (native installer)"
+bin = "cursor-agent"
+
+[providers.script]
+check   = "test -x $HOME/.local/bin/cursor-agent"
+version = "$HOME/.local/bin/cursor-agent --version | head -1 | awk '{print $1}'"
+install = "bash {fetched}"
+fetch   = { url = "https://cursor.com/install" }

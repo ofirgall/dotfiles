@@ -1,3 +1,17 @@
-# PLACEHOLDER from chunk 1 (the submodule dir lives here). Chunk 3 replaces this file.
 schema = 1
 name = "agents-status"
+description = "agents-status server (uv tool from the submodule) + config; ~/agents-status stays an editable checkout"
+bin = "agents-status-server"
+requires = [{ name = "alerter", when = 'os = "macos"' }, "uv"]
+
+# the submodule dir (https remote; pushing goes over ssh via the gitconfig insteadOf rule)
+[[files]]
+src = "agents-status"
+dst = "~/agents-status"
+
+[[files]]
+src = "config.toml"
+dst = "~/.config/agents-status/config.toml"
+
+[providers.uv]
+path = "agents-status/core"

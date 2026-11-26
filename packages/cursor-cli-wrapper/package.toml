@@ -1,0 +1,24 @@
+schema = 1
+name = "cursor-cli-wrapper"
+description = "Rust wrapper that reports Cursor CLI status to agents-status (built by the agents-status installer)"
+bin = "cursor-cli-wrapper"
+requires = ["agents-status", "rustup"]
+
+[[files]]
+src = "config.toml"
+dst = "~/.config/cursor-cli-wrapper/config.toml"
+
+# Runs the submodule's installer by its repo path: ~/agents-status is only linked in the files
+# phase, after installs. `install.sh cursor-cli-wrapper` cargo-builds the crate, copies it to
+# ~/.local/bin and seeds config.toml when missing; that seed is removed again so the file link above
+# lands cleanly instead of backing up a stray copy.
+[providers.script]
+check       = "command -v cursor-cli-wrapper"
+versionless = true
+install     = '''
+cfg="$HOME/.config/cursor-cli-wrapper/config.toml"
+had=0
+if [ -e "$cfg" ] || [ -L "$cfg" ]; then had=1; fi
+"$DOTS_ROOT/packages/agents-status/agents-status/install.sh" cursor-cli-wrapper
+if [ "$had" = 0 ]; then rm -f "$cfg"; fi
+'''

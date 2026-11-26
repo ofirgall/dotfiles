@@ -1,0 +1,15 @@
+schema = 1
+name = "pi-subagents"
+description = "pi subagents extension"
+requires = ["pi"]
+
+# TODO(dots-migration): replace with `use = ["pi-package"]` (task 7.11). The interim custom
+# provider in dots.toml is never selected by this dots build (dots bug 8: custom providers always
+# resolve as "not available on this machine"), so a script drives `pi install`/`pi list`.
+# dots bug 7: script commands run with a PATH that lacks the `[env] path` dirs (ScriptEnv
+# path_prefix is never filled), so tools under them look `missing` in status/plan. The commands
+# source dots' generated env.sh first. TODO(dots-migration): drop when fixed.
+[providers.script]
+check       = '''. "${DOTS_STATE:-$HOME/.local/state/dots}/env.sh" 2>/dev/null || true; pi list 2>/dev/null | grep -qxF '  npm:pi-subagents''''
+versionless = true
+install     = '''. "${DOTS_STATE:-$HOME/.local/state/dots}/env.sh" 2>/dev/null || true; pi install npm:pi-subagents'''

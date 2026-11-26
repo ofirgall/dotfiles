@@ -1,0 +1,44 @@
+schema = 1
+name = "herdr"
+description = "herdr terminal workspace manager (ofirgall fork): rendered config, agent-detection rules, terminfo"
+bin = "herdr"
+requires = ["rustup", "zig-0.15"]
+
+[providers.cargo]
+git = "https://github.com/ofirgall/herdr"
+
+# ~/.config/herdr is a REAL directory owned by herdr (sockets, logs, sessions, plugins/,
+# plugins.json, .locks/ all land there). Only the entries below are managed by dots, so the repo
+# never receives runtime files again. Cutover: manual/split-runtime-dir.md
+
+# config.toml = common + mac. Old behavior (generate-config.sh `yq *+`) appends arrays, but
+# mac.toml only sets a scalar ([terminal] default_shell), so no path is appended or replaced:
+# the default (deep-merge tables, replace arrays) renders the same structure.
+[[files]]
+mode   = "render"
+format = "toml"
+dst    = "~/.config/herdr/config.toml"
+layers = ["config/common.toml", { src = "config/mac.toml", when = 'os = "macos"' }]
+
+# Second render for the dev herdr (`make run` in the fork). dev.toml sets no keys today, so none
+# of the four old DEV_REPLACE_PATHS (ui.sidebar.spaces.rows, ui.sidebar.spaces.agent_rows,
+# ui.sidebar.agents.rows, ui.status_icons.working) needs a [files.merge] entry yet; add
+# `"<path>" = "replace"` (the dots default for arrays) when dev.toml starts setting them.
+[[files]]
+mode   = "render"
+format = "toml"
+dst    = "~/.config/herdr/config-dev.generated.toml"
+layers = ["config/common.toml", { src = "config/mac.toml", when = 'os = "macos"' }, "config/dev.toml"]
+
+[[files]]
+src = "agent-detection"
+dst = "~/.config/herdr/agent-detection"
+
+[[files]]
+src = "scripts"
+dst = "~/.config/herdr/scripts"
+
+# undercurl support
+[[files]]
+mode = "terminfo"
+src  = "herdr-256color.terminfo"

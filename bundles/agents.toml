@@ -1,0 +1,18 @@
+schema = 1
+description = "AI coding agents (claude, codex, cursor, pi) and the herdr workspace manager with its plugins"
+
+packages = [
+  # claude
+  "claude-code", "claude", "claude-swap", "graphifyy",
+  # codex, cursor
+  "codex", "cursor", "cursor-agent",
+  # pi
+  "pi", "pi-herdr", "pi-subagents", "pi-powerline-footer", "pi-community-themes", "pi-skills",
+  # agents-status
+  "alerter", "agents-status", "cursor-cli-wrapper",
+  # herdr
+  "zig-0.15", "herdr", "herdr-last-tab",
+  "herdr-nvim-aware", "extrakto-herdr", "herdr-automatic-rename", "herdr-navigator",
+  "herdr-reviewr", "herdr-pr-tracker", "herdr-notify", "herdr-workspace-move", "herdr-pr-board",
+  "herdr-collie", "herdr-collie-setup",
+]

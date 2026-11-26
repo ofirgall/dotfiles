@@ -1,0 +1,12 @@
+schema = 1
+name = "pi-skills"
+description = "badlogic/pi-skills checked out as a pi skills dir"
+requires = ["pi", "git"]
+
+[providers.script]
+check       = "test -d $HOME/.pi/agent/skills/pi-skills/.git"
+versionless = true
+install     = '''
+mkdir -p "$HOME/.pi/agent/skills"
+git clone https://github.com/badlogic/pi-skills "$HOME/.pi/agent/skills/pi-skills"
+'''

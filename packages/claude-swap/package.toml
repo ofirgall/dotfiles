@@ -1,0 +1,6 @@
+schema = 1
+name = "claude-swap"
+description = "claude-swap account switcher (uv tool)"
+bins = ["claude-swap", "cswap"]
+
+[providers.uv]

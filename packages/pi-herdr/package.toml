@@ -1,0 +1,11 @@
+schema = 1
+name = "pi-herdr"
+description = "herdr agent-state integration for pi (`herdr integration install pi`)"
+when = 'not(tag = "sandbox")'
+requires = ["pi", "herdr"]
+
+# TODO(dots-migration): convert to hook (dots bug 6): post_install of pi
+[providers.script]
+check       = "herdr integration status 2>/dev/null | grep -q '^pi: current'"
+versionless = true
+install     = "herdr integration install pi"

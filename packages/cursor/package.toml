@@ -1,0 +1,8 @@
+schema = 1
+name = "cursor"
+description = "Cursor agent statusline"
+providers_only = true
+
+[[files]]
+src = "statusline.sh"
+dst = "~/.cursor/statusline.sh"

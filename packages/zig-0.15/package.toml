@@ -1,0 +1,23 @@
+schema = 1
+name = "zig-0.15"
+description = "zig 0.15.2: what the ofirgall/herdr fork's vendored libghostty-vt build requires (not on PATH; herdr's build.rs reads $ZIG)"
+providers_only = true
+
+# TODO(dots-migration): replace with archive provider (task 7.1, ARCH 5.2.5, gap G3). Bump together
+# with the fork's vendor/libghostty-vt/build.zig.zon `minimum_zig_version`. One download path on both
+# OSes on purpose: brew's `zig@0.15` is keg-only, and brew `zig` (0.16) is rejected by the fork.
+[providers.script]
+check   = "test -x $HOME/.local/share/zig-0.15/zig"
+version = "$HOME/.local/share/zig-0.15/zig version"
+install = '''
+source "$DOTS_LIB/arch.sh"
+v=0.15.2
+os=linux; [ "$DOTS_OS" = macos ] && os=macos
+tmp="$(mktemp -d)"; trap 'rm -rf "$tmp"' EXIT
+curl -fsSL "https://ziglang.org/download/$v/zig-$(dots_arch zig)-$os-$v.tar.xz" -o "$tmp/zig.tar.xz"
+rm -rf "$HOME/.local/share/zig-0.15"; mkdir -p "$HOME/.local/share/zig-0.15"
+tar -xf "$tmp/zig.tar.xz" -C "$HOME/.local/share/zig-0.15" --strip-components=1
+'''
+
+[env]
+vars = { ZIG = "~/.local/share/zig-0.15/zig" }

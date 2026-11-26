@@ -1,0 +1,20 @@
+schema = 1
+name = "codex"
+description = "OpenAI Codex CLI: brew cask on macOS, npm on Linux"
+bin = "codex"
+requires = [{ name = "node", when = 'os = "linux"' }]
+
+[providers.brew]
+cask = true
+when = 'os = "macos"'
+
+# TODO(dots-migration): replace with the built-in `npm` provider (task 7.1, gap G2). The interim
+# `npm-g` custom provider is never selected by this dots build (dots bug 8), so a script it is.
+# dots bug 7: script commands run with a PATH that lacks the `[env] path` dirs (ScriptEnv
+# path_prefix is never filled), so tools under them look `missing` in status/plan. The commands
+# source dots' generated env.sh first. TODO(dots-migration): drop when fixed.
+[providers.script]
+when        = 'os = "linux"'
+check       = '''. "${DOTS_STATE:-$HOME/.local/state/dots}/env.sh" 2>/dev/null || true; command -v codex'''
+versionless = true
+install     = '''. "${DOTS_STATE:-$HOME/.local/state/dots}/env.sh" 2>/dev/null || true; npm install -g @openai/codex'''

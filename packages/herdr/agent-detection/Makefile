@@ -21,7 +21,7 @@ record-herdr-events:
 		echo "already recording (pid $$(cat $(RECORD_PID))) -> $$(readlink $(RECORD_ROOT)/latest)"; exit 0; \
 	fi; \
 	dir=$(RECORD_ROOT)/$$(date +%Y%m%d-%H%M%S); mkdir -p $$dir; \
-	nohup ../record-agent-detection.sh -o $$dir >$$dir/recorder.log 2>&1 & echo $$! >$(RECORD_PID); \
+	nohup ../scripts/record-agent-detection.sh -o $$dir >$$dir/recorder.log 2>&1 & echo $$! >$(RECORD_PID); \
 	ln -sfn $$dir $(RECORD_ROOT)/latest; \
 	echo "recording (pid $$(cat $(RECORD_PID))) -> $$dir"; \
 	echo "follow: tail -f $(RECORD_ROOT)/latest/recorder.log"

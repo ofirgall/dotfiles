@@ -1,0 +1,14 @@
+schema = 1
+name = "herdr-collie"
+description = "Collie mobile client bridge for herdr (macOS)"
+when = 'all(os = "macos", not(tag = "sandbox"))'
+requires = ["herdr"]
+
+# TODO(dots-migration): replace with the `herdr-plugin` provider (task 7.11, gap G6). The interim
+# custom provider in dots.toml can't be used: a custom spec has no `source`, and `herdr plugin
+# list` reports the plugin id while the install wants owner/repo, so status would always say
+# `missing`. This script matches by plugin id instead (also `ok` for local-link installs).
+[providers.script]
+check       = "herdr plugin list 2>/dev/null | grep -q '^- herdr\\.collie ('"
+versionless = true
+install     = "herdr plugin install AltanS/collie --yes"

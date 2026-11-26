@@ -1,0 +1,8 @@
+schema = 1
+name = "alerter"
+description = "macOS notification CLI used by agents-status"
+bin = "alerter"
+when = 'os = "macos"'
+
+[providers.brew]
+tap = "vjeantet/tap"

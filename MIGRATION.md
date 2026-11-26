@@ -1493,3 +1493,104 @@ Bundles: `gui-apps`, `fonts`, `linux-desktop`, `gaming`, `optional`.
     skips. Expected, but worth an isolation option.
 11. **An apt `repo.key` must be ASCII-armored** (`not ASCII-armored; apt repository keys must be .asc`), but
     some vendors (Spotify) publish only the dearmored binary. dots could dearmor.
+
+## 11.3 Chunk 3 report (agents and herdr)
+
+Branch `migrate-c3`, bundle `agents`, 33 packages. Implemented against the frozen v0.2 snapshot.
+
+### Packages
+`claude-code claude claude-swap graphifyy codex cursor cursor-agent pi pi-herdr pi-subagents
+pi-powerline-footer pi-community-themes pi-skills alerter agents-status cursor-cli-wrapper zig-0.15
+herdr herdr-last-tab herdr-nvim-aware extrakto-herdr herdr-automatic-rename herdr-navigator
+herdr-reviewr herdr-pr-tracker herdr-notify herdr-workspace-move herdr-pr-board herdr-collie
+herdr-collie-setup`.
+New helper packages (not in the §5 list): `pi-herdr` and `herdr-collie-setup` (replace the two
+planned `post_install` hooks, dots bug 6) and `zig-0.15` (herdr build dependency).
+
+### Deviations
+- **herdr plugins are `script` packages, not `herdr-plugin` packages.** A custom provider's spec has
+  no `source` (only `name`), and `herdr plugin list` prints the plugin id while the install wants
+  `owner/repo`, so status would always say `missing`. Each script's `check` greps `herdr plugin list`
+  for the id (so a local-link install of the same id is `ok`, as §3.3 expected) and installs with
+  `herdr plugin install <owner/repo> --yes`. `herdr-pr-board` is public (`ofirgall/herdr-pr-board`).
+  All plugins except collie are `when = 'not(tag = "sandbox")'`; collie is macOS and not sandbox.
+- **pi packages and codex-on-Linux are `script` packages too**, for dots bug 8 below
+  (`pi list` / `pi install`, `npm install -g @openai/codex`).
+- **`agents-status` bin is `agents-status-server`**, not `agents-status` (that is the only script
+  `core/pyproject.toml` defines; the `agents-status --help` verify step in §5 cannot work).
+- **`herdr-256color.terminfo` defines the entry `xterm-256color`** (undercurl on top of xterm), not
+  `herdr-256color`, so `infocmp -x herdr-256color` fails even after tic. Kept as is (same as the old
+  `tic -x`); dots compiles it into `~/.terminfo/<hex>/xterm-256color`.
+- **herdr needs zig 0.15.2** (the fork's vendored libghostty-vt; the upstream checkout wants 0.16).
+  `zig-0.15` downloads it to `~/.local/share/zig-0.15` on both OSes (brew's `zig@0.15` is keg-only)
+  and exports `ZIG` (herdr's build.rs reads it), so nothing shadows `zig` on PATH.
+- **herdr dev render**: `config/dev.toml` sets no keys, so the second render needs no
+  `[files.merge]`; mac.toml sets only a scalar, so the first needs none either. The four old
+  `DEV_REPLACE_PATHS` are documented in a comment in `packages/herdr/package.toml`.
+- **cursor-cli-wrapper** runs the submodule installer by its repo path
+  (`$DOTS_ROOT/packages/agents-status/agents-status/install.sh`): `~/agents-status` is linked only
+  in the files phase, after installs. The installer's seeded `config.toml` is removed again so the
+  config link does not back up a stray file.
+- `claude` `mods` link and `~/.claude/mods` settings path: `TODO` kept (verify Claude expands `~`).
+- `herdr-automatic-rename` config is linked at the old `~/.config/herdr-automatic-rename/config.sh`.
+- Moved `herdr-last-tab/.gitignore` with the crate; fixed `agent-detection/Makefile`
+  (`../scripts/record-agent-detection.sh`) and `packages/herdr/AGENTS.md`.
+- `herdr/generate-config.{sh,ps1}` stay in `dotfiles/herdr/` for chunk 6 but now point at files that
+  moved (`common-config.toml`, `windows-config.toml` -> `packages/herdr/config/{common,windows}.toml`).
+
+### Results
+- **herdr render acceptance:** `generate-config.sh mac` run on a scratch copy of the original files,
+  parsed with `tomllib`, equals the dots render for both `config.toml` and
+  `config-dev.generated.toml`, except the three command strings rewritten per §4.3 (explain-agent,
+  read-agent-ansi, `prefix+r` -> `dots apply herdr --files-only --yes && herdr server reload-config`).
+- **Mac (scratch `--home`):** `lint` ok, `plan` has no warnings, `apply --files-only --yes` ok. The
+  real herdr runtime files no longer land in the repo (`~/.config/herdr` becomes a real dir,
+  `manual/split-runtime-dir.md`). Every script `check` was also run read-only against the real
+  `$HOME`: all pass except `pi-skills` (not installed today, as §3.3 says).
+- **Docker (Ubuntu 24.04 aarch64, `dots-test:v02-snapshot`, tag `sandbox`, bundles base + agents +
+  a throwaway `node` stub, because chunk 2 owns `node`):** lint 0, plan 0, apply 0, status 0 (54
+  packages, 31 files), recheck 0 (idempotent). Herdr plugins, `pi-herdr`, collie, alerter are `n/a`
+  there (sandbox / macOS). In the container afterwards: `herdr --version` (0.8.2), `herdr-last-tab`,
+  `claude --version`, `pi --version`, `codex --version`, `cursor-agent --version`, `cswap --help`,
+  `graphify --help` all run, and `~/.config/herdr` holds only the dots links (no `plugins/`).
+  A first full run failed once: three concurrent `pi install` calls rewrite
+  `~/.pi/agent/settings.json` and one lost its entry; the three pi packages are now chained with
+  `after`, and the rerun is green.
+- **Lint of this branch alone fails** with `unknown package node` (in `pi` and `codex`) until chunk 2
+  merges. Merge chunk 2 first.
+
+### dots bugs found
+7. **Script `check`/`version`/`install` PATH lacks the `[env] path` dirs.**
+   `dots-cli/src/providers.rs` builds `ScriptEnv { path_prefix: Vec::new() }`, so a tool installed
+   under a package's `[env] path` (npm global prefix, `~/.local/node/bin`) is `missing` in
+   `dots status` / `plan --check` even though `apply` passed its post-install check. Repro: a script
+   package with `[env] path = ["~/.local/x"]` whose `check = "command -v tool"` and which installs
+   `tool` there; `apply` ok, `status` says missing. Workaround: `pi` / `codex` / `pi-*` commands
+   source `${DOTS_STATE:-$HOME/.local/state/dots}/env.sh` first.
+8. **Custom providers (`[providers.<id>]` in dots.toml) are never selected at plan time.**
+   `dots-resolve/src/pass.rs` calls `Provider::availability(facts)`, and `CustomProvider` answers
+   `Unsupported` unless `facts.providers[id] == Some(true)`, which nothing sets for custom ids
+   (`availability_in` with the `available` command is not used by the resolver). Repro: package with
+   `[providers.pi-package] name = "npm:pi-subagents"` in a bundle -> `warning[no-provider-satisfies]
+   ... pi-package skipped: not available on this machine`. This affects `npm-g`, `gh-ext`,
+   `herdr-plugin`, `pi-package` and `code-ext` from `dots.toml` (chunk 2 and 5 packages that use
+   them are silently not installed). Workaround: script packages (see Deviations).
+
+### Profile additions
+- `machines/mac.toml`, `linux-desktop.toml`, `docker.toml`: add `agents` (already listed in the
+  planned profiles in §2.1; `docker.toml` currently has only `base` and the chunk 1 TODO).
+- `remote.toml`: nothing.
+
+### For chunk 6 and the merge
+- Merge order: chunk 2 before chunk 3 (`node`), or lint fails.
+- `packages/agents-status/package.toml` is overwritten here (chunk 1 placeholder): take this one.
+- Chunk 6: `windows.conf.yaml` / `common.conf.yaml` / `install.conf.yaml` still point at
+  `dotfiles/{claude,pi,codex,cursor}/…`, `dotfiles/cursor-cli-wrapper.toml`,
+  `dotfiles/agents-status-config*.toml` and `dotfiles/herdr/*`; those moved to `packages/…`.
+  `dotfiles/claude/hooks.txt` and `dotfiles/herdr/generate-config.{sh,ps1}` stayed in place.
+  `windows.conf.yaml` also needs the Windows claude `settings.json` mods path decision (it now holds
+  `~/.claude/mods`).
+- Paths owned here that others might touch: `~/.claude/*`, `~/.codex/config.toml`, `~/.pi/agent/*`,
+  `~/.cursor/statusline.sh`, `~/agents-status`, `~/.config/{herdr,agents-status,cursor-cli-wrapper,
+  herdr-automatic-rename}`, `~/.local/share/zig-0.15` (chunk 5's ghostty uses `~/.local/zig`).
+- Cutover (§8 step 2) is documented in `packages/herdr/manual/split-runtime-dir.md`.

@@ -43,7 +43,7 @@
     "ofir-mods": {
       "source": {
         "source": "directory",
-        "path": "/Users/ofirg/dotfiles/dotfiles/claude/mods"
+        "path": "~/.claude/mods"
       }
     },
     "prismantis": {

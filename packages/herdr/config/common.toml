@@ -170,14 +170,14 @@ command = '"$HOME/.local/bin/sidekick-herdr-minimize"'
 [[keys.command]]
 key = "prefix+ctrl+e"
 type = "popup"
-command = "bash ~/dotfiles/dotfiles/herdr/explain-agent.sh 2>&1; read -r"
+command = "bash ~/.config/herdr/scripts/explain-agent.sh 2>&1; read -r"
 width = "80%"
 height = "60%"
 
 [[keys.command]]
 key = "prefix+ctrl+shift+e"
 type = "popup"
-command = "bash ~/dotfiles/dotfiles/herdr/read-agent-ansi.sh 2>&1; read -r"
+command = "bash ~/.config/herdr/scripts/read-agent-ansi.sh 2>&1; read -r"
 width = "80%"
 height = "60%"
 
@@ -265,11 +265,11 @@ key = "prefix+g"
 type = "plugin_action"
 command = "persiyanov.reviewr.toggle"
 
-# Generate + reload config
+# Re-render config with dots + reload
 [[keys.command]]
 key = "prefix+r"
 type = "shell"
-command = "bash ~/dotfiles/dotfiles/herdr/generate-config.sh \"$(case $(uname) in Darwin) echo mac;; MINGW*|MSYS*|CYGWIN*) echo windows;; *) echo linux;; esac)\" && herdr server reload-config"
+command = "dots apply herdr --files-only --yes && herdr server reload-config"
 
 # Automatic rename
 [[keys.command]]

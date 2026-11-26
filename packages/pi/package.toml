@@ -1,0 +1,24 @@
+schema = 1
+name = "pi"
+description = "pi coding agent (npm, install scripts disabled) + settings and keybindings"
+bin = "pi"
+requires = ["node"]
+
+# TODO(dots-migration): replace with the built-in `npm` provider (task 7.1, gap G13: no
+# --ignore-scripts option)
+# dots bug 7: script commands run with a PATH that lacks the `[env] path` dirs (ScriptEnv
+# path_prefix is never filled), so tools under them look `missing` in status/plan. The commands
+# source dots' generated env.sh first. TODO(dots-migration): drop when fixed.
+[providers.script]
+check   = '''. "${DOTS_STATE:-$HOME/.local/state/dots}/env.sh" 2>/dev/null || true; command -v pi'''
+version = '''. "${DOTS_STATE:-$HOME/.local/state/dots}/env.sh" 2>/dev/null || true; pi --version | awk '{print $NF}''''
+install = '''. "${DOTS_STATE:-$HOME/.local/state/dots}/env.sh" 2>/dev/null || true; npm install -g --ignore-scripts @earendil-works/pi-coding-agent'''
+
+# pi rewrites settings.json (packages list, changelog versions), so both stay links
+[[files]]
+src = "settings.json"
+dst = "~/.pi/agent/settings.json"
+
+[[files]]
+src = "keybindings.json"
+dst = "~/.pi/agent/keybindings.json"
