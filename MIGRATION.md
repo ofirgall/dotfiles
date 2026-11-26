@@ -1629,3 +1629,101 @@ Branch `migrate-c2`. `bundles/dev.toml` plus 62 owned packages and 7 helper pack
 
 ### For chunk 6 / merge
 Owned paths are disjoint from other chunks. `packages/koala-config/package.toml` is an add/add conflict with the chunk-1 placeholder: take mine. `dotfiles/ez-workspaces-windows` stays for chunk 6. Moved: `dotfiles/{.kvim.conf,tmux_conf,yazi,hunk,lumen,ftdv,ez-workspaces,ez-workspaces-macos,hop,bottom,gh-dash}`, `editors/KoalaConfig-10`, `playgrounds`. Follow-ups: the Mac's local-path cargo copies of kv/ez-workspaces/hop (`dots bins --shadowed`), koala-cli bin name, and re-check with a gui profile.
+
+## 12. Final state
+
+Chunk 6 plus the master merge, the v02c workaround sweep and the profile additions. Written against dots v02c
+(`~/.cache/dots-migration/dots-v02c`, image `dots-test:v02c`).
+
+### What changed
+
+- **Master merged.** `13232982` (Dopamine) is migrated as `packages/dopamine` (macOS script package: latest `.dmg`
+  from GitHub releases, verified against `SHA256SUMS.txt`, `check = test -d /Applications/Dopamine.app`; in
+  `mac-extra`). v02c has no `archive`/`github-release` provider, so it stays a script. `git merge master` was
+  clean (`macos.conf.yaml` kept as master's one-line change, then deleted by chunk 6).
+- **Merge fallout fixed:** `fontforge` (chunk 4, macOS) and `font-fontforge` (chunk 5) collided as `binary-collision`;
+  `font-fontforge` is Linux-only now and `font-nerdwand-lyth` requires one per OS.
+- **Chunk 6.** Windows moved to `legacy/windows/` (dotbot kept; see its README; paths rewritten, not exercised). Deleted:
+  `install`, `install-macos`, `common/install/macos.conf.yaml`, `pre-commit`, `install_scripts/`, `dotfiles/`, `editors/`.
+  `install_scripts/` coverage audit found two uncovered pieces, now packages in `optional`: `taskwarrior-tui`
+  (cargo) and `taskopen` (pinned git). `brotab` is now `gui` (the Mac installer installed it) and sits in `gui-apps`.
+  `README.md`, `AGENTS.md`, `KEYBINDINGS.md`, `Makefile` (`plan`/`apply`/`docker`, `submodule.recurse`),
+  `.githooks/pre-commit` (new submodule paths; the chunk 6 commits were made without `--no-verify`).
+  `aerospace-scripts` now calls `~/.config/aerospace/scripts/*`.
+- **Profiles.** `docker` = base dev agents (fonts left out: the Nordwand build needs 4 GB); `mac` and
+  `linux-desktop` already listed `agents`.
+
+### Workarounds converted (dots v02c fixes)
+
+1. hooks: karabiner (`post_files`, `post_install`), linearmouse (login item; `linearmouse-login-item` deleted),
+   tmux (`post_install` default keys, `post_files` plugin clone; `tmux-default-keys`, `tpm-plugins` deleted),
+   brotab (`bt install`; `brotab-install` deleted), pi (herdr integration; `pi-herdr` deleted), herdr-collie
+   (`setup.sh`; `herdr-collie-setup` deleted, manual moved), font-caskaydia-cove (prune; `-prune` deleted).
+2. provider `shim`: `fd-shim`, `bat-shim` deleted (`shim =` creates both; seen in the Docker apply).
+3. `needs_root = true` instead of inline `sudo -n`: locale, firefox-snap-remove, macos-power, awesome-root-extras,
+   fusuma, vicinae, pinta, dict-moby-thesaurus (retry loop gone), gamescope, alacritty-desktop.
+4. `providers_only` dropped from meta packages: hyprland, cursor, claude, macos-defaults, browser-extensions,
+   serial-access, xdg-defaults.
+5. uv `kind = "venv"`: `scripts`.
+6. Custom providers (probed and bootstrapped): `npm-g` for hunk, openspec, mermaid-cli, codex (Linux);
+   `gh-ext` for gh-dash, gh-enhance, gh-markdown-preview, gh-stack; `herdr-plugin` (`name` = plugin id,
+   `source` = owner/repo) for 10 plugins. `npm-g` commands now pick brew's npm on macOS and `~/.npm-packages` on Linux.
+7. Scripts see `[env] path`: all `env.sh` sourcing removed (pi, codex, pi-*); `kv-env` lost its `PATH=` prefix.
+8. `lock = "pi"` replaces the `after` chain between pi-subagents, pi-powerline-footer and pi-community-themes.
+9. Flat apt repo and binary key: `sublime-apt-repo` deleted, `sublime` and `sublime-merge` use
+   `repo = { ..., flat = true }` (key fingerprint `1EDDE2CD...901A`); `spotify` uses the official binary `.gpg` key.
+10. xdg: `xdg-defaults` plans without `xdg-utils` installed first (Docker gui plan, below).
+11. `install = "install.sh"`: font-nerdwand-lyth, hyprland-plugins, ghostty, gamescope, dopamine (the file needs its own
+    `set -euo pipefail`; the runtime prelude is not applied to a file).
+12. apt/script race comments and the gamescope `DPkg::Lock::Timeout` removed.
+13. igrep: `locked = false` on its git source (the maintainer pointed to the opt-out).
+
+Count: 13 groups, about 70 packages touched, 14 packages deleted.
+
+### Workarounds that remain, and why
+
+- **pi packages stay scripts** (with `lock = "pi"`) instead of `pi-package`: custom providers have no serialization,
+  and concurrent `pi install` calls lose entries (bug 16). `pi-package` stays declared in `dots.toml`, unused.
+- `pi` / `codex`: pi needs `--ignore-scripts` (no per-package install flags, gap G13).
+- `libtmux`: uv `kind = "lib"` with system python (PEP 668, bug 17). `break_system_packages` is not in v02c.
+- cargo `--locked` on old crates: only igrep needed it (fixed above with `locked = false`).
+- one apt name per package: the helper packages (`libgtk-4-dev`, `libadwaita-1-dev`, ...) stay.
+- `acpi` keeps inline `sudo -n` (new bug 19).
+- git clones as scripts (tpm, ghostty-shaders, awesome-plugins, pi-skills, taskopen): file `mode = "git"` (gap G1).
+- archive-style scripts: go, node, bun, deno, fx, neovim, yazi, codelldb, bluetuith, proton-ge, zig-0.15, ghostty,
+  dopamine, win32yank, font release archives (no `archive`/`font` provider yet). `vscode-ext` (36 packages) is `code-ext`.
+- taskwarrior itself is apt 2.6 (the old installer built 3.x), `hyprland` has no provider, `pulseaudio`/`browser-extensions`
+  are manual or unmapped, `zsh-conf` still reads marker files, `claude` mods path `~` expansion is unverified.
+
+### New dots bug
+
+19. **`needs_root` scripts run under `sudo -n` with `env_reset`**: `HOME=/root`, `PATH` reset and every `DOTS_*` variable dropped
+    (checked in the container: `sudo bash -c env` shows only `SUDO_*`, `HOME`, `PATH`). A root script can't see `$DOTS_PKG_DIR`,
+    `$DOTS_TAGS` or the user's home (use `SUDO_USER` + `getent passwd`). Suggested: `sudo -n --preserve-env=...` or pass them through
+    `env`. `acpi` needs them and keeps inline sudo.
+
+### Validation
+
+- `lint`: 0 (`ok (294 packages, 11 bundles checked)`), Mac and Docker.
+- **Docker, profile `docker`, tag `sandbox`** (`dots-test:v02c`, `--memory 6g --memory-swap 6g`, `CARGO_BUILD_JOBS=4`, fresh container, one
+  uninterrupted run, about 6 minutes): plan: 92 installs, 48 file changes, 2 shims, 3 hooks; `lint 0, plan 0, apply 0,
+  status 0 ("All good. 104 packages - 47 files"), recheck 0 ("Nothing to do: the machine already matches the repo")`, `RESULT: OK`.
+  Shims and the three hooks (`default-keys.sh`, `install-plugins.sh`, pi/herdr) ran in that apply.
+- **Docker, `gui = true`**, bundles base + gui-apps + linux-desktop, tag sandbox, plan only: `lint 0`, `plan 0`: 108 installs, 37 file
+  changes, 2 settings (both xdg, deferred without `xdg-utils` installed), 1 service, 2 shims, 1 hook (brotab). No warnings or errors;
+  spotify's repo with the binary key and `alacritty-desktop` (needs_root) plan fine; `plan --check` exits 3 as expected (nothing applied).
+- **Mac, scratch `--home`** (`/tmp/h1`, profile mac): `lint 0`; `plan` has no errors: 40 installs, 59 file changes, 7 settings, 2 services,
+  3 hooks. Most installs are scratch-home artifacts (bug 8: brew sees no formulae). Never applied to the real `$HOME`.
+
+### Remaining TODO(dots-migration) items
+
+106 markers in 97 files under `packages/`, `bundles/`, `dots.toml`, `lib/`, `machines/` (count with
+`grep -rn 'TODO(dots-migration)' packages bundles dots.toml lib machines README.md | wc -l`). 36 are the `code-ext` ->
+built-in `vscode-ext` swap, 10 `herdr-plugin`, 9 `font`, 11 `archive`, 5 `npm`; the rest are the gaps above.
+
+### Open items
+
+- Mac cutover (section 8) and the first `dots.lock`.
+- hypr-dots `Keybinds.conf` wallpaper path (`~/dotfiles/awesomewm/wallpaper.jpg`); `.claude/settings.local.json` still names an old path.
+- Dots follow-ups: bug 19; `break_system_packages` and an `archive`/`font` provider in the next dots build; custom-provider `lock`.
+- Not run: Docker with `fonts`, gaming, optional bundles; ghostty and gamescope builds.
