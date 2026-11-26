@@ -9,3 +9,4 @@ providers_only = true
 # unlocked). Upstream main (1.3.0) does, so cargo installs from git.
 [providers.cargo]
 git = "https://github.com/konradsz/igrep"
+locked = false
