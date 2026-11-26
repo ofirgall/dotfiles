@@ -1,0 +1,13 @@
+schema = 1
+name = "spotify"
+description = "Spotify client from Spotify's apt repo"
+when = 'all(os = "linux", gui)'
+bin = "spotify"
+
+# The repo is signed with key 5384CE82BA52C83A now (the old script's C85668DF69375001 fails `apt update`).
+# Spotify only publishes that key dearmored (.gpg), and dots needs an ASCII-armored one, so it comes
+# from the Ubuntu keyserver; dots verifies the fingerprint.
+
+[providers.apt]
+name = "spotify-client"
+repo = { url = "https://repository.spotify.com", suite = "stable", components = ["non-free"], key = "https://keyserver.ubuntu.com/pks/lookup?op=get&options=mr&search=0xE1096BCBFF6D418796DE78515384CE82BA52C83A", fingerprint = "E1096BCBFF6D418796DE78515384CE82BA52C83A" }

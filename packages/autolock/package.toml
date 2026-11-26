@@ -1,0 +1,15 @@
+schema = 1
+name = "autolock"
+description = "Lock the screen after 15 minutes (xautolock + i3lock-fancy)"
+when = 'all(os = "linux", gui)'
+requires = ["xautolock", "i3lock-fancy"]
+providers_only = true
+
+# The unit used to be linked but never enabled. It needs DISPLAY=:0, so it is enabled for the
+# next graphical login but not started from a headless apply.
+[service]
+name    = "autolock"
+manager = "systemd-user"
+unit    = "autolock.service"
+enabled = true
+running = false

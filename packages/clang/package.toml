@@ -1,0 +1,7 @@
+schema = 1
+name = "clang"
+description = "build dependency of wiremix (bindgen)"
+when = 'os = "linux"'
+bin = "clang"
+
+[providers.apt]

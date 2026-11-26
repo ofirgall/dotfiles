@@ -1,0 +1,9 @@
+schema = 1
+description = "Nerd Fonts and the fonts the terminals use: casks on macOS, release archives on Linux"
+
+packages = [
+  "font-caskaydia-cove", "font-caskaydia-cove-prune", "font-ubuntu-mono", "font-jetbrains-mono",
+  "font-iosevka-term", "font-commit-mono", "font-0xproto", "font-recursive-mono", "font-maple-mono",
+  "font-nordwand-mono", "font-paper-mono", "font-cilantro-code", "font-nerdwand-lyth",
+  "fonts-cache",
+]

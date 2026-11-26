@@ -1,0 +1,27 @@
+schema = 1
+name = "awesome-plugins"
+description = "Third-party Lua plugins cloned into ~/.config/awesome (which is the repo's awesome dir)"
+when = 'all(os = "linux", gui)'
+requires = ["git", "curl"]
+
+# TODO(dots-migration): replace with git file entries (gap G1)
+[providers.script]
+check = '''
+for d in awesomewm-vim-tmux-navigator keyboard_layout retain smart_borders awesome-wm-widgets net_widgets; do
+  test -d "$HOME/.config/awesome/$d/.git" || exit 1
+done
+test -f "$HOME/.config/awesome/json.lua"
+'''
+versionless = true
+install     = '''
+A="$HOME/.config/awesome"
+mkdir -p "$A"
+clone() { [ -d "$A/$2" ] || git clone --depth=1 "https://github.com/$1" "$A/$2"; }
+clone ofirgall/awesomewm-vim-tmux-navigator awesomewm-vim-tmux-navigator # fork
+clone echuraev/keyboard_layout keyboard_layout
+clone Veratil/awesome-retain retain
+clone intrntbrn/smart_borders smart_borders
+clone streetturtle/awesome-wm-widgets awesome-wm-widgets
+clone pltanton/net_widgets.git net_widgets
+curl -fsSL -o "$A/json.lua" https://raw.githubusercontent.com/rxi/json.lua/master/json.lua
+'''

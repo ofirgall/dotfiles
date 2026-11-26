@@ -1,0 +1,6 @@
+schema = 1
+name = "lxappearance"
+description = "openbox gaming session helper"
+when = 'all(os = "linux", tag = "gaming")'
+
+[providers.apt]

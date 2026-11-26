@@ -1,0 +1,7 @@
+schema = 1
+name = "xdg-utils"
+description = "xdg-mime / xdg-settings"
+when = 'all(os = "linux", gui)'
+bin = "xdg-mime"
+
+[providers.apt]

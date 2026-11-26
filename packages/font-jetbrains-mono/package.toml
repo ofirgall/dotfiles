@@ -1,0 +1,20 @@
+schema = 1
+name = "font-jetbrains-mono"
+description = "JetBrainsMono Nerd Font"
+
+[providers.brew]
+name = "font-jetbrains-mono-nerd-font"
+cask = true
+
+# Linux: release archive from nerd-fonts into a dots-owned font dir; `fonts-cache` refreshes fc-cache.
+# TODO(dots-migration): replace with the `font` provider (ARCH 5.2.4, task 7.1)
+[providers.script]
+when    = 'os = "linux"'
+check   = '[ "$(cat "$HOME/.local/share/fonts/dots/font-jetbrains-mono/.version" 2>/dev/null)" = "3.4.0" ]'
+version = 'cat "$HOME/.local/share/fonts/dots/font-jetbrains-mono/.version"'
+install = '''
+d="$HOME/.local/share/fonts/dots/font-jetbrains-mono"
+rm -rf "$d"; mkdir -p "$d"
+curl -fsSL "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.tar.xz" | tar -xJ -C "$d"
+echo "3.4.0" > "$d/.version"
+'''

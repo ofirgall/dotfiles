@@ -1,0 +1,24 @@
+schema = 1
+name = "alacritty-desktop"
+description = "x-terminal-emulator alternative + .desktop entry so launchers (rofi) find alacritty"
+when = 'all(os = "linux", gui)'
+requires = ["alacritty", "desktop-file-utils", "curl"]
+
+# TODO(dots-migration): needs_root = true once dots bug 4 is fixed; sudo is inline until then.
+# TODO(dots-migration): hook post_install of alacritty (dots bug 6)
+[providers.script]
+check       = 'test -L /usr/local/bin/alacritty && test -f /usr/share/applications/Alacritty.desktop && update-alternatives --query x-terminal-emulator 2>/dev/null | grep -q "alacritty"'
+versionless = true
+install     = '''
+S=""; [ "$(id -u)" = 0 ] || S="sudo -n"
+$S ln -sf "$HOME/.cargo/bin/alacritty" /usr/local/bin/alacritty
+$S update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator "$HOME/.cargo/bin/alacritty" 100
+tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+raw=https://raw.githubusercontent.com/alacritty/alacritty/master/extra
+curl -fsSL -o "$tmp/Alacritty.desktop" "$raw/linux/Alacritty.desktop"
+curl -fsSL -o "$tmp/Alacritty.svg" "$raw/logo/alacritty-term.svg"
+$S cp "$tmp/Alacritty.desktop" /usr/share/applications/Alacritty.desktop
+$S cp "$tmp/Alacritty.svg" /usr/share/pixmaps/Alacritty.svg
+$S desktop-file-install /usr/share/applications/Alacritty.desktop
+$S update-desktop-database
+'''

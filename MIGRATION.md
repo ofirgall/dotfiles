@@ -1387,3 +1387,109 @@ Merge notes: no overlapping paths; `dotfiles/mac/` is empty (chunk 6 can drop it
 Text for other chunks (from old MANUAL.md):
 - agents-status: grant notification permission to alerter: `alerter --title "Setup" --message "Click Allow" --sound default --timeout 10`.
 - ghostty: Ghostty may hold macOS Secure Input, which stops AeroSpace intercepting `alt`-only binds (cmd-alt-* unaffected). Terminal menu > uncheck Secure Keyboard Entry. Verify: `ioreg -l -w 0 | grep kCGSSessionSecureInputPID`.
+
+## 11.5 Chunk 5 report
+
+Bundles: `gui-apps`, `fonts`, `linux-desktop`, `gaming`, `optional`.
+
+### Packages
+
+- **fonts** (bundle `fonts`): `font-caskaydia-cove`, `-ubuntu-mono`, `-jetbrains-mono`, `-iosevka-term`,
+  `-commit-mono`, `-0xproto`, `-recursive-mono`, `-maple-mono`, `-nordwand-mono` (mac), `-paper-mono` (mac),
+  `-cilantro-code`, `-nerdwand-lyth`; helpers `font-caskaydia-cove-prune` (mac), `font-fontforge`,
+  `font-ttfautohint`, `font-fontconfig`; `fonts-cache`.
+- **gui-apps**: `ghostty`, `ghostty-shaders`, `browser-extensions` (manual actions), `vscode`, 36 `vscode-ext-<id>`,
+  `alacritty`, `alacritty-desktop`, `spotify`.
+- **linux-desktop**: `hyprland` (+ `hyprland-plugins`, `pinta`, `wayfreeze`, `wf-recorder`), `awesome`
+  (+ `awesome-plugins`, `awesome-root-extras`), `autorandr`, `copyq`, `xmodmap`, `tridactyl`, `desktop-apps`,
+  `xdg-defaults`, `autolock`, `acpi`, `bluetuith`, `wiremix`, `xclip`, `brotab` (+ `brotab-install`).
+- **gaming**: `openbox`, `gamescope`, `proton-ge`. **optional**: `sublime` (+ `sublime-apt-repo`, `sublime-merge`),
+  `taskwarrior`, `firefox-deb` (+ `firefox-snap-remove`), `vicinae`, `fusuma`, `pulseaudio`.
+- One-apt-name helper packages (a package can't name two apt packages): `libgtk-4-dev libadwaita-1-dev gettext
+  libxml2-utils` (ghostty), `libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev` (alacritty,
+  wayfreeze), `libpipewire-0.3-dev clang` (wiremix), `playerctl i3lock-fancy xautolock pasystray pavucontrol blueman
+  flameshot xserver-xephyr copyq-plugins` (awesome/autolock), `libinput-tools ruby libevdev-dev ruby-dev` (fusuma),
+  `obconf lxappearance`, `acpid`, `xdg-utils`, `desktop-file-utils`, `python3-dev`.
+
+### Deviations
+
+- **`install = "script.sh"` is shell text, not a file path.** A script key is run as `bash -c`, so file installers
+  are `source ./install.sh` (cwd is the package dir, `set -euo pipefail` carries over). The §4.1 template line
+  `install = "install.sh"` does not work.
+- **Gating.** Fonts are not gated on `gui` (they apply in Docker next to `base`). Everything else Linux-desktop is
+  `all(os = "linux", gui)`; `ghostty`, `ghostty-shaders` and `browser-extensions` are `gui` (mac and Linux);
+  vscode and its extensions are Linux only (they were Linux only in the YAML); gaming is
+  `all(os = "linux", tag = "gaming")`; `acpi` is `all(os = "linux", any(tag = "dell", tag = "thinkpad"))`.
+  Helper packages are gated only on `os = "linux"`; they are reached through `requires` only.
+- **`hyprland` has no provider.** Files plus `manual/install.md` (check `command -v Hyprland`). A script whose
+  install can only fail would break every apply. `hyprland-plugin-deps` is not in Ubuntu's archive, so it is a manual
+  note there (an apt package for it made the whole apt batch fail: `Unable to locate package`).
+- **Nordwand build is pinned** to upstream `6a58cb2c` (before 2026-11-09). Upstream HEAD restructured to
+  `src/nordwand_mono` and moved the nerd patch to otf, so the old script's `sed` and `generate_font` break. Linux
+  also needs the `ttfautohint` binary (`font-ttfautohint`; the PyPI wheel ships none for aarch64). The patch
+  needs about 4 GB of RAM: run the Docker test with `-m 6g`, or OrbStack's 16 GB VM gets OOM-killed.
+- **Linux fonts** go to `~/.local/share/fonts/dots/<pkg>/` with a `.version` file as the check (nerd-fonts
+  `3.4.0`; bump the number in the package to reinstall). `fonts-cache` uses a stamp file instead of
+  `check = "true"` (which would never run): the check fails when any font file is newer than the stamp.
+- **ghostty linux**: always builds with `-fno-sys=gtk4-layer-shell` (24.04 has no such package), zig is
+  arch-aware via `dots_arch zig`. Not run in Docker (needs a long build); plan/lint only.
+- **alacritty** is `[providers.cargo] git = ...` (was `cargo install --git` plus root post-steps), and the root
+  steps (alternatives, `.desktop`) are the script package `alacritty-desktop`.
+- **spotify** key: the old script's key `C85668DF69375001` no longer verifies the repo. The repo is now signed with
+  `5384CE82BA52C83A`, which Spotify publishes only as a binary `.gpg` while dots needs an armored key; the key URL is
+  the Ubuntu keyserver and the fingerprint is pinned. Verified in Docker: repo added and `apt update` clean (the
+  `spotify-client` package itself is amd64-only, so the install can't be proved on aarch64).
+- **sublime** apt repo is flat (`deb https://download.sublimetext.com/ apt/stable/`), which dots can't express
+  (dots bug 7), so `sublime-apt-repo` is a root script (key + deb822 source + a targeted `apt-get update` with a retry
+  loop for the dpkg/lists lock). Verified in Docker.
+- **gamescope**: the ~60 build deps are installed inside the script with `apt-get -o DPkg::Lock::Timeout`, not as 60
+  packages (documented `TODO`). Not run (gaming tag, long build).
+- **taskwarrior** is only the apt package + `~/.taskrc`; the old installer built taskwarrior, taskwarrior-tui and
+  taskopen from source (TODO in the package).
+- `pulseaudio` is `providers_only` with no entry (`/etc/pulse/default.pa` is root-owned; TODO).
+- `autolock`: `[service] enabled = true, running = false` (the unit needs `DISPLAY=:0`).
+- `acpi` links into `/etc/acpi` point at `$DOTS_PKG_DIR/acpi/...` (the root used for the apply), as the old
+  `link.sh` pointed at the repo.
+- `fusuma` group membership is a manual action (`manual/input-group.md`), not `newgrp`.
+- `awesome/awesome/.gitignore` lists the plugin clones (`~/.config/awesome` is the repo dir).
+- Moved: `split-kb-layouts/*` to `docs/keyboards/`, `settings-scripts/query_font.sh` to `packages/fonts-cache/`,
+  `dotfiles/vdesk-collapser/config.toml` to `packages/hyprland/vdesk-collapser.toml`; `editors/vscode` deleted;
+  `awesomewm/install_awesomewm.sh` deleted; ghostty `config.windows` and `config-winghostty` are in
+  `packages/ghostty/windows/` for chunk 6.
+
+### Validation
+
+- Local (Mac, scratch `--home`): `lint` ok (162 packages, 6 bundles); `plan` and `apply --files-only` fine; ghostty and
+  the font casks read `ok`, `ghostty-shaders` and `font-cilantro-code` / `font-nerdwand-lyth` show as missing only
+  because the scratch `$HOME` has no `~/Library/Fonts` (the real home has them).
+- Docker, no `gui` (`base fonts gui-apps linux-desktop gaming optional`, tag `sandbox`, gui=false):
+  `lint 0, plan 0, apply 0, status 0 (51 packages, 16 files ok), recheck 0`. Everything except base + fonts is `n/a`.
+- Docker, only the GUI bundles (`gui-apps linux-desktop gaming optional`, gui=false): `plan` prints
+  "Nothing to do" (clean no-op).
+- Docker, `gui` on, tags `sandbox,gaming,dell` (plan only, after `apt install xdg-utils`): plan resolves with no
+  errors: 103 installs, 46 file changes, 2 xdg settings, 1 service action. Every script has a real check.
+- Docker, partial gui apply (gui=true, tags `sandbox,dell`; `dots apply <pkgs>`), all succeeded with a passing
+  check: `sublime` + `sublime-merge` (flat repo script), `acpi` (links in `/etc/acpi`), `awesome-plugins`,
+  `awesome-root-extras`, `ghostty-shaders`, `vscode` (MS apt repo + `code`), `xdg-defaults` (markdown handler),
+  `wayfreeze`, `wiremix`, `alacritty` (cargo git build, 44 s) + `alacritty-desktop`, `bluetuith` (arm64 asset),
+  `brotab` + `brotab-install`, `copyq`, `autorandr`, `uv`/`rustup`. Expected failures without a desktop: `pinta`
+  (no snap), `hyprland-plugins` (no `hyprpm`), `xdg-settings default-web-browser` (no desktop environment),
+  `autolock` service (no systemd), `spotify-client` (amd64 only).
+
+### New dots bugs (chunk 5)
+
+7. **Flat apt repositories can't be declared.** `repo` needs `components`, and a flat repo like Sublime's has none
+   (`deb https://download.sublimetext.com/ apt/stable/`). Worked around with `sublime-apt-repo`.
+8. **Custom `[providers.<id>]` are never "available" at plan time.** `CustomProvider::availability(&Facts)` returns
+   `Unsupported` unless `facts.providers[id]` is true, so `bootstrap` is never reached and every `code-ext` package
+   warns `no-provider-satisfies ... code-ext skipped: not available on this machine` on a gui Linux machine without
+   `code` (the 36 extension packages). Repro: a package with `[providers.code-ext]`, run `dots plan` where `code` is
+   missing. After `vscode` installs, a second apply is needed.
+9. **`[[xdg]]` planning fails when `xdg-mime` is not installed**: `cannot plan settings: cannot run
+   /usr/bin/xdg-mime query default text/markdown: No such file or directory`. The whole plan errors out, including
+   for unrelated packages. `xdg-defaults` `requires` `xdg-utils` but the plan is made before that installs.
+10. **A failing third-party apt repo fails every apt package** (`apt-get update` failure marks the whole batch
+    `skipped-due-to-dep`): one bad key in `optional` or `gui-apps` turns unrelated packages (`rustup`, `copyq`) into
+    skips. Expected, but worth an isolation option.
+11. **An apt `repo.key` must be ASCII-armored** (`not ASCII-armored; apt repository keys must be .asc`), but
+    some vendors (Spotify) publish only the dearmored binary. dots could dearmor.

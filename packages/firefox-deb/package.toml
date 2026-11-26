@@ -1,0 +1,11 @@
+schema = 1
+name = "firefox-deb"
+description = "Firefox as a deb from the mozillateam PPA (pinned over the snap)"
+when = 'all(os = "linux", gui)'
+bin = "firefox"
+requires = ["firefox-snap-remove"]
+
+[providers.apt]
+name = "firefox"
+repo = { ppa = "mozillateam/ppa" }
+pin  = { origin = "LP-PPA-mozillateam", priority = 1001 }

@@ -1,0 +1,12 @@
+schema = 1
+name = "xmodmap"
+description = "X keymap tweaks"
+when = 'all(os = "linux", gui)'
+bin = "xmodmap"
+
+[providers.apt]
+name = "x11-xserver-utils"
+
+[[files]]
+src = "xmodmaprc"
+dst = "~/.xmodmaprc"

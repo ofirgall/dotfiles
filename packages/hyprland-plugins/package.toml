@@ -1,0 +1,13 @@
+schema = 1
+name = "hyprland-plugins"
+description = "hyprpm plugins (virtual-desktops, monocle) and the waybar-vd build"
+when = 'all(os = "linux", gui)'
+requires = ["git"]
+# `hyprland-plugin-deps` (apt meta package needed to build the plugins) comes with the Hyprland install, see
+# ../hyprland/manual/install.md; it is not in Ubuntu's archive, so it cannot be an apt package here.
+
+# TODO(dots-migration): replace with the `hyprpm` bundled provider (task 7.11)
+[providers.script]
+check       = 'command -v hyprpm >/dev/null && hyprpm list | grep -q virtual-desktops && hyprpm list | grep -q monocle && test -d "$HOME/.local/share/waybar-vd/.git"'
+versionless = true
+install     = "source ./install.sh"

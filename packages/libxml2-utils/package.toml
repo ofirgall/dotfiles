@@ -1,0 +1,6 @@
+schema = 1
+name = "libxml2-utils"
+description = "build dependency of ghostty"
+when = 'os = "linux"'
+
+[providers.apt]

@@ -1,0 +1,10 @@
+schema = 1
+name = "vscode-ext-ms-vscode.cpptools-themes"
+description = "VS Code extension ms-vscode.cpptools-themes"
+when = 'all(os = "linux", gui)'
+requires = ["vscode"]
+providers_only = true
+
+# TODO(dots-migration): replace with the built-in `vscode-ext` provider (task 7.10)
+[providers.code-ext]
+name = "ms-vscode.cpptools-themes"

@@ -1,0 +1,10 @@
+schema = 1
+name = "font-fontforge"
+description = "fontforge, needed to patch Nerdwand/Lyth (named font-* so it can't collide with a dev-bundle `fontforge`)"
+bin = "fontforge"
+
+[providers.brew]
+name = "fontforge"
+
+[providers.apt]
+name = "fontforge"

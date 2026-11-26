@@ -1,0 +1,11 @@
+schema = 1
+name = "brotab-install"
+description = "`bt install`: native-messaging manifests for the browsers"
+when = 'all(os = "linux", gui)'
+requires = ["brotab"]
+
+# TODO(dots-migration): hook post_install of brotab (dots bug 6)
+[providers.script]
+check       = 'test -f "$HOME/.mozilla/native-messaging-hosts/brotab_mediator.json" || test -f "$HOME/.config/google-chrome/NativeMessagingHosts/brotab_mediator.json"'
+versionless = true
+install     = 'bt install'

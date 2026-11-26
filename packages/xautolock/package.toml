@@ -1,0 +1,6 @@
+schema = 1
+name = "xautolock"
+description = "awesome / desktop helper"
+when = 'all(os = "linux", gui)'
+
+[providers.apt]

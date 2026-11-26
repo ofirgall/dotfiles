@@ -1,0 +1,7 @@
+schema = 1
+name = "xclip"
+description = "clipboard CLI"
+when = 'all(os = "linux", gui)'
+bin = "xclip"
+
+[providers.apt]

@@ -1,0 +1,13 @@
+schema = 1
+name = "acpi"
+description = "Dock/undock and lid hooks, linked into /etc/acpi (events picked by the dell / thinkpad tag)"
+when = 'all(os = "linux", any(tag = "dell", tag = "thinkpad"))'
+requires = ["acpid"]
+
+# TODO(dots-migration): owned /etc files instead of a root script (later dots feature).
+# TODO(dots-migration): needs_root = true once dots bug 4 is fixed; sudo is inline until then.
+# The links point into this package dir (the repo root in use when applied).
+[providers.script]
+check       = "bash select.sh check"
+versionless = true
+install     = "bash select.sh install"

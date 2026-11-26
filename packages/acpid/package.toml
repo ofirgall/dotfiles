@@ -1,0 +1,7 @@
+schema = 1
+name = "acpid"
+description = "ACPI event daemon"
+when = 'os = "linux"'
+bin = "acpid"
+
+[providers.apt]

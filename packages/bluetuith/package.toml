@@ -1,0 +1,20 @@
+schema = 1
+name = "bluetuith"
+description = "Bluetooth TUI, from the GitHub release (arch-aware)"
+when = 'all(os = "linux", gui)'
+bin = "bluetuith"
+
+# TODO(dots-migration): replace with archive provider (task 7.1, ARCH 5.2.5)
+[providers.script]
+check   = 'test -x "$HOME/.local/bin/bluetuith"'
+version = '"$HOME/.local/bin/bluetuith" --version 2>/dev/null | grep -Eo "[0-9]+[.][0-9]+[.][0-9]+" | head -1'
+latest  = 'curl -fsSL https://api.github.com/repos/darkhz/bluetuith/releases/latest | grep -m1 "\"tag_name\"" | sed -E "s/.*\"v?([^\"]+)\".*/\1/"'
+install = '''
+source "$DOTS_LIB/arch.sh"
+source "$DOTS_LIB/github-release.sh"
+tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+gh_release_download darkhz/bluetuith "Linux_$(dots_arch bluetuith)\\.tar\\.gz$" "$tmp/bluetuith.tar.gz"
+tar -xf "$tmp/bluetuith.tar.gz" -C "$tmp" bluetuith
+mkdir -p "$HOME/.local/bin"
+install -m 0755 "$tmp/bluetuith" "$HOME/.local/bin/bluetuith"
+'''

@@ -1,0 +1,12 @@
+schema = 1
+name = "awesome"
+description = "AwesomeWM config (dir link) + the plugins it clones"
+when = 'all(os = "linux", gui)'
+bin = "awesome"
+requires = ["playerctl", "i3lock-fancy", "xautolock", "pasystray", "pavucontrol", "blueman", "flameshot", "xserver-xephyr", "copyq", "autorandr", "awesome-plugins", "awesome-root-extras"]
+
+[providers.apt]
+
+[[files]]
+src = "awesome"
+dst = "~/.config/awesome"

@@ -1,0 +1,6 @@
+schema = 1
+name = "libgtk-4-dev"
+description = "build dependency of ghostty"
+when = 'os = "linux"'
+
+[providers.apt]

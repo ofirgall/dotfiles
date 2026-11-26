@@ -1,0 +1,24 @@
+schema = 1
+name = "fonts-cache"
+description = "Linux: one `fc-cache -f` after every font package has placed its files"
+when = 'os = "linux"'
+requires = ["font-fontconfig"]
+# `after` is ordering only. Lint complains if a name below doesn't exist, so every font is listed.
+after = [
+  "font-caskaydia-cove", "font-ubuntu-mono", "font-jetbrains-mono", "font-iosevka-term", "font-commit-mono",
+  "font-0xproto", "font-recursive-mono", "font-maple-mono", "font-cilantro-code", "font-nerdwand-lyth",
+]
+
+# check = "true" (the plan) would make this a never-run no-op, so the stamp file is compared with
+# the newest font file instead: a font installed after the last run makes the check fail again.
+[providers.script]
+check = '''
+s="$HOME/.local/share/fonts/dots/.fc-cache-stamp"
+[ -f "$s" ] && [ -z "$(find "$HOME/.local/share/fonts/dots" -type f -newer "$s" -print -quit 2>/dev/null)" ]
+'''
+versionless = true
+install     = '''
+mkdir -p "$HOME/.local/share/fonts/dots"
+fc-cache -f
+touch "$HOME/.local/share/fonts/dots/.fc-cache-stamp"
+'''

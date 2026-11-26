@@ -1,0 +1,8 @@
+schema = 1
+name = "font-paper-mono"
+description = "paper-mono (macOS cask only; the old Linux installer never had it)"
+when = 'os = "macos"'
+
+[providers.brew]
+name = "font-paper-mono"
+cask = true

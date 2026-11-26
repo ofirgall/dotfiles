@@ -1,0 +1,6 @@
+schema = 1
+name = "ruby-dev"
+description = "fusuma dependency"
+when = 'all(os = "linux", gui)'
+
+[providers.apt]

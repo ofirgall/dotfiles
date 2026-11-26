@@ -1,0 +1,27 @@
+schema = 1
+description = "GUI applications. macOS: ghostty. Linux desktop: terminals, editors, music, browser helpers"
+
+packages = [
+  # every GUI OS
+  "ghostty", "ghostty-shaders", "browser-extensions",
+  # Linux desktop (each is also gated on os = linux, gui)
+  "vscode", "alacritty", "alacritty-desktop", "spotify",
+  "vscode-ext-cschlosser.doxdocgen", "vscode-ext-deibit.devdocs",
+  "vscode-ext-donjayamanne.githistory", "vscode-ext-golang.go",
+  "vscode-ext-jeff-hykin.better-cpp-syntax", "vscode-ext-josetr.cmake-language-support-vscode",
+  "vscode-ext-llvm-vs-code-extensions.vscode-clangd", "vscode-ext-malmaud.tmux",
+  "vscode-ext-mishkinf.goto-next-previous-member", "vscode-ext-ms-azuretools.vscode-docker",
+  "vscode-ext-ms-dotnettools.vscode-dotnet-runtime", "vscode-ext-ms-python.debugpy",
+  "vscode-ext-ms-python.python", "vscode-ext-ms-python.vscode-pylance",
+  "vscode-ext-ms-toolsai.jupyter", "vscode-ext-ms-toolsai.jupyter-keymap",
+  "vscode-ext-ms-toolsai.jupyter-renderers", "vscode-ext-ms-toolsai.vscode-jupyter-cell-tags",
+  "vscode-ext-ms-toolsai.vscode-jupyter-slideshow", "vscode-ext-ms-vscode-remote.remote-containers",
+  "vscode-ext-ms-vscode-remote.remote-ssh", "vscode-ext-ms-vscode-remote.remote-ssh-edit",
+  "vscode-ext-ms-vscode-remote.remote-wsl", "vscode-ext-ms-vscode.cmake-tools",
+  "vscode-ext-ms-vscode.cpptools", "vscode-ext-ms-vscode.cpptools-extension-pack",
+  "vscode-ext-ms-vscode.cpptools-themes", "vscode-ext-ms-vscode.remote-explorer",
+  "vscode-ext-rust-lang.rust-analyzer", "vscode-ext-sleistner.vscode-fileutils",
+  "vscode-ext-twxs.cmake", "vscode-ext-usernamehw.commands", "vscode-ext-usernamehw.find-jump",
+  "vscode-ext-vittorioromeo.expand-selection-to-scope", "vscode-ext-wmaurer.change-case",
+  "vscode-ext-yurihs.sublime-vscode-theme",
+]

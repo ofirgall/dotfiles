@@ -1,0 +1,24 @@
+schema = 1
+name = "proton-ge"
+description = "Proton-GE for Steam (checksum verified)"
+when = 'all(os = "linux", tag = "gaming")'
+requires = ["curl"]
+
+# TODO(dots-migration): replace with archive provider, extract.to = compatibilitytools.d (task 7.1)
+[providers.script]
+check   = 'ls "$HOME/.steam/root/compatibilitytools.d" 2>/dev/null | grep -q "^GE-Proton"'
+version = 'ls "$HOME/.steam/root/compatibilitytools.d" | grep "^GE-Proton" | sort -V | tail -1'
+latest  = 'curl -fsSL https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases/latest | grep -m1 "\"tag_name\"" | sed -E "s/.*\"([^\"]+)\".*/\1/"'
+install = '''
+source "$DOTS_LIB/github-release.sh"
+tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+cd "$tmp"
+gh_release_download GloriousEggroll/proton-ge-custom '\.tar\.gz$' proton.tar.gz
+gh_release_download GloriousEggroll/proton-ge-custom '\.sha512sum$' proton.sha512sum
+# the checksum file names the tarball by its release name, so verify that name
+tar_name=$(awk '{print $2}' proton.sha512sum)
+mv proton.tar.gz "$tar_name"
+sha512sum -c proton.sha512sum
+mkdir -p "$HOME/.steam/root/compatibilitytools.d"
+tar -xf "$tar_name" -C "$HOME/.steam/root/compatibilitytools.d/"
+'''

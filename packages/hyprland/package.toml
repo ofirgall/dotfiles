@@ -1,3 +1,27 @@
-# PLACEHOLDER from chunk 1 (the submodule dir lives here). Chunk 5 replaces this file.
 schema = 1
 name = "hyprland"
+description = "Hyprland desktop config (hypr-dots submodule). Hyprland itself is a manual install"
+when = 'all(os = "linux", gui)'
+requires = ["pinta", "wayfreeze", "wf-recorder", "hyprland-plugins"]
+providers_only = true
+
+# The old install_hyprland.sh never installed Hyprland itself; see manual/install.md.
+[[files]]
+src = "hypr-dots/hypr"
+dst = "~/.config/hypr"
+
+[[files]]
+src = "hypr-dots/waybar"
+dst = "~/.config/waybar"
+
+[[files]]
+src = "hypr-dots/swaync"
+dst = "~/.config/swaync"
+
+[[files]]
+src = "hypr-dots/rofi"
+dst = "~/.config/rofi"
+
+[[files]]
+src = "vdesk-collapser.toml"
+dst = "~/.config/vdesk-collapser/config.toml"

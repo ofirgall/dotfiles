@@ -1,0 +1,7 @@
+schema = 1
+name = "wf-recorder"
+description = "screen recording on wlroots compositors"
+when = 'all(os = "linux", gui)'
+bin = "wf-recorder"
+
+[providers.apt]

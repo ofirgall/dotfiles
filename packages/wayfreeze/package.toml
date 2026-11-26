@@ -1,0 +1,10 @@
+schema = 1
+name = "wayfreeze"
+description = "Screenshots with the cursor (wayland)"
+when = 'all(os = "linux", gui)'
+bin = "wayfreeze"
+requires = ["libxkbcommon-dev", "pkg-config"]
+
+[providers.cargo]
+git = "https://github.com/Jappie3/wayfreeze"
+locked = true

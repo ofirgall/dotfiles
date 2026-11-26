@@ -1,0 +1,6 @@
+schema = 1
+name = "libxkbcommon-dev"
+description = "build dependency of alacritty"
+when = 'os = "linux"'
+
+[providers.apt]

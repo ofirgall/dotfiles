@@ -1,0 +1,12 @@
+schema = 1
+name = "autorandr"
+description = "Monitor profiles"
+when = 'all(os = "linux", gui)'
+bin = "autorandr"
+
+# Only uv, not apt: the old installer used pip.
+[providers.uv]
+
+[[files]]
+src = "autorandr"
+dst = "~/.config/autorandr"

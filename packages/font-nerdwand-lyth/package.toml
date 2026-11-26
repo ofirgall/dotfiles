@@ -1,0 +1,15 @@
+schema = 1
+name = "font-nerdwand-lyth"
+description = "Nerdwand Mono + Lyth Mono NFM, patched locally with single-cell Nerd Font icons (Ghostty uses Nerdwand)"
+requires = ["font-fontforge", "font-ttfautohint", "uv", "git", "curl", "unzip", "build-essential"]
+
+# Both OSes. The font dir differs; `.nerdwand-plain-italic-k-x` marks a finished patch run.
+# TODO(dots-migration): replace with an archive/font provider once patched fonts can be declared (task 7.1)
+[providers.script]
+check = '''
+d="$HOME/Library/Fonts"; [ "$DOTS_OS" = macos ] || d="$HOME/.local/share/fonts/dots/font-nerdwand-lyth"
+[ -f "$d/.nerdwand-plain-italic-k-x" ] && ls "$d"/NerdwandMono-*.ttf "$d"/LythMonoNFM-*.ttf >/dev/null 2>&1
+'''
+versionless = true
+timeout     = "40m"
+install     = "source ./install.sh"

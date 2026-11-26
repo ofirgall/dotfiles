@@ -1,0 +1,8 @@
+schema = 1
+name = "font-ttfautohint"
+description = "ttfautohint binary: the PyPI wheel Nordwand's build uses ships none for linux/aarch64"
+when = 'os = "linux"'
+bin = "ttfautohint"
+
+[providers.apt]
+name = "ttfautohint"

@@ -1,0 +1,10 @@
+schema = 1
+name = "vscode-ext-rust-lang.rust-analyzer"
+description = "VS Code extension rust-lang.rust-analyzer"
+when = 'all(os = "linux", gui)'
+requires = ["vscode"]
+providers_only = true
+
+# TODO(dots-migration): replace with the built-in `vscode-ext` provider (task 7.10)
+[providers.code-ext]
+name = "rust-lang.rust-analyzer"

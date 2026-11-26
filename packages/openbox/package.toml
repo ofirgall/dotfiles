@@ -1,0 +1,16 @@
+schema = 1
+name = "openbox"
+description = "Openbox gaming session"
+when = 'all(os = "linux", tag = "gaming")'
+bin = "openbox"
+requires = ["obconf", "lxappearance"]
+
+[providers.apt]
+
+[[files]]
+src = "openbox/autostart"
+dst = "~/.config/openbox/autostart"
+
+[[files]]
+src = "openbox/rc.xml"
+dst = "~/.config/openbox/rc.xml"

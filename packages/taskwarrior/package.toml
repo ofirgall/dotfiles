@@ -1,0 +1,18 @@
+schema = 1
+name = "taskwarrior"
+description = "Taskwarrior + ~/.taskrc and the add-* shortcut scripts"
+when = 'all(os = "linux", gui)'
+bin = "task"
+
+# The old installer built taskwarrior, taskwarrior-tui and taskopen from source.
+# TODO(dots-migration): taskwarrior-tui (.deb release) and taskopen (pinned git + make) are not migrated.
+[providers.apt]
+name = "taskwarrior"
+
+[[files]]
+src = "taskrc"
+dst = "~/.taskrc"
+
+[[files]]
+src = "taskwarrior_shortcuts"
+dst = "~/.taskwarrior_shortcuts"

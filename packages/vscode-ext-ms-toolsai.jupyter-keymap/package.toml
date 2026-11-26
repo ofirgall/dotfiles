@@ -1,0 +1,10 @@
+schema = 1
+name = "vscode-ext-ms-toolsai.jupyter-keymap"
+description = "VS Code extension ms-toolsai.jupyter-keymap"
+when = 'all(os = "linux", gui)'
+requires = ["vscode"]
+providers_only = true
+
+# TODO(dots-migration): replace with the built-in `vscode-ext` provider (task 7.10)
+[providers.code-ext]
+name = "ms-toolsai.jupyter-keymap"

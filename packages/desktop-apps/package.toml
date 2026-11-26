@@ -1,0 +1,12 @@
+schema = 1
+name = "desktop-apps"
+description = ".desktop entries for gh markdown-preview and the Hypr browser opener"
+when = 'all(os = "linux", gui)'
+
+[[files]]
+src = "desktop-apps/gh-markdown-preview.desktop"
+dst = "~/.local/share/applications/gh-markdown-preview.desktop"
+
+[[files]]
+src = "desktop-apps/hypr-browser.desktop"
+dst = "~/.local/share/applications/hypr-browser.desktop"

@@ -1,0 +1,6 @@
+schema = 1
+name = "python3-dev"
+description = "Python headers (brotab builds psutil)"
+when = 'os = "linux"'
+
+[providers.apt]

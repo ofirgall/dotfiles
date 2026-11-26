@@ -1,0 +1,6 @@
+schema = 1
+name = "libpipewire-0.3-dev"
+description = "build dependency of wiremix (and gamescope)"
+when = 'os = "linux"'
+
+[providers.apt]

@@ -1,0 +1,15 @@
+schema = 1
+name = "gamescope"
+description = "Valve's gamescope (built from source, needs wayland 1.23). launch-options/ holds Steam launch lines"
+when = 'all(os = "linux", tag = "gaming")'
+bin = "gamescope"
+requires = ["git", "cmake", "pkg-config", "libpipewire-0.3-dev"]
+
+# TODO(dots-migration): needs_root = true once dots bug 4 is fixed; sudo is inline until then.
+# The ~60 build dependencies are installed inside the script with a dpkg lock timeout instead of
+# ~60 one-line apt packages. TODO: split into apt packages or a deps meta package.
+[providers.script]
+check       = 'command -v gamescope >/dev/null'
+versionless = true
+timeout     = "90m"
+install     = "source ./install.sh"

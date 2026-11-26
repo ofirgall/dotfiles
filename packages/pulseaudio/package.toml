@@ -1,0 +1,7 @@
+schema = 1
+name = "pulseaudio"
+description = "pulseaudio.pa kept in the repo; it used to be symlinked to /etc/pulse/default.pa by the awesome installer"
+providers_only = true
+
+# TODO(dots-migration): unknown dst. /etc/pulse/default.pa is root-owned and Ubuntu 24.04 uses
+# PipeWire, so nothing is linked until an owned-/etc feature exists.

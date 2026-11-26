@@ -1,0 +1,6 @@
+schema = 1
+description = "Not in any profile: the commented-out dotbot installers and orphan scripts"
+
+packages = [
+  "sublime", "sublime-merge", "taskwarrior", "firefox-deb", "vicinae", "fusuma", "pulseaudio",
+]

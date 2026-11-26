@@ -1,0 +1,18 @@
+schema = 1
+name = "alacritty"
+description = "Alacritty from git master (the old installer used cargo install --git)"
+when = 'all(os = "linux", gui)'
+bin = "alacritty"
+requires = ["libfreetype6-dev", "libfontconfig1-dev", "libxcb-xfixes0-dev", "libxkbcommon-dev", "cmake", "pkg-config", "python3"]
+
+[providers.cargo]
+git = "https://github.com/alacritty/alacritty"
+locked = true
+
+[[files]]
+src = "alacritty.toml"
+dst = "~/.alacritty.toml"
+
+[[files]]
+src = "alacritty-fonts"
+dst = "~/alacritty-fonts"

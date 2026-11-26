@@ -1,0 +1,13 @@
+schema = 1
+name = "copyq"
+description = "Clipboard history"
+when = 'all(os = "linux", gui)'
+bin = "copyq"
+requires = ["copyq-plugins"]
+
+[providers.apt]
+
+# CopyQ rewrites its config, so it stays a link (decision 6).
+[[files]]
+src = "copyq.conf"
+dst = "~/.config/copyq/copyq.conf"

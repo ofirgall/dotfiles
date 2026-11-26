@@ -1,0 +1,21 @@
+schema = 1
+name = "font-caskaydia-cove"
+description = "CaskaydiaCove Nerd Font (the custom italics are removed)"
+
+[providers.brew]
+name = "font-caskaydia-cove-nerd-font"
+cask = true
+
+# Linux: release archive from nerd-fonts into a dots-owned font dir; `fonts-cache` refreshes fc-cache.
+# TODO(dots-migration): replace with the `font` provider (ARCH 5.2.4, task 7.1)
+[providers.script]
+when    = 'os = "linux"'
+check   = '[ "$(cat "$HOME/.local/share/fonts/dots/font-caskaydia-cove/.version" 2>/dev/null)" = "3.4.0" ]'
+version = 'cat "$HOME/.local/share/fonts/dots/font-caskaydia-cove/.version"'
+install = '''
+d="$HOME/.local/share/fonts/dots/font-caskaydia-cove"
+rm -rf "$d"; mkdir -p "$d"
+curl -fsSL "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaCode.tar.xz" | tar -xJ -C "$d"
+rm -f "$d"/Caskaydia*Italic*
+echo "3.4.0" > "$d/.version"
+'''

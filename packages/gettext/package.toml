@@ -1,0 +1,6 @@
+schema = 1
+name = "gettext"
+description = "build dependency of ghostty"
+when = 'os = "linux"'
+
+[providers.apt]

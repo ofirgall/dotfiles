@@ -1,0 +1,7 @@
+schema = 1
+name = "desktop-file-utils"
+description = "desktop-file-install"
+when = 'all(os = "linux", gui)'
+bin = "desktop-file-install"
+
+[providers.apt]

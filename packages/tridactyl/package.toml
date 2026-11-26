@@ -1,0 +1,8 @@
+schema = 1
+name = "tridactyl"
+description = "Tridactyl (Firefox vim keys) config; the extension itself is installed in the browser"
+when = 'all(os = "linux", gui)'
+
+[[files]]
+src = "tridactylrc"
+dst = "~/.tridactylrc"

@@ -1,6 +1,9 @@
 schema = 1
 name = "flameshot"
-when = 'os = "macos"'
+description = "Screenshot tool (macOS cask; Linux desktop via apt)"
+when = 'any(os = "macos", all(os = "linux", gui))'
 
 [providers.brew]
 cask = true
+
+[providers.apt]

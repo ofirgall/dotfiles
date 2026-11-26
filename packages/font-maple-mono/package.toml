@@ -1,0 +1,22 @@
+schema = 1
+name = "font-maple-mono"
+description = "Maple Mono NF (its own release, not nerd-fonts)"
+requires = ["unzip"]
+
+[providers.brew]
+name = "font-maple-mono-nf"
+cask = true
+
+# TODO(dots-migration): replace with the `font` provider (ARCH 5.2.4, task 7.1)
+[providers.script]
+when    = 'os = "linux"'
+check   = '[ "$(cat "$HOME/.local/share/fonts/dots/font-maple-mono/.version" 2>/dev/null)" = "7.9" ]'
+version = 'cat "$HOME/.local/share/fonts/dots/font-maple-mono/.version"'
+install = '''
+d="$HOME/.local/share/fonts/dots/font-maple-mono"
+tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+rm -rf "$d"; mkdir -p "$d"
+curl -fsSL -o "$tmp/maple.zip" "https://github.com/subframe7536/maple-font/releases/download/v7.9/MapleMonoNormalNL-TTF.zip"
+unzip -oq "$tmp/maple.zip" -d "$d"
+echo 7.9 > "$d/.version"
+'''

@@ -1,0 +1,8 @@
+schema = 1
+name = "font-fontconfig"
+description = "fc-cache, run once by fonts-cache"
+when = 'os = "linux"'
+bin = "fc-cache"
+
+[providers.apt]
+name = "fontconfig"

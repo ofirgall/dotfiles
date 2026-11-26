@@ -1,0 +1,8 @@
+schema = 1
+name = "browser-extensions"
+description = "Chrome extensions and Tampermonkey scripts, as manual actions"
+when = 'gui'
+providers_only = true
+
+# TODO(dots-migration): declare these with the browser-ext provider (task 7.2). Until then each
+# is a manual action under manual/.

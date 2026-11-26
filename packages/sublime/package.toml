@@ -1,0 +1,25 @@
+schema = 1
+name = "sublime"
+description = "Sublime Text + the User/C++/Python/CustomStatusBar package dirs"
+when = 'all(os = "linux", gui)'
+bin = "subl"
+requires = ["sublime-apt-repo", "sublime-merge"]
+
+[providers.apt]
+name = "sublime-text"
+
+[[files]]
+src = "sublime/User"
+dst = "~/.config/sublime-text/Packages/User"
+
+[[files]]
+src = "sublime/C++"
+dst = "~/.config/sublime-text/Packages/C++"
+
+[[files]]
+src = "sublime/Python"
+dst = "~/.config/sublime-text/Packages/Python"
+
+[[files]]
+src = "sublime/CustomStatusBar"
+dst = "~/.config/sublime-text/Packages/CustomStatusBar"

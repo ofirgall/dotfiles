@@ -1,3 +1,22 @@
-# PLACEHOLDER from chunk 1 (the submodule dir lives here). Chunk 5 replaces this file.
 schema = 1
 name = "vscode"
+description = "VS Code from Microsoft's apt repo, plus the settings submodule"
+when = 'all(os = "linux", gui)'
+bin = "code"
+
+[providers.apt]
+name = "code"
+repo = { url = "https://packages.microsoft.com/repos/code", suite = "stable", components = ["main"], key = "https://packages.microsoft.com/keys/microsoft.asc", fingerprint = "BC528686B50D79E339D3721CEB3E94ADBE1229CF" }
+
+[[files]]
+src = "vscode-settings"
+dst = "~/.vscode-settings"
+
+# VS Code rewrites these, so they stay links into the submodule (decision 6).
+[[files]]
+src = "vscode-settings/settings.json"
+dst = "~/.config/Code/User/settings.json"
+
+[[files]]
+src = "vscode-settings/keybindings.json"
+dst = "~/.config/Code/User/keybindings.json"

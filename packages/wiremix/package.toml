@@ -1,0 +1,8 @@
+schema = 1
+name = "wiremix"
+description = "PipeWire TUI mixer"
+when = 'all(os = "linux", gui)'
+bin = "wiremix"
+requires = ["libpipewire-0.3-dev", "clang", "pkg-config"]
+
+[providers.cargo]

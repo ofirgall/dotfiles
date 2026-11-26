@@ -1,0 +1,15 @@
+schema = 1
+name = "font-cilantro-code"
+description = "Cilantro Code Mono (not on Homebrew; both OSes)"
+
+# TODO(dots-migration): replace with the `font` provider (ARCH 5.2.4, task 7.1)
+[providers.script]
+check   = 'test -f "$([ "$DOTS_OS" = macos ] && echo "$HOME/Library/Fonts" || echo "$HOME/.local/share/fonts/dots/font-cilantro-code")/CilantroCodeMono-Regular.ttf"'
+version = 'echo 1.000'
+install = '''
+if [ "$DOTS_OS" = macos ]; then d="$HOME/Library/Fonts"; else d="$HOME/.local/share/fonts/dots/font-cilantro-code"; fi
+mkdir -p "$d"
+for style in Regular Bold; do
+  curl -fsSL -o "$d/CilantroCodeMono-$style.ttf" "https://github.com/DraftingDreamer/FontCilantroCode/releases/download/v1.000/CilantroCodeMono-$style.ttf"
+done
+'''

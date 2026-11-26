@@ -1,0 +1,35 @@
+schema = 1
+name = "ghostty"
+description = "Terminal. macOS cask, Linux source build into ~/.local"
+when = 'gui'
+bin = "ghostty"
+# Nerdwand Mono is Ghostty's font; the shaders dir is cloned inside ~/.config/ghostty.
+requires = ["ghostty-shaders", "font-nerdwand-lyth", "libgtk-4-dev", "libadwaita-1-dev", "gettext", "libxml2-utils"]
+
+[providers.brew]
+cask = true
+
+# TODO(dots-migration): replace with archive provider + zig (task 7.1, ARCH 5.2.5)
+[providers.script]
+when    = 'os = "linux"'
+check   = 'test -x "$HOME/.local/bin/ghostty"'
+version = '"$HOME/.local/bin/ghostty" --version | head -1 | awk "{print \$2}"'
+latest  = 'curl -fsSL "https://api.github.com/repos/ghostty-org/ghostty/tags?per_page=1" | grep -m1 "\"name\"" | sed -E "s/.*\"v?([^\"]+)\".*/\1/"'
+install     = "source ./install.sh"
+timeout = "60m"
+
+# The config dir is real (shaders are cloned into it), so the files are linked one by one.
+[[files]]
+src = "config"
+dst = "~/.config/ghostty/config"
+
+# `config-file = ?config.platform` in `config` pulls in the per-OS file.
+[[files]]
+src  = "config.macos"
+dst  = "~/.config/ghostty/config.platform"
+when = 'os = "macos"'
+
+[[files]]
+src  = "config.linux"
+dst  = "~/.config/ghostty/config.platform"
+when = 'os = "linux"'

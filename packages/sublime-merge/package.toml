@@ -1,0 +1,8 @@
+schema = 1
+name = "sublime-merge"
+description = "Sublime Merge"
+when = 'all(os = "linux", gui)'
+bin = "smerge"
+requires = ["sublime-apt-repo"]
+
+[providers.apt]

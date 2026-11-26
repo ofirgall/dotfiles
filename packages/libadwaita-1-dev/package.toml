@@ -1,0 +1,6 @@
+schema = 1
+name = "libadwaita-1-dev"
+description = "build dependency of ghostty"
+when = 'os = "linux"'
+
+[providers.apt]
