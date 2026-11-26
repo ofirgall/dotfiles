@@ -1,1 +1,5 @@
+# dots env (PATH and vars of every package). dots also injects this into the login
+# shell's rc, which is ~/.bashrc on a fresh Linux user, so zsh must load it itself.
+[ -f "$HOME/.local/state/dots/env.sh" ] && . "$HOME/.local/state/dots/env.sh"
+typeset -U path PATH
 source "$HOME/.zsh-conf/env.zsh"

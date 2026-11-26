@@ -12,3 +12,7 @@ when = 'os = "macos"'
 [providers.npm-g]
 name = "@openai/codex"
 when = 'os = "linux"'
+
+[[files]]
+src = "config.toml"
+dst = "~/.codex/config.toml"

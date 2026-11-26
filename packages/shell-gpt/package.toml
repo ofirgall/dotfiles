@@ -5,3 +5,7 @@ providers_only = true
 requires = ["uv"]
 
 [providers.uv]
+
+# sgpt imports click but does not declare it; dots uv has no `with =` yet.
+[hooks]
+post_install = "uv tool install --force shell-gpt --with click"
