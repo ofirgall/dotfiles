@@ -300,3 +300,16 @@ Collection:
     not followed, `~/.git_work` not read).
   - Read-only checks: `herdr config check` and `herdr plugin list`.
   - Not read: `~/secrets.zsh`, `~/.git_work`, `auth.json` or any credential file.
+
+## Rerun after U1–U5 fixes (2026-11-26)
+
+Clean Docker run from scratch (`dots-test:v02c`): lint, plan, apply, status and recheck all exit 0, and the second plan is empty.
+
+| Item | Check in container | Result |
+|---|---|---|
+| U1 zsh PATH | `command -v node go bun deno pi` | all found |
+| U2 herdr fork | `herdr --version`, `herdr config check` | 0.9.5, config ok (built with Zig 0.16.0 via `herdr-zig`) |
+| U3 codex config | `~/.codex/config.toml` | symlinked from dots |
+| U4 master drift | merged master into the branch | done |
+| U5 shell-gpt | `sgpt --version` | ShellGPT 1.5.1 |
+| U6 git PPA | — | still open (dots-side change needed) |
