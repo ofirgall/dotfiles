@@ -1,0 +1,19 @@
+schema = 1
+name = "workspace-dirs"
+description = "Directories the shell config and git includeIf rules expect"
+
+[[files]]
+mode = "dir"
+dst  = "~/projects"
+
+[[files]]
+mode = "dir"
+dst  = "~/workspace"
+
+[[files]]
+mode = "dir"
+dst  = "~/workspace/personal"
+
+[[files]]
+mode = "dir"
+dst  = "~/workspace/work"

@@ -1,0 +1,17 @@
+schema = 1
+name = "rustup"
+description = "Rust toolchain: brew `rust` on macOS (what is installed there), rustup elsewhere"
+bin = "cargo"
+
+[providers.brew]
+name = "rust"
+
+[providers.script]
+when    = 'os = "linux"'
+check   = "test -x $HOME/.cargo/bin/cargo"
+version = "$HOME/.cargo/bin/rustc --version | awk '{print $2}'"
+install = "sh {fetched} -y --no-modify-path"
+fetch   = { url = "https://sh.rustup.rs" }
+
+[env]
+path = ["~/.cargo/bin"]

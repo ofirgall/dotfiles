@@ -1,0 +1,8 @@
+schema = 1
+name = "pkg-config"
+bin = "pkg-config"
+
+[providers.brew]
+name = "pkgconf"       # brew's pkg-config is an alias of pkgconf; this is what `brew list` reports
+
+[providers.apt]

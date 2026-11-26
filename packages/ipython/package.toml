@@ -1,0 +1,9 @@
+schema = 1
+name = "ipython"
+bin = "ipython"
+
+[providers.brew]
+
+[providers.apt]
+name = "ipython3"
+bin  = "ipython3"

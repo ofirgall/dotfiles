@@ -1,0 +1,7 @@
+schema = 1
+# Ubuntu x86_64 Hyprland laptop. Add "dell" or "thinkpad" per laptop; "gaming" is opt-in.
+bundles = ["base", "dev", "agents", "gui-apps", "fonts", "linux-desktop"]
+tags = []
+
+[facts]
+gui = true

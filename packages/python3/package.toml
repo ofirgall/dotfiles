@@ -1,0 +1,10 @@
+schema = 1
+name = "python3"
+bin = "python3"
+requires = [{ name = "python3-venv", when = 'os = "linux"' }]
+
+[providers.brew]
+name = "python@3.14"
+
+[providers.apt]
+name = "python3-pip"    # pulls python3 itself; python3-venv comes from the python3-venv package

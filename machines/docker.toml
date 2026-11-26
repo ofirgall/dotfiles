@@ -1,0 +1,8 @@
+schema = 1
+# ubuntu-24.04/aarch64 container used by dots-manager/scripts/docker-test.sh.
+# TODO(dots-migration): add "dev" and "agents" once chunks 2 and 3 merge.
+bundles = ["base"]
+tags = ["sandbox"]
+
+[facts]
+gui = false

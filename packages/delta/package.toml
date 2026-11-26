@@ -1,0 +1,17 @@
+schema = 1
+name = "delta"
+bin = "delta"
+requires = ["git"]
+
+[providers.brew]
+name = "git-delta"
+
+[providers.cargo]
+name = "git-delta"
+
+[[files]]
+mode     = "fragment"
+format   = "gitconfig"
+src      = "gitconfig.fragment"
+dst      = "~/.gitconfig"
+priority = 50

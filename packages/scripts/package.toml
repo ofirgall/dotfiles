@@ -1,0 +1,20 @@
+schema = 1
+name = "scripts"
+description = "~/dotfiles_scripts and the python venv its scripts use"
+requires = ["uv", "python3"]
+
+[[files]]
+src = "scripts"
+dst = "~/dotfiles_scripts"
+
+# TODO(dots-migration): replace with `[providers.uv] kind = "venv"`, `requirements = "requirements.txt"`
+# (ARCH §5.2; dots' uv provider refuses kind=venv today, see MIGRATION.md "dots bugs found")
+[providers.script]
+check       = "$HOME/.local/share/dots/venvs/scripts/bin/python -c 'import pyzshcomplete, argcomplete, libtmux, typer, sshconf'"
+versionless = true
+install = '''
+venv="$HOME/.local/share/dots/venvs/scripts"
+mkdir -p "$(dirname "$venv")"
+uv venv --python-preference system --allow-existing "$venv"
+uv pip install --python "$venv/bin/python" -r requirements.txt
+'''

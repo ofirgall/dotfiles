@@ -1,0 +1,19 @@
+schema = 1
+name = "win32yank"
+description = "Windows clipboard bridge for neovim under WSL"
+bin = "win32yank.exe"
+when = 'wsl'
+requires = ["unzip", "curl"]
+
+# TODO(dots-migration): replace with archive provider (task 7.1, ARCH §5.2.5)
+[providers.script]
+check       = "test -x $HOME/.local/bin/win32yank.exe"
+versionless = true
+install = '''
+source "$DOTS_LIB/github-release.sh"
+tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+gh_release_download equalsraf/win32yank 'win32yank-x64\.zip$' "$tmp/w.zip"
+unzip -o "$tmp/w.zip" win32yank.exe -d "$tmp"
+mkdir -p "$HOME/.local/bin"
+install -m 755 "$tmp/win32yank.exe" "$HOME/.local/bin/win32yank.exe"
+'''

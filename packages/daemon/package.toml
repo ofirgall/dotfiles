@@ -1,0 +1,5 @@
+schema = 1
+name = "daemon"
+bin = "daemon"
+when = 'os = "linux"'
+[providers.apt]

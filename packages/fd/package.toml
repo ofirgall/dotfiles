@@ -1,0 +1,10 @@
+schema = 1
+name = "fd"
+bin = "fd"
+
+[providers.brew]
+
+[providers.apt]
+name = "fd-find"
+bin  = "fdfind"
+shim = "fd"

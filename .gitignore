@@ -1,18 +1,10 @@
-editors/sublime/Doxy.sublime-license
-old_dconf
-editors/nvim/plugged
-editors/nvim/plugin
-editors/nvim/.*
-autokey/My\ Phrases
-autokey/Sample\ Scripts
+**/Doxy.sublime-license
 */__pycache__
 **/__pycache__
 */.ropeproject
 *.spl
-playgrounds/*
-!playgrounds/.templates*
-!playgrounds/generate.sh
+packages/playgrounds/playgrounds/*
+!packages/playgrounds/playgrounds/.templates*
+!packages/playgrounds/playgrounds/generate.sh
 wip-submodules
-dotfiles/ghostty/shaders
-dotfiles/ghostty/config.platform
-aerospace-switcher/.build
+packages/aerospace-switcher/aerospace-switcher/.build

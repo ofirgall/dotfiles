@@ -1,0 +1,34 @@
+schema = 1
+name = "zsh"
+bin = "zsh"
+requires = ["jq", "sqlite3", "subversion", "fzf", "git"]
+
+[providers.brew]
+
+[providers.apt]
+
+[[files]]
+src = "zsh-conf"
+dst = "~/.zsh-conf"
+
+[[files]]
+src = "my-zsh-conf"
+dst = "~/.my-zsh-conf"
+
+# ~/.zshenv and ~/.zshrc are real files that dots only edits inside marked blocks
+# (the dots env block is the other one in ~/.zshenv). Tools that append to ~/.zshrc stay
+# out of the repo.
+[[files]]
+mode = "inject"
+src  = "zshenv.inject"
+dst  = "~/.zshenv"
+
+[[files]]
+mode = "inject"
+src  = "zshrc.inject"
+dst  = "~/.zshrc"
+
+# zinit: fix completions of OMZ:rust
+[[files]]
+mode = "dir"
+dst  = "~/.cache/zinit/completions"

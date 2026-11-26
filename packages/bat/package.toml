@@ -1,0 +1,9 @@
+schema = 1
+name = "bat"
+bin = "bat"
+
+[providers.brew]
+
+[providers.apt]
+bin  = "batcat"     # Debian names the binary batcat
+shim = "bat"        # dots links ~/.local/bin/bat -> batcat

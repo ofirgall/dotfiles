@@ -1,0 +1,10 @@
+schema = 1
+name = "homebrew"
+bin = "brew"
+when = 'os = "macos"'
+
+[providers.script]
+check   = "test -x /opt/homebrew/bin/brew"
+version = "/opt/homebrew/bin/brew --version | head -1 | awk '{print $2}'"
+install = "NONINTERACTIVE=1 bash {fetched}"
+fetch   = { url = "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh" }

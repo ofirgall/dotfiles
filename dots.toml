@@ -1,0 +1,57 @@
+schema = 1
+requires_dots = ">=0.2"
+name = "ofirgall/dotfiles"
+
+[priority]
+any    = ["cargo", "uv", "npm-g", "script"]
+macos  = ["brew", "cargo", "uv", "npm-g", "script"]
+debian = ["apt", "cargo", "uv", "npm-g", "script"]
+
+[tags]
+remote   = "headless ssh box: base only (replaces ~/.remote_indicator)"
+work     = "drift.ai work machine: work tools"
+sandbox  = "throwaway container or CI: no ssh keys, no private repos, no gh auth"
+gaming   = "Steam + gamescope + openbox session"
+dell     = "Dell laptop ACPI events"
+thinkpad = "ThinkPad ACPI events"
+
+# ---- Interim declarative providers (ARCH §5.4). Replace per TODO when tasks 7.1/7.10/7.11 land.
+# TODO(dots-migration): replace with built-in `npm` provider (task 7.1)
+[providers.npm-g]
+available = "command -v npm"
+bootstrap = "node"
+installed = { cmd = "npm ls -g --json --depth=0", parse = "json:dependencies" }
+install   = "npm install -g {name}"
+batch     = false
+
+# TODO(dots-migration): replace with `[providers] use = ["gh-ext"]` (task 7.11)
+[providers.gh-ext]
+available = "command -v gh"
+bootstrap = "gh"
+installed = { cmd = "gh extension list", parse = 'regex:^[^\t]+\t(?P<name>[^\t]+)\t(?P<version>\S+)' }
+install   = "gh extension install {name}"
+batch     = false
+
+# TODO(dots-migration): replace with `use = ["herdr-plugin"]` (task 7.11): --json, --ref pinning, local link, enabled, {plugin_config}
+[providers.herdr-plugin]
+available = "command -v herdr"
+bootstrap = "herdr"
+installed = { cmd = "herdr plugin list", parse = 'regex:^- (?P<name>\S+) \(' }
+install   = "herdr plugin install {source} --yes"
+batch     = false
+
+# TODO(dots-migration): replace with `use = ["pi-package"]` (task 7.11)
+[providers.pi-package]
+available = "command -v pi"
+bootstrap = "pi"
+installed = { cmd = "pi list", parse = 'regex:^\s+(?P<name>(?:npm|git):\S+)\s*$' }
+install   = "pi install {name}"
+batch     = false
+
+# TODO(dots-migration): replace with built-in `vscode-ext` (task 7.10)
+[providers.code-ext]
+available = "command -v code"
+bootstrap = "vscode"
+installed = { cmd = "code --list-extensions --show-versions", parse = 'regex:^(?P<name>[^@]+)@(?P<version>\S+)$' }
+install   = "code --install-extension {name} --force"
+batch     = false

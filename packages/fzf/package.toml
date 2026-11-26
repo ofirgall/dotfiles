@@ -1,0 +1,22 @@
+schema = 1
+name = "fzf"
+bin = "fzf"
+requires = ["git"]
+
+[providers.brew]
+
+[providers.apt]
+
+# Replaces the old NO_SUDO branch: clone fzf into ~/.fzf when apt isn't usable.
+[providers.script]
+when    = 'not(sudo)'
+check   = "test -x $HOME/.fzf/bin/fzf"
+version = "$HOME/.fzf/bin/fzf --version | awk '{print $1}'"
+latest  = "git ls-remote --tags https://github.com/junegunn/fzf 'v*' | sed 's|.*refs/tags/v||' | grep -v '\\^' | sort -V | tail -1"
+install = '''
+if [ -d "$HOME/.fzf/.git" ]; then git -C "$HOME/.fzf" pull --ff-only; else git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"; fi
+"$HOME/.fzf/install" --bin
+'''
+
+[env]
+path = ["~/.fzf/bin"]

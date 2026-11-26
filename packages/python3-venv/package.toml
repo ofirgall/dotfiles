@@ -1,0 +1,4 @@
+schema = 1
+name = "python3-venv"
+when = 'os = "linux"'
+[providers.apt]

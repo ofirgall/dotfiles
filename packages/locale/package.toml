@@ -1,0 +1,13 @@
+schema = 1
+name = "locale"
+description = "en_US.UTF-8 locale (zsh-conf exports LC_ALL=en_US.UTF-8; containers ship without it)"
+when = 'os = "linux"'
+
+[providers.script]
+check      = "locale -a | grep -qix 'en_US.utf-\\?8'"
+versionless = true
+needs_root = true
+install = '''
+command -v locale-gen >/dev/null || apt-get install -y locales
+locale-gen en_US.UTF-8
+'''

@@ -1,0 +1,4 @@
+schema = 1
+# This MacBook. Bundles that don't exist yet are filled in by chunks 2-5.
+bundles = ["base", "dev", "agents", "gui-apps", "fonts", "mac-desktop", "mac-extra", "work"]
+tags = ["work"]

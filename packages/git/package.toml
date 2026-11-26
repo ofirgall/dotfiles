@@ -1,0 +1,30 @@
+schema = 1
+name = "git"
+bin = "git"
+
+[providers.brew]
+
+[providers.apt]
+repo = { ppa = "git-core/ppa" }    # newer git than Ubuntu's
+
+# ~/.gitconfig is composed from fragments: this one (priority 0), delta (50), difftastic (50).
+[[files]]
+mode     = "fragment"
+format   = "gitconfig"
+src      = "gitconfig"
+dst      = "~/.gitconfig"
+priority = 0
+
+# https -> ssh rewrites. Not in sandboxes (Docker, CI): they have no ssh keys, so every https
+# GitHub clone would fail.
+[[files]]
+mode     = "fragment"
+format   = "gitconfig"
+src      = "gitconfig.ssh-urls"
+dst      = "~/.gitconfig"
+priority = 10
+when     = 'not(tag = "sandbox")'
+
+[[files]]
+src = "gitignore_global"
+dst = "~/.gitignore_global"

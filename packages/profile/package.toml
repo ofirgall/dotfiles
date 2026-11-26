@@ -1,0 +1,6 @@
+schema = 1
+name = "profile"
+
+[[files]]
+src = "profile"
+dst = "~/.profile"

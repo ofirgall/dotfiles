@@ -25,7 +25,7 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 # Fix WAYLAND_DISPLAY pointing to wayland-0 when only wayland-1 exist
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then

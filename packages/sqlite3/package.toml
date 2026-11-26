@@ -1,0 +1,6 @@
+schema = 1
+name = "sqlite3"
+bin = "sqlite3"
+[providers.brew]
+name = "sqlite"
+[providers.apt]

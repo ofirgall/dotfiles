@@ -31,7 +31,6 @@
 	gen-conflicted = "!f() { files=$(git diff --name-only --diff-filter=U -- ':(attr:linguist-generated=true)'); echo \"Affected files:\"; echo \"$files\"; echo; [ -n \"$files\" ] && git \"$@\" -- $files; }; f"
 [core]
 	editor = kv
-	pager = delta
 	excludesfile = ~/.gitignore_global
 [pull]
 	ff = only
@@ -45,27 +44,10 @@
 	hide-dirty = 1
 [diff]
 	colorMoved = default
-	tool = difftastic
-[difftool]
-	prompt = false
-[difftool "difftastic"]
-	cmd = difft "$LOCAL" "$REMOTE"
 [color]
 	ui = auto
-[delta]
-	navigate = true # use n and N to move between diff sections
-	line-numbers = true
-	theme = Monokai Extended
-[interactive]
-	diffFilter = delta --color-only
-[pager]
-	difftool = true
 [rerere]
 	enabled = false
-[url "git@bitbucket.org:"]
-	insteadOf = https://bitbucket.org/
-[url "git@github.com:"]
-	insteadOf = https://github.com/
 [sendemail]
 	confirm = always
 	suppresscc = self

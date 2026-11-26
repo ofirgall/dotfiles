@@ -1,13 +1,14 @@
 
 alias nv=kv
 alias h=herdr
-alias nv-10='kv --override-state --profile 010 --nvim-bin-path ~/.local/nvim-010/bin/bin/nvim --lua-cfg ~/dotfiles/editors/KoalaConfig-10/'
+alias nv-10='kv --override-state --profile 010 --nvim-bin-path ~/.local/nvim-010/bin/bin/nvim --lua-cfg ~/.config/kvim-envs/010/'
 alias v=kv
 alias br='broot --conf ~/.brootrc.toml'
 alias lz='XDG_CONFIG_HOME=~/dotfiles_wip/editors/lazynvim/ XDG_DATA_HOME=~/.local/share/wip_nvim XDG_STATE_HOME=~/.local/state/wip_nvim nvim'
 alias lzlog='XDG_CONFIG_HOME=~/dotfiles_wip/editors/lazynvim/ XDG_DATA_HOME=~/.local/share/wip_nvim XDG_STATE_HOME=~/.local/state/wip_nvim NVLOG=1 nvim'
 alias cat='bat'
-alias btmf='btm -C "$HOME/dotfiles/dotfiles/bottom/bottom-full.toml"'
+if [[ "$OSTYPE" == darwin* ]]; then BTM_CONF_DIR="$HOME/Library/Application Support/bottom"; else BTM_CONF_DIR="$HOME/.config/bottom"; fi
+alias btmf='btm -C "${BTM_CONF_DIR}/bottom-full.toml"'
 alias open-codex-plan='codex-latest-plan.sh | mdp --full'
 alias del='ez session delete'
 alias new='ez session new'
@@ -21,10 +22,10 @@ alias notify='notify-send -u critical done'
 
 # cd aliases
 alias cdd='cd $HOME/dotfiles' # cd to dotfiles
-alias cdn='cd $HOME/dotfiles/editors/KoalaConfig/' # cd to neovim config
+alias cdn='cd -P $HOME/.config/nvim/' # cd to neovim config
 alias cdz='cd $HOME/.my-zsh-conf/' # cd to personal zsh config
 alias cdZ='cd $HOME/.zsh-conf/' # cd to zsh config
-alias cdt='cd $HOME/dotfiles/dotfiles/tmux_conf/' # cd to tmux config
+alias cdt='cd -P $HOME/.tmux_conf/' # cd to tmux config
 alias cdnt='cd $HOME/.local/share/nvim/lazy/ofirkai.nvim/' # cd to nvim theme
 alias cda='cd $HOME/.config/awesome/' # cd to awesome config
 cdw() {
@@ -222,8 +223,8 @@ drift-mcp-auth() {
   echo "Linked mcp-auth.json -> $dest"
 }
 
-alias mode-laptop="~/dotfiles/dotfiles/mac/sketchybar/plugins/mode-laptop.sh"
-alias mode-docked="~/dotfiles/dotfiles/mac/sketchybar/plugins/mode-docked.sh"
+alias mode-laptop="~/.config/sketchybar/plugins/mode-laptop.sh"
+alias mode-docked="~/.config/sketchybar/plugins/mode-docked.sh"
 
 [[ $OSTYPE == darwin* ]] && alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 

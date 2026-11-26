@@ -1,0 +1,4 @@
+schema = 1
+name = "serial-access"
+description = "Serial port access (dialout group), manual step"
+when = 'os = "linux"'

@@ -1,0 +1,12 @@
+schema = 1
+name = "uv"
+bin = "uv"
+
+[providers.brew]
+
+[providers.script]
+when    = 'os = "linux"'
+check   = "test -x $HOME/.local/bin/uv"
+version = "$HOME/.local/bin/uv --version | awk '{print $2}'"
+install = "UV_NO_MODIFY_PATH=1 sh {fetched}"
+fetch   = { url = "https://astral.sh/uv/install.sh" }

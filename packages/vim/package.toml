@@ -1,0 +1,11 @@
+schema = 1
+name = "vim"
+bin = "vim"
+
+[providers.brew]
+
+[providers.apt]
+
+[[files]]
+src = "vimrc"
+dst = "~/.vimrc"

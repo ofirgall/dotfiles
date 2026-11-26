@@ -1,0 +1,11 @@
+schema = 1
+name = "ripgrep"
+bin = "rg"
+
+[providers.brew]
+
+[providers.apt]
+
+[[files]]
+src = "ripgreprc"
+dst = "~/.ripgreprc"

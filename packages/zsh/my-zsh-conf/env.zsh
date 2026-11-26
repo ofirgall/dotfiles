@@ -92,5 +92,5 @@ esac
 # AWS
 export AWS_PROFILE=dev
 
-source $HOME/secrets.zsh
+[[ -f $HOME/secrets.zsh ]] && source $HOME/secrets.zsh
 

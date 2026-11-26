@@ -1,0 +1,17 @@
+schema = 1
+description = "Shell, git and core CLI: any box, including remote"
+
+packages = [
+  # bootstrap
+  "homebrew", "rustup", "uv", "git", "local-bin",
+  # shell
+  "zsh", "profile", "locale", "workspace-dirs", "scripts",
+  # git
+  "delta", "difftastic",
+  # core CLI
+  "ripgrep", "fd", "bat", "fzf", "jq", "vim", "curl", "wget", "unzip",
+  "build-essential", "cmake", "pkg-config", "moreutils", "pcregrep", "daemon", "toilet",
+  "sqlite3", "subversion", "python3", "python3-venv", "ipython",
+  # platform specific
+  "win32yank", "serial-access",
+]

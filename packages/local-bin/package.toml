@@ -1,0 +1,10 @@
+schema = 1
+name = "local-bin"
+description = "~/.local/bin exists and is on PATH"
+
+[env]
+path = ["~/.local/bin"]
+
+[[files]]
+mode = "dir"
+dst  = "~/.local/bin"

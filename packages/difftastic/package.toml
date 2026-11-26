@@ -1,0 +1,15 @@
+schema = 1
+name = "difftastic"
+bin = "difft"
+requires = ["git"]
+
+[providers.brew]
+
+[providers.cargo]
+
+[[files]]
+mode     = "fragment"
+format   = "gitconfig"
+src      = "gitconfig.fragment"
+dst      = "~/.gitconfig"
+priority = 50

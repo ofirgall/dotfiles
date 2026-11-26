@@ -1,0 +1,4 @@
+schema = 1
+# Headless ssh boxes.
+bundles = ["base"]
+tags = ["remote"]
