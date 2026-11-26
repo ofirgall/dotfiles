@@ -1,0 +1,6 @@
+schema = 1
+name = "flameshot"
+when = 'os = "macos"'
+
+[providers.brew]
+cask = true

@@ -1,0 +1,6 @@
+schema = 1
+name = "colima"
+when = 'os = "macos"'
+bin = "colima"
+
+[providers.brew]

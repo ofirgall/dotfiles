@@ -1,0 +1,6 @@
+schema = 1
+name = "auth0"
+when = 'os = "macos"'
+bin = "auth0"
+
+[providers.brew]

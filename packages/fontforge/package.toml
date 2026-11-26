@@ -1,0 +1,6 @@
+schema = 1
+name = "fontforge"
+when = 'os = "macos"'
+bin = "fontforge"
+
+[providers.brew]

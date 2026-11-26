@@ -1,0 +1,6 @@
+schema = 1
+name = "sqlc"
+when = 'os = "macos"'
+bin = "sqlc"
+
+[providers.brew]

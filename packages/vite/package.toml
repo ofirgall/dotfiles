@@ -1,0 +1,6 @@
+schema = 1
+name = "vite"
+when = 'os = "macos"'
+bin = "vite"
+
+[providers.brew]

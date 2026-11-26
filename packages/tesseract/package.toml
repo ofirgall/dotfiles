@@ -1,0 +1,6 @@
+schema = 1
+name = "tesseract"
+when = 'os = "macos"'
+bin = "tesseract"
+
+[providers.brew]

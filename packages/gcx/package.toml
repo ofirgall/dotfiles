@@ -1,0 +1,7 @@
+schema = 1
+name = "gcx"
+when = 'os = "macos"'
+bin = "gcx"
+
+[providers.brew]
+tap = "grafana/grafana"

@@ -1,0 +1,6 @@
+schema = 1
+name = "luarocks"
+when = 'os = "macos"'
+bin = "luarocks"
+
+[providers.brew]

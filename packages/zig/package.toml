@@ -1,0 +1,6 @@
+schema = 1
+name = "zig"
+when = 'os = "macos"'
+bin = "zig"
+
+[providers.brew]

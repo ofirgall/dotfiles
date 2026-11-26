@@ -1,0 +1,6 @@
+schema = 1
+name = "docker-compose"
+when = 'os = "macos"'
+bin = "docker-compose"
+
+[providers.brew]

@@ -1,0 +1,6 @@
+schema = 1
+name = "jira-cli"
+when = 'os = "macos"'
+bin = "jira"
+
+[providers.brew]

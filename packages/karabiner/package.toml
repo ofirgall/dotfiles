@@ -1,0 +1,18 @@
+schema = 1
+name = "karabiner"
+description = "Karabiner-Elements keyboard remapper (karabiner.json is link: the app rewrites it)"
+when = 'os = "macos"'
+
+[providers.brew]
+name = "karabiner-elements"
+cask = true
+
+[[files]]
+src = "karabiner.json"
+dst = "~/.config/karabiner/karabiner.json"
+mode = "link"
+
+# TODO(dots-migration): hooks never run (dots bug 6). Planned hooks:
+#   post_files   = "touch -h ~/.config/karabiner/karabiner.json"   (nudges Karabiner's file watcher)
+#   post_install = "open -a Karabiner-Elements"
+# Neither is reproduced; the manual action below covers first launch and permissions.

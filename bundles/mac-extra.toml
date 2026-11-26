@@ -1,0 +1,8 @@
+schema = 1
+description = "Brew leaves found on this Mac that are macOS-only (adopted, not previously declared)"
+
+packages = [
+  "fast-resume", "pik", "codeburn", "luarocks", "imagemagick", "ffmpeg", "tesseract", "resvg",
+  "zig", "mas", "pstree", "fontforge", "vite", "flameshot",
+]
+# TODO(dots-migration): `zig@0.15` is also installed on this Mac (no dependents); not declared.

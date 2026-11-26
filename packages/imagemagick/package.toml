@@ -1,0 +1,6 @@
+schema = 1
+name = "imagemagick"
+when = 'os = "macos"'
+bin = "magick"
+
+[providers.brew]

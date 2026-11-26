@@ -1,0 +1,8 @@
+schema = 1
+name = "sketchybar-app-font"
+description = "App icon font for workspace labels (helpers/icon_map.sh must match its version)"
+when = 'os = "macos"'
+
+[providers.brew]
+name = "font-sketchybar-app-font"
+cask = true

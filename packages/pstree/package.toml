@@ -1,0 +1,6 @@
+schema = 1
+name = "pstree"
+when = 'os = "macos"'
+bin = "pstree"
+
+[providers.brew]

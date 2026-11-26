@@ -1,0 +1,8 @@
+schema = 1
+name = "postgresql"
+description = "PostgreSQL 15 client/server (keg-only, installed but not started)"
+when = 'os = "macos"'
+bin = "psql"
+
+[providers.brew]
+name = "postgresql@15"

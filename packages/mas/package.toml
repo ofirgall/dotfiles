@@ -1,0 +1,6 @@
+schema = 1
+name = "mas"
+when = 'os = "macos"'
+bin = "mas"
+
+[providers.brew]

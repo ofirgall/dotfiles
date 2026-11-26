@@ -1,0 +1,6 @@
+schema = 1
+name = "opentofu"
+when = 'os = "macos"'
+bin = "tofu"
+
+[providers.brew]

@@ -1,0 +1,6 @@
+schema = 1
+name = "k9s"
+when = 'os = "macos"'
+bin = "k9s"
+
+[providers.brew]

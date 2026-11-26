@@ -1,0 +1,11 @@
+schema = 1
+name = "aerospace-switcher"
+description = "Swift window switcher panel (Ctrl+Tab)"
+when = 'os = "macos"'
+requires = ["aerospace"]
+
+# TODO(dots-migration): swift build is a script by design (ARCH section 16)
+[providers.script]
+check       = "test -x $HOME/.local/bin/aerospace-switcher"
+versionless = true
+install     = "command -v swift >/dev/null && make -C \"$DOTS_PKG_DIR/aerospace-switcher\" install"

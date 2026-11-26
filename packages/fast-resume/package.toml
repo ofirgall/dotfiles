@@ -1,0 +1,7 @@
+schema = 1
+name = "fast-resume"
+when = 'os = "macos"'
+bin = "fast-resume"
+
+[providers.brew]
+tap = "angristan/tap"

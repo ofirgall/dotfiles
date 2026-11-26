@@ -1,0 +1,7 @@
+schema = 1
+name = "markdown-preview"
+description = "Markdown Preview (QuickLook) cask, companion of gh-markdown-preview"
+when = 'os = "macos"'
+
+[providers.brew]
+cask = true

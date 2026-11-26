@@ -1,0 +1,6 @@
+schema = 1
+name = "asdf"
+when = 'os = "macos"'
+bin = "asdf"
+
+[providers.brew]

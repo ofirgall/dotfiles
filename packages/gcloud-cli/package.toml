@@ -1,0 +1,6 @@
+schema = 1
+name = "gcloud-cli"
+when = 'os = "macos"'
+
+[providers.brew]
+cask = true

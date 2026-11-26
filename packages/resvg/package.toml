@@ -1,0 +1,6 @@
+schema = 1
+name = "resvg"
+when = 'os = "macos"'
+bin = "resvg"
+
+[providers.brew]

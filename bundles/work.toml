@@ -1,0 +1,25 @@
+schema = 1
+description = "drift.ai work tools (tag work)"
+
+packages = [
+  { name = "acli", when = 'tag = "work"' },
+  { name = "auth0", when = 'tag = "work"' },
+  { name = "cfn-lint", when = 'tag = "work"' },
+  { name = "cloudflared", when = 'tag = "work"' },
+  { name = "colima", when = 'tag = "work"' },
+  { name = "docker-buildx", when = 'tag = "work"' },
+  { name = "docker-compose", when = 'tag = "work"' },
+  { name = "gcx", when = 'tag = "work"' },
+  { name = "jira-cli", when = 'tag = "work"' },
+  { name = "k9s", when = 'tag = "work"' },
+  { name = "opentofu", when = 'tag = "work"' },
+  { name = "postgresql", when = 'tag = "work"' },
+  { name = "prometheus", when = 'tag = "work"' },
+  { name = "sqlc", when = 'tag = "work"' },
+  { name = "asdf", when = 'tag = "work"' },
+  { name = "gcloud-cli", when = 'tag = "work"' },
+  { name = "1password-cli", when = 'tag = "work"' },
+  { name = "cloudflare-warp", when = 'tag = "work"' },
+  { name = "orbstack", when = 'tag = "work"' },
+  { name = "gitkraken-cli", when = 'tag = "work"' },
+]

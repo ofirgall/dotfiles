@@ -1339,3 +1339,51 @@ gives a `~/.gitconfig` whose `git config --list` equals the old file's.
    (karabiner `post_files`, tmux `post_install`, tpm `post_files`, brotab `bt install`, linearmouse
    and herdr hooks). Use a separate `script` package with `requires`/`after` instead, and mark it
    `# TODO(dots-migration): hook (dots bug 6)`.
+
+---
+
+## 11.4 Chunk 4 report (macOS desktop)
+
+Packages (all `when = 'os = "macos"'`): karabiner, linearmouse, linearmouse-login-item, betterdisplay,
+markdown-preview, aerospace, aerospace-scripts, aerospace-switcher, sketchybar-app-font, sketchybar,
+borders, macos-defaults, macos-power; mac-extra: fast-resume pik codeburn luarocks imagemagick ffmpeg
+tesseract resvg zig mas pstree fontforge vite flameshot; work (bundle member `when = 'tag = "work"'`):
+acli auth0 cfn-lint cloudflared colima docker-buildx docker-compose gcx jira-cli k9s opentofu
+postgresql (`postgresql@15`) prometheus sqlc asdf gcloud-cli 1password-cli cloudflare-warp orbstack
+gitkraken-cli.
+
+Deviations:
+- Hooks do not run (dots bug 6). karabiner `post_files` touch and `open -a` are dropped (TODO in
+  `packages/karabiner`, covered by `manual/permissions.md`). The LinearMouse login item is the script
+  package `linearmouse-login-item`. `activateSettings -u` is not reproduced (no honest check);
+  `macos-defaults/manual/apply-hotkeys.md` documents it.
+- `macos-power` uses inline `sudo -n` (dots bug 4); the one-shot `mdutil -a -E` (erase index) is dropped.
+- `zig@0.15` (installed, no dependents) is not declared. `jira-cli` and `auth0` are homebrew/core: no tap.
+- `[[defaults]]` hotkeys 28-31 and 184 declare only `enabled = false`: macOS normalised their
+  `parameters` (65535 -> 51/52/53), so the script's dict would be permanent drift.
+- `MANUAL.md` split into `manual/*.md` of karabiner, linearmouse, aerospace, aerospace-switcher,
+  macos-defaults; `macREADME/MANUAL.md` removed. Path rewrites (section 4.3) applied.
+
+Defaults read on this Mac (read-only) vs setup_once.sh: InitialKeyRepeat 13, KeyRepeat 2, fnState 1,
+_HIHideMenuBar 1, Clicking 1 (AppleMultitouchTrackpad), Dragging 1, DragLock 0 (both domains), dock
+autohide 1: all match. Differences: hotkeys 64/65/60/61 are stored as strings ("0", "32"...) by the old
+script, dots wants bool/int (apply would only fix the types); hotkeys 28-31/184 parameters differ as above;
+`com.apple.universalaccess` cursor keys are written by `sudo defaults write` into root's domain and are
+unreadable without sudo (unverified, plan shows `? ->`); BluetoothMultitouch `Clicking` is 0 (script
+never set it).
+
+Validation: `lint` 0 (89 packages). Mac `plan --home <scratch>`: no installs except tapped formulae
+and the two script packages, which are scratch-home artifacts (see bug 7, and `$HOME` in the script
+checks). Docker (`dots-test:v02-snapshot`, bundles base+mac-desktop+mac-extra+work, tags sandbox+work):
+lint 0, plan 0, apply 0, status clean, `plan --check` 0; every chunk 4 package is `n/a`.
+
+New dots bug 7: with `--home <scratch>`, `brew info --json=v2 --installed` run by the brew provider no
+longer lists formulae from third-party taps (166 -> 157), so tapped formulae look missing in a scratch-home
+plan. Repro: `HOME=<empty dir> brew info --json=v2 --installed` vs real HOME.
+
+Machines: `mac.toml` gains `mac-desktop`, `mac-extra`, `work` (already listed). No other profile.
+Merge notes: no overlapping paths; `dotfiles/mac/` is empty (chunk 6 can drop it).
+
+Text for other chunks (from old MANUAL.md):
+- agents-status: grant notification permission to alerter: `alerter --title "Setup" --message "Click Allow" --sound default --timeout 10`.
+- ghostty: Ghostty may hold macOS Secure Input, which stops AeroSpace intercepting `alt`-only binds (cmd-alt-* unaffected). Terminal menu > uncheck Secure Keyboard Entry. Verify: `ioreg -l -w 0 | grep kCGSSessionSecureInputPID`.

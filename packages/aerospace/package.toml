@@ -1,0 +1,19 @@
+schema = 1
+name = "aerospace"
+description = "AeroSpace tiling WM; scripts it calls live in ~/.config/aerospace/scripts"
+when = 'os = "macos"'
+bin = "aerospace"
+
+[providers.brew]
+cask = true
+tap  = "nikitabobko/tap"
+
+[[files]]
+src = "aerospace.toml"
+dst = "~/.aerospace.toml"
+mode = "link"
+
+[[files]]
+src = "scripts"
+dst = "~/.config/aerospace/scripts"
+mode = "link"

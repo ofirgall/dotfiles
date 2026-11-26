@@ -1,0 +1,6 @@
+schema = 1
+name = "codeburn"
+when = 'os = "macos"'
+bin = "codeburn"
+
+[providers.brew]

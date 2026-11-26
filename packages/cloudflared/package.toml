@@ -1,0 +1,6 @@
+schema = 1
+name = "cloudflared"
+when = 'os = "macos"'
+bin = "cloudflared"
+
+[providers.brew]

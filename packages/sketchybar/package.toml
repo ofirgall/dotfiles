@@ -1,0 +1,20 @@
+schema = 1
+name = "sketchybar"
+description = "SketchyBar menu bar replacement (native menu bar is hidden by macos-defaults)"
+when = 'os = "macos"'
+bin = "sketchybar"
+requires = ["sketchybar-app-font", "aerospace"]
+
+[providers.brew]
+tap = "felixkratz/formulae"
+
+[[files]]
+src = "sketchybar"
+dst = "~/.config/sketchybar"
+mode = "link"
+
+[service]
+name    = "sketchybar"
+manager = "brew"
+enabled = true
+running = true

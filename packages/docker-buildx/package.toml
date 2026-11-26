@@ -1,0 +1,6 @@
+schema = 1
+name = "docker-buildx"
+when = 'os = "macos"'
+bin = "docker-buildx"
+
+[providers.brew]

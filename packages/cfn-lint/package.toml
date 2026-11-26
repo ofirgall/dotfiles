@@ -1,0 +1,6 @@
+schema = 1
+name = "cfn-lint"
+when = 'os = "macos"'
+bin = "cfn-lint"
+
+[providers.brew]

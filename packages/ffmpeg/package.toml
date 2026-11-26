@@ -1,0 +1,6 @@
+schema = 1
+name = "ffmpeg"
+when = 'os = "macos"'
+bin = "ffmpeg"
+
+[providers.brew]

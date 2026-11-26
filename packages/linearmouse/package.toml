@@ -1,0 +1,12 @@
+schema = 1
+name = "linearmouse"
+description = "LinearMouse (linearmouse.json is link: the app rewrites it)"
+when = 'os = "macos"'
+
+[providers.brew]
+cask = true
+
+[[files]]
+src = "linearmouse.json"
+dst = "~/.config/linearmouse/linearmouse.json"
+mode = "link"

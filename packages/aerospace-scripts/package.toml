@@ -1,0 +1,11 @@
+schema = 1
+name = "aerospace-scripts"
+description = "Rust helper binary used by aerospace.toml and sketchybar (focus, swap, switch-group, ...)"
+when = 'os = "macos"'
+requires = ["rustup", "aerospace"]
+
+# TODO(dots-migration): the cargo `path` provider could replace this script (Makefile install target kept for parity)
+[providers.script]
+check       = "test -x $HOME/.local/bin/aerospace-scripts"
+versionless = true
+install     = "make -C \"$DOTS_PKG_DIR/aerospace-scripts\" install"

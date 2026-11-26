@@ -1,0 +1,7 @@
+schema = 1
+name = "pik"
+when = 'os = "macos"'
+bin = "pik"
+
+[providers.brew]
+tap = "jacek-kurlit/tap"

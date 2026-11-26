@@ -1,0 +1,6 @@
+schema = 1
+name = "orbstack"
+when = 'os = "macos"'
+
+[providers.brew]
+cask = true

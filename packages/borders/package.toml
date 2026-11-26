@@ -1,0 +1,19 @@
+schema = 1
+name = "borders"
+description = "JankyBorders window borders"
+when = 'os = "macos"'
+bin = "borders"
+
+[providers.brew]
+tap = "felixkratz/formulae"
+
+[[files]]
+src = "bordersrc"
+dst = "~/.config/borders/bordersrc"
+mode = "link"
+
+[service]
+name    = "borders"
+manager = "brew"
+enabled = true
+running = true

@@ -1,0 +1,7 @@
+schema = 1
+name = "acli"
+when = 'os = "macos"'
+bin = "acli"
+
+[providers.brew]
+tap = "atlassian/acli"
