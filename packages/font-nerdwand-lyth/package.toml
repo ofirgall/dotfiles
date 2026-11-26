@@ -1,7 +1,7 @@
 schema = 1
 name = "font-nerdwand-lyth"
 description = "Nerdwand Mono + Lyth Mono NFM, patched locally with single-cell Nerd Font icons (Ghostty uses Nerdwand)"
-requires = ["font-fontforge", "font-ttfautohint", "uv", "git", "curl", "unzip", "build-essential"]
+requires = [{ name = "font-fontforge", when = 'os = "linux"' }, { name = "fontforge", when = 'os = "macos"' }, "font-ttfautohint", "uv", "git", "curl", "unzip", "build-essential"]
 
 # Both OSes. The font dir differs; `.nerdwand-plain-italic-k-x` marks a finished patch run.
 # TODO(dots-migration): replace with an archive/font provider once patched fonts can be declared (task 7.1)

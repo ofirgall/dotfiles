@@ -1,6 +1,7 @@
 schema = 1
 name = "font-fontforge"
-description = "fontforge, needed to patch Nerdwand/Lyth (named font-* so it can't collide with a dev-bundle `fontforge`)"
+when = 'os = "linux"'
+description = "fontforge, needed to patch Nerdwand/Lyth (Linux; macOS uses the mac-extra `fontforge` package)"
 bin = "fontforge"
 
 [providers.brew]
