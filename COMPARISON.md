@@ -312,4 +312,13 @@ Clean Docker run from scratch (`dots-test:v02c`): lint, plan, apply, status and 
 | U3 codex config | `~/.codex/config.toml` | symlinked from dots |
 | U4 master drift | merged master into the branch | done |
 | U5 shell-gpt | `sgpt --version` | ShellGPT 1.5.1 |
-| U6 git PPA | — | still open (dots-side change needed) |
+| U6 git PPA | — | fixed in dots (see below) |
+
+## Rerun after U6 and dots bug 19 fixes (2026-11-26, image `dots-test:v02d`)
+
+Clean run: lint, plan, apply, status and recheck all exit 0.
+
+- **U6:** dots now adds a declared apt repo for an already-installed package and upgrades it from there. git is
+  2.56.1 from `git-core/ppa` (Mac: Apple git 2.54.0). A second plan is empty.
+- **Bug 19:** `needs_root` scripts get HOME, PATH and the `DOTS_*` vars through a 0600 env file that dots deletes
+  afterwards, never through argv. The root scripts in this run passed, and nothing was left in `/tmp`.
