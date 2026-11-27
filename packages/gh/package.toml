@@ -6,3 +6,6 @@ providers_only = true
 
 [providers.brew]
 [providers.apt]
+
+[providers.winget]
+id = "GitHub.cli"

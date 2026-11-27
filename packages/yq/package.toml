@@ -1,8 +1,11 @@
 schema = 1
 name = "yq"
-description = "macOS only here; on Linux yq comes from zinit (zsh-conf)"
-when = 'os = "macos"'
+description = "macOS and Windows; on Linux yq comes from zinit (zsh-conf)"
+when = 'any(os = "macos", os = "windows")'
 bin = "yq"
 providers_only = true
 
 [providers.brew]
+
+[providers.winget]
+id = "MikeFarah.yq"

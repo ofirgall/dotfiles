@@ -9,3 +9,6 @@ bin = "vim"
 [[files]]
 src = "vimrc"
 dst = "~/.vimrc"
+
+[providers.winget]
+id = "vim.vim"

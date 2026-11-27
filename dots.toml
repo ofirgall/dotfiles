@@ -6,6 +6,10 @@ name = "ofirgall/dotfiles"
 any    = ["cargo", "uv", "npm-g", "script"]
 macos  = ["brew", "cargo", "uv", "npm-g", "script"]
 debian = ["apt", "cargo", "uv", "npm-g", "script"]
+# winget first; the custom providers below (npm-g, gh-ext, herdr-plugin, ...) run through /bin/sh, so a Windows
+# package that needs one carries a pwsh `script` of its own.
+# TODO(dots-windows): scoop is listed for when the provider lands; list `npm` (task 7.1) instead of npm-g then.
+windows = ["winget", "scoop", "cargo", "uv", "npm-g", "script"]
 
 [tags]
 remote   = "headless ssh box: base only (replaces ~/.remote_indicator)"

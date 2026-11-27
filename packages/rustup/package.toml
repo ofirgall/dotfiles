@@ -1,9 +1,9 @@
 schema = 1
 name = "rustup"
-description = "Rust toolchain: brew `rust` on macOS (what is installed there), rustup elsewhere"
+description = "Rust toolchain: brew `rust` on macOS (what is installed there), winget rustup on Windows, rustup elsewhere"
 bin = "cargo"
 # every cargo package needs a C compiler/linker to build crates with build scripts
-requires = [{ name = "build-essential", when = 'os = "linux"' }]
+requires = [{ name = "build-essential", when = 'os = "linux"' }, { name = "vcbuildtools", when = 'os = "windows"' }]
 
 [providers.brew]
 name = "rust"
@@ -17,3 +17,6 @@ fetch   = { url = "https://sh.rustup.rs" }
 
 [env]
 path = ["~/.cargo/bin"]
+
+[providers.winget]
+id = "Rustlang.Rustup"

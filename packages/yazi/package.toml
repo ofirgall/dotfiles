@@ -29,3 +29,6 @@ install -m 0755 "$tmp"/yazi-*/yazi "$tmp"/yazi-*/ya "$HOME/.local/bin/"
 [[files]]
 src = "yazi"
 dst = "~/.config/yazi"
+
+[providers.winget]
+id = "sxyazi.yazi"

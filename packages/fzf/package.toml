@@ -18,3 +18,6 @@ if [ -d "$HOME/.fzf/.git" ]; then git -C "$HOME/.fzf" pull --ff-only; else git c
 
 [env]
 path = ["~/.fzf/bin"]
+
+[providers.winget]
+id = "junegunn.fzf"

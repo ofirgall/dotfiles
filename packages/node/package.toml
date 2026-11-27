@@ -18,3 +18,6 @@ fetch   = { url = "https://raw.githubusercontent.com/tj/n/master/bin/n" }
 
 [env]
 path = ["~/.local/n/bin"]
+
+[providers.winget]
+id = "OpenJS.NodeJS.LTS"

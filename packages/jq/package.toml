@@ -3,3 +3,6 @@ name = "jq"
 bin = "jq"
 [providers.brew]
 [providers.apt]
+
+[providers.winget]
+id = "jqlang.jq"

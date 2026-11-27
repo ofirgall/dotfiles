@@ -8,3 +8,7 @@ name = "python@3.14"
 
 [providers.apt]
 name = "python3-pip"    # pulls python3 itself; python3-venv comes from the python3-venv package
+
+[providers.winget]
+id  = "Python.Python.3.13"   # 3.13+: agents-status needs AF_UNIX sockets
+bin = "python"             # python3.exe on Windows is the Store stub

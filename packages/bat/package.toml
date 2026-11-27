@@ -8,3 +8,6 @@ bin = "bat"
 bin  = "batcat"     # Debian names the binary batcat
 shim = "bat"        # dots creates ~/.local/bin/bat -> batcat and owns it
 
+
+[providers.winget]
+id = "sharkdp.bat"

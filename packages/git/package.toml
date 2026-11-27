@@ -28,3 +28,6 @@ when     = 'not(tag = "sandbox")'
 [[files]]
 src = "gitignore_global"
 dst = "~/.gitignore_global"
+
+[providers.winget]
+id = "Git.Git"

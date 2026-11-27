@@ -9,3 +9,6 @@ name = "fd-find"
 bin  = "fdfind"
 shim = "fd"         # dots creates ~/.local/bin/fd -> fdfind and owns it
 
+
+[providers.winget]
+id = "sharkdp.fd"

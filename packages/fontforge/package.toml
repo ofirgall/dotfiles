@@ -1,6 +1,9 @@
 schema = 1
 name = "fontforge"
-when = 'os = "macos"'
+when = 'any(os = "macos", os = "windows")'
 bin = "fontforge"
 
 [providers.brew]
+
+[providers.winget]
+id = "FontForge.FontForge"

@@ -8,3 +8,6 @@ check   = "test -x $HOME/.local/bin/claude"
 version = "$HOME/.local/bin/claude --version | awk '{print $1}'"
 install = "bash {fetched}"
 fetch   = { url = "https://claude.ai/install.sh" }
+
+[providers.winget]
+id = "Anthropic.ClaudeCode"

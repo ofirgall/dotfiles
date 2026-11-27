@@ -1,8 +1,11 @@
 schema = 1
 name = "yj"
-description = "macOS only here; on Linux yj comes from zinit (zsh-conf)"
-when = 'os = "macos"'
+description = "macOS and Windows; on Linux yj comes from zinit (zsh-conf)"
+when = 'any(os = "macos", os = "windows")'
 bin = "yj"
 providers_only = true
 
 [providers.brew]
+
+[providers.cargo]
+when = 'os = "windows"'

@@ -3,3 +3,6 @@ name = "cmake"
 bin = "cmake"
 [providers.brew]
 [providers.apt]
+
+[providers.winget]
+id = "Kitware.CMake"

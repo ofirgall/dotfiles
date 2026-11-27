@@ -19,3 +19,6 @@ fetch   = { url = "https://bun.sh/install" }
 
 [env]
 path = ["~/.bun/bin"]
+
+[providers.winget]
+id = "Oven-sh.Bun"
