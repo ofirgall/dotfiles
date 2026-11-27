@@ -8,8 +8,8 @@ migrated from dotbot and what is still open.
 
 ```
 dots.toml              Manifest: provider priority, tags, interim custom providers (npm-g, gh-ext, herdr-plugin, code-ext)
-machines/              Profiles: mac, linux-desktop, docker, remote
-bundles/               Package sets (base, dev, agents, gui-apps, fonts, mac-desktop, mac-extra, work, linux-desktop, gaming, optional)
+machines/              Profiles: mac, linux-desktop, docker, remote, windows
+bundles/               Package sets (base, dev, agents, gui-apps, fonts, mac-desktop, mac-extra, work, linux-desktop, gaming, optional; windows-base/-dev/-agents/-desktop)
 packages/<name>/       One package: package.toml + its config files + manual/*.md
   aerospace/           AeroSpace config and helper scripts (scripts/)
   aerospace-scripts/   Rust binary for AeroSpace IPC (has its own AGENTS.md)
@@ -18,7 +18,7 @@ packages/<name>/       One package: package.toml + its config files + manual/*.m
   tmux/ ghostty/ claude/ ...
 lib/                   Shared shell helpers for package scripts ($DOTS_LIB: arch.sh, github-release.sh)
 docs/                  mac/ system notes, keyboards/ layouts
-legacy/windows/        Windows, still dotbot (README.md there)
+legacy/windows/        old Windows dotbot setup, kept until the PC is cut over (README.md there); Windows packages are `when = 'os = "windows"'`
 openspec/              Specs and change tracking
 ```
 

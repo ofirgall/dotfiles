@@ -1,6 +1,7 @@
 # Windows (legacy, dotbot)
 
-DEFER until dots task 7.5 (Windows support); then convert like the other chunks.
+Migrated to dots packages (`machines/windows.toml`, `windows-*` bundles; see `MIGRATION.md`, "Windows migration"). This directory
+is still what the PC runs until cutover, then it is deleted.
 
 dots has no Windows support yet, so Windows keeps using the `dotbot` submodule. Everything else in
 this repo (`packages/`, `bundles/`, `machines/`) is dots only.

@@ -22,7 +22,8 @@ dots references in this file:
 | `READY` | Expressible with what dots ships today (v0.1 plus the parts of phase 5 already checked off: 5.6 overrides, 5.13 terminfo). |
 | `P5:x.y` | Expressed the spec way, and it needs phase-5 task x.y. Implementers start after v0.2 lands, so these are expected to work. If one doesn't, apply the fallback named in the row and add a `# TODO(dots-migration): needs task x.y` comment. |
 | `INTERIM:x.y` | dots can't express it yet (needs a v0.3 or v0.4 task). It becomes a `script` package or a custom declarative provider, with `# TODO(dots-migration): replace with <feature> (task x.y)`. |
-| `DEFER` | Not migrated on this branch. It stays dotbot-driven (Windows only; see chunk 6). |
+| `DEFER` | Not migrated on this branch. (Windows was DEFER until the Windows migration, item 18; the rows tagged `WIN` are migrated, anything still `DEFER` is listed under "Windows: still deferred".) |
+| `WIN` | Windows, migrated to dots packages with `when = 'os = "windows"'` (item 18). Unverified on a Windows machine. |
 | `DROP` | Deleted. The reason is given in the row. |
 
 ---
@@ -122,9 +123,12 @@ dots references in this file:
     `includeIf`). Both exist on this Mac and both stay local and untracked. The `source` is
     guarded with `[[ -f ]]` so shells in Docker and on fresh machines start cleanly. I didn't
     read either file's contents.
-18. **Windows is `DEFER`.** dots has no Windows support yet (task 7.5). Chunk 6 moves the
-    Windows-only files to `legacy/windows/` and rewrites `windows.conf.yaml` to the new package
-    paths, so a Windows dotbot run keeps working.
+18. **Windows is migrated (was `DEFER`).** Chunk 6 moved the Windows-only files to `legacy/windows/`;
+    the Windows migration (branch `migrate-to-dots`, after chunk 6) turns every link, install step and
+    setting of `windows.conf.yaml` and its scripts into dots packages. `legacy/windows/` stays, dotbot-driven,
+    until the PC is cut over (its files are copied into the packages, not moved; delete the directory and the
+    `dotbot` submodule at cutover). Written against dots' Windows model (task 7.5 is in progress), never run on
+    Windows: only `dots lint` and a macOS `plan` (unchanged) were checked. See "Windows migration" below.
 
 ---
 
@@ -180,7 +184,7 @@ dots references in this file:
 │       xmodmap/ tridactyl/ desktop-apps/ xdg-defaults/ autolock/ acpi/ bluetuith/ wiremix/
 │       xclip/ brotab/ openbox/ gamescope/ proton-ge/ sublime/ taskwarrior/ firefox-deb/
 │       vicinae/ pulseaudio/                                                                   # chunk 5
-├── legacy/windows/                # chunk 6 (DEFER): install-windows*, windows.conf.yaml, install_scripts/windows, pwsh-conf, …
+├── legacy/windows/                # chunk 6: install-windows*, windows.conf.yaml, install_scripts, pwsh-conf, …; still the PC's installer until cutover (packages/* have the dots version)
 ├── dotbot/                        # submodule, kept for legacy/windows only
 ├── docs/                          # chunk 6: mac/ (KEY_CONFLICTS, SYSTEM_CHANGES, TOUCHPAD), keyboards/, media/ stays
 ├── .claude/ .cursor/ openspec/    # repo-local agent config and specs: untouched
@@ -325,12 +329,12 @@ M = macos.conf.yaml, W = windows.conf.yaml.
 | `~/.pi/agent/settings.json` | `dotfiles/pi/settings.json` | C M W | pi / link | all | READY |
 | `~/.pi/agent/keybindings.json` | `dotfiles/pi/keybindings.json` | C | pi / link | all | READY |
 | `~/.cursor/statusline.sh` | `dotfiles/cursor/statusline.sh` | C M W | cursor / link | all | READY |
-| `~/.config/agents-status/config.toml` | `agents-status-config.toml` (W: `-windows`) | C M (W) | agents-status / link | unix (Windows variant → chunk 6) | READY |
+| `~/.config/agents-status/config.toml` | `agents-status-config.toml` (W: `-windows`) | C M (W) | agents-status / link; `config.windows.toml` on Windows | all | READY, WIN |
 | `~/.config/cursor-cli-wrapper/config.toml` | `cursor-cli-wrapper.toml` | C I M W | cursor-cli-wrapper / link | all | READY |
 | `~/.config/gh-dash/config.yml` | `gh-dash/config.yml` | C M W | gh-dash / link | all | READY |
 | `~/.config/hop/config.toml` | `hop/config.toml` | M W | hop / link | macos | READY |
 | `~/.config/herdr` (dir!) | `dotfiles/herdr` | M | herdr / **render** `config.toml` + render `config-dev.generated.toml` + link `agent-detection/`, `scripts/*.sh` + **terminfo** | all | READY (render/merge 4.5 done) |
-| `~/AppData/Roaming/herdr/config.toml` | `herdr/config.toml` | W | DEFER | windows | DEFER |
+| `~/AppData/Roaming/herdr/config.toml` | `herdr/config.toml` | W | herdr / render with the `windows.toml` layer (dst platform map) | windows | WIN |
 | `~/.config/herdr-automatic-rename/config.sh` | same | M | herdr-automatic-rename / link | all | READY; later `{plugin_config}` INTERIM:7.11 |
 | `~/.config/karabiner/karabiner.json` | `mac/karabiner/karabiner.json` | M | karabiner / link + `post_files = "touch -h …"` | macos | READY |
 | `~/.config/linearmouse/linearmouse.json` | `mac/linearmouse/…` | M | linearmouse / link | macos | READY |
@@ -358,7 +362,7 @@ M = macos.conf.yaml, W = windows.conf.yaml.
 | `~/.config/ez/config.toml` | `ez-workspaces/config.toml` | I | see ez row | | |
 | `~/.config/vdesk-collapser/config.toml` | `vdesk-collapser/config.toml` | I | hyprland / link | linux gui | READY |
 | `~/.local/share/applications/{gh-markdown-preview,hypr-browser}.desktop` | `desktop-apps/` | I | desktop-apps / link ×2 | linux gui | READY |
-| W-only links (`pwsh` profile, `~/.pwsh-conf`, `~/.my-pwsh-conf`, …) | | W | legacy/windows | windows | DEFER |
+| W-only links (`pwsh` profile, `~/.pwsh-conf`, `~/.my-pwsh-conf`, komorebi, whkd, yasb, kanata, flow-launcher, wezterm, noctty, ez) | | W | `pwsh-conf`, `komorebi`, `whkd`, `yasb`, `kanata`, `flow-launcher`, `wezterm`, `noctty`, `ez-workspaces` | windows | WIN |
 | `create: ~/projects ~/workspace` (C), `~/workspace/{personal,work}` (M) | | C M | workspace-dirs / 4 `dir` entries, all OSes | all | READY |
 | (new) `~/.terminfo` herdr-256color | `herdr/herdr-256color.terminfo` | (script) | herdr / `mode = "terminfo"` | all | READY (5.13 done); **missing on this Mac today** |
 | (new) `~/.terminfo` tmux-256color | infocmp from brew ncurses | (script) | tmux / `terminfo`, the source committed as `tmux-256color.terminfo` | macos | READY |
@@ -436,7 +440,7 @@ chunk that owns them. Status as above.
 | `install_gaming.sh`, `install_proton_ge.sh` (never in a YAML) | `gaming` bundle: `openbox` (apt + files), `gamescope` (script build), `proton-ge` (script; it checks sha512 itself) | INTERIM |
 | commented-out in install.conf: sublime, fusuma, taskwarrior, firefox_from_deb; plus orphan `install_vicinae.sh` | `optional` bundle (in no profile): `sublime` (apt repo, files from `editors/sublime`), `fusuma` (script: gem + group input manual), `taskwarrior` (apt `taskwarrior`, files), `firefox-deb` (apt `repo ppa mozillateam` + `pin`), `vicinae` (script fetch) | P5:5.12 / INTERIM |
 | `system/pulseaudio.pa` (linked nowhere) | `pulseaudio` package in `optional`, file kept, no entry (`# TODO(dots-migration): unknown dst`) | DEFER-ish |
-| Windows YAML + `install_scripts/windows/*` | legacy/windows | DEFER |
+| Windows YAML + `install_scripts/windows/*` | `windows-*` bundles + `machines/windows.toml` (see "Windows migration"); `legacy/windows` kept until cutover | WIN |
 
 ### 3.3 Declared vs present on this Mac (2026-11-26)
 
@@ -1074,7 +1078,7 @@ Brief:
 | G7 | `browser-ext` | §5.2.1, task 7.2 | Chrome extensions, Tampermonkey | manual md only |
 | G8 | manual actions / `todo` | §9, task 6.10 | karabiner/aerospace/linearmouse permissions, chsh, dialout, secure input, tailscale | `manual/*.md` written, not tracked yet |
 | G9 | Phase-5 items this plan relies on: 5.4 directives/`files.set` (only the claude fallback), **5.5 fragments** (gitconfig), 5.9 lock (first lock is written at Mac cutover), **5.12** apt repos / cargo+uv `git`/`path` / script `fetch` (used ~40 times), **5.14** `[[defaults]]` + `[[xdg]]`, **5.15** `[service]` | tasks 5.4, 5.5, 5.9, 5.12, 5.14, 5.15 | see `P5:` rows | fallbacks named in each row |
-| G10 | Windows support | §6.5, task 7.5 | all of `legacy/windows` | dotbot kept for Windows (decision 18) |
+| G10 | Windows support | §6.5, task 7.5 | all of `legacy/windows` | migrated to packages (decision 18); gaps are `TODO(dots-windows)` |
 | G11 | dots env inject writes **through** a symlinked rc (`dots-env/src/inject.rs:44`) and there is no ordering control between several inject blocks in one rc | §10, environment spec | `~/.zshenv` was a symlink into the zsh-conf submodule | `~/.zshenv` becomes an inject-only real file (decision 4). Cutover removes the old symlink first (§8) |
 | G12 | `[providers.uv]` has no `with = [...]` (extra packages in the tool venv) | §5.2 uv row | `mkdocs --with mkdocs-material` | script |
 | G13 | Custom/npm providers have no per-package install flags (`--ignore-scripts`) | §5.4 | pi | script |
@@ -1727,3 +1731,33 @@ built-in `vscode-ext` swap, 10 `herdr-plugin`, 9 `font`, 11 `archive`, 5 `npm`; 
 - hypr-dots `Keybinds.conf` wallpaper path (`~/dotfiles/awesomewm/wallpaper.jpg`); `.claude/settings.local.json` still names an old path.
 - Dots follow-ups: bug 19; `break_system_packages` and an `archive`/`font` provider in the next dots build; custom-provider `lock`.
 - Not run: Docker with `fonts`, gaming, optional bundles; ghostty and gamescope builds.
+
+### Windows migration
+
+Machine `machines/windows.toml`: bundles `windows-base`, `windows-dev`, `windows-agents`, `windows-desktop`, tags `[]`
+(the PC is personal), `gui = true`. Windows has its own bundles because the cross-platform ones list brew/apt-only
+packages, which have no Windows provider. `dots.toml` `[priority]` has `windows = ["winget", "scoop", "cargo", "uv", "npm-g", "script"]`.
+
+- **New packages** (all `when = 'os = "windows"'`): `windows-system` (registry: key repeat, SnapAssist, Win+L; manual:
+  Developer Mode, execution policy, taskbar), `pwsh`, `pwsh-conf`, `burnttoast`, `vcbuildtools`, `starship`, `gnu-make`,
+  `kanata`, `komorebi`, `whkd`, `yasb`, `flow-launcher` (manual: plugins), `wezterm`, `noctty`, `fonts-windows`,
+  `font-nerdwand-windows`, `desktop-shortcuts`.
+- **Existing packages given a Windows side** (winget id or a pwsh `[platform.windows...]` script): git, gh, fzf, jq, fd, bat,
+  ripgrep, vim, uv, cmake, python3, node, bun, yq, yj, yazi, rustup, fontforge, claude-code, claude (rendered settings), herdr,
+  herdr-zig, the six herdr plugins, pi (+ subagents, powerline-footer, skills), kv-env, hunk, gh-dash/enhance/markdown-preview,
+  ez-workspaces, agents-status.
+- **Ported from `origin/personal-windows`** (4 commits): `noctty` replaces winghostty (config with tab keybinds, Nerdwand Mono,
+  `alt+digit` passthrough, `AmanThanvi.noctty`), the Nerdwand Mono build (`font-nerdwand-windows`), komorebi's `noctty.exe` rule.
+  Also the PC-local `LINK_SKILLS_REPO` (pwsh `env.ps1`, `$HOME`-relative) and the Windows `SessionStart` herdr hook for claude.
+- **Dropped as inert or obsolete:** the Windows `~/.config/ghostty/{config,config.platform}` links (noctty reads its own config);
+  `hop` config and `cursor-cli-wrapper` config (no Windows build); `install_msys2_packages.sh`, `install_tmux.sh`, `setup/*`
+  (AutoHotkey, MoveToDesktop, alacritty: replaced by komorebi/kanata; only `.wezterm.lua` was linked); submodule init
+  (dots does it); the `~/dotfiles_scripts` paths in `whkdrc` (`C:\msys64\...`) and `my-pwsh-conf` aliases still say what they said.
+
+#### Windows: still deferred
+
+- Everything marked `TODO(dots-windows)` (list: `grep -rn 'TODO(dots-windows)' packages bundles dots.toml lib machines`).
+- Verification on a Windows machine (including `dots plan` there); the winget ids `Anthropic.ClaudeCode`, `Rustlang.Rustup`
+  and the kv data dir are unconfirmed.
+- Cutover: remove `legacy/windows/`, the `dotbot` submodule and `install-windows*`; `~/dotfiles` worktree migration as for the Mac.
+- `tmux`/`zsh` (MSYS2 era) are not part of the Windows setup.
