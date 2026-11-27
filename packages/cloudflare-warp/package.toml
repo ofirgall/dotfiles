@@ -4,3 +4,6 @@ when = 'os = "macos"'
 
 [providers.brew]
 cask = true
+
+# Its .pkg installer runs `sudo installer`: only `dots apply --with-sudo` / `--sudo-only`.
+requires_sudo = true
