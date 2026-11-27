@@ -1,0 +1,24 @@
+# Shared environment — mirrors zsh-conf/env.zsh
+
+$env:FZF_DEFAULT_OPTS = '--height=40% --reverse'
+
+function Add-ToPath {
+    param([string]$Dir)
+    if ((Test-Path $Dir) -and $env:PATH -notlike "*$Dir*") {
+        $env:PATH = "$Dir;$env:PATH"
+    }
+}
+
+function Append-ToPath {
+    param([string]$Dir)
+    if ((Test-Path $Dir) -and $env:PATH -notlike "*$Dir*") {
+        $env:PATH = "$env:PATH;$Dir"
+    }
+}
+
+Add-ToPath "$HOME\.local\bin"
+Add-ToPath "C:\Program Files\Git\usr\bin"
+Add-ToPath "C:\Program Files (x86)\GnuWin32\bin"
+Append-ToPath "$HOME\.npm-packages\bin"
+
+$env:LINK_SKILLS_REPO = "$HOME\workspace\personal\agent-skills"

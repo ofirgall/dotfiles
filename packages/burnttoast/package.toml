@@ -1,0 +1,16 @@
+schema = 1
+name = "burnttoast"
+description = "BurntToast PowerShell module: rich Windows notifications (dotfiles_scripts/notify/windows_notify.ps1)"
+when = 'os = "windows"'
+requires = ["pwsh"]
+
+# PowerShell Gallery module, current user scope (no admin).
+# TODO(dots-windows): replace with a `pwsh-module` provider (none exists in dots; PowerShell Gallery has no provider).
+[providers.script]
+shell       = "pwsh"
+versionless = true
+check       = "if (Get-Module -ListAvailable -Name BurntToast) { exit 0 } else { exit 1 }"
+install     = '''
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Scope CurrentUser | Out-Null
+Install-Module BurntToast -Scope CurrentUser -Force
+'''

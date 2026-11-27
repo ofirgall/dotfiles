@@ -1,0 +1,8 @@
+schema = 1
+name = "pwsh"
+description = "PowerShell 7 (the shell dots runs Windows scripts in)"
+when = 'os = "windows"'
+bin = "pwsh"
+
+[providers.winget]
+id = "Microsoft.PowerShell"

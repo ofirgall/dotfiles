@@ -1,0 +1,18 @@
+schema = 1
+name = "pwsh-conf"
+description = "PowerShell profile (mirrors zsh-conf): ~/.pwsh-conf, ~/.my-pwsh-conf and the profile entrypoint"
+when = 'os = "windows"'
+requires = ["pwsh"]
+
+# The profile sources ~/.pwsh-conf/<name> and ~/.my-pwsh-conf/<name>, then ~/.extra_utils.ps1.
+[[files]]
+src = "pwsh-conf/profile.ps1"
+dst = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
+
+[[files]]
+src = "pwsh-conf"
+dst = "~/.pwsh-conf"
+
+[[files]]
+src = "my-pwsh-conf"
+dst = "~/.my-pwsh-conf"

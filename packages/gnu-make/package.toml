@@ -1,0 +1,8 @@
+schema = 1
+name = "gnu-make"
+description = "GNU make for Windows (build-essential provides it on Linux)"
+when = 'os = "windows"'
+bin = "make"
+
+[providers.winget]
+id = "GnuWin32.Make"

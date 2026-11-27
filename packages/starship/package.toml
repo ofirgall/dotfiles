@@ -1,0 +1,8 @@
+schema = 1
+name = "starship"
+description = "Starship prompt (Windows; the zsh side gets it from zinit)"
+when = 'os = "windows"'
+bin = "starship"
+
+[providers.winget]
+id = "Starship.Starship"

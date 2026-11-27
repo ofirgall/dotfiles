@@ -1,0 +1,36 @@
+schema = 1
+name = "windows-system"
+description = "Windows settings (HKCU, no admin): key repeat, snap assist off, Win+L unlocked for whkd; manual: Developer Mode, execution policy, taskbar"
+when = 'os = "windows"'
+
+# Fastest key repeat (setup_once.sh).
+[[registry]]
+key   = 'HKCU\Control Panel\Keyboard'
+name  = "KeyboardDelay"
+type  = "REG_SZ"
+value = "0"
+
+[[registry]]
+key   = 'HKCU\Control Panel\Keyboard'
+name  = "KeyboardSpeed"
+type  = "REG_SZ"
+value = "31"
+
+# Disable the snap assist popup (komorebi tiles).
+[[registry]]
+key   = 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced'
+name  = "SnapAssist"
+type  = "REG_DWORD"
+value = 0
+
+# Disable Win+L lock so whkd can use it for tiling (setup_admin.ps1, setup/disable_win_l.reg). Lock via
+# Start menu or Ctrl+Alt+Del. It is HKCU, so no admin is needed; komorebi and whkd must restart to notice.
+[[registry]]
+key   = 'HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System'
+name  = "DisableLockWorkstation"
+type  = "REG_DWORD"
+value = 1
+
+# Not declarable: the CTRL+ALT+SHIFT office popup off (setup/disable_office_popup.bat sets
+# HKCU\Software\Classes\ms-officeapp\Shell\Open\Command to `rundll32`, a default value with no name).
+# TODO(dots-windows): [[registry]] needs a way to write a key's (Default) value; then add it here.

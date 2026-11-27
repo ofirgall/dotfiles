@@ -1,0 +1,22 @@
+schema = 1
+name = "vcbuildtools"
+description = "Visual C++ Build Tools (MSVC linker + Windows SDK): cargo needs them to link"
+when = 'os = "windows"'
+
+# The VS installer takes `--override "--add <workload>"`; the winget provider only takes `id`, so this is a
+# script. The installer raises a UAC prompt: accept it (dots cannot, and `needs_root` is refused for pwsh).
+# TODO(dots-windows): winget provider needs an `override`/`args` key (winget install --override "...").
+[providers.script]
+shell       = "pwsh"
+versionless = true
+timeout     = "60m"
+check       = '''
+$vswhere = Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio\Installer\vswhere.exe'
+if (-not (Test-Path $vswhere)) { exit 1 }
+$p = & $vswhere -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
+if ($p) { exit 0 } else { exit 1 }
+'''
+install     = '''
+winget install --id Microsoft.VisualStudio.BuildTools --exact --accept-package-agreements --accept-source-agreements --override "--wait --passive --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Component.Windows11SDK.26100"
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+'''
