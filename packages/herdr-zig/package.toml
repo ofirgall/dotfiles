@@ -21,3 +21,30 @@ tar -xf "$tmp/zig.tar.xz" -C "$HOME/.local/share/herdr-zig" --strip-components=1
 
 [env]
 vars = { ZIG = "~/.local/share/herdr-zig/zig" }
+
+# Windows: the same pinned zip from ziglang.org (zig.exe), same dir.
+# TODO(dots-windows): x86_64 only; replace with the archive provider (task 7.1)
+[platform.windows.providers.script]
+shell = "pwsh"
+check = '''
+$z = Join-Path $HOME '.local/share/herdr-zig/zig.exe'
+if ((Test-Path $z) -and ((& $z version) -eq '0.16.0')) { exit 0 } else { exit 1 }
+'''
+version = "& (Join-Path $HOME '.local/share/herdr-zig/zig.exe') version"
+install = '''
+$ErrorActionPreference = 'Stop'
+$v = '0.16.0'
+$dest = Join-Path $HOME '.local/share/herdr-zig'
+$tmp = Join-Path ([IO.Path]::GetTempPath()) ('herdr-zig-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $tmp | Out-Null
+try {
+  Invoke-WebRequest -Uri "https://ziglang.org/download/$v/zig-x86_64-windows-$v.zip" -OutFile "$tmp\zig.zip"
+  Expand-Archive -Path "$tmp\zig.zip" -DestinationPath $tmp -Force
+  if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
+  New-Item -ItemType Directory -Force -Path (Split-Path $dest) | Out-Null
+  Move-Item (Join-Path $tmp "zig-x86_64-windows-$v") $dest
+} finally { Remove-Item -Recurse -Force $tmp -ErrorAction SilentlyContinue }
+'''
+
+[platform.windows.env]
+vars = { ZIG = "~/.local/share/herdr-zig/zig.exe" }

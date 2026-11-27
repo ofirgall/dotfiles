@@ -12,3 +12,11 @@ name = "dlvhdr/gh-dash"
 [[files]]
 src = "config.yml"
 dst = "~/.config/gh-dash/config.yml"
+
+# Windows: the `gh-ext` custom provider runs through /bin/sh, which Windows does not have.
+# TODO(dots-windows): drop this once the built-in `gh-ext` provider (task 7.11) runs on Windows.
+[platform.windows.providers.script]
+shell       = "pwsh"
+versionless = true
+check       = 'if ((gh extension list 2>$null) -match "dlvhdr/gh-dash") { exit 0 } else { exit 1 }'
+install     = "gh extension install dlvhdr/gh-dash; exit $LASTEXITCODE"

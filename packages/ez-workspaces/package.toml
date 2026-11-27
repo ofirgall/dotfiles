@@ -18,3 +18,8 @@ when = 'os = "linux"'
 src  = "macos/config.toml"
 dst  = "{app_support}/ez/config.toml"
 when = 'os = "macos"'
+
+[[files]]
+src  = "windows/config.toml"
+dst  = "~/AppData/Roaming/ez/config.toml"
+when = 'os = "windows"'

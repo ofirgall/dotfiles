@@ -11,3 +11,9 @@ check       = "pi list 2>/dev/null | grep -qxF '  git:https://github.com/hasit/p
 versionless = true
 install     = "pi install git:https://github.com/hasit/pi-community-themes"
 lock        = "pi"
+
+# Windows: the bash check/install above need /bin/bash; same steps in PowerShell.
+[platform.windows.providers.script]
+shell   = "pwsh"
+check   = 'if ((pi list 2>$null) -contains "  git:https://github.com/hasit/pi-community-themes") { exit 0 } else { exit 1 }'
+install = "pi install git:https://github.com/hasit/pi-community-themes; exit $LASTEXITCODE"

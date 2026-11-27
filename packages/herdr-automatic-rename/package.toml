@@ -15,3 +15,11 @@ source = "ofirgall/herdr-automatic-rename"
 [[files]]
 src = "config.sh"
 dst = "~/.config/herdr-automatic-rename/config.sh"
+
+# Windows: the `herdr-plugin` custom provider runs through /bin/sh, which Windows does not have.
+# TODO(dots-windows): drop this once the built-in `herdr-plugin` provider (task 7.11) runs on Windows.
+[platform.windows.providers.script]
+shell       = "pwsh"
+versionless = true
+check       = 'if ((herdr plugin list 2>$null) -match "^- herdr-automatic-rename \(") { exit 0 } else { exit 1 }'
+install     = "herdr plugin install ofirgall/herdr-automatic-rename --yes; exit $LASTEXITCODE"

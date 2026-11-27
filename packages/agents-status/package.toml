@@ -10,8 +10,15 @@ src = "agents-status"
 dst = "~/agents-status"
 
 [[files]]
-src = "config.toml"
-dst = "~/.config/agents-status/config.toml"
+src  = "config.toml"
+dst  = "~/.config/agents-status/config.toml"
+when = 'not(os = "windows")'
 
 [providers.uv]
 path = "agents-status/core"
+
+# Windows: komorebi + yasb instead of aerospace + sketchybar, and the PowerShell notifier.
+[[files]]
+src  = "config.windows.toml"
+dst  = "~/.config/agents-status/config.toml"
+when = 'os = "windows"'

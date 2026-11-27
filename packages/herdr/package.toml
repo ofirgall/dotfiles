@@ -14,18 +14,19 @@ rev = "664400008b1118feb7d05fd942e42428d64e949e"
 # plugins.json, .locks/ all land there). Only the entries below are managed by dots, so the repo
 # never receives runtime files again. Cutover: manual/split-runtime-dir.md
 
-# config.toml = common + mac. The pre-dots generator (yq `*+`) appended arrays, and mac.toml adds
+# config.toml = common + mac (macOS) or + windows (Windows, in %APPDATA%\herdr). The pre-dots generator (yq `*+`) appended arrays, and mac.toml adds
 # [[keys.command]] entries (sidekick keys), so keys.command is appended; the default for arrays is replace.
 [[files]]
 mode   = "render"
 format = "toml"
-dst    = "~/.config/herdr/config.toml"
-layers = ["config/common.toml", { src = "config/mac.toml", when = 'os = "macos"' }]
+dst    = { default = "~/.config/herdr/config.toml", windows = "~/AppData/Roaming/herdr/config.toml" }
+layers = ["config/common.toml", { src = "config/mac.toml", when = 'os = "macos"' }, { src = "config/windows.toml", when = 'os = "windows"' }]
 
 [files.merge]
 "keys.command" = "append"
 
-# Second render for the dev herdr (`make run` in the fork). dev.toml sets no keys today, so none
+# Second render for the dev herdr (`make run` in the fork), not on Windows (its dev output was never linked
+# there). dev.toml sets no keys today, so none
 # of the four old DEV_REPLACE_PATHS (ui.sidebar.spaces.rows, ui.sidebar.spaces.agent_rows,
 # ui.sidebar.agents.rows, ui.status_icons.working) needs a [files.merge] entry yet; add
 # `"<path>" = "replace"` (the dots default for arrays) when dev.toml starts setting them.
@@ -33,20 +34,25 @@ layers = ["config/common.toml", { src = "config/mac.toml", when = 'os = "macos"'
 mode   = "render"
 format = "toml"
 dst    = "~/.config/herdr/config-dev.generated.toml"
+when   = 'not(os = "windows")'
 layers = ["config/common.toml", { src = "config/mac.toml", when = 'os = "macos"' }, "config/dev.toml"]
 
 [files.merge]
 "keys.command" = "append"
 
+# Unix only: the agent-detection rules and bash scripts were never linked on Windows, and there is no terminfo.
 [[files]]
-src = "agent-detection"
-dst = "~/.config/herdr/agent-detection"
+src  = "agent-detection"
+dst  = "~/.config/herdr/agent-detection"
+when = 'not(os = "windows")'
 
 [[files]]
-src = "scripts"
-dst = "~/.config/herdr/scripts"
+src  = "scripts"
+dst  = "~/.config/herdr/scripts"
+when = 'not(os = "windows")'
 
 # undercurl support
 [[files]]
 mode = "terminfo"
 src  = "herdr-256color.terminfo"
+when = 'not(os = "windows")'

@@ -11,3 +11,9 @@ check       = "pi list 2>/dev/null | grep -qxF '  npm:pi-powerline-footer'"
 versionless = true
 install     = "pi install npm:pi-powerline-footer"
 lock        = "pi"
+
+# Windows: the bash check/install above need /bin/bash; same steps in PowerShell.
+[platform.windows.providers.script]
+shell   = "pwsh"
+check   = 'if ((pi list 2>$null) -contains "  npm:pi-powerline-footer") { exit 0 } else { exit 1 }'
+install = "pi install npm:pi-powerline-footer; exit $LASTEXITCODE"

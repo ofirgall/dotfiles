@@ -9,3 +9,11 @@ requires = ["gh"]
 [providers.gh-ext]
 name = "ofirgall/gh-markdown-preview"
 
+
+# Windows: the `gh-ext` custom provider runs through /bin/sh, which Windows does not have.
+# TODO(dots-windows): drop this once the built-in `gh-ext` provider (task 7.11) runs on Windows.
+[platform.windows.providers.script]
+shell       = "pwsh"
+versionless = true
+check       = 'if ((gh extension list 2>$null) -match "ofirgall/gh-markdown-preview") { exit 0 } else { exit 1 }'
+install     = "gh extension install ofirgall/gh-markdown-preview; exit $LASTEXITCODE"

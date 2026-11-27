@@ -11,3 +11,17 @@ check       = "test -x $HOME/.local/share/kvim-envs/main/kv/bin/nvim"
 versionless = true
 install     = "kv install"
 timeout     = "30m"
+
+# Windows: `kv install` for the `main` env (the koala-config link supplies ~/.config/kvim-envs/main), same as above.
+# TODO(dots-windows): the kv data dir on Windows is unconfirmed (nothing in the old scripts reads it), so the
+# check accepts the candidates; tighten it after the first Windows run.
+[platform.windows]
+requires = ["kv", "koala-config", "git"]    # no curl on Windows
+
+[platform.windows.providers.script]
+shell   = "pwsh"
+check   = '''
+$c = @("$HOME\.local\share\kvim-envs\main\kv\bin\nvim.exe", "$env:APPDATA\kvim-envs\main\kv\bin\nvim.exe", "$env:LOCALAPPDATA\kvim-envs\main\kv\bin\nvim.exe")
+if ($c | Where-Object { Test-Path $_ }) { exit 0 } else { exit 1 }
+'''
+install = "kv install; exit $LASTEXITCODE"

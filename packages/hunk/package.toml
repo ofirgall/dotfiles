@@ -12,3 +12,11 @@ dst = "~/.config/hunk"
 # TODO(dots-migration): replace with the built-in `npm` provider (task 7.1)
 [providers.npm-g]
 name = "hunkdiff"
+
+# Windows: the `npm-g` custom provider runs through /bin/sh, which Windows does not have.
+# TODO(dots-windows): drop this once the built-in `npm` provider (task 7.1) runs on Windows.
+[platform.windows.providers.script]
+shell       = "pwsh"
+versionless = true
+check       = 'if (Get-Command hunk -ErrorAction SilentlyContinue) { exit 0 } else { exit 1 }'
+install     = "npm install -g hunkdiff; exit $LASTEXITCODE"

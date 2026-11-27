@@ -24,3 +24,14 @@ dst = "~/.pi/agent/keybindings.json"
 # herdr agent-state integration for pi (needs herdr, which pi requires outside sandboxes)
 [hooks]
 post_install = 'if [ -z "${DOTS_TAG_SANDBOX:-}" ] && command -v herdr >/dev/null; then herdr integration install pi; fi'
+
+# Windows: the bash check/install above need /bin/bash; same steps in PowerShell.
+[platform.windows.providers.script]
+shell   = "pwsh"
+check   = 'if (Get-Command pi -ErrorAction SilentlyContinue) { exit 0 } else { exit 1 }'
+version = "(pi --version) -split ' ' | Select-Object -Last 1"
+install = "npm install -g --ignore-scripts @earendil-works/pi-coding-agent; exit $LASTEXITCODE"
+
+# herdr agent-state integration for pi (needs herdr, which pi requires outside sandboxes)
+[platform.windows.hooks]
+post_install = 'if ((-not $env:DOTS_TAG_SANDBOX) -and (Get-Command herdr -ErrorAction SilentlyContinue)) { herdr integration install pi }'

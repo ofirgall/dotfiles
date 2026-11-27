@@ -10,3 +10,14 @@ install     = '''
 mkdir -p "$HOME/.pi/agent/skills"
 git clone https://github.com/badlogic/pi-skills "$HOME/.pi/agent/skills/pi-skills"
 '''
+
+# Windows: the bash check/install above need /bin/bash; same steps in PowerShell.
+[platform.windows.providers.script]
+shell   = "pwsh"
+check   = "if (Test-Path (Join-Path $HOME '.pi/agent/skills/pi-skills/.git')) { exit 0 } else { exit 1 }"
+install = '''
+$skills = Join-Path $HOME '.pi/agent/skills'
+New-Item -ItemType Directory -Force -Path $skills | Out-Null
+git clone https://github.com/badlogic/pi-skills (Join-Path $skills 'pi-skills')
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+'''

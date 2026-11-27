@@ -5,8 +5,22 @@ requires = ["claude-code"]
 
 # The app rewrites settings.json, so it stays a link: edits land in the repo.
 [[files]]
-src = "settings.json"
-dst = "~/.claude/settings.json"
+src  = "settings.json"
+dst  = "~/.claude/settings.json"
+when = 'not(os = "windows")'
+
+# Windows: the SessionStart hook differs (settings.json has the macOS bash one, with a /Users path), so
+# the file is rendered: settings.windows.json replaces the base `hooks.SessionStart` array (arrays replace).
+# TODO(dots-windows): a render is a generated file, so the app's own edits to settings.json do not land in the
+# repo as they do with the link. Wanted: a per-OS link source (`src = { default = ..., windows = ... }`) or a
+# json fragment mode. The hook path is the PC's user dir (herdr integration writes it); `~` is not expanded
+# by `powershell -File`.
+[[files]]
+mode   = "render"
+format = "json"
+dst    = "~/.claude/settings.json"
+when   = 'os = "windows"'
+layers = ["settings.json", "settings.windows.json"]
 
 [[files]]
 src = "keybindings.json"
