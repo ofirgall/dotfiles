@@ -7,12 +7,14 @@ TAILSCALE="$(command -v tailscale || echo /Applications/Tailscale.app/Contents/M
 if [ ! -x "$TAILSCALE" ]; then
   echo "Tailscale not found (install the Tailscale app): see herdr-collie/manual/tailscale.md" >&2; exit 1
 fi
-if ! "$TAILSCALE" status --json | grep -q '"CertDomains": *\['; then
+# Capture before grepping: under pipefail, `cmd | grep -q` fails when grep exits at the first
+# match and cmd dies of SIGPIPE writing the rest.
+if ! grep -q '"CertDomains": *\[' <<<"$("$TAILSCALE" status --json)"; then
   echo "tailscale serve needs HTTPS certificates: enable them at https://login.tailscale.com/admin/dns" >&2; exit 1
 fi
 # Before any change: the push keys mark this setup done, so it must not get that far without a
 # server to start the bridge on (manual action herdr-collie/herdr-running).
-if ! herdr status server 2>/dev/null | grep -q '^status: running'; then
+if ! grep -q '^status: running' <<<"$(herdr status server 2>/dev/null || true)"; then
   echo "herdr is not running: start it (run \`herdr\`), then dots apply herdr-collie-setup" >&2; exit 1
 fi
 CONFIG_DIR="$(herdr plugin config-dir herdr.collie)"
