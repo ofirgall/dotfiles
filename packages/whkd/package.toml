@@ -1,0 +1,17 @@
+schema = 1
+name = "whkd"
+description = "whkd hotkey daemon for komorebi + ~/.config/whkdrc"
+when = 'os = "windows"'
+bin = "whkd"
+providers_only = true
+
+[providers.winget]
+id = "LGUG2Z.whkd"
+
+[env]
+path = ["C:/Program Files/whkd/bin"]
+
+# whkdrc runs ~/dotfiles_scripts/komorebi/*.sh through bash.exe: the scripts package supplies them.
+[[files]]
+src = "whkdrc"
+dst = "~/.config/whkdrc"

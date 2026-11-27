@@ -1,0 +1,18 @@
+schema = 1
+name = "desktop-shortcuts"
+description = "Desktop shortcuts: Start / Stop / Restart Desktop (komorebi+whkd, yasb, kanata, Flow Launcher)"
+when = 'os = "windows"'
+requires = ["pwsh", "komorebi", "yasb", "kanata", "flow-launcher"]
+
+# The shortcuts hold the commands base64-encoded (-EncodedCommand), so they cannot be links.
+# TODO(dots-windows): replace with `[service] manager = "windows-startup"` per app once a service can pass
+# arguments (kanata -c <config>) and be stopped as a group; then the shortcuts go away.
+[providers.script]
+shell       = "pwsh"
+versionless = true
+check       = '''
+$d = [Environment]::GetFolderPath('Desktop')
+foreach ($n in 'Start Desktop', 'Stop Desktop', 'Restart Desktop') { if (-not (Test-Path "$d\$n.lnk")) { exit 1 } }
+exit 0
+'''
+install     = "install.ps1"

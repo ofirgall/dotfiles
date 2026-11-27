@@ -1,0 +1,13 @@
+schema = 1
+name = "kanata"
+description = "kanata keyboard remapper (caps/esc fork) + kanata.kbd; started by the Start Desktop shortcut"
+when = 'os = "windows"'
+bin = "kanata"
+providers_only = true
+requires = ["rustup", "vcbuildtools"]
+
+[providers.cargo]
+
+[[files]]
+src = "kanata.kbd"
+dst = "~/.config/kanata/kanata.kbd"

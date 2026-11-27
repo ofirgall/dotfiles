@@ -1,0 +1,30 @@
+schema = 1
+name = "komorebi"
+description = "komorebi tiling window manager + config (KOMOREBI_CONFIG_HOME = ~/.config/komorebi); whkd supplies the hotkeys"
+when = 'os = "windows"'
+bin = "komorebic"
+bins = ["komorebi", "komorebic"]
+providers_only = true
+requires = ["whkd"]
+
+[providers.winget]
+id = "LGUG2Z.komorebi"
+
+[env]
+path = ["C:/Program Files/komorebi/bin"]
+vars = { KOMOREBI_CONFIG_HOME = "~/.config/komorebi" }
+
+[[files]]
+src = "komorebi.json"
+dst = "~/.config/komorebi/komorebi.json"
+
+[[files]]
+src = "applications.json"
+dst = "~/.config/komorebi/applications.json"
+
+# Starts komorebi + whkd at login (what install_komorebi.sh did).
+# TODO(dots-windows): replace with `[service] manager = "windows-startup"` once that manager can run
+# `komorebic enable-autostart --whkd` (a plain Startup entry does not pass --whkd). A hook only runs on a
+# fresh install: an adopted komorebi never gets its autostart.
+[hooks]
+post_install = "komorebic enable-autostart --whkd"

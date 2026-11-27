@@ -1,0 +1,15 @@
+schema = 1
+name = "noctty"
+description = "noctty (formerly winghostty): Ghostty's core with a native Win32 runtime, and its config"
+when = 'os = "windows"'
+bin = "noctty"
+providers_only = true
+requires = ["font-nerdwand-windows"]
+
+[providers.winget]
+id = "AmanThanvi.noctty"
+
+# Own config dir: noctty does not read ~/.config/ghostty (the shared ghostty package is macOS/Linux).
+[[files]]
+src = "config.ghostty"
+dst = "~/AppData/Local/noctty/config.ghostty"

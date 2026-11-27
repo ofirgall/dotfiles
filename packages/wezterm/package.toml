@@ -1,0 +1,13 @@
+schema = 1
+name = "wezterm"
+description = "WezTerm + ~/.wezterm.lua"
+when = 'os = "windows"'
+bin = "wezterm"
+providers_only = true
+
+[providers.winget]
+id = "wez.wezterm"
+
+[[files]]
+src = "wezterm.lua"
+dst = "~/.wezterm.lua"

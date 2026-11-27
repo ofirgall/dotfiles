@@ -1,0 +1,17 @@
+schema = 1
+name = "yasb"
+description = "YASB status bar (komorebi workspaces, agents-status) + config and styles"
+when = 'os = "windows"'
+bin = "yasb"
+providers_only = true
+
+[providers.winget]
+id = "AmN.yasb"
+
+[[files]]
+src = "config.yaml"
+dst = "~/.config/yasb/config.yaml"
+
+[[files]]
+src = "styles.css"
+dst = "~/.config/yasb/styles.css"

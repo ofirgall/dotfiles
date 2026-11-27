@@ -1,0 +1,15 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  caps esc
+)
+
+(defalias
+  esc (fork esc f12 (lalt ralt))
+)
+
+(deflayer default
+  @esc @esc
+)

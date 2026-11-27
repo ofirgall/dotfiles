@@ -1,0 +1,14 @@
+schema = 1
+name = "flow-launcher"
+description = "Flow Launcher (Alt+Space) + Settings.json; plugins are manual/plugins.md"
+when = 'os = "windows"'
+providers_only = true
+
+[providers.winget]
+id = "Flow-Launcher.Flow-Launcher"
+
+# The app rewrites Settings.json (it was a symlink under dotbot, edits land in the repo).
+[[files]]
+src  = "Settings.json"
+dst  = "~/AppData/Roaming/FlowLauncher/Settings/Settings.json"
+mode = "link"
