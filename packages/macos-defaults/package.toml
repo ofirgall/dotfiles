@@ -121,24 +121,23 @@ key     = "autohide"
 value   = true
 restart = ["Dock"]
 
-# Cursor: size 1.75x, white fill, black outline (the old script used `sudo defaults write`)
+# Cursor: size 1.75x, white fill, black outline. The user's own domain: the old script used
+# `sudo defaults write`, which wrote root's preferences and never changed the user's cursor.
+# Writing com.apple.universalaccess may need Full Disk Access for the terminal.
 [[defaults]]
 domain = "com.apple.universalaccess"
 key    = "mouseDriverCursorSize"
 value  = 1.75
-root   = true
 
 [[defaults]]
 domain = "com.apple.universalaccess"
 key    = "cursorFill"
 value  = { alpha = 1.0, blue = 1.0, green = 1.0, red = 1.0 }
-root   = true
 
 [[defaults]]
 domain = "com.apple.universalaccess"
 key    = "cursorOutline"
 value  = { alpha = 1.0, blue = 0.0, green = 0.0, red = 0.0 }
-root   = true
 
 # TODO(dots-migration): setup_once.sh also ran
 #   /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
