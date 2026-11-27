@@ -1,0 +1,13 @@
+schema = 1
+description = "Windows: system settings, PowerShell, git and core CLI (winget, cargo)"
+
+packages = [
+  # settings and prerequisites (Developer Mode is a manual action of windows-system)
+  "windows-system", "pwsh", "pwsh-conf", "burnttoast", "vcbuildtools", "local-bin", "workspace-dirs",
+  # toolchains
+  "rustup", "uv", "python3", "cmake", "gnu-make",
+  # git
+  "git", "delta", "difftastic",
+  # shell and core CLI
+  "profile", "scripts", "starship", "ripgrep", "fd", "bat", "fzf", "jq", "yq", "yj", "vim",
+]

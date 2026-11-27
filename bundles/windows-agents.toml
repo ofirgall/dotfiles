@@ -1,0 +1,15 @@
+schema = 1
+description = "Windows: claude, pi, agents-status and the herdr workspace manager with the plugins the PC uses"
+
+packages = [
+  # claude, cursor statusline
+  "claude-code", "claude", "cursor",
+  # pi
+  "pi", "pi-subagents", "pi-powerline-footer", "pi-skills",
+  # agents-status
+  "agents-status",
+  # herdr
+  "herdr-zig", "herdr", "herdr-last-tab",
+  "herdr-nvim-aware", "extrakto-herdr", "herdr-automatic-rename", "herdr-navigator",
+  "herdr-reviewr", "herdr-pr-tracker",
+]

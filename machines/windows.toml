@@ -1,0 +1,7 @@
+schema = 1
+# The Windows PC (personal). Windows has its own bundles: the cross-platform ones list brew/apt-only packages.
+bundles = ["windows-base", "windows-dev", "windows-agents", "windows-desktop"]
+tags = []
+
+[facts]
+gui = true

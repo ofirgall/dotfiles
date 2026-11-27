@@ -1,0 +1,13 @@
+schema = 1
+description = "Windows dev tooling: KoalaVim, node/bun, TUIs, gh and extensions (not hop, tmux, jless, which have no Windows build here)"
+
+packages = [
+  # editor
+  "koala-config", "kv", "kv-env", "lemmy-help",
+  # toolchains
+  "node", "bun",
+  # CLIs
+  "bottom", "du-dust", "igrep", "tuitab", "lumen", "ftdv", "hunk", "yazi", "ez-workspaces",
+  # github
+  "gh", "gh-dash", "gh-enhance", "gh-markdown-preview",
+]

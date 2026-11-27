@@ -1,0 +1,9 @@
+schema = 1
+description = "Windows desktop: komorebi + whkd + yasb, kanata, Flow Launcher, terminals and fonts"
+
+packages = [
+  "komorebi", "whkd", "yasb", "kanata", "flow-launcher",
+  "noctty", "wezterm",
+  "fonts-windows", "font-nerdwand-windows",
+  "desktop-shortcuts",
+]
