@@ -2,10 +2,12 @@
 # unset (serve sends no identity header for tagged devices). COLLIE_SERVE_PORT is 8443 because
 # colima's traefik forward holds *:443 on this Mac.
 set -euo pipefail
-if ! command -v tailscale >/dev/null; then
-  echo "tailscale CLI not on PATH: see manual/tailscale.md" >&2; exit 1
+# The CLI is the app's own binary (my-zsh-conf aliases it; scripts don't see aliases).
+TAILSCALE="$(command -v tailscale || echo /Applications/Tailscale.app/Contents/MacOS/Tailscale)"
+if [ ! -x "$TAILSCALE" ]; then
+  echo "Tailscale not found (install the Tailscale app): see herdr-collie/manual/tailscale.md" >&2; exit 1
 fi
-if ! tailscale status --json | grep -q '"CertDomains": *\['; then
+if ! "$TAILSCALE" status --json | grep -q '"CertDomains": *\['; then
   echo "tailscale serve needs HTTPS certificates: enable them at https://login.tailscale.com/admin/dns" >&2; exit 1
 fi
 # Before any change: the push keys mark this setup done, so it must not get that far without a
