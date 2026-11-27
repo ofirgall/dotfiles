@@ -14,14 +14,16 @@ rev = "664400008b1118feb7d05fd942e42428d64e949e"
 # plugins.json, .locks/ all land there). Only the entries below are managed by dots, so the repo
 # never receives runtime files again. Cutover: manual/split-runtime-dir.md
 
-# config.toml = common + mac. The pre-dots generator (yq `*+`) appended arrays, but
-# mac.toml only sets a scalar ([terminal] default_shell), so no path is appended or replaced:
-# the default (deep-merge tables, replace arrays) renders the same structure.
+# config.toml = common + mac. The pre-dots generator (yq `*+`) appended arrays, and mac.toml adds
+# [[keys.command]] entries (sidekick keys), so keys.command is appended; the default for arrays is replace.
 [[files]]
 mode   = "render"
 format = "toml"
 dst    = "~/.config/herdr/config.toml"
 layers = ["config/common.toml", { src = "config/mac.toml", when = 'os = "macos"' }]
+
+[files.merge]
+"keys.command" = "append"
 
 # Second render for the dev herdr (`make run` in the fork). dev.toml sets no keys today, so none
 # of the four old DEV_REPLACE_PATHS (ui.sidebar.spaces.rows, ui.sidebar.spaces.agent_rows,
@@ -32,6 +34,9 @@ mode   = "render"
 format = "toml"
 dst    = "~/.config/herdr/config-dev.generated.toml"
 layers = ["config/common.toml", { src = "config/mac.toml", when = 'os = "macos"' }, "config/dev.toml"]
+
+[files.merge]
+"keys.command" = "append"
 
 [[files]]
 src = "agent-detection"

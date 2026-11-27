@@ -1,2 +1,14 @@
 [terminal]
 default_shell = "zsh"
+
+# Sidekick-owned agent panes hide by zooming Neovim; other panes receive Alt+a normally.
+[[keys.command]]
+key = "alt+a"
+type = "shell"
+command = '"$HOME/.local/bin/sidekick-herdr-minimize"'
+
+# Sidekick agents open their proxy editor; other panes receive Ctrl+e normally.
+[[keys.command]]
+key = "ctrl+e"
+type = "shell"
+command = '"$HOME/.local/bin/sidekick-herdr-minimize" edit'

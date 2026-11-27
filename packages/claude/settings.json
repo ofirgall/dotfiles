@@ -37,7 +37,8 @@
     "question-frame@ofir-mods": true,
     "prismantis@prismantis": true,
     "markdown-preview@claude-markdown-viewer": true,
-    "slack@anthropic-plugin-directory": true
+    "slack@anthropic-plugin-directory": true,
+    "chrome-devtools-mcp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "ofir-mods": {
@@ -110,5 +111,6 @@
   "theme": "dark",
   "editorMode": "vim",
   "autoCompactEnabled": true,
+  "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true
 }
