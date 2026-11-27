@@ -4,7 +4,8 @@ description = "Collie bridge setup: .env (loopback + tailscale serve port), push
 when = 'all(os = "macos", not(tag = "sandbox"))'
 requires = ["herdr-collie"]
 
-# Needs the Tailscale CLI with HTTPS certificates (herdr-collie/manual/tailscale.md); until then
+# Needs a running herdr (herdr-collie/manual/herdr-running.md) and the Tailscale CLI with HTTPS
+# certificates (herdr-collie/manual/tailscale.md); until then
 # the install fails with that message and stays pending in `dots plan` / `dots status`.
 # Done = the push keys are in Collie's .env.
 [providers.script]

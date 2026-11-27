@@ -8,6 +8,11 @@ fi
 if ! tailscale status --json | grep -q '"CertDomains": *\['; then
   echo "tailscale serve needs HTTPS certificates: enable them at https://login.tailscale.com/admin/dns" >&2; exit 1
 fi
+# Before any change: the push keys mark this setup done, so it must not get that far without a
+# server to start the bridge on (manual action herdr-collie/herdr-running).
+if ! herdr status server 2>/dev/null | grep -q '^status: running'; then
+  echo "herdr is not running: start it (run \`herdr\`), then dots apply herdr-collie-setup" >&2; exit 1
+fi
 CONFIG_DIR="$(herdr plugin config-dir herdr.collie)"
 mkdir -p "$CONFIG_DIR"
 if [ ! -f "$CONFIG_DIR/.env" ]; then
@@ -23,4 +28,4 @@ if ! grep -q '^COLLIE_VAPID_PUBLIC=' "$CONFIG_DIR/.env"; then
   "$HOME/dotfiles_scripts/misc/collie" push-keys
   START_ACTION=restart
 fi
-herdr plugin action invoke "$START_ACTION" --plugin herdr.collie || true
+herdr plugin action invoke "$START_ACTION" --plugin herdr.collie
