@@ -9,7 +9,5 @@ requires = ["herdr", "scripts"]
 name   = "herdr.collie"
 source = "AltanS/collie"
 
-# Collie .env (loopback + tailscale serve port) and push keys; was install_collie.sh. Needs Tailscale:
-# manual/tailscale.md. See setup.sh.
-[hooks]
-post_install = "setup.sh"
+# Setup (.env, push keys, start) is the herdr-collie-setup package, so it shows as pending until
+# it has run, also when this plugin was installed outside dots (adopted packages skip hooks).

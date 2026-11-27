@@ -1,0 +1,13 @@
+schema = 1
+name = "herdr-collie-setup"
+description = "Collie bridge setup: .env (loopback + tailscale serve port), push keys, start (was install_collie.sh)"
+when = 'all(os = "macos", not(tag = "sandbox"))'
+requires = ["herdr-collie"]
+
+# Needs the Tailscale CLI with HTTPS certificates (herdr-collie/manual/tailscale.md); until then
+# the install fails with that message and stays pending in `dots plan` / `dots status`.
+# Done = the push keys are in Collie's .env.
+[providers.script]
+check       = 'grep -q "^COLLIE_VAPID_PUBLIC=" "$(herdr plugin config-dir herdr.collie)/.env"'
+versionless = true
+install     = "bash setup.sh"

@@ -15,4 +15,5 @@ packages = [
   "herdr-nvim-aware", "extrakto-herdr", "herdr-automatic-rename", "herdr-navigator",
   "herdr-reviewr", "herdr-pr-tracker", "herdr-notify", "herdr-workspace-move", "herdr-pr-board",
   "herdr-collie",
+  "herdr-collie-setup",
 ]
