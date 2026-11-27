@@ -1,0 +1,15 @@
+schema = 1
+name = "font-nerdwand-windows"
+description = "Windows: Nerdwand Mono, patched locally with single-cell Nerd Font icons (noctty's font); macOS and Linux use font-nerdwand-lyth"
+when = 'os = "windows"'
+requires = ["fontforge", "uv", "git"]
+
+# Built from the Nordwand release TTFs with the 1.5.2 patch script (the 1.4.0 script crashes on glyphs the patcher adds).
+# The macOS/Linux build (font-nerdwand-lyth) pins a different Nordwand commit and also builds Lyth Mono.
+# TODO(dots-windows): replace with an archive/font provider once patched fonts can be declared (tasks 7.1, 7.9).
+[providers.script]
+shell       = "pwsh"
+versionless = true
+timeout     = "40m"
+check       = "if (Get-ChildItem (Join-Path $env:LOCALAPPDATA 'Microsoft\\Windows\\Fonts') -Filter 'NerdwandMono-*.ttf' -ErrorAction SilentlyContinue) { exit 0 } else { exit 1 }"
+install     = "install.ps1"

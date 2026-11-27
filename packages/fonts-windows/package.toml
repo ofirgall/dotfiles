@@ -1,0 +1,14 @@
+schema = 1
+name = "fonts-windows"
+description = "Windows: Nerd Fonts (CaskaydiaCove, UbuntuMono, JetBrainsMono, IosevkaTerm, CommitMono, 0xProto, Recursive) and Maple Mono NF in the user font dir"
+when = 'os = "windows"'
+
+# One script for all of them, like the old install_fonts.sh. The per-font packages (font-caskaydia-cove,
+# ...) are brew casks and Linux archives only.
+# TODO(dots-windows): replace with the `font` provider (task 7.9: per-OS font dirs, registry values, owned files).
+[providers.script]
+shell       = "pwsh"
+versionless = true
+timeout     = "30m"
+check       = "check.ps1"
+install     = "install.ps1"
