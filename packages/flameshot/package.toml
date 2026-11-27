@@ -1,9 +1,8 @@
 schema = 1
 name = "flameshot"
-description = "Screenshot tool (macOS cask; Linux desktop via apt)"
-when = 'any(os = "macos", all(os = "linux", gui))'
+description = "Screenshot tool (Linux desktop via apt)"
+# macOS: Homebrew disabled the cask on 2026-09-01 (it fails the Gatekeeper check).
+when = 'all(os = "linux", gui)'
 
-[providers.brew]
-cask = true
 
 [providers.apt]
