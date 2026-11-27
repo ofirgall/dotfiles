@@ -33,6 +33,14 @@ index_focused = "#a6c4ff"
 # tab for every tab, tab_focused for the focused agent's tab
 tab           = "#714fb0"
 tab_focused   = "#c6a6ff"
+# Subagent rows under an agent in yellow, apart from the purple tab names:
+# subagent for every agent, subagent_focused for the focused agent's subagents
+subagent         = "#968e4b"   # yellow #e6db74 at 65% (design.lua)
+subagent_focused = "#e6db74"   # yellow             (design.lua)
+# Background shell rows under an agent in aqua, apart from the yellow subagent
+# rows: shell for every agent, shell_focused for the focused agent's shells
+shell         = "#398492"   # aqua #58cbe1 at 65% (dark_blue.lua)
+shell_focused = "#58cbe1"   # aqua               (dark_blue.lua)
 
 [update]
 version_check = false
@@ -446,6 +454,8 @@ working = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
 animation_interval_ms = 80
 done    = ""
 idle    = ""
+# done    = "󰇮"
+# idle    = "" #  󰊫 󰇯
 unknown = " "
 
 # Restore agents inside KoalaVim: kv --ai -- <tool> --resume <id>
