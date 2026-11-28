@@ -6,3 +6,7 @@ bin = "make"
 
 [providers.winget]
 id = "GnuWin32.Make"
+
+# Windows: GnuWin32 make does not add itself to PATH.
+[platform.windows.env]
+path = ["C:/Program Files (x86)/GnuWin32/bin"]

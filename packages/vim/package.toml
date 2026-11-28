@@ -12,3 +12,7 @@ dst = "~/.vimrc"
 
 [providers.winget]
 id = "vim.vim"
+
+# Windows: winget's user-scope vim (vim.vim) installs here without touching PATH.
+[platform.windows.env]
+path = ["~/AppData/Local/Programs/Vim"]

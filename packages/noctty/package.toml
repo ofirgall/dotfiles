@@ -13,3 +13,7 @@ id = "AmanThanvi.noctty"
 [[files]]
 src = "config.ghostty"
 dst = "~/AppData/Local/noctty/config.ghostty"
+
+# Windows: the installer puts noctty.exe here (still the old winghostty dir) without touching PATH.
+[platform.windows.env]
+path = ["C:/Program Files/winghostty"]

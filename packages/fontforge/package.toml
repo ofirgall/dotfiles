@@ -7,3 +7,7 @@ bin = "fontforge"
 
 [providers.winget]
 id = "FontForge.FontForge"
+
+# Windows: the FontForgeBuilds installer does not add bin/ to PATH.
+[platform.windows.env]
+path = ["C:/Program Files/FontForgeBuilds/bin"]
