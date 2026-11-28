@@ -8,7 +8,7 @@ requires = ["rustup", "herdr-zig"]
 git = "https://github.com/ofirgall/herdr"
 # Head of the fork-v0.9.x branch (the default branch is upstream master, 0.8.x).
 # dots cargo has no `branch =` yet: bump this rev to update herdr.
-rev = "664400008b1118feb7d05fd942e42428d64e949e"
+rev = "8ea9d41830cc748034742b7ae8ac05e00802f5af"
 
 # ~/.config/herdr is a REAL directory owned by herdr (sockets, logs, sessions, plugins/,
 # plugins.json, .locks/ all land there). Only the entries below are managed by dots, so the repo
