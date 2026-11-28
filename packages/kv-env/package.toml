@@ -13,17 +13,15 @@ install     = "kv install"
 timeout     = "30m"
 
 # Windows: `kv install` for the `main` env (the koala-config link supplies ~/.config/kvim-envs/main), same as above.
-# TODO(dots-windows): the kv data dir on Windows is unconfirmed (nothing in the old scripts reads it), so the
-# check accepts the candidates; tighten it after the first Windows run.
+# kv keeps an env's data in %LOCALAPPDATA%\kvim-envs\<env>-data on Windows (seen on the PC).
+# TODO(kv): kv finds pacman-installed deps with `which`, which returns an MSYS path (/usr/bin/fzy) that
+# Windows reports as missing, so `kv install` fails on fzy even after pacman installed it.
 [platform.windows]
 requires = ["kv", "koala-config", "git"]    # no curl on Windows
 
 [platform.windows.providers.script]
 shell   = "pwsh"
-check   = '''
-$c = @("$HOME\.local\share\kvim-envs\main\kv\bin\nvim.exe", "$env:APPDATA\kvim-envs\main\kv\bin\nvim.exe", "$env:LOCALAPPDATA\kvim-envs\main\kv\bin\nvim.exe")
-if ($c | Where-Object { Test-Path $_ }) { exit 0 } else { exit 1 }
-'''
+check   = "if (Test-Path \"$env:LOCALAPPDATA\\kvim-envs\\main-data\\kv\\bin\\nvim.exe\") { exit 0 } else { exit 1 }"
 # kv installs fzy with MSYS2's pacman (`pacman -S fzy`), which is not on PATH.
 install = '''
 if (Test-Path 'C:\msys64\usr\bin\pacman.exe') { $env:PATH = "C:\msys64\usr\bin;$env:PATH" }
