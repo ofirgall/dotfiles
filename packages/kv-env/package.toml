@@ -24,4 +24,8 @@ check   = '''
 $c = @("$HOME\.local\share\kvim-envs\main\kv\bin\nvim.exe", "$env:APPDATA\kvim-envs\main\kv\bin\nvim.exe", "$env:LOCALAPPDATA\kvim-envs\main\kv\bin\nvim.exe")
 if ($c | Where-Object { Test-Path $_ }) { exit 0 } else { exit 1 }
 '''
-install = "kv install; exit $LASTEXITCODE"
+# kv installs fzy with MSYS2's pacman (`pacman -S fzy`), which is not on PATH.
+install = '''
+if (Test-Path 'C:\msys64\usr\bin\pacman.exe') { $env:PATH = "C:\msys64\usr\bin;$env:PATH" }
+kv install; exit $LASTEXITCODE
+'''
