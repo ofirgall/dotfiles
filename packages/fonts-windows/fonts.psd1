@@ -2,7 +2,7 @@
 @{
     NerdFontsVersion = 'v3.3.0'
     MapleVersion     = 'v7.0-beta36'
-    Fonts = [ordered]@{
+    Fonts = @{
         CascadiaCode  = 'CaskaydiaCove'
         UbuntuMono    = 'UbuntuMono'
         JetBrainsMono = 'JetBrainsMono'
