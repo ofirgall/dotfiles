@@ -19,5 +19,6 @@ fetch   = { url = "https://raw.githubusercontent.com/tj/n/master/bin/n" }
 [env]
 path = ["~/.local/n/bin"]
 
+# Node 24 is the current LTS line, and the id the PC already has (OpenJS.NodeJS.LTS would be a second node).
 [providers.winget]
-id = "OpenJS.NodeJS.LTS"
+id = "OpenJS.NodeJS.24"

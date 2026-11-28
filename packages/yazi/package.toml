@@ -30,5 +30,24 @@ install -m 0755 "$tmp"/yazi-*/yazi "$tmp"/yazi-*/ya "$HOME/.local/bin/"
 src = "yazi"
 dst = "~/.config/yazi"
 
-[providers.winget]
-id = "sxyazi.yazi"
+# Windows: the release zip into ~/.local/bin, like Linux (the PC already has it there; a winget copy
+# would be a second yazi on PATH).
+# TODO(dots-windows): x86_64 only; replace with the archive provider (task 7.1)
+[platform.windows.providers.script]
+when    = 'os = "windows"'
+shell   = "pwsh"
+check   = "if (Test-Path \"$HOME\\.local\\bin\\yazi.exe\") { exit 0 } else { exit 1 }"
+version = "((& \"$HOME\\.local\\bin\\yazi.exe\" --version) -split ' ')[1]"
+install = '''
+$ErrorActionPreference = 'Stop'
+$tmp = Join-Path ([IO.Path]::GetTempPath()) ('yazi-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $tmp | Out-Null
+try {
+  $zip = "$tmp\yazi.zip"
+  Invoke-WebRequest -Uri 'https://github.com/sxyazi/yazi/releases/latest/download/yazi-x86_64-pc-windows-msvc.zip' -OutFile $zip
+  Expand-Archive -Path $zip -DestinationPath $tmp -Force
+  $bin = Join-Path $HOME '.local\bin'
+  New-Item -ItemType Directory -Force -Path $bin | Out-Null
+  Get-ChildItem $tmp -Recurse -Include yazi.exe, ya.exe | Copy-Item -Destination $bin -Force
+} finally { Remove-Item -Recurse -Force $tmp -ErrorAction SilentlyContinue }
+'''

@@ -11,5 +11,11 @@ version = "$HOME/.local/bin/uv --version | awk '{print $2}'"
 install = "UV_NO_MODIFY_PATH=1 sh {fetched}"
 fetch   = { url = "https://astral.sh/uv/install.sh" }
 
-[providers.winget]
-id = "astral-sh.uv"
+# Windows: astral's install.ps1, into ~/.local/bin like Linux (a winget copy would be a second uv on PATH).
+[platform.windows.providers.script]
+when    = 'os = "windows"'
+shell   = "pwsh"
+check   = "if (Test-Path \"$HOME\\.local\\bin\\uv.exe\") { exit 0 } else { exit 1 }"
+version = "((& \"$HOME\\.local\\bin\\uv.exe\" --version) -split ' ')[1]"
+install = "$env:UV_NO_MODIFY_PATH = '1'; Get-Content -Raw '{fetched}' | Invoke-Expression"
+fetch   = { url = "https://astral.sh/uv/install.ps1" }

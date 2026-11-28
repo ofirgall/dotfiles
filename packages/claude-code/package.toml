@@ -9,5 +9,11 @@ version = "$HOME/.local/bin/claude --version | awk '{print $1}'"
 install = "bash {fetched}"
 fetch   = { url = "https://claude.ai/install.sh" }
 
-[providers.winget]
-id = "Anthropic.ClaudeCode"
+# Windows: the same native installer (install.ps1), which also puts claude.exe in ~/.local/bin.
+# A winget copy would be a second claude on PATH.
+[platform.windows.providers.script]
+shell   = "pwsh"
+check   = "if (Test-Path \"$HOME\\.local\\bin\\claude.exe\") { exit 0 } else { exit 1 }"
+version = "((& \"$HOME\\.local\\bin\\claude.exe\" --version) -split ' ')[0]"
+install = "Get-Content -Raw '{fetched}' | Invoke-Expression"
+fetch   = { url = "https://claude.ai/install.ps1" }
