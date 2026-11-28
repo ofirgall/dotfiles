@@ -27,6 +27,7 @@ thinkpad = "ThinkPad ACPI events"
 # (the npm-prefix package exports NPM_CONFIG_PREFIX for shells, set here for the provider itself).
 # TODO(dots-migration): replace with built-in `npm` provider (task 7.1)
 [providers.npm-g]
+shell     = "bash"   # Git Bash on Windows; the commands are POSIX shell
 available = "command -v /opt/homebrew/bin/npm || command -v npm"
 bootstrap = "node"
 installed = { cmd = "NPM=$(command -v /opt/homebrew/bin/npm || command -v npm); [ \"$(uname)\" = Linux ] && export NPM_CONFIG_PREFIX=$HOME/.npm-packages; $NPM ls -g --json --depth=0 || true", parse = "json:dependencies" }
@@ -35,6 +36,7 @@ batch     = false
 
 # TODO(dots-migration): replace with `[providers] use = ["gh-ext"]` (task 7.11)
 [providers.gh-ext]
+shell     = "bash"   # Git Bash on Windows; the commands are POSIX shell
 available = "command -v gh"
 bootstrap = "gh"
 installed = { cmd = "gh extension list", parse = 'regex:^[^\t]+\t(?P<name>[^\t]+)\t(?P<version>\S+)' }
@@ -44,6 +46,7 @@ batch     = false
 # name = the plugin id `herdr plugin list` prints, source = what `plugin install` wants (owner/repo).
 # TODO(dots-migration): replace with `use = ["herdr-plugin"]` (task 7.11): --json, --ref pinning, local link, enabled, {plugin_config}
 [providers.herdr-plugin]
+shell     = "bash"   # Git Bash on Windows; the commands are POSIX shell
 available = "command -v herdr"
 bootstrap = "herdr"
 installed = { cmd = "herdr plugin list", parse = 'regex:^- (?P<name>\S+) \(' }
@@ -54,6 +57,7 @@ batch     = false
 # providers have no serialization and concurrent `pi install` calls lose entries in settings.json.
 # TODO(dots-migration): replace with `use = ["pi-package"]` (task 7.11) once providers can serialize
 [providers.pi-package]
+shell     = "bash"   # Git Bash on Windows; the commands are POSIX shell
 available = "command -v pi"
 bootstrap = "pi"
 installed = { cmd = "pi list", parse = 'regex:^\s+(?P<name>(?:npm|git):\S+)\s*$' }
@@ -62,6 +66,7 @@ batch     = false
 
 # TODO(dots-migration): replace with built-in `vscode-ext` (task 7.10)
 [providers.code-ext]
+shell     = "bash"   # Git Bash on Windows; the commands are POSIX shell
 available = "command -v code"
 bootstrap = "vscode"
 installed = { cmd = "code --list-extensions --show-versions", parse = 'regex:^(?P<name>[^@]+)@(?P<version>\S+)$' }

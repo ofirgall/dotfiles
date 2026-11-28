@@ -4,10 +4,13 @@ description = "PowerShell profile (mirrors zsh-conf): ~/.pwsh-conf, ~/.my-pwsh-c
 when = 'os = "windows"'
 requires = ["pwsh"]
 
-# The profile sources ~/.pwsh-conf/<name> and ~/.my-pwsh-conf/<name>, then ~/.extra_utils.ps1.
+# The profile is inject-only (like ~/.zshrc): dots also writes its env hook into it, so it must
+# not be a link into the repo. The injected line dot-sources ~/.pwsh-conf/profile.ps1, which
+# sources ~/.pwsh-conf/<name> and ~/.my-pwsh-conf/<name>, then ~/.extra_utils.ps1.
 [[files]]
-src = "pwsh-conf/profile.ps1"
-dst = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
+mode = "inject"
+src  = "profile.inject"
+dst  = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
 
 [[files]]
 src = "pwsh-conf"
